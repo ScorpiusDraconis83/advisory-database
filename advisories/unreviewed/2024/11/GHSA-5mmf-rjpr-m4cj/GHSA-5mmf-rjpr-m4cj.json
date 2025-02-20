@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5mmf-rjpr-m4cj",
+  "modified": "2024-12-10T00:31:26Z",
+  "published": "2024-11-11T15:31:02Z",
+  "aliases": [
+    "CVE-2024-50263"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfork: only invoke khugepaged, ksm hooks if no error\n\nThere is no reason to invoke these hooks early against an mm that is in an\nincomplete state.\n\nThe change in commit d24062914837 (\"fork: use __mt_dup() to duplicate\nmaple tree in dup_mmap()\") makes this more pertinent as we may be in a\nstate where entries in the maple tree are not yet consistent.\n\nTheir placement early in dup_mmap() only appears to have been meaningful\nfor early error checking, and since functionally it'd require a very small\nallocation to fail (in practice 'too small to fail') that'd only occur in\nthe most dire circumstances, meaning the fork would fail or be OOM'd in\nany case.\n\nSince both khugepaged and KSM tracking are there to provide optimisations\nto memory performance rather than critical functionality, it doesn't\nreally matter all that much if, under such dire memory pressure, we fail\nto register an mm with these.\n\nAs a result, we follow the example of commit d2081b2bf819 (\"mm:\nkhugepaged: make khugepaged_enter() void function\") and make ksm_fork() a\nvoid function also.\n\nWe only expose the mm to these functions once we are done with them and\nonly if no error occurred in the fork operation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50263"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b85aa0da8cd01173b9afd1f70080fbb9576c4b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/985da552a98e27096444508ce5d853244019111f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://project-zero.issues.chromium.org/issues/373391951"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-11T14:15:15Z"
+  }
+}

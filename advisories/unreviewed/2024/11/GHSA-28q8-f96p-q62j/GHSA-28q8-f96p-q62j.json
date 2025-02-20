@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-28q8-f96p-q62j",
+  "modified": "2025-01-29T21:31:23Z",
+  "published": "2024-11-09T03:30:44Z",
+  "aliases": [
+    "CVE-2024-8960"
+  ],
+  "details": "The Cowidgets – Elementor Addons plugin for WordPress is vulnerable to Stored Cross-Site Scripting via SVG File uploads in all versions up to, and including, 1.2.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses the SVG file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-8960"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cowidgets-elementor-addons/trunk/inc/widgets-manager/class-widgets-loader.php#L324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/cowidgets-elementor-addons/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/fac90d55-9ae2-48a8-b82b-fe1626556c7b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-09T03:15:05Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fjh8-qqmx-h83r",
+  "modified": "2024-12-12T09:31:35Z",
+  "published": "2024-12-12T09:31:35Z",
+  "aliases": [
+    "CVE-2024-11727"
+  ],
+  "details": "The NotificationX – Live Sales Notification, WooCommerce Sales Popup, FOMO, Social Proof, Announcement Banner & Floating Notification Top Bar plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's content settings for notifications in all versions up to, and including, 2.9.3 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with administrator-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has been disabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11727"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3205560/notificationx/trunk/includes/FrontEnd/Preview.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/338edb1d-101a-4b6e-ac25-b59bd3e17f8b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-12T07:15:09Z"
+  }
+}

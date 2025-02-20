@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gxfg-mr5m-frxc",
+  "modified": "2025-01-06T21:30:51Z",
+  "published": "2024-12-29T12:30:41Z",
+  "aliases": [
+    "CVE-2024-56752"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/nouveau/gr/gf100: Fix missing unlock in gf100_gr_chan_new()\n\nWhen the call to gf100_grctx_generate() fails, unlock gr->fecs.mutex\nbefore returning the error.\n\nFixes smatch warning:\n\ndrivers/gpu/drm/nouveau/nvkm/engine/gr/gf100.c:480 gf100_gr_chan_new() warn: inconsistent returns '&gr->fecs.mutex'.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56752"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22b4a623c0f230540f02f4358744cce62ae12dbf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/237f2dbfa00576bb1aa8dc2dce403c64e53270e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24b1df744ef444f9846f52de4985790a5fd1c0de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a2f599046c671d6b46d93aed95b37241ce4504cf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-29T12:15:08Z"
+  }
+}

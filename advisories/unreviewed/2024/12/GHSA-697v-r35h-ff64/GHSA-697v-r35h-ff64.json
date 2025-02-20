@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-697v-r35h-ff64",
+  "modified": "2024-12-13T06:30:58Z",
+  "published": "2024-12-13T06:30:58Z",
+  "aliases": [
+    "CVE-2024-12300"
+  ],
+  "details": "The AR for WordPress plugin for WordPress is vulnerable to unauthorized double extension file upload due to a missing capability check on the set_ar_featured_image() function in all versions up to, and including, 7.3. This makes it possible for unauthenticated attackers to upload php files leveraging a double extension attack. It's important to note the file is deleted immediately and double extension attacks only work on select servers making this unlikely to be successfully exploited.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12300"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ar-for-wordpress/trunk/includes/ar-add-media.php?rev=3177638"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3206666%40ar-for-wordpress%2Ftrunk&old=3205240%40ar-for-wordpress%2Ftrunk&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/8b507369-49f7-4a1d-900b-c7bef40aec96?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-13T04:15:05Z"
+  }
+}

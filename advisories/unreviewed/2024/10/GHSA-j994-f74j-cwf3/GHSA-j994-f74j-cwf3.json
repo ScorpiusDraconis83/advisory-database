@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j994-f74j-cwf3",
+  "modified": "2024-10-24T21:31:02Z",
+  "published": "2024-10-21T18:30:56Z",
+  "aliases": [
+    "CVE-2024-49876"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe: fix UAF around queue destruction\n\nWe currently do stuff like queuing the final destruction step on a\nrandom system wq, which will outlive the driver instance. With bad\ntiming we can teardown the driver with one or more work workqueue still\nbeing alive leading to various UAF splats. Add a fini step to ensure\nuser queues are properly torn down. At this point GuC should already be\nnuked so queue itself should no longer be referenced from hw pov.\n\nv2 (Matt B)\n - Looks much safer to use a waitqueue and then just wait for the\n   xa_array to become empty before triggering the drain.\n\n(cherry picked from commit 861108666cc0e999cffeab6aff17b662e68774e3)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-49876"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/272b0e78874586d6ccae04079d75b27b47705544"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d2be279f1ca9e7288282d4214f16eea8a727cdb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/421c74670b0f9d5c007f1276d3647aa58f407fde"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T18:15:09Z"
+  }
+}

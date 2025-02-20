@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rj73-fpfj-jm4p",
+  "modified": "2025-01-15T15:31:24Z",
+  "published": "2025-01-15T15:31:24Z",
+  "aliases": [
+    "CVE-2024-53681"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet: Don't overflow subsysnqn\n\nnvmet_root_discovery_nqn_store treats the subsysnqn string like a fixed\nsize buffer, even though it is dynamically allocated to the size of the\nstring.\n\nCreate a new string with kstrndup instead of using the old buffer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53681"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4db3d750ac7e894278ef1cb1c53cc7d883060496"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86645d8d062af3fdcbdaa0a289b95de55bca827d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-15T13:15:10Z"
+  }
+}

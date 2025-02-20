@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f4g2-c45m-rq74",
+  "modified": "2024-12-27T15:31:52Z",
+  "published": "2024-12-27T15:31:51Z",
+  "aliases": [
+    "CVE-2024-53211"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/l2tp: fix warning in l2tp_exit_net found by syzbot\n\nIn l2tp's net exit handler, we check that an IDR is empty before\ndestroying it:\n\n\tWARN_ON_ONCE(!idr_is_empty(&pn->l2tp_tunnel_idr));\n\tidr_destroy(&pn->l2tp_tunnel_idr);\n\nBy forcing memory allocation failures in idr_alloc_32, syzbot is able\nto provoke a condition where idr_is_empty returns false despite there\nbeing no items in the IDR. This turns out to be because the radix tree\nof the IDR contains only internal radix-tree nodes and it is this that\ncauses idr_is_empty to return false. The internal nodes are cleaned by\nidr_destroy.\n\nUse idr_for_each to check that the IDR is empty instead of\nidr_is_empty to avoid the problem.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53211"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d066766c5f1252f98ff859265bcd1a5b52ac46c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a487cc8986d6dd75b60b59004f3bd2ea9b4dd541"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T14:15:29Z"
+  }
+}

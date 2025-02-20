@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2qfq-q4fv-fp24",
+  "modified": "2025-01-14T18:31:53Z",
+  "published": "2024-12-27T15:31:50Z",
+  "aliases": [
+    "CVE-2024-53179"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix use-after-free of signing key\n\nCustomers have reported use-after-free in @ses->auth_key.response with\nSMB2.1 + sign mounts which occurs due to following race:\n\ntask A                         task B\ncifs_mount()\n dfs_mount_share()\n  get_session()\n   cifs_mount_get_session()    cifs_send_recv()\n    cifs_get_smb_ses()          compound_send_recv()\n     cifs_setup_session()        smb2_setup_request()\n      kfree_sensitive()           smb2_calc_signature()\n                                   crypto_shash_setkey() *UAF*\n\nFix this by ensuring that we have a valid @ses->auth_key.response by\nchecking whether @ses->ses_status is SES_GOOD or SES_EXITING with\n@ses->ses_lock held.  After commit 24a9799aa8ef (\"smb: client: fix UAF\nin smb2_reconnect_server()\"), we made sure to call ->logoff() only\nwhen @ses was known to be good (e.g. valid ->auth_key.response), so\nit's safe to access signing key when @ses->ses_status == SES_EXITING.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53179"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e2b654a3848bf9da3b0d54c1ccf3f1b8c635591"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/343d7fe6df9e247671440a932b6a73af4fa86d95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39619c65ab4bbb3e78c818f537687653e112764d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T14:15:25Z"
+  }
+}

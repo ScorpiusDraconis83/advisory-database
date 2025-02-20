@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xv88-66vv-vx9g",
+  "modified": "2024-10-25T18:30:47Z",
+  "published": "2024-10-21T21:30:51Z",
+  "aliases": [
+    "CVE-2022-48973"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: amd8111: Fix PCI device reference count leak\n\nfor_each_pci_dev() is implemented by pci_get_device(). The comment of\npci_get_device() says that it will increase the reference count for the\nreturned pci_dev and also decrease the reference count for the input\npci_dev @from if it is not NULL.\n\nIf we break for_each_pci_dev() loop with pdev not NULL, we need to call\npci_dev_put() to decrease the reference count. Add the missing\npci_dev_put() after the 'out' label. Since pci_dev_put() can handle NULL\ninput parameter, there is no problem for the 'Device not found' branch.\nFor the normal path, add pci_dev_put() in amd_gpio_exit().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-48973"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4271515f189bd5fe2ec86b4089dab7cb804625d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45fecdb9f658d9c82960c98240bc0770ade19aca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4749c5cc147c9860b96db1e71cc36d1de1bd3f59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48bd5d3801f6b67cc144449d434abbd5043a6d37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ee6413d3dd972930af787b2c0c7aaeb379fa521"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71d591ef873f9ebb86cd8d053b3caee785b2de6a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2bc053ebbba57a06fa655db5ea796de2edce445"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e364ce04d8f840478b09eee57b614de7cf1e743e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:09Z"
+  }
+}

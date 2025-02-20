@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ffwp-75cj-q944",
+  "modified": "2025-02-18T12:31:17Z",
+  "published": "2025-02-18T12:31:17Z",
+  "aliases": [
+    "CVE-2024-13636"
+  ],
+  "details": "The Brooklyn theme for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 4.9.9.2 via deserialization of untrusted input in the ot_decode function. This makes it possible for authenticated attackers, with Subscriber-level access and above, to inject a PHP Object. No known POP chain is present in the vulnerable software, which means this vulnerability has no impact unless another plugin or theme containing a POP chain is installed on the site. If a POP chain is present via an additional plugin or theme installed on the target system, it may allow the attacker to perform actions like delete arbitrary files, retrieve sensitive data, or execute code depending on the POP chain present.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-13636"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themeforest.net/item/brooklyn-responsive-multipurpose-wordpress-theme/6221179"
+    },
+    {
+      "type": "WEB",
+      "url": "https://unitedthemes.com/changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/50cc3bd5-91ee-4b57-8159-60dd700375f3?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-18T11:15:10Z"
+  }
+}

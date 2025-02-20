@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rhhp-94ch-9rf5",
+  "modified": "2024-11-13T21:30:32Z",
+  "published": "2024-11-09T12:30:49Z",
+  "aliases": [
+    "CVE-2024-50260"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsock_map: fix a NULL pointer dereference in sock_map_link_update_prog()\n\nThe following race condition could trigger a NULL pointer dereference:\n\nsock_map_link_detach():\t\tsock_map_link_update_prog():\n   mutex_lock(&sockmap_mutex);\n   ...\n   sockmap_link->map = NULL;\n   mutex_unlock(&sockmap_mutex);\n   \t\t\t\t   mutex_lock(&sockmap_mutex);\n\t\t\t\t   ...\n\t\t\t\t   sock_map_prog_link_lookup(sockmap_link->map);\n\t\t\t\t   mutex_unlock(&sockmap_mutex);\n   <continue>\n\nFix it by adding a NULL pointer check. In this specific case, it makes\nno sense to update a link which is being released.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50260"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/740be3b9a6d73336f8c7d540842d0831dc7a808b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9afe35fdda16e09d5bd3c49a68ba8c680dd678bd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-09T11:15:11Z"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xcmw-c2xm-xxjw",
+  "modified": "2024-10-25T15:31:26Z",
+  "published": "2024-10-21T21:30:53Z",
+  "aliases": [
+    "CVE-2024-50028"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nthermal: core: Reference count the zone in thermal_zone_get_by_id()\n\nThere are places in the thermal netlink code where nothing prevents\nthe thermal zone object from going away while being accessed after it\nhas been returned by thermal_zone_get_by_id().\n\nTo address this, make thermal_zone_get_by_id() get a reference on the\nthermal zone device object to be returned with the help of get_device(),\nunder thermal_list_lock, and adjust all of its callers to this change\nwith the help of the cleanup.h infrastructure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50028"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a42a5839f400e929c489bb1b58f54596c4535167"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c95538b286efc6109c987e97a051bc7844ede802"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:16Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wm5f-4g6v-fm7r",
+  "modified": "2024-10-24T18:30:42Z",
+  "published": "2024-10-21T21:30:52Z",
+  "aliases": [
+    "CVE-2022-49029"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (ibmpex) Fix possible UAF when ibmpex_register_bmc() fails\n\nSmatch report warning as follows:\n\ndrivers/hwmon/ibmpex.c:509 ibmpex_register_bmc() warn:\n  '&data->list' not removed from list\n\nIf ibmpex_find_sensors() fails in ibmpex_register_bmc(), data will\nbe freed, but data->list will not be removed from driver_data.bmc_data,\nthen list traversal may cause UAF.\n\nFix by removeing it from driver_data.bmc_data before free().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49029"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24b9633f7db7f4809be7053df1d2e117e7c2de10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45f6e81863747c0d7bc6a95ec51129900e71467a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/798198273bf86673b970b51acdb35e57f42b3fcb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b2b67fe1339389e0bf3c37c7a677a004ac0e4e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90907cd4d11351ff76c9a447bcb5db0e264c47cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2a87785aab0dac190ac89be6a9ba955e2c634f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e65cfd1f9cd27d9c27ee5cb88128a9f79f25d863"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2a13196ad41c6c2ab058279dffe6c97292e753a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:13Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5vhj-65c8-9r9j",
+  "modified": "2024-12-17T15:31:43Z",
+  "published": "2024-12-17T00:31:18Z",
+  "aliases": [
+    "CVE-2024-55452"
+  ],
+  "details": "A URL redirection vulnerability exists in UJCMS 9.6.3 due to improper validation of URLs in the upload and rendering of new block / carousel items. This vulnerability allows authenticated attackers to redirect unprivileged users to an arbitrary, attacker-controlled webpage. When an authenticated user clicks on the malicious block item, they are redirected to the arbitrary untrusted domains, where sensitive tokens, such as JSON Web Tokens, can be stolen via a crafted webpage.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-55452"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cydtseng/Vulnerability-Research/blob/main/ujcms/OpenRedirect-BlockItemUpload.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/ujcms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-16T23:15:06Z"
+  }
+}

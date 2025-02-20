@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mxg2-8rwh-rmf4",
+  "modified": "2024-12-28T12:30:47Z",
+  "published": "2024-12-28T12:30:47Z",
+  "aliases": [
+    "CVE-2024-56691"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmfd: intel_soc_pmic_bxtwc: Use IRQ domain for USB Type-C device\n\nWhile design wise the idea of converting the driver to use\nthe hierarchy of the IRQ chips is correct, the implementation\nhas (inherited) flaws. This was unveiled when platform_get_irq()\nhad started WARN() on IRQ 0 that is supposed to be a Linux\nIRQ number (also known as vIRQ).\n\nRework the driver to respect IRQ domain when creating each MFD\ndevice separately, as the domain is not the same for all of them.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56691"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0997e77c51330c2866a4f39480e762cca92ad953"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b648968bfa4f5c9c4983bca9f2de17626ed6fb6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23230ac3c5ca3f154b64849d1cf50583b4e6b98c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/518e414d24e7037d6cc7198e942bf47fe6f5e8e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/686fb77712a4bc94b76a0c5ae74c60118b7a0d79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87a07a5b0b296e489c606ca95ffc16c18821975b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c310e6916c0b297011d0fec03f168a6b24e9e984"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e1ef62e8d262e3f27446d26742208c1c81e9ee18"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-28T10:15:14Z"
+  }
+}

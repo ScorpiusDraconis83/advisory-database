@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mcrm-9h74-fxh7",
+  "modified": "2024-10-24T15:31:08Z",
+  "published": "2024-10-21T12:30:55Z",
+  "aliases": [
+    "CVE-2024-47708"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetkit: Assign missing bpf_net_context\n\nDuring the introduction of struct bpf_net_context handling for\nXDP-redirect, the netkit driver has been missed, which also requires it\nbecause NETKIT_REDIRECT invokes skb_do_redirect() which is accessing the\nper-CPU variables. Otherwise we see the following crash:\n\n\tBUG: kernel NULL pointer dereference, address: 0000000000000038\n\tbpf_redirect()\n\tnetkit_xmit()\n\tdev_hard_start_xmit()\n\nSet the bpf_net_context before invoking netkit_xmit() program within the\nnetkit driver.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-47708"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/157f29152b61ca41809dd7ead29f5733adeced19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/182c6fed8c7f62cddce0126ec1fc0da2b700fb11"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T12:15:07Z"
+  }
+}

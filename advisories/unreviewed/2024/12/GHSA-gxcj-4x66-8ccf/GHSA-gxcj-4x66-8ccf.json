@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gxcj-4x66-8ccf",
+  "modified": "2024-12-17T09:31:06Z",
+  "published": "2024-12-17T09:31:06Z",
+  "aliases": [
+    "CVE-2024-12293"
+  ],
+  "details": "The User Role Editor plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 4.64.3. This is due to missing or incorrect nonce validation on the update_roles() function. This makes it possible for unauthenticated attackers to add or remove roles for arbitrary users, including escalating their privileges to administrator, via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12293"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/user-role-editor/trunk/includes/classes/grant-roles.php#L184"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/user-role-editor/trunk/includes/classes/grant-roles.php#L187"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3208193"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/user-role-editor/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/6f359d02-d4ce-4045-9e79-ae0f92b84766?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-17T09:15:05Z"
+  }
+}

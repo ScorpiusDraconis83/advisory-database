@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-43h8-7v35-466p",
+  "modified": "2024-10-24T06:30:29Z",
+  "published": "2024-10-21T21:30:52Z",
+  "aliases": [
+    "CVE-2022-49026"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ne100: Fix possible use after free in e100_xmit_prepare\n\nIn e100_xmit_prepare(), if we can't map the skb, then return -ENOMEM, so\ne100_xmit_frame() will return NETDEV_TX_BUSY and the upper layer will\nresend the skb. But the skb is already freed, which will cause UAF bug\nwhen the upper layer resends the skb.\n\nRemove the harmful free.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49026"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45605c75c52c7ae7bfe902214343aabcfe5ba0ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9fc27d22cdb9b1fcd754599d216a8992fed280cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b46f6144ab89d3d757ead940759c505091626a7d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b775f37d943966f6f77dca402f5a9dedce502c25"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:13Z"
+  }
+}

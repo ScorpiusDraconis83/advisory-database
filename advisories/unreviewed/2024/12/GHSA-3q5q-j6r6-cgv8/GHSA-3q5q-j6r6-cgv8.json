@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3q5q-j6r6-cgv8",
+  "modified": "2024-12-11T18:30:39Z",
+  "published": "2024-12-04T15:31:52Z",
+  "aliases": [
+    "CVE-2024-53133"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Handle dml allocation failure to avoid crash\n\n[Why]\nIn the case where a dml allocation fails for any reason, the\ncurrent state's dml contexts would no longer be valid. Then\nsubsequent calls dc_state_copy_internal would shallow copy\ninvalid memory and if the new state was released, a double\nfree would occur.\n\n[How]\nReset dml pointers in new_state to NULL and avoid invalid\npointer\n\n(cherry picked from commit bcafdc61529a48f6f06355d78eb41b3aeda5296c)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6825cb07b79ffeb1d90ffaa7a1227462cdca34ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/874ff59cde8fc525112dda26b501a1bac17dde9f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-04T15:15:13Z"
+  }
+}

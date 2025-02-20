@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-533j-v9v8-3c94",
+  "modified": "2024-10-24T06:30:28Z",
+  "published": "2024-10-21T18:30:56Z",
+  "aliases": [
+    "CVE-2024-49865"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/vm: move xa_alloc to prevent UAF\n\nEvil user can guess the next id of the vm before the ioctl completes and\nthen call vm destroy ioctl to trigger UAF since create ioctl is still\nreferencing the same vm. Move the xa_alloc all the way to the end to\nprevent this.\n\nv2:\n - Rebase\n\n(cherry picked from commit dcfd3971327f3ee92765154baebbaece833d3ca9)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-49865"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09cf8901fc0225898311b375cfcc67bae37ed5da"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74231870cf4976f69e83aa24f48edb16619f652f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T18:15:06Z"
+  }
+}

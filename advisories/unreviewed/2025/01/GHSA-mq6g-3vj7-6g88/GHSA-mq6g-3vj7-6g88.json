@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mq6g-3vj7-6g88",
+  "modified": "2025-01-08T00:30:49Z",
+  "published": "2025-01-06T18:31:04Z",
+  "aliases": [
+    "CVE-2024-56764"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nublk: detach gendisk from ublk device if add_disk() fails\n\nInside ublk_abort_requests(), gendisk is grabbed for aborting all\ninflight requests. And ublk_abort_requests() is called when exiting\nthe uring context or handling timeout.\n\nIf add_disk() fails, the gendisk may have been freed when calling\nublk_abort_requests(), so use-after-free can be caused when getting\ndisk's reference in ublk_abort_requests().\n\nFixes the bug by detaching gendisk from ublk device if add_disk() fails.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56764"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75cd4005da5492129917a4a4ee45e81660556104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d680f2f76a3417fdfc3946da7471e81464f7b41"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-06T17:15:42Z"
+  }
+}

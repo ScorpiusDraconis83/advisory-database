@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-93xr-jvr5-8x88",
+  "modified": "2025-01-02T21:31:41Z",
+  "published": "2024-12-19T00:37:36Z",
+  "aliases": [
+    "CVE-2024-56318"
+  ],
+  "details": "In raw\\TCP.cpp in Matter (aka connectedhomeip or Project CHIP) through 1.4.0.0 before 27ca6ec, there is a NULL pointer dereference in TCPBase::ProcessSingleMessage via TCP packets with zero messageSize, leading to denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56318"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/project-chip/connectedhomeip/issues/36750"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/project-chip/connectedhomeip/pull/36751"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/project-chip/connectedhomeip/commit/27ca6ec255b78168e04bd71e0f1a473869cf144b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-18T23:15:18Z"
+  }
+}

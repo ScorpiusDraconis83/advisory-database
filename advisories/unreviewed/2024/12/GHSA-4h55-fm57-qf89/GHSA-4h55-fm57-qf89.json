@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4h55-fm57-qf89",
+  "modified": "2024-12-12T06:30:49Z",
+  "published": "2024-12-12T06:30:49Z",
+  "aliases": [
+    "CVE-2024-11417"
+  ],
+  "details": "The dejure.org Vernetzungsfunktion plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.97.5. This is due to missing or incorrect nonce validation on the djo_einstellungen_menue() function. This makes it possible for unauthenticated attackers to update settings and inject malicious web scripts via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11417"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/dejureorg-vernetzungsfunktion/trunk/dejure.org-vernetzung.php#L270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/bfe35762-2cb1-4b62-8865-ab217ff29450?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-12T04:15:05Z"
+  }
+}

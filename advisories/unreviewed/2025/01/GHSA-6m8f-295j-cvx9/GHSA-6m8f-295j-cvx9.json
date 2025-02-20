@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6m8f-295j-cvx9",
+  "modified": "2025-01-07T06:32:15Z",
+  "published": "2025-01-07T06:32:15Z",
+  "aliases": [
+    "CVE-2024-12327"
+  ],
+  "details": "The LazyLoad Background Images plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the pblzbg_save_settings() function in all versions up to, and including, 1.0.7. This makes it possible for authenticated attackers, with Subscriber-level access and above, to update the plugin's settings.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12327"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/lazyload-background-images/trunk/admin/plugin-functions.php#L152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/lazyload-background-images/trunk/admin/plugin-functions.php#L153"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d57fa9f3-b1c0-4601-96d9-178d0dba1332?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-07T05:15:18Z"
+  }
+}

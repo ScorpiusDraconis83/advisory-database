@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qcf7-52w8-gp39",
+  "modified": "2024-12-13T09:31:13Z",
+  "published": "2024-12-13T09:31:13Z",
+  "aliases": [
+    "CVE-2024-11275"
+  ],
+  "details": "The WP Timetics- AI-powered Appointment Booking Calendar and Online Scheduling Plugin plugin for WordPress is vulnerable to unauthorized loss of data due to a missing capability check on the /wp-json/timetics/v1/customers/ REST API endpoint in all versions up to, and including, 1.0.27. This makes it possible for authenticated attackers, with Timetics Customer access and above, to delete arbitrary users.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11275"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/timetics/trunk/core/customers/api-customer.php#L308"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3206505%40timetics&new=3206505%40timetics&sfp_email=&sfph_mail=#file199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d68e250e-d850-4100-81db-3e3c48a3a4a1?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-13T09:15:04Z"
+  }
+}

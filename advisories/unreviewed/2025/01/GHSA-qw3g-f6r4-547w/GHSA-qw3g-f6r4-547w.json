@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qw3g-f6r4-547w",
+  "modified": "2025-01-28T06:30:40Z",
+  "published": "2025-01-28T06:30:40Z",
+  "aliases": [
+    "CVE-2024-11135"
+  ],
+  "details": "The Eventer plugin for WordPress is vulnerable to SQL Injection via the 'event' parameter in the 'eventer_get_attendees' function in all versions up to, and including, 3.9.8 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11135"
+    },
+    {
+      "type": "WEB",
+      "url": "https://codecanyon.net/item/eventer-wordpress-event-manager-plugin/20972534"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a8dc0712-f78e-46c5-a0d1-2db752498d54?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-28T05:15:09Z"
+  }
+}

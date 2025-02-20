@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qm6j-3575-m93v",
+  "modified": "2024-11-27T12:31:54Z",
+  "published": "2024-11-27T12:31:54Z",
+  "aliases": [
+    "CVE-2024-11009"
+  ],
+  "details": "The Internal Linking for SEO traffic & Ranking – Auto internal links (100% automatic) plugin for WordPress is vulnerable to time-based SQL Injection via the ‘post_id’ parameter in all versions up to, and including, 1.2.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for authenticated attackers, with Administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11009"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3197510"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/automatic-internal-links-for-seo/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/35a690c5-dc7e-4bb7-be5b-c70bd0ea7d10?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-27T12:15:19Z"
+  }
+}

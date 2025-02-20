@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q7f5-6q4v-p39v",
+  "modified": "2024-10-24T06:30:29Z",
+  "published": "2024-10-21T21:30:52Z",
+  "aliases": [
+    "CVE-2022-49024"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: m_can: pci: add missing m_can_class_free_dev() in probe/remove methods\n\nIn m_can_pci_remove() and error handling path of m_can_pci_probe(),\nm_can_class_free_dev() should be called to free resource allocated by\nm_can_class_allocate_dev(), otherwise there will be memleak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49024"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0bbb88651ef6b7fbb1bf75ec7ba69add632e834b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1eca1d4cc21b6d0fc5f9a390339804c0afce9439"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea8dc27bb044e19868155e500ce397007be98656"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:13Z"
+  }
+}

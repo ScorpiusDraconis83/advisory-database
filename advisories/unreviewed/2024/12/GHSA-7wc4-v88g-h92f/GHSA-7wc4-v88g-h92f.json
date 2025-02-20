@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7wc4-v88g-h92f",
+  "modified": "2024-12-16T09:31:09Z",
+  "published": "2024-12-16T09:31:09Z",
+  "aliases": [
+    "CVE-2024-12641"
+  ],
+  "details": "TenderDocTransfer from Chunghwa Telecom has a Reflected Cross-site scripting vulnerability. The application sets up a simple local web server and provides APIs for communication with the target website. Due to the lack of CSRF protection for the APIs, unauthenticated remote attackers could use specific APIs through phishing to execute arbitrary JavaScript code in the user’s browser. Since the web server set by the application supports Node.Js features, attackers can further leverage this to run OS commands.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12641"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.twcert.org.tw/en/cp-139-8299-42168-2.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.twcert.org.tw/tw/cp-132-8292-4fd98-1.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-16T07:15:05Z"
+  }
+}

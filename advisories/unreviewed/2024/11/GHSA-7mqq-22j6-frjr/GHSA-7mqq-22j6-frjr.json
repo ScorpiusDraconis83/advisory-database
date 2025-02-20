@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7mqq-22j6-frjr",
+  "modified": "2024-11-13T06:30:29Z",
+  "published": "2024-11-13T06:30:29Z",
+  "aliases": [
+    "CVE-2024-10800"
+  ],
+  "details": "The WordPress User Extra Fields plugin for WordPress is vulnerable to privilege escalation due to a missing capability check on the ajax_save_fields() function in all versions up to, and including, 16.6. This makes it possible for authenticated attackers, with subscriber-level access and above, to add custom fields that can be updated and then use the check_and_overwrite_wp_or_woocommerce_fields function to update the wp_capabilities field to have administrator privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10800"
+    },
+    {
+      "type": "WEB",
+      "url": "https://codecanyon.net/item/user-extra-fields/12949844"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a18fa7e6-813d-4b48-bd4e-5232fb8382d1?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-13T05:15:11Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fpcp-87j2-pf32",
+  "modified": "2025-01-15T21:31:40Z",
+  "published": "2024-12-27T15:31:51Z",
+  "aliases": [
+    "CVE-2024-53188"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: fix crash when unbinding\n\nIf there is an error during some initialization related to firmware,\nthe function ath12k_dp_cc_cleanup is called to release resources.\nHowever this is released again when the device is unbinded (ath12k_pci),\nand we get:\nBUG: kernel NULL pointer dereference, address: 0000000000000020\nat RIP: 0010:ath12k_dp_cc_cleanup.part.0+0xb6/0x500 [ath12k]\nCall Trace:\nath12k_dp_cc_cleanup\nath12k_dp_free\nath12k_core_deinit\nath12k_pci_remove\n...\n\nThe issue is always reproducible from a VM because the MSI addressing\ninitialization is failing.\n\nIn order to fix the issue, just set to NULL the released structure in\nath12k_dp_cc_cleanup at the end.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53188"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1304446f67863385dc4c914b6e0194f6664ee764"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2eec88c0fa63f8ad35704a8c9df0b5bd8694fcda"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/488d2959c28621e52b3cce118a813a4bc18bb3d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81da9c0854545c3188ca2a09afe7cb65f9c012b5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T14:15:26Z"
+  }
+}

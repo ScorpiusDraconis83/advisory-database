@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-74ff-8pv9-crm9",
+  "modified": "2025-01-19T12:31:25Z",
+  "published": "2025-01-19T12:31:25Z",
+  "aliases": [
+    "CVE-2025-21641"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: sysctl: blackhole timeout: avoid using current->nsproxy\n\nAs mentioned in the previous commit, using the 'net' structure via\n'current' is not recommended for different reasons:\n\n- Inconsistency: getting info from the reader's/writer's netns vs only\n  from the opener's netns.\n\n- current->nsproxy can be NULL in some cases, resulting in an 'Oops'\n  (null-ptr-deref), e.g. when the current task is exiting, as spotted by\n  syzbot [1] using acct(2).\n\nThe 'pernet' structure can be obtained from the table->data using\ncontainer_of().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21641"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c74fbdc5ab95b13945be01e6065940b68222db7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92cf7a51bdae24a32c592adcdd59a773ae149289"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-19T11:15:09Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9r9v-644h-2p8g",
+  "modified": "2025-02-11T03:30:56Z",
+  "published": "2025-02-11T03:30:56Z",
+  "aliases": [
+    "CVE-2025-24874"
+  ],
+  "details": "SAP Commerce (Backoffice) uses the deprecated X-FRAME-OPTIONS header to protect against clickjacking. While this protection remains effective now, it may not be the case in the future as browsers might discontinue support for this header in favor of the frame-ancestors CSP directive. Hence, clickjacking could become possible then, and lead to exposure and modification of sensitive information.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-24874"
+    },
+    {
+      "type": "WEB",
+      "url": "https://me.sap.com/notes/3559510"
+    },
+    {
+      "type": "WEB",
+      "url": "https://url.sap/sapsecuritypatchday"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1021"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-11T01:15:11Z"
+  }
+}

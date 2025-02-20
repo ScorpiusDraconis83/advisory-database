@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7c75-4mxr-f248",
+  "modified": "2024-11-15T12:31:44Z",
+  "published": "2024-11-15T12:31:44Z",
+  "aliases": [
+    "CVE-2021-3740"
+  ],
+  "details": "A Session Fixation vulnerability exists in chatwoot/chatwoot versions prior to 2.4.0. The application does not invalidate existing sessions on other devices when a user changes their password, allowing old sessions to persist. This can lead to unauthorized access if an attacker has obtained a session token.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:A/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-3740"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chatwoot/chatwoot/commit/6fdd4a29969be8423f31890b807d27d13627c50c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/1625470476437-chatwoot/chatwoot"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-384"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-15T11:15:04Z"
+  }
+}

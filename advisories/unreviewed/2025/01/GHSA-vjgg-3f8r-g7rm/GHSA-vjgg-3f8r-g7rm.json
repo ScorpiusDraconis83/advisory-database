@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vjgg-3f8r-g7rm",
+  "modified": "2025-01-11T15:30:28Z",
+  "published": "2025-01-11T15:30:27Z",
+  "aliases": [
+    "CVE-2024-46896"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: don't access invalid sched\n\nSince 2320c9e6a768 (\"drm/sched: memset() 'job' in drm_sched_job_init()\")\naccessing job->base.sched can produce unexpected results as the initialisation\nof (*job)->base.sched done in amdgpu_job_alloc is overwritten by the\nmemset.\n\nThis commit fixes an issue when a CS would fail validation and would\nbe rejected after job->num_ibs is incremented. In this case,\namdgpu_ib_free(ring->adev, ...) will be called, which would crash the\nmachine because the ring value is bogus.\n\nTo fix this, pass a NULL pointer to amdgpu_ib_free(): we can do this\nbecause the device is actually not used in this function.\n\nThe next commit will remove the ring argument completely.\n\n(cherry picked from commit 2ae520cb12831d264ceb97c61f72c59d33c0dbd7)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-46896"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65501a4fd84ecdc0af863dbb37759242aab9f2dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67291d601f2b032062b1b2f60ffef1b63e10094c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a93b1020eb9386d7da11608477121b10079c076a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da6b2c626ae73c303378ce9eaf6e3eaf16c9925a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-11T13:15:21Z"
+  }
+}

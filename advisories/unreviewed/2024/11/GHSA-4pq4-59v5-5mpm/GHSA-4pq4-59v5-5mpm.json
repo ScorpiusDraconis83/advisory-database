@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4pq4-59v5-5mpm",
+  "modified": "2024-11-13T03:30:45Z",
+  "published": "2024-11-05T18:32:11Z",
+  "aliases": [
+    "CVE-2024-50092"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: netconsole: fix wrong warning\n\nA warning is triggered when there is insufficient space in the buffer\nfor userdata. However, this is not an issue since userdata will be sent\nin the next iteration.\n\nCurrent warning message:\n\n    ------------[ cut here ]------------\n     WARNING: CPU: 13 PID: 3013042 at drivers/net/netconsole.c:1122 write_ext_msg+0x3b6/0x3d0\n      ? write_ext_msg+0x3b6/0x3d0\n      console_flush_all+0x1e9/0x330\n\nThe code incorrectly issues a warning when this_chunk is zero, which is\na valid scenario. The warning should only be triggered when this_chunk\nis negative.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50092"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/712a3af3710263444217df54e7f337f99df198d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d94785bb46b6167382b1de3290eccc91fa98df53"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-05T17:15:06Z"
+  }
+}

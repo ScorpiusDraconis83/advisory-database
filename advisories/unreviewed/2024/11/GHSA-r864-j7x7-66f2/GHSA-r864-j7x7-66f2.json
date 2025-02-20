@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r864-j7x7-66f2",
+  "modified": "2024-11-22T21:32:19Z",
+  "published": "2024-11-22T21:32:19Z",
+  "aliases": [
+    "CVE-2024-9665"
+  ],
+  "details": "Zimbra GraphQL Cross-Site Request Forgery Information Disclosure Vulnerability. This vulnerability allows remote attackers to disclose sensitive information on affected installations of Zimbra. User interaction is required to exploit this vulnerability in that the target must open a malicious email message.\n\nThe specific flaw exists within the implementation of the graphql endpoint. The issue results from the lack of proper protections against cross-site request forgery (CSRF) attacks. An attacker can leverage this vulnerability to disclose information in the context of the target email account. Was ZDI-CAN-23939.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-9665"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.zimbra.com/2024/10/new-patch-release-reminders-for-missing-attachments-out-of-office-notifications-traffic-light-protocol-tlp-and-mailto-links"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.zerodayinitiative.com/advisories/ZDI-24-1369"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-22T21:15:23Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3qr3-w8jf-gq87",
+  "modified": "2025-02-13T15:31:22Z",
+  "published": "2025-01-19T12:31:24Z",
+  "aliases": [
+    "CVE-2025-21633"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/sqpoll: zero sqd->thread on tctx errors\n\nSyzkeller reports:\n\nBUG: KASAN: slab-use-after-free in thread_group_cputime+0x409/0x700 kernel/sched/cputime.c:341\nRead of size 8 at addr ffff88803578c510 by task syz.2.3223/27552\n Call Trace:\n  <TASK>\n  ...\n  kasan_report+0x143/0x180 mm/kasan/report.c:602\n  thread_group_cputime+0x409/0x700 kernel/sched/cputime.c:341\n  thread_group_cputime_adjusted+0xa6/0x340 kernel/sched/cputime.c:639\n  getrusage+0x1000/0x1340 kernel/sys.c:1863\n  io_uring_show_fdinfo+0xdfe/0x1770 io_uring/fdinfo.c:197\n  seq_show+0x608/0x770 fs/proc/fd.c:68\n  ...\n\nThat's due to sqd->task not being cleared properly in cases where\nSQPOLL task tctx setup fails, which can essentially only happen with\nfault injection to insert allocation errors.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b7cfa8b6c28a9fa22b86894166a1a34f6d630ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa7496d668c30ca7421b3bfdcd948ee861a13d17"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-19T11:15:08Z"
+  }
+}

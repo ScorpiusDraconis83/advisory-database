@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-87vp-wcxm-f9g2",
+  "modified": "2024-11-25T21:30:48Z",
+  "published": "2024-11-19T18:31:06Z",
+  "aliases": [
+    "CVE-2024-53064"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nidpf: fix idpf_vc_core_init error path\n\nIn an event where the platform running the device control plane\nis rebooted, reset is detected on the driver. It releases\nall the resources and waits for the reset to complete. Once the\nreset is done, it tries to build the resources back. At this\ntime if the device control plane is not yet started, then\nthe driver timeouts on the virtchnl message and retries to\nestablish the mailbox again.\n\nIn the retry flow, mailbox is deinitialized but the mailbox\nworkqueue is still alive and polling for the mailbox message.\nThis results in accessing the released control queue leading to\nnull-ptr-deref. Fix it by unrolling the work queue cancellation\nand mailbox deinitialization in the reverse order which they got\ninitialized.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53064"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/683fcd90ba22507ebeb1921a26dfe77efff8c266"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b58031ff96b84a38d7b73b23c7ecfb2e0557f43"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-19T18:15:26Z"
+  }
+}

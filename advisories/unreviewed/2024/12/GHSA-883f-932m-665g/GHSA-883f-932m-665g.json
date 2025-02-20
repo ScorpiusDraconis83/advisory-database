@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-883f-932m-665g",
+  "modified": "2024-12-19T06:30:43Z",
+  "published": "2024-12-17T06:30:33Z",
+  "aliases": [
+    "CVE-2024-38499"
+  ],
+  "details": "CA Client Automation (ITCM) allows non-admin/non-root users to encrypt a string using CAF CLI and SD_ACMD CLI. This would allow the non admin user to access the critical encryption keys which further causes the exploitation of stored credentials. This fix doesn't allow a non-admin/non-root user to execute \"caf encrypt\"/\"sd_acmd encrypt\" commands.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-38499"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/25284"
+    },
+    {
+      "type": "WEB",
+      "url": "http://seclists.org/fulldisclosure/2024/Dec/16"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269",
+      "CWE-276"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-17T06:15:20Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-33r9-m4vj-8h9p",
+  "modified": "2024-10-13T15:30:33Z",
+  "published": "2024-10-13T15:30:33Z",
+  "aliases": [
+    "CVE-2024-6959"
+  ],
+  "details": "A vulnerability in parisneo/lollms-webui version 9.8 allows for a Denial of Service (DOS) attack when uploading an audio file. If an attacker appends a large number of characters to the end of a multipart boundary, the system will continuously process each character, rendering lollms-webui inaccessible. This issue is exacerbated by the lack of Cross-Site Request Forgery (CSRF) protection, enabling remote exploitation. The vulnerability leads to service disruption, resource exhaustion, and extended downtime.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-6959"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/6394d32e-f35c-418a-95b8-e7254ed0bc8e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352",
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-13T13:15:10Z"
+  }
+}

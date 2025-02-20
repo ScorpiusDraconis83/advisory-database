@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rx94-q7ch-5ww2",
+  "modified": "2024-11-15T18:30:49Z",
+  "published": "2024-11-15T18:30:49Z",
+  "aliases": [
+    "CVE-2022-20656"
+  ],
+  "details": "A vulnerability in the web-based management interface of Cisco&nbsp;PI and Cisco&nbsp;EPNM could allow an authenticated, remote attacker to conduct a path traversal attack on an affected device. To exploit this vulnerability, the attacker must have valid credentials on the system.\n\nThis vulnerability is due to insufficient input validation of the HTTPS URL by the web-based management interface. An attacker could exploit this vulnerability by sending a crafted request that contains directory traversal character sequences to an affected device. A successful exploit could allow the attacker to write arbitrary files to the host system.\nCisco&nbsp;has released software updates that address these vulnerabilities. There are no workarounds that address these vulnerabilities.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-20656"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-pi-epnm-path-trav-zws324yn"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sna-xss-NXOxDhRQ"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-24"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-15T16:15:21Z"
+  }
+}

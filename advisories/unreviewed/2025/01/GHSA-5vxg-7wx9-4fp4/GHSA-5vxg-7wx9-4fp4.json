@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5vxg-7wx9-4fp4",
+  "modified": "2025-01-23T06:31:49Z",
+  "published": "2025-01-23T06:31:49Z",
+  "aliases": [
+    "CVE-2024-43710"
+  ],
+  "details": "A server side request forgery vulnerability was identified in Kibana where the /api/fleet/health_check API could be used to send requests to internal endpoints. Due to the nature of the underlying request, only endpoints available over https that return JSON could be accessed. This can be carried out by users with read access to Fleet.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-43710"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-8-15-0-security-update-esa-2024-29-esa-2024-30/373521"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-23T06:15:27Z"
+  }
+}

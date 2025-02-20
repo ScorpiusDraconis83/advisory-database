@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4h4p-36mp-83pj",
+  "modified": "2024-10-24T06:30:29Z",
+  "published": "2024-10-21T21:30:52Z",
+  "aliases": [
+    "CVE-2022-49027"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niavf: Fix error handling in iavf_init_module()\n\nThe iavf_init_module() won't destroy workqueue when pci_register_driver()\nfailed. Call destroy_workqueue() when pci_register_driver() failed to\nprevent the resource leak.\n\nSimilar to the handling of u132_hcd_init in commit f276e002793c\n(\"usb: u132-hcd: fix resource leak\")",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49027"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d9f5bd54b913018031c5b964fc1f9a31f5f6cb5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/227d8d2f7f2278b8468c5531b0cd0f2a905b4486"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/971c55f0763b480e63ceb7a22beb19be2509e5ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd477b891a4fa084561234eed4afacb3001dd359"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:13Z"
+  }
+}

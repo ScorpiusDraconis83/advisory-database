@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w2rf-r2gq-hxp9",
+  "modified": "2025-02-11T18:31:28Z",
+  "published": "2025-01-11T15:30:27Z",
+  "aliases": [
+    "CVE-2024-41149"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: avoid to reuse `hctx` not removed from cpuhp callback list\n\nIf the 'hctx' isn't removed from cpuhp callback list, we can't reuse it,\notherwise use-after-free may be triggered.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-41149"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85672ca9ceeaa1dcf2777a7048af5f4aee3fd02b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5792c162dcf6197bf3d2de2be6c8169435b73d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee18012c80155f6809522804099621070c69ec72"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-11T13:15:19Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hm47-g5j3-8f32",
+  "modified": "2024-11-15T18:30:49Z",
+  "published": "2024-11-15T18:30:49Z",
+  "aliases": [
+    "CVE-2022-20655"
+  ],
+  "details": "A vulnerability in the implementation of the CLI on a device that is running ConfD could allow an authenticated, local attacker to perform a command injection attack.\n The vulnerability is due to insufficient validation of a process argument on an affected device. An attacker could exploit this vulnerability by injecting commands during the execution of this process. A successful exploit could allow the attacker to execute arbitrary commands on the underlying operating system with the privilege level of ConfD, which is commonly root.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-20655"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-cli-cmdinj-4MttWZPB"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-confdcli-cmdinj-wybQDSSh"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-15T16:15:20Z"
+  }
+}

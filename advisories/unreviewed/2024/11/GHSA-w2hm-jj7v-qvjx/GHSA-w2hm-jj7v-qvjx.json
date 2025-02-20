@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w2hm-jj7v-qvjx",
+  "modified": "2024-11-13T18:31:53Z",
+  "published": "2024-11-08T06:30:49Z",
+  "aliases": [
+    "CVE-2024-50206"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethernet: mtk_eth_soc: fix memory corruption during fq dma init\n\nThe loop responsible for allocating up to MTK_FQ_DMA_LENGTH buffers must\nonly touch as many descriptors, otherwise it ends up corrupting unrelated\nmemory. Fix the loop iteration count accordingly.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/68cd084e3ec1512cd383cb3e9cf0ab7ab413724c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88806efc034a9830f483963326b99930ad519af1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-08T06:15:16Z"
+  }
+}

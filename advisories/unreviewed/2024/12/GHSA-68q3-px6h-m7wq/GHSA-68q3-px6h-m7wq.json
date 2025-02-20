@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-68q3-px6h-m7wq",
+  "modified": "2024-12-20T03:30:23Z",
+  "published": "2024-12-20T03:30:23Z",
+  "aliases": [
+    "CVE-2024-12832"
+  ],
+  "details": "Arista NG Firewall ReportEntry SQL Injection Arbitrary File Read and Write Vulnerability. This vulnerability allows remote attackers to create arbitrary files and disclose sensitive information on affected installations of Arista NG Firewall. Authentication is required to exploit this vulnerability.\n\nThe specific flaw exists within the ReportEntry class. The issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries. An attacker can leverage this in conjunction with other vulnerabilities to execute arbitrary code in the context of the www-data user. Was ZDI-CAN-24325.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12832"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.zerodayinitiative.com/advisories/ZDI-24-1719"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-20T01:15:06Z"
+  }
+}

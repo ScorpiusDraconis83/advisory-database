@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-52cr-8q5h-6fpf",
+  "modified": "2025-02-18T15:31:06Z",
+  "published": "2025-01-19T12:31:26Z",
+  "aliases": [
+    "CVE-2024-57909"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: light: bh1745: fix information leak in triggered buffer\n\nThe 'scan' local struct is used to push data to user space from a\ntriggered buffer, but it does not set values for inactive channels, as\nit only uses iio_for_each_active_channel() to assign new values.\n\nInitialize the struct to zero before using it to avoid pushing\nuninitialized information to userspace.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57909"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1cca2a666e099aa018e5ab385f0a6e01a3053629"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b62fbe3b8eedd3cf3c9ad0b7cb9f72c3f40815f0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-19T12:15:25Z"
+  }
+}

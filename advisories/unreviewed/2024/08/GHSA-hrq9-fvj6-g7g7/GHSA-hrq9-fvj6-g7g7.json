@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hrq9-fvj6-g7g7",
+  "modified": "2024-10-29T18:30:35Z",
+  "published": "2024-08-17T12:30:32Z",
+  "aliases": [
+    "CVE-2024-43838"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: fix overflow check in adjust_jmp_off()\n\nadjust_jmp_off() incorrectly used the insn->imm field for all overflow check,\nwhich is incorrect as that should only be done or the BPF_JMP32 | BPF_JA case,\nnot the general jump instruction case. Fix it by using insn->off for overflow\ncheck in the general case.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-43838"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/345652866a8869825a2a582ee5a28d75141f184a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a04b4f0de59dd5c621e78f15803ee0b0544eeb8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-08-17T10:15:09Z"
+  }
+}

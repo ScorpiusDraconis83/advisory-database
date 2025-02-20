@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4fj3-xj7w-f7cv",
+  "modified": "2024-12-17T18:33:48Z",
+  "published": "2024-12-17T15:31:43Z",
+  "aliases": [
+    "CVE-2024-36832"
+  ],
+  "details": "A NULL pointer dereference in D-Link DAP-1513 REVA_FIRMWARE_1.01 allows attackers to cause a Denial of Service (DoS) via a crafted web request without authentication. The vulnerability occurs in the /bin/webs binary of the firmware. When /bin/webs receives a carefully constructed HTTP request, it will crash and exit due to a null pointer reference, leading to a denial of service attack to the device.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-36832"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.google.com/document/d/1qTpwAg7B5E4mqkBzijjuoOWWnf3OE1HXIKBv7OcS8Mc/edit?usp=sharing"
+    },
+    {
+      "type": "WEB",
+      "url": "https://supportannouncement.us.dlink.com/security/publication.aspx?name=SAP10396"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.dlink.com/en"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.dlink.com/en/security-bulletin"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-17T15:15:13Z"
+  }
+}

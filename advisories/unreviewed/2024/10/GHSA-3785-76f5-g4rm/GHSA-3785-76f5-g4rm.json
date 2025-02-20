@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3785-76f5-g4rm",
+  "modified": "2024-10-16T09:30:31Z",
+  "published": "2024-10-16T09:30:31Z",
+  "aliases": [
+    "CVE-2024-45462"
+  ],
+  "details": "The logout operation in the CloudStack web interface does not expire the user session completely which is valid until expiry by time or restart of the backend service. An attacker that has access to a user's browser can use an unexpired session to gain access to resources owned by the logged out user account. This issue affects Apache CloudStack from 4.15.1.0 through 4.18.2.3; and from 4.19.0.0 through 4.19.1.1.\n\n\n\n\nUsers are recommended to upgrade to Apache CloudStack 4.18.2.4 or 4.19.1.2, or later, which addresses this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-45462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cloudstack.apache.org/blog/security-release-advisory-4.18.2.4-4.19.1.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/ktsfjcnj22x4kg49ctock3d9tq7jnvlo"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-16T08:15:05Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-83mx-7rq3-8xwj",
+  "modified": "2024-12-27T15:31:54Z",
+  "published": "2024-12-27T15:31:54Z",
+  "aliases": [
+    "CVE-2024-56564"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nceph: pass cred pointer to ceph_mds_auth_match()\n\nThis eliminates a redundant get_current_cred() call, because\nceph_mds_check_access() has already obtained this pointer.\n\nAs a side effect, this also fixes a reference leak in\nceph_mds_auth_match(): by omitting the get_current_cred() call, no\nadditional cred reference is taken.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56564"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23426309a4064b25a961e1c72961d8bfc7c8c990"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ffa6ba7bdb7f07f49c9e9150b0176df066520f62"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T15:15:15Z"
+  }
+}

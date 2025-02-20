@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cw79-fj97-mpr9",
+  "modified": "2024-12-27T15:31:55Z",
+  "published": "2024-12-27T15:31:55Z",
+  "aliases": [
+    "CVE-2024-56637"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ipset: Hold module reference while requesting a module\n\nUser space may unload ip_set.ko while it is itself requesting a set type\nbackend module, leading to a kernel crash. The race condition may be\nprovoked by inserting an mdelay() right after the nfnl_unlock() call.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56637"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e67805e805c1f3edd6f43adbe08ea14b552694b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/456f010bfaefde84d3390c755eedb1b0a5857c3c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5bae60a933ba5d16eed55c6b279be51bcbbc79b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6099b5d3e37145484fac4b8b4070c3f1abfb3519"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90bf312a6b6b3d6012137f6776a4052ee85e0340"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba5e070f36682d07ca7ad2a953e6c9d96be19dca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5e2d3024753fdaca818b822e3827614bacbdccf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T15:15:23Z"
+  }
+}

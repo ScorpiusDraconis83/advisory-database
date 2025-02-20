@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2cx8-4fwf-g3w9",
+  "modified": "2025-01-09T12:30:54Z",
+  "published": "2025-01-09T12:30:54Z",
+  "aliases": [
+    "CVE-2024-12067"
+  ],
+  "details": "The WP Travel – Ultimate Travel Booking System, Tour Management Engine plugin for WordPress is vulnerable to SQL Injection via the 'booking_itinerary' parameter of the 'wptravel_get_booking_data' function in all versions up to, and including, 10.0.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for authenticated attackers, with Subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12067"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-travel/trunk/app/inc/admin/class-wptravel-admin-assets.php#L17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-travel/trunk/app/inc/admin/class-wptravel-admin-assets.php#L31"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-travel/trunk/inc/helpers/helpers-stat.php#L14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-travel/trunk/inc/helpers/helpers-stat.php#L64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4e0f38db-84bb-4ba9-9068-40937e78010d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-09T11:15:11Z"
+  }
+}

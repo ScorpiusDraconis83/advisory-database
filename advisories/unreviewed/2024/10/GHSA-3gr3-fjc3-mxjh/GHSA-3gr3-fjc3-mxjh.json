@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3gr3-fjc3-mxjh",
+  "modified": "2024-10-24T12:31:19Z",
+  "published": "2024-10-24T12:31:19Z",
+  "aliases": [
+    "CVE-2024-9214"
+  ],
+  "details": "The Extra Product Options Builder for WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'RednaoSerializedFields' parameter during the creation of a signature file in all versions up to, and including, 1.2.133 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-9214"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/additional-product-fields-for-woocommerce/trunk/ajax/OrderDesignerAjax.php#L33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/additional-product-fields-for-woocommerce/trunk/ajax/OrderDesignerAjax.php#L61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/additional-product-fields-for-woocommerce/trunk/core/Managers/FileManager/FileManager.php#L106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3173169"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/09890f42-b9ee-4812-8cf2-f638ba9fb20f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-24T11:15:14Z"
+  }
+}

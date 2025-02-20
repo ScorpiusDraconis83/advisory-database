@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vw3v-9427-r3gf",
+  "modified": "2024-10-25T15:31:25Z",
+  "published": "2024-10-21T18:30:57Z",
+  "aliases": [
+    "CVE-2024-49921"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Check null pointers before used\n\n[WHAT & HOW]\nPoniters, such as dc->clk_mgr, are null checked previously in the same\nfunction, so Coverity warns \"implies that \"dc->clk_mgr\" might be null\".\nAs a result, these pointers need to be checked when used again.\n\nThis fixes 10 FORWARD_NULL issues reported by Coverity.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-49921"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b35bf1a82eb29841b67ff5643ba83762250fc24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be1fb44389ca3038ad2430dac4234669bc177ee3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T18:15:14Z"
+  }
+}

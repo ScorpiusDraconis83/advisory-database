@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5v4f-6fm8-6xv7",
+  "modified": "2024-11-13T03:30:47Z",
+  "published": "2024-11-13T03:30:47Z",
+  "aliases": [
+    "CVE-2024-10593"
+  ],
+  "details": "The WPForms – Easy Form Builder for WordPress – Contact Forms, Payment Forms, Surveys, & More plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.9.1.6. This is due to missing or incorrect nonce validation on the process_admin_ui function. This makes it possible for unauthenticated attackers to delete WPForm logs via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10593"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpforms-lite/tags/1.9.1.6/src/Admin/Tools/Views/Logs.php#L269"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpforms-lite/tags/1.9.1.6/src/Logger/ListTable.php#L394"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/6d1ea80a-a1ce-4964-8dde-f3ed2df5537c?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-13T03:15:04Z"
+  }
+}

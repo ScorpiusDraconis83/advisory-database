@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r5f6-w2pg-mf93",
+  "modified": "2024-11-07T21:31:38Z",
+  "published": "2024-10-21T18:30:58Z",
+  "aliases": [
+    "CVE-2024-49964"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/hugetlb: fix memfd_pin_folios free_huge_pages leak\n\nmemfd_pin_folios followed by unpin_folios fails to restore free_huge_pages\nif the pages were not already faulted in, because the folio refcount for\npages created by memfd_alloc_folio never goes to 0.  memfd_pin_folios\nneeds another folio_put to undo the folio_try_get below:\n\nmemfd_alloc_folio()\n  alloc_hugetlb_folio_nodemask()\n    dequeue_hugetlb_folio_nodemask()\n      dequeue_hugetlb_folio_node_exact()\n        folio_ref_unfreeze(folio, 1);    ; adds 1 refcount\n  folio_try_get()                        ; adds 1 refcount\n  hugetlb_add_to_page_cache()            ; adds 512 refcount (on x86)\n\nWith the fix, after memfd_pin_folios + unpin_folios, the refcount for the\n(unfaulted) page is 512, which is correct, as the refcount for a faulted\nunpinned page is 513.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-49964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59e081ff2e91bbf19b8c1ecb75b031f778858383"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c56b6f3d801d7ec8965993342bdd9e2972b6cb8e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T18:15:17Z"
+  }
+}

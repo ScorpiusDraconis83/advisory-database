@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vv2f-6vp4-9vv6",
+  "modified": "2025-01-11T00:32:06Z",
+  "published": "2025-01-11T00:32:06Z",
+  "aliases": [
+    "CVE-2025-23113"
+  ],
+  "details": "An issue was discovered in REDCap 14.9.6. It has an action=myprojects&logout=1 CSRF issue in the alert-title while performing an upload of a CSV file containing a list of alert configuration. An attacker can send the victim a CSV file containing an HTML injection payload in the alert-title. Once the victim uploads the file, he automatically lands on a page to view the uploaded data. If the victim click on the alert-title value, it can trigger a logout request and terminates their session, or redirect to a phishing website. This vulnerability stems from the absence of CSRF protections on the logout functionality.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-23113"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ping-oui-no/Vulnerability-Research-CVESS/blob/main/RedCap/CVE_XXX/README.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-10T22:15:28Z"
+  }
+}

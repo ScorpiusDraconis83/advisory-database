@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qw22-v3jj-h7x3",
+  "modified": "2025-02-10T21:31:36Z",
+  "published": "2025-02-10T21:31:36Z",
+  "aliases": [
+    "CVE-2024-10649"
+  ],
+  "details": "wandb/openui latest commit c945bb859979659add5f490a874140ad17c56a5d contains a vulnerability where unauthenticated endpoints allow file uploads and downloads from an AWS S3 bucket. This can lead to multiple security issues including denial of service, stored XSS, and information disclosure. The affected endpoints are '/v1/share/{id:str}' for uploading and '/v1/share/{id:str}' for downloading JSON files. The lack of authentication allows any user to upload and overwrite files, potentially causing the S3 bucket to run out of space, injecting malicious scripts, and accessing sensitive information.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10649"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/1025793a-3c19-4148-a26e-80cd84d4822d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-10T19:15:37Z"
+  }
+}

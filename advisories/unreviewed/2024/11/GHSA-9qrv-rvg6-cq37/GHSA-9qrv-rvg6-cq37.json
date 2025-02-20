@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9qrv-rvg6-cq37",
+  "modified": "2024-11-18T12:30:41Z",
+  "published": "2024-11-18T12:30:41Z",
+  "aliases": [
+    "CVE-2023-39180"
+  ],
+  "details": "A flaw was found within the handling of SMB2_READ commands in the kernel ksmbd module. The issue results from not releasing memory after its effective lifetime. An attacker can leverage this to create a denial-of-service condition on affected installations of Linux. Authentication is not required to exploit this vulnerability, but only systems with ksmbd enabled are vulnerable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-39180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2023-39180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2326531"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.zerodayinitiative.com/advisories/ZDI-24-589"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125",
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-18T10:15:05Z"
+  }
+}

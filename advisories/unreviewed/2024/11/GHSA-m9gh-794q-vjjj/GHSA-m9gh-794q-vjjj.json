@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m9gh-794q-vjjj",
+  "modified": "2024-11-08T21:33:53Z",
+  "published": "2024-11-05T18:32:12Z",
+  "aliases": [
+    "CVE-2024-50123"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Add the missing BPF_LINK_TYPE invocation for sockmap\n\nThere is an out-of-bounds read in bpf_link_show_fdinfo() for the sockmap\nlink fd. Fix it by adding the missing BPF_LINK_TYPE invocation for\nsockmap link\n\nAlso add comments for bpf_link_type to prevent missing updates in the\nfuture.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d79f12c0ce2bc8ff5f109093df1734bd6450615"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2f803052bc7a7feb2e03befccc8e49b6ff1f5f5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-05T18:15:15Z"
+  }
+}

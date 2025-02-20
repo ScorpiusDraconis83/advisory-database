@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c47c-mr8f-8fgf",
+  "modified": "2025-01-11T15:30:28Z",
+  "published": "2025-01-11T15:30:28Z",
+  "aliases": [
+    "CVE-2024-49573"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsched/fair: Fix NEXT_BUDDY\n\nAdam reports that enabling NEXT_BUDDY insta triggers a WARN in\npick_next_entity().\n\nMoving clear_buddies() up before the delayed dequeue bits ensures\nno ->next buddy becomes delayed. Further ensure no new ->next buddy\never starts as delayed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-49573"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/493afbd187c4c9cc1642792c0d9ba400c3d6d90d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5dbe6816c49197677a5ecce749bd99929da147da"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-11T13:15:24Z"
+  }
+}

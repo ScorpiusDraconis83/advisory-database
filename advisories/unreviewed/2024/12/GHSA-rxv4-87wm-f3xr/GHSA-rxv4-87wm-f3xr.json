@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rxv4-87wm-f3xr",
+  "modified": "2025-01-06T21:30:51Z",
+  "published": "2024-12-29T12:30:41Z",
+  "aliases": [
+    "CVE-2024-56753"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/gfx9: Add Cleaner Shader Deinitialization in gfx_v9_0 Module\n\nThis commit addresses an omission in the previous patch related to the\ncleaner shader support for GFX9 hardware. Specifically, it adds the\nnecessary deinitialization code for the cleaner shader in the\ngfx_v9_0_sw_fini function.\n\nThe added line amdgpu_gfx_cleaner_shader_sw_fini(adev); ensures that any\nallocated resources for the cleaner shader are freed correctly, avoiding\npotential memory leaks and ensuring that the GPU state is clean for the\nnext initialization sequence.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56753"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/720c0376b3d29cbab921a60062fda5980742ed9d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e47cb9d2533200d49dd5364d4a148119492f8a3d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-29T12:15:08Z"
+  }
+}

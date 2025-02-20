@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mvwv-8vjm-2v48",
+  "modified": "2025-01-21T12:30:47Z",
+  "published": "2025-01-21T12:30:47Z",
+  "aliases": [
+    "CVE-2024-13444"
+  ],
+  "details": "The wp-greet plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 6.2. This is due to missing or incorrect nonce validation on a function. This makes it possible for unauthenticated attackers to update settings and inject malicious web scripts via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-13444"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-greet/trunk/wpg-admin.php#L124"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-greet/trunk/wpg-admin.php#L350"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-greet/trunk/wpg-form.php#L253"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3225035"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/wp-greet/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/dafc40bf-833a-4d42-b9bc-c7cf2b234ef5?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-21T11:15:09Z"
+  }
+}

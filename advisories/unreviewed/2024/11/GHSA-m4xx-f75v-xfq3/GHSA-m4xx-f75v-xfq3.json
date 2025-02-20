@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m4xx-f75v-xfq3",
+  "modified": "2024-11-13T03:30:45Z",
+  "published": "2024-11-05T18:32:11Z",
+  "aliases": [
+    "CVE-2024-50094"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsfc: Don't invoke xdp_do_flush() from netpoll.\n\nYury reported a crash in the sfc driver originated from\nnetpoll_send_udp(). The netconsole sends a message and then netpoll\ninvokes the driver's NAPI function with a budget of zero. It is\ndedicated to allow driver to free TX resources, that it may have used\nwhile sending the packet.\n\nIn the netpoll case the driver invokes xdp_do_flush() unconditionally,\nleading to crash because bpf_net_context was never assigned.\n\nInvoke xdp_do_flush() only if budget is not zero.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/55e802468e1d38dec8e25a2fdb6078d45b647e8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65d4fc76d75c136744e67754d20feda609e7b793"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-05T17:15:06Z"
+  }
+}

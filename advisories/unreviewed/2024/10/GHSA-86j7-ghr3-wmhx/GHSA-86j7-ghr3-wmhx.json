@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-86j7-ghr3-wmhx",
+  "modified": "2024-10-29T15:32:05Z",
+  "published": "2024-10-29T15:32:05Z",
+  "aliases": [
+    "CVE-2024-6673"
+  ],
+  "details": "A Cross-Site Request Forgery (CSRF) vulnerability exists in the `install_comfyui` endpoint of the `lollms_comfyui.py` file in the parisneo/lollms-webui repository, versions v9.9 to the latest. The endpoint uses the GET method without requiring a client ID, allowing an attacker to trick a victim into installing ComfyUI. If the victim's device does not have sufficient capacity, this can result in a crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-6673"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/parisneo/lollms-webui/commit/c1bb1ad19752aa7541675b398495eaf98fd589f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/a38f9a7d-b357-427d-adac-f9654d8c0e3c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-29T13:15:08Z"
+  }
+}

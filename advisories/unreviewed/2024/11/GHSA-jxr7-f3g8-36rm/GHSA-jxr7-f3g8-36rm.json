@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jxr7-f3g8-36rm",
+  "modified": "2024-11-20T18:32:15Z",
+  "published": "2024-11-07T12:30:35Z",
+  "aliases": [
+    "CVE-2024-50149"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe: Don't free job in TDR\n\nFreeing job in TDR is not safe as TDR can pass the run_job thread\nresulting in UAF. It is only safe for free job to naturally be called by\nthe scheduler. Rather free job in TDR, add to pending list.\n\n(cherry picked from commit ea2f6a77d0c40d97f4a4dc93fee4afe15d94926d)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50149"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82926f52d7a09c65d916c0ef8d4305fc95d68c0c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be8fe75e57f8fa3f87e3b1c283cc7cd9f9b80867"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-07T10:15:06Z"
+  }
+}

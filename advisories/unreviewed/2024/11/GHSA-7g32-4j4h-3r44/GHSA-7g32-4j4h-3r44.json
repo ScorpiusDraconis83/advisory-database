@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7g32-4j4h-3r44",
+  "modified": "2024-11-23T12:30:57Z",
+  "published": "2024-11-23T12:30:57Z",
+  "aliases": [
+    "CVE-2024-10519"
+  ],
+  "details": "The Wishlist for WooCommerce: Multi Wishlists Per Customer PRO plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'wtab' parameter in versions 3.0.8 to 3.1.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link. Note: Only WordPress installations with versions of PHP <=7.4 are affected by this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10519"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wpcodefactory/wish-list-for-woocommerce/blame/master/templates/wish-list.php#L214"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wpcodefactory/wish-list-for-woocommerce/blob/fafa2319a8907d3260a89a2a6b4fa9ea6602c7db/templates/wish-list.php#L94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wish-list-for-woocommerce/trunk/templates/wish-list.php#L215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3189775"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/wish-list-for-woocommerce/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/eb14896f-7f0e-4168-8a2d-309bbaddbedc?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-23T10:15:03Z"
+  }
+}

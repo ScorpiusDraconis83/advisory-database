@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f43m-69ch-cggg",
+  "modified": "2024-10-25T15:31:26Z",
+  "published": "2024-10-21T21:30:52Z",
+  "aliases": [
+    "CVE-2022-49004"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nriscv: Sync efi page table's kernel mappings before switching\n\nThe EFI page table is initially created as a copy of the kernel page table.\nWith VMAP_STACK enabled, kernel stacks are allocated in the vmalloc area:\nif the stack is allocated in a new PGD (one that was not present at the\nmoment of the efi page table creation or not synced in a previous vmalloc\nfault), the kernel will take a trap when switching to the efi page table\nwhen the vmalloc kernel stack is accessed, resulting in a kernel panic.\n\nFix that by updating the efi kernel mappings before switching to the efi\npage table.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49004"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f105a742725a1b78766a55169f1d827732e62b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96f479383d92944406d4b3f2bc03c2f640def9f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa7a7d185ef380546b4b1fed6f84f31dbae8cec7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:11Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v8xh-475x-4q58",
+  "modified": "2024-10-14T18:30:26Z",
+  "published": "2024-10-14T18:30:26Z",
+  "aliases": [
+    "CVE-2024-45741"
+  ],
+  "details": "In Splunk Enterprise versions below 9.2.3 and 9.1.6 and Splunk Cloud Platform versions below 9.2.2403.108 and 9.1.2312.205, a low-privileged user that does not hold the \"admin\" or \"power\" Splunk roles could create a malicious payload through a custom configuration file that the \"api.uri\" parameter from the \"/manager/search/apps/local\" endpoint in Splunk Web calls. This could result in execution of unauthorized JavaScript code in the browser of a user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-45741"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2024-1011"
+    },
+    {
+      "type": "WEB",
+      "url": "https://research.splunk.com/application/d7b5aa71-157f-4359-9c34-e35752b1d0a2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-14T17:15:13Z"
+  }
+}

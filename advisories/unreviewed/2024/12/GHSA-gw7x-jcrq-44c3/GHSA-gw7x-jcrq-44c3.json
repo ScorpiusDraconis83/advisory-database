@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gw7x-jcrq-44c3",
+  "modified": "2025-01-08T18:30:48Z",
+  "published": "2024-12-28T12:30:47Z",
+  "aliases": [
+    "CVE-2024-56696"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: core: Fix possible NULL dereference caused by kunit_kzalloc()\n\nkunit_kzalloc() may return a NULL pointer, dereferencing it without\nNULL check may lead to NULL dereference.\nAdd NULL checks for all the kunit_kzalloc() in sound_kunit.c",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56696"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bfff486ecc79a72e9380e2d5e0ff234d5542d2f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ad467a2b2716d4ed12f003b041aa6c776a13ff5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f5486bf8abfe778b368d8fd1aa655dc01d0013ca"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-28T10:15:15Z"
+  }
+}

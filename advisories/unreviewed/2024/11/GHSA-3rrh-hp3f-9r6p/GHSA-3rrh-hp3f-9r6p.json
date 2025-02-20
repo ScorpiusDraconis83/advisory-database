@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3rrh-hp3f-9r6p",
+  "modified": "2024-11-15T18:30:49Z",
+  "published": "2024-11-15T18:30:49Z",
+  "aliases": [
+    "CVE-2022-20649"
+  ],
+  "details": "A vulnerability in Cisco&nbsp;RCM for Cisco&nbsp;StarOS Software could allow an unauthenticated, remote attacker to perform remote code execution on the application with root-level privileges&nbsp;in the context of the configured container.\n\nThis vulnerability exists because the debug mode is incorrectly enabled for specific services. An attacker could exploit this vulnerability by connecting to the device and navigating to the service with debug mode enabled. A successful exploit could allow the attacker to execute arbitrary commands as the root user.\nThe attacker would need to perform detailed reconnaissance to allow for unauthenticated access. The vulnerability can also be exploited by an authenticated attacker.\nCisco&nbsp;has released software updates that address this vulnerability. There are no workarounds that address this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-20649"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-rcm-vuls-7cS3Nuq"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-tetr-cmd-injc-skrwGO"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-webex-xss-FmbPu2pe"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-489"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-15T16:15:20Z"
+  }
+}

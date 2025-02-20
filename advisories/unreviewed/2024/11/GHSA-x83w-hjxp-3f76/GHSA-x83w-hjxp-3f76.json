@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x83w-hjxp-3f76",
+  "modified": "2024-11-28T18:38:36Z",
+  "published": "2024-11-28T18:38:36Z",
+  "aliases": [
+    "CVE-2024-11786"
+  ],
+  "details": "The Login with Vipps and MobilePay plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'continue-with-vipps' shortcode in all versions up to, and including, 1.3.3 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11786"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/login-with-vipps/tags/1.3.3/VippsLogin.class.php#L724"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3197620/login-with-vipps/trunk/VippsLogin.class.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d015e6ce-641c-4d68-b42b-03c039e973bd?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-28T09:15:05Z"
+  }
+}

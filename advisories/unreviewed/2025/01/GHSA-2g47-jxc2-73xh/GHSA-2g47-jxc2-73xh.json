@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2g47-jxc2-73xh",
+  "modified": "2025-01-21T15:31:03Z",
+  "published": "2025-01-21T15:31:03Z",
+  "aliases": [
+    "CVE-2025-21656"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (drivetemp) Fix driver producing garbage data when SCSI errors occur\n\nscsi_execute_cmd() function can return both negative (linux codes) and\npositive (scsi_cmnd result field) error codes.\n\nCurrently the driver just passes error codes of scsi_execute_cmd() to\nhwmon core, which is incorrect because hwmon only checks for negative\nerror codes. This leads to hwmon reporting uninitialized data to\nuserspace in case of SCSI errors (for example if the disk drive was\ndisconnected).\n\nThis patch checks scsi_execute_cmd() output and returns -EIO if it's\nerror code is positive.\n\n[groeck: Avoid inline variable declaration for portability]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21656"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42268d885e44af875a6474f7bba519cc6cea6a9d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53e25b10a28edaf8c2a1d3916fd8929501a50dfc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82163d63ae7a4c36142cd252388737205bb7e4b9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-21T13:15:09Z"
+  }
+}

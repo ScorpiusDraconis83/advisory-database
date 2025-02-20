@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3x82-hxvx-2rv2",
+  "modified": "2024-11-13T18:31:53Z",
+  "published": "2024-11-07T12:30:35Z",
+  "aliases": [
+    "CVE-2024-50170"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bcmasp: fix potential memory leak in bcmasp_xmit()\n\nThe bcmasp_xmit() returns NETDEV_TX_OK without freeing skb\nin case of mapping fails, add dev_kfree_skb() to fix it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50170"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7218de0778aefbbbcfe474a55f88bbf6f244627d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f689f20d3e09f2d4d0a2c575a9859115a33e68bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fed07d3eb8a8d9fcc0e455175a89bc6445d6faed"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-07T10:15:08Z"
+  }
+}

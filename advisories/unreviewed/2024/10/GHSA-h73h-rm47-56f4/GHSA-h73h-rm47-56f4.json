@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h73h-rm47-56f4",
+  "modified": "2024-10-11T18:32:49Z",
+  "published": "2024-10-11T18:32:49Z",
+  "aliases": [
+    "CVE-2024-39563"
+  ],
+  "details": "A Command Injection vulnerability in Juniper Networks Junos Space allows an unauthenticated, network-based attacker sending a specially crafted request to execute arbitrary shell commands on the Junos Space Appliance, leading to remote command execution by the web application, gaining complete control of the device.\n\nA specific script in the Junos Space web application allows attacker-controlled input from a GET request without sufficient input sanitization. A specially crafted request can exploit this vulnerability to execute arbitrary shell commands on the Junos Space Appliance.\n\nThis issue affects Junos Space 24.1R1. Previous versions of Junos Space are unaffected by this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-39563"
+    },
+    {
+      "type": "WEB",
+      "url": "https://supportportal.juniper.net/JSA88110"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-11T16:15:07Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qq79-x2qm-v335",
+  "modified": "2024-12-26T18:30:36Z",
+  "published": "2024-12-26T18:30:36Z",
+  "aliases": [
+    "CVE-2024-12908"
+  ],
+  "details": "Delinea addressed a reported case on Secret Server v11.7.31 (protocol handler version 6.0.3.26) where, within the protocol handler function, URI's were compared before normalization and canonicalization, potentially leading to over matching against the approved list. If this attack were successfully exploited, a remote attacker may be able to convince a user to visit a malicious web-page, or open a\nmalicious document which could trigger the vulnerable handler, allowing them to execute\narbitrary code on the user's machine. Delinea added additional validation that the downloaded installer's batch file was in the expected format.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12908"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.amberwolf.com/blog/2024/december/cve-2024-12908-delinea-protocol-handler---remote-code-execution-via-update-process"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.delinea.com/online-help/secret-server/release-notes/ss-rn-11-7-000049.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://trust.delinea.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-26T16:15:06Z"
+  }
+}

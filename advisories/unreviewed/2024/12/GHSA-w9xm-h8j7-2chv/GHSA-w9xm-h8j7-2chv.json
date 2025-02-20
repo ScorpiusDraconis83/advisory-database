@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9xm-h8j7-2chv",
+  "modified": "2024-12-02T15:31:39Z",
+  "published": "2024-12-02T15:31:39Z",
+  "aliases": [
+    "CVE-2024-53106"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nima: fix buffer overrun in ima_eventdigest_init_common\n\nFunction ima_eventdigest_init() calls ima_eventdigest_init_common()\nwith HASH_ALGO__LAST which is then used to access the array\nhash_digest_size[] leading to buffer overrun. Have a conditional\nstatement to handle this.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ecf0df5205cfb0907eb7984b8671257965a5232"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a84765c62cc0469864e2faee43aae253ad16082"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/923168a0631bc42fffd55087b337b1b6c54dcff5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e01aae58e818503f2ffcd34c6f7dc6f90af1057e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-02T14:15:11Z"
+  }
+}

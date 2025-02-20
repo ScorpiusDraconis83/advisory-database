@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7hrq-p9p5-9fjx",
+  "modified": "2024-11-07T21:31:38Z",
+  "published": "2024-10-21T21:30:49Z",
+  "aliases": [
+    "CVE-2024-50005"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmac802154: Fix potential RCU dereference issue in mac802154_scan_worker\n\nIn the `mac802154_scan_worker` function, the `scan_req->type` field was\naccessed after the RCU read-side critical section was unlocked. According\nto RCU usage rules, this is illegal and can lead to unpredictable\nbehavior, such as accessing memory that has been updated or causing\nuse-after-free issues.\n\nThis possible bug was identified using a static analysis tool developed\nby myself, specifically designed to detect RCU-related issues.\n\nTo address this, the `scan_req->type` value is now stored in a local\nvariable `scan_req_type` while still within the RCU read-side critical\nsection. The `scan_req_type` is then used after the RCU lock is released,\nensuring that the type value is safely accessed without violating RCU\nrules.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50005"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/540138377b22f601f06f55ebfa3ca171dcab471a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bff1709b3980bd7f80be6786f64cc9a9ee9e56da"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d18f669461811dfe2915d5554ab2a9834f810013"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e676e4ea76bbe7f1156d8c326b9b6753849481c2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T19:15:04Z"
+  }
+}

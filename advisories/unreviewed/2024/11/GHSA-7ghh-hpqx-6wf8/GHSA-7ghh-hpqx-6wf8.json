@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7ghh-hpqx-6wf8",
+  "modified": "2024-11-25T18:33:25Z",
+  "published": "2024-11-19T18:31:07Z",
+  "aliases": [
+    "CVE-2024-53074"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: don't leak a link on AP removal\n\nRelease the link mapping resource in AP removal. This impacted devices\nthat do not support the MLD API (9260 and down).\nOn those devices, we couldn't start the AP again after the AP has been\nalready started and stopped.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53074"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ed092997a004d68a3a5b0eeb94e71b69839d0f7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70ddf9ce1894c48dbbf10b0de51a95e4fb3dd376"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-772"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-19T18:15:27Z"
+  }
+}

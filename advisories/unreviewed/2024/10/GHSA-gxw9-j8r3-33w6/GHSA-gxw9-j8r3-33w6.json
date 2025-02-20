@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gxw9-j8r3-33w6",
+  "modified": "2024-10-22T09:33:54Z",
+  "published": "2024-10-22T09:33:54Z",
+  "aliases": [
+    "CVE-2024-9588"
+  ],
+  "details": "The Category and Taxonomy Meta Fields plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to, and including, 1.0.0. This is due to missing or incorrect nonce validation on the 'wpaft_option_page' function. This makes it possible for unauthenticated attackers to add and delete taxonomy meta, granted they can trick a site administrator into performing an action such as clicking on a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-9588"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-custom-taxonomy-meta/trunk/includes/options.php?rev=1196908#L103"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2dc9c744-6ffb-4d7a-94ce-ba576d7b6d47?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-22T08:15:03Z"
+  }
+}

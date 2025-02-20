@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-28g6-x68x-c4p9",
+  "modified": "2024-10-18T09:31:26Z",
+  "published": "2024-10-18T09:31:26Z",
+  "aliases": [
+    "CVE-2024-10079"
+  ],
+  "details": "The WP Easy Post Types plugin for WordPress is vulnerable to PHP Object Injection in versions up to, and including, 1.4.4 via deserialization of untrusted input from the 'text' parameter in the 'ajax_import_content' function. This allows authenticated attackers, with subscriber-level permissions and above, to inject a PHP Object. No POP chain is present in the vulnerable plugin. If a POP chain is present via an additional plugin or theme installed on the target system, it could allow the attacker to delete arbitrary files, retrieve sensitive data, or execute code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10079"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/easy-post-types/tags/1.4.4/custom-type.php#L1318"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d038f1a2-4755-417f-965d-508b57c05738?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-18T08:15:04Z"
+  }
+}

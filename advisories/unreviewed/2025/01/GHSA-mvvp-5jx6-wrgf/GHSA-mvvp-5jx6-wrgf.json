@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mvvp-5jx6-wrgf",
+  "modified": "2025-01-04T00:33:41Z",
+  "published": "2025-01-04T00:33:41Z",
+  "aliases": [
+    "CVE-2024-11733"
+  ],
+  "details": "The The WordPress Popular Posts plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 7.1.0. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for unauthenticated attackers to execute arbitrary shortcodes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11733"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wordpress-popular-posts/tags/7.1.0/src/Rest/ViewLoggerEndpoint.php#L70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c38ac8d6-c6de-4be7-bf7b-198e085a0ad2?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-03T23:15:06Z"
+  }
+}

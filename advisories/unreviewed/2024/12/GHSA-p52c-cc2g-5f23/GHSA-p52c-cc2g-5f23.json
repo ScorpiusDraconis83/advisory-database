@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p52c-cc2g-5f23",
+  "modified": "2024-12-27T15:31:52Z",
+  "published": "2024-12-27T15:31:52Z",
+  "aliases": [
+    "CVE-2024-53236"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxsk: Free skb when TX metadata options are invalid\n\nWhen a new skb is allocated for transmitting an xsk descriptor, i.e., for\nevery non-multibuf descriptor or the first frag of a multibuf descriptor,\nbut the descriptor is later found to have invalid options set for the TX\nmetadata, the new skb is never freed. This can leak skbs until the send\nbuffer is full which makes sending more packets impossible.\n\nFix this by freeing the skb in the error path if we are currently dealing\nwith the first frag, i.e., an skb allocated in this iteration of\nxsk_build_skb.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53236"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c0d0f42ffa6ac94cd79893b7ed419c15e1b45de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f0d0dd5a7f437d83cff954bc321f1a9b181efd5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5d346deb65efa8453f8481bcea75c1a590439e7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T14:15:32Z"
+  }
+}

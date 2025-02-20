@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jqj-g976-vcvw",
+  "modified": "2025-01-16T15:32:09Z",
+  "published": "2025-01-11T15:30:30Z",
+  "aliases": [
+    "CVE-2024-57872"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: ufs: pltfrm: Dellocate HBA during ufshcd_pltfrm_remove()\n\nThis will ensure that the scsi host is cleaned up properly using\nscsi_host_dev_release(). Otherwise, it may lead to memory leaks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57872"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/897df60c16d54ad515a3d0887edab5c63da06d1f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd188519d2467ab4c2141587b0551ba030abff0e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-11T15:15:07Z"
+  }
+}

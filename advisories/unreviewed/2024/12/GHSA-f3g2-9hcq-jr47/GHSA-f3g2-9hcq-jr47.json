@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f3g2-9hcq-jr47",
+  "modified": "2024-12-17T18:33:48Z",
+  "published": "2024-12-17T00:31:18Z",
+  "aliases": [
+    "CVE-2024-55451"
+  ],
+  "details": "A Stored Cross-Site Scripting (XSS) vulnerability exists in authenticated SVG file upload and viewing functionality in UJCMS 9.6.3. The vulnerability arises from insufficient sanitization of embedded attributes in uploaded SVG files. When a maliciously crafted SVG file is viewed by other backend users, it allows authenticated attackers to execute arbitrary JavaScript in the context of other backend users' browsers, potentially leading to the theft of sensitive tokens.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-55451"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cydtseng/Vulnerability-Research/blob/main/ujcms/StoredXSS-SVGUpload.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/ujcms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-16T23:15:06Z"
+  }
+}

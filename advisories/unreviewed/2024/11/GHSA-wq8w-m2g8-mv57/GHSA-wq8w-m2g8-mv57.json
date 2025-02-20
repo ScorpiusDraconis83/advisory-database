@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wq8w-m2g8-mv57",
+  "modified": "2024-11-19T21:31:31Z",
+  "published": "2024-11-12T00:30:36Z",
+  "aliases": [
+    "CVE-2024-50636"
+  ],
+  "details": "PyMOL 2.5.0 contains a vulnerability in its \"Run Script\" function, which allows the execution of arbitrary Python code embedded within .PYM files. Attackers can craft a malicious .PYM file containing a Python reverse shell payload and exploit the function to achieve Remote Command Execution (RCE). This vulnerability arises because PyMOL treats .PYM files as Python scripts without properly validating or restricting the commands within the script, enabling attackers to run unauthorized commands in the context of the user running the application.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50636"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/schrodinger/pymol-open-source/issues/405"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yamerooo123/CVE/blob/main/CVE-2024-50636/Description.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://youtu.be/SWnN_a1tUNc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-11T23:15:05Z"
+  }
+}

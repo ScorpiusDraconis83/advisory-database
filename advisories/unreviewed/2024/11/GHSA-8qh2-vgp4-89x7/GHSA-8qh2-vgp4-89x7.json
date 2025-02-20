@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8qh2-vgp4-89x7",
+  "modified": "2024-11-21T21:33:31Z",
+  "published": "2024-11-19T03:31:07Z",
+  "aliases": [
+    "CVE-2023-52921"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix possible UAF in amdgpu_cs_pass1()\n\nSince the gang_size check is outside of chunk parsing\nloop, we need to reset i before we free the chunk data.\n\nSuggested by Ye Zhang (@VAR10CK) of Baidu Security.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-52921"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90e065677e0362a777b9db97ea21d43a39211399"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a2393af1f35d1975204fc00035c64a1c792b278"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e08e9dd09809b16f8f8cee8c466841b33d24ed96"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-19T02:15:09Z"
+  }
+}

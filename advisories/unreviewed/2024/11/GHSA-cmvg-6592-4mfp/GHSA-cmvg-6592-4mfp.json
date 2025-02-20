@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cmvg-6592-4mfp",
+  "modified": "2024-11-13T06:30:29Z",
+  "published": "2024-11-13T06:30:29Z",
+  "aliases": [
+    "CVE-2024-10174"
+  ],
+  "details": "The WP Project Manager – Task, team, and project management plugin featuring kanban board and gantt charts plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 2.6.13 via the 'Abstract_Permission' class due to missing validation on the 'user_id' user controlled key. This makes it possible for unauthenticated attackers to spoof their identity to that of an administrator and access all of the plugins REST routes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wedevs-project-manager/trunk/core/Permissions/Abstract_Permission.php#L32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3185807/wedevs-project-manager/trunk/core/Permissions/Abstract_Permission.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/dea2d045-d3b4-4b55-8b4f-5baa82a18834?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-13T04:15:03Z"
+  }
+}

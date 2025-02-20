@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-58gh-9h4v-fw96",
+  "modified": "2024-12-06T06:30:58Z",
+  "published": "2024-12-06T06:30:57Z",
+  "aliases": [
+    "CVE-2024-10578"
+  ],
+  "details": "The Pubnews theme for WordPress is vulnerable to unauthorized arbitrary plugin installation due to a missing capability check on the pubnews_importer_plugin_action_for_notice() function in all versions up to, and including, 1.0.7. This makes it possible for authenticated attackers, with Subscriber-level access and above, to install arbitrary plugins that can be leveraged to exploit other vulnerabilities.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10578"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themes.trac.wordpress.org/browser/pubnews/1.0.7/inc/admin/admin.php#L1017"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themes.trac.wordpress.org/changeset/250743/pubnews/1.0.8?contextall=1&old=245552&old_path=%2Fpubnews%2F1.0.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/7eaa0117-5320-431f-b3d2-05a867901528?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-06T06:15:22Z"
+  }
+}

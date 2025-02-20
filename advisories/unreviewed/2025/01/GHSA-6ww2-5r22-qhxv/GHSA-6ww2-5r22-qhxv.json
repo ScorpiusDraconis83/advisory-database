@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6ww2-5r22-qhxv",
+  "modified": "2025-01-04T09:35:20Z",
+  "published": "2025-01-04T09:35:20Z",
+  "aliases": [
+    "CVE-2024-10932"
+  ],
+  "details": "The Backup Migration plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 1.4.6 via deserialization of untrusted input in the 'recursive_unserialize_replace' function. This makes it possible for unauthenticated attackers to inject a PHP Object. The additional presence of a POP chain allows attackers to delete arbitrary files, retrieve sensitive data, or execute code. An administrator must create a staging site in order to trigger the exploit.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10932"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser//backup-backup/tags/1.4.6/includes/database/search-replace.php#L46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/backup-backup/tags/1.4.6.1/includes/database/search-replace.php#L46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d5a0c514-5200-47f4-9d2e-684d68946b9a?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-04T08:15:05Z"
+  }
+}

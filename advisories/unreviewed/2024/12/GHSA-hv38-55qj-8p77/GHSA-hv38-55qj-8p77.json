@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hv38-55qj-8p77",
+  "modified": "2024-12-29T09:30:47Z",
+  "published": "2024-12-29T09:30:47Z",
+  "aliases": [
+    "CVE-2024-56714"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nionic: no double destroy workqueue\n\nThere are some FW error handling paths that can cause us to\ntry to destroy the workqueue more than once, so let's be sure\nwe're checking for that.\n\nThe case where this popped up was in an AER event where the\nhandlers got called in such a way that ionic_reset_prepare()\nand thus ionic_dev_teardown() got called twice in a row.\nThe second time through the workqueue was already destroyed,\nand destroy_workqueue() choked on the bad wq pointer.\n\nWe didn't hit this in AER handler testing before because at\nthat time we weren't using a private workqueue.  Later we\nreplaced the use of the system workqueue with our own private\nworkqueue but hadn't rerun the AER handler testing since then.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56714"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13355dd37e22edbcb99c599f783233188740a650"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/746e6ae2e202b062b9deee7bd86d94937997ecd7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-29T09:15:06Z"
+  }
+}

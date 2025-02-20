@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3f5v-6r4g-mx23",
+  "modified": "2025-02-13T15:31:22Z",
+  "published": "2025-01-15T15:31:24Z",
+  "aliases": [
+    "CVE-2024-57857"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/siw: Remove direct link to net_device\n\nDo not manage a per device direct link to net_device. Rely\non associated ib_devices net_device management, not doubling\nthe effort locally. A badly managed local link to net_device\nwas causing a 'KASAN: slab-use-after-free' exception during\nsiw_query_port() call.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57857"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16b87037b48889d21854c8e97aec8a1baf2642b3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4eafeb4f021c50d13f199239d913b37de3c83135"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-15T13:15:12Z"
+  }
+}

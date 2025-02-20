@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4mgj-f599-w3j8",
+  "modified": "2024-10-30T18:30:48Z",
+  "published": "2024-10-29T03:31:06Z",
+  "aliases": [
+    "CVE-2024-50080"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nublk: don't allow user copy for unprivileged device\n\nUBLK_F_USER_COPY requires userspace to call write() on ublk char\ndevice for filling request buffer, and unprivileged device can't\nbe trusted.\n\nSo don't allow user copy for unprivileged device.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50080"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42aafd8b48adac1c3b20fe5892b1b91b80c1a1e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6414ab5c9c9c068eca6dc4fd3a036bc4b83164dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f3d5686a2409877c5e8e2540774d24ed2b4a4ce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-29T01:15:05Z"
+  }
+}

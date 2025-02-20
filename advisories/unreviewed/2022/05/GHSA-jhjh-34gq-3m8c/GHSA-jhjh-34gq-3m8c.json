@@ -7,12 +7,8 @@
     "CVE-2020-12885"
   ],
   "details": "An infinite loop was discovered in the CoAP library in Arm Mbed OS 5.15.3. The CoAP parser is responsible for parsing received CoAP packets. The function sn_coap_parser_options_parse_multiple_options() parses CoAP options in a while loop. This loop's exit condition is computed using the previously allocated heap memory required for storing the result of parsing multiple options. If the input heap memory calculation results in zero bytes, the loop exit condition is never met and the loop is not terminated. As a result, the packet parsing function never exits, leading to resource consumption.",
-  "severity": [
-
-  ],
-  "affected": [
-
-  ],
+  "severity": [],
+  "affected": [],
   "references": [
     {
       "type": "ADVISORY",
@@ -28,9 +24,7 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [
-
-    ],
+    "cwe_ids": [],
     "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,

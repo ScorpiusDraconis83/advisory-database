@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-86gj-xr8h-wjf6",
+  "modified": "2024-12-11T21:31:57Z",
+  "published": "2024-12-02T15:31:39Z",
+  "aliases": [
+    "CVE-2024-53109"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnommu: pass NULL argument to vma_iter_prealloc()\n\nWhen deleting a vma entry from a maple tree, it has to pass NULL to\nvma_iter_prealloc() in order to calculate internal state of the tree, but\nit passed a wrong argument.  As a result, nommu kernels crashed upon\naccessing a vma iterator, such as acct_collect() reading the size of vma\nentries after do_munmap().\n\nThis commit fixes this issue by passing a right argument to the\npreallocation call.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/247d720b2c5d22f7281437fd6054a138256986ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bbf0ab631cdf1dade6745f137cff98751e6ced7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aceaf33b7666b72dfb86e0aa977be81e3bcbc727"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-02T14:15:11Z"
+  }
+}

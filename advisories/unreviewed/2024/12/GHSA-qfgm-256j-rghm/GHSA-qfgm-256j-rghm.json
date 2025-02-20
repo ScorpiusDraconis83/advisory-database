@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qfgm-256j-rghm",
+  "modified": "2025-01-09T18:32:13Z",
+  "published": "2024-12-24T12:30:42Z",
+  "aliases": [
+    "CVE-2024-53149"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: ucsi: glink: fix off-by-one in connector_status\n\nUCSI connector's indices start from 1 up to 3, PMIC_GLINK_MAX_PORTS.\nCorrect the condition in the pmic_glink_ucsi_connector_status()\ncallback, fixing Type-C orientation reporting for the third USB-C\nconnector.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53149"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a22918810980897393fa1776ea3877e4baf8cca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ba6f7f29e0dff47a2799e60dcd1b5c29cd811a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a2273e5c1beb285729aa001422967b4711c53fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a5a8b5bd72169aa7a8ec800ef57be2f2cb4d9b2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-193"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-24T12:15:23Z"
+  }
+}

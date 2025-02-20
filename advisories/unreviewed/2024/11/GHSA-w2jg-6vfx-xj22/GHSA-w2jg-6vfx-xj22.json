@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w2jg-6vfx-xj22",
+  "modified": "2024-11-18T18:30:54Z",
+  "published": "2024-11-18T06:30:35Z",
+  "aliases": [
+    "CVE-2015-20111"
+  ],
+  "details": "miniupnp before 4c90b87, as used in Bitcoin Core before 0.12 and other products, lacks checks for snprintf return values, leading to a buffer overflow and significant data leak, a different vulnerability than CVE-2019-12107. In Bitcoin Core before 0.12, remote code execution was possible in conjunction with CVE-2015-6031 exploitation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-20111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/miniupnp/miniupnp/pull/157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/miniupnp/miniupnp/commit/4c90b87ce3d2517097880279e8c3daa7731100e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bitcoincore.org/en/2024/07/03/disclose_upnp_rce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-18T04:15:03Z"
+  }
+}

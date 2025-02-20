@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qw2p-m25f-7rcr",
+  "modified": "2024-12-27T15:31:51Z",
+  "published": "2024-12-27T15:31:51Z",
+  "aliases": [
+    "CVE-2024-53189"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: nl80211: fix bounds checker error in nl80211_parse_sched_scan\n\nThe channels array in the cfg80211_scan_request has a __counted_by\nattribute attached to it, which points to the n_channels variable. This\nattribute is used in bounds checking, and if it is not set before the\narray is filled, then the bounds sanitizer will issue a warning or a\nkernel panic if CONFIG_UBSAN_TRAP is set.\n\nThis patch sets the size of allocated memory as the initial value for\nn_channels. It is updated with the actual number of added elements after\nthe array is filled.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53189"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a7b62ddf2c7642878c24f0e556041bb58c37527"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c46a3a5b394d6d123866aa44436fc2cd342eb0d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4ef643ea78c59c22546046c25dc6e7206267672"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T14:15:26Z"
+  }
+}

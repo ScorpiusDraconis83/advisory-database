@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-84x4-gjv7-hm5j",
+  "modified": "2024-10-24T21:31:02Z",
+  "published": "2024-10-21T21:30:52Z",
+  "aliases": [
+    "CVE-2022-49011"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (coretemp) fix pci device refcount leak in nv1a_ram_new()\n\nAs comment of pci_get_domain_bus_and_slot() says, it returns\na pci device with refcount increment, when finish using it,\nthe caller must decrement the reference count by calling\npci_dev_put(). So call it after using to avoid refcount leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49011"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0dd1da5a15eeecb2fe4cf131b3216fb455af783c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f74cffc7c85f770b1b1833dccb03b8cde3be102"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e035d5a2a6b907cfce9a80c5f442c2e459cd34e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7dec14537c5906b8bf40fd6fd6d9c3850f8df11d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb75a0d1223d43f97089841aecb28a9b4de687a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c40db1e5f316792b557d2be37e447c20d9ac4635"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea5844f946b1ec5c0b7c115cd7684f34fd48021b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f598da27acbeee414679cacd14294db3e273e3d2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:12Z"
+  }
+}

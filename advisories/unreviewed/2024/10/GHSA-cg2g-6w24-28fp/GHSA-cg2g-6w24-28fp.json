@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cg2g-6w24-28fp",
+  "modified": "2024-11-01T21:31:47Z",
+  "published": "2024-10-18T06:30:32Z",
+  "aliases": [
+    "CVE-2024-9361"
+  ],
+  "details": "The Bulk images optimizer: Resize, optimize, convert to webp, rename … plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the 'save_configuration' function in all versions up to, and including, 2.0.1. This makes it possible for authenticated attackers, with Subscriber-level access and above, to update plugin options.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-9361"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bulk-image-resizer/trunk/includes/class-bir-loader.php#L44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a189e436-e8af-4379-aa6e-2d1a4a2d4bfa?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-18T05:15:06Z"
+  }
+}

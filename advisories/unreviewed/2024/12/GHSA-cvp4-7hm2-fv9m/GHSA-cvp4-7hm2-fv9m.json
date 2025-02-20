@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cvp4-7hm2-fv9m",
+  "modified": "2024-12-12T03:33:05Z",
+  "published": "2024-12-12T03:33:05Z",
+  "aliases": [
+    "CVE-2024-55884"
+  ],
+  "details": "In the Mullvad VPN client 2024.6 (Desktop), 2024.8 (iOS), and 2024.8-beta1 (Android), the exception-handling alternate stack can be exhausted, leading to heap-based out-of-bounds writes in enable() in exception_logging/unix.rs, aka MLLVD-CR-24-01. NOTE: achieving code execution is considered non-trivial.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-55884"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mullvad/mullvadvpn-app/commit/ef6c862071b26023802b00d6e1dc6ca53d1ab3e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://news.ycombinator.com/item?id=42390768"
+    },
+    {
+      "type": "WEB",
+      "url": "https://x41-dsec.de/news/2024/12/11/mullvad"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-12T02:08:23Z"
+  }
+}

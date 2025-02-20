@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-34p7-67p6-m2pf",
+  "modified": "2025-01-10T15:31:33Z",
+  "published": "2024-11-12T15:30:43Z",
+  "aliases": [
+    "CVE-2024-45289"
+  ],
+  "details": "The fetch(3) library uses environment variables for passing certain information, including the revocation file pathname.  The environment variable name used by fetch(1) to pass the filename to the library was incorrect, in effect ignoring the option.\n\nFetch would still connect to a host presenting a certificate included in the revocation file passed to the --crl option.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-45289"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-24:18.ctl.asc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.netapp.com/advisory/ntap-20250110-0001"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-665"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-12T15:15:10Z"
+  }
+}

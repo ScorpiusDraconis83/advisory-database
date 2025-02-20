@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrm5-rxf8-grcc",
+  "modified": "2025-02-10T21:31:39Z",
+  "published": "2025-02-10T21:31:39Z",
+  "aliases": [
+    "CVE-2024-8550"
+  ],
+  "details": "A Local File Inclusion (LFI) vulnerability exists in the /load-workflow endpoint of modelscope/agentscope version v0.0.4. This vulnerability allows an attacker to read arbitrary files from the server, including sensitive files such as API keys, by manipulating the filename parameter. The issue arises due to improper sanitization of user input passed to the os.path.join function, which can be exploited to access files outside the intended directory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-8550"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/7cd8f519-7c75-4936-889d-a17ea1bcb3ea"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-497"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-10T19:15:39Z"
+  }
+}

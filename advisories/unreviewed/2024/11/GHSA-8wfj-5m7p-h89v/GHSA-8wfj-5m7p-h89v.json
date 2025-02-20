@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8wfj-5m7p-h89v",
+  "modified": "2024-11-22T21:32:12Z",
+  "published": "2024-11-07T12:30:35Z",
+  "aliases": [
+    "CVE-2024-50158"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/bnxt_re: Fix out of bound check\n\nDriver exports pacing stats only on GenP5 and P7 adapters. But while\nparsing the pacing stats, driver has a check for \"rdev->dbr_pacing\".  This\ncaused a trace when KASAN is enabled.\n\nBUG: KASAN: slab-out-of-bounds in bnxt_re_get_hw_stats+0x2b6a/0x2e00 [bnxt_re]\nWrite of size 8 at addr ffff8885942a6340 by task modprobe/4809",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50158"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05c5fcc1869a08e36a29691699b6534e5a00a82b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9e6e7443922ac0a48243c35d03834c96926bff1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c11b9b03ea5252898f91f3388c248f0dc47bda52"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-07T10:15:07Z"
+  }
+}

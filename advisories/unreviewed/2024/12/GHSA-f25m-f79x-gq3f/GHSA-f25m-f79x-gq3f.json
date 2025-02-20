@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f25m-f79x-gq3f",
+  "modified": "2025-01-14T18:31:55Z",
+  "published": "2024-12-28T12:30:47Z",
+  "aliases": [
+    "CVE-2024-56682"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nirqchip/riscv-aplic: Prevent crash when MSI domain is missing\n\nIf the APLIC driver is probed before the IMSIC driver, the parent MSI\ndomain will be missing, which causes a NULL pointer dereference in\nmsi_create_device_irq_domain().\n\nAvoid this by deferring probe until the parent MSI domain is available. Use\ndev_err_probe() to avoid printing an error message when returning\n-EPROBE_DEFER.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56682"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f181d1cda56c2fbe379c5ace1aa1fac6306669e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/285a07810ab3bcedc2bd380ebacbf6b4942a889a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-28T10:15:10Z"
+  }
+}

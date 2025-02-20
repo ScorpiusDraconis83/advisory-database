@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xpv3-x3xh-h28r",
+  "modified": "2025-01-06T21:30:50Z",
+  "published": "2024-12-27T15:31:56Z",
+  "aliases": [
+    "CVE-2024-56657"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: control: Avoid WARN() for symlink errors\n\nUsing WARN() for showing the error of symlink creations don't give\nmore information than telling that something goes wrong, since the\nusual code path is a lregister callback from each control element\ncreation.  More badly, the use of WARN() rather confuses fuzzer as if\nit were serious issues.\n\nThis patch downgrades the warning messages to use the normal dev_err()\ninstead of WARN().  For making it clearer, add the function name to\nthe prefix, too.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56657"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36c0764474b637bbee498806485bed524cad486b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2e538a9827dd04ab5273bf4be8eb2edb84357b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5a1ca7b59804d6779644001a878ed925a4688ca"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T15:15:25Z"
+  }
+}

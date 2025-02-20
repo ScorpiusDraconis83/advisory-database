@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c8jq-9f5m-r697",
+  "modified": "2024-11-08T18:30:46Z",
+  "published": "2024-10-21T18:30:59Z",
+  "aliases": [
+    "CVE-2024-49995"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: guard against string buffer overrun\n\nSmatch reports that copying media_name and if_name to name_parts may\noverwrite the destination.\n\n .../bearer.c:166 bearer_name_validate() error: strcpy() 'media_name' too large for 'name_parts->media_name' (32 vs 16)\n .../bearer.c:167 bearer_name_validate() error: strcpy() 'if_name' too large for 'name_parts->if_name' (1010102 vs 16)\n\nThis does seem to be the case so guard against this possibility by using\nstrscpy() and failing if truncation occurs.\n\nIntroduced by commit b97bf3fd8f6a (\"[TIPC] Initial merge\")\n\nCompile tested only.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-49995"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12d26aa7fd3cbdbc5149b6e516563478d575026e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ed7f42dfd3edb387034128ca5b0f639836d4ddd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/54dae0e9063ed23c9acf8d5ab9b18d3426a8ac18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6555a2a9212be6983d2319d65276484f7c5f431a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80c0be7bcf940ce9308311575c3aff8983c9b97a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8298b6e45fb4d8944f356b08e4ea3e54df5e0488"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a18c7b239d02aafb791ae2c45226f6bb40641792"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c79768ffba5b6e95569a463a69b3101c95694867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2b2558971e02ca33eb637a8350d68a48b3e8e46"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T18:15:19Z"
+  }
+}

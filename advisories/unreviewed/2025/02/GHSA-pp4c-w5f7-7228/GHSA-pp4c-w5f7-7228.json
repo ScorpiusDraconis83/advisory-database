@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pp4c-w5f7-7228",
+  "modified": "2025-02-19T09:33:29Z",
+  "published": "2025-02-19T09:33:29Z",
+  "aliases": [
+    "CVE-2024-13712"
+  ],
+  "details": "The Pollin plugin for WordPress is vulnerable to SQL Injection via the 'question' parameter in all versions up to, and including, 1.01.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-13712"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/pollin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2d4a463b-e447-4fd0-a8df-284ecd6cd975?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-19T08:15:20Z"
+  }
+}

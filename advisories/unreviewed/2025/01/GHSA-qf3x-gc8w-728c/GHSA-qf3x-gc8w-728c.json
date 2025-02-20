@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qf3x-gc8w-728c",
+  "modified": "2025-01-11T15:30:30Z",
+  "published": "2025-01-11T15:30:30Z",
+  "aliases": [
+    "CVE-2024-57879"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: iso: Always release hdev at the end of iso_listen_bis\n\nSince hci_get_route holds the device before returning, the hdev\nshould be released with hci_dev_put at the end of iso_listen_bis\neven if the function returns with an error.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57879"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ca50db1c567d658d173c5ef3ee6c52b0b03603c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c76fff747a73ba01d1d87ed53dd9c00cb40ba05"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-11T15:15:08Z"
+  }
+}

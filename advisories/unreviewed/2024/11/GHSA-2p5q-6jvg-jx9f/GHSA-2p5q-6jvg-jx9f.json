@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2p5q-6jvg-jx9f",
+  "modified": "2024-11-22T21:32:13Z",
+  "published": "2024-11-20T12:30:35Z",
+  "aliases": [
+    "CVE-2024-11179"
+  ],
+  "details": "The MStore API – Create Native Android & iOS Apps On The Cloud plugin for WordPress is vulnerable to SQL Injection via the 'status_type' parameter in all versions up to, and including, 4.15.7 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for authenticated attackers, with Subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11179"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mstore-api/tags/4.15.5/controllers/helpers/vendor-admin-wcfm-helper.php#L803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3190678/mstore-api/trunk/controllers/helpers/vendor-admin-wcfm-helper.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b308bddf-a153-4d5b-936f-2170a1a494a5?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-20T10:15:05Z"
+  }
+}

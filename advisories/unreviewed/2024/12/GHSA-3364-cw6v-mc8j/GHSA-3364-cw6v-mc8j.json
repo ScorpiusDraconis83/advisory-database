@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3364-cw6v-mc8j",
+  "modified": "2024-12-27T15:31:56Z",
+  "published": "2024-12-27T15:31:55Z",
+  "aliases": [
+    "CVE-2024-56645"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: j1939: j1939_session_new(): fix skb reference counting\n\nSince j1939_session_skb_queue() does an extra skb_get() for each new\nskb, do the same for the initial one in j1939_session_new() to avoid\nrefcount underflow.\n\n[mkl: clean up commit message]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56645"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/224e606a8d8e8c7db94036272c47a37455667313"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4199dd78a59896e091d3a7a05a77451aa7fd724d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/426d94815e12b6bdb9a75af294fbbafb9301601d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/68fceb143b635cdc59fed3896d5910aff38f345e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a8c695005bfe6569acd73d777ca298ddddd66105"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3282c2bebeeb82ceec492ee4972f51ee7a4a132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f117cba69cbbd496babb3defcdf440df4fd6fe14"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T15:15:24Z"
+  }
+}

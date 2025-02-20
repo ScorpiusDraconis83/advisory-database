@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rc79-c9r3-hhj6",
+  "modified": "2024-11-14T21:32:01Z",
+  "published": "2024-11-12T06:30:34Z",
+  "aliases": [
+    "CVE-2024-10672"
+  ],
+  "details": "The Multiple Page Generator Plugin – MPG plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the mpg_upsert_project_source_block() function in all versions up to, and including, 4.0.2. This makes it possible for authenticated attackers, with editor-level access and above, to delete limited files on the server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10672"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/multiple-pages-generator-by-porthas/tags/3.4.8/controllers/ProjectController.php#L139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/multiple-pages-generator-by-porthas/tags/3.4.8/controllers/ProjectController.php#L147"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3183330/multiple-pages-generator-by-porthas/tags/4.0.3/controllers/ProjectController.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/8c21de03-4d62-4ecf-a2f1-57e0e416792b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22",
+      "CWE-73"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-12T04:15:04Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rxq5-5w2f-g92r",
+  "modified": "2025-01-09T18:32:15Z",
+  "published": "2025-01-09T18:32:15Z",
+  "aliases": [
+    "CVE-2025-21596"
+  ],
+  "details": "An Improper Handling of Exceptional Conditions vulnerability in the command-line processing of Juniper Networks Junos OS on SRX1500, SRX4100, and SRX4200 devices allows a local, low-privileged authenticated attacker executing the 'show chassis environment pem' command to cause the chassis daemon (chassisd) to crash and restart, resulting in a temporary Denial of Service (DoS). However, repeated execution of this command will eventually cause the chassisd process to fail to restart, impacting packet processing on the system.\n\nThis issue affects Junos OS on SRX1500, SRX4100, SRX4200: \n\n\n\n  *  All versions before 21.4R3-S9, \n  *  from 22.2 before 22.2R3-S5, \n  *  from 22.3 before 22.3R3-S4, \n  *  from 22.4 before 22.4R3-S4, \n  *  from 23.2 before 23.2R2-S3, \n  *  from 23.4 before 23.4R2-S1.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:N/R:U/V:X/RE:M/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21596"
+    },
+    {
+      "type": "WEB",
+      "url": "https://supportportal.juniper.net/JSA92864"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-755"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-09T17:15:18Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fp9p-7hx8-xfp3",
+  "modified": "2025-02-14T00:30:44Z",
+  "published": "2025-02-07T15:32:38Z",
+  "aliases": [
+    "CVE-2025-25069"
+  ],
+  "details": "A Cross-Protocol Scripting vulnerability is found in Apache Kvrocks.\n\nSince Kvrocks didn't detect if \"Host:\" or \"POST\" appears in RESP requests,\na valid HTTP request can also be sent to Kvrocks as a valid RESP request \nand trigger some database operations, which can be dangerous when \nit is chained with SSRF.\n\nIt is similiar to CVE-2016-10517 in Redis.\n\nThis issue affects Apache Kvrocks: from the initial version to the latest version 2.11.0.\n\nUsers are recommended to upgrade to version 2.11.1, which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-25069"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/gbxv9gpsskmdzg6z48zm3tvo8cyo9v3t"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2016-10517"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-115"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-07T13:15:32Z"
+  }
+}

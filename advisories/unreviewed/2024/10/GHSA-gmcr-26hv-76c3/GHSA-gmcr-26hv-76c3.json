@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gmcr-26hv-76c3",
+  "modified": "2024-10-23T18:33:07Z",
+  "published": "2024-10-21T15:32:26Z",
+  "aliases": [
+    "CVE-2024-47732"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: iaa - Fix potential use after free bug\n\nThe free_device_compression_mode(iaa_device, device_mode) function frees\n\"device_mode\" but it iss passed to iaa_compression_modes[i]->free() a few\nlines later resulting in a use after free.\n\nThe good news is that, so far as I can tell, nothing implements the\n->free() function and the use after free happens in dead code.  But, with\nthis fix, when something does implement it, we'll be ready.  :)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-47732"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5d534b473e2c8d3e4560be2dd6c12a8eb9d61e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c66f0be993ba52410edab06124c54ecf143b05c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0d3b845a1b10b7b5abdad7ecc69d45b2aab3209"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T13:15:03Z"
+  }
+}

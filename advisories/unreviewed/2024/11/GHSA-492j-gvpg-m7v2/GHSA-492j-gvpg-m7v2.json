@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-492j-gvpg-m7v2",
+  "modified": "2024-11-11T18:30:28Z",
+  "published": "2024-11-11T18:30:28Z",
+  "aliases": [
+    "CVE-2024-10917"
+  ],
+  "details": "In Eclipse OpenJ9 versions up to 0.47, the JNI function GetStringUTFLength may return an incorrect value which has wrapped around. From 0.48 the value is correct but may be truncated to include a smaller number of characters.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10917"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-openj9/openj9/pull/20362"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-openj9/openj9/releases/tag/openj9-0.48.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/cve-assignement/-/issues/47"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-11T17:15:04Z"
+  }
+}

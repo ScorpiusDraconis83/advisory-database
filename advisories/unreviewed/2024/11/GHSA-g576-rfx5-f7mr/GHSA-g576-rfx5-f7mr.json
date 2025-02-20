@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g576-rfx5-f7mr",
+  "modified": "2024-11-22T09:33:03Z",
+  "published": "2024-11-22T09:33:03Z",
+  "aliases": [
+    "CVE-2024-11355"
+  ],
+  "details": "The Ultimate YouTube Video & Shorts Player With Vimeo plugin for WordPress is vulnerable to unauthorized access of data due to a missing capability check on the get_setting() function in all versions up to, and including, 3.3. This makes it possible for authenticated attackers, with Subscriber-level access and above, to view settings for playlists.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11355"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ultimate-youtube-video-player/trunk/admin/admin.php#L18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ultimate-youtube-video-player/trunk/admin/inc/handler/getsetting.php#L1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4119178c-9227-4623-a962-e0f103612c75?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-22T06:15:19Z"
+  }
+}

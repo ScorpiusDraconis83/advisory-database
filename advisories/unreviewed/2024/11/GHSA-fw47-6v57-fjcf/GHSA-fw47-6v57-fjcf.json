@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fw47-6v57-fjcf",
+  "modified": "2024-11-27T21:32:44Z",
+  "published": "2024-11-19T18:31:07Z",
+  "aliases": [
+    "CVE-2024-53083"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: qcom-pmic: init value of hdr_len/txbuf_len earlier\n\nIf the read of USB_PDPHY_RX_ACKNOWLEDGE_REG failed, then hdr_len and\ntxbuf_len are uninitialized. This commit stops to print uninitialized\nvalue and misleading/false data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53083"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/029778a4fd2c90c2e76a902b797c2348a722f1b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/35925e2b7b404cad3db857434d3312b892b55432"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74d8cee747b37cd9f5ca631f678e66e7f40f2b5f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-19T18:15:27Z"
+  }
+}

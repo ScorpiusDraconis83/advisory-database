@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p6w4-xmxx-7gmj",
+  "modified": "2024-11-21T21:33:31Z",
+  "published": "2024-11-19T03:31:08Z",
+  "aliases": [
+    "CVE-2024-50281"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKEYS: trusted: dcp: fix NULL dereference in AEAD crypto operation\n\nWhen sealing or unsealing a key blob we currently do not wait for\nthe AEAD cipher operation to finish and simply return after submitting\nthe request. If there is some load on the system we can exit before\nthe cipher operation is done and the buffer we read from/write to\nis already removed from the stack. This will e.g. result in NULL\npointer dereference errors in the DCP driver during blob creation.\n\nFix this by waiting for the AEAD cipher operation to finish before\nresuming the seal and unseal calls.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04de7589e0a95167d803ecadd115235ba2c14997"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c75e0272289eae18c5379518a9c56ef31d65cc7d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-19T02:16:30Z"
+  }
+}

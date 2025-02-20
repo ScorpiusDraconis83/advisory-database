@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-97r4-38mp-rc64",
+  "modified": "2024-10-25T21:31:27Z",
+  "published": "2024-10-21T21:30:51Z",
+  "aliases": [
+    "CVE-2022-48979"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: fix array index out of bound error in DCN32 DML\n\n[Why&How]\nLinkCapacitySupport array is indexed with the number of voltage states and\nnot the number of max DPPs. Fix the error by changing the array\ndeclaration to use the correct (larger) array size of total number of\nvoltage states.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-48979"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d8a298b2e83b98042e6ec726e934f535b23e6aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aeffc8fb2174f017a10df114bc312f899904dc68"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-129"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:09Z"
+  }
+}

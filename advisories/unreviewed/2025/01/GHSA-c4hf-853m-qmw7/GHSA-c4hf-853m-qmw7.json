@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c4hf-853m-qmw7",
+  "modified": "2025-01-10T18:31:41Z",
+  "published": "2025-01-10T18:31:41Z",
+  "aliases": [
+    "CVE-2024-6662"
+  ],
+  "details": "Websites managed by MegaBIP in versions below 5.15 are vulnerable to Cross-Site Request Forgery (CSRF) as the form available under \"/edytor/index.php?id=7,7,0\" lacks protection mechanisms.\nA user could be tricked into visiting a malicious website, which would send POST request to this endpoint. If the victim is a logged in administrator, this could lead to creation of new accounts and granting of administrative permissions.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-6662"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2024/09/CVE-2024-6662"
+    },
+    {
+      "type": "WEB",
+      "url": "https://megabip.pl"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.gov.pl/web/cyfryzacja/rekomendacja-pelnomocnika-rzadu-ds-cyberbezpieczenstwa-dotyczaca-biuletynow-informacji-publicznej"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-10T18:15:26Z"
+  }
+}

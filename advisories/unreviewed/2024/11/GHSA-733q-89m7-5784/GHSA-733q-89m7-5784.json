@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-733q-89m7-5784",
+  "modified": "2024-11-22T21:32:13Z",
+  "published": "2024-11-20T21:30:49Z",
+  "aliases": [
+    "CVE-2024-48983"
+  ],
+  "details": "An issue was discovered in MBed OS 6.16.0. During processing of HCI packets, the software dynamically determines the length of the packet data by reading 2 bytes from the packet header. A buffer is then allocated to contain the entire packet, the size of which is calculated as the length of the packet body determined earlier plus the header length. WsfMsgAlloc then increments this again by sizeof(wsfMsg_t). This may cause an integer overflow that results in the buffer being significantly too small to contain the entire packet. This may cause a buffer overflow of up to 65 KB . This bug is trivial to exploit for a denial of service but can generally not be exploited further because the exploitable buffer is dynamically allocated.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-48983"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mbed-ce/mbed-os/pull/388"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mbed-ce/mbed-os/blob/54e8693ef4ff7e025018094f290a1d5cf380941f/connectivity/FEATURE_BLE/libraries/cordio_stack/wsf/sources/port/baremetal/wsf_msg.c#L72"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-20T20:15:19Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5v32-g299-xh57",
+  "modified": "2024-11-20T09:32:54Z",
+  "published": "2024-11-20T09:32:54Z",
+  "aliases": [
+    "CVE-2024-10855"
+  ],
+  "details": "The Image Optimizer, Resizer and CDN – Sirv plugin for WordPress is vulnerable to unauthorized modification of data that can lead to a denial of service due to insufficient validation on the filename parameter of the sirv_upload_file_by_chunks() function and lack of  in all versions up to, and including, 7.3.0. This makes it possible for authenticated attackers, with Contributor-level access and above, to delete arbitrary option values on the WordPress site. This can be leveraged to delete an option that would create an error on the site and deny service to legitimate users.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10855"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/sirv/tags/7.2.8/sirv.php#L4691"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3186406%40sirv&new=3186406%40sirv&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d6ec09e5-4994-4d23-bf8e-26b64d5303fa?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-20T07:15:07Z"
+  }
+}
