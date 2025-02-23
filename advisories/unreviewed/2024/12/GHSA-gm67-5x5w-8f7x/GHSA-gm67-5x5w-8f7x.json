@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gm67-5x5w-8f7x",
+  "modified": "2024-12-11T18:30:39Z",
+  "published": "2024-12-04T15:31:52Z",
+  "aliases": [
+    "CVE-2024-53134"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npmdomain: imx93-blk-ctrl: correct remove path\n\nThe check condition should be 'i < bc->onecell_data.num_domains', not\n'bc->onecell_data.num_domains' which will make the look never finish\nand cause kernel panic.\n\nAlso disable runtime to address\n\"imx93-blk-ctrl 4ac10000.system-controller: Unbalanced pm_runtime_enable!\"",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/201fb9e164a1e4c5937de2cf58bcb0327c08664f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8fc228ab5d38a026eae7183a5f74a4fac43d9b6a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7c7c5aa556378a2c8da72c1f7f238b6648f95fb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-670"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-04T15:15:13Z"
+  }
+}

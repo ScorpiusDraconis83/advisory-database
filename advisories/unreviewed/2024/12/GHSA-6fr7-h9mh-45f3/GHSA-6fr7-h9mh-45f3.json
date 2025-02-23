@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6fr7-h9mh-45f3",
+  "modified": "2024-12-11T21:31:57Z",
+  "published": "2024-12-02T15:31:39Z",
+  "aliases": [
+    "CVE-2024-53115"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vmwgfx: avoid null_ptr_deref in vmw_framebuffer_surface_create_handle\n\nThe 'vmw_user_object_buffer' function may return NULL with incorrect\ninputs. To avoid possible null pointer dereference, add a check whether\nthe 'bo' is NULL in the vmw_framebuffer_surface_create_handle.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53115"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36f64da080555175b58d85f99f5f90435e274e56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93d1f41a82de382845af460bf03bcb17dcbf08c5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-02T14:15:12Z"
+  }
+}

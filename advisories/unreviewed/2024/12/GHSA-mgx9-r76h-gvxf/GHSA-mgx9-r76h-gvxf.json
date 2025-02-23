@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mgx9-r76h-gvxf",
+  "modified": "2025-01-06T18:31:01Z",
+  "published": "2024-12-29T12:30:41Z",
+  "aliases": [
+    "CVE-2024-56750"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs: fix blksize < PAGE_SIZE for file-backed mounts\n\nAdjust sb->s_blocksize{,_bits} directly for file-backed\nmounts when the fs block size is smaller than PAGE_SIZE.\n\nPreviously, EROFS used sb_set_blocksize(), which caused\na panic if bdev-backed mounts is not used.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56750"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/679d8537e5748241c71ac97a6b6dc919eae31716"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bae0854160939a64a092516ff1b2f221402b843b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-29T12:15:08Z"
+  }
+}

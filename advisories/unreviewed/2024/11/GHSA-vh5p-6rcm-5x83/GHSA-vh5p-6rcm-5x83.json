@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vh5p-6rcm-5x83",
+  "modified": "2024-11-27T18:34:03Z",
+  "published": "2024-11-25T21:30:50Z",
+  "aliases": [
+    "CVE-2024-50672"
+  ],
+  "details": "A NoSQL injection vulnerability in Adapt Learning Adapt Authoring Tool <= 0.11.3 allows unauthenticated attackers to reset user and administrator account passwords via the \"Reset password\" feature. The vulnerability occurs due to insufficient validation of user input, which is used as a query in Mongoose's find() function. This makes it possible for attackers to perform a full takeover of the administrator account. Attackers can then use the newly gained administrative privileges to upload a custom plugin to perform remote code execution (RCE) on the server hosting the web application.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50672"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/adaptlearning/adapt_authoring"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dos-m0nk3y/CVE/tree/main/CVE-2024-50672"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-25T21:15:19Z"
+  }
+}

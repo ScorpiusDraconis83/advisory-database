@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5j5v-66r8-4gm4",
+  "modified": "2024-10-23T18:33:07Z",
+  "published": "2024-10-21T15:32:27Z",
+  "aliases": [
+    "CVE-2024-49862"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npowercap: intel_rapl: Fix off by one in get_rpi()\n\nThe rp->priv->rpi array is either rpi_msr or rpi_tpmi which have\nNR_RAPL_PRIMITIVES number of elements.  Thus the > needs to be >=\nto prevent an off by one access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-49862"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/288cbc505e2046638c615c36357cb78bc9fee1e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a34f3b0d7f11fb6ed72da315fd2360abd9c0737"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/851e7f7f14a15f4e47b7d0f70d5c4a2b95b824d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95f6580352a7225e619551febb83595bcb77ab17"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-193"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T13:15:06Z"
+  }
+}

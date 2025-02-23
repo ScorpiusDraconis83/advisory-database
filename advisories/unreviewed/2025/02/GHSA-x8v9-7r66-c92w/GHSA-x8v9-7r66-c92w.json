@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x8v9-7r66-c92w",
+  "modified": "2025-02-15T15:30:24Z",
+  "published": "2025-02-15T15:30:24Z",
+  "aliases": [
+    "CVE-2025-26793"
+  ],
+  "details": "The Web GUI configuration panel of Hirsch (formerly Identiv and Viscount) Enterphone MESH through 2024 ships with default credentials (username freedom, password viscount). The administrator is not prompted to change these credentials on initial configuration, and changing the credentials requires many steps. Attackers can use the credentials over the Internet via mesh.webadmin.MESHAdminServlet to gain access to dozens of Canadian and U.S. apartment buildings and obtain building residents' PII. NOTE: the Supplier's perspective is that the \"vulnerable systems are not following manufacturers' recommendations to change the default password.\"",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:S/MSA:X/S:P/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-26793"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.identiv.com/products/physical-access/hirsch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ericdaigle.ca/posts/breaking-into-dozens-of-apartments-in-five-minutes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1393"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-15T15:15:23Z"
+  }
+}

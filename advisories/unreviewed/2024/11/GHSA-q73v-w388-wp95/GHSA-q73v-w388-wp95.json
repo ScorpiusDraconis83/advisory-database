@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q73v-w388-wp95",
+  "modified": "2024-12-18T06:30:48Z",
+  "published": "2024-11-25T06:34:57Z",
+  "aliases": [
+    "CVE-2024-11483"
+  ],
+  "details": "A vulnerability was found in the Ansible Automation Platform (AAP). This flaw allows attackers to escalate privileges by improperly leveraging read-scoped OAuth2 tokens to gain write access. This issue affects API endpoints that rely on ansible_base.oauth2_provider for OAuth2 authentication. While the impact is limited to actions within the user’s assigned permissions, it undermines scoped access controls, potentially allowing unintended modifications in the application and consuming services.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11483"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ansible/django-ansible-base/commit/845b3e1838cc0762a7f9f3e0379c5274519d9a44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2024:11145"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2024-11483"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2327579"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-25T04:15:03Z"
+  }
+}

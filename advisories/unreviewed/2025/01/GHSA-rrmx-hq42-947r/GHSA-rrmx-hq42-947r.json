@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rrmx-hq42-947r",
+  "modified": "2025-01-23T00:33:59Z",
+  "published": "2025-01-21T15:31:03Z",
+  "aliases": [
+    "CVE-2024-57944"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: ti-ads1298: Add NULL check in ads1298_init\n\ndevm_kasprintf() can return a NULL pointer on failure. A check on the\nreturn value of such a call in ads1298_init() is missing. Add it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57944"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69b680bbac9bd611aaa308769d6c71e3e70eb3c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bcb394bb28e55312cace75362b8e489eb0e02a30"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-21T13:15:08Z"
+  }
+}

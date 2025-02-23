@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5w4r-4gwh-5f24",
+  "modified": "2024-10-22T21:30:37Z",
+  "published": "2024-10-21T03:30:29Z",
+  "aliases": [
+    "CVE-2024-49215"
+  ],
+  "details": "An issue was discovered in Sangoma Asterisk through 18.20.0, 19.x and 20.x through 20.5.0, and 21.x through 21.0.0, and Certified Asterisk through 18.9-cert5. In manager.c, the functions action_getconfig() and action_getconfigJson() do not process the input file path, resulting in a path traversal vulnerability. In versions without the restrictedFile() function, no processing is done on the input path. In versions with the restrictedFile() function, path traversal is not processed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-49215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/hyp164D1/5d68b9b7a504f1416272a825ce65966a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/asterisk/asterisk/blob/20.5.0/main/manager.c#L3755"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T01:15:02Z"
+  }
+}

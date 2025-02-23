@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xwwq-24cw-rm4r",
+  "modified": "2025-01-07T09:30:46Z",
+  "published": "2025-01-07T09:30:46Z",
+  "aliases": [
+    "CVE-2024-12202"
+  ],
+  "details": "The Croma Music plugin for WordPress is vulnerable to unauthorized modification of data that can lead to privilege escalation due to a missing capability check on the 'ironMusic_ajax' function in all versions up to, and including, 3.6. This makes it possible for authenticated attackers, with Subscriber-level access and above, to update arbitrary options on the WordPress site. This can be leveraged to update the default role for registration to administrator and enable user registration for attackers to gain administrative user access to a vulnerable site.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12202"
+    },
+    {
+      "type": "WEB",
+      "url": "https://croma.irontemplates.com/lowtempo/wp-content/themes/croma/changelog.txt"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4ce8e0f1-5a7b-41a3-81d0-7fd12c9da6d9?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-07T08:15:25Z"
+  }
+}

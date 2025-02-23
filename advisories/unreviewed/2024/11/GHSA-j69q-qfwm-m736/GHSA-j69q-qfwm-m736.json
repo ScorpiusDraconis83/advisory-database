@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j69q-qfwm-m736",
+  "modified": "2024-11-18T18:30:56Z",
+  "published": "2024-11-18T18:30:56Z",
+  "aliases": [
+    "CVE-2020-27124"
+  ],
+  "details": "A vulnerability in the SSL/TLS handler of Cisco&nbsp;Adaptive Security Appliance (ASA) Software could allow an unauthenticated, remote attacker to cause the affected device to reload unexpectedly, leading to a denial of service (DoS) condition.\nThe vulnerability is due to improper error handling on established SSL/TLS connections. An attacker could exploit this vulnerability by establishing an SSL/TLS connection with the affected device and then sending a malicious SSL/TLS message within that connection. A successful exploit could allow the attacker to cause the device to reload.Cisco&nbsp;has released software updates that address this vulnerability. There are no workarounds that address this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-27124"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asa-ssl-dos-7uZWwSEy"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-cucm-xss-bLZw4Ctq"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sa-rv-routers-xss-K7Z5U6q3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-457"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-18T16:15:06Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rm25-8wjq-c6qm",
+  "modified": "2024-11-18T15:33:20Z",
+  "published": "2024-11-18T15:33:20Z",
+  "aliases": [
+    "CVE-2024-9526"
+  ],
+  "details": "There exists a stored XSS Vulnerability in Kubeflow Pipeline View web UI. The Kubeflow Web UI allows to create new pipelines. When creating a new pipeline, it is possible to add a description. The description field allows html tags, which are not filtered properly. Leading to a stored XSS. We recommend upgrading past commit 930c35f1c543998e60e8d648ce93185c9b5dbe8d",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:P/PR:H/UI:P/VC:H/VI:H/VA:L/SC:H/SI:H/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:P/AU:Y/R:U/V:D/RE:L/U:Green"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-9526"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kubeflow/pipelines/pull/10315"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-18T14:15:05Z"
+  }
+}

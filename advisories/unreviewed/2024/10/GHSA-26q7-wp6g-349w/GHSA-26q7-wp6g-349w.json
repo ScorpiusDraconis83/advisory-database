@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-26q7-wp6g-349w",
+  "modified": "2024-10-25T15:31:26Z",
+  "published": "2024-10-21T18:30:58Z",
+  "aliases": [
+    "CVE-2024-49931"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: fix array out-of-bound access in SoC stats\n\nCurrently, the ath12k_soc_dp_stats::hal_reo_error array is defined with a\nmaximum size of DP_REO_DST_RING_MAX. However, the ath12k_dp_rx_process()\nfunction access ath12k_soc_dp_stats::hal_reo_error using the REO\ndestination SRNG ring ID, which is incorrect. SRNG ring ID differ from\nnormal ring ID, and this usage leads to out-of-bounds array access. To\nfix this issue, modify ath12k_dp_rx_process() to use the normal ring ID\ndirectly instead of the SRNG ring ID to avoid out-of-bounds array access.\n\nTested-on: QCN9274 hw2.0 PCI WLAN.WBE.1.0.1-00029-QCAHKSWPL_SILICONZ-1",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-49931"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4aef827a41cdaf6201bbaf773c1eae4e20e967b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ad791e3ec60cb66c1e4dc121ffbf872df312427d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0e4274d9dc9f8409d56d622cd3ecf7b6fd49e2f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e106b7ad13c1d246adaa57df73edb8f8b8acb240"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-129"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T18:15:15Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w5c8-45mm-p93r",
+  "modified": "2025-01-11T15:30:29Z",
+  "published": "2025-01-11T15:30:28Z",
+  "aliases": [
+    "CVE-2024-54193"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/ivpu: Fix WARN in ivpu_ipc_send_receive_internal()\n\nMove pm_runtime_set_active() to ivpu_pm_init() so when\nivpu_ipc_send_receive_internal() is executed before ivpu_pm_enable()\nit already has correct runtime state, even if last resume was\nnot successful.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-54193"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f6482caa6acdfdfc744db7430771fe7e6c4e787"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/578874b2bb947e047708f4df286e4ff1ba6be3ad"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-11T13:15:26Z"
+  }
+}

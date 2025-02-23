@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6wp4-cpxh-5846",
+  "modified": "2024-12-21T12:30:40Z",
+  "published": "2024-12-21T12:30:40Z",
+  "aliases": [
+    "CVE-2024-12558"
+  ],
+  "details": "The WP BASE Booking of Appointments, Services and Events plugin for WordPress is vulnerable to unauthorized access of data due to a missing capability check on the export_db function in all versions up to, and including, 4.9.2. This makes it possible for authenticated attackers, with Subscriber-level access and above, to expose sensitive information from the database, such as the hashed administrator password.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12558"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-base-booking-of-appointments-services-and-events/tags/4.9.2/includes/freeons/export-import.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3210164/wp-base-booking-of-appointments-services-and-events/tags/5.0.0/includes/freeons/export-import.php?old=3207827&old_path=wp-base-booking-of-appointments-services-and-events%2Ftags%2F4.9.2%2Fincludes%2Ffreeons%2Fexport-import.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/09831b2f-8f79-4833-8fc6-f1af56c6abc8?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-21T10:15:08Z"
+  }
+}

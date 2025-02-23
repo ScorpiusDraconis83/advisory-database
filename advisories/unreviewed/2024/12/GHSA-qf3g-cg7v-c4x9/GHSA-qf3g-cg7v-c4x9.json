@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qf3g-cg7v-c4x9",
+  "modified": "2025-01-14T18:31:54Z",
+  "published": "2024-12-27T15:31:53Z",
+  "aliases": [
+    "CVE-2024-56538"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm: zynqmp_kms: Unplug DRM device before removal\n\nPrevent userspace accesses to the DRM device from causing\nuse-after-frees by unplugging the device before we remove it. This\ncauses any further userspace accesses to result in an error without\nfurther calls into this driver's internals.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56538"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e07c88914fc5289c21820b1aa94f058feb38197"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4fb97432e28a7e136b2d76135d50e988ada8e1af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/692f52aedccbf79b212a1e14e3735192b4c24a7d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a17b9afe58c474657449cf87e238b1788200576b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T14:15:33Z"
+  }
+}

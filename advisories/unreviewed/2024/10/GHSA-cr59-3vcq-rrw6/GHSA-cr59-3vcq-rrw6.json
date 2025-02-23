@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cr59-3vcq-rrw6",
+  "modified": "2024-10-23T18:33:07Z",
+  "published": "2024-10-23T00:31:43Z",
+  "aliases": [
+    "CVE-2024-40493"
+  ],
+  "details": "Null Pointer Dereference in `coap_client_exchange_blockwise2` function in Keith Cullen FreeCoAP 1.0 allows remote attackers to cause a denial of service and potentially execute arbitrary code via a specially crafted CoAP packet that causes `coap_msg_get_payload(resp)` to return a null pointer, which is then dereferenced in a call to `memcpy`.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-40493"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keith-cullen/FreeCoAP/issues/37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/dqp10515/fe80005e2fb58ed8ada178ac017e4ad4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-22T22:15:04Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jvmc-2wg5-j9pw",
+  "modified": "2024-11-06T18:31:11Z",
+  "published": "2024-11-06T18:31:11Z",
+  "aliases": [
+    "CVE-2024-20484"
+  ],
+  "details": "A vulnerability in the External Agent Assignment Service (EAAS) feature of Cisco Enterprise Chat and Email (ECE) could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition on an affected device.\n\nThis vulnerability is due to insufficient validation of Media Routing Peripheral Interface Manager (MR PIM) traffic that is received by an affected device. An attacker could exploit this vulnerability by sending crafted MR PIM traffic to an affected device. A successful exploit could allow the attacker to trigger a failure on the MR PIM connection between Cisco ECE and Cisco Unified Contact Center Enterprise (CCE), leading to a DoS condition on EAAS that would prevent customers from starting chat, callback, or delayed callback sessions. Note: When the attack traffic stops, the EAAS process must be manually restarted to restore normal operation. To restart the process in the System Console, choose Shared Resources &gt; Services &gt; Unified CCE &gt; EAAS, then click Start.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-20484"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-ece-dos-Oqb9uFEv"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-06T17:15:15Z"
+  }
+}

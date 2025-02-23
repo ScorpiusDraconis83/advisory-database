@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-68mj-fhfp-mw52",
+  "modified": "2025-01-19T12:31:27Z",
+  "published": "2025-01-19T12:31:27Z",
+  "aliases": [
+    "CVE-2024-57928"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfs: Fix enomem handling in buffered reads\n\nIf netfs_read_to_pagecache() gets an error from either ->prepare_read() or\nfrom netfs_prepare_read_iterator(), it needs to decrement ->nr_outstanding,\ncancel the subrequest and break out of the issuing loop.  Currently, it\nonly does this for two of the cases, but there are two more that aren't\nhandled.\n\nFix this by moving the handling to a common place and jumping to it from\nall four places.  This is in preference to inserting a wrapper around\nnetfs_prepare_read_iterator() as proposed by Dmitry Antipov[1].",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57928"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/105549d09a539a876b7c3330ab52d8aceedad358"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88ecdfea1b333de5c51442b45cd549eeadf01852"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-19T12:15:26Z"
+  }
+}

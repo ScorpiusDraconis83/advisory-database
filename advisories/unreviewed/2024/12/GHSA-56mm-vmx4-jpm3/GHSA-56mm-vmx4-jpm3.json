@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-56mm-vmx4-jpm3",
+  "modified": "2024-12-13T12:31:46Z",
+  "published": "2024-12-13T12:31:46Z",
+  "aliases": [
+    "CVE-2024-11012"
+  ],
+  "details": "The The Notibar – Notification Bar for WordPress plugin for WordPress is vulnerable to arbitrary shortcode execution via njt_nofi_text AJAX action in all versions up to, and including, 2.1.4. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for authenticated attackers, with Subscriber-level access and above, to execute arbitrary shortcodes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11012"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/notibar/trunk/includes/NotificationBar/WpCustomNotification.php#L90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3205224"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/notibar/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/1766727d-ba54-4b46-b362-415c14be027d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-13T10:15:07Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j7v5-x62w-r9x3",
+  "modified": "2024-11-27T21:32:43Z",
+  "published": "2024-11-08T06:30:48Z",
+  "aliases": [
+    "CVE-2024-50174"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: Fix race when converting group handle to group object\n\nXArray provides it's own internal lock which protects the internal array\nwhen entries are being simultaneously added and removed. However there\nis still a race between retrieving the pointer from the XArray and\nincrementing the reference count.\n\nTo avoid this race simply hold the internal XArray lock when\nincrementing the reference count, this ensures there cannot be a racing\ncall to xa_erase().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44742138d151c3a945460ae7beff8ae45ac0bf58"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a585d553c11965332d7a2d74e79ef92a42bfc87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cac075706f298948898b1f63e81709df42afa75d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-08T06:15:14Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-27g5-cf66-m7v6",
+  "modified": "2024-12-09T21:31:00Z",
+  "published": "2024-02-28T09:30:38Z",
+  "aliases": [
+    "CVE-2021-47052"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: sa2ul - Fix memory leak of rxd\n\nThere are two error return paths that are not freeing rxd and causing\nmemory leaks.  Fix these.\n\nAddresses-Coverity: (\"Resource leak\")",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-47052"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e596b3734649041ed77edc86a23c0442bbe062b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/854b7737199848a91f6adfa0a03cf6f0c46c86e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7bd0657c2036add71981d88a7fae50188150b6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dfd6443bf49ac17adf882ca46c40c506a0284bd6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-02-28T09:15:40Z"
+  }
+}

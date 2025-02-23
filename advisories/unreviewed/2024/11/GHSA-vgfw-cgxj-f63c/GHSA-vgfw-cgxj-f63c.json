@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vgfw-cgxj-f63c",
+  "modified": "2024-11-25T18:33:26Z",
+  "published": "2024-11-25T18:33:26Z",
+  "aliases": [
+    "CVE-2024-7915"
+  ],
+  "details": "The application Sensei Mac Cleaner contains a local privilege escalation vulnerability, allowing an attacker to perform multiple operations as the root user. These operations include arbitrary file deletion and writing, loading and unloading daemons, manipulating file permissions, and loading extensions, among other actions.\n\n\nThe vulnerable module org.cindori.SenseiHelper can be contacted via XPC. While the module performs client validation, it relies on the client's PID obtained through the public processIdentifier property of the NSXPCConnection class. This approach makes the module susceptible to a PID Reuse Attack, enabling an attacker to impersonate a legitimate client and send crafted XPC messages to invoke arbitrary methods exposed by the HelperProtocol interface.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-7915"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pentraze.com/vulnerability-reports"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-25T18:15:14Z"
+  }
+}

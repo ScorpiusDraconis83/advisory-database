@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rhfh-m68w-rv9h",
+  "modified": "2024-11-15T15:30:57Z",
+  "published": "2024-11-15T15:30:57Z",
+  "aliases": [
+    "CVE-2023-20125"
+  ],
+  "details": "A vulnerability in the local interface of Cisco BroadWorks Network Server could allow an unauthenticated, remote attacker to exhaust system resources, causing a denial of service (DoS) condition.\n\nThis vulnerability exists because rate limiting does not occur for certain incoming TCP connections. An attacker could exploit this vulnerability by sending a high rate of TCP connections to the server. A successful exploit could allow the attacker to cause TCP connection resources to grow rapidly until the Cisco BroadWorks Network Server becomes unusable.\nNote: To recover from this vulnerability, either Cisco BroadWorks Network Server software must be restarted or the Cisco BroadWorks Network Server node must be rebooted. For more information, see the  section of this advisory.\nCisco has released software updates that address this vulnerability. There are no workarounds that address this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-20125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-bw-tcp-dos-KEdJCxLs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-15T15:15:05Z"
+  }
+}

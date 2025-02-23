@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pgcr-7vhj-26w2",
+  "modified": "2024-10-25T15:31:26Z",
+  "published": "2024-10-21T18:30:58Z",
+  "aliases": [
+    "CVE-2024-49941"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpiolib: Fix potential NULL pointer dereference in gpiod_get_label()\n\nIn `gpiod_get_label()`, it is possible that `srcu_dereference_check()` may\nreturn a NULL pointer, leading to a scenario where `label->str` is accessed\nwithout verifying if `label` itself is NULL.\n\nThis patch adds a proper NULL check for `label` before accessing\n`label->str`. The check for `label->str != NULL` is removed because\n`label->str` can never be NULL if `label` is not NULL.\n\nThis fixes the issue where the label name was being printed as `(efault)`\nwhen dumping the sysfs GPIO file when `label == NULL`.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-49941"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b99b5ab885993bff010ebcd93be5e511c56e28a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ee4b907d7a5d7a53b4ff7727c371ff3d44ccbbb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T18:15:15Z"
+  }
+}

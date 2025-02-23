@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cpwp-j2f3-rxq9",
+  "modified": "2024-11-01T15:31:46Z",
+  "published": "2024-10-21T18:30:58Z",
+  "aliases": [
+    "CVE-2024-49956"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngfs2: fix double destroy_workqueue error\n\nWhen gfs2_fill_super() fails, destroy_workqueue() is called within\ngfs2_gl_hash_clear(), and the subsequent code path calls\ndestroy_workqueue() on the same work queue again.\n\nThis issue can be fixed by setting the work queue pointer to NULL after\nthe first destroy_workqueue() call and checking for a NULL pointer\nbefore attempting to destroy the work queue again.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-49956"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cb9df81a2c462b89d2f9611009ab43ae8717841"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a5336035728d77efd76306940d742a6f23debe68"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T18:15:16Z"
+  }
+}

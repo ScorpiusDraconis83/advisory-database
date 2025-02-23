@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vxq8-9rpj-hgjg",
+  "modified": "2024-10-25T15:31:26Z",
+  "published": "2024-10-21T21:30:53Z",
+  "aliases": [
+    "CVE-2024-50023"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: phy: Remove LED entry from LEDs list on unregister\n\nCommit c938ab4da0eb (\"net: phy: Manual remove LEDs to ensure correct\nordering\") correctly fixed a problem with using devm_ but missed\nremoving the LED entry from the LEDs list.\n\nThis cause kernel panic on specific scenario where the port for the PHY\nis torn down and up and the kmod for the PHY is removed.\n\nOn setting the port down the first time, the assosiacted LEDs are\ncorrectly unregistered. The associated kmod for the PHY is now removed.\nThe kmod is now added again and the port is now put up, the associated LED\nare registered again.\nOn putting the port down again for the second time after these step, the\nLED list now have 4 elements. With the first 2 already unregistered\npreviously and the 2 new one registered again.\n\nThis cause a kernel panic as the first 2 element should have been\nremoved.\n\nFix this by correctly removing the element when LED is unregistered.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50023"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/143ffa7878e2d9d9c3836ee8304ce4930f7852a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f50b5d74c68e551667e265123659b187a30fe3a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fba363f4d244269a0ba7abb8df953a244c6749af"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:15Z"
+  }
+}

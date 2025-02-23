@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-28mc-jvx2-g85v",
+  "modified": "2025-02-10T18:30:47Z",
+  "published": "2025-02-10T18:30:46Z",
+  "aliases": [
+    "CVE-2025-21686"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/rsrc: require cloned buffers to share accounting contexts\n\nWhen IORING_REGISTER_CLONE_BUFFERS is used to clone buffers from uring\ninstance A to uring instance B, where A and B use different MMs for\naccounting, the accounting can go wrong:\nIf uring instance A is closed before uring instance B, the pinned memory\ncounters for uring instance B will be decremented, even though the pinned\nmemory was originally accounted through uring instance A; so the MM of\nuring instance B can end up with negative locked memory.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21686"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/19d340a2988d4f3e673cded9dde405d727d7e248"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cafc60ae35f82ebf156b3245f979ca61cbb8e42c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/efd96fbe23fa87de39116f632401f67b93be21ab"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-10T16:15:38Z"
+  }
+}

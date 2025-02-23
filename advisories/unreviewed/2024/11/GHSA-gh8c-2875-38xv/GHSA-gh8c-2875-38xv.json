@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gh8c-2875-38xv",
+  "modified": "2024-11-23T03:31:57Z",
+  "published": "2024-11-19T18:31:07Z",
+  "aliases": [
+    "CVE-2024-53076"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: gts-helper: Fix memory leaks for the error path of iio_gts_build_avail_scale_table()\n\nIf per_time_scales[i] or per_time_gains[i] kcalloc fails in the for loop\nof iio_gts_build_avail_scale_table(), the err_free_out will fail to call\nkfree() each time when i is reduced to 0, so all the per_time_scales[0]\nand per_time_gains[0] will not be freed, which will cause memory leaks.\n\nFix it by checking if i >= 0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53076"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/369f05688911b05216cfcd6ca74473bec87948d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62c11896683129790b8f5ab6eb7e695818b0b723"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b304362ce836968b803e5d4c5f84dcb51a7bf0f2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-19T18:15:27Z"
+  }
+}

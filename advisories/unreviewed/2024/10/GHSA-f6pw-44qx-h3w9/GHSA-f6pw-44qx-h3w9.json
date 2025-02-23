@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f6pw-44qx-h3w9",
+  "modified": "2024-10-24T21:31:02Z",
+  "published": "2024-10-21T21:30:50Z",
+  "aliases": [
+    "CVE-2022-48955"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: thunderbolt: fix memory leak in tbnet_open()\n\nWhen tb_ring_alloc_rx() failed in tbnet_open(), ida that allocated in\ntb_xdomain_alloc_out_hopid() is not released. Add\ntb_xdomain_release_out_hopid() to the error path to release ida.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-48955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9274dbe399952a8175db2e1ee148b7c9ba2b538"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed14e5903638f6eb868e3e2b4e610985e6a6c876"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed6e955f3b7e0e622c080f4bcb5427a5e1af4c2a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:06Z"
+  }
+}

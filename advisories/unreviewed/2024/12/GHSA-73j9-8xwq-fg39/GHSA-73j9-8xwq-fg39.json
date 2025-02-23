@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73j9-8xwq-fg39",
+  "modified": "2024-12-06T09:30:48Z",
+  "published": "2024-12-06T09:30:48Z",
+  "aliases": [
+    "CVE-2024-11823"
+  ],
+  "details": "The Folder Gallery plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'foldergallery' shortcode in all versions up to, and including, 1.7.4 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11823"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/folder-gallery/trunk/foldergallery.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/folder-gallery"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b4521959-416e-4ff5-96c0-bc4dbb0187b7?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-06T09:15:07Z"
+  }
+}

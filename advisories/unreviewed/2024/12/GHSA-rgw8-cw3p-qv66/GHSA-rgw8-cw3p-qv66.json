@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rgw8-cw3p-qv66",
+  "modified": "2024-12-11T21:31:57Z",
+  "published": "2024-12-02T15:31:39Z",
+  "aliases": [
+    "CVE-2024-53114"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/CPU/AMD: Clear virtualized VMLOAD/VMSAVE on Zen4 client\n\nA number of Zen4 client SoCs advertise the ability to use virtualized\nVMLOAD/VMSAVE, but using these instructions is reported to be a cause\nof a random host reboot.\n\nThese instructions aren't intended to be advertised on Zen4 client\nso clear the capability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53114"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/00c713f84f477a85e524f34aad8fbd11a1c051f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a5ca1dc46a6b610dd4627d8b633d6c84f9724ef0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-02T14:15:12Z"
+  }
+}

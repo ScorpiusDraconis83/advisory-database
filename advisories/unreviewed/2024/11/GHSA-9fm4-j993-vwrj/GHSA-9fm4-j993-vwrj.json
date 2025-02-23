@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9fm4-j993-vwrj",
+  "modified": "2024-11-14T18:30:32Z",
+  "published": "2024-11-09T12:30:49Z",
+  "aliases": [
+    "CVE-2024-50238"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nphy: qcom: qmp-usbc: fix NULL-deref on runtime suspend\n\nCommit 413db06c05e7 (\"phy: qcom-qmp-usb: clean up probe initialisation\")\nremoved most users of the platform device driver data from the\nqcom-qmp-usb driver, but mistakenly also removed the initialisation\ndespite the data still being used in the runtime PM callbacks. This bug\nwas later reproduced when the driver was copied to create the qmp-usbc\ndriver.\n\nRestore the driver data initialisation at probe to avoid a NULL-pointer\ndereference on runtime suspend.\n\nApparently no one uses runtime PM, which currently needs to be enabled\nmanually through sysfs, with these drivers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34c21f94fa1e147a19b54b6adf0c93a623b70dd8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7086dc0539b1b2b61c8c735186698bca4858246"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-09T11:15:09Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jj94-6v6v-cc35",
+  "modified": "2025-01-21T15:31:03Z",
+  "published": "2025-01-21T15:31:03Z",
+  "aliases": [
+    "CVE-2025-21660"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix unexpectedly changed path in ksmbd_vfs_kern_path_locked\n\nWhen `ksmbd_vfs_kern_path_locked` met an error and it is not the last\nentry, it will exit without restoring changed path buffer. But later this\nbuffer may be used as the filename for creation.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21660"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13e41c58c74baa71f34c0830eaa3c29d53a6e964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ac538e40278a2c0c051cca81bcaafc547d61372"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51669f4af5f7959565b48e55691ba92fabf5c587"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65b31b9d992c0fb0685c51a0cf09993832734fc4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-21T13:15:09Z"
+  }
+}

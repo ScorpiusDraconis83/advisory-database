@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hvf3-fq2g-9gmg",
+  "modified": "2024-10-29T18:30:35Z",
+  "published": "2024-10-21T21:30:50Z",
+  "aliases": [
+    "CVE-2022-48948"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: uvc: Prevent buffer overflow in setup handler\n\nSetup function uvc_function_setup permits control transfer\nrequests with up to 64 bytes of payload (UVC_MAX_REQUEST_SIZE),\ndata stage handler for OUT transfer uses memcpy to copy req->actual\nbytes to uvc_event->data.data array of size 60. This may result\nin an overflow of 4 bytes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-48948"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06fd17ee92c8f1704c7e54ec0fd50ae0542a49a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4972e3528b968665b596b5434764ff8fd9446d35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c92670b16727365699fe4b19ed32013bab2c107"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b41a35b41f77821db24f2d8f66794b390a585c5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b1f773277a72f9756d47a41b94e43506cce1954"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8fb1cba934ea122b50f13a4f9d6fc4fdc43d2be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc8380fe5768c564f921f7b4eaba932e330b9e4b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c79538f32df12887f110dcd6b9c825b482905f24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1a92bb8d697f170d93fe922da763d7d156b8841"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:06Z"
+  }
+}

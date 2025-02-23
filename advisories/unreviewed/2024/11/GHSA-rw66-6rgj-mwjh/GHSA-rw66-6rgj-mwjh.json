@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rw66-6rgj-mwjh",
+  "modified": "2024-11-15T18:30:50Z",
+  "published": "2024-11-15T18:30:50Z",
+  "aliases": [
+    "CVE-2022-20871"
+  ],
+  "details": "A vulnerability in the web management interface of Cisco&nbsp;AsyncOS for Cisco&nbsp;Secure Web Appliance, formerly Cisco&nbsp;Web Security Appliance (WSA),&nbsp;could allow an authenticated, remote attacker to perform a command injection and elevate privileges to root.\nThis vulnerability is due to insufficient validation of user-supplied input for the web interface. An attacker could exploit this vulnerability by authenticating to the system and sending a crafted HTTP packet to the affected device. A successful exploit could allow the attacker to execute arbitrary commands on the underlying operating system and elevate privileges to root. To successfully exploit this vulnerability, an attacker would need at least read-only credentials.Cisco&nbsp;has released software updates that address this vulnerability. There are no workarounds that address this vulnerability.Attention: Simplifying the Cisco&nbsp;portfolio includes the renaming of security products under one brand: Cisco&nbsp;Secure. For more information, see .",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-20871"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-bw-thinrcpt-xss-gSj4CecU"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-cssm-priv-esc-SEjz69dv"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-wsa-prv-esc-8PdRU8t8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-15T16:15:23Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pqw3-898v-hg67",
+  "modified": "2025-01-07T21:30:55Z",
+  "published": "2024-12-29T12:30:40Z",
+  "aliases": [
+    "CVE-2024-56730"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/9p/usbg: fix handling of the failed kzalloc() memory allocation\n\nOn the linux-next, next-20241108 vanilla kernel, the coccinelle tool gave the\nfollowing error report:\n\n./net/9p/trans_usbg.c:912:5-11: ERROR: allocation function on line 911 returns\nNULL not ERR_PTR on failure\n\nkzalloc() failure is fixed to handle the NULL return case on the memory exhaustion.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56730"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2cdb416de8b5795fd25fadcb69e1198b6df6d8cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff1060813d9347e8c45c8b8cff93a4dfdb6726ad"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-29T12:15:07Z"
+  }
+}

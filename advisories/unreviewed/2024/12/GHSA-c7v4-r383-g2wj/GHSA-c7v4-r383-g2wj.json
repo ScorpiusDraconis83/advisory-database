@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c7v4-r383-g2wj",
+  "modified": "2024-12-11T18:30:39Z",
+  "published": "2024-12-04T15:31:52Z",
+  "aliases": [
+    "CVE-2024-53132"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/oa: Fix \"Missing outer runtime PM protection\" warning\n\nFix the following drm_WARN:\n\n[953.586396] xe 0000:00:02.0: [drm] Missing outer runtime PM protection\n...\n<4> [953.587090]  ? xe_pm_runtime_get_noresume+0x8d/0xa0 [xe]\n<4> [953.587208]  guc_exec_queue_add_msg+0x28/0x130 [xe]\n<4> [953.587319]  guc_exec_queue_fini+0x3a/0x40 [xe]\n<4> [953.587425]  xe_exec_queue_destroy+0xb3/0xf0 [xe]\n<4> [953.587515]  xe_oa_release+0x9c/0xc0 [xe]\n\n(cherry picked from commit b107c63d2953907908fd0cafb0e543b3c3167b75)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0403e4ceecaefbeaf78263dffcd3e3f06a19f6b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed7cd3510d8da6e3578d9125a9ea4440f8adeeaa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-04T15:15:13Z"
+  }
+}

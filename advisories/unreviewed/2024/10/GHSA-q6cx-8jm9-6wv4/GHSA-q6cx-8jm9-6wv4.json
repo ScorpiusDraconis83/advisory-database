@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q6cx-8jm9-6wv4",
+  "modified": "2024-10-31T15:30:58Z",
+  "published": "2024-10-21T21:30:52Z",
+  "aliases": [
+    "CVE-2022-49000"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/vt-d: Fix PCI device refcount leak in has_external_pci()\n\nfor_each_pci_dev() is implemented by pci_get_device(). The comment of\npci_get_device() says that it will increase the reference count for the\nreturned pci_dev and also decrease the reference count for the input\npci_dev @from if it is not NULL.\n\nIf we break for_each_pci_dev() loop with pdev not NULL, we need to call\npci_dev_put() to decrease the reference count. Add the missing\npci_dev_put() before 'return true' to avoid reference count leak.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49000"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/10ed7655a17f6a3eaecd1293830488259ccd5723"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17f67414718e6aba123335a33b7d15aa594fff34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/afca9e19cc720bfafc75dc5ce429c185ca93f31d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b6eea8b2e858a20ad58ac62dc2de90fea2413f94"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:11Z"
+  }
+}

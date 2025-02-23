@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6pgr-38pf-3863",
+  "modified": "2024-12-16T18:31:09Z",
+  "published": "2024-12-16T18:31:09Z",
+  "aliases": [
+    "CVE-2024-11144"
+  ],
+  "details": "The server lacks thread safety and can be crashed by anomalous data sent by an anonymous user from a remote network. The crash causes the FTP service to become unavailable, affecting all users and processes that rely on it for file transfers. If the crash occurs during file upload or download, it could lead to incomplete file transfers, potentially corrupting data. The repeated crash might also affect the stability of the underlying system, especially if it leads to resource leaks or affects other services.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:Y/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11144"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.blackduck.com/blog/cyrc-advisory-LightFTP.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-16T17:15:07Z"
+  }
+}

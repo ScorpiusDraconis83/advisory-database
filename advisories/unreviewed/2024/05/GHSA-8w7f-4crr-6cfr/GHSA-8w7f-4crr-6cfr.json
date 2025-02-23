@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8w7f-4crr-6cfr",
+  "modified": "2024-12-31T21:30:44Z",
+  "published": "2024-05-21T18:31:17Z",
+  "aliases": [
+    "CVE-2022-48709"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: switch: fix potential memleak in ice_add_adv_recipe()\n\nWhen ice_add_special_words() fails, the 'rm' is not released, which will\nlead to a memory leak. Fix this up by going to 'err_unroll' label.\n\nCompile tested only.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-48709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47f4ff6f23f00f5501ff2d7054c1a37c170a7aa0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a606ce68426c88ff2563382b33cc34f3485fe57"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-05-21T16:15:12Z"
+  }
+}

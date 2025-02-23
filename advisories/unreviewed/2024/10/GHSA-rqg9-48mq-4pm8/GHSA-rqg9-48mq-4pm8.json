@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rqg9-48mq-4pm8",
+  "modified": "2024-10-24T18:30:41Z",
+  "published": "2024-10-21T18:30:57Z",
+  "aliases": [
+    "CVE-2024-49916"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Add NULL check for clk_mgr and clk_mgr->funcs in dcn401_init_hw\n\nThis commit addresses a potential null pointer dereference issue in the\n`dcn401_init_hw` function. The issue could occur when `dc->clk_mgr` or\n`dc->clk_mgr->funcs` is null.\n\nThe fix adds a check to ensure `dc->clk_mgr` and `dc->clk_mgr->funcs` is\nnot null before accessing its functions. This prevents a potential null\npointer dereference.\n\nReported by smatch:\ndrivers/gpu/drm/amd/amdgpu/../display/dc/hwss/dcn401/dcn401_hwseq.c:416 dcn401_init_hw() error: we previously assumed 'dc->clk_mgr' could be null (see line 225)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-49916"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b6377f0e96085cbec96eb7f0b282430ccdd3d75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac1c41e318074d8a9ea925787e366be15d7645e8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T18:15:13Z"
+  }
+}

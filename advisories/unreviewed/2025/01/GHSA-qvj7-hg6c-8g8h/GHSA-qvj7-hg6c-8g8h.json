@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qvj7-hg6c-8g8h",
+  "modified": "2025-01-31T18:31:04Z",
+  "published": "2025-01-11T15:30:28Z",
+  "aliases": [
+    "CVE-2024-48873"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw89: check return value of ieee80211_probereq_get() for RNR\n\nThe return value of ieee80211_probereq_get() might be NULL, so check it\nbefore using to avoid NULL pointer access.\n\nAddresses-Coverity-ID: 1529805 (\"Dereference null return value\")",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-48873"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a0f54cb3fea5d087440b2bae03202c445156a8d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/630d5d8f2bf6b340202b6bc2c05d794bbd8e4c1c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7296e5611adb2c619bd7bd3817ddde7ba865ef17"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-11T13:15:22Z"
+  }
+}

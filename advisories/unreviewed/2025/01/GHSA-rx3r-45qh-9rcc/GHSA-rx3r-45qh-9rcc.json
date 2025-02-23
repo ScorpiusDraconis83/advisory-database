@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rx3r-45qh-9rcc",
+  "modified": "2025-01-28T21:31:01Z",
+  "published": "2025-01-27T18:32:02Z",
+  "aliases": [
+    "CVE-2024-26317"
+  ],
+  "details": "In illumos illumos-gate 2024-02-15, an error occurs in the elliptic curve point addition algorithm that uses mixed Jacobian-affine coordinates, causing the algorithm to yield a result of POINT_AT_INFINITY when it should not. A man-in-the-middle attacker could use this to interfere with a connection, resulting in an attacked party computing an incorrect shared secret.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-26317"
+    },
+    {
+      "type": "WEB",
+      "url": "https://drive.google.com/file/d/1aGLAFz20-fc7ZLiWouegyK_65jCkGTDb/view?usp=sharing"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/illumos/illumos-gate"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rashidkhanpathan.github.io/posts/CVE-2024-26317-Elliptic-curve-point-addition-error"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-327"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-27T18:15:38Z"
+  }
+}

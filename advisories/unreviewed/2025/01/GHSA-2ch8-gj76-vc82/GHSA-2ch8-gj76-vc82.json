@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2ch8-gj76-vc82",
+  "modified": "2025-01-30T12:31:17Z",
+  "published": "2025-01-30T12:31:17Z",
+  "aliases": [
+    "CVE-2025-0861"
+  ],
+  "details": "The VR-Frases (collect & share quotes) plugin for WordPress is vulnerable to SQL Injection via several parameters in all versions up to, and including, 3.0.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-0861"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.svn.wordpress.org/vr-frases/tags/3.0.1/includes/vr-frases-admin.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/1d9d5afb-d38d-442c-8511-f1683739a1da?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-30T10:15:08Z"
+  }
+}

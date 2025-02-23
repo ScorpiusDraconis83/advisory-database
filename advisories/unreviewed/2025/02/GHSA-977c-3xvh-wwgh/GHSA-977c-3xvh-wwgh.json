@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-977c-3xvh-wwgh",
+  "modified": "2025-02-20T00:32:04Z",
+  "published": "2025-02-20T00:32:04Z",
+  "aliases": [
+    "CVE-2024-5706"
+  ],
+  "details": "The product receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control. (CWE-99) \n\n\n\n\n\n\nHitachi Vantara Pentaho Data Integration & Analytics versions before 10.2.0.0 and 9.3.0.9, including 8.3.x, do not restrict JNDI identifiers during the creation of Community Dashboards, allowing control of system-level data sources. \n\n\n\n\n\n\n\nAn attacker could gain access to or modify sensitive data or system resources. This could allow access to protected files or directories including configuration files and files containing sensitive information, which can lead to remote code execution by unauthorized users.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-5706"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.pentaho.com/hc/en-us/articles/34296195570189--Resolved-Hitachi-Vantara-Pentaho-Data-Integration-Analytics-Improper-Control-of-Resource-Identifiers-Resource-Injection-Versions-before-10-2-0-0-and-9-3-0-9-including-8-3-x-Impacted-CVE-2024-5706"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-99"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-19T23:15:10Z"
+  }
+}

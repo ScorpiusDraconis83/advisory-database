@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9pwp-p2rw-34f5",
+  "modified": "2025-01-08T21:32:24Z",
+  "published": "2024-12-27T15:31:51Z",
+  "aliases": [
+    "CVE-2024-53201"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Fix null check for pipe_ctx->plane_state in dcn20_program_pipe\n\nThis commit addresses a null pointer dereference issue in\ndcn20_program_pipe(). Previously, commit 8e4ed3cf1642 (\"drm/amd/display:\nAdd null check for pipe_ctx->plane_state in dcn20_program_pipe\")\npartially fixed the null pointer dereference issue. However, in\ndcn20_update_dchubp_dpp(), the variable pipe_ctx is passed in, and\nplane_state is accessed again through pipe_ctx. Multiple if statements\ndirectly call attributes of plane_state, leading to potential null\npointer dereference issues. This patch adds necessary null checks to\nensure stability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53201"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3609259326171cd5b98462636580fb2ae5c87d40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a057072ddd127255350357dd880903e8fa23f36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b4ee2560d4d8de2688da68cd9581177035e0876"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T14:15:27Z"
+  }
+}

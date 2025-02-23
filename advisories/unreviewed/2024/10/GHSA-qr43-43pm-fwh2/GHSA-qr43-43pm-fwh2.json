@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qr43-43pm-fwh2",
+  "modified": "2024-11-01T18:31:27Z",
+  "published": "2024-10-21T21:30:49Z",
+  "aliases": [
+    "CVE-2024-50011"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: Intel: soc-acpi-intel-rpl-match: add missing empty item\n\nThere is no links_num in struct snd_soc_acpi_mach {}, and we test\n!link->num_adr as a condition to end the loop in hda_sdw_machine_select().\nSo an empty item in struct snd_soc_acpi_link_adr array is required.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50011"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5afc29ba44fdd1bcbad4e07246c395d946301580"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa3109ee91fe09e696274e6ac44813df8d13678f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T19:15:04Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8r37-8jq6-q9m7",
+  "modified": "2024-11-13T18:31:52Z",
+  "published": "2024-11-07T12:30:35Z",
+  "aliases": [
+    "CVE-2024-50159"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scmi: Fix the double free in scmi_debugfs_common_setup()\n\nClang static checker(scan-build) throws below warning：\n  |  drivers/firmware/arm_scmi/driver.c:line 2915, column 2\n  |        Attempt to free released memory.\n\nWhen devm_add_action_or_reset() fails, scmi_debugfs_common_cleanup()\nwill run twice which causes double free of 'dbg->name'.\n\nRemove the redundant scmi_debugfs_common_cleanup() to fix this problem.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50159"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39b13dce1a91cdfc3bec9238f9e89094551bd428"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d91d07913aee90556362d648d6a28a1eda419dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb324fdaf546bf14bc4c17e0037bca6cb952b121"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-07T10:15:07Z"
+  }
+}

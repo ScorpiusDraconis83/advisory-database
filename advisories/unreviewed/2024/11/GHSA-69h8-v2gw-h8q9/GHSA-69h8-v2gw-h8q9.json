@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-69h8-v2gw-h8q9",
+  "modified": "2024-11-22T21:32:13Z",
+  "published": "2024-11-19T18:31:06Z",
+  "aliases": [
+    "CVE-2024-53062"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: mgb4: protect driver against spectre\n\nFrequency range is set from sysfs via frequency_range_store(),\nbeing vulnerable to spectre, as reported by smatch:\n\n\tdrivers/media/pci/mgb4/mgb4_cmt.c:231 mgb4_cmt_set_vin_freq_range() warn: potential spectre issue 'cmt_vals_in' [r]\n\tdrivers/media/pci/mgb4/mgb4_cmt.c:238 mgb4_cmt_set_vin_freq_range() warn: possible spectre second half.  'reg_set'\n\nFix it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53062"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2aee207e5b3c94ef859316008119ea06d6798d49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0bc90742bbd6eb9c63e6c22f8f6e10be7b1e225"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-19T18:15:26Z"
+  }
+}

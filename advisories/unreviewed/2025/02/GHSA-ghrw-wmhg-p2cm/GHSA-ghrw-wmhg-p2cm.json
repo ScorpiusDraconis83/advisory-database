@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ghrw-wmhg-p2cm",
+  "modified": "2025-02-21T18:31:07Z",
+  "published": "2025-02-10T18:30:46Z",
+  "aliases": [
+    "CVE-2024-57950"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Initialize denominator defaults to 1\n\n[WHAT & HOW]\nVariables, used as denominators and maybe not assigned to other values,\nshould be initialized to non-zero to avoid DIVIDE_BY_ZERO, as reported\nby Coverity.\n\n(cherry picked from commit e2c4c6c10542ccfe4a0830bb6c9fd5b177b7bbb7)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57950"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36b23e3baf9129d5b6c3a3a85b6b7ffb75ae287c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9d6afb4f9c338049662d27d169fba7dd60e337d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-369"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-10T16:15:37Z"
+  }
+}

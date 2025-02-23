@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9vmr-6cpv-xpw5",
+  "modified": "2024-11-18T18:30:47Z",
+  "published": "2024-11-09T00:30:43Z",
+  "aliases": [
+    "CVE-2024-48073"
+  ],
+  "details": "sunniwell HT3300 before 1.0.0.B022.2 is vulnerable to Insecure Permissions. The /usr/local/bin/update program, which is responsible for updating the software in the HT3300 device, is given the execution mode of sudo NOPASSWD. This program is vulnerable to a command injection vulnerability, which could allow an attacker to pass commands to this program via command line arguments to gain elevated root privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-48073"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/Giles-one/56f677b96aab5a67fbe31dd41fd1303d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Giles-one/sunniwellHT3300PrivilegeEscalation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-08T22:15:20Z"
+  }
+}

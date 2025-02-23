@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ww4x-x76m-jf7h",
+  "modified": "2024-11-14T18:30:37Z",
+  "published": "2024-11-14T18:30:37Z",
+  "aliases": [
+    "CVE-2024-4343"
+  ],
+  "details": "A Python command injection vulnerability exists in the `SagemakerLLM` class's `complete()` method within `./private_gpt/components/llm/custom/sagemaker.py` of the imartinez/privategpt application, versions up to and including 0.3.0. The vulnerability arises due to the use of the `eval()` function to parse a string received from a remote AWS SageMaker LLM endpoint into a dictionary. This method of parsing is unsafe as it can execute arbitrary Python code contained within the response. An attacker can exploit this vulnerability by manipulating the response from the AWS SageMaker LLM endpoint to include malicious Python code, leading to potential execution of arbitrary commands on the system hosting the application. The issue is fixed in version 0.6.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-4343"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/imartinez/privategpt/commit/86368c61760c9cee5d977131d23ad2a3e063cbe9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/1d1e8f06-ec45-4b17-ae24-b83a41304c15"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-14T18:15:19Z"
+  }
+}

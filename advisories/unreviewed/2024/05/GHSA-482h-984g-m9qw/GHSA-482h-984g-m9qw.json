@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-482h-984g-m9qw",
+  "modified": "2024-12-23T18:30:47Z",
+  "published": "2024-05-21T15:31:42Z",
+  "aliases": [
+    "CVE-2021-47298"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf, sockmap: Fix potential memory leak on unlikely error case\n\nIf skb_linearize is needed and fails we could leak a msg on the error\nhandling. To fix ensure we kfree the msg block before returning error.\nFound during code review.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-47298"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c508a1c6c62793dc6e6872cad4b200097bab7c9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/715f378f42909c401ec043f5150c4fdf57fb8889"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7e6b27a69167f97c56b5437871d29e9722c3e470"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-05-21T15:15:17Z"
+  }
+}

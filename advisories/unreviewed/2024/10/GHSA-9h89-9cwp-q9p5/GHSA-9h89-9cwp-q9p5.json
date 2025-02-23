@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9h89-9cwp-q9p5",
+  "modified": "2024-10-17T03:31:31Z",
+  "published": "2024-10-17T03:31:31Z",
+  "aliases": [
+    "CVE-2024-9215"
+  ],
+  "details": "The Co-Authors, Multiple Authors and Guest Authors in an Author Box with PublishPress Authors plugin for WordPress is vulnerable to Insecure Direct Object Reference to Privilege Escalation/Account Takeover in all versions up to, and including, 4.7.1 via the action_edited_author() due to missing validation on the 'authors-user_id' user controlled key. This makes it possible for authenticated attackers, with Author-level access and above, to update arbitrary user accounts email addresses, including administrators, which can then be leveraged to reset that user's account password and gain access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-9215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/publishpress-authors/tags/4.7.1/src/core/Classes/Author_Editor.php#L594"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3169244%40publishpress-authors&new=3169244%40publishpress-authors&sfp_email=&sfph_mail=#file7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d0506137-82e3-4988-9b23-370465a866c0?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-17T02:15:02Z"
+  }
+}

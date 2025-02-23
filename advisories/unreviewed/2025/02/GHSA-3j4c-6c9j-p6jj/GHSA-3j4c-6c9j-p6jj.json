@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3j4c-6c9j-p6jj",
+  "modified": "2025-02-13T15:31:25Z",
+  "published": "2025-02-13T15:31:25Z",
+  "aliases": [
+    "CVE-2025-1270"
+  ],
+  "details": "Insecure direct object reference (IDOR) vulnerability in Anapi Group's h6web, allows an authenticated attacker to access other users' information by making a POST request and modifying the “pkrelated” parameter in the “/h6web/ha_datos_hermano.php” endpoint to refer to another user. In addition, the first request could also allow the attacker to impersonate other users. As a result, all requests made after exploitation of the IDOR vulnerability will be executed with the privileges of the impersonated user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-1270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.incibe.es/en/incibe-cert/notices/aviso/multiple-vulnerabilities-anapi-group-h6web"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-13T13:15:09Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m2p9-vjrp-wj7v",
+  "modified": "2024-12-28T12:30:48Z",
+  "published": "2024-12-28T12:30:48Z",
+  "aliases": [
+    "CVE-2024-56706"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/cpum_sf: Fix and protect memory allocation of SDBs with mutex\n\nReservation of the PMU hardware is done at first event creation\nand is protected by a pair of mutex_lock() and mutex_unlock().\nAfter reservation of the PMU hardware the memory\nrequired for the PMUs the event is to be installed on is\nallocated by allocate_buffers() and alloc_sampling_buffer().\nThis done outside of the mutex protection.\nWithout mutex protection two or more concurrent invocations of\nperf_event_init() may run in parallel.\nThis can lead to allocation of Sample Data Blocks (SDBs)\nmultiple times for the same PMU.\nPrevent this and protect memory allocation of SDBs by\nmutex.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56706"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b3bdfa89635db6a53e02955548bd07bebcae233"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f55bd479d8663a4a4e403b3d308d3d1aa33d92df"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-28T10:15:19Z"
+  }
+}

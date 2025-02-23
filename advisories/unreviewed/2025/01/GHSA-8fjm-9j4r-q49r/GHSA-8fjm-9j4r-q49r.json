@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8fjm-9j4r-q49r",
+  "modified": "2025-01-28T21:31:04Z",
+  "published": "2025-01-28T21:31:04Z",
+  "aliases": [
+    "CVE-2024-40672"
+  ],
+  "details": "In onCreate of ChooserActivity.java, there is a possible way to bypass factory reset protections due to a missing permission check. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-40672"
+    },
+    {
+      "type": "WEB",
+      "url": "https://android.googlesource.com/platform/packages/modules/IntentResolver/+/ccd29124d0d2276a3071c0418c14dec188cd3727"
+    },
+    {
+      "type": "WEB",
+      "url": "https://source.android.com/security/bulletin/2024-10-01"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-281"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-28T20:15:49Z"
+  }
+}

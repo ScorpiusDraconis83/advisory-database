@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qqwx-8prm-3682",
+  "modified": "2024-11-14T21:32:03Z",
+  "published": "2024-11-14T21:32:03Z",
+  "aliases": [
+    "CVE-2024-3760"
+  ],
+  "details": "In lunary-ai/lunary version 1.2.7, there is a lack of rate limiting on the forgot password page, leading to an email bombing vulnerability. Attackers can exploit this by automating forgot password requests to flood targeted user accounts with a high volume of password reset emails. This not only overwhelms the victim's mailbox, making it difficult to manage and locate legitimate emails, but also significantly impacts mail servers by consuming their resources. The increased load can cause performance degradation and, in severe cases, make the mail servers unresponsive or unavailable, disrupting email services for the entire organization.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-3760"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lunary-ai/lunary/commit/29374bb10020712009c1ec238affe098112a51d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/c29e9f36-8261-463d-8862-7f4fdcc8eddc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-14T19:15:06Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-82vq-g77c-v2h9",
+  "modified": "2024-11-08T18:30:47Z",
+  "published": "2024-10-29T03:31:06Z",
+  "aliases": [
+    "CVE-2024-50076"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvt: prevent kernel-infoleak in con_font_get()\n\nfont.data may not initialize all memory spaces depending on the implementation\nof vc->vc_sw->con_font_get. This may cause info-leak, so to prevent this, it\nis safest to modify it to initialize the allocated memory space to 0, and it\ngenerally does not affect the overall performance of the system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50076"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e5a17dc77d8a8bbe67040b32e2ef755901aba44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23c4cb8a56978e5b1baa171d42e616e316c2039d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/adb1f312f38f0d2c928ceaff089262798cc260b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3959d5eca136e0588f9af3867b34032160cb826"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc2d5f02636c7587bdd6d1f60fc59c55860b00a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc794e878e6d79f75205be456b1042a289c5759d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/efc67cee700b89ffbdb74a0603a083ec1290ae31"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f956052e00de211b5c9ebaa1958366c23f82ee9e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-909"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-29T01:15:04Z"
+  }
+}

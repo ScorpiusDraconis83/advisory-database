@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5ggj-xwvc-9x57",
+  "modified": "2024-11-22T21:32:13Z",
+  "published": "2024-11-19T18:31:06Z",
+  "aliases": [
+    "CVE-2024-53056"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/mediatek: Fix potential NULL dereference in mtk_crtc_destroy()\n\nIn mtk_crtc_create(), if the call to mbox_request_channel() fails then we\nset the \"mtk_crtc->cmdq_client.chan\" pointer to NULL.  In that situation,\nwe do not call cmdq_pkt_create().\n\nDuring the cleanup, we need to check if the \"mtk_crtc->cmdq_client.chan\"\nis NULL first before calling cmdq_pkt_destroy().  Calling\ncmdq_pkt_destroy() is unnecessary if we didn't call cmdq_pkt_create() and\nit will result in a NULL pointer dereference.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53056"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4018651ba5c409034149f297d3dd3328b91561fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c60583a87cb4a85b69d1f448f0be5eb6ec62cbb2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-19T18:15:25Z"
+  }
+}

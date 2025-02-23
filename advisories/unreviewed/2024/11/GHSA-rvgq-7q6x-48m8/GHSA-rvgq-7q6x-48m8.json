@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rvgq-7q6x-48m8",
+  "modified": "2024-11-01T09:30:45Z",
+  "published": "2024-11-01T09:30:44Z",
+  "aliases": [
+    "CVE-2024-7424"
+  ],
+  "details": "The Multiple Page Generator Plugin – MPG plugin for WordPress is vulnerable to unauthorized modification of and access to data due to a missing capability check on several functions in all versions up to, and including, 4.0.1. This makes it possible for authenticated attackers, with Subscriber-level access and above, to invoke those functions intended for admin use resulting in subscribers being able to upload csv files and view the contents of MPG projects.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-7424"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/multiple-pages-generator-by-porthas/trunk/controllers/DatasetController.php#L261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/multiple-pages-generator-by-porthas/trunk/models/ProjectModel.php#L286"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3174918/multiple-pages-generator-by-porthas/trunk/controllers/DatasetController.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3174918/multiple-pages-generator-by-porthas/trunk/models/ProjectModel.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3178830%40multiple-pages-generator-by-porthas%2Ftrunk&old=3174918%40multiple-pages-generator-by-porthas%2Ftrunk&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/860848c1-dd67-4baf-a571-bc866c5f12f8?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-01T08:15:11Z"
+  }
+}

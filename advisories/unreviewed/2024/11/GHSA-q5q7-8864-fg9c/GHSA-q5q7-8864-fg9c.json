@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q5q7-8864-fg9c",
+  "modified": "2024-11-22T21:32:13Z",
+  "published": "2024-11-20T21:30:49Z",
+  "aliases": [
+    "CVE-2024-48981"
+  ],
+  "details": "An issue was discovered in MBed OS 6.16.0. During processing of HCI packets, the software dynamically determines the length of the packet header by looking up the identifying first byte and matching it against a table of possible lengths. The initial parsing function, hciTrSerialRxIncoming does not drop packets with invalid identifiers but also does not set a safe default for the length of unknown packets' headers, leading to a buffer overflow. This can be leveraged into an arbitrary write by an attacker. It is possible to overwrite the pointer to a not-yet-allocated buffer that is supposed to receive the contents of the packet body. One can then overwrite the state variable used by the function to determine which state of packet parsing is currently occurring. Because the buffer is allocated when the last byte of the header has been copied, the combination of having a bad header length variable that will never match the counter variable and being able to overwrite the state variable with the resulting buffer overflow can be used to advance the function to the next step while skipping the buffer allocation and resulting pointer write. The next 16 bytes from the packet body are then written wherever the corrupted data pointer is pointing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-48981"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mbed-ce/mbed-os/pull/374"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mbed-ce/mbed-os/blob/54e8693ef4ff7e025018094f290a1d5cf380941f/connectivity/FEATURE_BLE/source/cordio/stack_adaptation/hci_tr.c#L161"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-20T20:15:19Z"
+  }
+}

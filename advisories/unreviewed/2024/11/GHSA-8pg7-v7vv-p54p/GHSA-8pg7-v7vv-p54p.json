@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8pg7-v7vv-p54p",
+  "modified": "2024-11-14T18:30:37Z",
+  "published": "2024-11-14T18:30:37Z",
+  "aliases": [
+    "CVE-2024-3379"
+  ],
+  "details": "In lunary-ai/lunary versions 1.2.2 through 1.2.6, an incorrect authorization vulnerability allows unprivileged users to re-generate the private key for projects they do not have access to. Specifically, a user with a 'Member' role can issue a request to regenerate the private key of a project without having the necessary permissions or being assigned to that project. This issue was fixed in version 1.2.7.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-3379"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lunary-ai/lunary/commit/c57cd50fa0477fd2a2efe60810c0099eebd66f54"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/739df024-a112-47aa-b51d-988c3f855e92"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-14T18:15:18Z"
+  }
+}

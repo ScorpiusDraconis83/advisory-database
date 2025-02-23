@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jpxr-m6m7-vfg6",
+  "modified": "2024-11-15T12:31:45Z",
+  "published": "2024-11-15T12:31:45Z",
+  "aliases": [
+    "CVE-2024-0875"
+  ],
+  "details": "A stored cross-site scripting (XSS) vulnerability exists in openemr/openemr version 7.0.1. An attacker can inject malicious payloads into the 'inputBody' field in the Secure Messaging feature, which can then be sent to other users. When the recipient views the malicious message, the payload is executed, potentially compromising their account. This issue is fixed in version 7.0.2.1.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-0875"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openemr/openemr/commit/d141d2ca06fb2171a202c7302dd5d5af8539f255"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/16cba0fc-748d-4ea8-9573-1f6fbe9a27c9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-15T11:15:09Z"
+  }
+}

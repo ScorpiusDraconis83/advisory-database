@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-48g3-w2gf-xjrv",
+  "modified": "2025-02-22T12:30:29Z",
+  "published": "2025-02-22T12:30:29Z",
+  "aliases": [
+    "CVE-2025-21704"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: cdc-acm: Check control transfer buffer size before access\n\nIf the first fragment is shorter than struct usb_cdc_notification, we can't\ncalculate an expected_size. Log an error and discard the notification\ninstead of reading lengths from memory outside the received data, which can\nlead to memory corruption when the expected_size decreases between\nfragments, causing `expected_size - acm->nb_index` to wrap.\n\nThis issue has been present since the beginning of git history; however,\nit only leads to memory corruption since commit ea2583529cd1\n(\"cdc-acm: reassemble fragmented notifications\").\n\nA mitigating factor is that acm_ctrl_irq() can only execute after userspace\nhas opened /dev/ttyACM*; but if ModemManager is running, ModemManager will\ndo that automatically depending on the USB device's vendor/product IDs and\nits other interfaces.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21704"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/383d516a0ebc8641372b521c8cb717f0f1834831"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6abb510251e75f875797d8983a830e6731fa281c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7828e9363ac4d23b02419bf2a45b9f1d9fb35646"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e563b01208f4d1f609bcab13333b6c0e24ce6a01"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f64079bef6a8a7823358c3f352ea29a617844636"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-22T10:15:11Z"
+  }
+}

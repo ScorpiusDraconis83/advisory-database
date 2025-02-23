@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-38x5-mx6x-v39w",
+  "modified": "2024-12-03T18:31:02Z",
+  "published": "2024-11-25T00:31:54Z",
+  "aliases": [
+    "CVE-2024-11666"
+  ],
+  "details": "Affected devices beacon to eCharge cloud infrastructure asking if there are any command they should run. This communication is established over an insecure channel since peer verification is disabled everywhere. Therefore, remote unauthenticated users  suitably positioned on the network between an EV charger controller and eCharge infrastructure can execute arbitrary commands with elevated privileges on affected devices.\n\nThis issue affects cph2_echarge_firmware: through 2.0.4.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11666"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.onekey.com/resource/critical-vulnerabilities-in-ev-charging-stations-analysis-of-echarge-controllers"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-24T23:15:04Z"
+  }
+}

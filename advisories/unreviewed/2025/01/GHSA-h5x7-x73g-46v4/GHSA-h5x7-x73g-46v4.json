@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h5x7-x73g-46v4",
+  "modified": "2025-01-29T12:31:45Z",
+  "published": "2025-01-29T12:31:45Z",
+  "aliases": [
+    "CVE-2024-13561"
+  ],
+  "details": "The Target Video Easy Publish plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's brid_override_yt shortcode in all versions up to, and including, 3.8.3 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-13561"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/brid-video-easy-publish/trunk/lib/BridShortcode.php#L412"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3226143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/brid-video-easy-publish/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/cc67fbfa-d84c-45c3-bbb1-4557dc70a8c9?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-29T12:15:27Z"
+  }
+}

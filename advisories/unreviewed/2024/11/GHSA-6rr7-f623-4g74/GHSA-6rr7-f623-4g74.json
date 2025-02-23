@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6rr7-f623-4g74",
+  "modified": "2024-11-26T09:30:50Z",
+  "published": "2024-11-26T09:30:50Z",
+  "aliases": [
+    "CVE-2024-11119"
+  ],
+  "details": "The BNE Gallery Extended plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'gallery' shortcode in all versions up to, and including, 1.2.1 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11119"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bne-gallery-extended/trunk/bne-gallery-extended.php#L178"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3191705"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/bne-gallery-extended/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/1f9277d8-ac81-4950-a1e5-4e6c6b042f84?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-26T09:15:05Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h539-fm3j-34j4",
+  "modified": "2024-10-25T18:30:48Z",
+  "published": "2024-10-21T21:30:51Z",
+  "aliases": [
+    "CVE-2022-48990"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix use-after-free during gpu recovery\n\n[Why]\n    [  754.862560] refcount_t: underflow; use-after-free.\n    [  754.862898] Call Trace:\n    [  754.862903]  <TASK>\n    [  754.862913]  amdgpu_job_free_cb+0xc2/0xe1 [amdgpu]\n    [  754.863543]  drm_sched_main.cold+0x34/0x39 [amd_sched]\n\n[How]\n    The fw_fence may be not init, check whether dma_fence_init\n    is performed before job free",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-48990"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cb93f390453cde4d6afda1587aaa00e75e09617"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2a89cd942edd50c1e652004fd64019be78b0a96"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:10Z"
+  }
+}

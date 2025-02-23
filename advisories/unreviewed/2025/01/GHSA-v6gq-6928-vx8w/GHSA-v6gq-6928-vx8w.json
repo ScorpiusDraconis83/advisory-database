@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v6gq-6928-vx8w",
+  "modified": "2025-01-31T09:31:49Z",
+  "published": "2025-01-31T09:31:49Z",
+  "aliases": [
+    "CVE-2024-13623"
+  ],
+  "details": "The Order Export for WooCommerce plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 3.24 via the 'uploads' directory. This makes it possible for unauthenticated attackers to extract sensitive data stored insecurely in the /wp-content/uploads directory which can contain exported order information. The plugin is only vulnerable when 'Order data storage' is set to 'WordPress posts storage (legacy)', and cannot be exploited when the default option of 'High-performance order storage' is enabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-13623"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/order-export-and-more-for-woocommerce/trunk/inc/JEMEXP_Order.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3230283"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/18d6dffd-8df3-4611-ad94-6d806aa7328a?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-31T07:15:09Z"
+  }
+}

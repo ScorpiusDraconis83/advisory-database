@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5w2p-jhh5-rpr3",
+  "modified": "2024-10-11T18:32:49Z",
+  "published": "2024-10-11T18:32:49Z",
+  "aliases": [
+    "CVE-2024-47506"
+  ],
+  "details": "A Deadlock vulnerability in the packet forwarding engine (PFE) of Juniper Networks Junos OS on SRX Series allows an unauthenticated, network-based attacker to cause a Denial of Service (DoS).\n\nWhen a large amount of traffic is processed by ATP Cloud inspection, a deadlock can occur which will result in a PFE crash and restart. Whether the crash occurs, depends on system internal timing that is outside the attackers control.\n\n\n\nThis issue affects Junos OS on SRX Series:\n\n\n\n  *  All versions before 21.3R3-S1,\n  *  21.4 versions before 21.4R3,\n  *  22.1 versions before 22.1R2,\n  *  22.2 versions before 22.2R1-S2, 22.2R2.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:A/V:X/RE:M/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-47506"
+    },
+    {
+      "type": "WEB",
+      "url": "https://supportportal.juniper.net/JSA88137"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-833"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-11T16:15:12Z"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9r43-p7wr-7396",
+  "modified": "2025-01-06T18:31:01Z",
+  "published": "2024-12-29T12:30:41Z",
+  "aliases": [
+    "CVE-2024-56749"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndlm: fix dlm_recover_members refcount on error\n\nIf dlm_recover_members() fails we don't drop the references of the\nprevious created root_list that holds and keep all rsbs alive during the\nrecovery. It might be not an unlikely event because ping_members() could\nrun into an -EINTR if another recovery progress was triggered again.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/200b977ebbc313a59174ba971006a231b3533dc5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3230718a75a6c30ed60ac920c26be2119fa82b8e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb2ec564887af1f365d754f7c306f1b5cd375b5e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-29T12:15:08Z"
+  }
+}

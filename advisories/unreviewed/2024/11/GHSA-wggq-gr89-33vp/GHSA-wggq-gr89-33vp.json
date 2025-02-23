@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wggq-gr89-33vp",
+  "modified": "2024-11-12T18:30:51Z",
+  "published": "2024-11-05T18:32:11Z",
+  "aliases": [
+    "CVE-2024-50097"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: fec: don't save PTP state if PTP is unsupported\n\nSome platforms (such as i.MX25 and i.MX27) do not support PTP, so on\nthese platforms fec_ptp_init() is not called and the related members\nin fep are not initialized. However, fec_ptp_save_state() is called\nunconditionally, which causes the kernel to panic. Therefore, add a\ncondition so that fec_ptp_save_state() is not called if PTP is not\nsupported.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50097"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3192e8d4a1ef9fc9bd7a59cdce51543367e5edd6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6be063071a457767ee229db13f019c2ec03bfe44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7745e14f4c036ce94a5eb05d06e49b0d84b306f9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-05T17:15:06Z"
+  }
+}

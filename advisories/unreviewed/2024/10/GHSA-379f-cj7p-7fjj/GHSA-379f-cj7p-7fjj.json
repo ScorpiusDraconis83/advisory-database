@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-379f-cj7p-7fjj",
+  "modified": "2024-10-22T18:32:10Z",
+  "published": "2024-10-21T15:32:27Z",
+  "aliases": [
+    "CVE-2024-47746"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse: use exclusive lock when FUSE_I_CACHE_IO_MODE is set\n\nThis may be a typo. The comment has said shared locks are\nnot allowed when this bit is set. If using shared lock, the\nwait in `fuse_file_cached_io_open` may be forever.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-47746"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f3d8ff457982f4055fe8f7bf19d3821ba22c376"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e181761ffec67307157a7e8a78d58ee4130cf00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa4890bd8237e5a1e7428acd7328729db2703b23"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T13:15:04Z"
+  }
+}

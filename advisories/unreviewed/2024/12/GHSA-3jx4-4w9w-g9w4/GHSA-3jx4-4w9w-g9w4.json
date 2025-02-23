@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3jx4-4w9w-g9w4",
+  "modified": "2024-12-16T09:31:09Z",
+  "published": "2024-12-16T09:31:09Z",
+  "aliases": [
+    "CVE-2024-12642"
+  ],
+  "details": "TenderDocTransfer from Chunghwa Telecom has an Arbitrary File Write vulnerability. The application sets up a simple local web server and provides APIs for communication with the target website. Due to the lack of CSRF protection for the APIs, unauthenticated remote attackers could use these APIs through phishing. Additionally, one of the APIs contains a Relative Path Traversal vulnerability, allowing attackers to write arbitrary files to any path on the user's system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12642"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.twcert.org.tw/en/cp-139-8300-2eaa1-2.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.twcert.org.tw/tw/cp-132-8294-44d13-1.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-23"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-16T07:15:06Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h7g6-mwmp-g4cj",
+  "modified": "2024-11-08T21:33:53Z",
+  "published": "2024-11-05T18:32:12Z",
+  "aliases": [
+    "CVE-2024-50109"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/raid10: fix null ptr dereference in raid10_size()\n\nIn raid10_run() if raid10_set_queue_limits() succeed, the return value\nis set to zero, and if following procedures failed raid10_run() will\nreturn zero while mddev->private is still NULL, causing null ptr\ndereference in raid10_size().\n\nFix the problem by only overwrite the return value if\nraid10_set_queue_limits() failed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/825711e00117fc686ab89ac36a9a7b252dc349c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3054db2fd2d35f2eb3b4b5fb1407792f465391c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-05T18:15:14Z"
+  }
+}

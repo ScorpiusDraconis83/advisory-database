@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9c44-5659-5mgq",
+  "modified": "2024-10-24T21:31:02Z",
+  "published": "2024-10-21T21:30:51Z",
+  "aliases": [
+    "CVE-2022-48964"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nravb: Fix potential use-after-free in ravb_rx_gbeth()\n\nThe skb is delivered to napi_gro_receive() which may free it, after calling this,\ndereferencing skb may trigger use-after-free.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-48964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a5a3e564de6a8db987410c5c2f4748d50ea82b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e63c681494dcc0527c625a0a4f59bf10259f5ee0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:08Z"
+  }
+}

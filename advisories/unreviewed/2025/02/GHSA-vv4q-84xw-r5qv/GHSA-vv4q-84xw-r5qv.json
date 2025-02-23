@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vv4q-84xw-r5qv",
+  "modified": "2025-02-03T21:31:49Z",
+  "published": "2025-02-03T21:31:49Z",
+  "aliases": [
+    "CVE-2024-12859"
+  ],
+  "details": "The BoomBox Theme Extensions plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 1.8.0 via the 'boombox_listing' shortcode 'type' attribute. This makes it possible for authenticated attackers, with contributor-level and above permissions, to include and execute arbitrary files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where php file type can be uploaded and included.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12859"
+    },
+    {
+      "type": "WEB",
+      "url": "https://documentation.px-lab.com/boombox/changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c3a647b6-ed9e-402d-9424-2937f7aa8960?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-98"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-03T20:15:32Z"
+  }
+}

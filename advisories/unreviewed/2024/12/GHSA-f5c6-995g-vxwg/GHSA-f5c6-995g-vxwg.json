@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f5c6-995g-vxwg",
+  "modified": "2024-12-12T06:30:50Z",
+  "published": "2024-12-12T06:30:50Z",
+  "aliases": [
+    "CVE-2024-12406"
+  ],
+  "details": "The Library Management System – Manage e-Digital Books Library plugin for WordPress is vulnerable to SQL Injection via the 'owt7_borrow_books_id' parameter in all versions up to, and including, 3.0.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for authenticated attackers, with Subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12406"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/library-management-system/trunk/admin/class-library-management-system-admin.php#L1882"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/0b4cb873-77b7-44f9-820c-38e5d43393f3?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-12T05:15:12Z"
+  }
+}

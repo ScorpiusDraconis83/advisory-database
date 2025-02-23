@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m2wj-x8qh-wqcv",
+  "modified": "2024-10-30T18:30:48Z",
+  "published": "2024-10-29T03:31:06Z",
+  "aliases": [
+    "CVE-2024-50071"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npinctrl: nuvoton: fix a double free in ma35_pinctrl_dt_node_to_map_func()\n\n'new_map' is allocated using devm_* which takes care of freeing the\nallocated data on device removal, call to\n\n\t.dt_free_map = pinconf_generic_dt_free_map\n\ndouble frees the map as pinconf_generic_dt_free_map() calls\npinctrl_utils_free_map().\n\nFix this by using kcalloc() instead of auto-managed devm_kcalloc().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50071"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3fd976afe9743110f20a23f93b7ff9693f2be4bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6441d9c3d71b59c8fd27d4e381c7471a32ac1a68"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-29T01:15:04Z"
+  }
+}

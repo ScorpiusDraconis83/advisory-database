@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8cmm-g77p-8476",
+  "modified": "2025-01-16T06:31:10Z",
+  "published": "2025-01-16T06:31:10Z",
+  "aliases": [
+    "CVE-2024-11452"
+  ],
+  "details": "The Chamber Dashboard Business Directory plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'business_categories' shortcode in all versions up to, and including, 3.3.8 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11452"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/chamber-dashboard-business-directory/trunk/shortcodes/bus_cat_shortcode.php#L52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3222548"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/54e5989f-3d2c-4ed3-b4c4-f2589b885637?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-16T04:15:08Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j397-m7mx-jcv9",
+  "modified": "2025-02-11T18:31:33Z",
+  "published": "2025-02-09T12:30:53Z",
+  "aliases": [
+    "CVE-2025-21685"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: lenovo-yoga-tab2-pro-1380-fastcharger: fix serdev race\n\nThe yt2_1380_fc_serdev_probe() function calls devm_serdev_device_open()\nbefore setting the client ops via serdev_device_set_client_ops(). This\nordering can trigger a NULL pointer dereference in the serdev controller's\nreceive_buf handler, as it assumes serdev->ops is valid when\nSERPORT_ACTIVE is set.\n\nThis is similar to the issue fixed in commit 5e700b384ec1\n(\"platform/chrome: cros_ec_uart: properly fix race condition\") where\ndevm_serdev_device_open() was called before fully initializing the\ndevice.\n\nFix the race by ensuring client ops are set before enabling the port via\ndevm_serdev_device_open().\n\nNote, serdev_device_set_baudrate() and serdev_device_set_flow_control()\ncalls should be after the devm_serdev_device_open() call.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f67e07873df3c6d9ce2582260b83732e1d3a40b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59616a91e5e74833b2008b56c66879857c616006"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-09T12:15:29Z"
+  }
+}

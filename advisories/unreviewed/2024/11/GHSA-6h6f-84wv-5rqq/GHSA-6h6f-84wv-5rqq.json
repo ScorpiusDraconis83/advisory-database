@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6h6f-84wv-5rqq",
+  "modified": "2024-11-19T18:30:54Z",
+  "published": "2024-11-08T06:30:49Z",
+  "aliases": [
+    "CVE-2024-50207"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nring-buffer: Fix reader locking when changing the sub buffer order\n\nThe function ring_buffer_subbuf_order_set() updates each\nring_buffer_per_cpu and installs new sub buffers that match the requested\npage order. This operation may be invoked concurrently with readers that\nrely on some of the modified data, such as the head bit (RB_PAGE_HEAD), or\nthe ring_buffer_per_cpu.pages and reader_page pointers. However, no\nexclusive access is acquired by ring_buffer_subbuf_order_set(). Modifying\nthe mentioned data while a reader also operates on them can then result in\nincorrect memory access and various crashes.\n\nFix the problem by taking the reader_lock when updating a specific\nring_buffer_per_cpu in ring_buffer_subbuf_order_set().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09661f75e75cb6c1d2d8326a70c311d46729235f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a569290525a05162d5dd26d9845591eaf46e5802"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-08T06:15:17Z"
+  }
+}

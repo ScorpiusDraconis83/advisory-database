@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77pj-c5wq-j7q7",
+  "modified": "2025-01-11T15:30:28Z",
+  "published": "2025-01-11T15:30:28Z",
+  "aliases": [
+    "CVE-2024-53682"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nregulator: axp20x: AXP717: set ramp_delay\n\nAXP717 datasheet says that regulator ramp delay is 15.625 us/step,\nwhich is 10mV in our case.\n\nAdd a AXP_DESC_RANGES_DELAY macro and update AXP_DESC_RANGES macro to\nexpand to AXP_DESC_RANGES_DELAY with ramp_delay = 0\n\nFor DCDC4, steps is 100mv\n\nAdd a AXP_DESC_DELAY macro and update AXP_DESC macro to\nexpand to AXP_DESC_DELAY with ramp_delay = 0\n\nThis patch fix crashes when using CPU DVFS.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53682"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/10eb845a87193ef922cd002e0ff4f4759c1e918d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f07ae52f5cf6a5584fdf7c8c652f027d90bc8b74"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-11T13:15:25Z"
+  }
+}

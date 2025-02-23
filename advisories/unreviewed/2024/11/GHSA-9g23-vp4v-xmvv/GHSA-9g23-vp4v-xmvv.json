@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9g23-vp4v-xmvv",
+  "modified": "2024-11-28T18:38:36Z",
+  "published": "2024-11-28T18:38:36Z",
+  "aliases": [
+    "CVE-2024-11203"
+  ],
+  "details": "The EmbedPress – Embed PDF, 3D Flipbook, Social Feeds, Google Docs, Vimeo, Wistia, YouTube Videos, Audios, Google Maps in Gutenberg Block & Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘provider_name parameter in all versions up to, and including, 4.1.3 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11203"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WPDevelopers/embedpress/blob/a6aa3339d9dc69ab6f9338ded073e5709173c2d4/EmbedPress/Shortcode.php#L240"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WPDevelopers/embedpress/blob/a6aa3339d9dc69ab6f9338ded073e5709173c2d4/vendor/wpdevelopers/embera/src/Embera/ProviderCollection/ProviderCollectionAdapter.php#L173"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3196371"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/167dedfa-36cc-4b01-8ea4-8eda8742953c?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-28T09:15:04Z"
+  }
+}

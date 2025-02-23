@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f754-p36j-5c6r",
+  "modified": "2024-10-25T21:31:27Z",
+  "published": "2024-10-21T21:30:51Z",
+  "aliases": [
+    "CVE-2022-48981"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/shmem-helper: Remove errant put in error path\n\ndrm_gem_shmem_mmap() doesn't own this reference, resulting in the GEM\nobject getting prematurely freed leading to a later use-after-free.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-48981"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24013314be6ee4ee456114a671e9fa3461323de8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/585a07b820059462e0c93b76c7de2cd946b26b40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/586847b98e20ab02212ca5c1fc46680384e68a28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a4da05acd062ae7774b6b19cef2b7d922902d36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83e3da8bb92fcfa7a1d232cf55f9e6c49bb84942"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:10Z"
+  }
+}

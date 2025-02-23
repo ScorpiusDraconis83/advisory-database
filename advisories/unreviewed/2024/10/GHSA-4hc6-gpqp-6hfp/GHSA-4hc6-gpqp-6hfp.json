@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4hc6-gpqp-6hfp",
+  "modified": "2024-10-17T06:30:32Z",
+  "published": "2024-10-17T06:30:32Z",
+  "aliases": [
+    "CVE-2024-9263"
+  ],
+  "details": "The WP Timetics- AI-powered Appointment Booking Calendar and Online Scheduling Plugin plugin for WordPress is vulnerable to Account Takeover/Privilege Escalation via Insecure Direct Object Reference in all versions up to, and including, 1.0.25 via the save() due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to reset the emails and passwords of arbitrary user accounts, including administrators, which makes account takeover and privilege escalation possible.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-9263"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/timetics/tags/1.0.25/core/customers/customer.php#L299"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3169771/timetics/trunk/core/customers/api-customer.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3169771/timetics/trunk/core/customers/customer.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/74bd595b-d2fa-4c62-82d2-dba2c2b128f0?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-17T04:15:05Z"
+  }
+}

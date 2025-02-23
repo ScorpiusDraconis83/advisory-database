@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-942x-h2h3-8wxm",
+  "modified": "2025-02-07T18:31:17Z",
+  "published": "2025-01-30T06:30:49Z",
+  "aliases": [
+    "CVE-2025-0662"
+  ],
+  "details": "In some cases, the ktrace facility will log the contents of kernel structures to userspace.  In one such case, ktrace dumps a variable-sized sockaddr to userspace.  There, the full sockaddr is copied, even when it is shorter than the full size.  This can result in up to 14 uninitialized bytes of kernel memory being copied out to userspace.\n\nIt is possible for an unprivileged userspace program to leak 14 bytes of a kernel heap allocation to userspace.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-0662"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-25:04.ktrace.asc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.netapp.com/advisory/ntap-20250207-0006"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-30T05:15:10Z"
+  }
+}

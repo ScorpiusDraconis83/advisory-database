@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fv43-fjwv-823r",
+  "modified": "2025-02-19T12:31:45Z",
+  "published": "2025-02-19T12:31:45Z",
+  "aliases": [
+    "CVE-2025-0916"
+  ],
+  "details": "The YaySMTP and Email Logs: Amazon SES, SendGrid, Outlook, Mailgun, Brevo, Google and Any SMTP Service plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions 2.4.9 to 2.6.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Note: The vulnerability has been initially patched in version 2.4.8 and was reintroduced in version 2.4.9 with the removal of the wp_kses_post() built-in WordPress sanitization function.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-0916"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/yaysmtp/trunk/includes/Functions.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/yaysmtp/trunk/includes/Helper/Utils.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3238172"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/yaysmtp/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/209019bd-b214-4389-a972-42e38d501203?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-19T12:15:31Z"
+  }
+}

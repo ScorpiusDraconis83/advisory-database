@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5pj6-3hcq-wv78",
+  "modified": "2024-11-15T18:30:49Z",
+  "published": "2024-11-15T18:30:49Z",
+  "aliases": [
+    "CVE-2022-20685"
+  ],
+  "details": "A vulnerability in the Modbus preprocessor of the Snort detection engine could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition on an affected device.\nThis vulnerability is due to an integer overflow while processing Modbus traffic. An attacker could exploit this vulnerability by sending crafted Modbus traffic through an affected device. A successful exploit could allow the attacker to cause the Snort process to hang, causing traffic inspection to stop.Cisco&nbsp;has released software updates that address this vulnerability. There are no workarounds that address this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-20685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sna-xss-NXOxDhRQ"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-snort-dos-9D3hJLuj"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-15T16:15:21Z"
+  }
+}

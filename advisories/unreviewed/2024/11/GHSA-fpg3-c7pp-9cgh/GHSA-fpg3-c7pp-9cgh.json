@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fpg3-c7pp-9cgh",
+  "modified": "2024-11-15T12:31:44Z",
+  "published": "2024-11-15T12:31:44Z",
+  "aliases": [
+    "CVE-2022-1226"
+  ],
+  "details": "A Cross-Site Scripting (XSS) vulnerability in phpipam/phpipam versions prior to 1.4.7 allows attackers to execute arbitrary JavaScript code in the browser of a victim. This vulnerability affects the import Data set feature via a spreadsheet file upload. The affected endpoints include import-vlan-preview.php, import-subnets-preview.php, import-vrf-preview.php, import-ipaddr-preview.php, import-devtype-preview.php, import-devices-preview.php, and import-l2dom-preview.php. The vulnerability can be exploited by uploading a specially crafted spreadsheet file containing malicious JavaScript payloads, which are then executed in the context of the victim's browser. This can lead to defacement of websites, execution of malicious JavaScript code, stealing of user cookies, and unauthorized access to user accounts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-1226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phpipam/phpipam/commit/50e36b9e4fff5eaa51dc6e42bc684748da378002"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/3fdcf653-fe26-4592-94a1-98ce664618ec"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-15T11:15:07Z"
+  }
+}

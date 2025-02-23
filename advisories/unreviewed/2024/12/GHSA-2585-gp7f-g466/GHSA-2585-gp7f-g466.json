@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2585-gp7f-g466",
+  "modified": "2025-01-14T18:31:53Z",
+  "published": "2024-12-27T15:31:51Z",
+  "aliases": [
+    "CVE-2024-53202"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware_loader: Fix possible resource leak in fw_log_firmware_info()\n\nThe alg instance should be released under the exception path, otherwise\nthere may be resource leak here.\n\nTo mitigate this, free the alg instance with crypto_free_shash when kmalloc\nfails.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53202"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/369a9c046c2fdfe037f05b43b84c386bdbccc103"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/789a72498d32f88d24371c10985aceb46397056c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb5d67d00ad17a5bd0920f455160dc2ccbd2dc78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f380f895dbb2a11d62ca6df9e82d995f4bc26b84"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T14:15:27Z"
+  }
+}

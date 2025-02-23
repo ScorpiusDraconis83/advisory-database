@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8g38-jgjc-p9jh",
+  "modified": "2024-12-11T09:32:03Z",
+  "published": "2024-10-14T15:30:45Z",
+  "aliases": [
+    "CVE-2024-8602"
+  ],
+  "details": "When the XML is read from the codes in the PDF and parsed using a DocumentBuilder, the default settings of the DocumentBuilder allow for an XXE (XML External Entity) attack. Further information on this can be found on the website of the Open Worldwide Application Security Project (OWASP). An attacker could theoretically leverage this by delivering a manipulated PDF file to the target, and depending on the environment, various actions can be executed. These actions include:\n\n  *  Reading files from the operating system\n  *  Crashing the thread handling the parsing or causing it to enter an infinite loop\n  *  Executing HTTP requests\n  *  Loading additional DTDs or XML files\n  *  Under certain conditions, executing OS commands",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:H/UI:A/VC:L/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:N/AU:N/R:X/V:X/RE:L/U:Green"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-8602"
+    },
+    {
+      "type": "WEB",
+      "url": "https://esteuer.ewv-ete.ch/fileadmin/esta/2024-10-09-update/24_09_esta_newsletter_de.pdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mkiesel.ch/posts/swiss-tax-adventures-1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-611"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-14T14:15:12Z"
+  }
+}

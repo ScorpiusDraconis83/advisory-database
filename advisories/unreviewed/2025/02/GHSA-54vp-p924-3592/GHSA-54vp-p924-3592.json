@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-54vp-p924-3592",
+  "modified": "2025-02-20T12:31:14Z",
+  "published": "2025-02-20T12:31:14Z",
+  "aliases": [
+    "CVE-2024-13520"
+  ],
+  "details": "The Gift Cards (Gift Vouchers and Packages) (WooCommerce Supported) plugin for WordPress is vulnerable to unauthorized modification of data|loss of data due to a missing capability check on the 'update_voucher_price', 'update_voucher_date', 'update_voucher_note' functions in all versions up to, and including, 4.4.6. This makes it possible for unauthenticated attackers to update the value, expiration date, and user note for any gift voucher.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-13520"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gift-voucher/trunk/include/edit-order-voucher.php#L30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gift-voucher/trunk/include/edit-order-voucher.php#L5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gift-voucher/trunk/include/edit-order-voucher.php#L56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/190a21cd-9716-4a57-a793-63309c339427?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-20T10:15:10Z"
+  }
+}

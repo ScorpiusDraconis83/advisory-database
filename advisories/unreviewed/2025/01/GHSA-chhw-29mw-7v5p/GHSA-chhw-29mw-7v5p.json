@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-chhw-29mw-7v5p",
+  "modified": "2025-01-07T06:32:15Z",
+  "published": "2025-01-07T06:32:15Z",
+  "aliases": [
+    "CVE-2024-12322"
+  ],
+  "details": "The ThePerfectWedding.nl Widget plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 2.8. This is due to missing or incorrect nonce validation on the 'update_option' function. This makes it possible for unauthenticated attackers to update the 'tpwKey' option with stored cross-site scripting via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/theperfectweddingnl-widget/trunk/admin/tpwAdminPanelTemplate.php#L28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/theperfectweddingnl-widget/trunk/admin/tpwAdminPanelTemplate.php#L4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/theperfectweddingnl-widget/trunk/admin/tpwAdminPanelTemplate.php#L48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/theperfectweddingnl-widget/trunk/admin/tpwAdminPanelTemplate.php#L5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e996f71a-f0b9-4e10-873e-a0299a099dce?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-07T05:15:18Z"
+  }
+}

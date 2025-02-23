@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c44c-v227-hv3q",
+  "modified": "2024-10-25T21:31:27Z",
+  "published": "2024-10-21T21:30:51Z",
+  "aliases": [
+    "CVE-2022-48968"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-pf: Fix potential memory leak in otx2_init_tc()\n\nIn otx2_init_tc(), if rhashtable_init() failed, it does not free\ntc->tc_entries_bitmap which is allocated in otx2_tc_alloc_ent_bitmap().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-48968"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/db5ec358cf4ef0ab382ee733d05f018e8bef9462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eefd8953a74822cb72006632b9ee9dd95f92c146"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fbf33f5ac76f2cdb47ad9763f620026d5cfa57ce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:08Z"
+  }
+}

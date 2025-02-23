@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-643q-778f-w3wx",
+  "modified": "2024-10-29T18:30:35Z",
+  "published": "2024-10-25T00:33:06Z",
+  "aliases": [
+    "CVE-2024-41617"
+  ],
+  "details": "Money Manager EX WebApp (web-money-manager-ex) 1.2.2 is vulnerable to Incorrect Access Control. The `redirect_if_not_loggedin` function in `functions_security.php` fails to terminate script execution after redirecting unauthenticated users. This flaw allows an unauthenticated attacker to upload arbitrary files, potentially leading to Remote Code Execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-41617"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moneymanagerex/web-money-manager-ex/issues/51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moneymanagerex/web-money-manager-ex/commit/f2850b295ee21bc299799343a3bc4d004d05651d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moneymanagerex/web-money-manager-ex/releases/tag/v1.2.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://youtu.be/JaOrlT9G3yo?t=88"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-24T22:15:03Z"
+  }
+}

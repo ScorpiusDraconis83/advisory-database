@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x682-hgrr-h4qw",
+  "modified": "2025-02-12T00:32:17Z",
+  "published": "2025-02-12T00:32:17Z",
+  "aliases": [
+    "CVE-2020-3432"
+  ],
+  "details": "A vulnerability in the uninstaller component of Cisco AnyConnect Secure Mobility Client for Mac OS could allow an authenticated, local attacker to corrupt the content of any file in the filesystem.\n The vulnerability is due to the incorrect handling of directory paths. An attacker could exploit this vulnerability by creating a symbolic link (symlink) to a target file on a specific path. A successful exploit could allow the attacker to corrupt the contents of the file. If the file is a critical systems file, the exploit could lead to a denial of service condition. To exploit this vulnerability, the attacker would need to have valid credentials on the system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-3432"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-anyconnect-mac-dos-36s2y3Lv"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-12T00:15:07Z"
+  }
+}

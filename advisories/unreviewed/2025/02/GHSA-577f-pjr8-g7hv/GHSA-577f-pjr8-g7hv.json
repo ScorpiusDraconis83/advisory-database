@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-577f-pjr8-g7hv",
+  "modified": "2025-02-18T06:35:39Z",
+  "published": "2025-02-18T06:35:39Z",
+  "aliases": [
+    "CVE-2024-13852"
+  ],
+  "details": "The Option Editor plugin for WordPress is vulnerable to Cross-Site Request Forgery in version 1.0. This is due to missing nonce validation on the plugin_page() function. This makes it possible for unauthenticated attackers to update arbitrary options on the WordPress site via a forged request, granted they can trick a site administrator into performing an action such as clicking on a link. This can be leveraged to update the default role for registration to administrator and enable user registration for attackers to gain administrative user access to a vulnerable site.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-13852"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/option-editor/trunk/option-editor.php#L70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/option-editor/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/50adbe1d-9d79-4015-9e09-2166f97efc47?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-18T05:15:19Z"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3ch2-635c-gvxq",
+  "modified": "2024-11-08T18:30:44Z",
+  "published": "2024-10-21T15:32:26Z",
+  "aliases": [
+    "CVE-2023-52917"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntb: intel: Fix the NULL vs IS_ERR() bug for debugfs_create_dir()\n\nThe debugfs_create_dir() function returns error pointers.\nIt never returns NULL. So use IS_ERR() to check it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-52917"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16e5bed6c1883b19f9fcbdff996aa3381954d5f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/20cbc281033ef5324f67f2d54bc539968f937255"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b2fbba4e44630a59b09d32627b63c4ffdf70f78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7cbd6d7fb9ba2be03978809c848e2e50eaeead2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a429158f2e0a7a03eb67fd5e204e1f6735c725aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b66bf833e72a1e23d7ccafc0f8f74e80f8c357b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/babba8595d1e5d57313a6187f3e51aceacc6881a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e229897d373a87ee09ec5cc4ecd4bb2f895fc16b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ef7e34237e2612b116a84c9640628a6f7a0d693e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T13:15:02Z"
+  }
+}

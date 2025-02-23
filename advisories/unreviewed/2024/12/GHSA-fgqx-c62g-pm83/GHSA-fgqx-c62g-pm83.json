@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fgqx-c62g-pm83",
+  "modified": "2024-12-04T03:31:17Z",
+  "published": "2024-12-04T03:31:17Z",
+  "aliases": [
+    "CVE-2024-10952"
+  ],
+  "details": "The The Authors List plugin for WordPress is vulnerable to arbitrary shortcode execution via update_authors_list_ajax AJAX action in all versions up to, and including, 2.0.4. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for unauthenticated attackers to execute arbitrary shortcodes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10952"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/authors-list/tags/2.0.4/backend/includes/class-authors-list-item.php#L843"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/authors-list/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/8b3cfe0a-dcfb-40f3-ba43-4e838c113010?source=cve"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wpkube.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-04T03:15:04Z"
+  }
+}

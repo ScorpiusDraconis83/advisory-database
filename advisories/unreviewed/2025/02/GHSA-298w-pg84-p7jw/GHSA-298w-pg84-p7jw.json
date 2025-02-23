@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-298w-pg84-p7jw",
+  "modified": "2025-02-20T15:31:09Z",
+  "published": "2025-02-20T00:32:05Z",
+  "aliases": [
+    "CVE-2024-37361"
+  ],
+  "details": "The application deserializes untrusted data without sufficiently verifying that the resulting data will be valid. (CWE-502)\n\n\n\n \n\n\n\nHitachi Vantara Pentaho Business Analytics Server versions before 10.2.0.0 and 9.3.0.9, including 8.3.x, deserialize untrusted JSON data without constraining the parser to approved classes and methods.\n\n\n\n \n\n\n\nWhen developers place no restrictions on \"gadget chains,\" or series of instances and method invocations that can self-execute during the deserialization process (i.e., before the object is returned to the caller), it is sometimes possible for attackers to leverage them to perform unauthorized actions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-37361"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.pentaho.com/hc/en-us/articles/34298351866893--Resolved-Hitachi-Vantara-Pentaho-Business-Analytics-Server-Improper-Neutralization-of-Input-During-Web-Page-Generation-Cross-site-Scripting-Versions-before-10-2-0-0-and-9-3-0-9-including-8-3-x-Impacted-CVE-2024-37360"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.pentaho.com/hc/en-us/articles/34299135441805--Resolved-Hitachi-Vantara-Pentaho-Business-Analytics-Server-Deserialization-of-Untrusted-Data-Versions-before-10-2-0-0-and-9-3-0-9-including-8-3-x-Impacted-CVE-2024-37361"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-20T00:15:19Z"
+  }
+}

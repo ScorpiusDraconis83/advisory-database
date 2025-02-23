@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g6c6-8rrm-qrmr",
+  "modified": "2024-12-14T06:30:48Z",
+  "published": "2024-12-14T06:30:48Z",
+  "aliases": [
+    "CVE-2024-12447"
+  ],
+  "details": "The Get Post Content Shortcode plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 0.4 via the 'post-content' shortcode due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with Contributor-level access and above, to read the content of password-protected, private, draft, and pending posts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12447"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/get-post-content-shortcode/trunk/get-post-content-shortcode.php#L106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c2b92091-e615-484f-b402-2e793eed214d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-14T05:15:10Z"
+  }
+}

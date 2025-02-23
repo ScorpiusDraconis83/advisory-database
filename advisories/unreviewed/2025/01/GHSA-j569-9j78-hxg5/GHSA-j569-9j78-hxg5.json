@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j569-9j78-hxg5",
+  "modified": "2025-01-30T09:30:37Z",
+  "published": "2025-01-30T09:30:37Z",
+  "aliases": [
+    "CVE-2024-13758"
+  ],
+  "details": "The CP Contact Form with PayPal plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.3.52. This is due to missing or incorrect nonce validation on the cp_contact_form_paypal_check_init_actions() function. This makes it possible for unauthenticated attackers to add discount codes via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-13758"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cp-contact-form-with-paypal/trunk/cp_contactformpp_functions.php#L616"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3230873"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/cp-contact-form-with-paypal/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/495183b6-dc7c-4ff7-bc99-fc05a10d1269?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-30T09:15:08Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7wrv-9f62-9f8c",
+  "modified": "2024-10-17T03:31:31Z",
+  "published": "2024-10-17T03:31:31Z",
+  "aliases": [
+    "CVE-2024-9862"
+  ],
+  "details": "The Miniorange OTP Verification with Firebase plugin for WordPress is vulnerable to Arbitrary User Password Change in versions up to, and including, 3.6.0. This is due to the plugin providing user-controlled access to objects, letting a user bypass authorization and access system resources, and the user current password check is missing. This makes it possible for unauthenticated attackers to change user passwords and potentially take over administrator accounts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-9862"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/miniorange-firebase-sms-otp-verification/tags/3.6.0/handler/forms/class-loginform.php#L236"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3169869/miniorange-firebase-sms-otp-verification#file3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/9c3df12d-e526-4a23-89d3-bfdcea9f7b2d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-17T02:15:03Z"
+  }
+}

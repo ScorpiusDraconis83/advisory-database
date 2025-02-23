@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j58h-ppm8-rm4x",
+  "modified": "2025-01-31T15:30:44Z",
+  "published": "2025-01-19T12:31:27Z",
+  "aliases": [
+    "CVE-2024-57927"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfs: Fix oops in nfs_netfs_init_request() when copying to cache\n\nWhen netfslib wants to copy some data that has just been read on behalf of\nnfs, it creates a new write request and calls nfs_netfs_init_request() to\ninitialise it, but with a NULL file pointer.  This causes\nnfs_file_open_context() to oops - however, we don't actually need the nfs\ncontext as we're only going to write to the cache.\n\nFix this by just returning if we aren't given a file pointer and emit a\nwarning if the request was for something other than copy-to-cache.\n\nFurther, fix nfs_netfs_free_request() so that it doesn't try to free the\ncontext if the pointer is NULL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57927"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13a07cc81e2d116cece727a83746c74b87a9d417"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86ad1a58f6a9453f49e06ef957a40a8dac00a13f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-19T12:15:26Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6v73-jj37-xggm",
+  "modified": "2024-11-15T18:30:50Z",
+  "published": "2024-11-15T18:30:50Z",
+  "aliases": [
+    "CVE-2023-20093"
+  ],
+  "details": "Three vulnerabilities in the CLI of Cisco TelePresence CE and RoomOS could allow an authenticated, local attacker to overwrite arbitrary files on the local file system of an affected device.\n\nThese vulnerabilities are due to improper access controls on files that are on the local file system. An attacker could exploit these vulnerabilities by placing a symbolic link in a specific location on the local file system of an affected device. A successful exploit could allow the attacker to overwrite arbitrary files on the affected device. To exploit these vulnerabilities, an attacker would need to have a remote support user account.\nNote: CVE-2023-20092 does not affect Cisco DX70, DX80, TelePresence MX Series, or TelePresence SX Series devices.\nCisco has released software updates that address these vulnerabilities. There are no workarounds that address these vulnerabilities.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-20093"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-roomos-file-write-rHKwegKf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-61"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-15T16:15:26Z"
+  }
+}

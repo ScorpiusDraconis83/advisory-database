@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2779-2c23-rw2v",
+  "modified": "2024-12-12T06:30:50Z",
+  "published": "2024-12-12T06:30:50Z",
+  "aliases": [
+    "CVE-2024-12461"
+  ],
+  "details": "The WP-Revive Adserver plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'wprevive_async' shortcode in all versions up to, and including, 2.2.1 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12461"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-revive-adserver/trunk/src/Inc/WPReviveShortcodes.php#L26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/wp-revive-adserver"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/649545c8-e6a2-4587-a439-17081f389d46?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-12T04:15:07Z"
+  }
+}

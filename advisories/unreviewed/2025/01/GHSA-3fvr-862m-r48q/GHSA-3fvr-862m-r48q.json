@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3fvr-862m-r48q",
+  "modified": "2025-01-31T12:33:02Z",
+  "published": "2025-01-31T12:33:01Z",
+  "aliases": [
+    "CVE-2024-13472"
+  ],
+  "details": "The The WooCommerce Product Table Lite plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 3.9.4. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for unauthenticated attackers to execute arbitrary shortcodes. The same 'sc_attrs' parameter is vulnerable to Reflected Cross-Site Scripting as well.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-13472"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wc-product-table-lite/trunk/main.php#L1843"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3231930"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/wc-product-table-lite/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4f1a1171-3d7b-46a4-982e-fe318e3017b7?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-31T10:15:07Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q6j5-v2c9-2998",
+  "modified": "2024-11-14T21:32:02Z",
+  "published": "2024-11-13T18:32:04Z",
+  "aliases": [
+    "CVE-2024-40660"
+  ],
+  "details": "In setTransactionState of SurfaceFlinger.cpp, there is a possible way to change protected display attributes due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-40660"
+    },
+    {
+      "type": "WEB",
+      "url": "https://android.googlesource.com/platform/frameworks/native/+/064ce6e3235b6318be1e41f1bac9595a98e4aafa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://android.googlesource.com/platform/frameworks/native/+/b6ddf525be3c2abbde59ae1533494b18a7961087"
+    },
+    {
+      "type": "WEB",
+      "url": "https://source.android.com/security/bulletin/2024-11-01"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-276"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-13T18:15:20Z"
+  }
+}

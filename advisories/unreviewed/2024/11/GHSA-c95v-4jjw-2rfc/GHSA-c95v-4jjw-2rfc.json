@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c95v-4jjw-2rfc",
+  "modified": "2024-11-25T21:30:49Z",
+  "published": "2024-11-19T18:31:07Z",
+  "aliases": [
+    "CVE-2024-53077"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrpcrdma: Always release the rpcrdma_device's xa_array\n\nDai pointed out that the xa_init_flags() in rpcrdma_add_one() needs\nto have a matching xa_destroy() in rpcrdma_remove_one() to release\nunderlying memory that the xarray might have accrued during\noperation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53077"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36b7f5a4f300d038270324640ff7c1399245159d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63a81588cd2025e75fbaf30b65930b76825c456f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-19T18:15:27Z"
+  }
+}

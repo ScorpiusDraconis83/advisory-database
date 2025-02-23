@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7jh9-v3vw-v9px",
+  "modified": "2024-10-22T18:32:09Z",
+  "published": "2024-10-21T12:30:54Z",
+  "aliases": [
+    "CVE-2024-47676"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/hugetlb.c: fix UAF of vma in hugetlb fault pathway\n\nSyzbot reports a UAF in hugetlb_fault().  This happens because\nvmf_anon_prepare() could drop the per-VMA lock and allow the current VMA\nto be freed before hugetlb_vma_unlock_read() is called.\n\nWe can fix this by using a modified version of vmf_anon_prepare() that\ndoesn't release the VMA lock on failure, and then release it ourselves\nafter hugetlb_vma_unlock_read().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-47676"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98b74bb4d7e96b4da5ef3126511febe55b76b807"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d59ebc99dee0a2687a26df94b901eb8216dbf876"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e897d184a8dd4a4e1f39c8c495598e4d9472776c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T12:15:04Z"
+  }
+}

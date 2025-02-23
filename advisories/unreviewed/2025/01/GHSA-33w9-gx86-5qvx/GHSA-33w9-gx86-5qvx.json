@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-33w9-gx86-5qvx",
+  "modified": "2025-01-17T09:30:38Z",
+  "published": "2025-01-17T09:30:38Z",
+  "aliases": [
+    "CVE-2024-13367"
+  ],
+  "details": "The Sandbox plugin for WordPress is vulnerable to unauthorized access due to a missing capability check on the export_download action in all versions up to, and including, 0.4. This makes it possible for authenticated attackers, with Subscriber-level access and above, to download an entire copy of a sandbox environment which can contain sensitive information like the wp-config.php file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-13367"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/sandbox/trunk/sandbox-ajax.php#L21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/59880d92-5d75-432f-9fb5-d74b13d101ff?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-17T07:15:27Z"
+  }
+}

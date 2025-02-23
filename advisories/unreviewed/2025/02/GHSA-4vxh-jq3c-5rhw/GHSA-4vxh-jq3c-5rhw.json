@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4vxh-jq3c-5rhw",
+  "modified": "2025-02-12T12:30:46Z",
+  "published": "2025-02-12T12:30:46Z",
+  "aliases": [
+    "CVE-2024-12296"
+  ],
+  "details": "The Apus Framework plugin for WordPress is vulnerable to unauthorized modification of data that can lead to privilege escalation due to a missing capability check on the 'import_page_options' function in all versions up to, and including, 2.3. This makes it possible for authenticated attackers, with Subscriber-level access and above, to update arbitrary options on the WordPress site. This can be leveraged to update the default role for registration to administrator and enable user registration for attackers to gain administrative user access to a vulnerable site.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-12296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themeforest.net/item/superio-job-board-wordpress-theme/32180231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/dda2c437-8f41-480a-8816-2c07ab0eafa7?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-12T10:15:10Z"
+  }
+}

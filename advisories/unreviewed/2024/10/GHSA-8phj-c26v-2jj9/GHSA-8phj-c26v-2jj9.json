@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8phj-c26v-2jj9",
+  "modified": "2024-10-31T00:30:36Z",
+  "published": "2024-10-28T06:32:32Z",
+  "aliases": [
+    "CVE-2024-48936"
+  ],
+  "details": "SchedMD Slurm before 24.05.4 has Incorrect Authorization. A mistake in authentication handling in stepmgr could permit an attacker to execute processes under other users' jobs. This is limited to jobs explicitly running with --stepmgr, or on systems that have globally enabled stepmgr via SlurmctldParameters=enable_stepmgr in their configuration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-48936"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.schedmd.com/mailman3/hyperkitty/list/slurm-announce%40lists.schedmd.com/message/44MFMN7R35YZFWTNO43R2754W5B5XUAI"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.schedmd.com/pipermail/slurm-announce/2024/date.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.schedmd.com/security-policy"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-28T04:15:02Z"
+  }
+}

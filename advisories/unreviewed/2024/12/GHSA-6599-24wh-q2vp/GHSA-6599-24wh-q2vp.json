@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6599-24wh-q2vp",
+  "modified": "2024-12-10T18:31:07Z",
+  "published": "2024-12-10T18:31:07Z",
+  "aliases": [
+    "CVE-2024-53244"
+  ],
+  "details": "In Splunk Enterprise versions below 9.3.2, 9.2.4, and 9.1.7 and Splunk Cloud Platform versions below 9.2.2406.107, 9.2.2403.109, and 9.1.2312.206, a low-privileged user that does not hold the “admin“ or “power“ Splunk roles could run a saved search with a risky command using the permissions of a higher-privileged user to bypass the SPL safeguards for risky commands on “/en-US/app/search/report“ endpoint through “s“ parameter.<br>The vulnerability requires the attacker to phish the victim by tricking them into initiating a request within their browser. The authenticated user should not be able to exploit the vulnerability at will.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2024-1202"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-10T18:15:41Z"
+  }
+}

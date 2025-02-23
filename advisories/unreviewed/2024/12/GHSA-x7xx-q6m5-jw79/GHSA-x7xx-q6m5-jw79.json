@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x7xx-q6m5-jw79",
+  "modified": "2025-01-08T21:32:24Z",
+  "published": "2024-12-27T15:31:51Z",
+  "aliases": [
+    "CVE-2024-53199"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: imx-audmix: Add NULL check in imx_audmix_probe\n\ndevm_kasprintf() can return a NULL pointer on failure,but this\nreturned value in imx_audmix_probe() is not checked.\nAdd NULL check in imx_audmix_probe(), to handle kernel NULL\npointer dereference error.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c040cbe2e13da6454ae4748e04e53d885e1c9603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc5aa71f39b44d8117b2417dafd0e2884a75dd37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e038f43edaf0083f6aa7c9415d86cf28dfd152f9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T14:15:27Z"
+  }
+}

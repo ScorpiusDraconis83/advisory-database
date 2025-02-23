@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g679-7h82-27hc",
+  "modified": "2024-11-08T18:30:48Z",
+  "published": "2024-11-05T18:32:12Z",
+  "aliases": [
+    "CVE-2024-50120"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: Handle kstrdup failures for passwords\n\nIn smb3_reconfigure(), after duplicating ctx->password and\nctx->password2 with kstrdup(), we need to check for allocation\nfailures.\n\nIf ses->password allocation fails, return -ENOMEM.\nIf ses->password2 allocation fails, free ses->password, set it\nto NULL, and return -ENOMEM.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50120"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/35488799b0ab6e4327f82e1d9209a60805665b37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/35dbac8c328d6afe937cd45ecd41d209d0b9f8b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a5dd61151399ad5a5d69aad28ab164734c1e3bc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-05T18:15:15Z"
+  }
+}

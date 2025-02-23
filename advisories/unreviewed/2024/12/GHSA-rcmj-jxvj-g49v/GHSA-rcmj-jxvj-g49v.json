@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rcmj-jxvj-g49v",
+  "modified": "2025-01-08T00:30:48Z",
+  "published": "2024-12-29T12:30:40Z",
+  "aliases": [
+    "CVE-2024-56729"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: Initialize cfid->tcon before performing network ops\n\nAvoid leaking a tcon ref when a lease break races with opening the\ncached directory. Processing the leak break might take a reference to\nthe tcon in cached_dir_lease_break() and then fail to release the ref in\ncached_dir_offload_close, since cfid->tcon is still NULL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56729"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b9ab6b648f89441c8a13cb3fd8ca83ffebc5262"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b216c8f9c7d84ef7de33ca60b97e08e03ef3292"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/625e2357c8fcfae6e66dcc667dc656fe390bab15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c353ee4fb119a2582d0e011f66a76a38f5cf984d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-29T12:15:07Z"
+  }
+}

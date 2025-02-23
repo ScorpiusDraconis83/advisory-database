@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3gmf-fq2f-gwph",
+  "modified": "2025-01-29T15:31:34Z",
+  "published": "2025-01-29T00:31:54Z",
+  "aliases": [
+    "CVE-2024-56529"
+  ],
+  "details": "Mailcow through 2024-11b has a session fixation vulnerability in the web panel. It allows remote attackers to set a session identifier when HSTS is disabled on a victim's browser. After a user logs in, they are authenticated and the session identifier is valid. Then, a remote attacker can access the victim's web panel with the same session identifier.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mailcow/mailcow-dockerized/security/advisories/GHSA-23c8-4wwr-g3c6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56529"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-384"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-28T23:15:07Z"
+  }
+}

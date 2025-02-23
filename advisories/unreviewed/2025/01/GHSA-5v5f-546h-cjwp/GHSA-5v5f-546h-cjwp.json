@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5v5f-546h-cjwp",
+  "modified": "2025-01-30T15:31:39Z",
+  "published": "2025-01-30T15:31:39Z",
+  "aliases": [
+    "CVE-2024-13661"
+  ],
+  "details": "The Table Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'wptableeditor_vtabs' shortcode in all versions up to, and including, 1.5.1 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-13661"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-table-editor/trunk/includes/public/shortcode.php#L333"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3228279%40wp-table-editor&new=3228279%40wp-table-editor&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/3fe1f3c3-4a81-4aae-9a5e-e5889f4c69ba?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-30T14:15:35Z"
+  }
+}

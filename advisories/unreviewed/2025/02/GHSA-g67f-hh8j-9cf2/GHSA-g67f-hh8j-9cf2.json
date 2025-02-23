@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g67f-hh8j-9cf2",
+  "modified": "2025-02-22T06:30:33Z",
+  "published": "2025-02-22T06:30:33Z",
+  "aliases": [
+    "CVE-2024-13873"
+  ],
+  "details": "The WP Job Portal – A Complete Recruitment System for Company or Job Board website plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 2.2.8 via the deleteUserPhoto() function due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with Subscriber-level access and above, to remove profile photos from users accounts. Please note that this does not officially delete the file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-13873"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3242653/wp-job-portal/tags/2.2.9/includes/classes/uploads.php?old=3238353&old_path=wp-job-portal%2Ftags%2F2.2.8%2Fincludes%2Fclasses%2Fuploads.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5fdba3c5-382e-4d2b-83d8-0e0cebf2e63c?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-22T04:15:09Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4q5v-2rw8-85rj",
+  "modified": "2024-10-24T06:30:29Z",
+  "published": "2024-10-21T21:30:52Z",
+  "aliases": [
+    "CVE-2022-49023"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: cfg80211: fix buffer overflow in elem comparison\n\nFor vendor elements, the code here assumes that 5 octets\nare present without checking. Since the element itself is\nalready checked to fit, we only need to check the length.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-49023"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/391cb872553627bdcf236c03ee7d5adb275e37e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88a6fe3707888bd1893e9741157a7035c4159ab6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e6b79a3cd17620d467311b30d56f2648f6880aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f16b5c82a025cd4c864737409234ddc44fb166a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f5c2ec288a865dbe3706b09bed12302e9f6d696b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-21T20:15:13Z"
+  }
+}

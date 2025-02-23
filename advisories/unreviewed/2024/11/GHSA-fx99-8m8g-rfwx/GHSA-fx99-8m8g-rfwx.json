@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fx99-8m8g-rfwx",
+  "modified": "2024-12-17T09:31:05Z",
+  "published": "2024-11-19T18:31:07Z",
+  "aliases": [
+    "CVE-2024-53080"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: Lock XArray when getting entries for the VM\n\nSimilar to commit cac075706f29 (\"drm/panthor: Fix race when converting\ngroup handle to group object\") we need to use the XArray's internal\nlocking when retrieving a vm pointer from there.\n\nv2: Removed part of the patch that was trying to protect fetching\nthe heap pointer from XArray, as that operation is protected by\nthe @pool->lock.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-53080"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3342f066a8e1020a6f7d1fbd6b23bfdeda473eb5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/444fa5b100e5c90550d6bccfe4476efb0391b3ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://project-zero.issues.chromium.org/issues/377500597"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-19T18:15:27Z"
+  }
+}

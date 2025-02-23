@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qw8g-4j5w-5j26",
+  "modified": "2025-01-31T15:30:44Z",
+  "published": "2025-01-21T12:30:48Z",
+  "aliases": [
+    "CVE-2024-57933"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngve: guard XSK operations on the existence of queues\n\nThis patch predicates the enabling and disabling of XSK pools on the\nexistence of queues. As it stands, if the interface is down, disabling\nor enabling XSK pools would result in a crash, as the RX queue pointer\nwould be NULL. XSK pool registration will occur as part of the next\ninterface up.\n\nSimilarly, xsk_wakeup needs be guarded against queues disappearing\nwhile the function is executing, so a check against the\nGVE_PRIV_FLAGS_NAPI_ENABLED flag is added to synchronize with the\ndisabling of the bit and the synchronize_net() in gve_turndown.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57933"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40338d7987d810fcaa95c500b1068a52b08eec9b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/771d66f2bd8c4dba1286a9163ab982cecd825718"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e8d7037c89437af12725f454e2eaf40e8166c0f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-21T12:15:26Z"
+  }
+}

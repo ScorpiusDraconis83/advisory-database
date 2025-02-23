@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4q65-36r7-c56m",
+  "modified": "2024-11-22T21:32:18Z",
+  "published": "2024-11-22T21:32:18Z",
+  "aliases": [
+    "CVE-2024-8809"
+  ],
+  "details": "Cohesive Networks VNS3 Command Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Cohesive Networks VNS3. Authentication is required to exploit this vulnerability.\n\nThe specific flaw exists within the web service, which listens on TCP port 8000 by default. The issue results from the lack of proper validation of a user-supplied string before using it to execute a system call. An attacker can leverage this vulnerability to execute code in the context of root. Was ZDI-CAN-24178.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-8809"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cohesive.net/support/security-responses"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.zerodayinitiative.com/advisories/ZDI-24-1233"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-22T21:15:19Z"
+  }
+}

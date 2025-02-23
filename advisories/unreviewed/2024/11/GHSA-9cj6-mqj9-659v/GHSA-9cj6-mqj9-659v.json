@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9cj6-mqj9-659v",
+  "modified": "2024-11-18T18:30:55Z",
+  "published": "2024-11-18T18:30:55Z",
+  "aliases": [
+    "CVE-2020-26074"
+  ],
+  "details": "A vulnerability in system file transfer functions of Cisco&nbsp;SD-WAN vManage Software could allow an authenticated, local attacker to gain escalated privileges on the underlying operating system.\nThe vulnerability is due to improper validation of path input to the system file transfer functions. An attacker could exploit this vulnerability by sending requests that contain specially crafted path variables to the vulnerable system. A successful exploit could allow the attacker to overwrite arbitrary files, allowing the attacker to modify the system in such a way that could allow the attacker to gain escalated privileges.Cisco&nbsp;has released software updates that address this vulnerability. There are no workarounds that address this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-26074"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asa-ssl-dos-7uZWwSEy"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-vmanage-escalation-Jhqs5Skf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-250"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-18T16:15:06Z"
+  }
+}

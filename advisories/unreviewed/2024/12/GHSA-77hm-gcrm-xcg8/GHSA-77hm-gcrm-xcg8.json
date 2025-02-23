@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77hm-gcrm-xcg8",
+  "modified": "2024-12-17T00:31:19Z",
+  "published": "2024-12-17T00:31:19Z",
+  "aliases": [
+    "CVE-2024-11906"
+  ],
+  "details": "The TPG Get Posts plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'tpg_get_posts' shortcode in all versions up to, and including, 3.6.5 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11906"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tpg-get-posts/trunk/inc/class-tpg-gp-process.php#L478"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/tpg-get-posts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c22288e6-76f3-4c5a-bd7b-30681334bab7?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-17T00:15:06Z"
+  }
+}

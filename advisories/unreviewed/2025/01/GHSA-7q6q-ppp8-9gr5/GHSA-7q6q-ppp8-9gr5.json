@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7q6q-ppp8-9gr5",
+  "modified": "2025-01-21T18:31:05Z",
+  "published": "2025-01-15T15:31:24Z",
+  "aliases": [
+    "CVE-2024-57801"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5e: Skip restore TC rules for vport rep without loaded flag\n\nDuring driver unload, unregister_netdev is called after unloading\nvport rep. So, the mlx5e_rep_priv is already freed while trying to get\nrpriv->netdev, or walk rpriv->tc_ht, which results in use-after-free.\nSo add the checking to make sure access the data of vport rep which is\nstill loaded.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-57801"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3e45dd1622a2c1a83c11bf42fdd8c1810123d6c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47c78d3fc26e38ab805613a0f592dc8a820c7c64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a03b368562a7ff5f5f1f63b5adf8309cbdbd5be"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-15T13:15:11Z"
+  }
+}

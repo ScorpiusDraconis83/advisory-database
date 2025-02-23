@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-562f-24cq-ggcj",
+  "modified": "2024-11-08T21:33:53Z",
+  "published": "2024-11-05T18:32:12Z",
+  "aliases": [
+    "CVE-2024-50112"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/lam: Disable ADDRESS_MASKING in most cases\n\nLinear Address Masking (LAM) has a weakness related to transient\nexecution as described in the SLAM paper[1]. Unless Linear Address\nSpace Separation (LASS) is enabled this weakness may be exploitable.\n\nUntil kernel adds support for LASS[2], only allow LAM for COMPILE_TEST,\nor when speculation mitigations have been disabled at compile time,\notherwise keep LAM disabled.\n\nThere are no processors in market that support LAM yet, so currently\nnobody is affected by this issue.\n\n[1] SLAM: https://download.vusec.net/papers/slam_sp24.pdf\n[2] LASS: https://lore.kernel.org/lkml/20230609183632.48706-1-alexander.shishkin@linux.intel.com/\n\n[ dhansen: update SPECULATION_MITIGATIONS -> CPU_MITIGATIONS ]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3267cb6d3a174ff83d6287dcd5b0047bbd912452"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60a5ba560f296ad8da153f6ad3f70030bfa3958f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/690599066488d16db96ac0d6340f9372fc56f337"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-05T18:15:14Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-94gh-gf9p-r6hq",
+  "modified": "2025-01-09T09:31:42Z",
+  "published": "2025-01-09T09:31:42Z",
+  "aliases": [
+    "CVE-2024-43651"
+  ],
+  "details": "Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability allows OS Command Injection as root\nThis issue affects Iocharger firmware for AC models before version 241207101\n\nLikelihood: Moderate – The <redacted> binary does not seem to be used by the web interface, so it might be more difficult to find. It seems to be largely the same binary as used by the Iocharger Pedestal charging station, however. The attacker will also need a (low privilege) account to gain access to the <redacted> binary, or convince a user with such access to execute a crafted HTTP request.\n\nImpact: Critical – The attacker has full control over the charging station as the root user, and can arbitrarily add, modify and delete files and services.\n\nCVSS clarification: Any network connection serving the web interface is vulnerable (AV:N) and there are no additional measures to circumvent (AC:L) nor does the attack require special conditions to be present (AT:N). The attack requires authentication, but the level does not matter (PR:L), nor is user interaction required (UI:N). The attack leads to a full compromised (VC:H/VI:H/VA:H) and a compromised device can be used to potentially \"pivot\" into a network that should nopt be reachable (SC:L/SI:L/SA:H). Because this is an EV charger handing significant power, there is a potential safety impact (S:P). THe attack can be autometed (AU:Y).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:P/AU:Y/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-43651"
+    },
+    {
+      "type": "WEB",
+      "url": "https://csirt.divd.nl/CVE-2024-43651"
+    },
+    {
+      "type": "WEB",
+      "url": "https://csirt.divd.nl/DIVD-2024-00035"
+    },
+    {
+      "type": "WEB",
+      "url": "https://iocharger.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-01-09T08:15:27Z"
+  }
+}

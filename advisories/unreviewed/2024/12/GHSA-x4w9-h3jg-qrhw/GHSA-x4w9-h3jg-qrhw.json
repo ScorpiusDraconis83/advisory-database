@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x4w9-h3jg-qrhw",
+  "modified": "2024-12-14T06:30:47Z",
+  "published": "2024-12-14T06:30:47Z",
+  "aliases": [
+    "CVE-2024-11770"
+  ],
+  "details": "The Post Carousel & Slider plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'post-cs' shortcode in all versions up to, and including, 1.0.4 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-11770"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/post-types-carousel-slider/trunk/includes/ajax.php#L71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/post-types-carousel-slider"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4cc038af-c4c8-4141-bbe3-81bcf0a2bace?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-14T05:15:07Z"
+  }
+}

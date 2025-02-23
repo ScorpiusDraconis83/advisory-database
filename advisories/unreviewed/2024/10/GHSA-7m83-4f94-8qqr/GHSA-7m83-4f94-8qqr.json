@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7m83-4f94-8qqr",
+  "modified": "2024-10-30T21:30:38Z",
+  "published": "2024-10-25T21:31:28Z",
+  "aliases": [
+    "CVE-2024-48232"
+  ],
+  "details": "An issue was found in mipjz 5.0.5. In the mipPost method of \\app\\setting\\controller\\ApiAdminTool.php, the value of the postAddress parameter is not processed and is directly passed into curl_exec execution and output, resulting in a Server-side request forgery (SSRF) vulnerability that can read server files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-48232"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sansanyun/mipjz/issues/17"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-10-25T21:15:04Z"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2p25-rmjx-pfqv",
+  "modified": "2024-11-29T21:31:01Z",
+  "published": "2024-11-08T06:30:48Z",
+  "aliases": [
+    "CVE-2024-50181"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nclk: imx: Remove CLK_SET_PARENT_GATE for DRAM mux for i.MX7D\n\nFor i.MX7D DRAM related mux clock, the clock source change should ONLY\nbe done done in low level asm code without accessing DRAM, and then\ncalling clk API to sync the HW clock status with clk tree, it should never\ntouch real clock source switch via clk API, so CLK_SET_PARENT_GATE flag\nshould NOT be added, otherwise, DRAM's clock parent will be disabled when\nDRAM is active, and system will hang.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-50181"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11ceb17e6f07cc30410f3a6276cddda248a9b863"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/339273a9ddfe7632b717c2e13e81cbd5d383e1ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94f6cdc837e38371324cee97dfd2ef1a99a82c98"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a54c441b46a0745683c2eef5a359d22856d27323"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b677b94a9193ec7b6607bd1255172ae59174a382"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d18dc8e14b9c794f58dae1577ccb2ab84a4a1b11"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-11-08T06:15:15Z"
+  }
+}

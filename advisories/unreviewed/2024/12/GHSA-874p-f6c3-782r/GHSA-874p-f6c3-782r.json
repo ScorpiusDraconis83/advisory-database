@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-874p-f6c3-782r",
+  "modified": "2024-12-27T15:31:53Z",
+  "published": "2024-12-27T15:31:53Z",
+  "aliases": [
+    "CVE-2024-56546"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrivers: soc: xilinx: add the missing kfree in xlnx_add_cb_for_suspend()\n\nIf we fail to allocate memory for cb_data by kmalloc, the memory\nallocation for eve_data is never freed, add the missing kfree()\nin the error handling path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56546"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/272168927f38bda46f6c1ed5f40de97689e7a5d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44ed4f90a97ff6f339e50ac01db71544e0990efc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/584d420771e1ad2bb74e19a19da8ae0fee0a6e1f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a3bda42394ff137eb2d3d3d20d2956a8c6e9237"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/882d7afaa4b82c20a7be7a3a039532a80ebacd23"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T14:15:34Z"
+  }
+}

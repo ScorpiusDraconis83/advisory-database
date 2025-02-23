@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4pr7-h3p8-c732",
+  "modified": "2024-12-28T12:30:47Z",
+  "published": "2024-12-28T12:30:47Z",
+  "aliases": [
+    "CVE-2024-56699"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/pci: Fix potential double remove of hotplug slot\n\nIn commit 6ee600bfbe0f (\"s390/pci: remove hotplug slot when releasing the\ndevice\") the zpci_exit_slot() was moved from zpci_device_reserved() to\nzpci_release_device() with the intention of keeping the hotplug slot\naround until the device is actually removed.\n\nNow zpci_release_device() is only called once all references are\ndropped. Since the zPCI subsystem only drops its reference once the\ndevice is in the reserved state it follows that zpci_release_device()\nmust only deal with devices in the reserved state. Despite that it\ncontains code to tear down from both configured and standby state. For\nthe standby case this already includes the removal of the hotplug slot\nso would cause a double removal if a device was ever removed in\neither configured or standby state.\n\nInstead of causing a potential double removal in a case that should\nnever happen explicitly WARN_ON() if a device in non-reserved state is\nreleased and get rid of the dead code cases.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56699"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/371bd905599d18da62d75e3974acbf6a41e315c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1489651071ab1be46d2af1da8adb15c9fc3c069"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4a585e952ca403a370586d3f16e8331a7564901"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-28T10:15:17Z"
+  }
+}

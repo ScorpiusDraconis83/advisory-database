@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jm84-fc6h-2m9x",
+  "modified": "2024-12-27T15:31:54Z",
+  "published": "2024-12-27T15:31:54Z",
+  "aliases": [
+    "CVE-2024-56591"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_conn: Use disable_delayed_work_sync\n\nThis makes use of disable_delayed_work_sync instead\ncancel_delayed_work_sync as it not only cancel the ongoing work but also\ndisables new submit which is disarable since the object holding the work\nis about to be freed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-56591"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b0f2fc9ed62e73c95df1fa8ed2ba3dac54699df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c55a4c5a04bae40dcdc1e1c19d8eb79a06fb3397"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2024-12-27T15:15:18Z"
+  }
+}

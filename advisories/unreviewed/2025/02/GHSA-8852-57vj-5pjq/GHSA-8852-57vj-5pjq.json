@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8852-57vj-5pjq",
+  "modified": "2025-02-18T21:32:51Z",
+  "published": "2025-02-18T21:32:51Z",
+  "aliases": [
+    "CVE-2024-45776"
+  ],
+  "details": "When reading the language .mo file in grub_mofile_open(), grub2 fails to verify an integer overflow when allocating its internal buffer. A crafted .mo file may lead the buffer size calculation to overflow, leading to out-of-bound reads and writes. This flaw allows an attacker to leak sensitive data or overwrite critical data, possibly circumventing secure boot protections.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-45776"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2024-45776"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2339182"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-02-18T20:15:19Z"
+  }
+}
