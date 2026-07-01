@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fxxf-w25w-mcx2",
+  "modified": "2026-07-01T19:41:25Z",
+  "published": "2026-05-27T15:33:26Z",
+  "aliases": [
+    "CVE-2026-48922"
+  ],
+  "summary": "Jenkins Credentials Binding Plugin does not properly sanitize file names for file and zip file credentials",
+  "details": "Jenkins Credentials Binding Plugin 720.v3f6decef43ea_ and earlier does not properly sanitize file names for file and zip file credentials.\n\nThis allows attackers able to provide credentials to a job to write files to arbitrary locations on the node filesystem. If Jenkins is configured to allow a low-privileged user to configure file or zip file credentials used for a job running on the built-in node, this can lead to remote code execution.\n\nCredentials Binding Plugin 725.ve52b_2328a_fde improves sanitization of the file name provided for file and zip file credentials, preventing path traversal.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.plugins:credentials-binding"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "725.ve52b"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 720.v3f6decef43ea"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48922"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/credentials-binding-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2026-05-27/#SECURITY-3790"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-01T19:41:25Z",
+    "nvd_published_at": "2026-05-27T15:16:31Z"
+  }
+}
