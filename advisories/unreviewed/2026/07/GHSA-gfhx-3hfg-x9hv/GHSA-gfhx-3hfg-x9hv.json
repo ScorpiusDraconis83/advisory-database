@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gfhx-3hfg-x9hv",
+  "modified": "2026-07-01T21:36:20Z",
+  "published": "2026-07-01T21:36:20Z",
+  "aliases": [
+    "CVE-2026-58457"
+  ],
+  "details": "Shenzhen Aitemi M300 Wi-Fi Repeater (hardware model MT02) contains an unauthenticated OS command injection vulnerability that allows network-adjacent attackers to execute arbitrary shell commands by injecting unsanitized input through the smacfilter_conf handler in the commuos web backend. Attackers can append semicolon-delimited payloads to the name, enable, or mac GET parameters, which are passed without sanitization into sprintf() to build uci shell commands executed via doSystemCmdComlib(), granting full root-level control of the device.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58457"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/IEATASICS/m300-repeater-bugs#"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.aliexpress.us/item/3256806767641280.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/shenzhen-aitemi-m300-mt02-unauthenticated-os-command-injection-via-protocol-csp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-01T20:17:11Z"
+  }
+}

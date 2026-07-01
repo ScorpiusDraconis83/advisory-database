@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v3jc-474w-2wm6",
-  "modified": "2026-07-01T18:31:56Z",
+  "modified": "2026-07-01T21:36:16Z",
   "published": "2026-07-01T18:31:56Z",
   "aliases": [
     "CVE-2026-54428"
   ],
   "details": "Allocation of resources without limits or throttling in the HTTP/2 HPACK decoder in Apache HttpComponents Core (5.4.2 and earlier, 5.5-beta1 and earlier) allows an remote attacker to cause a denial of service through memory exhaustion by sending oversized compressed header blocks before the HTTP/2 SETTINGS acknowledgement causes the configured header list size limit to be applied.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -27,7 +32,7 @@
     "cwe_ids": [
       "CWE-400"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-01T18:16:34Z"

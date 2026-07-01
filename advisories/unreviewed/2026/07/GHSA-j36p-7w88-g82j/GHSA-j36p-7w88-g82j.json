@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j36p-7w88-g82j",
+  "modified": "2026-07-01T21:36:18Z",
+  "published": "2026-07-01T21:36:18Z",
+  "aliases": [
+    "CVE-2026-49119"
+  ],
+  "details": "Gradio before 6.16.0 contain a path traversal vulnerability in the FileExplorer component's preprocess() method that allows unauthenticated attackers to escape the configured root directory by supplying path segments containing directory traversal sequences or absolute paths. Attackers can provide crafted path segments that cause os.path.join to discard the root_dir prefix entirely, resulting in arbitrary file read or exposure of sensitive files outside the intended directory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49119"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gradio-app/gradio/pull/13437"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gradio-app/gradio/commit/97d541f3d5fd05b2587a69ecc94b68fe5d2d7004"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gradio-app/gradio/releases/tag/gradio%406.16.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gradio-path-traversal-via-fileexplorer-preprocess"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-01T19:16:52Z"
+  }
+}

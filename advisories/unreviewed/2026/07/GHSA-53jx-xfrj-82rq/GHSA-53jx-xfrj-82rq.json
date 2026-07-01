@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-53jx-xfrj-82rq",
-  "modified": "2026-07-01T18:31:56Z",
+  "modified": "2026-07-01T21:36:16Z",
   "published": "2026-07-01T18:31:56Z",
   "aliases": [
     "CVE-2026-51946"
   ],
   "details": "SQL Injection vulnerability in GoAdminGroup GoAdmin (last release v1.2.26) allows a remote attacker to execute arbitrary code and obtain sensitive information via the the __sort_type URL parameter on all /admin/info/{table} endpoints",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-01T18:16:34Z"
