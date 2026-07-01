@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qg45-rc8c-9676",
-  "modified": "2026-07-01T15:35:13Z",
+  "modified": "2026-07-01T18:31:47Z",
   "published": "2026-07-01T03:35:24Z",
   "aliases": [
     "CVE-2026-57962"
   ],
   "details": "A malicious LDAP server, which a Thunderbird user is configured to query for address-book autocomplete, can stash arbitrarily large amounts of attacker-supplied data into the Thunderbird LDAP client until it crashes due to memory exhaustion. This vulnerability was fixed in Thunderbird 152.0.1 and Thunderbird 140.12.1.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-01T02:17:00Z"
