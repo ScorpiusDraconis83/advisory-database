@@ -1,19 +1,40 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7pf3-8xx7-rvhf",
-  "modified": "2026-05-28T00:30:30Z",
+  "modified": "2026-07-01T20:54:22Z",
   "published": "2026-05-28T00:30:29Z",
   "aliases": [
     "CVE-2026-9739"
   ],
+  "summary": "MCP Toolbox for Databases vulnerable to DNS rebinding attacks",
   "details": "Vulnerable to DNS rebinding attacks when using SSE (http://b/499408790). During the beta phase, we implemented `allowed-origins` and `allowed-hosts` flags to align with MCP security guidelines. However, the hardcoded `Access-Control-Allow-Origin: *` header in the SSE initialization handler was inadvertently retained. This vulnerability specifically impacts users connecting via Toolbox using SSE under specification v2024-11-05.",
   "severity": [
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/googleapis/mcp-toolbox"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.2.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -26,6 +47,14 @@
     {
       "type": "WEB",
       "url": "https://github.com/googleapis/mcp-toolbox/pull/3054"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/googleapis/mcp-toolbox/commit/c4c7bd917e686de68e2be866cfe3872c3439efae"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/googleapis/mcp-toolbox"
     }
   ],
   "database_specific": {
@@ -33,8 +62,8 @@
       "CWE-942"
     ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-01T20:54:22Z",
     "nvd_published_at": "2026-05-27T23:16:48Z"
   }
 }
