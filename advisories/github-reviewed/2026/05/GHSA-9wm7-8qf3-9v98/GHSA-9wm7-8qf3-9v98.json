@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9wm7-8qf3-9v98",
+  "modified": "2026-07-01T19:43:17Z",
+  "published": "2026-05-27T15:33:27Z",
+  "aliases": [
+    "CVE-2026-48923"
+  ],
+  "summary": "Jenkins AppSpider Plugin does not perform a permission check in a method implementing form validation",
+  "details": "Jenkins AppSpider Plugin 1.0.17 and earlier does not perform a permission check in a method implementing form validation.\n\nThis allows attackers with Overall/Read permission to connect to an attacker-specified URL.\n\nAppSpider Plugin 1.0.18 requires Overall/Administer permission to use the affected method implementing form validation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.rapid7:jenkinsci-appspider-plugin"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.18"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.0.17"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48923"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/rapid7/jenkinsci-appspider-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2026-05-27/#SECURITY-3671"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-01T19:43:17Z",
+    "nvd_published_at": "2026-05-27T15:16:31Z"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hj3h-r49w-34wh",
+  "modified": "2026-07-01T19:46:00Z",
+  "published": "2026-05-27T15:33:28Z",
+  "aliases": [
+    "CVE-2026-9674"
+  ],
+  "summary": "Jenkins Multijob Plugin has a cross-site request forgery (CSRF) vulnerability",
+  "details": "Jenkins Multijob Plugin 662.vd2e0001f6b_b_d and earlier does not require POST requests for an HTTP endpoint, resulting in a cross-site request forgery (CSRF) vulnerability.\n\nThis vulnerability allows attackers to resume failed Multijob builds.\n\nMultijob Plugin 669.v9d96a_d9c71b_0 requires POST requests for the affected HTTP endpoint.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.plugins:jenkins-multijob-plugin"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "669.v9d96a"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9674"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/jenkins-multijob-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2026-05-27/#SECURITY-3781"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-01T19:46:00Z",
+    "nvd_published_at": "2026-05-27T15:16:36Z"
+  }
+}
