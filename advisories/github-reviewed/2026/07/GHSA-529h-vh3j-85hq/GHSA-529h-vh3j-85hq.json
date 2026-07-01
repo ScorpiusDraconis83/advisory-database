@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-529h-vh3j-85hq",
+  "modified": "2026-07-01T18:55:49Z",
+  "published": "2026-07-01T18:55:49Z",
+  "aliases": [
+    "CVE-2026-49981"
+  ],
+  "summary": "Twig: Sandbox filter, tag and function allow-list bypass when sandbox state changes between renders for a cached `Template`",
+  "details": "### Description\n\nThe per-template filter, tag and function allow-list check is compiled into the `checkSecurity()` method of each `Template` subclass and was invoked once from the constructor, gated by `SandboxExtension::isSandboxed($source)`. `Template` instances are then cached on the `Environment` in `$loadedTemplates`, so the verdict computed at construction time was sticky for the rest of the process.\n\nAny later change of sandbox state on the same `Environment` left that cached verdict in place: toggling `SandboxExtension::enableSandbox()`/`disableSandbox()`, swapping the policy via `setSecurityPolicy()`, a `SourcePolicyInterface` decision flip, or simply having a parent, macro or included template pre-instantiated outside the sandbox before a sandboxed render reached it. In all of these cases, the filters, tags and functions used by the affected template kept running with the original (typically empty) check, bypassing the `SecurityPolicy` allow-list.\n\nMethod, property and `__toString` allow-lists are not affected: they are enforced at every call site at runtime through `SandboxExtension::checkMethodAllowed()`, `checkPropertyAllowed()` and `ensureToStringAllowed()`, which re-read the current state on every call.\n\nLong-lived workers (FrankenPHP, RoadRunner, Symfony Messenger consumers, FPM with hot autoloading) that share a single `Environment` between sandboxed and non-sandboxed renders are the most exposed: a single non-sandboxed render of a shared layout pre-warms its `Template` instance, after which any later sandboxed render that extends, uses, includes or imports from that layout silently skips the filter/tag/function allow-list for the pre-warmed instance.\n\n### Resolution\n\nThe allow-list check is no longer run from the constructor. `Template` gains a public `ensureSecurityChecked()` method that calls the compiled `checkSecurity()` only when `SandboxExtension::isSandboxed($source)` returns true for the current source, and it is invoked at every entry point that can reach a `Template` instance whose security has not yet been verified against the current state: `Template::yield()`, `Template::yieldBlock()` (on the resolved block template, which covers `extends`, `use`, traits and parent blocks), `Template::getParent()` (which evaluates user code when the parent name is dynamic) and `Template::getTemplateForMacro()` (on the resolved macro template).\n\nThe explicit `checkSecurity()` calls previously emitted by `IncludeNode` and `CoreExtension::include()` are removed: the included template's own `yield()` now re-runs the check against the current sandbox state. The compiled `checkSecurity()` body is a cheap walk over compile-time-static arrays, so the per-render cost is negligible. Old cached compiled PHP files keep working unchanged: the constructor-time call they still contain is idempotent.\n\n### Credits\n\nTwig would like to thank Fabien Potencier for reporting and fixing the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "twig/twig"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.27.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.26.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/twigphp/Twig/security/advisories/GHSA-529h-vh3j-85hq"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/twigphp/Twig"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/twigphp/Twig/releases/tag/v3.27.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-693",
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-01T18:55:49Z",
+    "nvd_published_at": null
+  }
+}
