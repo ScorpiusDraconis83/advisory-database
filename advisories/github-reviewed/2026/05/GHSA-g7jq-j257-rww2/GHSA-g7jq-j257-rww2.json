@@ -1,19 +1,59 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g7jq-j257-rww2",
-  "modified": "2026-06-02T21:30:37Z",
+  "modified": "2026-07-01T18:04:11Z",
   "published": "2026-05-27T03:30:31Z",
   "aliases": [
     "CVE-2026-49017"
   ],
+  "summary": "OpenStack Swift: s3api middleware enters an infinite loop when processing a truncated aws-chunked PUT request body",
   "details": "In OpenStack Swift before 2.36.2 and 2.37.2, s3api middleware enters an infinite loop when processing a truncated aws-chunked PUT request body. The StreamingInput class repeatedly appends an empty buffer and re-reads, causing the proxy-server worker handling the request to become permanently unresponsive with increasing CPU and memory consumption. An authenticated attacker can systematically exhaust all proxy-server workers, resulting in denial of service. The defect was introduced in Swift 2.36.0.",
   "severity": [
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:L"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "swift"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.36.0"
+            },
+            {
+              "last_affected": "2.36.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "swift"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.37.0"
+            },
+            {
+              "last_affected": "2.37.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -22,6 +62,10 @@
     {
       "type": "WEB",
       "url": "https://bugs.launchpad.net/bugs/2152205"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/openstack/swift"
     },
     {
       "type": "WEB",
@@ -45,8 +89,8 @@
       "CWE-835"
     ],
     "severity": "HIGH",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-01T18:04:11Z",
     "nvd_published_at": "2026-05-27T02:16:34Z"
   }
 }
