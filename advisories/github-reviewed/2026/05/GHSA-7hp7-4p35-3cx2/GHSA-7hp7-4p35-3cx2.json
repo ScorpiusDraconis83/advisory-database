@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7hp7-4p35-3cx2",
-  "modified": "2026-05-27T15:33:26Z",
+  "modified": "2026-07-01T19:33:16Z",
   "published": "2026-05-27T15:33:26Z",
   "aliases": [
     "CVE-2026-48545"
   ],
+  "summary": "Gradio contains a cookie injection vulnerability",
   "details": "Gradio before version 6.15.0 contains a cookie injection vulnerability that allows remote attackers to perform cross-Space session fixation by exploiting a shared module-level HTTP client used across all users in the reverse proxy endpoint. Attackers controlling any HF Space can return a parent-domain cookie that the shared client stores and automatically replays into all subsequent proxy requests to other legitimate Spaces, affecting all users of the same Gradio deployment.",
   "severity": [
     {
@@ -14,10 +15,30 @@
     },
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "gradio"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.15.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -36,8 +57,12 @@
       "url": "https://github.com/gradio-app/gradio/commit/feb7237d01f359d2ad4ee42d00344e61692b3b39"
     },
     {
+      "type": "PACKAGE",
+      "url": "https://github.com/gradio-app/gradio"
+    },
+    {
       "type": "WEB",
-      "url": "https://github.com/gradio-app/gradio/releases/tag/gradio%406.15.0"
+      "url": "https://github.com/gradio-app/gradio/releases/tag/gradio@6.15.0"
     },
     {
       "type": "WEB",
@@ -49,8 +74,8 @@
       "CWE-384"
     ],
     "severity": "HIGH",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-01T19:33:16Z",
     "nvd_published_at": "2026-05-27T15:16:31Z"
   }
 }
