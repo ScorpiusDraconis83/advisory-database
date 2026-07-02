@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xmq3-8wcj-rm6p",
+  "modified": "2026-07-02T12:30:59Z",
+  "published": "2026-07-02T12:30:59Z",
+  "aliases": [
+    "CVE-2026-14029"
+  ],
+  "details": "The Groundhogg — CRM, Newsletters, and Marketing Automation plugin for WordPress is vulnerable to generic SQL Injection via the 'select' parameter in all versions up to, and including, 4.5.8 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with custom-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Exploitation requires the attacker to hold a Groundhogg custom role with the view_contacts capability, which is granted by default to several built-in Groundhogg roles above the base subscriber level.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14029"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.7/api/v4/base-object-api.php#L505"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.7/db/db.php#L1366"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.7/db/query/query.php#L228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.7/db/query/query.php#L427"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.8/api/v4/base-object-api.php#L505"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.8/db/db.php#L1366"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.8/db/query/query.php#L228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.8/db/query/query.php#L427"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3591885%40groundhogg&new=3591885%40groundhogg&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/fb7fd98d-de1d-4b06-b769-92df40bc1873?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T10:16:28Z"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rfww-46mr-4mrf",
+  "modified": "2026-07-02T12:30:59Z",
+  "published": "2026-07-02T12:30:58Z",
+  "aliases": [
+    "CVE-2026-11896"
+  ],
+  "details": "The My Calendar – Accessible Event Manager plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 3.7.14 via the 'vcal' parameter due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to enumerate occurrence IDs and access the full iCalendar export of non-public, draft, trashed, and personal calendar events, disclosing sensitive event metadata including titles, descriptions, dates, locations, organizer and host details, permalinks, and related calendar metadata.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11896"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/my-calendar/tags/3.7.14/includes/date-utilities.php#L417"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/my-calendar/tags/3.7.14/includes/ical.php#L26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/my-calendar/tags/3.7.14/my-calendar-api.php#L212"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/my-calendar/tags/3.7.14/my-calendar-api.php#L246"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/my-calendar/tags/3.7.14/my-calendar-events.php#L748"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/my-calendar/tags/3.7.14/my-calendar.php#L209"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/my-calendar/trunk/includes/date-utilities.php#L417"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/my-calendar/trunk/includes/ical.php#L26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/my-calendar/trunk/my-calendar-api.php#L212"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/my-calendar/trunk/my-calendar-api.php#L246"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/my-calendar/trunk/my-calendar-events.php#L748"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/my-calendar/trunk/my-calendar.php#L209"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3572191%40my-calendar&new=3572191%40my-calendar&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a72639df-fa05-414c-b30c-eb285f59d945?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T10:16:27Z"
+  }
+}

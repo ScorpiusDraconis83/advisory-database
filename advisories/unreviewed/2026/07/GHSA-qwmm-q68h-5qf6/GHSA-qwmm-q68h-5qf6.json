@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qwmm-q68h-5qf6",
+  "modified": "2026-07-02T12:30:59Z",
+  "published": "2026-07-02T12:30:59Z",
+  "aliases": [
+    "CVE-2026-11946"
+  ],
+  "details": "An unauthenticated remote attacker can exhaust\nserver memory via the GetEndpoints Discovery Service in open62541. The\nendpointUrl field of GetEndpointsRequest is not validated for length. An\nattacker can declare an arbitrarily large string (up to ~4.09 GB via the UInt32\nlength field) delivered across intermediate chunks without ever sending the\nfinal chunk. The server buffers all chunks in RAM indefinitely until the\nSecureChannel times out. The attack is\npre-session and bypasses all encryption configurations.\n\n\n\nThe issue affects open62541: from 1.4.0 through 1.4.16, from 1.5.0 through 1.5.4, master.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11946"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541/pull/8142"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541/pull/8142/changes/d253818d6c5e870e1db0e360b18138c8bdc809ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T12:16:54Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7w58-pfxv-fq26",
+  "modified": "2026-07-02T12:30:59Z",
+  "published": "2026-07-02T12:30:59Z",
+  "aliases": [
+    "CVE-2026-12472"
+  ],
+  "details": "The Kirki – Freeform Page Builder, Website Builder & Customizer plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 6.0.11. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to send arbitrary HTML-injected emails — including phishing messages embedding a real, valid WordPress password-reset URL for the targeted user — to any registered user via the site's own mail server, abusing its SPF/DKIM reputation. The attacker-controlled emailSubject parameter is passed to wp_mail() with only sanitize_text_field() applied, while emailBody 'text' items are concatenated raw into the HTML email body with no escaping, and 'chip' items can include the genuine WordPress password-reset link for the targeted account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12472"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.9/ComponentLibrary/controller/CompLibFormHandler.php#L342"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.9/ComponentLibrary/controller/CompLibFormHandler.php#L441"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.9/ComponentLibrary/controller/CompLibFormHandler.php#L49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.9/ComponentLibrary/controller/ElementGenerator.php#L219"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3584702%40kirki&new=3584702%40kirki&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/af01964f-018d-4d19-8627-8889877db105?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T10:16:27Z"
+  }
+}
