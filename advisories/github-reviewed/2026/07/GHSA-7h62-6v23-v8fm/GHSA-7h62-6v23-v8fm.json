@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7h62-6v23-v8fm",
+  "modified": "2026-07-02T18:49:04Z",
+  "published": "2026-07-02T18:49:04Z",
+  "aliases": [
+    "CVE-2026-50284"
+  ],
+  "summary": "Craft CMS: Missing peer-permission check in `AssetsController::actionDeleteFolder` allows deletion of other users' assets",
+  "details": "## Summary\n\n`AssetsController::actionDeleteFolder()` only requires the `deleteAssets:<volume-uid>` permission for the target folder. It never enforces `deletePeerAssets:<volume-uid>`, even though `Assets::deleteFoldersByIds()` cascades deletion to every descendant folder and every asset inside, regardless of who uploaded them. A low-privilege user who has been granted folder-management rights on a shared volume can therefore destroy assets uploaded by other users (peer assets), bypassing the per-asset peer-permission check that the sibling `actionDeleteAsset` endpoint correctly applies.\n\nThis is the same bug class that was just fixed in `actionMoveFolder` as **GHSA-3w32-23wj-rxg3** (commit `05c2042`, Apr 23 2026); the fix added `requireVolumePermissionByFolder('deletePeerAssets', …)` and `savePeerAssets` checks to the move endpoint but did not propagate to the delete-folder endpoint.\n\n## Details\n\n`src/controllers/AssetsController.php:552-569`:\n\n```php\npublic function actionDeleteFolder(): Response\n{\n    $this->requireAcceptsJson();\n    $folderId = $this->request->getRequiredBodyParam('folderId');\n\n    $assets = Craft::$app->getAssets();\n    $folder = $assets->getFolderById($folderId);\n\n    if (!$folder) {\n        throw new BadRequestHttpException('The folder cannot be found');\n    }\n\n    // Check if it's possible to delete objects in the target volume.\n    $this->requireVolumePermissionByFolder('deleteAssets', $folder); // <-- only checks deleteAssets\n    $assets->deleteFoldersByIds($folderId);\n\n    return $this->asSuccess();\n}\n```\n\n`requireVolumePermissionByFolder()` (`src/controllers/AssetsControllerTrait.php:75-88`) only resolves to a single `requirePermission('deleteAssets:<vol-uid>')` call. The peer-equivalent helper (`requirePeerVolumePermissionByAsset`) is never invoked because there is no folder-level peer helper that iterates the folder's contents.\n\n`Assets::deleteFoldersByIds()` (`src/services/Assets.php:311-349`) then enumerates the folder + every descendant folder, queries every asset under those IDs, and calls `Craft::$app->getElements()->deleteElement($asset, true)` directly:\n\n```php\n$assetQuery = Asset::find()->folderId($allFolderIds);\n$elementService = Craft::$app->getElements();\n\nforeach (Db::each($assetQuery) as $asset) {\n    $asset->keepFileOnDelete = !$deleteDir;\n    $elementService->deleteElement($asset, true);\n}\n```\n\nThis bypasses `Asset::canDelete()` (`src/elements/Asset.php:1515-1536`):\n\n```php\npublic function canDelete(User $user): bool\n{\n    if ($this->isFolder) { return false; }\n    if (parent::canDelete($user)) { return true; }\n    $volume = $this->getVolume();\n    if (Assets::isTempUploadFs($volume->getFs())) { return true; }\n\n    if ($this->uploaderId !== $user->id) {\n        return $user->can(\"deletePeerAssets:$volume->uid\"); // <-- never reached on cascade delete\n    }\n    return $user->can(\"deleteAssets:$volume->uid\");\n}\n```\n\nCompare to `actionDeleteAsset` (`src/controllers/AssetsController.php:579-613`), which correctly does:\n\n```php\n$this->requireVolumePermissionByAsset('deleteAssets', $asset);\n$this->requirePeerVolumePermissionByAsset('deletePeerAssets', $asset);\n```\n\nThe fix that landed in `05c2042` for `actionMoveFolder` (`src/controllers/AssetsController.php:733-765`) added both `savePeerAssets` and `deletePeerAssets` `requireVolumePermissionByFolder` checks to mirror the per-asset pattern, but the same hardening was not applied to `actionDeleteFolder` or `actionRenameFolder` (which also calls `deleteFoldersByIds` indirectly through later logic).\n\nThe asymmetry between the two endpoints demonstrates the missing check.\n\n## Impact\n\n- Integrity / availability of other users' assets on any volume where the attacker has `deleteAssets` but not `deletePeerAssets`: the attacker can permanently delete peer-owned files (and their parent folder structure) on the underlying filesystem, with no recovery via Craft's UI.\n- The Craft permission model explicitly distinguishes \"delete your own assets\" (`deleteAssets`) from \"delete other users' assets\" (`deletePeerAssets`) precisely so administrators can grant the former without the latter on shared volumes — this finding renders that distinction unenforceable for any user given folder-delete rights.\n- No information disclosure or remote code execution; impact is bounded to the affected volume's contents.\n- Does not require any non-default configuration: the affected endpoint is enabled by default and only requires that an administrator has split `deleteAssets` from `deletePeerAssets` (the documented, supported permission model).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-RC1"
+            },
+            {
+              "fixed": "5.9.22"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0-RC1"
+            },
+            {
+              "fixed": "4.17.15"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-7h62-6v23-v8fm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-50284"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/commit/b4e08977f0c9bdf002a77f9f6d1346cd55ac0598"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-02T18:49:04Z",
+    "nvd_published_at": "2026-07-01T23:16:52Z"
+  }
+}

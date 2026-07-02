@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-43cq-c2gq-pfpw",
+  "modified": "2026-07-02T18:47:37Z",
+  "published": "2026-07-02T18:47:37Z",
+  "aliases": [
+    "CVE-2026-50280"
+  ],
+  "summary": "Craft CMS: Authorization bypass in `entries/move-to-section` via missing target-section save check",
+  "details": "### Summary\n\nThe `EntriesController::actionMoveToSection()` endpoint checks only whether the current user can view the destination section, but it does not require permission to save entries into that section. A low-privileged authenticated control-panel user who can move an entry out of its current section can therefore move that entry into a different section where they have read access but no write access.\n\n### Details\n\nThe vulnerable route is implemented in [EntriesController.php](/D:/files/projects/cms-5.9.19/cms-5.9.19/src/controllers/EntriesController.php):465:\n\nThe destination check is only `viewEntries:$section->uid` . The source-entry gate is `Entry::canMove()`, which verifies whether the user can move the existing entry based on the source section:\n\nThis closes the exploit chain:\n\n1. External source: authenticated CP request to `entries/move-to-section`.\n2. Missing authorization check: destination section requires only `viewEntries`, not `saveEntries`.\n3. Privileged sink: `moveEntryToSection()` rewrites `sectionId` and saves the entry into the unauthorized section.\n\nPreconditions derived from the code:\n\n1. The attacker is authenticated to the control panel.\n2. Entry `345` is movable by the attacker from its current section.\n3. The attacker can satisfy `viewEntries` on destination section `12`.\n4. The attacker does not have `saveEntries:DESTINATION_UID`, which is the missing check that makes the bypass possible.\n\nResult:\n\n1. The controller accepts the request because `viewEntries:$section->uid` passes.\n2. Each source entry passes `canMove()` based on source-section permissions.\n3. `moveEntryToSection()` updates the entry’s `sectionId` and saves it.\n4. The entry is now located in a section where the attacker did not have write permission.\n\n### Impact\n\nThis breaks the intended section-level authorization model. A user with limited content permissions can inject or relocate content into a protected section, interfering with editorial boundaries, approval workflows, section-specific business logic, and content ownership expectations.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-RC1"
+            },
+            {
+              "fixed": "5.9.21"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-43cq-c2gq-pfpw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-50280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/commit/0a6b916f6367b0162b2eaf2366add67b45fa98ea"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-02T18:47:37Z",
+    "nvd_published_at": "2026-07-02T00:16:44Z"
+  }
+}

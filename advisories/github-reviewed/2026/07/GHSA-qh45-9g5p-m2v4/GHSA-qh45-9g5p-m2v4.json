@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qh45-9g5p-m2v4",
+  "modified": "2026-07-02T18:48:27Z",
+  "published": "2026-07-02T18:48:27Z",
+  "aliases": [
+    "CVE-2026-50283"
+  ],
+  "summary": "Craft CMS: Unauthorized Deletion of Source Assets During File Replacement",
+  "details": "We have identified an authorization issue in Craft CMS `AssetsController::actionReplaceFile` that can delete a source asset without source delete permission by supplying both `assetId` and `sourceAssetId`.\n\n### Description\n\nCraft CMS’s `craft\\\\controllers\\\\AssetsController::actionReplaceFile()` supports replacing a target asset file using another existing asset as the source. The action loads:\n\n- `$assetToReplace` from `assetId`  \n- `$sourceAsset` from `sourceAssetId`\n\nIt then enforces replace permissions using `($assetToReplace ?: $sourceAsset)`. When both IDs are provided, this expression resolves to the target asset so no permission check is performed against the source asset volume.\n\n```php\n$this->requireVolumePermissionByAsset('replaceFiles', $assetToReplace ?: $sourceAsset);\n$this->requirePeerVolumePermissionByAsset('replacePeerFiles', $assetToReplace ?: $sourceAsset);\n```\n\n[*src/controllers/AssetsController.php:L433-L434*](https://github.com/craftcms/cms/blob/5.x/src/controllers/AssetsController.php#L433-L434)\n\nIn the branch where both assets are present, Craft copies the source file into the target and then deletes the source asset. There is no check for `deleteAssets:<sourceVolumeUid>` or `deletePeerAssets:<sourceVolumeUid>` for the source asset before deletion.\n\n```php\n$assets->replaceAssetFile($assetToReplace, $tempPath, $assetToReplace->getFilename(), $sourceAsset->getMimeType());\nCraft::$app->getElements()->deleteElement($sourceAsset);\n```\n\n[*src/controllers/AssetsController.php:L462-L463*](https://github.com/craftcms/cms/blob/5.x/src/controllers/AssetsController.php#L462-L463)\n\n### Impact\n\nAn authenticated user who can replace files in one volume can delete assets in another volume where they do not have delete permission, as long as they can obtain a `sourceAssetId`. This can lead to unauthorized asset deletion, broken content references, and data loss.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-RC1"
+            },
+            {
+              "fixed": "5.9.21"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0-RC1"
+            },
+            {
+              "fixed": "4.17.14"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-qh45-9g5p-m2v4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-50283"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/commit/2c2579c7f1030872423f268d0c8b48377101961d"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-02T18:48:27Z",
+    "nvd_published_at": "2026-07-01T23:16:52Z"
+  }
+}
