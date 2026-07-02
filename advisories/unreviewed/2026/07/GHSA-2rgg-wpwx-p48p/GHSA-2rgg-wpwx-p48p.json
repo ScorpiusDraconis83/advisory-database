@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2rgg-wpwx-p48p",
+  "modified": "2026-07-02T18:36:30Z",
+  "published": "2026-07-02T18:36:30Z",
+  "aliases": [
+    "CVE-2026-8699"
+  ],
+  "details": "A stored Cross-Site Scripting (XSS) vulnerability has been identified in the web-based management interface of Archer C5 v6.8 routers, due to insufficient server-side validation and lack of proper output encoding of user-controlled input in a certain field.  An attacker with administrative privileges can inject crafted HTML or JS payloads into the affected field. The payload is stored and later executed when the affected page is rendered in an administrator's browser.Successful exploitation allows execution of arbitrary JavaScript in an admin's browser, potentially leading to session hijacking and unauthorized access to router configuration, possibly resulting in exposure of sensitive data and modification of device settings.\n\nThe vulnerability affects ISP-managed firmware variants of the product. Remediation is coordinated through service providers.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:H/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8699"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tp-link.com/en/support/faq/5165"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T17:17:03Z"
+  }
+}
