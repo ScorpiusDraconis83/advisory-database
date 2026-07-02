@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-22xx-xg3v-m8g7",
+  "modified": "2026-07-02T21:32:14Z",
+  "published": "2026-07-02T21:32:13Z",
+  "aliases": [
+    "CVE-2026-59094"
+  ],
+  "details": "Pathway through 0.31.1, fixed in commit d09722e, document store applies a caller-supplied glob pattern to indexed document paths using a hand-written recursive matcher that branches two ways on each ** token without memoization, giving exponential worst-case complexity. The filepath_globpattern value is taken from the body of the unauthenticated HTTP endpoints /v1/retrieve, /v1/inputs and /v2/answer and compiled into a filter evaluated once per indexed document, with no length or **-count limit. A remote unauthenticated attacker can submit a short pattern containing many ** tokens to consume CPU for tens of seconds per request, and a small number of requests denies service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pathwaycom/pathway/issues/241"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pathwaycom/pathway/pull/250"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pathwaycom/pathway/commit/d09722eef03fd94bba701836eb4c7fbfa3d3b88e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pathway-unauthenticated-denial-of-service-via-exponential-glob-pattern-matching-in-document-store"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-407"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T20:17:07Z"
+  }
+}

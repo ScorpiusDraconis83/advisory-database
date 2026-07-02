@@ -1,13 +1,17 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mvmf-94v6-879g",
-  "modified": "2026-06-30T15:30:45Z",
+  "modified": "2026-07-02T21:32:10Z",
   "published": "2026-06-30T15:30:44Z",
   "aliases": [
     "CVE-2026-53433"
   ],
   "details": "fzf is vulnerable to a Denial of Service (DoS) due to inefficient HTTP body processing in the --listen mode due to inefficient HTTP body processing using repeated string concatenation, resulting in quadratic time complexity (O(n²)). A crafted POST request with many small segments can trigger excessive CPU usage during request handling.This allows a single malicious request to monopolize the single‑threaded HTTP server, blocking all other clients and resulting in denial of service.\n\nThis issue was fixed in version 0.73.1.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"

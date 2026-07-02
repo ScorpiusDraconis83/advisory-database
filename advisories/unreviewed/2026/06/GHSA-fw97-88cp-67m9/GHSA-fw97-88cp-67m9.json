@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fw97-88cp-67m9",
-  "modified": "2026-06-25T09:31:21Z",
+  "modified": "2026-07-02T21:32:05Z",
   "published": "2026-06-25T09:31:21Z",
   "aliases": [
     "CVE-2026-53226"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: rockchip: fix generic IRQ chip leak on remove\n\nThe driver allocates domain generic chips using\nirq_alloc_domain_generic_chips() during probe. However, on driver\nremove/teardown, the generic chips are not automatically freed when the\nIRQ domain is removed because the domain flags do not include\nIRQ_DOMAIN_FLAG_DESTROY_GC.\n\nThis causes both the domain generic chips structure and the associated\ngeneric chips to be leaked. Additionally, the generic chips remain on\nthe global gc_list and may later be visited by generic IRQ chip suspend,\nresume, or shutdown callbacks after the GPIO bank has been removed,\npotentially resulting in a use-after-free and kernel crash.\n\nFix the resource leak by explicitly calling\nirq_domain_remove_generic_chips() before removing the IRQ domain in\nrockchip_gpio_remove().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:40Z"

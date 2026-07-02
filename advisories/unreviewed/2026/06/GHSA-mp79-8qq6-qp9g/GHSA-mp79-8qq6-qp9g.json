@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mp79-8qq6-qp9g",
-  "modified": "2026-06-25T09:31:22Z",
+  "modified": "2026-07-02T21:32:06Z",
   "published": "2026-06-25T09:31:21Z",
   "aliases": [
     "CVE-2026-53227"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: openvswitch: fix possible kfree_skb of ERR_PTR\n\nAfter the patch in the \"Fixes\" tag, the allocation of the \"reply\" skb\ncan happen either before or after locking the ovs_mutex.\n\nHowever, error cleanups still follow the classical reversed order,\nassuming \"reply\" is allocated before locking: it is freed after unlocking.\n\nIf \"reply\" allocation happens after locking the mutex and it fails,\n\"reply\" is left with an ERR_PTR, and execution jumps to the correspondent\ncleanup stage which will try to free an invalid pointer.\n\nFix this by setting the pointer to NULL after having saved its error\nvalue.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:40Z"

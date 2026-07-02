@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5rrm-76q9-hp77",
+  "modified": "2026-07-02T21:32:15Z",
+  "published": "2026-07-02T21:32:15Z",
+  "aliases": [
+    "CVE-2026-38968"
+  ],
+  "details": "ntopng through 6.6 is vulnerable to Predictable Session Identifier which can lead to Session Hijacking. HTTP session identifiers in src/HTTPserver.cpp use weak time-seeded pseudo-randomness during session creation. As a result, fresh authenticated logins can receive deterministic or colliding session cookies under attacker-controlled timing.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-38968"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ntop/ntopng/commit/14e22497233dc7d31d19dccb74b13bb073d16c2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ntop/ntopng/commit/179a346ceb6239fd36128ccca3efa8f9ea61eeb5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T21:16:55Z"
+  }
+}

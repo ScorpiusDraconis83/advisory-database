@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wfx4-v2wf-4gmp",
-  "modified": "2026-06-25T09:31:21Z",
+  "modified": "2026-07-02T21:32:04Z",
   "published": "2026-06-25T09:31:21Z",
   "aliases": [
     "CVE-2026-53210"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntee: shm: fix shm leak in register_shm_helper()\n\nregister_shm_helper() allocates shm before calling\niov_iter_npages(). If iov_iter_npages() returns 0, the function\njumps to err_ctx_put and leaks shm.\n\nThis can be triggered by TEE_IOC_SHM_REGISTER with\nstruct tee_ioctl_shm_register_data where length is 0.\n\nJump to err_free_shm instead.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:38Z"

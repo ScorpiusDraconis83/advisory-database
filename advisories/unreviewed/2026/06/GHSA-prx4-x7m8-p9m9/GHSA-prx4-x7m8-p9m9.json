@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-prx4-x7m8-p9m9",
-  "modified": "2026-06-25T09:31:21Z",
+  "modified": "2026-07-02T21:32:05Z",
   "published": "2026-06-25T09:31:21Z",
   "aliases": [
     "CVE-2026-53222"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nptp: ocp: fix resource freeing order\n\nCommit a60fc3294a37 (\"ptp: rework ptp_clock_unregister() to disable\nevents\") added a call to ptp_disable_all_events() which changes the\nconfiguration of pins if they support EXTTS events. In ptp_ocp_detach()\npins resources are freed before ptp_clock_unregister() and it leads to\nuse-after-free during driver removal. Fix it by changing the order of\nfree/unregister calls. To avoid irq handler running on the other core\nwhile ptp device unregistering, call synchronize_irq() after HW is\nconfigured to stop producing irqs and no irqs are in-flight.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:39Z"

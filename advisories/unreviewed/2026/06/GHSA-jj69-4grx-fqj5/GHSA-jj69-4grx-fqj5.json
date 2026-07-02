@@ -1,13 +1,17 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jj69-4grx-fqj5",
-  "modified": "2026-06-24T15:31:46Z",
+  "modified": "2026-07-02T21:32:04Z",
   "published": "2026-06-24T15:31:46Z",
   "aliases": [
     "CVE-2026-12537"
   ],
   "details": "Improper Neutralization used in an OS Command in the container launcher in Google Gemini CLI (versions prior to 0.39.1) and run-gemini-cli GitHub Action (versions prior to 0.1.22) on headless CI platforms allows an unprivileged attacker to achieve pre-sandbox host-level code execution a maliciously crafted .gemini/.env file.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:Clear"
@@ -26,7 +30,8 @@
   ],
   "database_specific": {
     "cwe_ids": [
-      "CWE-20"
+      "CWE-20",
+      "CWE-78"
     ],
     "severity": "CRITICAL",
     "github_reviewed": false,

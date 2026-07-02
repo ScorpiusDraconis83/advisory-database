@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w676-mrp6-5fqq",
+  "modified": "2026-07-02T21:32:14Z",
+  "published": "2026-07-02T21:32:14Z",
+  "aliases": [
+    "CVE-2026-59098"
+  ],
+  "details": "LobeChat through 2.2.9 contains a broken access control vulnerability in the retrieval-augmented-generation semantic search functionality that allows authenticated attackers to access other users' data by exploiting missing user-identifier predicates in the chunk model semanticSearch method. Attackers can supply arbitrary victim file or knowledge-base identifiers through the chunk retrieval and chat knowledge-base paths to retrieve text content, file names, and metadata belonging to other users.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59098"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lobehub/lobehub/issues/16535"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lobehub/lobehub/pull/16594"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lobehub/lobehub/commit/4a7931a4e66832947dba11afdffae2918a56b6a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lobechat-cross-user-document-disclosure-via-unscoped-rag-semantic-search"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T20:17:08Z"
+  }
+}

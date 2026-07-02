@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vccq-h5j4-92qr",
-  "modified": "2026-06-25T09:31:21Z",
+  "modified": "2026-07-02T21:32:04Z",
   "published": "2026-06-25T09:31:21Z",
   "aliases": [
     "CVE-2026-53211"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nft_meta_bridge: fix stale stack leak via IIFHWADDR register\n\nNFT_META_BRI_IIFHWADDR declares its destination register with\nlen = ETH_ALEN (6 bytes), which the register-init tracking rounds up to\ntwo 32-bit registers (8 bytes). nft_meta_bridge_get_eval() then does\nmemcpy(dest, br_dev->dev_addr, ETH_ALEN), writing only 6 bytes and\nleaving the upper 2 bytes of the second register as uninitialised\nnft_do_chain() stack. A downstream load of that register span leaks\nthose stale bytes to userspace.\n\nZero the second register before the memcpy so the full declared span is\nwritten.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:38Z"

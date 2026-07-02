@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rwcv-c3fr-4hrw",
+  "modified": "2026-07-02T21:32:12Z",
+  "published": "2026-07-02T21:32:11Z",
+  "aliases": [
+    "CVE-2025-71385"
+  ],
+  "details": "Netdata before 2.3.1 reflects the user-supplied love query parameter of the api/v2/ilove.svg and api/v3/ilove.svg endpoints verbatim into the generated SVG document (into a text element) without HTML or XML escaping, and serves the response with Content-Type image/svg+xml. An attacker can craft a URL such as /api/v2/ilove.svg?love=<script>...</script>; when a victim navigates to it the injected script executes in the victim browser in the origin of the Netdata instance (reflected cross-site scripting). These endpoints are registered with HTTP_ACL_NOCHECK and anonymous access and, because bearer-token protection is disabled by default, are reachable without authentication on a default Netdata agent. The issue was resolved by removing the ilove endpoint.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netdata/netdata/pull/19919"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netdata/netdata/commit/f82554fe9b21b5ae51a8663a3f4ddce84cac16af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netdata/netdata/releases/tag/v2.3.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netdata-reflected-cross-site-scripting-via-love-parameter-in-ilove-svg-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T20:17:00Z"
+  }
+}
