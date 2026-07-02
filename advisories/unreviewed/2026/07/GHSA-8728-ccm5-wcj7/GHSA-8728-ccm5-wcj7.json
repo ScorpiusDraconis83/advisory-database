@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8728-ccm5-wcj7",
+  "modified": "2026-07-02T06:34:03Z",
+  "published": "2026-07-02T06:34:03Z",
+  "aliases": [
+    "CVE-2026-13125"
+  ],
+  "details": "GeoWebPlayer (also called \"Web Plugin\" in the GV-VMS documentation and \"WS Player\" for VMS-Cloud) is an addon that can be installed with various GeoVision software (GV-VMS, GV-Cloud, ...). It creates a websocket server that expands the capabilities of the various web-interfaces provided by the GeoVision software and may be necessary for them to function properly.\n\nIn order to access the websocket server, no authentication is required. As such, any malicious website can attempt to open a connection to the server and potentially access sensitive APIs. In particular, it's possible to call a combination of the `create` method and  `getScreenCapture`  to retrieve the content of the user's screen.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.geovision.com.tw/cyber_security.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.talosintelligence.com/vulnerability_reports/TALOS-2026-2370"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T04:17:09Z"
+  }
+}

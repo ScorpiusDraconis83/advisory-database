@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j334-4937-pg56",
+  "modified": "2026-07-02T06:34:05Z",
+  "published": "2026-07-02T06:34:05Z",
+  "aliases": [
+    "CVE-2026-14249"
+  ],
+  "details": "The Request a Quote plugin for WordPress is vulnerable to Code Injection in versions up to, and including, 2.5.5 via the emd_delete_file AJAX action. This is due to the emd_delete_file() handler deriving a PHP function name from the attacker-controlled $_POST['path'] parameter and invoking it dynamically via the variable-function call $sess_name(), and the handler being registered for wp_ajax_nopriv with its only protection being a nonce that the plugin prints into the public quote-form page via wp_localize_script. This makes it possible for unauthenticated attackers to invoke arbitrary zero-argument PHP functions on the server, such as phpinfo(), potentially exposing sensitive server configuration and credentials, or executing other destructive built-in PHP functions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/request-a-quote/tags/2.5.5/includes/class-install-deactivate.php#L60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/request-a-quote/tags/2.5.5/includes/common-functions.php#L1035"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/request-a-quote/tags/2.5.5/includes/common-functions.php#L1038"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/request-a-quote/tags/2.5.5/includes/emd-form-builder-lite/emd-form-frontend.php#L1187"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3592676%40request-a-quote&new=3592676%40request-a-quote&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5a349c4f-d2e7-47af-9013-3cfa496b3b8c?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-74"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T06:16:13Z"
+  }
+}

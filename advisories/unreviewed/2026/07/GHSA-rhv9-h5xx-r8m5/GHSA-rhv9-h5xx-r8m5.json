@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rhv9-h5xx-r8m5",
+  "modified": "2026-07-02T06:34:05Z",
+  "published": "2026-07-02T06:34:05Z",
+  "aliases": [
+    "CVE-2026-5821"
+  ],
+  "details": "The Image Optimizer plugin for WordPress is vulnerable to arbitrary file deletion in versions up to and including 1.7.4. This is due to insufficient path validation in the Image_Backup::remove() function where backup file paths stored in post meta are used directly in file deletion operations without verifying they are within the uploads directory. The plugin stores backup file paths in the image_optimizer_metadata post meta field and trusts these paths completely when deleting backups on the delete_attachment hook. An authenticated attacker with Author-level access can edit the image_optimizer_metadata post meta on their own attachments via WordPress's Custom Fields interface, injecting arbitrary absolute file paths into the backups array. When the attacker subsequently deletes the attachment, the plugin calls File_System::delete() on each path without validation. This makes it possible for authenticated attackers, with Author-level access and above, to delete arbitrary files on the server within the web server's filesystem permissions, potentially leading to denial of service, data loss, or security degradation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/image-optimization/tags/1.7.3/classes/image/image-backup.php#L117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/image-optimization/tags/1.7.3/classes/image/image-meta.php#L97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/image-optimization/tags/1.7.3/modules/backups/components/handle-backups-removing.php#L19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/image-optimization/trunk/classes/image/image-backup.php#L117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/image-optimization/trunk/classes/image/image-meta.php#L97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/image-optimization/trunk/modules/backups/components/handle-backups-removing.php#L19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3557772%40image-optimization&new=3557772%40image-optimization&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a1a00374-e9d6-46f9-a28c-cb7768505787?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T06:16:14Z"
+  }
+}

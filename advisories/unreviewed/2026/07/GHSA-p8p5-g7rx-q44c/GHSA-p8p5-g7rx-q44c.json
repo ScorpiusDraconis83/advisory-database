@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p8p5-g7rx-q44c",
+  "modified": "2026-07-02T06:34:05Z",
+  "published": "2026-07-02T06:34:05Z",
+  "aliases": [
+    "CVE-2026-5348"
+  ],
+  "details": "The Academy LMS – WordPress LMS Plugin for Complete eLearning Solution plugin for WordPress is vulnerable to Insecure Direct Object Reference in versions up to, and including, 3.8.1. This is due to the '/topics' REST API endpoint being registered with a permission callback set to '__return_true', allowing unauthenticated access to course curriculum data without verifying the course's post status or user enrollment. This makes it possible for unauthenticated attackers to access detailed curriculum information for private, draft, scheduled, or password-protected courses by enumerating course IDs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/academy/tags/3.5.3/includes/api/course.php#L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/academy/tags/3.5.3/includes/api/course.php#L77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/academy/tags/3.5.3/includes/traits/courses.php#L1514"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/academy/trunk/includes/api/course.php#L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/academy/trunk/includes/api/course.php#L77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/academy/trunk/includes/traits/courses.php#L1514"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3592849%40academy&new=3592849%40academy&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b84ae3e0-de4f-41d6-8944-fadaf6fdcf79?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T06:16:14Z"
+  }
+}

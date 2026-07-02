@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pc36-946p-693j",
+  "modified": "2026-07-02T06:34:03Z",
+  "published": "2026-07-02T06:34:03Z",
+  "aliases": [
+    "CVE-2026-57267"
+  ],
+  "details": "GeoWebPlayer (also called \"Web Plugin\" in the GV-VMS documentation and \"WS Player\" for VMS-Cloud) is an addon that can be installed with various GeoVision software (GV-VMS, GV-Cloud, ...). It creates a websocket server that expands the capabilities of the various web-interfaces provided by the GeoVision software and may be necessary for them to function properly.\n\nThe Websocket server can accept various commands coming from localhost. Many of the commands will take an `index` value that is then used to access various arrays to enter critical sections, perform various actions via function calls, etc. However the `index` value is usually not checked for valid range, and as such it can be used to access multiple arrays out-of-bound.\n\n\n\n#### snapshot command index-out-of-bound",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57267"
+    },
+    {
+      "type": "WEB",
+      "url": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2373"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.geovision.com.tw/cyber_security.php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-129"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T04:17:12Z"
+  }
+}

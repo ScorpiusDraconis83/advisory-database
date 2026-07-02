@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7qrc-923r-c8cr",
+  "modified": "2026-07-02T06:34:05Z",
+  "published": "2026-07-02T06:34:05Z",
+  "aliases": [
+    "CVE-2026-11592"
+  ],
+  "details": "The Email Subscribers & Newsletters – Email Marketing, Post Notifications & Newsletter Plugin for WordPress plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 5.9.27. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with contributor-level access and above, to overwrite plugin mail settings (from name and from email address), create audience lists, insert arbitrary contacts into those lists, create and overwrite newsletter broadcasts and post notifications, add workflows, and queue and dispatch mass email to arbitrary recipients.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11592"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.21/lite/admin/class-email-subscribers-admin.php#L216"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.21/lite/admin/class-ig-es-onboarding.php#L171"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.21/lite/includes/class-email-subscribers-activator.php#L66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.21/lite/includes/classes/class-es-newsletters.php#L717"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.21/lite/includes/workflows/admin/class-es-workflow-admin-edit.php#L74"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.24/lite/admin/class-email-subscribers-admin.php#L216"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.24/lite/admin/class-ig-es-onboarding.php#L171"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.24/lite/includes/class-email-subscribers-activator.php#L66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.24/lite/includes/classes/class-es-newsletters.php#L717"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.24/lite/includes/workflows/admin/class-es-workflow-admin-edit.php#L74"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3584584%40email-subscribers&new=3584584%40email-subscribers&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a2e70691-4de9-4b12-babf-bebe267a780b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T06:16:13Z"
+  }
+}

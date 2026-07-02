@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6x9h-hg2c-hwf8",
+  "modified": "2026-07-02T06:34:05Z",
+  "published": "2026-07-02T06:34:04Z",
+  "aliases": [
+    "CVE-2026-10089"
+  ],
+  "details": "The Insert Pages plugin for WordPress is vulnerable to Stored Cross-Site Scripting via post custom field keys (meta key names) in all versions up to, and including, 3.11.4. This is due to insufficient output escaping in the the_meta() function: while the custom field VALUE is sanitized with wp_kses_post(), the custom field KEY ($key) is interpolated into the rendered HTML (lines 1786-1791) and echoed (line 1806) without any escaping when an inserted page is rendered with the [insert page='ID' display='all'] shortcode. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10089"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/insert-pages/tags/3.11.3/insert-pages.php#L1771"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/insert-pages/tags/3.11.3/insert-pages.php#L1789"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/insert-pages/tags/3.11.3/insert-pages.php#L768"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/insert-pages/tags/3.11.4/insert-pages.php#L1771"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/insert-pages/tags/3.11.4/insert-pages.php#L1789"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/insert-pages/tags/3.11.4/insert-pages.php#L768"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3579298"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a4246181-d331-46b0-ad48-e2ece11b2f5f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T06:16:12Z"
+  }
+}
