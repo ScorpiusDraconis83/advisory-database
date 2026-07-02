@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xw57-23p8-9wc5",
+  "modified": "2026-07-02T19:07:22Z",
+  "published": "2026-07-02T19:07:22Z",
+  "aliases": [],
+  "summary": "@asymmetric-effort/specifyjs: Localhost bypass incomplete (IPv6, 0.0.0.0, 127.x range)",
+  "details": "## Finding\n\n**Location**: `core/src/shared/secure-fetch.ts:52-54`\n\nThe localhost exception allowed `localhost` and `127.0.0.1` but did not cover `0.0.0.0`, `[::1]` (IPv6 localhost), or the full `127.0.0.0/8` loopback range.\n\n## Status\n\n**Fixed in v0.2.136** — Localhost detection now covers `localhost`, `127.0.0.1`, `[::1]`, `0.0.0.0`, and the full `127.x.x.x` range.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@asymmetric-effort/specifyjs"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.2.136"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/asymmetric-effort/specifyjs/security/advisories/GHSA-xw57-23p8-9wc5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/asymmetric-effort/specifyjs/commit/25d1fb491d99479efdf501f5f75e0bb80c908f0a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/asymmetric-effort/specifyjs/commit/293124c51bf797c0f5cdae32981110545850a893"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/asymmetric-effort/specifyjs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-02T19:07:22Z",
+    "nvd_published_at": null
+  }
+}
