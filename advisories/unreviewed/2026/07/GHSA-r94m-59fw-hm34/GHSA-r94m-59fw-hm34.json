@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r94m-59fw-hm34",
+  "modified": "2026-07-02T09:32:03Z",
+  "published": "2026-07-02T09:32:03Z",
+  "aliases": [
+    "CVE-2026-33592"
+  ],
+  "details": "An unauthenticated remote attacker can exhaust\nserver memory via the FindServers Discovery Service in open62541. The\nserverUris field of FindServersRequest is not validated for length or array\nsize. An attacker can declare an arbitrarily large string (up to ~3.9 GB)\ndelivered across intermediate chunks without ever sending the final chunk. The\nserver buffers all chunks in RAM indefinitely until the SecureChannel times\nout. The attack is pre-session and bypasses all encryption configuration. The issue affects open62541: from 1.4.0 through 1.4.16, from 1.5.0 through 1.5.4, master.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33592"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541/pull/8142"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541/pull/8142/changes/d253818d6c5e870e1db0e360b18138c8bdc809ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T08:16:39Z"
+  }
+}
