@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fcmw-wx57-9p75",
+  "modified": "2026-07-02T19:25:18Z",
+  "published": "2026-07-02T19:25:18Z",
+  "aliases": [
+    "CVE-2026-4776"
+  ],
+  "summary": "Mautic has SQL Injection in API Contact Filtering",
+  "details": "### Summary\nAn SQL injection vulnerability exists in Mautic's API contact filtering mechanism. Due to insufficient recursive sanitization of nested query parameters, an authenticated API user can bypass input filtering and inject arbitrary SQL commands.\n\n### Impact\nAn authenticated user with API access can exploit this vulnerability to execute arbitrary SQL queries against the underlying database. This allows unauthorized retrieval of sensitive database contents—including user credentials, system configurations, and personal identifiable information (PII) of contacts—bypassing standard data access permissions.\n\n### Patched Versions\nThis security issue has been fixed in the following releases:\n* **7.1.2**\n* **6.0.9**\n* **5.2.11**\n* **4.4.20** [ELTS](https://mautic.org/extended-long-term-support-elts/)\n\nWe strongly recommend upgrading to the latest version corresponding to your release branch.\n\n### Workarounds\nThere are no official workarounds. To mitigate this issue without upgrading, you may temporarily disable API access or restrict API permissions to highly trusted accounts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.6.0"
+            },
+            {
+              "last_affected": "4.4.13"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.2.11"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.0.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mautic/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0"
+            },
+            {
+              "fixed": "7.1.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mautic/mautic/security/advisories/GHSA-fcmw-wx57-9p75"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4776"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mautic/mautic"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-02T19:25:18Z",
+    "nvd_published_at": "2026-05-29T08:16:19Z"
+  }
+}
