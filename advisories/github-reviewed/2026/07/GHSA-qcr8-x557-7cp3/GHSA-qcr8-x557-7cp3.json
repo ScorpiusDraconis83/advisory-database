@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qcr8-x557-7cp3",
+  "modified": "2026-07-02T19:03:11Z",
+  "published": "2026-07-02T19:03:10Z",
+  "aliases": [],
+  "summary": "@asymmetric-effort/specifyjs: Production console warnings may leak internal framework state",
+  "details": "## Finding\n\n**Location**: `core/src/core/scheduler.ts:23`, `core/src/hooks/dispatcher.ts:100`, `core/src/client/graphql.ts:71`\n\nSeveral `console.warn` calls are not gated behind `__DEV__` and will fire in production builds, potentially exposing internal framework state such as queue sizes, component names, and query fragments to users viewing the browser console.\n\n## Status\n\n**Open** — These warnings serve as development-time diagnostics. They do not expose credentials or PII, but may reveal internal architecture details.\n\n## Recommendation\n\nGate all development-time `console.warn` and `console.error` calls behind `process.env.NODE_ENV !== 'production'` or a `__DEV__` constant that build tools can tree-shake.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@asymmetric-effort/specifyjs"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.2.140"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 0.2.137"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/asymmetric-effort/specifyjs/security/advisories/GHSA-qcr8-x557-7cp3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/asymmetric-effort/specifyjs/commit/2ef791bc73ead853efd0c227ad8228bc594a7b63"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/asymmetric-effort/specifyjs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-209"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-02T19:03:10Z",
+    "nvd_published_at": null
+  }
+}
