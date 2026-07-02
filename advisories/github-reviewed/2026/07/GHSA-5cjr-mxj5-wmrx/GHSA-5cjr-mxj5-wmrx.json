@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5cjr-mxj5-wmrx",
+  "modified": "2026-07-02T20:27:23Z",
+  "published": "2026-07-02T20:27:23Z",
+  "aliases": [
+    "CVE-2026-49289"
+  ],
+  "summary": "SimpleSAMLphp has Possible DoS via XPath Transform",
+  "details": "## Summary\n\nThis library turned out to be vulnerable to Denial-of-Service attacks using XPath transforms. A mitigation has been put in place to restrict the number of transforms and to restrict transforms to only the transform-algorithms mentioned in the SAML 2.0 Core Specifications (and specifically refuse XPath transforms).\n\n## Impact\n\nAn attacker is able to send specially crafted messages to any entity relying on SimpleSAMLphp (or directly on this SAML2-library) to be able to perform a Denial-of-Service attack.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "simplesamlphp/saml2"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.20.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.20.2"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "simplesamlphp/saml2-legacy"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.20.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.20.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/simplesamlphp/saml2/security/advisories/GHSA-5cjr-mxj5-wmrx"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/simplesamlphp/saml2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-02T20:27:23Z",
+    "nvd_published_at": null
+  }
+}
