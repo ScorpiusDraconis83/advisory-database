@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-794g-x443-36f7",
+  "modified": "2026-07-02T20:42:23Z",
+  "published": "2026-07-02T20:42:23Z",
+  "aliases": [
+    "CVE-2026-2092"
+  ],
+  "summary": "Keycloak: Unauthorized access via improper validation of encrypted SAML assertions",
+  "details": "Keycloak's SAML broker endpoint does not properly validate encrypted assertions when the overall SAML response is not signed. An attacker with a valid signed SAML assertion can exploit this by crafting a malicious SAML response, injecting an encrypted assertion for an arbitrary principal, leading to unauthorized access and potential information disclosure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.keycloak:keycloak-services"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "26.2.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.keycloak:keycloak-services"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "26.3.0"
+            },
+            {
+              "last_affected": "26.4.7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.keycloak:keycloak-services"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "26.5.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 26.5.5"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/keycloak/keycloak/security/advisories/GHSA-794g-x443-36f7"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2092"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keycloak/keycloak/pull/46929"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keycloak/keycloak/commit/b40a25908d937bb0563ea516487bc2c7c1d92508"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:3925"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:3926"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:3947"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/errata/RHSA-2026:3948"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-2092"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2437296"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/keycloak/keycloak"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-2092.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1287"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-02T20:42:23Z",
+    "nvd_published_at": null
+  }
+}
