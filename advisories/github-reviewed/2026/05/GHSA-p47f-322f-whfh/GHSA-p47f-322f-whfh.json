@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p47f-322f-whfh",
+  "modified": "2026-07-02T13:55:30Z",
+  "published": "2026-05-28T15:39:50Z",
+  "aliases": [
+    "CVE-2026-9828"
+  ],
+  "summary": "QOS.CH Sarl logback logback-core has a deserialization of untrusted data vulnerability",
+  "details": "Deserialization of untrusted data vulnerability in QOS.CH Sarl logback logback-core (HardenedObjectInputStream (logback-core) modules) allows Object Injection albeit heavily restricted.\n\nMore precisely, an attacker able to influence serialized data sent to SimpleSocketServer or SimpleSSLSocketServer can instantiate objects from classes in the java.lang and java.util packages that are not explicitly blocked.\n\nAlthough deserialization is heavily restricted by HardenedObjectInputStream and no practical way to achieve remote code execution or significant privilege escalation has been identified, this issue constitutes a bypass of the intended security restrictions.\n\nThis issue affects logback: through 1.5.32 inclusive.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:P/RE:L/U:Green"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "ch.qos.logback:logback-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.33"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.5.32"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9828"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/qos-ch/logback"
+    },
+    {
+      "type": "WEB",
+      "url": "https://logback.qos.ch/news.html#1.5.33"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-02T13:55:30Z",
+    "nvd_published_at": "2026-05-28T14:16:27Z"
+  }
+}
