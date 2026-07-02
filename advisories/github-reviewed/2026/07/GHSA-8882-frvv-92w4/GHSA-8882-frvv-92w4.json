@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8882-frvv-92w4",
+  "modified": "2026-07-02T18:59:33Z",
+  "published": "2026-07-02T18:59:33Z",
+  "aliases": [
+    "CVE-2026-50288"
+  ],
+  "summary": "@asymmetric-effort/specifyjs: URL parse failure silently allows request",
+  "details": "## Finding\n\n**Location**: `core/src/shared/secure-fetch.ts:42-45`\n\nWhen `new URL()` throws a parse error, the `assertSecureUrl` function returned without throwing, silently allowing the request to proceed without HTTPS validation.\n\n## Status\n\n**Fixed in v0.2.136** — The catch block now throws an error instead of silently returning.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@asymmetric-effort/specifyjs"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.2.136"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/asymmetric-effort/specifyjs/security/advisories/GHSA-8882-frvv-92w4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/asymmetric-effort/specifyjs/commit/25d1fb491d99479efdf501f5f75e0bb80c908f0a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/asymmetric-effort/specifyjs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/asymmetric-effort/specifyjs/releases/tag/v0.2.136"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-02T18:59:33Z",
+    "nvd_published_at": null
+  }
+}
