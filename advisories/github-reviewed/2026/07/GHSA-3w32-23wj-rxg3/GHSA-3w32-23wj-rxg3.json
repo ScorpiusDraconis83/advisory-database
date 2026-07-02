@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3w32-23wj-rxg3",
+  "modified": "2026-07-02T20:03:58Z",
+  "published": "2026-07-02T20:03:58Z",
+  "aliases": [
+    "CVE-2026-50282"
+  ],
+  "summary": "Craft CMS Vulnerable to Unauthorized Deletion of Destination Folders During Forced Moves",
+  "details": "We have identified an authorization issue in Craft CMS where a forced folder move can delete a conflicting destination folder without destination delete permission.\n\n### Description\n\nCraft CMS’s `craft\\\\controllers\\\\AssetsController::actionMoveFolder()` supports moving an asset folder into a destination parent folder. If a folder with the same name already exists at the destination, the action can be called with `force=true` to overwrite the destination.\n\nThe permission checks for this action allow:\n\n- `deleteAssets:<sourceVolumeUid>` for the folder being moved  \n- `createFolders:<destVolumeUid>` for the destination parent folder  \n- `saveAssets:<destVolumeUid>` for the destination parent folder\n\nThe action does not require `deleteAssets` on the destination volume or destination conflict folder. When `force=true` and a name conflict exists, the code deletes the destination folder to resolve the conflict.\n\n```php\n$this->requireVolumePermissionByFolder('deleteAssets', $folderToMove);\n$this->requireVolumePermissionByFolder('createFolders', $destinationFolder);\n$this->requireVolumePermissionByFolder('saveAssets', $destinationFolder);\n```\n\n[*src/controllers/AssetsController.php:L751-L753*](https://github.com/craftcms/cms/blob/5.x/src/controllers/AssetsController.php#L751-L753)\n\nIndexed destination conflicts are deleted via the Assets service:\n\n```php\n$assets->deleteFoldersByIds($existingFolder->id);\n```\n\n[*src/controllers/AssetsController.php:L798-L798*](https://github.com/craftcms/cms/blob/5.x/src/controllers/AssetsController.php#L798-L798)\n\nUnindexed destination conflicts are deleted directly in the volume filesystem:\n\n```php\n$targetVolume->deleteDirectory(rtrim($destinationFolder->path, '/') . '/' . $folderToMove->name);\n```\n\n[*src/controllers/AssetsController.php:L815*](https://github.com/craftcms/cms/blob/5.x/src/controllers/AssetsController.php#L815)\n\n### Impact\n\nA user who cannot delete assets in a destination volume can still delete a destination folder and its contents by triggering a forced move into a conflicting name. This can cause asset loss, broken references in entries and fields that point to deleted assets, and operational disruption.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-RC1"
+            },
+            {
+              "fixed": "5.9.21"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0-RC1"
+            },
+            {
+              "fixed": "4.17.14"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-3w32-23wj-rxg3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-50282"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/commit/2c2579c7f1030872423f268d0c8b48377101961d"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-02T20:03:58Z",
+    "nvd_published_at": "2026-07-02T17:17:01Z"
+  }
+}
