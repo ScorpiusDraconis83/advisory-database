@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ppgc-36hr-q23g",
+  "modified": "2026-07-03T09:31:28Z",
+  "published": "2026-07-03T09:31:28Z",
+  "aliases": [
+    "CVE-2026-11900"
+  ],
+  "details": "The Ad Inserter – Ad Manager & AdSense Ads plugin for WordPress is vulnerable to Insecure Direct Object Reference in versions up to and including 2.8.16 via the 'data' attribute of the [adinserter] shortcode. This is due to the replace_ai_tags() function processing a {reusable-block-N} tag pattern that calls get_post_field('post_content', N) without verifying the requesting user's capability with current_user_can('read_post'), without restricting the post type to 'wp_block', and without checking the post status. This makes it possible for authenticated attackers, with Contributor-level access and above, to read the full content of arbitrary posts including Private, Draft, Pending, Trashed, and password-protected posts owned by other users, by placing the shortcode in a post they own and previewing it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11900"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ad-inserter/tags/2.8.13/ad-inserter.php#L10569"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ad-inserter/tags/2.8.13/ad-inserter.php#L10818"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ad-inserter/tags/2.8.13/ad-inserter.php#L13083"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ad-inserter/tags/2.8.13/ad-inserter.php#L2101"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ad-inserter/tags/2.8.16/ad-inserter.php#L10569"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ad-inserter/tags/2.8.16/ad-inserter.php#L10818"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ad-inserter/tags/2.8.16/ad-inserter.php#L13083"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ad-inserter/tags/2.8.16/ad-inserter.php#L2101"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3591792%40ad-inserter&new=3591792%40ad-inserter&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/20f0e9ae-786b-4ba8-a6d5-92bf31ebc2c7?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-03T09:16:36Z"
+  }
+}
