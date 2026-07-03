@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9g8c-cjxj-24g2",
+  "modified": "2026-07-03T12:31:45Z",
+  "published": "2026-07-03T12:31:45Z",
+  "aliases": [
+    "CVE-2026-5137"
+  ],
+  "details": "The RTMKit (rometheme-for-elementor) plugin for WordPress is vulnerable to Local File Inclusion in versions up to, and including, 2.0.7 This is due to insufficient path validation on the 'template' parameter in the render_templates AJAX endpoint, which is used directly in a require/include statement without sanitization. This makes it possible for authenticated attackers, with Contributor-level access and above, to include and execute files on the server ending in _templates.php, allowing the execution of any PHP code in those files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/rometheme-for-elementor/tags/2.0.3/Inc/Modules/Templatekits/TemplatekitAPI.php#L39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/rometheme-for-elementor/trunk/Inc/Modules/Templatekits/TemplatekitAPI.php#L39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3568335/rometheme-for-elementor/trunk/Inc/Modules/Templatekits/TemplatekitAPI.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?old_path=%2Frometheme-for-elementor/tags/2.0.7&new_path=%2Frometheme-for-elementor/tags/2.0.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/22172d16-bcde-4516-bce0-222fbb7a76f7?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-98"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-03T10:16:33Z"
+  }
+}
