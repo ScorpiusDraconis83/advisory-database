@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-796c-rm6v-rccx",
+  "modified": "2026-07-03T06:32:07Z",
+  "published": "2026-07-03T06:32:07Z",
+  "aliases": [
+    "CVE-2026-9180"
+  ],
+  "details": "The MotoPress Appointment Booking plugin for WordPress is vulnerable to Authorization Bypass Through User-Controlled Key in all versions up to, and including, 2.4.4. This is due to the `POST /motopress/appointment/v1/bookings` REST endpoint being registered with `'permission_callback' => '__return_true'`, allowing unauthenticated access, while the `createBooking` handler in `BookingsRestController.php` accepts an attacker-supplied `payment_details.booking_id` value and loads the referenced booking via `findById()` without verifying that the caller owns or has any rights to that booking. This makes it possible for unauthenticated attackers to overwrite the customer name, email address, phone number, and `customer_id` of any non-confirmed victim booking by submitting a request with no reservation items, causing `BookingService::createBooking()` to load the existing victim booking object and persist it with attacker-controlled customer data. Victim booking IDs can be harvested prior to exploitation without authentication by querying the also-publicly-accessible `GET /motopress/appointment/v1/bookings/reservations` endpoint with a guessable `service_id` and date range, and only bookings whose status is not `STATUS_CONFIRMED` (e.g., pending or auto-draft) are valid targets.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/motopress-appointment-lite/tags/2.4.3/includes/rest/controllers/motopress/appointment/v1/BookingsRestController.php#L30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/motopress-appointment-lite/tags/2.4.3/includes/rest/controllers/motopress/appointment/v1/BookingsRestController.php#L308"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/motopress-appointment-lite/tags/2.4.3/includes/rest/controllers/motopress/appointment/v1/BookingsRestController.php#L98"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/motopress-appointment-lite/tags/2.4.3/includes/services/BookingService.php#L29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3583168/motopress-appointment-lite/trunk/includes/rest/controllers/motopress/appointment/v1/BookingsRestController.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e9a6521d-39b2-48f4-834b-888047619df5?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-03T06:16:22Z"
+  }
+}
