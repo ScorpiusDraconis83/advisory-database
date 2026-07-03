@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c67p-rxvq-wp57",
+  "modified": "2026-07-03T03:34:13Z",
+  "published": "2026-07-03T03:34:13Z",
+  "aliases": [
+    "CVE-2026-14327"
+  ],
+  "details": "The AR for WordPress plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 8.40 via the 'file' parameter parameter. This makes it possible for unauthenticated attackers to read the contents of arbitrary files on the server, which can contain sensitive information. Exploitation requires an attacker to first obtain a valid nonce and secure nonce via the publicly accessible ar_get_fresh_nonce and ar_process_user_image nopriv AJAX handlers, and to reproduce the encryption key locally — both steps are fully achievable by an unauthenticated attacker on any default free or unlicensed installation where ar_licence_key is unset.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14327"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ar-for-wordpress/tags/8.40/ar-wordpress.php#L118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ar-for-wordpress/tags/8.40/ar-wordpress.php#L130"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ar-for-wordpress/tags/8.40/includes/ar-secure-download.php#L64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ar-for-wordpress/tags/8.40/includes/ar-secure-download.php#L98"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3593272%40ar-for-wordpress&new=3593272%40ar-for-wordpress&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/cfa375a8-ab07-45da-bc77-1e7edc996e05?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-03T02:16:23Z"
+  }
+}
