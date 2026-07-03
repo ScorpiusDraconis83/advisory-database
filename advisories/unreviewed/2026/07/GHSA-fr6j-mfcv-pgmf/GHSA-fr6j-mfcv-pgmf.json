@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fr6j-mfcv-pgmf",
+  "modified": "2026-07-03T18:31:06Z",
+  "published": "2026-07-03T18:31:05Z",
+  "aliases": [
+    "CVE-2026-14612"
+  ],
+  "details": "Two off-by-one errors in the FreeIPA ipa-otpd daemon's OAuth2 device authorization handler can cause out-of-bounds memory access when processing an oversized response from a configured external OAuth2/OIDC Identity Provider. An attacker who controls or can man-in-the-middle the IdP endpoint may be able to trigger ipa-otpd to write or read one byte past the end of a fixed-size buffer. Exploitation requires FreeIPA to be configured with an external IdP, attacker control or MITM of that IdP, and a user to initiate the OAuth2 device authorization flow. The most likely impact is limited denial of service affecting the ipa-otpd daemon.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14612"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-14612"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2496879"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-03T16:16:54Z"
+  }
+}
