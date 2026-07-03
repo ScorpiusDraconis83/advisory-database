@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q2f8-hpwm-236j",
+  "modified": "2026-07-03T15:31:57Z",
+  "published": "2026-07-03T15:31:57Z",
+  "aliases": [
+    "CVE-2026-59234"
+  ],
+  "details": "Authorization Bypass Through User-Controlled Key (CWE-639) in CalendarDeleteEventController (app/Http/Controllers/Calendar/CalendarDeleteEventController.php), exposed at GET /calendar/event/delete/{id}, in Prospero Flow CRM before 5.5.3 allows a remote, authenticated attacker to delete arbitrary calendar events belonging to other users by manipulating the {id} path parameter, because the delete handler resolves the record with Calendar::find($id)->delete() and performs no ownership check (no user_id/company_id scoping) before deletion. This results in unauthorized destruction of other users' calendar events across the platform.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59234"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/commit/8c26eed4d80544c30e55448e12a8e999af6d2b70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/releases/tag/v5.5.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://secur0.com/en/cna/cve-list/cve-2026-59234-idor-in-prospero-flow-crm-allows-deletion-of-other-users-calendar-events"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-03T13:17:30Z"
+  }
+}
