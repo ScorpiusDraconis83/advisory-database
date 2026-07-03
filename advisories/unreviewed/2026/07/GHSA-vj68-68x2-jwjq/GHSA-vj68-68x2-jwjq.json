@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vj68-68x2-jwjq",
+  "modified": "2026-07-03T00:31:52Z",
+  "published": "2026-07-03T00:31:52Z",
+  "aliases": [
+    "CVE-2026-12413"
+  ],
+  "details": "An invalidly formatted IKEv2 fragment causes the Libreswan pluto daemon to crash and restart. Continued exploitation would cause a denial of service. The function reassemble_v2_incoming_fragments() would ignore unknown outer payloads but still store these in a fixed size array msg_digest.digest[PAYLIMIT]. An off-by-one error in the assertion PASSERT(logger, md->digest_roof < elemsof(md->digest)) causes the daemon to abort. No remote code execution is possible. Any configuration that allows IKEv2 connections that do not set fragmentation=no are vulnerable. IKEv1 is not affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12413"
+    },
+    {
+      "type": "WEB",
+      "url": "https://libreswan.org/security/CVE-2026-12413"
+    },
+    {
+      "type": "WEB",
+      "url": "https://libreswan.org/security/CVE-2026-12413/CVE-2026-12413.txt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-193"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-02T22:16:42Z"
+  }
+}
