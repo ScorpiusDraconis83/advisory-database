@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c9ww-fm69-95fg",
+  "modified": "2026-07-04T21:30:25Z",
+  "published": "2026-07-04T21:30:25Z",
+  "aliases": [
+    "CVE-2024-1248"
+  ],
+  "details": "The silent Just-In-Time (JIT) provisioning feature in federated authentication implementations fails to properly segregate user roles during account creation when a federated user shares a username with a local user. This allows the provisioning process to overwrite existing roles of local users with roles assigned to the federated user.\n\nExploitation requires a federated identity provider (IDP) with silent JIT provisioning enabled and an attacker's knowledge of a local user's username. When these conditions are met, a malicious individual can leverage the JIT provisioning process to modify the roles of local users. The overwritten roles are limited to those defined within the federated IDP, typically granting minimal access rights unless explicitly configured otherwise by the federated IDP administrator.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-1248"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2024-3179"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-298"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-04T21:17:13Z"
+  }
+}
