@@ -1,18 +1,27 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5w4g-f682-43cr",
-  "modified": "2021-12-22T00:01:54Z",
+  "modified": "2026-07-05T15:30:25Z",
   "published": "2021-12-15T00:00:42Z",
   "aliases": [
     "CVE-2018-10228"
   ],
   "details": "Cross-site scripting (XSS) vulnerability in /application/controller/admin/theme.php in LimeSurvey 3.6.2+180406 allows remote attackers to inject arbitrary web script or HTML via the changes_cp parameter to the index.php/admin/themes/sa/templatesavechanges URI.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
       "type": "ADVISORY",
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-10228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LimeSurvey/LimeSurvey/blob/d0e0c94042fdb5119c9247dc2d57685334492e71/application/controllers/admin/themes.php#L644-L654"
     },
     {
       "type": "WEB",
