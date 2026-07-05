@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g5ww-gvff-fp7p",
-  "modified": "2022-05-24T17:40:13Z",
+  "modified": "2026-07-05T00:31:17Z",
   "published": "2022-05-24T17:40:13Z",
   "aliases": [
     "CVE-2020-28874"
   ],
   "details": "reset-password.php in ProjectSend before r1295 allows remote attackers to reset a password because of incorrect business logic. Errors are not properly considered (an invalid token parameter).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,8 @@
   ],
   "database_specific": {
     "cwe_ids": [
-      "CWE-269"
+      "CWE-269",
+      "CWE-287"
     ],
     "severity": "HIGH",
     "github_reviewed": false,
