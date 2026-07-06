@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6gq6-hxjh-9grq",
-  "modified": "2026-06-25T09:31:20Z",
+  "modified": "2026-07-06T15:30:41Z",
   "published": "2026-06-25T09:31:20Z",
   "aliases": [
     "CVE-2026-53181"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/vmci: fix sk_ack_backlog leak on failed handshake\n\nWhen vmci_transport_recv_connecting_server() returns an error,\nvmci_transport_recv_listen() calls vsock_remove_pending() but never\ncalls sk_acceptq_removed(). This leaves sk_ack_backlog incremented\npermanently.\n\nRepeated handshake failures (malformed packets, queue pair alloc\nfailure, event subscribe failure) cause sk_ack_backlog to climb\ntoward sk_max_ack_backlog. Once it reaches the limit the listener\npermanently refuses all new connections with -ECONNREFUSED, a\nsilent denial of service requiring a process restart to recover.\n\nThe two existing sk_acceptq_removed() calls in af_vsock.c do not\ncover this path: line 764 checks vsock_is_pending() which returns\nfalse after vsock_remove_pending(), and line 1889 is only reached\non successful accept().\n\nFix by balancing sk_acceptq_added() with sk_acceptq_removed() on\nthe error path.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:35Z"
