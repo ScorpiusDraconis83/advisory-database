@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wjq8-x4qm-6mmh",
-  "modified": "2026-07-03T09:31:24Z",
+  "modified": "2026-07-06T21:30:31Z",
   "published": "2026-07-03T09:31:24Z",
   "aliases": [
     "CVE-2026-10536"
   ],
   "details": "A use-after-free vulnerability exists in libcurl when an application\nconfigures an HTTP/2 stream-dependency tree via `CURLOPT_STREAM_DEPENDS` or\n`CURLOPT_STREAM_DEPENDS_E`, subsequently invokes `curl_easy_reset()`, and\nfinally terminates the handle with `curl_easy_cleanup()`. During this final\ncleanup phase, libcurl attempts to access and modify an internal structure\nthat was already freed during the reset operation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-03T07:16:23Z"

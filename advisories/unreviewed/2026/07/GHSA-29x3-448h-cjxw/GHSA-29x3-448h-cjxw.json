@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-29x3-448h-cjxw",
+  "modified": "2026-07-06T21:30:42Z",
+  "published": "2026-07-06T21:30:42Z",
+  "aliases": [
+    "CVE-2026-14468"
+  ],
+  "details": "HashiCorp Terraform Enterprise contained an issue in its version control system (VCS) ingestion of registry modules that did not correctly enforce the intended boundary on packaged module content. This may allow an authenticated user to include files from outside the intended repository content in a module and then download them, potentially exposing sensitive files readable by the ingestion process. This vulnerability, CVE-2026-14468, is fixed in Terraform Enterprise v2.0.4 and v1.2.4.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14468"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.hashicorp.com/t/hcsec-2026-17-terraform-enterprise-vulnerable-to-arbitrary-file-read/77549"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-06T21:16:53Z"
+  }
+}

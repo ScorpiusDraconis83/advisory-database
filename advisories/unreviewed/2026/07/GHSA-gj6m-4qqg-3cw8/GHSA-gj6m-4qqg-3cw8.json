@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gj6m-4qqg-3cw8",
+  "modified": "2026-07-06T21:30:40Z",
+  "published": "2026-07-06T21:30:40Z",
+  "aliases": [
+    "CVE-2026-14898"
+  ],
+  "details": "The OpenAI Codex desktop app for macOS rendered remote images from Markdown in model responses. An attacker who could place an indirect prompt injection in content processed by Codex, such as a connected-tool result or another untrusted source, could induce the model to construct a remote image URL containing sensitive data. The app automatically fetched that URL when rendering the response, sending the embedded data to an attacker-controlled server without a separate user click. Successful exploitation could exfiltrate secrets and other information accessible in the Codex session, including API keys, source code, and data returned by connected tools. No direct integrity or availability impact was demonstrated, and there is no known exploitation in the wild.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14898"
+    },
+    {
+      "type": "WEB",
+      "url": "https://openai.com/codex"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-06T20:16:30Z"
+  }
+}

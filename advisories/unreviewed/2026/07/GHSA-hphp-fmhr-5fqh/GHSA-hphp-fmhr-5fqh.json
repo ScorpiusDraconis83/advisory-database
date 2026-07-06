@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hphp-fmhr-5fqh",
+  "modified": "2026-07-06T21:30:43Z",
+  "published": "2026-07-06T21:30:43Z",
+  "aliases": [
+    "CVE-2026-59712"
+  ],
+  "details": "Leantime's Users::getUser method in the JSON-RPC API lacks proper authorization checks, allowing authenticated users to retrieve full user credential rows including password hashes, TOTP secrets, and session tokens. Attackers can exploit this by calling users.getUser with arbitrary user IDs to enumerate all accounts and obtain credentials for offline password cracking, 2FA bypass, and session hijacking.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59712"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Leantime/leantime/issues/3556"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Leantime/leantime/commit/4f2612d13e0e8a2093092a846b44506cf133b671"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Leantime/leantime"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/leantime-credential-disclosure-via-unauthenticated-json-rpc-users-getuser-method"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-06T21:16:58Z"
+  }
+}

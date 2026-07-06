@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2vjf-7vmh-8jpp",
-  "modified": "2026-06-26T21:32:17Z",
+  "modified": "2026-07-06T21:30:26Z",
   "published": "2026-06-26T21:32:17Z",
   "aliases": [
     "CVE-2026-53308"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: max77705: Free allocated workqueue and fix removal order\n\nUse devm interface for allocating workqueue to fix two bugs at the same\ntime:\n\n1. Driver leaks the memory on remove(), because the workqueue is not\n   destroyed.\n\n2. Driver allocates workqueue and then registers interrupt handlers\n   with devm interface.  This means that probe error paths will not use a\n   reversed order, but first destroy the workqueue and then, via devm\n   release handlers, free the interrupt.\n\n   The interrupt handler schedules work on this exact workqueue, thus if\n   interrupt is hit in this short time window - after destroying\n   workqueue, but before devm() frees the interrupt - the schedulled\n   work will lead to use of freed memory.\n\nChange is not equivalent in the workqueue itself: use non-legacy API\nwhich does not set (__WQ_LEGACY | WQ_MEM_RECLAIM).  The workqueue is\nused to update power supply (power_supply_changed()) status, thus there\nis no point to run it for memory reclaim.  Note that dev_name() is not\ndirectly used in second argument to prevent possible unlikely parsing\nany \"%\" character in device name as format.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-26T20:17:24Z"

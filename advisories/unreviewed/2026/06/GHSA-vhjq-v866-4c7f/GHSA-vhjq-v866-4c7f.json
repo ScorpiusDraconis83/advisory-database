@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vhjq-v866-4c7f",
-  "modified": "2026-07-04T12:30:28Z",
+  "modified": "2026-07-06T21:30:27Z",
   "published": "2026-06-29T06:31:49Z",
   "aliases": [
     "CVE-2026-53325"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nagp/amd64: Fix broken error propagation in agp_amd64_probe()\n\nA NULL pointer dereference was observed in the AMD64 AGP driver when\nrunning in a virtualized environment (e.g. qemu/kvm) without a physical\nAMD northbridge. The crash occurs in amd64_fetch_size() when attempting\nto dereference the pointer returned by node_to_amd_nb(0).\n\nThe root cause of this crash is broken error propagation in\nagp_amd64_probe(): When no AMD northbridges are found, cache_nbs()\ncorrectly returns -ENODEV. However, the probe function erroneously\nchecks the return value against exactly -1, rather than < 0.\n\nAs a result, the hardware absence error is masked, allowing the driver\nto improperly proceed with initialization. It eventually calls\nagp_add_bridge(), which invokes amd64_fetch_size(). Since the hardware\ndoes not exist, node_to_amd_nb(0) returns NULL, leading to a General\nProtection Fault (GPF) when accessing its ->misc member.\n\nFix the issue by correcting the error check in agp_amd64_probe() to\nabort properly when cache_nbs() returns any negative error code. This\nprevents the driver from erroneously proceeding without hardware, thereby\navoiding the subsequent NULL pointer dereference at its source.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -52,8 +57,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-29T06:16:33Z"

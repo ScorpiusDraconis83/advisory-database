@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pmgh-mrwc-qw67",
-  "modified": "2026-07-06T15:30:48Z",
+  "modified": "2026-07-06T21:30:37Z",
   "published": "2026-07-06T15:30:48Z",
   "aliases": [
     "CVE-2026-13705"
   ],
   "details": "Imager versions before 1.032 for Perl have a heap out-of-bounds read in the bundled Imager::File::SGI reader via a 16-bit RLE literal run in read_rgb_16_rle.\n\nread_rgb_16_rle guards each literal run with if (count > data_left), but count is a pixel count while every 16-bit sample consumes two bytes. The copy loop reads inp[0] * 256 + inp[1] and advances two bytes per pixel, so a run with data_left / 2 < count <= data_left passes the guard yet consumes 2 * count bytes and reads past the end of the buffer. The 8-bit path is unaffected because there one pixel is one byte.\n\nReading a crafted SGI image through Imager->read triggers the over-read before the parser rejects the malformed image, which can crash the process.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -21,13 +26,17 @@
     {
       "type": "WEB",
       "url": "https://metacpan.org/release/TONYC/Imager-1.032/source/Changes"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/06/3"
     }
   ],
   "database_specific": {
     "cwe_ids": [
       "CWE-125"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-06T13:16:32Z"

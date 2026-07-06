@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qxwx-hr5v-h5q4",
-  "modified": "2026-07-03T09:31:24Z",
+  "modified": "2026-07-06T21:30:31Z",
   "published": "2026-07-03T09:31:24Z",
   "aliases": [
     "CVE-2026-11352"
   ],
   "details": "An issue in curl’s QUIC UDP receive function allows a malicious HTTP/3 server\nto trigger a remote denial of service against a curl or libcurl client.\nBecause the helper function discards zero-length UDP datagrams before counting\nthem toward the per-call packet budget, a connected QUIC peer can continuously\nstream empty datagrams to indefinitely stall the client.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-03T07:16:23Z"

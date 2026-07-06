@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-24x4-j6x9-rfw5",
+  "modified": "2026-07-06T21:29:16Z",
+  "published": "2026-07-06T21:29:16Z",
+  "aliases": [
+    "CVE-2026-55790"
+  ],
+  "summary": "Craft CMS: DOM XSS via GitHub issue title in CraftSupport widget",
+  "details": "## Summary\n\nAn attacker with only a GitHub account can plant a JavaScript payload in a `craftcms/cms` issue title. When a Craft admin uses the CraftSupport widget’s \"Give feedback\" screen and types a search term that returns the poisoned issue, the payload executes in the admin’s control panel session.\n\nNo control panel account or elevated privileges are required on the attacker’s side.\n\n## Preconditions\n\n- Attacker has a GitHub account (no control panel access needed).\n- Victim is an administrator, and you have the CraftSupport widget on the dashboard.\n- Victim uses the \"Give feedback\" screen and types a search term that returns the poisoned issue.\n\n## Root cause\n\n`CraftSupportWidget.js` lines 382-392:\n\n```js\n$('<a>', {\n  href: this.getSearchResultUrl(results[i]),\n  target: '_blank',\n  html:\n    '<span class=\"status ' +\n    this.getSearchResultStatus(results[i]) +\n    '\"></span>' +\n    this.getSearchResultText(results[i]),\n})\n```\n\n`FeedbackScreen.getSearchResultText` (line 669-671) returns `result.title` verbatim from the GitHub API response. The jQuery `html:` option sets the element’s `innerHTML`, so a title containing `<img src=x onerror=...>` executes immediately on render.\n\nThe GitHub API returns issue titles as raw JSON strings with no HTML encoding. The widget makes this request directly from the browser, without a Craft proxy or any sanitization step.\n\n`HelpScreen` (Stack Exchange) is not affected because the Stack Exchange API HTML-encodes titles before returning them.\n\n## Steps to reproduce\n\n**Plant (attacker, GitHub account only):**\n\n1. Open `https://github.com/craftcms/cms/issues/new`.\n2. Set the title to a string combining a plausible search term and the payload, e.g.:\n\n```\n<img src=x onerror=alert(document.domain)> cannot upload files\n```\n\n3. Submit the issue.\n\n**Trigger (victim, Craft admin):**\n\n1. Open the Craft control panel dashboard.\n2. Open the CraftSupport widget, click \"Give feedback\".\n3. Type `cannot upload files` in the search box.\n4. `alert(document.domain)` fires in the admin's session.\n\n## Impact\n\nXSS in the admin control panel session. The payload has access to `Craft.csrfTokenName` and `Craft.csrfTokenValue` and can send same-origin action requests as the admin without any further interaction.\n\n## Mitigating factors\n\n- Victim must actively use the \"Give feedback\" search screen.\n- Attacker must predict or social-engineer a search term the admin will type, or use a broad term likely to match.\n- Widget is only available to admins.\n\n## Resources\n\nhttps://github.com/craftcms/cms/commit/6bbb66038a268552180ca5c8eed9f46ea25a4417",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-RC1"
+            },
+            {
+              "fixed": "5.9.23"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 5.9.22"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0-RC1"
+            },
+            {
+              "fixed": "4.17.16"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 4.17.15"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-24x4-j6x9-rfw5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55790"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/commit/6bbb66038a268552180ca5c8eed9f46ea25a4417"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-06T21:29:16Z",
+    "nvd_published_at": "2026-07-01T23:16:52Z"
+  }
+}
