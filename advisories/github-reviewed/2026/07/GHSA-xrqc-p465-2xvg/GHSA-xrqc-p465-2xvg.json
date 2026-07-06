@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xrqc-p465-2xvg",
+  "modified": "2026-07-06T21:35:02Z",
+  "published": "2026-07-06T21:35:02Z",
+  "aliases": [
+    "CVE-2026-55793"
+  ],
+  "summary": "Craft CMS: Stored XSS via Structure entry title in table view",
+  "details": "# Stored XSS via Structure entry title in table view\n\n## Summary\n\nAn Author-level control panel user can store a JavaScript payload in an entry title. When an admin, or any control panel user with `saveEntries` for the same Structure section, drags another entry under the poisoned entry in table view, the payload executes in the victim’s session.\n\nThe issue is exploitable because the title is escaped into `data-title` by the server, decoded again by the browser, read with jQuery `.data('title')`, and then concatenated into a new HTML string without attribute escaping.\n\nExecution was verified with `alert(document.domain)`. Impact was verified against an elevated admin session by changing the admin user’s email through `users/save-user`, then using the password-reset flow to take over the account.\n\n## Preconditions\n\n- Attacker has `createEntries` + `saveEntries` on a Structure-type section (Author-style CP account; no admin permission required).\n- Victim has `saveEntries` on the same section. Craft only renders drag handles when `structureEditable` is true, which requires this permission, so any admin qualifies.\n- Section must be type Structure. Channel and Single sections are unaffected.\n- Poisoned entry must have no children at the time of the drag (fires on the 0-to-1 descendant transition).\n- For the email-change account-takeover path, the victim must currently have an elevated session. The stored XSS itself does not require elevation.\n\n## Root cause\n\n`ElementTableSorter.js` lines 643-652:\n\n```js\nconst ancestorTitle = this._updateAncestors._$ancestor.data('title');\n$(\n  '<button … aria-label=\"' +\n    Craft.t('app', 'Show {title} children', {title: ancestorTitle}) +\n  '\"></button>'\n).insertAfter(…);\n```\n\n`Craft.t` with a `{title}` token calls `_parseToken`, reaches `case 'none': return arg` (`Craft.js:193-194`), and returns the title verbatim. The result is handed to jQuery's `$()` and parsed as HTML.\n\nThe server-side template correctly encodes the entry title into `data-title`, but the browser decodes that attribute before jQuery returns it from `.data('title')`. At that point the value is attacker-controlled HTML, and it is inserted into the `aria-label` attribute without `Craft.escapeHtml()`.\n\n## Steps to reproduce\n\n**Plant (attacker - Author account):**\n\n```bash\npython3 poc.py --url http://target --cp admin \\\n  --user author@example.com --pass secret --section mySection\n```\n\n**Trigger (victim - any control panel user with `saveEntries`, e.g. admin):**\n\n1. Open the section index in Table view.\n2. Drag the \"Drag me\" entry and drop it as the first child of the poisoned entry.\n\n`alert(document.domain)` fires in the victim’s session.\n\n**Impact payload tested in an elevated admin session (249 chars, within the 255-char title limit):**\n\n```html\n\"><img src=x onerror=\"fetch(Craft.actionUrl+'users/save-user',{method:'POST',body:Craft.csrfTokenName+'='+encodeURIComponent(Craft.csrfTokenValue)+'&userId=1&email=attacker%40evil.com',headers:{'Content-Type':'application/x-www-form-urlencoded'}})\">\n```\n\nWhen triggered during an elevated admin session, the admin’s email is changed to the attacker-controlled address. The attacker can then request a password reset and receive the reset link.\n\n## Impact\n\nStored XSS in the control panel from an Author-level account. The payload runs as the victim control panel user and can use `Craft.csrfTokenName` / `Craft.csrfTokenValue` to send same-origin action requests as that user.\n\nIn my test environment, triggering the payload in an elevated admin session allowed Author-to-admin account takeover via admin email change and password reset.\n\n## Mitigating factors\n\n- Requires an existing control panel account (Author role minimum).\n- Victim must perform a drag operation, not just visit the page.\n- The demonstrated email-change takeover requires the victim’s session to be elevated at trigger time.\n\n## Resources\n\nhttps://github.com/craftcms/cms/commit/162321e899cc97517fb6f5a02b5528f549d0c6cc",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-RC1"
+            },
+            {
+              "fixed": "5.9.53"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 5.9.22"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-xrqc-p465-2xvg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55793"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/commit/162321e899cc97517fb6f5a02b5528f549d0c6cc"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-06T21:35:02Z",
+    "nvd_published_at": "2026-07-01T22:16:50Z"
+  }
+}
