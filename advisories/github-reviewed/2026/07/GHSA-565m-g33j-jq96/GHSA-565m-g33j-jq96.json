@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-565m-g33j-jq96",
+  "modified": "2026-07-06T16:52:16Z",
+  "published": "2026-07-06T16:52:16Z",
+  "aliases": [
+    "CVE-2026-52889"
+  ],
+  "summary": "Formie Hidden field defaults vulnerable to Server-Side Template Injection",
+  "details": "## Summary\nFormie Hidden fields could evaluate request-derived values as Twig during front-end form rendering.\n\nWhen a Hidden field used a dynamic default value such as HTTP User Agent, Referer URL, Current URL, Query Parameter, or Cookie Value, the value was copied from the incoming request and later passed to Craft’s Twig rendering layer. This allowed an unauthenticated attacker to provide Twig syntax in request-controlled input and have it evaluated server-side when the form was rendered.\n\n## Affected Versions\n`verbb/formie` for Craft 5:\n- Affected: >= 3.0.0-beta.1, <= 3.1.26\n- Patched: 3.1.27\n\n## Impact\nAn unauthenticated attacker could trigger server-side template evaluation by visiting a public form containing a Hidden field configured with a request-derived default value.\n\nBecause Craft’s normal Twig environment exposes application objects, this may lead to disclosure of sensitive information, modification of application state, or remote code execution depending on the site configuration and available Twig capabilities.\n\n## Technical Details\nThe issue exists in the Hidden field front-end render path. Request-derived Hidden field defaults were assigned to the field’s defaultValue, then rendered via Twig in `Hidden::getFrontEndInputOptions()`.\n\nThe fix ensures Twig rendering is only performed for the custom default option, where the template source is admin-authored. Request-derived default options are now treated as plain strings.\n\n## Patches\nUpdate to Formie 3.1.27 or later.\n\n## Workarounds\nUntil patched, avoid using request-derived Hidden field defaults on public forms, including:\n- HTTP User Agent\n- HTTP Refer URL\n- Current URL\n- Current URL without Query String\n- Query Parameter\n- Cookie Value\n\nAlternatively, remove affected Hidden fields from public forms until the update is applied.\n\n## Credit\nName: Yanchon918s\nEmail: [ao9s@ao9s.net](mailto:ao9s@ao9s.net)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "verbb/formie"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.1.27"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/verbb/formie/security/advisories/GHSA-565m-g33j-jq96"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/verbb/formie"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1336"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-06T16:52:16Z",
+    "nvd_published_at": null
+  }
+}
