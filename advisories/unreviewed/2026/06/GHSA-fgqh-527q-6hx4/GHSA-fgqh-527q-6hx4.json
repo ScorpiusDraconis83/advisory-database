@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fgqh-527q-6hx4",
-  "modified": "2026-07-04T12:30:28Z",
+  "modified": "2026-07-06T18:30:37Z",
   "published": "2026-06-25T09:31:20Z",
   "aliases": [
     "CVE-2026-53177"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbnxt_en: Fix NULL pointer dereference\n\nPCIe errors detected by a Root Port or Downstream Port cause error\nrecovery services to run on all subordinate devices regardless of\nadministrative state.\n\nThe .error_detected() callback, bnxt_io_error_detected(), disables\nand synchronizes IRQs via bnxt_disable_int_sync(), which calls\nbnxt_cp_num_to_irq_num() to map completion rings to IRQs using\nbp->bnapi.\n\nSince bp->bnapi is allocated on NIC open and freed on NIC close, PCIe\nerror recovery on a closed NIC can dereference a NULL pointer.\n\nCheck if bp->bnapi is NULL before disabling and synchronizing IRQs.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:35Z"

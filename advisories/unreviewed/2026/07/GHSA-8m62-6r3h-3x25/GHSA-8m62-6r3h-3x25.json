@@ -1,13 +1,17 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8m62-6r3h-3x25",
-  "modified": "2026-07-01T00:34:13Z",
+  "modified": "2026-07-06T18:30:42Z",
   "published": "2026-07-01T00:34:13Z",
   "aliases": [
     "CVE-2026-56277"
   ],
   "details": "Flowise before 3.1.2 sets Access-Control-Allow-Origin to a hardcoded wildcard (*) on its text-to-speech (TTS) generation endpoint (packages/server/src/controllers/text-to-speech/index.ts), independent of the server's configured CORS policy. This bypasses the server's otherwise restrictive default CORS configuration (getCorsOptions()) and allows any webpage to make cross-origin requests that trigger TTS generation using stored credentials, enabling drive-by cross-origin credential abuse.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"

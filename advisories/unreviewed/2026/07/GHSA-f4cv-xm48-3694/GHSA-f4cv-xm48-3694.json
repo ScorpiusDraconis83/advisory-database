@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f4cv-xm48-3694",
-  "modified": "2026-07-03T09:31:27Z",
+  "modified": "2026-07-06T18:30:49Z",
   "published": "2026-07-03T09:31:27Z",
   "aliases": [
     "CVE-2026-9079"
   ],
   "details": "libcurl had a flaw that when instructed to clear proxy authentication\ncredentials which made it not do so, leaving the old credentials around to get\nused for subsequent transfers that should not know nor use them.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-03T07:16:25Z"

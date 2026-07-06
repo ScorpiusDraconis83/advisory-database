@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vw2x-3w8j-rq82",
-  "modified": "2026-07-03T09:31:27Z",
+  "modified": "2026-07-06T18:30:47Z",
   "published": "2026-07-03T09:31:27Z",
   "aliases": [
     "CVE-2026-8926"
   ],
   "details": "When asking curl to use a `.netrc` file to find credentials and at the same\ntime specifying a URL with a username(without a password), like\n`https://user@example.com/`, curl could wrongly get and use the password for\n*another* user set in the `.netrc` file for that host if such a one exists and\nthere is no match for the specified user.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-03T07:16:25Z"

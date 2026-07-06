@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hm6c-rc5h-32m9",
-  "modified": "2026-07-03T09:31:26Z",
+  "modified": "2026-07-06T18:30:47Z",
   "published": "2026-07-03T09:31:26Z",
   "aliases": [
     "CVE-2026-8924"
   ],
   "details": "A flaw in curl’s cookie parsing logic allows a malicious HTTP server to set\n'super cookies' that bypass the Public Suffix List check. This enables an\nattacker-controlled origin to inject cookies that curl subsequently scopes and\ntransmits to unrelated third-party domains.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-03T07:16:24Z"

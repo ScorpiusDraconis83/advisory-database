@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jr2w-mc6v-cfpj",
-  "modified": "2026-07-04T12:30:28Z",
+  "modified": "2026-07-06T18:30:37Z",
   "published": "2026-06-25T09:31:20Z",
   "aliases": [
     "CVE-2026-53179"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8723bs: fix buffer over-read in rtw_update_protection\n\nrtw_update_protection() is called with a pointer offset into the\nies buffer but the full ie_length is passed, causing a potential\nbuffer over-read.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:35Z"

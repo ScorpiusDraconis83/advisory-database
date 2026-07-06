@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c68q-h477-5646",
-  "modified": "2026-07-03T09:31:25Z",
+  "modified": "2026-07-06T18:30:47Z",
   "published": "2026-07-03T09:31:25Z",
   "aliases": [
     "CVE-2026-11586"
   ],
   "details": "By default, curl automatically responds to WebSocket PING frames. Because curl\nlacks an upper bound on memory allocation for unacknowledged frames, a\nmalicious server can exhaust all available memory by flooding curl with rapid,\nsequential PING messages.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-03T07:16:23Z"

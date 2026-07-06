@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gmg7-w8wv-j7v2",
-  "modified": "2026-07-02T21:32:16Z",
+  "modified": "2026-07-06T18:30:42Z",
   "published": "2026-07-02T21:32:16Z",
   "aliases": [
     "CVE-2026-38972"
   ],
   "details": "Notepad3 through 6.25.822.1 contains a DLL search-order hijacking vulnerability in the About-dialog code path in src/Notepad3.c. The application calls LoadLibrary(L\"MSFTEDIT.DLL\") with a bare DLL name, which allows a local attacker to place a malicious MSFTEDIT.DLL in the application directory or another preferred DLL search location and achieve arbitrary code execution in the context of the user when the About dialog is opened.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-427"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-02T21:16:56Z"
