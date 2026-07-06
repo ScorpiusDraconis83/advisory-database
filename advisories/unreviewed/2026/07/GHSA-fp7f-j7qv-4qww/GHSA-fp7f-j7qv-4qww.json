@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fp7f-j7qv-4qww",
+  "modified": "2026-07-06T03:30:23Z",
+  "published": "2026-07-06T03:30:23Z",
+  "aliases": [
+    "CVE-2026-14803"
+  ],
+  "details": "Mojo::JSON versions before 9.47 for Perl allow memory exhaustion via unbounded recursion in the pure-Perl decoder.\n\nThe pure-Perl decode path (`_decode_value` dispatching to `_decode_array` and `_decode_object`) recurses with no depth limit, so a small deeply nested JSON document can consume excessive memory.\n\nThis path is the default when Cpanel::JSON::XS is not installed or `MOJO_NO_JSON_XS=1` is set; the Cpanel::JSON::XS fast path is not affected.\n\nAny caller that decodes an untrusted JSON body, for example `Mojo::Message::json` reached through `$c->req->json`, can exhaust process memory and cause denial of service.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mojolicious/mojo/commit/cc38b0554275c4d84f6b8b49bcbbc1bec2068fe1.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/SRI/Mojolicious-9.47/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-06T02:16:21Z"
+  }
+}
