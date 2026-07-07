@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9296-v3fr-j92j",
-  "modified": "2026-04-07T09:31:22Z",
+  "modified": "2026-07-07T23:41:50Z",
   "published": "2026-04-07T09:31:22Z",
   "aliases": [
     "CVE-2026-1114"
   ],
+  "summary": "LoLLMs is vulnerable to Improper Access Control through weak secret key",
   "details": "In parisneo/lollms version 2.1.0, the application's session management is vulnerable to improper access control due to the use of a weak secret key for signing JSON Web Tokens (JWT). This vulnerability allows an attacker to perform an offline brute-force attack to recover the secret key. Once the secret key is obtained, the attacker can forge administrative tokens by modifying the JWT payload and resigning it with the cracked secret. This enables unauthorized users to escalate privileges, impersonate the administrator, and gain access to restricted endpoints. The issue is resolved in version 2.2.0.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "lollms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.2.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -22,6 +43,14 @@
     {
       "type": "WEB",
       "url": "https://github.com/parisneo/lollms/commit/a3b2b82b84d537a9da63e63a370a6a8ad55fed34"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/parisneo/lollms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/lollms/PYSEC-2026-170.yaml"
     },
     {
       "type": "WEB",
@@ -33,8 +62,8 @@
       "CWE-284"
     ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-07T23:41:50Z",
     "nvd_published_at": "2026-04-07T07:16:23Z"
   }
 }
