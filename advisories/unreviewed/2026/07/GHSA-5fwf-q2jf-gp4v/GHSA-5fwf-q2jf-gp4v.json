@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5fwf-q2jf-gp4v",
+  "modified": "2026-07-07T06:31:24Z",
+  "published": "2026-07-07T06:31:24Z",
+  "aliases": [
+    "CVE-2026-14345"
+  ],
+  "details": "The WPFunnels – Funnel Builder for WooCommerce with Checkout & One Click Upsell plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 3.12.7 via the 'postData' parameter parameter. This is due to unsanitized write of attacker-controlled postData values into a PHP-includeable .log file combined with the use of include_once to render that file in wpfnl_show_log. This makes it possible for unauthenticated attackers to execute code on the server. Exploitation requires that the Log Settings \"Enable Logs\" toggle is on and that an administrator subsequently opens the polluted log file via the plugin's Log Settings View UI; however, the nonce required to reach the optin endpoint is publicly emitted on every funnel step page, so the injection step itself is fully unauthenticated.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14345"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpfunnels/tags/3.12.5/admin/modules/settings/class-wpfnl-settings.php#L709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpfunnels/tags/3.12.5/includes/core/classes/class-wpfnl-ajax-handler.php#L39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpfunnels/tags/3.12.5/includes/core/classes/class-wpfnl-ajax-handler.php#L523"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpfunnels/tags/3.12.5/public/class-wpfnl-public.php#L1185"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpfunnels/tags/3.12.7/admin/modules/settings/class-wpfnl-settings.php#L709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpfunnels/tags/3.12.7/includes/core/classes/class-wpfnl-ajax-handler.php#L39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpfunnels/tags/3.12.7/includes/core/classes/class-wpfnl-ajax-handler.php#L523"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpfunnels/tags/3.12.7/public/class-wpfnl-public.php#L1185"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3597260/wpfunnels/trunk/admin/modules/settings/class-wpfnl-settings.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?old_path=%2Fwpfunnels/tags/3.12.7&new_path=%2Fwpfunnels/tags/3.12.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5d84d749-0ab5-49dd-8e4f-45681f197742?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-07T06:16:22Z"
+  }
+}
