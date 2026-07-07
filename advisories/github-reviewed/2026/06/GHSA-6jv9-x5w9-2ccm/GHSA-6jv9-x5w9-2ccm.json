@@ -1,7 +1,7 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6jv9-x5w9-2ccm",
-  "modified": "2026-06-12T19:31:39Z",
+  "modified": "2026-07-07T13:08:58Z",
   "published": "2026-06-11T13:26:06Z",
   "aliases": [
     "CVE-2026-48006"
@@ -9,6 +9,10 @@
   "summary": "Netty's Lack of Lifecycle Cleanup Leads to Pooled ByteBuf Leak in RedisArrayAggregator",
   "details": "### Impact\nThe RedisArrayAggregator handler permanently leaks pooled direct-memory buffers when a Redis pipeline connection closes before a RESP array aggregate completes. The handler retains child messages in per-handler state (`depths` field) but defines no `channelInactive`, `handlerRemoved`, or `exceptionCaught` method to release them when the pipeline tears down. Because the leaked buffers are slices of `PooledByteBufAllocator` chunks, they prevent those chunks from being returned to the JVM-wide direct-memory pool. Repeated connection churn by any network peer monotonically drains this shared pool, eventually causing allocation failures on all Netty channels in the process.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
@@ -70,6 +74,14 @@
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48006"
     },
     {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-48006"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2488433"
+    },
+    {
       "type": "PACKAGE",
       "url": "https://github.com/netty/netty"
     },
@@ -80,11 +92,16 @@
     {
       "type": "WEB",
       "url": "https://github.com/netty/netty/releases/tag/netty-4.2.15.Final"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-48006.json"
     }
   ],
   "database_specific": {
     "cwe_ids": [
-      "CWE-401"
+      "CWE-401",
+      "CWE-772"
     ],
     "severity": "HIGH",
     "github_reviewed": true,
