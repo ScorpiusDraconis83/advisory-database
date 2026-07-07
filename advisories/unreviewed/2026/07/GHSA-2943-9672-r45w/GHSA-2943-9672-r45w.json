@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2943-9672-r45w",
+  "modified": "2026-07-07T12:31:35Z",
+  "published": "2026-07-07T12:31:35Z",
+  "aliases": [
+    "CVE-2026-33264"
+  ],
+  "details": "A bug in `BaseSerialization.deserialize()` allowed unrestricted `import_string()` of attacker-controlled class paths when the Scheduler / API Server loaded a serialized DAG: a DAG author could embed a malicious trigger into a DAG to gain remote code execution on the API Server / Scheduler process, crossing the Airflow security boundary that DAG-author code must never execute in those processes. Users are advised to upgrade to `apache-airflow` 3.3.0 or later. As a defense-in-depth mitigation, deployments where DAG-author trust is limited can restrict the `[core] allowed_deserialization_classes` config to a narrow allowlist.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33264"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/66002"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/68528"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/otvdw8qt2y7xy2n5nq9xby9ky4rf5ltj"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-07T10:16:40Z"
+  }
+}

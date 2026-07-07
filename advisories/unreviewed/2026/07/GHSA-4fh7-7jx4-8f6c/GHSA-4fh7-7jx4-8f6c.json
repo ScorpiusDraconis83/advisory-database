@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4fh7-7jx4-8f6c",
+  "modified": "2026-07-07T12:31:36Z",
+  "published": "2026-07-07T12:31:36Z",
+  "aliases": [
+    "CVE-2026-49296"
+  ],
+  "details": "Before apache-airflow 3.3.0, a user authorized to read one Dag could disclose the source of other Dags co-located in the same source file. `GET /api/v2/dagSources/{dag_id}` — and the equivalent Dag-source view in the UI — returned the entire source file without redacting Dags the caller was not authorized to read, bypassing per-DAG read authorization. Deployments that co-locate multiple Dags in a single file and rely on per-DAG access control to limit source visibility are affected; single-Dag-per-file deployments are not. Upgrade to apache-airflow 3.3.0 or later.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/67662"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/qqv41t3oydkn9o14r2rfz1wkdrsp5jzn"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-07T10:16:41Z"
+  }
+}

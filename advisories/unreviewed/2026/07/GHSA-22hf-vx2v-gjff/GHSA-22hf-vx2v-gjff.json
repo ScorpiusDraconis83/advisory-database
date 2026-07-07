@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-22hf-vx2v-gjff",
+  "modified": "2026-07-07T12:31:36Z",
+  "published": "2026-07-07T12:31:36Z",
+  "aliases": [
+    "CVE-2026-49487"
+  ],
+  "details": "In Apache Airflow before 3.3.0, the REST API task-instance detail and list\nendpoints returned a deferred task's trigger kwargs without masking. When a\ndeferred operator passed a secret (for example a provider API key) into its\ntrigger, any authenticated user with DAG-scoped task-instance read access for\nthat DAG could read that secret in clear text while the task was deferred.\nUsers should upgrade to apache-airflow 3.3.0 or later, which masks sensitive\nvalues in trigger kwargs returned by the API.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49487"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/67868"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/qlw6pozlzlfhkvmbgqsbjlq6vj4v0pc4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-07T10:16:41Z"
+  }
+}
