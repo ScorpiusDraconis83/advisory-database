@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-59qp-cfj3-rp64",
+  "modified": "2026-07-07T20:03:49Z",
+  "published": "2026-07-07T20:03:49Z",
+  "aliases": [],
+  "summary": "netfoil has a domain name filter bypass via multiple questions",
+  "details": "### Summary\nPotential bypass of domain name filter by crafting a DNS request with multiple questions, with the first question being legitimate.\n\n### Impact\nDepends on a local attackers ability to craft multiple questions and the remote DoH server supporting them.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/tinfoil-factory/netfoil"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.3.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinfoil-factory/netfoil/security/advisories/GHSA-59qp-cfj3-rp64"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/tinfoil-factory/netfoil"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-436",
+      "CWE-693"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-07T20:03:49Z",
+    "nvd_published_at": null
+  }
+}

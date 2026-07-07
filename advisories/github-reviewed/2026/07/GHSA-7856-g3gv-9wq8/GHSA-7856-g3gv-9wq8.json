@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7856-g3gv-9wq8",
+  "modified": "2026-07-07T20:04:22Z",
+  "published": "2026-07-07T20:04:22Z",
+  "aliases": [],
+  "summary": "netfoil: Attacker controlled data written to logs",
+  "details": "### Summary\nDomain names were written to the log without first being validated to contain allowed characters.\n\n### Impact\nDepends on how the logs were used.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/tinfoil-factory/netfoil"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.3.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinfoil-factory/netfoil/security/advisories/GHSA-7856-g3gv-9wq8"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/tinfoil-factory/netfoil"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-117"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-07T20:04:22Z",
+    "nvd_published_at": null
+  }
+}
