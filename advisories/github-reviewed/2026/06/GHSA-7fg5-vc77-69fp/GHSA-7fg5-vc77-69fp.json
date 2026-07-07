@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7fg5-vc77-69fp",
-  "modified": "2026-06-01T03:30:26Z",
+  "modified": "2026-07-07T23:43:39Z",
   "published": "2026-06-01T03:30:26Z",
   "aliases": [
     "CVE-2026-10215"
   ],
+  "summary": "Dolibarr ERP CRM is vulnerable to Improper Authorization through its Leave Request REST API",
   "details": "A security vulnerability has been detected in Dolibarr ERP CRM up to 23.0.1. Impacted is the function checkUserAccessToObject of the file htdocs/holiday/class/api_holidays.class.php of the component Leave Request REST API. The manipulation leads to improper authorization. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used. Upgrading to version 23.0.2 is recommended to address this issue. The identifier of the patch is ee93b6f2f9dd0f6aeefe9d718ab3ab0a44326b73. Upgrading the affected component is advised.",
   "severity": [
     {
@@ -14,10 +15,30 @@
     },
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:P"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "dolibarr/dolibarr"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "15.0.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -34,6 +55,10 @@
     {
       "type": "WEB",
       "url": "https://github.com/Dolibarr/dolibarr/commit/ee93b6f2f9dd0f6aeefe9d718ab3ab0a44326b73"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Dolibarr/dolibarr"
     },
     {
       "type": "WEB",
@@ -65,8 +90,8 @@
       "CWE-266"
     ],
     "severity": "LOW",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-07T23:43:39Z",
     "nvd_published_at": "2026-06-01T03:16:25Z"
   }
 }
