@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fqj2-r74g-4gfp",
+  "modified": "2026-07-07T21:31:36Z",
+  "published": "2026-07-07T21:31:36Z",
+  "aliases": [
+    "CVE-2026-59708"
+  ],
+  "details": "The GET /api/v1/public/:accessId/portfolio endpoint in ghostfolio accepts private access IDs without validating granteeUserId filtering, allowing unauthenticated access to full portfolio data. Attackers with a private access ID can retrieve sensitive portfolio information including holdings, quantities, buy prices, and performance metrics without authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59708"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ghostfolio/ghostfolio/issues/7197"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ghostfolio/ghostfolio/commit/697ef59e3b58bebc5c21a9e482e4f5643390f316"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ghostfolio/ghostfolio"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ghostfolio-unauthorized-portfolio-data-exposure-via-public-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-07T19:16:55Z"
+  }
+}

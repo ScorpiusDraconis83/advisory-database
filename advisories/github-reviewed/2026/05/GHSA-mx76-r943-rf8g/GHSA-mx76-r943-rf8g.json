@@ -1,38 +1,41 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mx76-r943-rf8g",
-  "modified": "2026-05-19T16:09:20Z",
+  "modified": "2026-07-07T21:30:16Z",
   "published": "2026-05-08T09:31:30Z",
   "aliases": [
     "CVE-2026-8149"
   ],
-  "summary": "Bouncy Castle has a vulnerability in program files gcm128w, gcm512w",
-  "details": "A vulnerability in Legion of the Bouncy Castle Inc. BC-FJA BC-FIPS on Linux, X86_64, AVX, AVX-512f.\n\nThis vulnerability is associated with program files gcm128w, gcm512w.\n\nThis issue affects BC-FJA: from 2.1.0 through 2.1.2.",
+  "summary": "Bouncy Castle LTS native GCM chunking can cause bad-tag exception on decryption",
+  "details": "In Bouncy Castle LTS for Java, the AES/GCM native implementation used on Intel CPUs with AES PAA instruction sets (AVX / VAES / VAESF variants) can intermittently produce an incorrect authentication tag verification result during decryption when the ciphertext is fed in via a mix of `update()` calls followed by `doFinal()`. It is possible to work around it by either using `doFinal()` only (as the BCJSSE does) or by configuring the module to run in pure Java mode, by setting the system property \"org.bouncycastle.native.cpu_variant\" to java.",
   "severity": [
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:N/AU:X/R:X/V:X/RE:M/U:Amber"
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
     }
   ],
   "affected": [
     {
       "package": {
         "ecosystem": "Maven",
-        "name": "org.bouncycastle:bc-fips"
+        "name": "org.bouncycastle:bcprov-lts8on"
       },
       "ranges": [
         {
           "type": "ECOSYSTEM",
           "events": [
             {
-              "introduced": "2.1.0"
+              "introduced": "2.73.0"
             },
             {
-              "last_affected": "2.1.2"
+              "fixed": "2.73.11"
             }
           ]
         }
-      ]
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2.73.10"
+      }
     }
   ],
   "references": [
@@ -47,7 +50,8 @@
   ],
   "database_specific": {
     "cwe_ids": [
-      "CWE-1068"
+      "CWE-1068",
+      "CWE-354"
     ],
     "severity": "MODERATE",
     "github_reviewed": true,

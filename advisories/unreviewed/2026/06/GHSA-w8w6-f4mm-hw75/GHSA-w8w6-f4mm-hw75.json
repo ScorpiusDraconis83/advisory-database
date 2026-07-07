@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-w8w6-f4mm-hw75",
-  "modified": "2026-07-04T12:30:28Z",
+  "modified": "2026-07-07T21:31:30Z",
   "published": "2026-06-25T09:31:19Z",
   "aliases": [
     "CVE-2026-53157"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: phonet: free phonet_device after RCU grace period\n\nphonet_device_destroy() removes a phonet_device from the per-net device\nlist with list_del_rcu(), but frees it immediately. RCU readers walking\nthe same list can still hold a pointer to the object after it has been\nremoved, leading to a slab-use-after-free.\n\nUse kfree_rcu(), matching the lifetime rule already used by\nphonet_address_del() for the same object type.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:33Z"
