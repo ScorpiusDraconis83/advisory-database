@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j22c-2h2q-55pv",
-  "modified": "2026-06-25T09:31:18Z",
+  "modified": "2026-07-07T18:30:28Z",
   "published": "2026-06-25T09:31:18Z",
   "aliases": [
     "CVE-2026-53141"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/v3d: Fix global performance monitor reference counting\n\nIn the SET_GLOBAL ioctl, v3d_perfmon_find() bumps the reference count on\nthe perfmon it returns, but v3d_perfmon_set_global_ioctl() and\nv3d_perfmon_delete() fail to release that reference on several paths:\n\n  1. v3d_perfmon_set_global_ioctl() leaks the reference on its error\n     paths.\n\n  2. CLEAR_GLOBAL leaks both the find reference and the reference\n     previously stashed in v3d->global_perfmon by the SET_GLOBAL ioctl\n     that configured it.\n\n  3. Destroying a perfmon that is the current global perfmon leaks the\n     reference stashed by the SET_GLOBAL ioctl.\n\nRelease each of these references explicitly.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:31Z"
