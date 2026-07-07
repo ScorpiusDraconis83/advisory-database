@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c8m7-r2jv-rw63",
+  "modified": "2026-07-07T13:02:43Z",
+  "published": "2026-07-07T13:02:43Z",
+  "aliases": [
+    "CVE-2026-45016"
+  ],
+  "summary": "EGroupware Vulnerable to Local File Inclusion via file:// URI in Mail Compose",
+  "details": "### Summary\nThe function processes image URLs embedded in an HTML email body without validating or restricting URI schemes. The check `!str_starts_with($myUrl, 'http')` evaluates to true for `file://` URIs, causing `file_get_contents($basedir . urldecode($myUrl))` to read arbitrary files from the server filesystem and embed them as inline MIME attachments in outgoing email.\n\nstr_starts_with('file:///etc/passwd', 'http') → **false**\n!false → **true**\n\n\n```php\n// api/src/Mail.php  \nforeach($images[2] as $i => $url)\n\t\t\t{\n\t\t\t\t//$isData = false;\n\t\t\t\t$basedir = $data = '';\n\t\t\t\t$needTempFile = true;\n\t\t\t\t$attachmentData = ['name' => '', 'type' => '', 'file' => '', 'tmp_name' => ''];\n\t\t\t\ttry\n\t\t\t\t{\n\t\t\t\t\t// do not change urls for absolute images (thanks to corvuscorax)\n\t\t\t\t\tif (!str_starts_with($url, 'data:'))\n\t\t\t\t\t{\n\t\t\t\t\t\t$attachmentData['name'] = basename($url); // need to resolve all sort of url\n\t\t\t\t\t\tif (($directory = dirname($url)) == '.') $directory = '';\n\t\t\t\t\t\t$ext = pathinfo($attachmentData['name'], PATHINFO_EXTENSION);\n\t\t\t\t\t\t$attachmentData['type'] = MimeMagic::ext2mime($ext);\n\t\t\t\t\t\tif ( strlen($directory) > 1 && !str_ends_with($directory, '/')) { $directory .= '/'; }\n..\n...\n....\n// processURL2InlineImages function\nif ( $myUrl[0]!='/' && strlen($basedir) > 1 && !str_ends_with($basedir, '/')) { $basedir .= '/'; }\n\t\t\t\t\t\tif ($needTempFile && empty($attachment) && !str_starts_with($myUrl, \"http\"))\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\ttry {\n\t\t\t\t\t\t\t\t$data = file_get_contents($basedir.urldecode($myUrl));\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tcatch (\\Throwable $e) {\n\t\t\t\t\t\t\t\t_egw_log_exception($e);\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tif (str_starts_with($url, 'data:'))\n```\n\n### PoC\n1. Log in as any authenticated EGroupware user with mail access and open the mail compose window.\n2. Switch to HTML body mode and insert: `<img src=\"file:///etc/passwd\">`. \n3. The server executes file_get_contents('file:///etc/passwd'), writes the content to a temp file, and attaches it as an inline MIME part. \n\n\n### Impact\nAn authenticated attacker can read arbitrary files accessible by the web server process, including /etc/passwd, application configuration files containing database credentials, private TLS keys, and environment files.\n\n\n### Remediation\nEnforce a strict URI scheme allowlist before calling file_get_contents(). Replace the check `!str_starts_with($myUrl, 'http')` with `if (!preg_match('#^https?://#i', $myUrl)) { continue; }` to reject `file://`, `ftp://`, `php://`, `data://`, and any other non-HTTP scheme.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "egroupware/egroupware"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "26.0.20251208"
+            },
+            {
+              "fixed": "26.5.20260507"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "egroupware/egroupware"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "23.1.20260601"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/EGroupware/egroupware/security/advisories/GHSA-c8m7-r2jv-rw63"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/EGroupware/egroupware"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-07T13:02:43Z",
+    "nvd_published_at": null
+  }
+}

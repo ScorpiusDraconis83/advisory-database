@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h9qx-v5xp-ph8p",
+  "modified": "2026-07-07T13:01:01Z",
+  "published": "2026-07-07T13:01:01Z",
+  "aliases": [
+    "CVE-2026-27823"
+  ],
+  "summary": "EGroupware has a Remote Code Execution Vulnerability",
+  "details": "## Summary\nA critical vulnerability has been identified in EGroupware that may lead to Remote Code Execution (RCE).\nThe issue allows an authenticated attacker to execute arbitrary commands on the server. If user self-registration is enabled, the vulnerability may be exploitable without prior authentication.\n\nThe vulnerability stems from improper authorization checks combined with a file write primitive and an arbitrary file read vulnerability, which together enable full system compromise.\n\n## Details\n### 1. Improper Authorization in SmallPartMediaRecorder::ajax_upload()\n\nThe vulnerability originates in:\n\n`EGroupware\\SmallParT\\Widgets\\SmallPartMediaRecorder::ajax_upload()`\n\nThe function attempts to verify whether the current user is a teacher of the specified course ID before allowing a file upload.\n\nThe critical authorization check ensures that the course access control list (ACL) contains:\n\n`$required_acl (self::ROLE_TEACHER, i.e., 3)`\n\nHowever, the `course_acl `value is derived from user-controlled request data.\n\n**_Bypass Technique_**\n\nA crafted request can manipulate the `participant_role `value inside the request body:\n\n```json\n{\n  \"video\": {\n    \"course_id\": {\n      \"participants\": [\n        {\n          \"account_id\": \"7\",\n          \"name\": \"Test\",\n          \"joined_at\": \"2026-01-10\",\n          \"participant_role\": 3\n        }\n      ],\n      \"account_id\": \"7\",\n      \"course_id\": \"1\"\n    },\n    \"video_hash\": \".\",\n    \"video_type\": \"file_here\"\n  }\n}\n```\n\nBecause the course ACL is taken from `participant_role`, setting it to 3 allows bypassing the `isTeacher `check.\n\n### 2. Arbitrary File Write\n\nAfter bypassing authorization, the function uploads the provided file into a controllable file path.\n\nThe file path is derived from the `video_type `(or video_path) value, enabling path traversal.\n\nDue to file permission restrictions (server running as www-data), writable targets are limited. One viable target is `./header.inc.php`\n\n### 3. Constraints\n\nWriting a simple PHP webshell may not immediately execute due to OPcache.\n\nAn invalid `header.inc.php` file will break the system and prevent the server from running.\n\nTherefore, a valid file structure must be preserved.\n\n### 4. Arbitrary File Read\n\nA second vulnerability allows arbitrary file read via:\n\n`/egroupware/index.php?menuaction=importexport.importexport_export_ui.download&_filename=../../../usr/share/egroupware/header.inc.php&_suffix=txt&_type=text/plain&filename=leak`\n\nThe issue resides in:\n\n`importexport_export_ui::download`\n\nThe `_filename `parameter is user-controlled and used to read arbitrary files.\n\nThis allows retrieving the original `header.inc.php` content.\n\n### 5. Achieving Remote Code Execution\n\nBy combining: Arbitrary file read (to retrieve valid header.inc.php); Arbitrary file write (to overwrite it with modified content), an attacker can inject controlled PHP code while preserving file validity.\n\nThis results in Remote Code Execution after server restart, or OPcache expiration. An alternative impact includes modifying the admin setup password to gain full system control.\n\n## Impact\nRemote Code Execution\nFull system compromise\nArbitrary file read\nArbitrary file write\nPotential complete takeover of EGroupware instance\n\n## Reported by\nThis finding was discovered by Huong Kieu of Cenobe Security (https://cenobe.com/)",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "egroupware/egroupware"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "26.0.20251208"
+            },
+            {
+              "fixed": "26.2.20260224"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "egroupware/egroupware"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "23.1.20260224"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/EGroupware/egroupware/security/advisories/GHSA-h9qx-v5xp-ph8p"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/EGroupware/egroupware"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22",
+      "CWE-639",
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-07T13:01:01Z",
+    "nvd_published_at": null
+  }
+}
