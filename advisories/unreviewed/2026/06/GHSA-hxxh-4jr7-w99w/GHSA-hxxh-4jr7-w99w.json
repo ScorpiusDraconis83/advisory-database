@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hxxh-4jr7-w99w",
-  "modified": "2026-06-25T09:31:22Z",
+  "modified": "2026-07-08T18:31:32Z",
   "published": "2026-06-25T09:31:22Z",
   "aliases": [
     "CVE-2026-53255"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: MGMT: validate advertising TLV before type checks\n\ntlv_data_is_valid() reads each advertising data field length from\ndata[i], then inspects data[i + 1] for managed EIR types before\nchecking that the current field still fits inside the supplied buffer.\n\nA malformed field whose length byte is the last byte of the buffer can\ntherefore make the parser read one byte past the advertising data.\n\nKASAN reported the following when a malformed MGMT_OP_ADD_ADVERTISING\nrequest reached that path:\n\n  BUG: KASAN: vmalloc-out-of-bounds in tlv_data_is_valid()\n  Read of size 1\n  Call trace:\n    tlv_data_is_valid()\n    add_advertising()\n    hci_mgmt_cmd()\n    hci_sock_sendmsg()\n\nMove the existing element-length check before any type-octet inspection\nso each non-empty element is proven to contain its type byte before the\nparser looks at data[i + 1].",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:43Z"

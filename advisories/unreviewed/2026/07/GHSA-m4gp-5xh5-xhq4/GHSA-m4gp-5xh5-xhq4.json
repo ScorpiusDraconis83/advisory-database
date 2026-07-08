@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m4gp-5xh5-xhq4",
+  "modified": "2026-07-08T18:31:36Z",
+  "published": "2026-07-08T18:31:36Z",
+  "aliases": [
+    "CVE-2026-59262"
+  ],
+  "details": "AFFiNE's histories GraphQL field fails to validate Doc.Read permission before exposing document edit history, allowing authenticated workspace members to retrieve restricted content timelines. Attackers can supply arbitrary document GUIDs to access full edit histories including user names, emails, and timestamps of private pages they lack access to.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59262"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/toeverything/AFFiNE/issues/15179"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/toeverything/AFFiNE/commit/1f0bcd01a37a522393fc1b288395e3a72a79ccad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/toeverything/AFFiNE"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/affine-unauthorized-document-edit-history-access-via-graphql-histories-field"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-08T16:16:31Z"
+  }
+}

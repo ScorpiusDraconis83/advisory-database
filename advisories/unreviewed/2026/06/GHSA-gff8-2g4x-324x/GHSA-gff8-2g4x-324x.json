@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gff8-2g4x-324x",
-  "modified": "2026-06-25T09:31:22Z",
+  "modified": "2026-07-08T18:31:32Z",
   "published": "2026-06-25T09:31:22Z",
   "aliases": [
     "CVE-2026-53257"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: cfg80211: enforce HE/EHT cap/oper consistency\n\nXiang Mei reports that mac80211 could crash if eht_cap is set\nbut eht_oper isn't. Rather than fixing that for the individual\nuser(s), enforce that both HE/EHT have consistent elements.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:43Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7mrh-gfr7-2p24",
-  "modified": "2026-06-25T09:31:22Z",
+  "modified": "2026-07-08T18:31:32Z",
   "published": "2026-06-25T09:31:22Z",
   "aliases": [
     "CVE-2026-53252"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: fix memory leak in error path of hci_alloc_dev()\n\nEarly failures in Bluetooth HCI UART configuration leak SRCU percpu\nmemory.\n\nWhen device initialization fails before hci_register_dev() completes,\nthe HCI_UNREGISTER flag is never set. As a result, when the device\nreference count reaches zero, bt_host_release() evaluates this flag as\nfalse and falls back to a direct kfree(hdev).\n\nBecause hci_release_dev() is bypassed, the SRCU struct initialized\nearly in hci_alloc_dev() is never cleaned up, resulting in a leak of\npercpu memory.\n\nFix the leak by explicitly calling cleanup_srcu_struct() in the\nfallback (unregistered) branch of bt_host_release() before freeing\nthe device.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -44,8 +49,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:43Z"
