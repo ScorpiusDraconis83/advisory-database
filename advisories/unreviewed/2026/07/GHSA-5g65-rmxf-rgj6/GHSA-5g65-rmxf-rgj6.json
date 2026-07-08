@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5g65-rmxf-rgj6",
+  "modified": "2026-07-08T21:30:30Z",
+  "published": "2026-07-08T21:30:30Z",
+  "aliases": [
+    "CVE-2026-60104"
+  ],
+  "details": "Bitwarden Server before 2026.6.0 does not verify that the email in a POST /auth-requests/admin-request body belongs to the authenticated caller, allowing a low-privileged organization member to obtain another user's vault key and a victim-scoped access token by creating a Trusted Device Encryption authentication request, bound to an attacker-controlled public key, that is readable from an unauthenticated endpoint once approved resulting in disclosure of the victim's vault key and account takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bitwarden/server/pull/7615"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bitwarden/server/commit/dcf4c486b2b5bedecc03a48b427243328cc74a9a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bitwarden/server/releases#release-v2026.6.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sanjokkarki.com.np/blog/bitwarden-vault-key-heist"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bitwarden-server-authorization-bypass-via-admin-auth-request"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-08T20:17:00Z"
+  }
+}

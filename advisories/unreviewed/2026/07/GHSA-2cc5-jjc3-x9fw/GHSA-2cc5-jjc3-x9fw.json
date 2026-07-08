@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2cc5-jjc3-x9fw",
+  "modified": "2026-07-08T21:30:27Z",
+  "published": "2026-07-08T21:30:27Z",
+  "aliases": [
+    "CVE-2026-14373"
+  ],
+  "details": "HashiCorp Nomad and Nomad Enterprise did not enforce the allow_privileged restriction for the Docker task driver's host namespace mode options. This may allow an authenticated job submitter to run a container in a host namespace and access information belonging to the host or to other workloads on the same client. This vulnerability, CVE-2026-14373, is fixed in Nomad Community Edition 2.0.4 and Nomad Enterprise 2.0.4, 1.11.8, and 1.10.14.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14373"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.hashicorp.com/t/hcsec-2026-19-nomad-docker-driver-vulnerable-to-host-namespace-bypass-on-linux/77557"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-08T20:16:48Z"
+  }
+}

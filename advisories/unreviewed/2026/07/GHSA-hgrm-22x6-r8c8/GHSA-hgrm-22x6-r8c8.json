@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hgrm-22x6-r8c8",
+  "modified": "2026-07-08T21:30:29Z",
+  "published": "2026-07-08T21:30:29Z",
+  "aliases": [
+    "CVE-2026-59803"
+  ],
+  "details": "rpcx through 1.9.3, fixed in commit 047aec1, contains a denial-of-service vulnerability in protocol.Message.Decode (protocol/message.go). When a message has the compression flag set, the payload is gzip-decompressed via util.Unzip with no limit on the decompressed output size. The only built-in size guard, protocol.MaxMessageLength, is checked against the compressed on-the-wire frame length, not the decompressed size, so it provides no protection. Because decoding (and decompression) occurs in readRequest before authentication, a single unauthenticated connection can send a small (under 2 MB) gzip-compressed message that expands to gigabytes of heap allocation, leading to out-of-memory conditions and service unavailability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/smallnest/rpcx/issues/942"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/smallnest/rpcx/pull/943"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/smallnest/rpcx/commit/047aec18efa7d037105e2b72c36dd2ae05e1acc6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rpcx-denial-of-service-via-gzip-decompression-bomb-in-wire-protocol"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-409"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-08T20:16:55Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vgg8-63wp-8qqp",
-  "modified": "2026-06-08T18:31:52Z",
+  "modified": "2026-07-08T21:30:21Z",
   "published": "2026-06-08T18:31:52Z",
   "aliases": [
     "CVE-2026-46297"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: libwx: use request_irq for VF misc interrupt\n\nCurrently, request_threaded_irq() is used with a primary handler but a\nNULL threaded handler, while also setting the IRQF_ONESHOT flag. This\nspecific combination triggers a WARNING since the commit aef30c8d569c\n(\"genirq: Warn about using IRQF_ONESHOT without a threaded handler\").\n\nWARNING: kernel/irq/manage.c:1502 at __setup_irq+0x4fa/0x760\n\nFix the issue by switching to request_irq(), which is the appropriate\ninterface or a non-threaded interrupt handler, and removing the\nunnecessary IRQF_ONESHOT flag.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-08T17:16:48Z"

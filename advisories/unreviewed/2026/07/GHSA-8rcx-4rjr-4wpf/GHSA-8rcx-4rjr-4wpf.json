@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8rcx-4rjr-4wpf",
+  "modified": "2026-07-08T21:30:29Z",
+  "published": "2026-07-08T21:30:29Z",
+  "aliases": [
+    "CVE-2026-59804"
+  ],
+  "details": "Midscene Bridge Server through 1.10.3, fixed in commit 86f4118, contains a missing authentication and CORS misconfiguration vulnerability that allows unauthenticated remote attackers to hijack active bridge sessions by opening a cross-origin WebSocket connection to the local Socket.IO server, which performs no Origin header validation and requires no authentication token. Attackers can connect from any web page visited by the victim to seize the single-client slot, intercept and inject automation commands, exfiltrate command-payload data, or unconditionally terminate the server by supplying the MIDSCENE_BRIDGE_SIGNAL_KILL query parameter.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59804"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/web-infra-dev/midscene/issues/2752"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/web-infra-dev/midscene/pull/2759"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/web-infra-dev/midscene/commit/86f4118d1d847041c63d79e347e08c87c3f1a882"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/midscene-bridge-server-session-hijack-via-unauthenticated-websocket"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-08T20:16:56Z"
+  }
+}

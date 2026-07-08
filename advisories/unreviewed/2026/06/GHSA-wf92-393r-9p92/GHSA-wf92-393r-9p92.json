@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wf92-393r-9p92",
-  "modified": "2026-06-08T18:31:52Z",
+  "modified": "2026-07-08T21:30:21Z",
   "published": "2026-06-08T18:31:52Z",
   "aliases": [
     "CVE-2026-46284"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/hugetlb: fix early boot crash on parameters without '=' separator\n\nIf hugepages, hugepagesz, or default_hugepagesz are specified on the\nkernel command line without the '=' separator, early parameter parsing\npasses NULL to hugetlb_add_param(), which dereferences it in strlen() and\ncan crash the system during early boot.\n\nReject NULL values in hugetlb_add_param() and return -EINVAL instead.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-08T17:16:46Z"

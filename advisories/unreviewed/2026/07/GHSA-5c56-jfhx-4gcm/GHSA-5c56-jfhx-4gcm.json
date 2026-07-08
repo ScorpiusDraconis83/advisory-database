@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5c56-jfhx-4gcm",
+  "modified": "2026-07-08T21:30:27Z",
+  "published": "2026-07-08T21:30:27Z",
+  "aliases": [
+    "CVE-2026-14891"
+  ],
+  "details": "HashiCorp Nomad and Nomad Enterprise are vulnerable to a sandbox escape in the Docker task driver that may allow a job submitter to bind-mount a host path into a container even when volume bind mounts are disabled, potentially leading to reading and writing files on the host. This vulnerability, CVE-2026-14891, is fixed in Nomad Community Edition 2.0.4 and Nomad Enterprise 2.0.4, 1.11.8, and 1.10.14.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14891"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.hashicorp.com/t/hcsec-2026-21-nomad-vulnerable-to-sandbox-escape-in-docker-task-driver/77561"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-08T20:16:48Z"
+  }
+}
