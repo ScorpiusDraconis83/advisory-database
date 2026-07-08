@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wr67-pp59-29qp",
-  "modified": "2026-06-25T09:31:22Z",
+  "modified": "2026-07-08T00:37:52Z",
   "published": "2026-06-25T09:31:22Z",
   "aliases": [
     "CVE-2026-53233"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetdev: fix double-free in netdev_nl_bind_rx_doit()\n\nSashiko flags that genlmsg_reply() always consumes the skb.\nThe error path calls nlmsg_free(rsp) so we can't jump directly\nto it. Let's not unbind, just propagate the error to the user.\nThis is the typical way of handling genlmsg_reply() failures.\nThey shouldn't happen unless user does something silly like\ncalling the kernel with an already-full rcvbuf.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:41Z"

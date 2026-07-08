@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-r3wj-w7v3-6mqq",
-  "modified": "2026-06-25T09:31:22Z",
+  "modified": "2026-07-08T00:37:52Z",
   "published": "2026-06-25T09:31:22Z",
   "aliases": [
     "CVE-2026-53249"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: restrict IPOPT_SSRR and IPOPT_LSRR options\n\nThis patch restricts setting Loose Source and Record Route (LSRR)\nand Strict Source and Record Route (SSRR) IP options to users\nwith CAP_NET_RAW capability.\n\nThis prevents unprivileged applications from forcing packets to route\nthrough attacker-controlled nodes to leak TCP ISN and possibly other\nprotocol information.\n\nWhile LSRR and SSRR are commonly filtered in many network environments,\nthey may still be supported and forwarded along some network paths.\n\nRFC 7126 (Recommendations on Filtering of IPv4 Packets Containing\nIPv4 Options) recommend to drop these options in 4.3 and 4.4.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:42Z"

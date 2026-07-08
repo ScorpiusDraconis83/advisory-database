@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jcg9-m46h-g922",
-  "modified": "2026-06-25T09:31:22Z",
+  "modified": "2026-07-08T00:37:52Z",
   "published": "2026-06-25T09:31:22Z",
   "aliases": [
     "CVE-2026-53241"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: seq: dummy: fix UMP event stack overread\n\nThe dummy sequencer port forwards events by copying an incoming\nstruct snd_seq_event into a stack temporary, rewriting source and\ndestination, and dispatching the temporary to subscribers. That legacy\nevent storage is smaller than struct snd_seq_ump_event.\n\nWhen a UMP event reaches the dummy client, the copy leaves the UMP flag\nset but only provides legacy-sized stack storage. The subscriber\ndelivery path then uses snd_seq_event_packet_size() and copies a\nUMP-sized packet from that stack object, reading past the end of the\ntemporary.\n\nUse the existing union __snd_seq_event storage and copy the packet size\nreported for the incoming event before rewriting the common routing\nfields. This preserves the full UMP packet for UMP events while keeping\nlegacy event handling unchanged.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:42Z"

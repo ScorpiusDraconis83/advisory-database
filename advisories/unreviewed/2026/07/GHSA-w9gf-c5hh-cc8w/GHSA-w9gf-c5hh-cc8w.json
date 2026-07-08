@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9gf-c5hh-cc8w",
+  "modified": "2026-07-08T00:37:56Z",
+  "published": "2026-07-08T00:37:55Z",
+  "aliases": [
+    "CVE-2026-14739"
+  ],
+  "details": "DBI versions before 1.650 for Perl have a heap overflow when preparsing SQL statements with an extreme number of placeholders.\n\nThe fix for CVE-2026-10879 did not allocate enough memory to handle approximately 1.2-million placeholders.\n\nDBI version 1.650 sets a hard limit of 99,999 placeholders.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14739"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/perl5-dbi/dbi/commit/2b77c88b655e9539a592c71a61fb965fc0075395.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/HMBRAND/DBI-1.650/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2026-10879"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-07T23:16:54Z"
+  }
+}
