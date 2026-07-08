@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fg92-r9x5-ch82",
-  "modified": "2026-06-08T18:31:52Z",
+  "modified": "2026-07-08T15:31:35Z",
   "published": "2026-06-08T18:31:52Z",
   "aliases": [
     "CVE-2026-46301"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: topcliff-pch: fix use-after-free on unbind\n\nGive the driver a chance to flush its queue before releasing the DMA\nbuffers on driver unbind",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-08T17:16:48Z"

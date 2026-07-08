@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-24m2-rchh-h2mx",
-  "modified": "2026-06-19T15:33:14Z",
+  "modified": "2026-07-08T15:31:37Z",
   "published": "2026-06-08T18:31:53Z",
   "aliases": [
     "CVE-2026-46314"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/v3d: Reject empty multisync extension to prevent infinite loop\n\nv3d_get_extensions() walks a userspace-provided singly-linked list of\nioctl extensions without any bound on the chain length. A local user\ncan craft a self-referential extension (ext->next == &ext) with zero\nin_sync_count and out_sync_count, which bypasses the existing duplicate-\nextension guard:\n\n    if (se->in_sync_count || se->out_sync_count)\n            return -EINVAL;\n\nThe guard never fires because v3d_get_multisync_post_deps() returns\nimmediately when count is zero, leaving both fields at zero on every\niteration. The result is an infinite loop in kernel context, blocking\nthe calling thread and pegging a CPU core indefinitely.\n\nFix this by rejecting a multisync extension where both in_sync_count\nand out_sync_count are zero in v3d_get_multisync_submit_deps(). An\nempty multisync carries no synchronization information and serves no\nuseful purpose, so returning -EINVAL for such an extension is the\ncorrect defense against this attack vector.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-08T17:16:50Z"

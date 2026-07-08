@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3jxv-h97q-rq3x",
-  "modified": "2026-07-04T12:30:28Z",
+  "modified": "2026-07-08T15:31:44Z",
   "published": "2026-06-24T09:30:48Z",
   "aliases": [
     "CVE-2026-52928"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naf_unix: Reject SIOCATMARK on non-stream sockets\n\nSIOCATMARK reports whether the receive queue is at the urgent mark for\nMSG_OOB.\n\nIn AF_UNIX, MSG_OOB is supported only for SOCK_STREAM sockets.\nSOCK_DGRAM and SOCK_SEQPACKET reject MSG_OOB in sendmsg() and recvmsg(),\nso they should not support SIOCATMARK either.\n\nReturn -EOPNOTSUPP for non-stream sockets before checking the receive\nqueue.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T08:16:22Z"

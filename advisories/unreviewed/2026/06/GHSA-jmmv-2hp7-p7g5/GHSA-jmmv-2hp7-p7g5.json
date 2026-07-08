@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jmmv-2hp7-p7g5",
-  "modified": "2026-06-25T09:31:22Z",
+  "modified": "2026-07-08T15:31:46Z",
   "published": "2026-06-25T09:31:22Z",
   "aliases": [
     "CVE-2026-53236"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: restrict SO_ATTACH_FILTER to priv users\n\nThis patch restricts the use of SO_ATTACH_FILTER (cBPF) on TCP sockets\nto users with CAP_NET_ADMIN capability.\n\nThis blocks potential side-channel attack where an unprivileged application\nattaches a filter to leak TCP sequence/acknowledgment numbers.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:41Z"

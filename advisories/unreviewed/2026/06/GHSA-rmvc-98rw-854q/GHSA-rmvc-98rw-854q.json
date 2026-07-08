@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rmvc-98rw-854q",
-  "modified": "2026-06-08T18:31:47Z",
+  "modified": "2026-07-08T15:31:34Z",
   "published": "2026-06-08T18:31:47Z",
   "aliases": [
     "CVE-2025-71315"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vkms: Convert to DRM's vblank timer\n\nReplace vkms' vblank timer with the DRM implementation. The DRM\ncode is identical in concept, but differs in implementation.\n\nVblank timers are covered in vblank helpers and initializer macros,\nso remove the corresponding hrtimer in struct vkms_output. The\nvblank timer calls vkms' custom timeout code via handle_vblank_timeout\nin struct drm_crtc_helper_funcs.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-08T16:16:33Z"

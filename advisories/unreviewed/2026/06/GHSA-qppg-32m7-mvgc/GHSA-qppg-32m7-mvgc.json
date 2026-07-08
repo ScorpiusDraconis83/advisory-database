@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qppg-32m7-mvgc",
-  "modified": "2026-06-08T18:31:52Z",
+  "modified": "2026-07-08T15:31:35Z",
   "published": "2026-06-08T18:31:52Z",
   "aliases": [
     "CVE-2026-46298"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npseries/papr-hvpipe: Fix race with interrupt handler\n\nWhile executing ->ioctl handler or ->release handler, if an interrupt\nfires on the same cpu, then we can enter into a deadlock.\n\nThis patch fixes both these handlers to take spin_lock_irq{save|restore}\nversions of the lock to prevent this deadlock.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-08T17:16:48Z"

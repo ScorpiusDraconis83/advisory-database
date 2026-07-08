@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qrv5-4j39-f7c6",
-  "modified": "2026-06-08T18:31:52Z",
+  "modified": "2026-07-08T15:31:35Z",
   "published": "2026-06-08T18:31:52Z",
   "aliases": [
     "CVE-2026-46282"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: frequency: admv1013: fix NULL pointer dereference on str\n\nWhen device_property_read_string() fails, str is left uninitialized\nbut the code falls through to strcmp(str, ...), dereferencing a garbage\npointer. Replace manual read/strcmp with\ndevice_property_match_property_string() and consolidate the SE mode\nenums into a single sequential enum, mapping to hardware register\nvalues via a switch consistent with other bitfields in the driver.\n\nSeveral cleanup patches have been applied to this driver recently so\nthis will need a manual backport.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-08T17:16:45Z"

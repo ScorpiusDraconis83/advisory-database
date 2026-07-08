@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hf7w-mcpw-97mf",
+  "modified": "2026-07-08T15:32:03Z",
+  "published": "2026-07-08T15:32:03Z",
+  "aliases": [
+    "CVE-2026-49146"
+  ],
+  "details": "App::Ack versions before 3.10.0 for Perl allow memory exhaustion via an unbounded context value in a project .ackrc.\n\nack searches up the directory hierarchy from the current directory for a project .ackrc and loads its options. The -B and -C context options accepted any positive integer, and ack sized the before-context buffer to that value, so a project .ackrc setting --before-context=100000000 made ack allocate a buffer of 100 million elements.\n\nA project .ackrc committed to an untrusted repository can abort ack with an out-of-memory condition.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49146"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beyondgrep/ack3/commit/45ff5fe77dbd96f7332f31943102291f878f30b8.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/PETDANCE/ack-v3.10.0/source/Changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-08T15:16:27Z"
+  }
+}

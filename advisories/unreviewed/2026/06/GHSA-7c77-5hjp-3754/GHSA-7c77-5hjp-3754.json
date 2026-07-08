@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7c77-5hjp-3754",
-  "modified": "2026-06-24T09:30:48Z",
+  "modified": "2026-07-08T15:31:43Z",
   "published": "2026-06-24T09:30:47Z",
   "aliases": [
     "CVE-2026-52913"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: v: stop OGMv2 on disabled interface\n\nWhen a batadv_hard_iface is disabled, its mesh_iface pointer is set to\nNULL. However, batadv_v_ogm_send_meshif() may still dispatch OGMs via\nbatadv_v_ogm_queue_on_if() for interfaces that have since lost their\nmesh_iface association. This results in a NULL pointer dereference when\nbatadv_v_ogm_queue_on_if() unconditionally calls netdev_priv() on the\nnow NULL hard_iface->mesh_iface to retrieve the batadv_priv.\n\nIt is necessary to ensure that the batadv_v_ogm_queue_on_if() checks that\nit is using the same mesh_iface for which batadv_v_ogm_send_meshif() was\ncalled.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T08:16:21Z"

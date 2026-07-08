@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7cg4-79f4-7w2g",
-  "modified": "2026-06-24T09:30:48Z",
+  "modified": "2026-07-08T15:31:43Z",
   "published": "2026-06-24T09:30:48Z",
   "aliases": [
     "CVE-2026-52916"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: frag: disallow unicast fragment in fragment\n\nbatadv_frag_skb_buffer() is called by batadv_batman_skb_recv() when a\nBATADV_UNICAST_FRAG packet is received. Once all fragments are collected\nand the packet is reassembled, batadv_recv_frag_packet() calls\nbatadv_batman_skb_recv() again to process the defragmented payload.\n\nA malicious sender can craft a BATADV_UNICAST_FRAG packet whose reassembled\npayload is itself a BATADV_UNICAST_FRAG packet (matryoshka-style nesting).\nEach nesting level recurses through batadv_batman_skb_recv() without bound,\ngrowing the kernel stack until it is exhausted.\n\nSince refragmentation or fragments in fragments are not actually allowed,\ndiscard all packets which are still BATADV_UNICAST_FRAG packets after the\ndefragmentation process.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T08:16:21Z"

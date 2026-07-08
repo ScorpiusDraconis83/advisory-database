@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5qwx-4q7j-hwm2",
-  "modified": "2026-06-25T09:31:22Z",
+  "modified": "2026-07-08T15:31:46Z",
   "published": "2026-06-25T09:31:22Z",
   "aliases": [
     "CVE-2026-53238"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetlabel: validate unlabeled address and mask attribute lengths\n\nnetlbl_unlabel_addrinfo_get() used the address attribute length to\ndetermine whether the attribute data could be read as an IPv4 or IPv6\naddress, but did not independently validate the corresponding mask\nattribute length.  A crafted Generic Netlink request could therefore\nprovide a valid IPv4/IPv6 address attribute with a shorter mask\nattribute, which would later be read as a full struct in_addr or\nstruct in6_addr.\n\nNLA_BINARY policy lengths are maximum lengths by default, so use\nNLA_POLICY_EXACT_LEN() for the unlabeled IPv4/IPv6 address and mask\nattributes.  This rejects short attributes during policy validation and\nalso exposes the exact length requirements through policy introspection.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-25T09:16:41Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-93h7-7gph-6j69",
-  "modified": "2026-06-08T18:31:53Z",
+  "modified": "2026-07-08T15:31:36Z",
   "published": "2026-06-08T18:31:53Z",
   "aliases": [
     "CVE-2026-46310"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: renesas: vsp1: Fix NULL pointer deref on module unload\n\nWhen unloading the module on gen 4, we hit a NULL pointer dereference.\nThis is caused by the cleanup code calling vsp1_drm_cleanup() where it\nshould be calling vsp1_vspx_cleanup().\n\nFix this by checking the IP version and calling the drm or vspx function\naccordingly, the same way as the init code does.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-08T17:16:49Z"

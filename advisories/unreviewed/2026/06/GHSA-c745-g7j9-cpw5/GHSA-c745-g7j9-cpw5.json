@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c745-g7j9-cpw5",
-  "modified": "2026-06-08T18:31:52Z",
+  "modified": "2026-07-08T15:31:35Z",
   "published": "2026-06-08T18:31:52Z",
   "aliases": [
     "CVE-2026-46283"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntpm: Use kfree_sensitive() to free auth session in tpm_dev_release()\n\ntpm_dev_release() uses plain kfree() to free chip->auth, which contains\nsensitive cryptographic material including HMAC session keys, nonces,\nand passphrase data (struct tpm2_auth).\n\nEvery other code path that frees this structure uses kfree_sensitive()\nto zero the memory before releasing it: both tpm2_end_auth_session()\nand tpm_buf_check_hmac_response() do so. The tpm_dev_release() path\nis the only one that does not, leaving key material in freed slab\nmemory until it is eventually overwritten.\n\nUse kfree_sensitive() for consistency with the rest of the driver and\nto ensure session keys are scrubbed during device teardown.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-08T17:16:46Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-r223-r4pf-42r9",
-  "modified": "2026-06-24T09:30:48Z",
+  "modified": "2026-07-08T15:31:43Z",
   "published": "2026-06-24T09:30:48Z",
   "aliases": [
     "CVE-2026-52926"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: clear current gateway during teardown\n\nbatadv_gw_node_free() removes the gateway list entries during mesh teardown,\nbut it does not clear the currently selected gateway. This leaves stale\ngateway state behind across cleanup and can break a later mesh recreation.\n\nClear bat_priv->gw.curr_gw before walking the gateway list so the selected\ngateway reference is dropped as part of teardown.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T08:16:22Z"

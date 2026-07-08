@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xwpx-34xj-4qmq",
-  "modified": "2026-06-08T18:31:51Z",
+  "modified": "2026-07-08T15:31:35Z",
   "published": "2026-06-08T18:31:51Z",
   "aliases": [
     "CVE-2026-46281"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvmalloc: fix buffer overflow in vrealloc_node_align()\n\nCommit 4c5d3365882d (\"mm/vmalloc: allow to set node and align in\nvrealloc\") added the ability to force a new allocation if the current\npointer is on the wrong NUMA node, or if an alignment constraint is not\nmet, even if the user is shrinking the allocation.\n\nOn this path (need_realloc), the code allocates a new object of 'size'\nbytes and then memcpy()s 'old_size' bytes into it.  If the request is to\nshrink the object (size < old_size), this results in an out-of-bounds\nwrite on the new buffer.\n\nFix this by bounding the copy length by the new allocation size.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-08T17:16:45Z"

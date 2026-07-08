@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3xr6-r26v-fpqm",
-  "modified": "2026-06-09T09:32:07Z",
+  "modified": "2026-07-08T15:31:37Z",
   "published": "2026-06-09T09:32:07Z",
   "aliases": [
     "CVE-2026-46315"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/waitid: clear waitid info before copying it to userspace\n\nIORING_OP_WAITID stores its result fields in struct io_waitid::info and\nlater copies them to userspace siginfo. The prep path initializes the\nrequest arguments, but it does not initialize info itself.\n\nIf the wait operation completes without reporting a child event, the common\nwait code can return without writing wo_info. In that case io_waitid_finish()\nstill copies iw->info to userspace, exposing stale bytes from the reused\nio_kiocb command storage.\n\nClear the result storage during prep so the io_uring path matches the\nregular waitid syscall, which uses a zero-initialized struct waitid_info.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-09T09:16:30Z"

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6vww-2wx8-q6x4",
+  "modified": "2026-07-08T15:32:02Z",
+  "published": "2026-07-08T15:32:02Z",
+  "aliases": [
+    "CVE-2026-60125"
+  ],
+  "details": "MISP’s importModule() path used getEnabledModule() to resolve a single import module by name, but this lookup did not enforce the per-organisation module restriction checked by getEnabledModules(). As a result, an authenticated user from an organisation that was not allowed to use a module restricted via Plugin.Import_<module>_restrict could still invoke that import module directly if they knew its name.\n\n\nThis could allow unauthorised access to restricted import-module functionality and, depending on the module and the user’s event permissions, may allow unauthorised import or modification of event data through a module that should have been unavailable to the user’s organisation.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/0ed79b4d3177f4b9e44040962161a1a436d2587d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-08T14:17:22Z"
+  }
+}
