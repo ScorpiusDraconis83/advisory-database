@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hwwg-2jmx-c78q",
-  "modified": "2026-06-26T21:32:16Z",
+  "modified": "2026-07-08T06:31:35Z",
   "published": "2026-06-26T21:32:16Z",
   "aliases": [
     "CVE-2026-53285"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Wrap DCN32 phantom-plane allocation in DC_RUN_WITH_PREEMPTION_ENABLED\n\n[Why]\ndcn32_validate_bandwidth() wraps dcn32_internal_validate_bw() with\nDC_FP_START()/DC_FP_END(). In x86 non-RT, DC_FP_START takes fpregs_lock(),\nwhich disables local softirqs.\n\nThe DML1 path through dcn32_enable_phantom_plane() calls kvzalloc() to\nallocate ~335 KiB for dc_plane_state. This triggers the vmalloc path,\nwhich calls BUG_ON(in_interrupt()) because it's invoked within the\nFPU-enabled (softirq disabled) region, leading to a kernel crash.\n\n[How]\nWrap the dc_state_create_phantom_plane() call with the\nDC_RUN_WITH_PREEMPTION_ENABLED() macro to allow preemption during\nthis memory allocation.\n\n(cherry picked from commit 885ccbef7b94a8b38f69c4211c679021aa27ad11)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-617"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-26T20:17:21Z"

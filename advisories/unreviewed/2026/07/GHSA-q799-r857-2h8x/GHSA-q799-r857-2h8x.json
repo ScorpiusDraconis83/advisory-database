@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q799-r857-2h8x",
+  "modified": "2026-07-08T06:31:35Z",
+  "published": "2026-07-08T06:31:35Z",
+  "aliases": [
+    "CVE-2026-14158"
+  ],
+  "details": "The Widget Logic Visual plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 1.52 via the widget_logic_visual_check_visibility function. This is due to missing capability check and nonce verification on the widget-logic-update-conditional-tags AJAX action combined with insufficient sanitization of the 'nwlv[cod-tag]' parameter before storage and subsequent use in an eval() call. This makes it possible for authenticated attackers, with subscriber-level access and above, to execute code on the server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14158"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/widget-logic-visual/trunk/ajax.php#L14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/widget-logic-visual/trunk/ajax.php#L91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/widget-logic-visual/trunk/custom.php#L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5d82e9e2-c572-4911-a6a5-1384844214b0?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-08T05:16:26Z"
+  }
+}

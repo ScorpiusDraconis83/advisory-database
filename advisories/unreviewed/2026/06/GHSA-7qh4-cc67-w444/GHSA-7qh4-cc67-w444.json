@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7qh4-cc67-w444",
-  "modified": "2026-06-26T21:32:16Z",
+  "modified": "2026-07-08T06:31:35Z",
   "published": "2026-06-26T21:32:16Z",
   "aliases": [
     "CVE-2026-53291"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: hda/conexant: Fix missing error check for jack detection\n\nIn cx_probe(), the return value of snd_hda_jack_detect_enable_callback()\nis ignored. This function returns a pointer, and if it fails (e.g., due\nto memory allocation failure), it returns an error pointer which must\nbe checked using IS_ERR().\n\nIf the registration fails, the driver continues to probe, but the jack\ndetection callback will not be registered. This can lead to a kernel\ncrash later when the driver attempts to handle jack events or accesses\nthe uninitialized structure.\n\nCheck the return value using IS_ERR() and propagate the error via\nPTR_ERR() to the probe caller.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -44,8 +49,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-26T20:17:21Z"

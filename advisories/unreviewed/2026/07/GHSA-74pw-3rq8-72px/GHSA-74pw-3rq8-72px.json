@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-74pw-3rq8-72px",
+  "modified": "2026-07-08T06:31:36Z",
+  "published": "2026-07-08T06:31:36Z",
+  "aliases": [
+    "CVE-2026-14500"
+  ],
+  "details": "The Bulk Order Update for WooCommerce plugin for WordPress is vulnerable to Arbitrary File Read in versions up to, and including, 1.6. This is due to the bouw_fetch_csv_data() AJAX handler being registered on the wp_ajax_nopriv_ hook with no capability or nonce check, and passing the attacker-supplied csv_url POST parameter — filtered only by esc_url_raw() (which leaves absolute filesystem paths intact) and validate_file() (which only rejects '..' traversal patterns) — directly into fopen()/fgetcsv() and reflecting the first parsed line in the JSON response. This makes it possible for unauthenticated attackers to read the first line of arbitrary files on the server (such as /etc/passwd) and to use the handler as a file-existence oracle.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14500"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bulk-order-update-for-woocommerce/tags/1.6/inc/plugin-html.php#L23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bulk-order-update-for-woocommerce/tags/1.6/inc/plugin-html.php#L33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/bulk-order-update-for-woocommerce/tags/1.6/inc/plugin-html.php#L48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d3aa1f74-6372-4abe-894b-07ad3e81ea81?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-08T06:16:22Z"
+  }
+}

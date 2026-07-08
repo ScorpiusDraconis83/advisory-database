@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7w44-35gq-6jc3",
-  "modified": "2026-06-26T21:32:16Z",
+  "modified": "2026-07-08T06:31:35Z",
   "published": "2026-06-26T21:32:16Z",
   "aliases": [
     "CVE-2026-53287"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naudit: fix incorrect inheritable capability in CAPSET records\n\n__audit_log_capset() records the effective capability set into the\ninheritable field due to a copy-paste error. Every CAPSET audit\nrecord therefore reports cap_pi (process inheritable) with the value\nof cap_effective instead of cap_inheritable.\n\nThis silently corrupts audit data used for compliance and forensic\nanalysis: an attacker who modifies inheritable capabilities to\nprepare for a privilege-escalating exec would have the change masked\nin the audit trail.\n\nThe bug has been present since the original introduction of CAPSET\naudit records in 2008.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-26T20:17:21Z"

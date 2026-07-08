@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-43rv-4q7x-r3cg",
-  "modified": "2026-06-26T21:32:17Z",
+  "modified": "2026-07-08T06:31:35Z",
   "published": "2026-06-26T21:32:17Z",
   "aliases": [
     "CVE-2026-53297"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mana: Guard mana_remove against double invocation\n\nIf PM resume fails (e.g., mana_attach() returns an error), mana_probe()\ncalls mana_remove(), which tears down the device and sets\ngd->gdma_context = NULL and gd->driver_data = NULL.\n\nHowever, a failed resume callback does not automatically unbind the\ndriver. When the device is eventually unbound, mana_remove() is invoked\na second time. Without a NULL check, it dereferences gc->dev with\ngc == NULL, causing a kernel panic.\n\nAdd an early return if gdma_context or driver_data is NULL so the second\ninvocation is harmless. Move the dev = gc->dev assignment after the\nguard so it cannot dereference NULL.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-26T20:17:22Z"

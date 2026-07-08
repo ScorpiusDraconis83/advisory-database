@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qhrf-5rv2-gph8",
+  "modified": "2026-07-08T06:31:35Z",
+  "published": "2026-07-08T06:31:35Z",
+  "aliases": [
+    "CVE-2026-9701"
+  ],
+  "details": "The Eventer plugin for WordPress is vulnerable to an insecure password reset mechanism in all versions up to, and including, 4.4.2. The plugin stores a plaintext copy of the password reset key in the `eventer_verification_code` user meta field when a user requests a password reset. The plaintext key stored in `wp_usermeta` can be used with the plugin's custom reset action to set a new password for any user. Combined with another vulnerability such as SQL Injection (CVE-2026-9700), this makes it possible for unauthenticated attackers to extract the plaintext reset key and take over any user account, including administrators. Note: The password reset function only works up to PHP version 7.4.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9701"
+    },
+    {
+      "type": "WEB",
+      "url": "https://codecanyon.net/item/eventer-wordpress-event-manager-plugin/20972534"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/bc656765-1eac-4a96-99e9-c22d64984923?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-289"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-08T05:16:28Z"
+  }
+}

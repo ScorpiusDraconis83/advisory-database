@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-grhq-rqc2-rhjr",
-  "modified": "2026-06-26T21:32:17Z",
+  "modified": "2026-07-08T06:31:35Z",
   "published": "2026-06-26T21:32:17Z",
   "aliases": [
     "CVE-2026-53294"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmailbox: mailbox-test: don't free the reused channel\n\nThe RX channel can be aliased to the TX channel if it has a different\nMMIO. This special case needs to be handled when freeing the channels\notherwise a double-free occurs.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-26T20:17:22Z"
