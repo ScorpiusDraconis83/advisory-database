@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2q68-xwfj-2rpc",
+  "modified": "2026-07-08T12:30:24Z",
+  "published": "2026-07-08T12:30:24Z",
+  "aliases": [
+    "CVE-2026-41042"
+  ],
+  "details": "Unauthenticated callers can supply a malicious H2 JDBC URL through the testConnection API, which executes arbitrary Java code on the server via H2's INIT parameter. Vulnerability in Apache Gravitino.\n\nThis issue affects Apache Gravitino: before 1.2.1.\n\nUsers are recommended to upgrade to version 1.2.1, which fixes the issue.\n\nThis issue only happens when using H2, and H2 is mainly used for testing and local development. Also, Gravitino is typically deployed in the internal environment, so the severity is low.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41042"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/vdh88wc6j5b38v65ncb111wbbnkf6bvm"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-08T12:17:20Z"
+  }
+}
