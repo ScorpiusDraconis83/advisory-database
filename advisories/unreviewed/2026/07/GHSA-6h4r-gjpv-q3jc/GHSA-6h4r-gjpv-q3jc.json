@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6h4r-gjpv-q3jc",
+  "modified": "2026-07-09T12:30:28Z",
+  "published": "2026-07-09T12:30:28Z",
+  "aliases": [
+    "CVE-2026-4298"
+  ],
+  "details": "The DSGVO All in one for WP plugin for WordPress is vulnerable to Missing Authorization in all versions up to and including 4.9. This is due to the dsgvo_reset_policy_service_func() function lacking both capability checks and nonce verification while processing user-supplied parameters to reset plugin options. This makes it possible for authenticated attackers, with Subscriber-level access and above, to reset all customized privacy policy content including cookie notices, Google Analytics policies, Facebook policies, and YouTube policies to their default values.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4298"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/dsgvo-all-in-one-for-wp/tags/4.9/dsgvo_all_in_one_wp.php#L1123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/dsgvo-all-in-one-for-wp/tags/4.9/dsgvo_all_in_one_wp.php#L56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/dsgvo-all-in-one-for-wp/trunk/dsgvo_all_in_one_wp.php#L1123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/dsgvo-all-in-one-for-wp/trunk/dsgvo_all_in_one_wp.php#L56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3503821%40dsgvo-all-in-one-for-wp&new=3503821%40dsgvo-all-in-one-for-wp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/6d8a5268-03a2-48c6-9c59-840a11e7a34f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-09T11:16:39Z"
+  }
+}
