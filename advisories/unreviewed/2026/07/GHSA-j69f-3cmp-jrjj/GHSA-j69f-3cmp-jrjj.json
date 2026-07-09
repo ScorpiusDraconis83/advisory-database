@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j69f-3cmp-jrjj",
+  "modified": "2026-07-09T21:31:20Z",
+  "published": "2026-07-09T21:31:20Z",
+  "aliases": [
+    "CVE-2026-13492"
+  ],
+  "details": "The UsersWP plugin for WordPress is vulnerable to Arbitrary File Deletion in versions up to, and including, 1.2.65. This is due to insufficient validation of file-field values in the UsersWP_Validation::validate_fields() function (which falls through to sanitize_text_field() for fields of type 'file', leaving directory-traversal sequences intact) combined with the UsersWP_Forms::upload_file_remove() AJAX handler building the deletion target from the uploads basedir concatenated with the attacker-controlled metadata value without any realpath canonicalization or uploads-directory boundary check before calling unlink(). This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete arbitrary files on the affected site's server, including wp-config.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13492"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/AyeCode/userswp/commit/ddb17ad30ff3384cda85c5f372db30b03bd45ac8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/userswp/tags/1.2.65/includes/class-forms.php#L1059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/userswp/tags/1.2.65/includes/class-forms.php#L1973"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/userswp/tags/1.2.65/includes/class-forms.php#L2320"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/userswp/tags/1.2.65/includes/class-forms.php#L2323"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/userswp/tags/1.2.65/includes/class-validation.php#L190"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3590340/userswp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b6cf6390-480f-44e2-ae36-67e3398add33?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-09T19:17:03Z"
+  }
+}

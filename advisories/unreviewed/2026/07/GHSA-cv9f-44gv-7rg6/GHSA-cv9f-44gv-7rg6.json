@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cv9f-44gv-7rg6",
+  "modified": "2026-07-09T21:31:21Z",
+  "published": "2026-07-09T21:31:21Z",
+  "aliases": [
+    "CVE-2026-33801"
+  ],
+  "details": "An Improper Check for Unusual or Exceptional Conditions vulnerability in the routing protocol daemon (RPD) of Juniper Networks Junos OS and Junos OS Evolved allows an adjacent, unauthenticated attacker sending a specific BGP update over an established BGP session to cause a Denial-of-Service (DoS).\n\nUpon receipt of a specifically malformed non-inet/inet6 unicast BGP update, an RPD crash and restart is triggered, which will cause a complete service outage until routing has reconverged. The rpd crash occurs before the update can be readvertised, so there is no downstream propagation.\n\n\nThis issue affects:\n\n\n\n  *  Junos OS versions 25.2 before 25.2R2;\n\n\n  *  Junos OS Evolved versions 25.2 before 25.2R2-EVO.\n\n\n\n\nThis issue doesn't affect Junos OS versions before 25.2R1 nor Junos OS Evolved versions before 25.2R1-EVO.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:Y/R:A/V:X/RE:M/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33801"
+    },
+    {
+      "type": "WEB",
+      "url": "https://supportportal.juniper.net/JSA110076"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-754"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-09T21:16:55Z"
+  }
+}
