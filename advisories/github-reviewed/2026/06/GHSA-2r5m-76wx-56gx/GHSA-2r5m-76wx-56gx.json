@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2r5m-76wx-56gx",
-  "modified": "2026-06-02T18:31:27Z",
+  "modified": "2026-07-09T21:00:55Z",
   "published": "2026-06-01T09:31:14Z",
   "aliases": [
     "CVE-2026-45360"
   ],
+  "summary": "Apache Airflow Vulnerable to Deserialization of Untrusted Data",
   "details": "Apache Airflow's scheduler-side deadline-reference decoder (`SerializedCustomReference.deserialize_reference`) imported and dispatched arbitrary class paths drawn from DAG-author-controlled serialized state without an allowlist or plugin-registry gate. A DAG author whose code reaches the scheduler — the default on single-host deployments where the DAG bundle is importable from the scheduler process — could embed a custom `DeadlineReference` whose serialized form named an attacker-controlled module path, causing the scheduler to `import_string(...)` and instantiate that class with a live SQLAlchemy session attached. Affects deployments where DAG-author code is less trusted than the scheduler process. Users are advised to upgrade to `apache-airflow` 3.2.2 or later.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "apache-airflow"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.2.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -22,6 +43,14 @@
     {
       "type": "WEB",
       "url": "https://github.com/apache/airflow/pull/66737"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/airflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/apache-airflow/PYSEC-2026-186.yaml"
     },
     {
       "type": "WEB",
@@ -37,8 +66,8 @@
       "CWE-502"
     ],
     "severity": "HIGH",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-09T21:00:55Z",
     "nvd_published_at": "2026-06-01T09:16:19Z"
   }
 }
