@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c2rv-hwqm-wjpg",
-  "modified": "2026-06-02T18:31:31Z",
+  "modified": "2026-07-09T21:19:28Z",
   "published": "2026-06-02T12:31:26Z",
   "aliases": [
     "CVE-2026-46718"
   ],
+  "summary": "Apache Calcite is Vulnerable to Use of Externally-Controlled Input to Select Classes",
   "details": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection') vulnerability in Apache Calcite.\n\nThis issue affects Apache Calcite: from 1.5.0 before 1.42.\n\nUsers are recommended to upgrade to version 1.42, which fixes the issue.",
   "severity": [
     {
@@ -13,11 +14,43 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.calcite:calcite-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.5.0"
+            },
+            {
+              "fixed": "1.42.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46718"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/calcite/commit/5855cfa14d8038e2a123ff6ce9722edce0e0cc25"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/calcite"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issues.apache.org/jira/browse/CALCITE-7532"
     },
     {
       "type": "WEB",
@@ -33,8 +66,8 @@
       "CWE-470"
     ],
     "severity": "MODERATE",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-09T21:19:28Z",
     "nvd_published_at": "2026-06-02T10:16:25Z"
   }
 }
