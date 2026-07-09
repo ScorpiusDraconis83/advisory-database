@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9mx-xmg4-gc4r",
+  "modified": "2026-07-09T20:52:57Z",
+  "published": "2026-07-09T20:52:57Z",
+  "aliases": [
+    "CVE-2026-53932"
+  ],
+  "summary": "laravel-backup-restore has an OS Command Injection during database restore",
+  "details": "## Summary\nA crafted backup archive can trigger OS command injection during database restore. The restore workflow extracts a ZIP archive, enumerates files under `db-dumps`, converts the dump path to an absolute path, and passes that path into database import commands that are built as shell command strings.\n\nThe dump filename is not shell-escaped before it is interpolated into commands such as:\n\n- `mysql ... < {dumpFile}`\n- `gunzip -c {dumpFile}` / `gunzip < {dumpFile}`\n- `psql ... < {dumpFile}`\n- `sqlite3 ... < {dumpFile}`\n\nBecause `Illuminate\\Support\\Facades\\Process::run(string)` uses Symfony `Process::fromShellCommandline()`, shell metacharacters in the dump filename are interpreted by `/bin/sh` on Unix-like systems or by the platform shell on Windows.\n\n### Impact\nIf an attacker can cause an operator or automation to restore a malicious backup archive, the attacker can execute arbitrary shell commands as the PHP/Laravel application user on the system performing the restore. This can lead to application compromise, database credential disclosure, tampering with restored data, and further lateral movement depending on deployment permissions.\n\nThis is not about malicious SQL inside the dump. The command injection is carried in the ZIP entry filename under `db-dumps`, before the dump content is imported.\n\n### Patches\nThe vulnerability has been fixed in v1.9.4 of the package.\n\n### Workarounds\nThere is no configuration option that disables the vulnerable code path. Upgrading to the patched release is the only complete fix.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "wnx/laravel-backup-restore"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.9.4"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.9.3"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/stefanzweifel/laravel-backup-restore/security/advisories/GHSA-w9mx-xmg4-gc4r"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/stefanzweifel/laravel-backup-restore"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77",
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-09T20:52:57Z",
+    "nvd_published_at": null
+  }
+}
