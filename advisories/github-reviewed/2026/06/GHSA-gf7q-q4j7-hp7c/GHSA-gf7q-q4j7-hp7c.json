@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gf7q-q4j7-hp7c",
-  "modified": "2026-06-02T12:31:26Z",
+  "modified": "2026-07-09T22:05:59Z",
   "published": "2026-06-02T12:31:26Z",
   "aliases": [
     "CVE-2026-5422"
   ],
+  "summary": "Jupyter Server vulnerable to Path Traversal via incorrect root directory boundary check in _get_os_path() ",
   "details": "A path traversal vulnerability exists in jupyter-server version 2.17.0 due to an incorrect root directory boundary check in the _get_os_path() function within jupyter_server/services/contents/fileio.py. The check uses startswith(root) without appending a trailing path separator, allowing sibling directories with names starting with the same prefix as root_dir to bypass the check. Additionally, the to_os_path() function in utils.py does not strip \"..\" from path parts, enabling traversal sequences to bypass the vulnerable check. This vulnerability can lead to unauthorized read/write access to files in sibling directories, potentially exposing sensitive data in shared hosting environments.",
   "severity": [
     {
@@ -13,15 +14,43 @@
       "score": "CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "jupyter-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.18.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5422"
     },
     {
+      "type": "PACKAGE",
+      "url": "https://github.com/jupyter-server/jupyter_server"
+    },
+    {
       "type": "WEB",
       "url": "https://huntr.com/bounties/24a36953-6490-466f-8cb2-a90d1ca56e0f"
+    },
+    {
+      "type": "WEB",
+      "url": "http://github.com/jupyter-server/jupyter_server/commit/0d829f2c35a481c3b24ecbe1e25a6f79954e88f2"
     }
   ],
   "database_specific": {
@@ -29,8 +58,8 @@
       "CWE-23"
     ],
     "severity": "MODERATE",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-09T22:05:59Z",
     "nvd_published_at": "2026-06-02T10:16:25Z"
   }
 }
