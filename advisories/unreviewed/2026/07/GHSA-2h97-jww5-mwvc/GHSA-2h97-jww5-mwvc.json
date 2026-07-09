@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2h97-jww5-mwvc",
+  "modified": "2026-07-09T09:30:29Z",
+  "published": "2026-07-09T09:30:29Z",
+  "aliases": [
+    "CVE-2026-57111"
+  ],
+  "details": "Permissive Cross-Origin Resource Sharing (CORS) in the REST API (helix-rest, org.apache.helix.rest.server.filters.CORSFilter) in Apache Helix through 2.0.0 on all platforms allows a remote attacker controlling a web page visited by an authorized user to read responses from and issue cross-origin requests to administrative REST endpoints via a cross-origin request from an arbitrary origin, since the filter unconditionally returns Access-Control-Allow-Origin: * together with Access-Control-Allow-Credentials: true and reflects arbitrary Access-Control-Request-Method / Access-Control-Request-Headers values in preflight responses. Users are recommended to upgrade to version 2.0.1, which fixes this issue.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/wy2yv90lvqzx46vkg35xrtfddffq9cfj"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/08/11"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1385"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-09T08:16:48Z"
+  }
+}

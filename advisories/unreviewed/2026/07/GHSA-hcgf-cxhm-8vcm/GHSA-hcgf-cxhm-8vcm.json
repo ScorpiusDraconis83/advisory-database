@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hcgf-cxhm-8vcm",
+  "modified": "2026-07-09T09:30:28Z",
+  "published": "2026-07-09T09:30:28Z",
+  "aliases": [
+    "CVE-2026-13450"
+  ],
+  "details": "The GamiPress – Gamification plugin to reward points, achievements, badges & ranks in WordPress plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 7.9.4 via the 'access' parameter due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to view private GamiPress activity log entries belonging to any user, including badge earnings, points balance changes, and event records from integrated plugins such as WooCommerce, LearnDash, and BuddyPress. This is exploitable by any unauthenticated visitor because the required 'gamipress' nonce is broadcast to all front-end users via wp_localize_script on the wp_enqueue_scripts hook, making the sole authentication barrier trivially bypassable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13450"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gamipress/tags/7.8.6/includes/ajax-functions.php#L48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gamipress/tags/7.8.6/includes/ajax-functions.php#L51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gamipress/tags/7.8.6/includes/ajax-functions.php#L73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gamipress/tags/7.8.6/includes/scripts.php#L51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gamipress/tags/7.8.6/includes/shortcodes/gamipress_logs.php#L272"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gamipress/tags/7.8.6/includes/shortcodes/gamipress_logs.php#L329"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gamipress/tags/7.9.3/includes/ajax-functions.php#L48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gamipress/tags/7.9.3/includes/ajax-functions.php#L51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gamipress/tags/7.9.3/includes/ajax-functions.php#L73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gamipress/tags/7.9.3/includes/scripts.php#L51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gamipress/tags/7.9.3/includes/shortcodes/gamipress_logs.php#L272"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gamipress/tags/7.9.3/includes/shortcodes/gamipress_logs.php#L329"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3593749%40gamipress&new=3593749%40gamipress"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/3006261b-a09e-4cff-b49f-49e992c6fe0b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-09T08:16:46Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-33x8-pcvj-97hp",
+  "modified": "2026-07-09T09:30:28Z",
+  "published": "2026-07-09T09:30:28Z",
+  "aliases": [
+    "CVE-2026-12418"
+  ],
+  "details": "The User Frontend: AI Powered Frontend Posting, User Directory, Profile, Membership & User Registration plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 4.3.7 via the 'wpuf_files_data' parameter due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to overwrite the post_title, post_content, and post_excerpt of any arbitrary post on the site, including posts authored by administrators. Exploitation requires access to any WPUF post submission form; this is achievable by users with no WordPress role, as the wpuf_submit_post AJAX action is gated only by a nonce with no capability check for the downstream post-edit operation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12418"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.3.1/includes/Ajax/Frontend_Form_Ajax.php#L35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.3.1/includes/Traits/FieldableTrait.php#L468"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.3.1/includes/Traits/FieldableTrait.php#L478"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.3.6/includes/Ajax/Frontend_Form_Ajax.php#L35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.3.6/includes/Traits/FieldableTrait.php#L468"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.3.6/includes/Traits/FieldableTrait.php#L478"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3578622%40wp-user-frontend&new=3578622%40wp-user-frontend"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/8f66e25f-b67e-4227-95fe-69b40551af61?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-09T08:16:46Z"
+  }
+}
