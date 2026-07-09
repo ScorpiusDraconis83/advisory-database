@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9x4j-8g3j-786h",
-  "modified": "2026-07-09T09:30:28Z",
+  "modified": "2026-07-09T15:32:29Z",
   "published": "2026-07-09T09:30:28Z",
   "aliases": [
     "CVE-2026-12517"
   ],
   "details": "The Fediverse Embeds WordPress plugin before 1.5.8 does not validate the destination of the server-side request performed by an unauthenticated site-info endpoint before fetching it, allowing anonymous users (the gating nonce is exposed on public pages carrying an embed) to make the site request internal and private-network URLs and read back the parsed page metadata. This is a Server-Side Request Forgery.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -21,7 +26,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-09T07:16:23Z"

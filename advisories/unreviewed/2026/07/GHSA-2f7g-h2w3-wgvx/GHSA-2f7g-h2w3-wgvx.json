@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2f7g-h2w3-wgvx",
+  "modified": "2026-07-09T15:32:32Z",
+  "published": "2026-07-09T15:32:32Z",
+  "aliases": [
+    "CVE-2026-12593"
+  ],
+  "details": "The implementation of an internal and undocumented Dashboard API endpoint (POST /api/users/~/{user}/tokens) forgot to ensure an HTTP request for creating an API Token for another user had sufficient permission to do so.\n\n\n\n\n\nPrecondition for successful exploitation was a preexisting internal user (with more privileges than the attacker), the attacker knowing its login name and the attacker being able to authenticate to the Dashboard via OAuth/OIDC. The attacker would then have had to forge a token creation API request on behalf of the other user and could have authenticated and finalized the token creation with their own OAuth/OIDC credentials. In the worst case, this would mean an attacker could have become Dashboard Administrator and been able to perform all administrative actions if the preexisting internal user had administrative privileges. In combination with a separate weakness, this could have further led to code execution on the host system running the Dashboard with the privileges of the OS-User running the Dashboard server.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12593"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wiki.qt.io/List_of_known_vulnerabilities_in_Qt_products#CVE-2026-12593"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-09T14:16:26Z"
+  }
+}
