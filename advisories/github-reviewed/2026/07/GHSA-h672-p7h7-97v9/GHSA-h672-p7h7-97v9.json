@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h672-p7h7-97v9",
+  "modified": "2026-07-09T23:20:12Z",
+  "published": "2026-07-09T23:20:12Z",
+  "aliases": [
+    "CVE-2026-53956"
+  ],
+  "summary": "Rattler vulnerable to package cache path traversal via conda package build string",
+  "details": "`rattler_cache` and `py-rattler` were vulnerable to package-cache path traversal when handling package metadata from conda channels.\n\nDuring cache materialization, the `ratter_cache` code used the package record `build` string as part of a cache key that was joined into a filesystem path. A malicious or untrusted channel could publish repodata with path separators or traversal components in that field, causing package contents to be written outside the configured package cache directory.\n\nThe issue requires use of a malicious or otherwise untrusted conda channel. Curated channels that validate package metadata are not expected to allow malformed build strings of this form.\n\nUsers should upgrade to a patched version and avoid untrusted conda channels.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "crates.io",
+        "name": "rattler_cache"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.9.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 0.8.2"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "py_rattler"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.24.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 0.23.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/conda/rattler/security/advisories/GHSA-h672-p7h7-97v9"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/conda/rattler"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22",
+      "CWE-73"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-09T23:20:12Z",
+    "nvd_published_at": null
+  }
+}
