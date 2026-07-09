@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3c3g-7hwg-9qmr",
-  "modified": "2026-06-02T03:31:26Z",
+  "modified": "2026-07-09T13:44:24Z",
   "published": "2026-06-02T03:31:26Z",
   "aliases": [
     "CVE-2026-10566"
   ],
+  "summary": " FoundationAgents MetaGPT: Deserialization through flawed argument mapping via Message.check_instruct_content()",
   "details": "A weakness has been identified in FoundationAgents MetaGPT up to 0.8.2. This affects the function Message.check_instruct_content of the file metagpt/schema.py. Executing a manipulation of the argument mapping can lead to deserialization. The attack is restricted to local execution. The exploit has been made available to the public and could be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
   "severity": [
     {
@@ -14,10 +15,30 @@
     },
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "metagpt"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.8.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -28,7 +49,7 @@
       "url": "https://github.com/FoundationAgents/MetaGPT/issues/2038"
     },
     {
-      "type": "WEB",
+      "type": "PACKAGE",
       "url": "https://github.com/FoundationAgents/MetaGPT"
     },
     {
@@ -53,8 +74,8 @@
       "CWE-20"
     ],
     "severity": "LOW",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-09T13:44:24Z",
     "nvd_published_at": "2026-06-02T03:16:16Z"
   }
 }

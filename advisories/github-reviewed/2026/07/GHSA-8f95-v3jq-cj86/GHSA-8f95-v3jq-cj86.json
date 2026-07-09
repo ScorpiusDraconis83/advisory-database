@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8f95-v3jq-cj86",
+  "modified": "2026-07-09T13:42:46Z",
+  "published": "2026-07-09T13:42:46Z",
+  "aliases": [
+    "CVE-2026-53720"
+  ],
+  "summary": "pymonocypher: Potential heap buffer overflow on nb_blocks in argon2i_32 when provided buffer is too small",
+  "details": "### Impact\nThe argon2i_32 implementation does not check the nb_blocks size.  If the caller does not provide a sufficiently large buffer based on the API contract, then argon2i_32 will write past the end of the buffer and possibly corrupt the heap.\n\n### Patches\nFixed in 4.0.2.8, which now verifies that nb_blocks is large enough.  See [90ff5b1](https://github.com/jetperch/pymonocypher/commit/90ff5b13b13b5673c372e188f482d8c172e6ab86).\n\n### Workarounds\nProvide a correctly sized nb_blocks buffer.\n\npymonocypher thanks Haris (hextheshadow) for the vulnerability report, details, and recommended fix.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pymonocypher"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.0.2.8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/jetperch/pymonocypher/security/advisories/GHSA-8f95-v3jq-cj86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jetperch/pymonocypher/commit/90ff5b13b13b5673c372e188f482d8c172e6ab86"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jetperch/pymonocypher"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122",
+      "CWE-1284",
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-09T13:42:46Z",
+    "nvd_published_at": null
+  }
+}
