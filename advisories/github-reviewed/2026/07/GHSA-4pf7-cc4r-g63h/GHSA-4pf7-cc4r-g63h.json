@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4pf7-cc4r-g63h",
+  "modified": "2026-07-09T21:02:41Z",
+  "published": "2026-07-09T21:02:40Z",
+  "aliases": [
+    "CVE-2026-52775"
+  ],
+  "summary": "YesWiki has Authenticated SQL Injection via ReactionManager ",
+  "details": "## Summary\n\nYesWiki through the latest development branch contains a SQL injection vulnerability in `ReactionManager::deleteUserReaction()` that allows any authenticated user to inject arbitrary SQL via the `{idreaction}` and `{id}` URL path parameters. The parameters are concatenated directly into a SQL LIKE clause without escaping or parameterization.\n\nThis is a sibling of CVE-2026-46670 (unauthenticated SQLi in `FormManager::create()`). Both share the same root cause — raw string concatenation into SQL queries — but exist in different components.\n\n## Root Cause\n\n`includes/controllers/ApiController.php` line 726:\n```php\n/**\n * @Route(\"/api/reactions/{idreaction}/{id}/{page}/{username}\", methods={\"DELETE\"}, options={\"acl\":{\"+\"}})\n */\n```\n\nACL `\"+\"` = any authenticated user. Parameters flow into `ReactionManager::deleteUserReaction()` → `TripleStore::delete()` with raw string concatenation into SQL LIKE clause (line 356).\n\nThe `if` branch (lines 340-354) properly uses `$this->dbService->escape()`. The `else` branch does not — the developer applied escaping to one code path but not the other.\n\n## PoC\n\n```\nDELETE /wiki/?api/reactions/x%27%20OR%201=1%20OR%20value%20LIKE%20%27/test/SomePage/attacker\nHost: localhost:8085\nCookie: <session cookie>\n```\n\nTime-based blind variant via `{id}` parameter for data exfiltration.\n\n## Impact\n\nFull database read/write. Any self-registered user can extract `yeswiki_users` password hashes and emails.\n\n## Suggested Fix\n\nApply `$this->dbService->escape()` to all parameters in the `else` branch, matching the `if` branch pattern. Also audit all `TripleStore::delete()` callers that pass `$extraSQL`.\n\n## Credits\n\nKai Aizen / SnailSploit",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "yeswiki/yeswiki"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.6.6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/YesWiki/yeswiki/security/advisories/GHSA-4pf7-cc4r-g63h"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/YesWiki/yeswiki/commit/90ca54fb518e1c43a1ead6e4f5bf9f0389789841"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/YesWiki/yeswiki"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-09T21:02:40Z",
+    "nvd_published_at": null
+  }
+}
