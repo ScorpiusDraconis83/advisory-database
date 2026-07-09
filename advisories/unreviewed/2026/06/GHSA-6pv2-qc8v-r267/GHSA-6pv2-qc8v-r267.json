@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6pv2-qc8v-r267",
-  "modified": "2026-06-19T15:33:14Z",
+  "modified": "2026-07-09T00:31:05Z",
   "published": "2026-06-08T18:31:52Z",
   "aliases": [
     "CVE-2026-46292"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npmdomain: core: Fix detach procedure for virtual devices in genpd\n\nIf a device is attached to a PM domain through genpd_dev_pm_attach_by_id(),\ngenpd calls pm_runtime_enable() for the corresponding virtual device that\nit registers. While this avoids boilerplate code in drivers, there is no\ncorresponding call to pm_runtime_disable() in genpd_dev_pm_detach().\n\nThis means these virtual devices are typically detached from its genpd,\nwhile runtime PM remains enabled for them, which is not how things are\ndesigned to work. In worst cases it may lead to critical errors, like a\nNULL pointer dereference bug in genpd_runtime_suspend(), which was recently\nreported. For another case, we may end up keeping an unnecessary vote for a\nperformance state for the device.\n\nTo fix these problems, let's add this missing call to pm_runtime_disable()\nin genpd_dev_pm_detach().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-772"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-08T17:16:47Z"

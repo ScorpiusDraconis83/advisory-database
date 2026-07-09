@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-q36j-3hm6-hh2w",
-  "modified": "2026-06-09T15:32:19Z",
+  "modified": "2026-07-09T00:31:06Z",
   "published": "2026-06-09T15:32:19Z",
   "aliases": [
     "CVE-2026-52905"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/damon/core: disallow non-power of two min_region_sz on damon_start()\n\nCommit d8f867fa0825 (\"mm/damon: add damon_ctx->min_sz_region\") introduced\na bug that allows unaligned DAMON region address ranges.  Commit\nc80f46ac228b (\"mm/damon/core: disallow non-power of two min_region_sz\")\nfixed it, but only for damon_commit_ctx() use case.  Still, DAMON sysfs\ninterface can emit non-power of two min_region_sz via damon_start().  Fix\nthe path by adding the is_power_of_2() check on damon_start().\n\nThe issue was discovered by sashiko [1].",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-1284"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-09T14:16:44Z"
