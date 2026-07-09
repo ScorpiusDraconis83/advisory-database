@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-h5xf-rv7f-wv3m",
-  "modified": "2026-07-09T00:31:14Z",
+  "modified": "2026-07-09T18:31:40Z",
   "published": "2026-07-09T00:31:14Z",
   "aliases": [
     "CVE-2026-35552"
   ],
   "details": "In CAXperts UPVWebServices 2.4.2212.603 through 2.7.6 and UDiTH Portal 2026.0.0 through 2026.2.0, an authenticated remote user can invoke an administrative API endpoint intended for privileged users. Due to missing authorization checks, this allows the attacker to deactivate the application's license.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-08T22:17:13Z"

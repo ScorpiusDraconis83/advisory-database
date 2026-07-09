@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v4gv-5wcc-cjvx",
-  "modified": "2026-07-09T09:30:28Z",
+  "modified": "2026-07-09T18:31:45Z",
   "published": "2026-07-09T09:30:28Z",
   "aliases": [
     "CVE-2026-12270"
   ],
   "details": "The Everest Forms  WordPress plugin before 3.5.0 does not correctly restrict access to several REST API endpoints belonging to its onboarding assistant: the capability check is only applied when an attacker-controllable request header holds a specific value, so it can be bypassed by omitting or changing that header. This makes it possible for unauthenticated attackers to read onboarding status information, modify the related Everest Forms  WordPress plugin before 3.5.0 options, and trigger an email from the site to an arbitrary address.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -21,7 +26,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-09T07:16:23Z"

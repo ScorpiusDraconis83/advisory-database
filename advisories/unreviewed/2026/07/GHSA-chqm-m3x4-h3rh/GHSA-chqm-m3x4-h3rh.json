@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-chqm-m3x4-h3rh",
+  "modified": "2026-07-09T18:31:52Z",
+  "published": "2026-07-09T18:31:52Z",
+  "aliases": [
+    "CVE-2026-51600"
+  ],
+  "details": "Tenda CP3 V3.0 firmware V31.1.9.91 does not validate the Content-Length header field in RTSP requests (including DESCRIBE, SETUP, and PLAY methods). When a request carrying a Content-Length header is received without a corresponding message body, the RTSP parser enters a persistent body-awaiting state, causing the affected TCP connection to become permanently non-functional. The device does not actively close the connection, resulting in a TCP resource leak. This issue can be exploited by an unauthenticated remote attacker to cause a denial-of-service condition.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51600"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kkkk2222874/cve_ID_report/blob/main/Tenda_CP3_V3.0/Tenda_CP3_V3.0/Tenda_CP3_V3.0_1th/README.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-09T17:16:59Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qcp2-2xf6-hw26",
+  "modified": "2026-07-09T18:31:50Z",
+  "published": "2026-07-09T18:31:50Z",
+  "aliases": [
+    "CVE-2026-23556"
+  ],
+  "details": "When oxenstored is tearing a domain down, the node data is cleaned up\nbut the usage counts are leaked.\n\nWhen the domain ID is eventually reused, the new domain can create fewer\nnodes before beeing deemed to be over quota.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-23556"
+    },
+    {
+      "type": "WEB",
+      "url": "https://xenbits.xen.org/xsa/advisory-483.html"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/04/28/10"
+    },
+    {
+      "type": "WEB",
+      "url": "http://xenbits.xen.org/xsa/advisory-483.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-281"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-09T16:16:38Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qj2j-73pj-4fxf",
-  "modified": "2026-07-07T06:31:24Z",
+  "modified": "2026-07-09T18:31:29Z",
   "published": "2026-07-07T06:31:24Z",
   "aliases": [
     "CVE-2026-10834"
   ],
   "details": "The WP Travel Engine  WordPress plugin before 6.8.1 does not properly validate the source of a user-supplied profile image path before moving the file, allowing authenticated users with subscriber-level access and above to relocate arbitrary files within the WordPress uploads directory into their own profile-image path. This removes the targeted media from its original location and can break content across the site.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -21,7 +26,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-07T06:16:21Z"

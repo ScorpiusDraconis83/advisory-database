@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j48m-64vj-6rm9",
-  "modified": "2026-07-08T21:30:26Z",
+  "modified": "2026-07-09T18:31:34Z",
   "published": "2026-07-08T15:31:59Z",
   "aliases": [
     "CVE-2026-14454"
   ],
   "details": "Imager versions before 1.033 for Perl treat unsigned EXIF IFD entry counts as signed.\n\nImager mishandled large EXIF IFD entry count values, treating them as negative numbers.  This could lead to an attempt to allocate a block nearly the size of the address space, which fails and kills the process.\n\nAn attacker could craft an image with EXIF data that terminates a worker process.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -31,7 +36,7 @@
     "cwe_ids": [
       "CWE-196"
     ],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-08T13:16:30Z"
