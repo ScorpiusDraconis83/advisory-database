@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c9w5-qp6m-m395",
-  "modified": "2026-06-02T18:31:26Z",
+  "modified": "2026-07-09T23:32:36Z",
   "published": "2026-05-28T18:30:32Z",
   "aliases": [
     "CVE-2026-9094"
   ],
+  "summary": "Casdoor: GetTokenExchangeToken bypass through lack of cross-organization JWT signature check",
   "details": "Casdoor versions 2.362.0 and earlier contain a vulnerability enabling cross-organization token exchange. The GetTokenExchangeToken function in object/token_oauth.go validates JWT signatures but does not verify that the token's user belongs to the same organization as the target application. This can result in privilege escalation across organizational boundaries.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/casdoor/casdoor"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.387.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -21,14 +42,25 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/casdoor/casdoor/commit/d92b8568686d"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/casdoor/casdoor"
+    },
+    {
+      "type": "WEB",
       "url": "https://kb.cert.org/vuls/id/780781"
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
+    "cwe_ids": [
+      "CWE-269",
+      "CWE-863"
+    ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-09T23:32:36Z",
     "nvd_published_at": "2026-05-28T17:16:34Z"
   }
 }
