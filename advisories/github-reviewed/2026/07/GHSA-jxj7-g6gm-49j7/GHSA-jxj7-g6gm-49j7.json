@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jxj7-g6gm-49j7",
+  "modified": "2026-07-10T16:05:00Z",
+  "published": "2026-07-10T16:05:00Z",
+  "aliases": [
+    "CVE-2026-49977"
+  ],
+  "summary": "tarteaucitron: data-cookie attribute can be used to delete arbitrary cookies",
+  "details": "### Summary\n\ntarteaucitron provides a list of cookies and buttons to delete them. If an attacker can write HTML with data attributes, they could create an element that silently deletes a cookie when clicked and trick a user to delete this cookie.\n\n### Details\n\n`tarteaucitron.cookie.purge()` is called on any element with the `purgeBtn` class. It does not check if the element is a legitimate tarteaucitron button or if the cookie corresponds to a service handled by tarteaucitron.\n\n### PoC\n\n```html\n<a class=\"purgeBtn\" data-cookie=\"foo\">Click me!</a>\n```\n\nIf someone has a cookie with this name and clicks on the link, the cookie is silently deleted.\n\n### Impact\n\nThe impact is limited because this only works on cookies without HttpOnly=true and the attacker has to know the name of the cookie.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "tarteaucitronjs"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.33.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/AmauriC/tarteaucitron.js/security/advisories/GHSA-jxj7-g6gm-49j7"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/AmauriC/tarteaucitron.js"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-10T16:05:00Z",
+    "nvd_published_at": null
+  }
+}
