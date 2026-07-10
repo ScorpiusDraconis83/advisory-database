@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4644-hpfg-x44q",
-  "modified": "2026-07-10T09:31:37Z",
+  "modified": "2026-07-10T15:31:38Z",
   "published": "2026-07-10T09:31:37Z",
   "aliases": [
     "CVE-2026-40007"
   ],
   "details": "Uncontrolled Recursion, Uncontrolled Resource Consumption vulnerability in Apache IoTDB.\nWhen pipe_air_gap_receiver_enabled=true, the IoTDB AirGap receiver's\nreadLength method calls itself recursively each time it recognises the\nE-language prefix in socket data, with no depth limit. An unauthenticated\nattacker can send a stream of repeated E-language prefixes that drives the\nrecursion arbitrarily deep, exhausting the receiver thread's JVM stack and\nraising StackOverflowError.\n\n\nThis issue affects Apache IoTDB: from 1.0.0 before 2.0.10.\n\nUsers are recommended to upgrade to version 2.0.10, which fixes the issue.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-400"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-10T08:16:22Z"

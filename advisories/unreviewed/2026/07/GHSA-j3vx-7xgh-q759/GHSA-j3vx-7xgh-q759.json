@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j3vx-7xgh-q759",
+  "modified": "2026-07-10T15:31:40Z",
+  "published": "2026-07-10T15:31:40Z",
+  "aliases": [
+    "CVE-2026-57961"
+  ],
+  "details": "phpMyFAQ before 4.1.5 contains a potential authenticated path traversal vulnerability in the concatenatePaths() function within src/phpMyFAQ/Export/Pdf/Wrapper.php. A user with FAQ editing privileges can store HTML containing crafted image paths that are processed during PDF generation. The path resolution logic locates the substring \"content\" within a user-controlled path using strpos(); when \"content\" is absent, strpos() returns false, which becomes 0 when cast to an integer, preserving the entire attacker-controlled path. This path is later passed to file_get_contents() without canonicalization or root-directory containment validation, which may allow reading of files outside the intended content directory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thorsten/phpMyFAQ/security/advisories/GHSA-88g4-74f3-63x9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57961"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/phpmyfaq-authenticated-path-traversal-in-pdf-export-via-concatenatepaths-function"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-10T15:16:47Z"
+  }
+}

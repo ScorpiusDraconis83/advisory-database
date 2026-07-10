@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3wrm-pm5v-8vq8",
+  "modified": "2026-07-10T15:31:41Z",
+  "published": "2026-07-10T15:31:41Z",
+  "aliases": [
+    "CVE-2026-60091"
+  ],
+  "details": "PraisonAI before 4.6.78 contains an unauthenticated server-side request forgery vulnerability in the Jobs API /api/v1/runs endpoint. The webhook_url parameter is validated at request time but re-resolved at connection time, allowing attackers to use DNS rebinding to reach internal services with a blind SSRF attack.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-4w49-gwv8-fpjg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60091"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/praisonai-before-unauthenticated-ssrf-via-webhook-url"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-10T15:16:49Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g78v-pr5g-35v2",
+  "modified": "2026-07-10T15:31:42Z",
+  "published": "2026-07-10T15:31:42Z",
+  "aliases": [
+    "CVE-2026-61456"
+  ],
+  "details": "The Grav API plugin (getgrav/grav-plugin-api) before 1.0.3 fails to sanitize SVG files uploaded through the POST /api/v1/media endpoint. The HandlesMediaUploads::processUploadedFile() method validates only the file extension and never invokes Security::sanitizeSVG(), so an authenticated attacker with the api.media.write permission can upload an SVG containing arbitrary JavaScript. The file is stored unmodified and served with Content-Type: image/svg+xml; when an administrator opens it in a browser (directly or via <object>/<iframe>), the embedded script executes in their session context, enabling cookie theft and session hijacking.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-7vhm-8x52-2r5p"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61456"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-before-stored-xss-via-svg-upload-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-10T15:16:51Z"
+  }
+}

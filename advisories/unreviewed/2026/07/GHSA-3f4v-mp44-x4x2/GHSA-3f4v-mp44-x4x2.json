@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3f4v-mp44-x4x2",
+  "modified": "2026-07-10T15:31:42Z",
+  "published": "2026-07-10T15:31:41Z",
+  "aliases": [
+    "CVE-2026-61432"
+  ],
+  "details": "PraisonAI (praisonaiagents) before 1.6.78 contains a path traversal vulnerability in the FastContext feature (praisonaiagents.context.fast). FastContextAgent.execute_tool() prepends the configured workspace_path only for relative paths and neither rejects absolute paths nor canonicalizes joined paths before enforcing workspace containment. As a result, tool arguments or model-generated function calls to grep_search, glob_search, read_file, or list_directory can supply absolute paths or '../' traversal sequences to read, search, and enumerate files outside the intended workspace directory, with file contents returned to the caller or injected into the model's tool-result context.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-4xxv-6wmf-xf45"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61432"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MervinPraison/PraisonAI/commit/1620b49f36945d8cc8ee5635b906c960df5097a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/praisonai-fastcontext-before-path-traversal"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-10T15:16:50Z"
+  }
+}

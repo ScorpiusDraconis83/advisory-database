@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f23g-2f38-gg94",
+  "modified": "2026-07-10T15:31:39Z",
+  "published": "2026-07-10T15:31:39Z",
+  "aliases": [
+    "CVE-2026-56261"
+  ],
+  "details": "Crawl4AI before 0.8.7 contains a server-side request forgery (SSRF) vulnerability in the Docker API server's /crawl/job and /llm/job endpoints, which accept webhook URLs without destination validation. An attacker can supply webhook URLs pointing to private or internal IP ranges, Docker networks, or cloud metadata endpoints (e.g. 169.254.169.254), causing the server to make requests to internal services and potentially expose cloud metadata.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/unclecode/crawl4ai/security/advisories/GHSA-365w-hqf6-vxfg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/unclecode/crawl4ai"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/crawl4ai-server-side-request-forgery-via-webhook-urls"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-10T15:16:42Z"
+  }
+}
