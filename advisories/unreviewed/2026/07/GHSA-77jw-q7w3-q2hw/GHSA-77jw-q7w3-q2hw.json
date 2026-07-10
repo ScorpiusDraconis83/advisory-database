@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77jw-q7w3-q2hw",
+  "modified": "2026-07-10T21:32:30Z",
+  "published": "2026-07-10T21:32:30Z",
+  "aliases": [
+    "CVE-2026-15146"
+  ],
+  "details": "GNU Wget does not validate the IP address provided by an FTP PASV response while operating in FTP passive mode. A malicious FTP server, or an HTTP server that redirects to an FTP URL, can exploit this behavior to redirect Wget’s data connection to an arbitrary IP address and port. This allows an attacker to forge server-side requests (SSRF) from the machine running Wget, potentially accessing localhost services or internal network resources.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15146"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cgit.git.savannah.gnu.org/cgit/wget.git/commit/?id=4f85853f641863d5915786a8413e1a213726a62b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kb.cert.org/vuls/id/564823"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.kb.cert.org/vuls/id/564823"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-10T19:17:20Z"
+  }
+}
