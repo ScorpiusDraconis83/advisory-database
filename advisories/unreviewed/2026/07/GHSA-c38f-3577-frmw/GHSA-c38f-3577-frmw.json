@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c38f-3577-frmw",
-  "modified": "2026-07-09T18:31:52Z",
+  "modified": "2026-07-10T18:32:08Z",
   "published": "2026-07-09T18:31:52Z",
   "aliases": [
     "CVE-2026-51599"
   ],
   "details": "An insufficient input validation vulnerability in the RTSP service of MERCURY MIPC252W v1.0.5 Build 230306 Rel.79931n allows an unauthenticated remote attacker to render an individual TCP connection temporarily unusable via sending an RTSP request with a Content-Length header but no corresponding message body. The affected RTSP parser enters a body-waiting state instead of rejecting the malformed request, causing all subsequent data on the connection to be silently consumed as body content until a server-side timeout closes the connection.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-09T17:16:59Z"

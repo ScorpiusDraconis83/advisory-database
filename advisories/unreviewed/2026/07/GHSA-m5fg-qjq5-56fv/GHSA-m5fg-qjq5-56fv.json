@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m5fg-qjq5-56fv",
-  "modified": "2026-07-10T00:31:25Z",
+  "modified": "2026-07-10T18:32:08Z",
   "published": "2026-07-10T00:31:25Z",
   "aliases": [
     "CVE-2026-39246"
   ],
   "details": "decompress before 4.2.2 allows arbitrary symlink creation during archive extraction. When processing symlink entries (type === 'symlink'), the x.linkname field from the archive is passed directly to fs.symlink() without validation (index.js line 121). The preventWritingThroughSymlink check on line 98 only applies to file entries, not symlink creation. An attacker can craft an archive with symlink entries pointing to sensitive files outside the extraction directory (e.g., /etc/passwd), enabling information disclosure when the application reads the extracted contents.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-09T22:17:04Z"
