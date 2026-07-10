@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mpv5-gg5q-pvgg",
+  "modified": "2026-07-10T09:31:38Z",
+  "published": "2026-07-10T09:31:38Z",
+  "aliases": [
+    "CVE-2026-12955"
+  ],
+  "details": "The GDPR Cookie Consent plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check and missing nonce verification on the gdpr_cookie_consent_ajax_save_schedule_scan() function (the wp_ajax_gcc_save_schedule_scan AJAX action) in versions up to, and including, 4.3.6. This makes it possible for authenticated attackers, with Subscriber-level access and above, to modify the plugin's cookie scan schedule configuration stored in the gdpr_scan_schedule_data option, which is an administrative function intended to be limited to users with the manage_options capability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.3.5/admin/class-gdpr-cookie-consent-admin.php#L8132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.3.5/admin/class-gdpr-cookie-consent-admin.php#L8139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.3.5/includes/class-gdpr-cookie-consent.php#L251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3601475/gdpr-cookie-consent/tags/4.3.7/admin/class-gdpr-cookie-consent-admin.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/ddee10e0-093c-47a3-8aa9-946d6d21e1b2?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-10T09:16:52Z"
+  }
+}
