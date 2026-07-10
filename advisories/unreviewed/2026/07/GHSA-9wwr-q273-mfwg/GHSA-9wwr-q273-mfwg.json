@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9wwr-q273-mfwg",
+  "modified": "2026-07-10T12:31:42Z",
+  "published": "2026-07-10T12:31:42Z",
+  "aliases": [
+    "CVE-2026-11990"
+  ],
+  "details": "The KiviCare – Clinic & Patient Management System (EHR) plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 4.4.0. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to mark arbitrary pending appointments as Confirmed and forge an associated completed payment record in wp_kc_payments_appointment_mappings using an attacker-supplied payment ID, bypassing payment entirely. This exploit is achievable on a default installation because the gateway resolution logic returns all registered gateways regardless of admin-enabled status, making the manual (KCPayLater) gateway always selectable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11990"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.3.0/app/baseClasses/KCPaymentGatewayFactory.php#L131"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.3.0/app/controllers/api/AppointmentsController.php#L3931"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.3.0/app/controllers/api/AppointmentsController.php#L465"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.3.0/app/paymentGateways/KCPayLater.php#L109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.3.0/app/services/KCAppointmentPaymentService.php#L32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.4.0/app/baseClasses/KCPaymentGatewayFactory.php#L131"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.4.0/app/controllers/api/AppointmentsController.php#L3931"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.4.0/app/controllers/api/AppointmentsController.php#L465"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.4.0/app/paymentGateways/KCPayLater.php#L109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.4.0/app/services/KCAppointmentPaymentService.php#L32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3599918%40kivicare-clinic-management-system&new=3599918%40kivicare-clinic-management-system"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/efe4223a-5c1a-401e-a46b-0278e96d2d71?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-10T10:16:21Z"
+  }
+}

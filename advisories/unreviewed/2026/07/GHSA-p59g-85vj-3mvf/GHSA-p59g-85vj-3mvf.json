@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p59g-85vj-3mvf",
+  "modified": "2026-07-10T12:31:42Z",
+  "published": "2026-07-10T12:31:42Z",
+  "aliases": [
+    "CVE-2026-15028"
+  ],
+  "details": "A flaw was found in libarchive. This vulnerability allows a remote attacker to trigger a heap overflow by providing a specially crafted tar archive. The issue occurs during the parsing of a PAX extended header containing a malformed SUN.holesdata sparse-file attribute. Successful exploitation could lead to a denial of service, making the system unavailable, or potentially allow for arbitrary code execution, giving the attacker control over the affected system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15028"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libarchive/libarchive/issues/3251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libarchive/libarchive/pull/3253"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-15028"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2497970"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-10T10:16:23Z"
+  }
+}
