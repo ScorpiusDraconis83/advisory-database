@@ -1,0 +1,214 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pjhx-3c3w-9v23",
+  "modified": "2026-07-10T14:32:01Z",
+  "published": "2026-07-10T14:32:01Z",
+  "aliases": [
+    "CVE-2026-49858"
+  ],
+  "summary": "API Platform Core vulnerable to cross-user attribute leak in JSON:API and HAL item normalizers due to missing isCacheKeySafe gate",
+  "details": "### Impact\n\n`#[ApiProperty(security: ...)]` is evaluated per request to decide whether a property is exposed. The `componentsCache` arrays in `ApiPlatform\\JsonApi\\Serializer\\ItemNormalizer` and `ApiPlatform\\Hal\\Serializer\\ItemNormalizer` are keyed on `$context['cache_key']`, which is set unconditionally before delegating to the parent normalizer. The component structure (attributes, relationships, links) computed for one request can therefore be reused for a subsequent request whose user has a different set of accessible properties. A user with lower privileges may end up seeing the structure of properties that the security predicate would otherwise have hidden for them.\n\nThis is the same vulnerability class as [GHSA-428q-q3vv-3fq3](https://github.com/api-platform/core/security/advisories/GHSA-428q-q3vv-3fq3) / CVE-2025-31485, which fixed only the GraphQL `ItemNormalizer`. The JSON:API and HAL paths were not addressed at the time.\n\n### Exploitation conditions\n\nExploitation requires all of the following to coincide:\n\n- The application exposes a resource via the JSON:API and/or HAL formats.\n- At least one property of that resource uses `#[ApiProperty(security: ...)]` with a predicate whose result depends on the current user (or on per-request state).\n- A request from a user for whom the predicate evaluates to `true` populates `componentsCache` before a request from a user for whom the predicate evaluates to `false`, within the lifetime of the same PHP process.\n- The deployment uses a long-running PHP runtime that keeps the normalizer instance alive across requests (FrankenPHP worker mode, RoadRunner, Swoole, ReactPHP, etc.). With classic `php-fpm` workers the cache only survives the duration of a single request, which makes the issue much harder to observe in practice.\n\n### Patches\n\n- 4.1.29\n- 4.2.25\n- 4.3.8\n\nAll three branches receive patched releases of `api-platform/core`, `api-platform/json-api`, and `api-platform/hal`.\n\n### Workarounds\n\nOverride the JSON:API and HAL `ItemNormalizer` services to gate `$context['cache_key']` with a resource-class security check, or avoid `#[ApiProperty(security: ...)]` on resources served as JSON:API or HAL until the patch is applied. Pinning the deployment to classic `php-fpm` workers also limits exposure since the cache does not survive across requests.\n\n### Credits\n\n- Tillmann Baumgart (@tillmon) — originally identified the broader cache-key gap and proposed moving `isCacheKeySafe` to `AbstractItemNormalizer`.\n- Antoine Bluchet (@soyuka) — extended the gate to JSON:API and HAL normalizers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "api-platform/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.6.0"
+            },
+            {
+              "fixed": "4.1.29"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "api-platform/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.2.0"
+            },
+            {
+              "fixed": "4.2.25"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "api-platform/core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.3.0"
+            },
+            {
+              "fixed": "4.3.8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "api-platform/json-api"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.1.29"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "api-platform/json-api"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.2.0"
+            },
+            {
+              "fixed": "4.2.25"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "api-platform/json-api"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.3.0"
+            },
+            {
+              "fixed": "4.3.8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "api-platform/hal"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.1.29"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "api-platform/hal"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.2.0"
+            },
+            {
+              "fixed": "4.2.25"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "api-platform/hal"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.3.0"
+            },
+            {
+              "fixed": "4.3.8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/api-platform/core/security/advisories/GHSA-pjhx-3c3w-9v23"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49858"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/api-platform/core"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-524",
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-10T14:32:01Z",
+    "nvd_published_at": "2026-07-01T20:17:10Z"
+  }
+}
