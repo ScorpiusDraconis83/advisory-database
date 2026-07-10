@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-48rx-c7pg-q66r",
+  "modified": "2026-07-10T20:37:29Z",
+  "published": "2026-07-10T20:37:29Z",
+  "aliases": [
+    "CVE-2026-54171"
+  ],
+  "summary": "Excon does not redact additional sensitive/risky headers when following redirects",
+  "details": "### Impact\nThe redirect follower middleware previously failed to strip a number of headers that are known to be sensitive and did not provide a way to provide a custom list of headers to strip. \n\n_What kind of vulnerability is it? Who is impacted?_\nThis could cause inadvertent leakage of sensitive data for users of the RedirectFollower middleware in cases where the initial request includes header information that is not intended for the new target.\n\n### Patches\nPatch exists and is released in v1.5.0\n\n### Workarounds\nUsers can backport the [fix](https://github.com/excon/excon/commit/ea89a35308a12f4b791b6c50f2cbd33f94889fa3) to a custom redirect follower middleware.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "excon"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/excon/excon/security/advisories/GHSA-48rx-c7pg-q66r"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/excon/excon/commit/ea89a35308a12f4b791b6c50f2cbd33f94889fa3"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/excon/excon"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/excon/CVE-2026-54171.yml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2026-54171"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-10T20:37:29Z",
+    "nvd_published_at": null
+  }
+}
