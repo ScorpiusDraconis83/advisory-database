@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hmr3-xc3f-vfcx",
+  "modified": "2026-07-10T06:31:20Z",
+  "published": "2026-07-10T06:31:20Z",
+  "aliases": [
+    "CVE-2026-5069"
+  ],
+  "details": "The Fluent Forms plugin for WordPress is vulnerable to incorrect authorization via the 'subscription_id' parameter in versions up to, and including, 6.2.1. This is due to insufficient ownership authorization checks in the payment cancellation AJAX flow. This makes it possible for authenticated attackers, with subscriber-level access and above, to submit cancellation requests for other users' subscriptions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5069"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3513845/fluentform"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e7521577-ce13-4b60-ae11-9c0f9c077cf9?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-10T04:17:52Z"
+  }
+}
