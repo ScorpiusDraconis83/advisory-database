@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rfj2-6v8r-3w64",
+  "modified": "2026-07-10T00:31:27Z",
+  "published": "2026-07-10T00:31:27Z",
+  "aliases": [
+    "CVE-2026-58122"
+  ],
+  "details": "Hermes WebUI before 0.51.307 contains an authentication bypass vulnerability that allows unauthenticated remote attackers to circumvent local-origin IP restrictions on onboarding endpoints by supplying a spoofed X-Forwarded-For header with a loopback address. Attackers can exploit this bypass to perform server-side request forgery against internal services including cloud metadata endpoints, overwrite LLM provider configuration and API keys with attacker-controlled values, or initiate OAuth device-code flows to obtain persistent access tokens stored in auth.json.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58122"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nesquena/hermes-webui/pull/3758"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nesquena/hermes-webui/commit/70596e6993be0d4cee083c1c1a86f5e7ad5d57b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nesquena/hermes-webui/releases/tag/v0.51.307"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hermes-webui-authentication-bypass-via-x-forwarded-for-header-spoofing"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-348"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-09T22:17:09Z"
+  }
+}
