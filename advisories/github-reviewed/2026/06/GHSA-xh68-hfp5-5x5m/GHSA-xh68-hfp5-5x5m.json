@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xh68-hfp5-5x5m",
-  "modified": "2026-06-03T15:30:43Z",
+  "modified": "2026-07-11T22:53:35Z",
   "published": "2026-06-03T15:30:43Z",
   "aliases": [
     "CVE-2026-44546"
   ],
+  "summary": "daphne: WebSocket handshake header smuggling through autobahn splitlines() mishandling of non-standard line separators",
   "details": "daphne before 4.2.2 reconstructs a raw HTTP request from Twisted's parsed headers and feeds it to autobahn for WebSocket handshake processing. Twisted does not treat \\x0b, \\x0c, \\x1c, \\x1d, \\x1e, or \\x85 as header line separators, but autobahn decodes header values to str and calls splitlines(). An attacker can exploit this parser differential to inject additional headers into the ASGI scope passed to the application. daphne now rejects requests with these bytes in any header value with a 400 response.",
   "severity": [
     {
@@ -13,15 +14,43 @@
       "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "daphne"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.2.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44546"
     },
     {
+      "type": "PACKAGE",
+      "url": "https://github.com/django/daphne"
+    },
+    {
       "type": "WEB",
       "url": "https://github.com/django/daphne/blob/main/CHANGELOG.txt"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/daphne/PYSEC-2026-214.yaml"
     }
   ],
   "database_specific": {
@@ -29,8 +58,8 @@
       "CWE-444"
     ],
     "severity": "LOW",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-11T22:53:35Z",
     "nvd_published_at": "2026-06-03T14:16:43Z"
   }
 }
