@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fcmv-mqrc-fr3c",
+  "modified": "2026-07-11T15:30:21Z",
+  "published": "2026-07-11T15:30:21Z",
+  "aliases": [
+    "CVE-2026-56296"
+  ],
+  "details": "Cap-go before 12.128.2 contains an information disclosure vulnerability in the public.transfer_app RPC function that returns distinct error messages for existing versus non-existing app IDs. Unauthenticated attackers can enumerate valid app IDs by observing error message differences when calling transfer_app with only the publishable API key.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cap-go/capgo/security/advisories/GHSA-fmm3-3qcg-85j6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cap-go-app-existence-oracle-via-unauthenticated-transfer-app-rpc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-203"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-11T14:16:21Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4mp6-8448-9vgv",
+  "modified": "2026-07-11T15:30:23Z",
+  "published": "2026-07-11T15:30:23Z",
+  "aliases": [
+    "CVE-2026-61428"
+  ],
+  "details": "PraisonAI AgentMail versions before 4.6.78 lack signature verification in webhook mode, allowing unauthenticated attackers to inject messages with spoofed sender addresses. Attackers can POST crafted message.received events to the webhook endpoint to inject arbitrary content into the agent and trigger replies to attacker-controlled addresses, bypassing sender allow/block lists.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-qj9c-59p6-8cgx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61428"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/praisonai-agentmail-before-message-injection-via-webhook"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-290"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-11T14:16:22Z"
+  }
+}
