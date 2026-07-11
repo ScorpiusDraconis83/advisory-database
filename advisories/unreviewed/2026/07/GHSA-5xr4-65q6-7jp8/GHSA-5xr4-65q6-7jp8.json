@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5xr4-65q6-7jp8",
+  "modified": "2026-07-11T06:31:15Z",
+  "published": "2026-07-11T06:31:15Z",
+  "aliases": [
+    "CVE-2026-12426"
+  ],
+  "details": "The Members – Membership & User Role Editor Plugin plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 3.2.22 via the members_filter_protected_posts_for_rest. This makes it possible for unauthenticated attackers to extract determine the existence and exact count of access-restricted posts, and use per-page pagination as a boolean oracle to infer keywords and content contained within those hidden restricted posts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12426"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/members/tags/3.2.19/inc/functions-content-permissions.php#L337"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/members/tags/3.2.19/inc/functions-private-site.php#L42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/members/tags/3.2.22/inc/functions-content-permissions.php#L337"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/members/tags/3.2.22/inc/functions-private-site.php#L42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3594293%40members%2Ftrunk&old=3552545%40members%2Ftrunk&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/9c3557a6-aa72-496c-8515-2f6055de6b22?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-11T04:17:16Z"
+  }
+}

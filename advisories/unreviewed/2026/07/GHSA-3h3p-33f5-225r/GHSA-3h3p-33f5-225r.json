@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3h3p-33f5-225r",
+  "modified": "2026-07-11T06:31:16Z",
+  "published": "2026-07-11T06:31:16Z",
+  "aliases": [
+    "CVE-2026-15335"
+  ],
+  "details": "The Booking Package plugin for WordPress is vulnerable to generic SQL Injection via 'email' Form Parameter (form<N>) in all versions up to, and including, 1.7.20 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The vulnerable REST API endpoint /wp-json/booking-package/v1/request is registered with permission_callback: __return_true and wp_magic_quotes does not apply to REST-sourced $_POST values, meaning single quotes in the payload reach the SQL sink intact without any authentication requirement. The impact of this is severely limited as the vulnerable parameter goes through is_email.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15335"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/booking-package/tags/1.7.18/index.php#L243"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/booking-package/tags/1.7.18/index.php#L4381"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/booking-package/tags/1.7.18/lib/Schedule.php#L12793"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/booking-package/tags/1.7.18/lib/Schedule.php#L9365"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/booking-package/tags/1.7.20/index.php#L243"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/booking-package/tags/1.7.20/index.php#L4381"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/booking-package/tags/1.7.20/lib/Schedule.php#L12793"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/booking-package/tags/1.7.20/lib/Schedule.php#L9365"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3602166%40booking-package&new=3602166%40booking-package"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/8bc86a29-cb1f-4711-925c-51dbbf682477?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-11T05:16:32Z"
+  }
+}

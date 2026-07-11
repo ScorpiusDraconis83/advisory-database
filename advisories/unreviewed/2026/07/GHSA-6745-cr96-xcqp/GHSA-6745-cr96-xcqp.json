@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6745-cr96-xcqp",
+  "modified": "2026-07-11T06:31:15Z",
+  "published": "2026-07-11T06:31:15Z",
+  "aliases": [
+    "CVE-2026-15072"
+  ],
+  "details": "The KiviCare – Clinic & Patient Management System (EHR) plugin for WordPress is vulnerable to generic SQL Injection via the 'orderby' parameter in all versions up to, and including, 4.5.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with doctor-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. This requires that the attacker hold at minimum a KiviCare Doctor-level account, or a Receptionist or Clinic Admin role that grants the doctor_session_list capability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15072"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.5.0/app/baseClasses/KCQueryBuilder.php#L1283"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.5.0/app/baseClasses/KCQueryBuilder.php#L245"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.5.0/app/baseClasses/KCQueryBuilder.php#L470"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.5.0/app/controllers/api/DoctorSessionController.php#L1208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.5.0/app/controllers/api/DoctorSessionController.php#L1282"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.5.0/app/controllers/api/DoctorSessionController.php#L87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3602561%40kivicare-clinic-management-system&new=3602561%40kivicare-clinic-management-system"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e2857fd0-2401-4e38-aa8a-3f0a89e14b78?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-11T04:17:19Z"
+  }
+}
