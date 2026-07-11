@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7cvm-m8m6-prmw",
+  "modified": "2026-07-11T09:34:18Z",
+  "published": "2026-07-11T09:34:18Z",
+  "aliases": [
+    "CVE-2026-10865"
+  ],
+  "details": "The Cost Calculator Builder plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 4.0.11 via the (template body). This makes it possible for unauthenticated attackers to extract the plaintext Stripe secret key, Razorpay secret key, and PayPal client_secret embedded in the page source of any page containing a calculator, enabling full control of the merchant's payment gateway accounts. This exposure only occurs when the 'use in all calculators' option is enabled for one or more payment gateways in the plugin's global settings.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10865"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cost-calculator-builder/tags/3.6.17/includes/functions.php#L748"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cost-calculator-builder/tags/3.6.17/templates/frontend/render.php#L28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cost-calculator-builder/tags/3.6.17/templates/frontend/render.php#L281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cost-calculator-builder/tags/3.6.17/templates/frontend/render.php#L61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cost-calculator-builder/tags/4.0.5/includes/functions.php#L748"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cost-calculator-builder/tags/4.0.5/templates/frontend/render.php#L28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cost-calculator-builder/tags/4.0.5/templates/frontend/render.php#L281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cost-calculator-builder/tags/4.0.5/templates/frontend/render.php#L61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3578557%40cost-calculator-builder&new=3578557%40cost-calculator-builder"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/29de766d-5e7e-46b4-acac-feec5b33589e?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-11T07:16:44Z"
+  }
+}

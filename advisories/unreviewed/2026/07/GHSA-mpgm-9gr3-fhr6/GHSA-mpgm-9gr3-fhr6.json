@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mpgm-9gr3-fhr6",
+  "modified": "2026-07-11T09:34:17Z",
+  "published": "2026-07-11T09:34:17Z",
+  "aliases": [
+    "CVE-2026-10041"
+  ],
+  "details": "The WCFM – Frontend Manager for WooCommerce plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 6.7.27 via the wcfm_product_archive due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with subscriber-level access and above, to archive arbitrary vendors' products, toggle the featured status on arbitrary listings, mark arbitrary WooCommerce orders as completed, and permanently delete arbitrary enquiries and bulk messages belonging to other vendors.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10041"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wc-frontend-manager/tags/6.7.26/core/class-wcfm-ajax.php#L746"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wc-frontend-manager/tags/6.7.26/core/class-wcfm-ajax.php#L779"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wc-frontend-manager/tags/6.7.26/core/class-wcfm-ajax.php#L810"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wc-frontend-manager/tags/6.7.26/core/class-wcfm-enquiry.php#L395"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wc-frontend-manager/tags/6.7.26/core/class-wcfm-notification.php#L1132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wc-frontend-manager/tags/6.7.27/core/class-wcfm-ajax.php#L746"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wc-frontend-manager/tags/6.7.27/core/class-wcfm-ajax.php#L779"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wc-frontend-manager/tags/6.7.27/core/class-wcfm-ajax.php#L810"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wc-frontend-manager/tags/6.7.27/core/class-wcfm-enquiry.php#L395"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wc-frontend-manager/tags/6.7.27/core/class-wcfm-notification.php#L1132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3588570%40wc-frontend-manager&new=3588570%40wc-frontend-manager"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e3f88a18-5439-4759-ae9f-168f5efc3264?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-11T07:16:44Z"
+  }
+}
