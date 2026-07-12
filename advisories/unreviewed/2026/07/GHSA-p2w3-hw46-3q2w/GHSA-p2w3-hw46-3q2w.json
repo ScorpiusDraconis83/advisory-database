@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p2w3-hw46-3q2w",
+  "modified": "2026-07-12T12:31:48Z",
+  "published": "2026-07-12T12:31:48Z",
+  "aliases": [
+    "CVE-2026-56281"
+  ],
+  "details": "Capgo before 12.128.2 contains a sql injection vulnerability in the POST /private/admin_stats endpoint where the limit parameter is destructured from unvalidated request body and interpolated directly into Cloudflare Analytics Engine SQL queries via template literals. An attacker with platform admin credentials can inject SQL fragments to enumerate dataset schemas, extract analytics data, or cause denial-of-service against the analytics backend.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cap-go/capgo/security/advisories/GHSA-6ffx-8hjj-jhhf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/capgo-sql-injection-via-unvalidated-limit-parameter-in-admin-stats-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-12T12:16:45Z"
+  }
+}
