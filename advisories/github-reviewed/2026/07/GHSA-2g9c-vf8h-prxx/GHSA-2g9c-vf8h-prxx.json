@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2g9c-vf8h-prxx",
+  "modified": "2026-07-13T17:19:17Z",
+  "published": "2026-07-13T17:19:17Z",
+  "aliases": [
+    "CVE-2026-45573"
+  ],
+  "summary": "Decidim: Push subscriptions can be abused for server-side requests",
+  "details": "## Description\n\nThe push-subscription endpoint stores an attacker-controlled delivery URL, and the notification send path becomes an outbound-request sink when VAPID delivery is enabled. The practical result is an authenticated, stored, mostly blind SSRF primitive to arbitrary HTTPS endpoints reachable from the app server.\n\n## Technical description\n \nWhen VAPID delivery is enabled, the notification subscription flow stores the client-supplied push endpoint without checking that it belongs to an approved push service. The send path later passes that stored URL to `WebPush.payload_send`, turning the subscription into an attacker-controlled outbound request destination.\nThis is the source-to-sink chain:\n\n1. Source: attacker-controlled `subscription.endpoint` in the JSON body posted to `POST /notifications_subscriptions`.\n2. Persistence: `params[:endpoint]` is stored under `user.notification_settings[\"subscriptions\"]`.\n3. Retrieval: `user.notifications_subscriptions.values` returns that stored endpoint later.\n4. Sink: `build_payload` sets `endpoint: subscription[\"endpoint\"]`.\n5. Outbound request: `WebPush.payload_send(**payload)` uses the attacker-supplied endpoint as the\ndestination.\n\nOne spec asserts that the endpoint is persisted exactly as supplied:\n\n```ruby\n# decidim-core/spec/services/decidim/notifications_subscriptions_persistor_spec.rb\nexpect(user.notifications_subscriptions[\"auth_code_121\"][\"endpoint\"]).to eq(params[:endpoint])\n```\n\nAnother spec asserts that `SendPushNotification` passes the stored endpoint into `WebPush.payload_send`:\n\n```ruby\n# decidim-core/spec/services/decidim/send_push_notification_spec.rb\nfirst_notification_payload = {\n  message:,\n  endpoint: subscriptions[\"auth_key_1\"][\"endpoint\"],\n  p256dh: subscriptions[\"auth_key_1\"][\"p256dh\"],\n  auth: subscriptions[\"auth_key_1\"][\"auth\"],\n  vapid: a_hash_including(...)\n}\nexpect(WebPush).to receive(:payload_send).with(first_notification_payload)\n```\n\n### Impact\n\n- In a configured deployment, an authenticated user can register an attacker-controlled or otherwise unauthorized HTTPS URL.\n- The server then sends outbound `POST` requests there whenever a notification is pushed.\n- This is a stored, mostly blind SSRF primitive: useful for outbound interaction with attacker infrastructure and, where routable, internal HTTPS services.\n- Notification metadata is disclosed to the supplied endpoint through the encrypted web push request path.\n\n### Patches\n\nSee https://github.com/decidim/decidim/pull/16714.\n\n### Workarounds\n\nDisable the push notifications feature by removing the VAPID keys in the server.\n\n### Resource\n\nSSRF\n\n### Credits\n\nThis issue was discovered in a security audit organized by the [Decidim Association](https://decidim.org) and made by [Radically Open Security](https://www.radicallyopensecurity.com/) against Decidim financed by [NGI](https://ngi.eu/).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.30.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.31.0.rc1"
+            },
+            {
+              "fixed": "0.31.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.32.0.rc1"
+            },
+            {
+              "fixed": "0.32.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/decidim/decidim/security/advisories/GHSA-2g9c-vf8h-prxx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/decidim/decidim/pull/16714"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/decidim/decidim"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-13T17:19:17Z",
+    "nvd_published_at": null
+  }
+}
