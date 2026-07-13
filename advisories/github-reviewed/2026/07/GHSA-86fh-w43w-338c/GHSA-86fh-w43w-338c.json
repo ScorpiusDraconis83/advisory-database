@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-86fh-w43w-338c",
+  "modified": "2026-07-13T16:54:32Z",
+  "published": "2026-07-13T16:54:32Z",
+  "aliases": [
+    "CVE-2026-45330"
+  ],
+  "summary": "Decidim: Veriﬁcation admins can access supplied IDs from other organizations",
+  "details": "## Description\n\nThe verification admin mutation flow allows accessing, verifying, and rejecting participants records from another tenant.\n\n## Technical description\n\nThe verification admin controllers loads pending_authorization_id with a raw `Authorization.find(...)` and then authorizes the record without checking whether it belongs to current_organization.\n\nReproduction steps:\n\n1. An org2 participant uploads their ID:\n\n<img width=\"2184\" height=\"1288\" alt=\"decidim-verification-01\" src=\"https://github.com/user-attachments/assets/c6713454-c787-4795-b852-3c2c672358d6\" />\n\n2. An admin from another organisation, in this case org1, is able to open the ID from org2 by opening request 35, e.g `http://localhost:3001/admin/id_documents/pending_authorizations/35/confirmations/new`\n\n<img width=\"1539\" height=\"1037\" alt=\"decidim-verification-02\" src=\"https://github.com/user-attachments/assets/6ed646de-a501-4964-8467-013ada55ce2d\" />\n\n3. The admin then approves this request by looking up the ID in the picture (not shown in this image, but a real ID would expose this)\n \n<img width=\"1542\" height=\"652\" alt=\"decidim-verification-03\" src=\"https://github.com/user-attachments/assets/c7ee5bea-3fa2-43d9-8330-8d834f34a9af\" />\n\n4. Now the request has been approved, which can be seen from the org2 participant authorizations page:\n\n<img width=\"2279\" height=\"720\" alt=\"decidim-verification-04\" src=\"https://github.com/user-attachments/assets/55ee1bab-d396-4e0f-803f-21dc31a2c125\" />\n\n### Impact\n\nA tenant admin can access, reject or approve another tenant's `id_documents` requests.\n\n### Patches\n\nSee https://github.com/decidim/decidim/pull/16666\n\n### Workarounds\n\nDisable the \"Identity documents\" verification \n\n### Reference\n\nOWASP A01:2021 Broken Access Control\n\n### Credits\n\nThis issue was discovered in a security audit organized by the [Decidim Association](https://decidim.org) and made by [Radically Open Security](https://www.radicallyopensecurity.com/) against Decidim financed by [NGI](https://ngi.eu/).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-verifications"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.30.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-verifications"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.31.0.rc1"
+            },
+            {
+              "fixed": "0.31.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-verifications"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.32.0.rc1"
+            },
+            {
+              "fixed": "0.32.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/decidim/decidim/security/advisories/GHSA-86fh-w43w-338c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/decidim/decidim/pull/16666"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/decidim/decidim"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-13T16:54:32Z",
+    "nvd_published_at": null
+  }
+}
