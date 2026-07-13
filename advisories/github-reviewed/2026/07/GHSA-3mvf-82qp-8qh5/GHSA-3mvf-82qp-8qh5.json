@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3mvf-82qp-8qh5",
+  "modified": "2026-07-13T17:10:12Z",
+  "published": "2026-07-13T17:10:12Z",
+  "aliases": [
+    "CVE-2026-45378"
+  ],
+  "summary": "Decidim: Verification documents can be downloaded through reusable links",
+  "details": "## Description\n\nScanned identity-document images provided by participants and shown in the verification admin workflow are exposed through signed `/rails/active_storage/disk/` URLs that can be fetched without any authenticated session.\n\nAnyone who obtains one of those URLs can retrieve the document until the signature expires.\n\n## Technical description\n\nThis issue comes from the verification admin UI exposing scanned documents through reusable Active Storage disk links. Verification-document images are rendered with `variant_url(...)`, which produces signed `/rails/active_storage/disk/...` links instead of routing the file through an authorization-checking controller. Because Decidim configures Active Storage service URLs to remain valid for seven days, the URL itself becomes the credential for that period.\n\nThe affected files are `verification_attachment` blobs on Decidim::Authorization, and the admin review pages embed those signed URLs directly into the HTML for pending and confirmation views.\n\nReproduction steps:\n\n1. Create a fresh verification document as a normal user.\n1.1. Open http://localhost:3001/users/sign_in.\n1.2. Open http://localhost:3001/id_documents/authorizations/new.\n1.3. Submit an id_documents verification request with an image attachment.\n\n2. Open the admin review page that renders the attachment.\n2.1. Sign out.\n2.2. Sign back in as admin@example.org.\n2.3. Try http://localhost:3001/admin/id_documents.\n\n3. Harvest the signed Active Storage URL.\n3.1. Open DevTools Network before loading the review page.\n3.2. Reload the page.\n3.3. Copy one request URL matching `http://localhost:3001/rails/active_storage/disk/<SIGNED_TOKEN>/<FILENAME>`.\n\n4. Replay the file URL without any Decidim session.\n4.1. Open a private window or a second browser where you are not signed in to Decidim.\n4.2. Paste the exact copied /rails/active_storage/disk/... URL.\n4.3. Confirm the verification image still loads.\n\n### Impact\n\n- This only applies to Organizations using the \"Identity documents\" verification\n- Any party that obtains one of these URLs can download the underlying scanned identity document for the lifetime of the signed link without needing to authenticate as the reviewing admin.\n- In the reproduced case, that replay window was about seven days, which is long enough for routine leakage channels such as copied links, screenshots, logs, browser history, and support workflows to become realistic exfiltration paths.\n- This raises the risk of leakage through browser history, screenshots, copy-paste, support tickets, logs, analytics tooling, malicious browser extensions, or any other channel that captures full URLs.\n- Because the affected files are identity-verification documents, the exposed data can include highly sensitive personal information.\n\n### Patches\n\nSee https://github.com/decidim/decidim/pull/16680\n\n### Workarounds\n\nDisable the \"Identity documents\" verification \n\n### Reference\n\nOWASP A01:2021 Broken Access Control\n\n### Credits\n\nThis issue was discovered in a security audit organized by the [Decidim Association](https://decidim.org) and made by [Radically Open Security](https://www.radicallyopensecurity.com/) against Decidim financed by [NGI](https://ngi.eu/).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-verifications"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.30.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-verifications"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.31.0.rc1"
+            },
+            {
+              "fixed": "0.31.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-verifications"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.32.0.rc1"
+            },
+            {
+              "fixed": "0.32.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/decidim/decidim/security/advisories/GHSA-3mvf-82qp-8qh5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/decidim/decidim/pull/16680"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/decidim/decidim"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-13T17:10:12Z",
+    "nvd_published_at": null
+  }
+}
