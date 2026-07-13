@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qq2h-g46x-whfp",
-  "modified": "2026-07-13T09:31:41Z",
+  "modified": "2026-07-13T18:30:44Z",
   "published": "2026-07-13T09:31:41Z",
   "aliases": [
     "CVE-2026-12081"
   ],
   "details": "The Database for Contact Form 7, WPforms, Elementor forms WordPress plugin before 1.5.2 does not restrict the PHP classes allowed when unserializing an attacker-supplied form-field value, allowing unauthenticated users to inject arbitrary PHP objects that are instantiated when an administrator views the stored entry. This is an incomplete fix of CVE-2025-7384 and CVE-2026-2599, whose deserialization paths were hardened while the entry-editor file-field path was missed.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -21,7 +26,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-13T07:16:27Z"

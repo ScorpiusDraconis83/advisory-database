@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-99wj-j8x8-6wwx",
-  "modified": "2026-07-13T09:31:41Z",
+  "modified": "2026-07-13T18:30:44Z",
   "published": "2026-07-13T09:31:41Z",
   "aliases": [
     "CVE-2026-12275"
   ],
   "details": "The Tutor LMS  WordPress plugin before 3.9.13 does not, in its Droip and Kirki page-builder integration, perform the enrollment, purchase, and private-course capability checks it enforces in its core course handler, allowing authenticated users with subscriber-level access to enroll in paid or private courses without authorization, read private course content, and mark arbitrary courses as completed, on sites where the Droip or Kirki integration is active.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -21,7 +26,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-13T07:16:27Z"

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5383-j2p9-qfg3",
+  "modified": "2026-07-13T18:30:53Z",
+  "published": "2026-07-13T18:30:53Z",
+  "aliases": [
+    "CVE-2026-61462"
+  ],
+  "details": "mcp-gitlab contains a path traversal vulnerability in the job_id parameter of build/index.js that allows attackers to redirect GitLab API requests to arbitrary endpoints. Attackers can supply crafted job_id values like ../../../user to escape the intended path prefix and access arbitrary GitLab API resources using the operator's personal access token.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zereight/gitlab-mcp/issues/587"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zereight/gitlab-mcp/commit/e2a81a047ab8750fa5bfa1763b5d85e5616f3994"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zereight/gitlab-mcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mcp-gitlab-path-traversal-via-job-id-parameter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-13T18:16:29Z"
+  }
+}
