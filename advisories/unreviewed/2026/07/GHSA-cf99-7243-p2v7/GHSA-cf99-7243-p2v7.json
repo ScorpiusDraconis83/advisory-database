@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cf99-7243-p2v7",
-  "modified": "2026-07-10T21:32:34Z",
+  "modified": "2026-07-13T21:31:17Z",
   "published": "2026-07-10T21:32:34Z",
   "aliases": [
     "CVE-2026-41154"
   ],
   "details": "Software installed and run as a non-privileged user may cause OOB kernel memory reads or writes through GPU API calls.\n\n\n\nWhen indexing pages larger than 4kB in the page freeing logic of the sparse memory implementation, incorrect buffer indexing leads to OOB access.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-787"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-10T21:16:54Z"

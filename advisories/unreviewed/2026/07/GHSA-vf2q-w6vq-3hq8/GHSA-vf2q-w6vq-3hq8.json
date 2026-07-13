@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vf2q-w6vq-3hq8",
-  "modified": "2026-07-10T21:32:34Z",
+  "modified": "2026-07-13T21:31:17Z",
   "published": "2026-07-10T21:32:34Z",
   "aliases": [
     "CVE-2026-45203"
   ],
   "details": "Kernel software installed and running inside a Host VM may post improper commands to the GPU Firmware to trigger a memory write outside the permitted range of memory for the host kernel.\n\n\n\nA TOCTOU bug existed where a malicious driver could modify values in memory after firmware validation but before use.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-367"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-10T21:16:54Z"

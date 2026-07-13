@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m252-x5v8-cp85",
+  "modified": "2026-07-13T21:31:24Z",
+  "published": "2026-07-13T21:31:24Z",
+  "aliases": [
+    "CVE-2026-12385"
+  ],
+  "details": "The Smart Slider 3 plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 3.5.1.37 via the 'keyword' parameter. This makes it possible for authenticated attackers, with contributor-level access and above, to extract titles and full content excerpts of private, draft, pending, trashed, and auto-draft posts authored by any user, including Administrators and Editors. The required nonce is emitted on /wp-admin/post-new.php, which is accessible to Contributor-level users via the edit_posts capability, meaning any Contributor can obtain the nonce needed to trigger the injection.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/smart-slider-3/tags/3.5.1.37/Nextend/Framework/Content/ControllerAjaxContent.php#L15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/smart-slider-3/tags/3.5.1.37/Nextend/Framework/Content/ControllerAjaxContent.php#L22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/smart-slider-3/tags/3.5.1.37/Nextend/Framework/Content/WordPress/WordPressContent.php#L20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/smart-slider-3/tags/3.5.1.37/Nextend/Framework/Content/WordPress/WordPressContent.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/smart-slider-3/tags/3.5.1.37/Nextend/Framework/Form/WordPress/PlatformForm.php#L22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3599123/smart-slider-3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a782d975-74ce-4265-9312-435b3585a5c6?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-13T20:16:42Z"
+  }
+}
