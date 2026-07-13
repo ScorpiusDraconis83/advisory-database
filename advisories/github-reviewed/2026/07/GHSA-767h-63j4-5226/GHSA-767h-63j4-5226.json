@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-767h-63j4-5226",
+  "modified": "2026-07-13T17:00:08Z",
+  "published": "2026-07-13T17:00:08Z",
+  "aliases": [
+    "CVE-2026-45377"
+  ],
+  "summary": "Decidim: Private exports can be downloaded through reusable links",
+  "details": "## Description\n\nThe normal `download_your_data` flow requires the requester to be logged in as the export owner, but the resulting Active Storage blob redirect URL can be replayed without authentication by anyone who obtains it.\n\n## Technical description\n \nThis private export flow turns an authenticated, user-scoped download into a reusable bearer link because the protected Decidim endpoint redirects to the underlying Active Storage blob URL. `Decidim::DownloadYourDataController#download_file` correctly scopes the export record to `current_user`, so the wrapper route itself is not directly accessible to another user. However, once the owner\nperforms that authenticated GET request, the response redirects to a signed Active Storage URL that is no longer bound to the user session. Anyone who learns that URL can replay it and retrieve the file without being logged in as the export owner.\n\nBecause the blob redirect URL is delivered through a GET request and appears in the redirect chain, it is more likely to leak through browser history, logs, proxy tooling, screenshots, copied links, support transcripts, or other client-side handling of URLs.\n\nReproduction steps:\n\nStep 1. Generate or locate a completed export in the Web UI.\n1. Sign in as `user@example.org` at `http://localhost:3001/users/sign_in`.\n2. Open `http://localhost:3001/download_your_data`.\n3. Request a new export from the page and wait until the export becomes downloadable.\n4. Open the completed export entry from the list and copy its wrapper URL, for example `http://localhost:3001/download_your_data/download?uuid=07286e61-932d-46d4-bd74-bcd1340c503f `.\n\nStep 2. Download through the authenticated wrapper route.\n1. While still signed in as user@example.org, open the wrapper URL in the browser.\n2. Confirm that this Decidim route requires the owner session and is not directly usable when logged out or when logged in as another user.\n\nStep 3. Capture the final bearer URL in the redirect chain.\n\n1. In DevTools Network or Burp, inspect the redirect sequence for the wrapper request.\n2. Copy the Active Storage redirect URL, typically matching `http://localhost:3001/rails/active_storage/blobs/redirect/<SIGNED_ID>/<FILENAME>`.\n3. Note that the Active Storage redirect URL is no longer protected by the Decidim ownership check.\n\nStep 4. Replay the final file URL without authentication.\n1. Open a private window or separate browser with no Decidim session.\n2. Paste the copied `http://localhost:3001/rails/active_storage/blobs/redirect/<SIGNED_ID>/<FILENAME>` URL.\n3. Confirm the export file still downloads even though you are not logged in as the export owner.\n\n### Impact\n\nPersonal data exports can be retrieved through leakage channels such as browser history, logs, referrers, screenshots, copied links, support transcripts, intercepted email content, or other client-side disclosure of the GET URL.\n\n### Patches\n\nSee https://github.com/decidim/decidim/pull/16680 \n\n### Workarounds\n\nDisable Private Downloads URLs\n\n### Reference\n\nOWASP A01:2021 Broken Access Control\n\n### Credits\n\nThis issue was discovered in a security audit organized by the [Decidim Association](https://decidim.org) and made by [Radically Open Security](https://www.radicallyopensecurity.com/) against Decidim financed by [NGI](https://ngi.eu/).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.30.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.31.0.rc1"
+            },
+            {
+              "fixed": "0.31.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.32.0.rc1"
+            },
+            {
+              "fixed": "0.32.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/decidim/decidim/security/advisories/GHSA-767h-63j4-5226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/decidim/decidim/pull/16680"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/decidim/decidim"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-13T17:00:08Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jvqq-cvh4-xm37",
+  "modified": "2026-07-13T16:59:49Z",
+  "published": "2026-07-13T16:59:49Z",
+  "aliases": [
+    "CVE-2026-45376"
+  ],
+  "summary": "Decidim: Admin user search allows SQL injection through similarity-based sorting",
+  "details": "The admin organization user search uses the untrusted term value inside raw SQL ORDER BY expressions. Because the value is interpolated before Rails sanitization is applied, a crafted search string is executed by PostgreSQL as part of the sort expression.\n\n### Technical description\n \nThe vulnerable endpoint is exposed as GET `/admin/organization/users` in `decidim-admin/config/routes.rb`:\n\n```ruby\nresource :organization, only: [:edit, :update], controller: \"organization\" do\n  member do\n    get :users\n  end\nend\n```\n\nThat route reaches `Decidim::Admin::OrganizationController#users`, which forwards the current organization's available users into `search`:\n\n```ruby\ndef users\n  search(current_organization.users.available)\nend\n```\n\nInside `search`, the attacker-controlled source is `params[:term]`:\n\n```ruby\nif (term = params[:term].to_s).present?\n```\n\nThe query has two branches. In both branches, the `WHERE` predicates use bind parameters and are not the injection sink. The vulnerability is in the subsequent `.order(Arel.sql(...))` calls, where the untrusted value is interpolated directly into SQL string literals.\n\nNickname branch:\n\n```ruby\nnickname = term.delete(\"@\")\nrelation.where(\"nickname LIKE ?\", \"#{nickname}%\")\n  .order(Arel.sql(ActiveRecord::Base.sanitize_sql_array(\"similarity(nickname, '#{nickname}') DESC\")))\n```\n\nName/email branch:\n\n```ruby\nrelation.where(\"name ILIKE ?\", \"%#{term}%\").or(\n  relation.where(\"email ILIKE ?\", \"%#{term}%\")\n)\n  .order(Arel.sql(ActiveRecord::Base.sanitize_sql_array(\"GREATEST(similarity(name, '#{term}'), similarity(email, '#{term}')) DESC\")))\n  .order(Arel.sql(ActiveRecord::Base.sanitize_sql_array(\"(similarity(name, '#{term}') + similarity(email, '#{term}')) / 2 DESC\")))\n```\n\nThis use of `sanitize_sql_array` does not make the code safe. The interpolation happens first, so Rails receives an already-built SQL string rather than a statement with bind placeholders. As a result, a quote in `term` can terminate the intended string literal and inject attacker-controlled SQL into the `ORDER BY` expression.\n\nFor example, a payload such as `slpleak '), COALESCE((SELECT 1 FROM pg_sleep(21)),0)) --` produces a fragment equivalent to:\n\n```sql\nGREATEST(similarity(name, 'slpleak '), COALESCE((SELECT 1 FROM pg_sleep(21)),0)) --'), similarity(email, 'slpleak '), COALESCE((SELECT 1 FROM pg_sleep(21)),0)) --')) DESC\n``` \n\nThe injected subquery is therefore evaluated by PostgreSQL as SQL, not treated purely as data. Because the sink is in `ORDER BY`, the endpoint can still return a normal 200 OK response while exposing the issue through measurable timing differences.\n\nSource-to-sink chain:\n\n* Source: `params[:term]`\n* Propagation: `term = params[:term].to_s`\n* Sink: `.order(Arel.sql(... \"#{term}\" ...))` and `.order(Arel.sql(... \"#{nickname}\" ...))`\n* Effect: attacker-controlled SQL is executed inside the database sort expression\n\nReproduction steps:\n\n1. Authenticate as an organization admin.\n2. Ensure the search returns at least one row for the chosen payload. For a deterministic test, create a temporary\nuser whose `name`, `email`, or `nickname` matches the probe string.\n3. Send a control request to `GET /admin/organization/users?term=test` with `Accept: application/json` and record the response time.\n4. Send a payload request such as `GET /admin/organization/users?term=slpleak%20%27%29%2C%20COALESCE%28%28SELECT%201%20FROM%20pg_sleep%2821%29%29%2C0%29%29%20--` with `Accept: application/json`.\n5. Observe that the endpoint still responds successfully, but the response time increases by approximately the sleep\ninterval, demonstrating time-based SQL execution in the `ORDER BY` clause.\n\n### Impact\n\n- Exploitation requires an authenticated admin session, which limits exposure but does not remove the underlying SQL injection risk.\n- An authenticated admin can inject arbitrary SQL expressions into the query's `ORDER BY` clause and use timing differences as a blind SQL oracle.\n- The injection happens inside a database expression, so the effect is not inherently limited to sorting the current organization user relation. Depending on the privileges of the application's PostgreSQL role, an attacker may be able to infer data from other tables readable by that role.\n- The issue remains exploitable even without verbose database errors because time-based payloads such as `pg_sleep` provide a reliable blind side channel.\n- Repeated long-running payloads can also be used to degrade availability by tying up database-backed requests.\n\n### Patches\n\nSee https://github.com/decidim/decidim/pull/16668 \n\n### Workarounds\n\nReview your administrator accesses and not give access to untrustworthy users\n\n### Reference\n\nOWASP SQL Injection\n\n### Credits\n\nThis issue was discovered in a security audit organized by the [Decidim Association](https://decidim.org) and made by [Radically Open Security](https://www.radicallyopensecurity.com/) against Decidim financed by [NGI](https://ngi.eu/).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-admin"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.30.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-admin"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.31.0.rc1"
+            },
+            {
+              "fixed": "0.31.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-admin"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.32.0.rc1"
+            },
+            {
+              "fixed": "0.32.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/decidim/decidim/security/advisories/GHSA-jvqq-cvh4-xm37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/decidim/decidim/pull/16668"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/decidim/decidim"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-13T16:59:49Z",
+    "nvd_published_at": null
+  }
+}
