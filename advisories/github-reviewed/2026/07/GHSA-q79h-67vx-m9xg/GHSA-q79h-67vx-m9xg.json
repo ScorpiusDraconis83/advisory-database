@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q79h-67vx-m9xg",
+  "modified": "2026-07-13T17:17:33Z",
+  "published": "2026-07-13T17:17:33Z",
+  "aliases": [
+    "CVE-2026-45415"
+  ],
+  "summary": "Decidim: CSV census record endpoints improper authorization",
+  "details": "## Description\n\nA participant manager can access and modify the CSV census record admin forms.\n\n## Technical description\n\nThe CSV census admin record-management surface under `/admin/csv_census/census_logs` does not enforce admin-only authorization before rendering or mutating `Decidim::Verifications::CsvDatum`.\n\nA participant manager (which can only manage participants) can therefore open the admin forms, create or update census rows, and delete rows directly.\n\nReproduction steps:\n1. Sign in a participant admin and open `http://localhost:3000/admin/csv_census/census_logs/new_record` in the browser. Confirm the create form loads even though the session is not a full admin.\n\n<img width=\"1541\" height=\"274\" alt=\"decidim-census-01\" src=\"https://github.com/user-attachments/assets/859ee101-746f-4acb-8051-27036689f1b3\" />\n\n<img width=\"1538\" height=\"363\" alt=\"decidim-census-02\" src=\"https://github.com/user-attachments/assets/85bbb004-a999-46dc-856c-fd32b50ced2c\" />\n\nNote that normal participant accounts were not able to access the CSV census records which is good.\n\n### Impact\n \nAny participant admin can create, alter, or remove CSV census rows, which can corrupt verification data relied on by authorization workflows.\n\n### Patches\n\nSee https://github.com/decidim/decidim/pull/16674 and https://github.com/decidim/decidim/pull/16703 \n\n### Workarounds\n\nDisable Organization Census verification method\n\n### Reference\n\nOWASP A01:2021 Broken Access Control\n\n### Credits\n\nThis issue was discovered in a security audit organized by the [Decidim Association](https://decidim.org) and made by [Radically Open Security](https://www.radicallyopensecurity.com/) against Decidim financed by [NGI](https://ngi.eu/).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:H/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-verifications"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.30.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-verifications"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.31.0.rc1"
+            },
+            {
+              "fixed": "0.31.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "decidim-verifications"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.32.0.rc1"
+            },
+            {
+              "fixed": "0.32.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/decidim/decidim/security/advisories/GHSA-q79h-67vx-m9xg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/decidim/decidim/pull/16674"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/decidim/decidim/pull/16703"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/decidim/decidim"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-13T17:17:33Z",
+    "nvd_published_at": null
+  }
+}
