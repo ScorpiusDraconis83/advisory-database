@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v42x-x7jp-845h",
-  "modified": "2026-06-03T18:33:10Z",
+  "modified": "2026-07-13T17:46:17Z",
   "published": "2026-06-03T18:33:10Z",
   "aliases": [
     "CVE-2026-6657"
   ],
+  "summary": "jupyter-server is vulnerable to CORS origin validation bypass when the `allow_origin_pat` configuration is used",
   "details": "A vulnerability in jupyter-server versions 1.12.0 through 2.17.0 allows an attacker to bypass CORS origin validation when the `allow_origin_pat` configuration is used. The issue arises from the use of `re.match()` for validating the `Origin` header, which only anchors at the start of the string. This allows attacker-controlled domains such as `trusted.example.com.evil.com` to pass validation against patterns intended to match `trusted.example.com`. The vulnerability affects multiple locations in the codebase, including CORS headers, WebSocket connections, referer validation, and login redirects, potentially enabling phishing attacks, arbitrary code execution, and unauthorized access to sensitive API responses.",
   "severity": [
     {
@@ -13,11 +14,35 @@
       "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "jupyter-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.12.0"
+            },
+            {
+              "last_affected": "2.17.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6657"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jupyter-server/jupyter_server"
     },
     {
       "type": "WEB",
@@ -29,8 +54,8 @@
       "CWE-346"
     ],
     "severity": "MODERATE",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-13T17:46:17Z",
     "nvd_published_at": "2026-06-03T16:16:31Z"
   }
 }
