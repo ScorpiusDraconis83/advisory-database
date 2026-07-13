@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v3pr-hxpr-mfm8",
+  "modified": "2026-07-13T17:24:46Z",
+  "published": "2026-06-03T12:30:26Z",
+  "aliases": [
+    "CVE-2026-47065"
+  ],
+  "summary": "Apache MINA: Critical Deserialization Allow-list Bypass via resolveProxyClass",
+  "details": "ZDRES-232: resolveProxyClass Not Overridden - acceptMatchers Filter Bypass via java.lang.reflect.Proxy\n\n\nAssessment: Fully addressed.\n\n\nWhen the serialised stream contains a TC_PROXYCLASSDESC (the marker for a java.lang.reflect.Proxy ), JDK’s ObjectInputStream.readProxyDesc() is dispatched. JDK then calls the default  ObjectInputStream.resolveProxyClass(interfaces) implementation, which performs Class.forName(intf, false, latestUserDefinedLoader()) for EACH interface name and constructs the proxy class â€” bypassing the accepted classes list .\n\n\nZDRES-233: Class.forName(name, initialize=true, classLoader) in readClassDescriptor Triggers Static Initialiser of Allow-Listed Classes\n\n\nAssessment: Fully addressed.\n\n\nFor ANY class on the allow-list, deserialising a stream that names it triggers the class’s (static initialiser) BEFORE any instance is constructed. This means an attacker who supplies a class name on the allow-list (e.g., the developer wrote accept(“com.myapp.*\") , attacker supplies com.myapp.SomeClass ) causes <clinit> of SomeClass â€” and many real-world classes have side-effecting static initialisers\n\n\nBoth issues have been fixed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.mina:mina-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.2.0"
+            },
+            {
+              "fixed": "2.2.8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.mina:mina-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.1.0"
+            },
+            {
+              "fixed": "2.1.13"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.mina:mina-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.29"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47065"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/mina"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/y7xj1bl8qo47p9bktb11hg5v6k1d4dyj"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-13T17:24:46Z",
+    "nvd_published_at": "2026-06-03T11:16:19Z"
+  }
+}
