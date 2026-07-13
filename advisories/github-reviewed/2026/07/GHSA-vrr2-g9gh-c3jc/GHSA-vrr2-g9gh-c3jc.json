@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vrr2-g9gh-c3jc",
+  "modified": "2026-07-13T23:55:35Z",
+  "published": "2026-07-13T23:55:35Z",
+  "aliases": [
+    "CVE-2026-52820"
+  ],
+  "summary": "Kimai: Timesheet PATCH/POST allows assigning to project outside user's team via query_builder OR-bypass",
+  "details": "## Summary\n\nThe Timesheet API `PATCH /api/timesheets/{id}` and `POST /api/timesheets` endpoints accept a user-supplied `project` ID and resolve it through a Symfony `EntityType` whose `query_builder` allows the submitted ID to satisfy the access predicate via an unconditional OR branch. As a result, any authenticated user can re-assign their own timesheet to any project in the database — including projects that belong to teams or customers they have no membership in and cannot otherwise see. The user can then read serialized project/customer details via `GET /api/timesheets/{id}?full=true`, leaking metadata (name, currency, customer hierarchy) that would otherwise be filtered out by the team ACL.\n\n## Details\n\n### Entry point — only ownership is checked in `src/API/TimesheetController.php:317-355`\n\n```php\n#[IsGranted('edit', 'timesheet')]\n#[Route(methods: ['PATCH'], path: '/{id}', name: 'patch_timesheet', requirements: ['id' => '\\d+'])]\npublic function patchAction(Request $request, Timesheet $timesheet): Response\n{\n    ...\n    $form = $this->createForm(TimesheetApiEditForm::class, $timesheet, [...]);\n    $form->setData($timesheet);\n    $form->submit($request->request->all(), false);\n    if (false === $form->isValid()) { ... }\n    $this->service->saveTimesheet($timesheet);\n    ...\n}\n```\n\n`src/Voter/TimesheetVoter.php:134-142`:\n\n```php\nif ($subject->getUser()?->getId() === $user->getId()) {\n    return $this->permissionManager->hasRolePermission($user, $permission . '_own_timesheet');\n}\n\nif (!$this->permissionManager->checkTeamAccessTimesheet($subject, $user)) {\n    return false;\n}\n```\n\nFor an own-timesheet, only `edit_own_timesheet` is required. The voter does **not** look at the *new* project being submitted; it only validates the existing record's ownership.\n\n### Form replays user-controlled project ID into the access query\n\n`src/Form/TimesheetEditForm.php:60-71`:\n\n```php\n$isNew = true;\nif (isset($options['data']) && $options['data'] instanceof Timesheet) {\n    ...\n    if (null !== $entry->getId()) {\n        $isNew = false;\n    }\n    ...\n}\n$this->addProject($builder, $isNew, $project, $customer);\n```\n\n`src/Form/FormTrait.php:59-100`:\n\n```php\n$builder->addEventListener(\n    FormEvents::PRE_SUBMIT,\n    function (FormEvent $event) use ($builder, $project, $customer, $isNew, $options): void {\n        $data = $event->getData();\n        $customer = \\array_key_exists('customer', $data) && $data['customer'] !== '' ? $data['customer'] : null;\n        $project = \\array_key_exists('project', $data) && $data['project'] !== '' ? $data['project'] : $project;\n\n        $event->getForm()->add('project', ProjectType::class, array_merge($options, [\n            'group_by' => null,\n            'query_builder' => function (ProjectRepository $repo) use ($builder, $project, $customer, $isNew) {\n                $project = \\is_string($project) ? (int) $project : $project;\n                ...\n                if ($isNew && \\is_int($project)) {\n                    $project = $repo->find($project);\n                    if ($project !== null) {\n                        if (!$project->getCustomer()->isVisible()) { ... $project = null; }\n                        elseif (!$project->isVisible())            { $project = null; }\n                    }\n                }\n                ...\n                $query = new ProjectFormTypeQuery($project, $customer);\n                $query->setUser($builder->getOption('user'));\n                $query->setWithCustomer(true);\n                return $repo->getQueryBuilderForFormType($query);\n            },\n        ]));\n    }\n);\n```\n\nTwo problems compound:\n\n1. The visibility re-check on line 73 is gated on `$isNew`. For PATCH, `$isNew = false`, so the closure passes the attacker-supplied ID straight through.\n2. Even when `$isNew = true` (POST), the re-check only validates `isVisible()` — it does not validate team membership.\n\n### The query-builder unconditionally accepts the submitted ID\n\n`src/Repository/ProjectRepository.php:150-208`:\n\n```php\npublic function getQueryBuilderForFormType(ProjectFormTypeQuery $query): QueryBuilder\n{\n    ...\n    $mainQuery = $qb->expr()->andX();\n    $mainQuery->add($qb->expr()->eq('p.visible', ':visible'));\n    $mainQuery->add($qb->expr()->eq('c.visible', ':customer_visible'));\n    if (!$query->isIgnoreDate()) { ... }\n    if ($query->hasCustomers()) { ... }\n\n    $permissions = $this->getPermissionCriteria($qb, $query->getUser(), $query->getTeams());\n    if ($permissions->count() > 0) {\n        $mainQuery->add($permissions);\n    }\n\n    $outerQuery = $qb->expr()->orX();\n    if ($query->hasProjects()) {\n        $outerQuery->add($qb->expr()->in('p.id', ':project'));     // <-- unconditional\n        $qb->setParameter('project', $query->getProjects());\n    }\n    ...\n    $outerQuery->add($mainQuery);\n    $qb->andWhere($outerQuery);\n    return $qb;\n}\n```\n\nThe final WHERE clause is roughly:\n\n```\nWHERE (p.id IN (:project)) OR (p.visible AND c.visible AND <date> AND <team-ACL>)\n```\n\nBecause `:project` is the submitted ID itself, the first branch matches unconditionally, completely bypassing the team-ACL applied by `getPermissionCriteria`. Symfony's `EntityType` happily resolves the foreign `Project` entity, the form passes validation, and the timesheet is persisted with the new `project_id`.\n\n### No downstream validation closes the gap\n\n- `TimesheetService::saveTimesheet` → `updateTimesheet` (`src/Timesheet/TimesheetService.php:154-177`) is explicitly documented as *not* validating.\n- `TimesheetBasicValidator` only validates begin/end and project/activity coherence.\n- `TimesheetDeactivatedValidator::validateActivityAndProject` (`src/Validator/Constraints/TimesheetDeactivatedValidator.php:36-42`) returns early for non-running existing timesheets.\n- No validator anywhere in the timesheet pipeline checks that the project's team membership intersects the acting user's teams.\n\n*A PoC was provided, but removed for security reasons.*\n\n## Impact\n\n- **Integrity:** any authenticated user can attribute their own tracked time to any project ID in the database — including projects belonging to teams/customers they cannot see. This pollutes per-project budgets, billing exports and reports for other teams. There is no in-app warning that records belonging to outsiders have been added.\n- **Confidentiality:** by reading the timesheet back via `?full=true`, the attacker obtains serialized project and customer details (name, currency, start/end dates, customer hierarchy) which would normally be filtered by the team ACL.\n- **Privilege model:** the `edit_own_timesheet` permission is part of the default ROLE_USER, so the bypass is reachable by every regular user without any administrator action.\n\nThe blast radius is bounded by what an attacker can persist (their own timesheet rows) and what the `?full=true` serializer exposes — there is no direct ability to modify other teams' existing data.\n\n## Solution\n\n- The FormTrait was updated to only pass the project forward for new timesheets\n- A new `TimesheetTeamAccessValidator`was added, which checks if `project` or `activity` were changed. If that is the case, the team access permission is checked first\n\nFind out more at [https://www.kimai.org/en/security/ghsa-vrr2-g9gh-c3jc](https://www.kimai.org/en/security/ghsa-vrr2-g9gh-c3jc)",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "kimai/kimai"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.57.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2.56.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/kimai/kimai/security/advisories/GHSA-vrr2-g9gh-c3jc"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/kimai/kimai"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-13T23:55:35Z",
+    "nvd_published_at": null
+  }
+}
