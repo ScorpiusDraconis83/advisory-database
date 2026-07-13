@@ -1,13 +1,17 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3m3r-f94v-4mf8",
-  "modified": "2026-07-09T12:30:28Z",
+  "modified": "2026-07-13T15:31:42Z",
   "published": "2026-07-09T12:30:28Z",
   "aliases": [
     "CVE-2026-56289"
   ],
   "details": "GNU patch is vulnerable to a denial of service (DoS) due to improper validation of hunk (single block of changes in diff) line offsets in unified-diff input. A specially crafted patch can specify an extremely large line number, causing the application to enter an effectively infinite processing loop while attempting to locate the requested position.\nThis results in excessive CPU consumption and prevents the process from completing.\nAn attacker can trigger this behavior by supplying a malicious patch file, causing the utility to become unresponsive and require manual termination.\n\n\n\nThis issue has been fixed in the commit faba04ef4f2b410257f76c1b9dc85e350929c4b9",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:N/VI:N/VA:L/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
