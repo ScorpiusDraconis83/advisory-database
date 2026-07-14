@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q3v2-xj35-9grx",
+  "modified": "2026-07-14T19:59:45Z",
+  "published": "2026-07-14T19:59:45Z",
+  "aliases": [],
+  "summary": "Umbraco.AI discloses sensitive application configuration values",
+  "details": "### Impact\nUnder certain configurations, a user with elevated privileges may be able to cause sensitive application configuration values, potentially including secret material such as credentials, to be disclosed. Successful exploitation could expose confidential information and, depending on what the affected installation stores in configuration, enable further compromise. Exploitation requires access to the AI section of the backoffice and a specific custom AI provider, which limits real-world exposure.\n\n### Patches\nPatched in 1.14.0\n\n### Workarounds\nSince the patch is a breaking change and requires a version jump, it is not recommended to try and implement a workaround.\n\n### Resources\n* Announcement Blog Post: https://umbraco.com/blog/security-advisory-june-4-2026-security-patch-for-umbracoai-is-now-available/",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "Umbraco.AI"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.14.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.13.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/umbraco/Umbraco.AI/security/advisories/GHSA-q3v2-xj35-9grx"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/umbraco/Umbraco.AI"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/umbraco/Umbraco.AI/releases/tag/2026.06.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://umbraco.com/blog/security-advisory-june-4-2026-security-patch-for-umbracoai-is-now-available"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-14T19:59:45Z",
+    "nvd_published_at": null
+  }
+}
