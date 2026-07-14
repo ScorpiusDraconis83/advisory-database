@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2xgg-2x8h-8xw4",
+  "modified": "2026-07-14T00:09:35Z",
+  "published": "2026-07-14T00:09:35Z",
+  "aliases": [
+    "CVE-2026-52826"
+  ],
+  "summary": "Kimai: Improper Authorization in Project, Customer, and Activity Rate Edit Endpoints Allows Cross-Scope Rate Manipulation",
+  "details": "### Summary\n\nKimai 2.56.0 contains an authenticated improper authorization vulnerability in the Web rate editing flows for projects, customers, and activities. A user who can edit one authorized parent object can combine that authorized parent ID with the rate ID of a different, unauthorized parent object and thereby modify the unauthorized rate record.\n\nThis affects `ProjectRate`, `CustomerRate`, and `ActivityRate` editing. The issue is caused by missing parent-child consistency validation and allows cross-project, cross-customer, or cross-activity tampering of billing-related configuration.\n\n### Details\n\nThe issue affects the following Web routes:\n\n- `GET/POST /en/admin/project/{id}/rate/{rate}`\n- `GET/POST /en/admin/customer/{id}/rate/{rate}`\n- `GET/POST /en/admin/activity/{id}/rate/{rate}`\n\nIn both cases, the parent object and the rate object are resolved independently from user-controlled route parameters. The controller only checks whether the current user may edit the parent object referenced by `{id}`, but it does not verify that the child rate object referenced by `{rate}` actually belongs to that same parent.\n\nIn these controllers, there is no validation such as:\n\n- `$rate->getProject() === $project`\n- `$rate->getCustomer() === $customer`\n- `$rate->getActivity() === $activity`\n\nThis missing binding check is especially notable because the API delete endpoints already enforce the expected parent-child relationship.\n\nThis shows that parent-child consistency is already a recognized invariant in the application design, but the Web edit endpoints fail to enforce it for projects, customers, and activities.\n\n*A PoC was provided, but removed for security reasons.*\n\n### Impact\n\nThis vulnerability allows authenticated users to tamper with billing-related rate configuration outside their authorized project, customer, or activity scope. An attacker can modify rate values belonging to other teams or business domains, which can affect time-based settlement, inherited pricing, cost calculations, budget reporting, revenue reporting, and downstream invoice generation.\n\nBecause the issue directly persists changes into `kimai2_projects_rates`, `kimai2_customers_rates`, and `kimai2_activities_rates`, it is a real cross-scope integrity vulnerability rather than a UI-only flaw. The attack breaks team-based isolation boundaries for high-value financial configuration.\n\n# Solution\n\nThe rate edit forms for `customers`, `projects` and `activities` now verify that the rate belongs to the parent referenced in the URL and reject the request otherwise.\n\nSee [https://www.kimai.org/en/security/ghsa-2xgg-2x8h-8xw4](https://www.kimai.org/en/security/ghsa-2xgg-2x8h-8xw4) for more information.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "kimai/kimai"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.57.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2.56.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/kimai/kimai/security/advisories/GHSA-2xgg-2x8h-8xw4"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/kimai/kimai"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285",
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-14T00:09:35Z",
+    "nvd_published_at": null
+  }
+}
