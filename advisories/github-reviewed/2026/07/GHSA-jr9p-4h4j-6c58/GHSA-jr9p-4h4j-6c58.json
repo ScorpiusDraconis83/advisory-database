@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jr9p-4h4j-6c58",
+  "modified": "2026-07-14T00:07:59Z",
+  "published": "2026-07-14T00:07:59Z",
+  "aliases": [
+    "CVE-2026-52824"
+  ],
+  "summary": "Kimai: Default APP_SECRET in Docker Image Enables Cookie Forgery and Account Takeover",
+  "details": "### Summary\n\nThe official Kimai Docker image ships with `APP_SECRET=change_this_to_something_unique` as the default environment variable. The Docker entrypoint does not override or validate this value. Any Kimai instance deployed using the Docker image without explicitly setting `APP_SECRET` runs with a publicly-known Symfony `kernel.secret`, enabling an unauthenticated attacker to forge HMAC-signed cookies and login links to take over any account including super_admin.\n\n### Details\n\n`Dockerfile:263` sets `ENV APP_SECRET=change_this_to_something_unique`. This value is consumed by `config/packages/framework.yaml:7` as `kernel.secret`, which Symfony uses to HMAC-sign:\n\n- The `KIMAI_REMEMBER` remember-me cookie\n- LoginLink signatures\n- Password reset URLs\n- CSRF tokens\n\nThe `.docker/entrypoint.sh` does not check for or replace the default sentinel value. The bare-metal `.env.dist:38` ships the same default. No startup-time guard exists anywhere in the codebase that refuses to start when `APP_SECRET` equals the sentinel.\n\nUser IDs are sequential integers starting from 1. The first super_admin account is almost always `id=1`. User IDs are visible in some URLs and API responses.\n\n*A PoC was provided, but removed for security reasons.*\n\n### Impact\n\nAny Kimai instance deployed via the official Docker image without overriding `APP_SECRET` can be compromised from the internet. An unauthenticated attacker who can reach the Kimai URL can forge authentication tokens and log in as any user if:\n- a username is known AND\n- the correct account ID for this username is guessed AND\n- the account has no active 2FA (two factor) authentication\n\n## Solution\n\n- The entrypoint.sh file is updated and now contains a script that generates a random `APP_SECRET` via `bin2hex(random_bytes(32))` which will be stored in  `/opt/kimai/var/data/.appsecret`\n- The entrypoint.sh will create the file `/opt/kimai/.env.local` containing the `APP_SECRET`, either fetched from the Docker Environment or from the newly created secret file\n- The documentation was updated to highlight the importance of using a random secret for `APP_SECRET`\n- The Dockerfile removed default `APP_SECRET=change_this_to_something_unique`\n- Login links now contain more entropy (see GHSA-m492-gv72-xvxj) - so even without all previous changes, attackers won't be able to generate Login links even for installations that have a hard-coded `APP_SECRET=change_this_to_something_unique`\n\nSee [https://www.kimai.org/en/security/ghsa-jr9p-4h4j-6c58](https://www.kimai.org/en/security/ghsa-jr9p-4h4j-6c58) for more information.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "kimai/kimai"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.58.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2.57.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/kimai/kimai/security/advisories/GHSA-jr9p-4h4j-6c58"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/kimai/kimai"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1188"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-14T00:07:59Z",
+    "nvd_published_at": null
+  }
+}
