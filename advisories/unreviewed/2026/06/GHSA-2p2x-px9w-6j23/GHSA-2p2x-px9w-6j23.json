@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2p2x-px9w-6j23",
-  "modified": "2026-06-24T18:32:41Z",
+  "modified": "2026-07-14T18:31:49Z",
   "published": "2026-06-24T18:32:41Z",
   "aliases": [
     "CVE-2026-52962"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nceph: fix a buffer leak in __ceph_setxattr()\n\nThe old_blob in __ceph_setxattr() can store\nci->i_xattrs.prealloc_blob value during the retry.\nHowever, it is never called the ceph_buffer_put()\nfor the old_blob object. This patch fixes the issue of\nthe buffer leak.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:06Z"

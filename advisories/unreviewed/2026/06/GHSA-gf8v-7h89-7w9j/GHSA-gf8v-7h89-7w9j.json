@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gf8v-7h89-7w9j",
-  "modified": "2026-06-24T18:32:42Z",
+  "modified": "2026-07-14T18:31:49Z",
   "published": "2026-06-24T18:32:42Z",
   "aliases": [
     "CVE-2026-52979"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: psp: check for device unregister when creating assoc\n\npsp_assoc_device_get_locked() obtains a psp_dev reference via\npsp_dev_get_for_sock() (which uses psp_dev_tryget() under RCU);\nit then acquires psd->lock and drops the reference. Before\nthe lock is taken, psp_dev_unregister() can run to completion:\ntake psd->lock, clear out state, unlock, drop the registration\nreference.\n\nThe expectation is that the lock prevents device unregistration,\nbut much like with netdevs special care has to be taken when\n\"upgrading\" a reference to a locked device. Add the missing\ncheck if device is still alive. psp_dev_is_registered() exists\nalready but had no callers, which makes me wonder if I either\nforgot to add this or lost the check during refactoring...",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:08Z"

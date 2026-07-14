@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-885g-75hv-6jcq",
-  "modified": "2026-06-24T18:32:41Z",
+  "modified": "2026-07-14T18:31:49Z",
   "published": "2026-06-24T18:32:41Z",
   "aliases": [
     "CVE-2026-52964"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb-audio: Bound MIDI 2.0 endpoint descriptor scans\n\nThe USB MIDI 2.0 endpoint parser has the same descriptor walking\npattern as the legacy MIDI parser. It validates bLength against\nbNumGrpTrmBlock before reading baAssoGrpTrmBlkID[], but not against the\nremaining bytes in the endpoint-extra scan.\n\nA malformed device can therefore make later baAssoGrpTrmBlkID[] reads\nconsume bytes past the walked descriptor.\n\nReject zero-length and overlong descriptors while walking endpoint\nextras.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:06Z"

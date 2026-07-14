@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m4vx-wp7v-hx3x",
-  "modified": "2026-06-24T18:32:41Z",
+  "modified": "2026-07-14T18:31:49Z",
   "published": "2026-06-24T18:32:41Z",
   "aliases": [
     "CVE-2026-52963"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb-audio: Bound MIDI endpoint descriptor scans\n\nsnd_usbmidi_get_ms_info() validates the internal MIDIStreaming endpoint\ndescriptor size before using baAssocJackID[], but the descriptor walker can\nstill return a class-specific endpoint descriptor whose bLength exceeds the\nremaining bytes in the endpoint-extra scan.\n\nThat leaves later flexible-array reads bounded by bLength, but not by the\nremaining bytes in the endpoint-extra scan.\n\nStop walking when bLength is zero or\nextends past the remaining endpoint-extra scan.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:06Z"

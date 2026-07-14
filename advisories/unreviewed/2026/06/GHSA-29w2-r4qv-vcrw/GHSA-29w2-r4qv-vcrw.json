@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-29w2-r4qv-vcrw",
-  "modified": "2026-06-24T18:32:42Z",
+  "modified": "2026-07-14T18:31:49Z",
   "published": "2026-06-24T18:32:42Z",
   "aliases": [
     "CVE-2026-52984"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: netem: fix queue limit check to include reordered packets\n\nThe queue limit check in netem_enqueue() uses q->t_len which only\ncounts packets in the internal tfifo. Packets placed in sch->q by\nthe reorder path (__qdisc_enqueue_head) are not counted, allowing\nthe total queue occupancy to exceed sch->limit under reordering.\n\nInclude sch->q.qlen in the limit check.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:09Z"
