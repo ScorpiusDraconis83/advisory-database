@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-prfw-69r3-wqxf",
-  "modified": "2026-06-04T12:30:26Z",
+  "modified": "2026-07-14T20:47:50Z",
   "published": "2026-06-04T12:30:25Z",
   "aliases": [
     "CVE-2026-10801"
   ],
+  "summary": "ms-swift: Image Cache Hash Collision via Missing Dimension Metadata",
   "details": "A security vulnerability has been detected in modelscope ms-swift up to 4.2.0. This affects the function Template._save_pil_image of the file swift/template/base.py of the component PIL Image Cache Key Handler. The manipulation leads to use of weak hash. An attack has to be approached locally. A high degree of complexity is needed for the attack. It is indicated that the exploitability is difficult. The exploit has been disclosed publicly and may be used. The pull request to fix this issue awaits acceptance.",
   "severity": [
     {
@@ -14,10 +15,30 @@
     },
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:L/AC:H/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:L/AC:H/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:P"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "ms-swift"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "4.2.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -33,6 +54,10 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/modelscope/ms-swift/commit/27426a6431759a82e2a1c98344b425f90be17e07"
+    },
+    {
+      "type": "PACKAGE",
       "url": "https://github.com/modelscope/ms-swift"
     },
     {
@@ -61,8 +86,8 @@
       "CWE-327"
     ],
     "severity": "LOW",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-14T20:47:50Z",
     "nvd_published_at": "2026-06-04T11:16:25Z"
   }
 }
