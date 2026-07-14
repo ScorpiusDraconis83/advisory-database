@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ffq7-hh2j-r24p",
+  "modified": "2026-07-14T19:31:23Z",
+  "published": "2026-07-14T19:31:23Z",
+  "aliases": [
+    "CVE-2026-50157"
+  ],
+  "summary": "Auth0 Symfony SDK Accepted Bearer Tokens via URL Query Parameter",
+  "details": "### Description\nApplications built with the Auth0 Symphony SDK, using the Authorizer security authenticator to protect HTTP routes may accept OAuth 2.0 bearer access tokens provided through a URL query parameter, in addition to the standard Authorization header, which may increase the risk of access token exposure and replay against protected API endpoints.\n\n### Resolution\nUpgrade auth0/symfony to version 5.9.0 or greater.\n\n### Acknowledgement\nOkta would like to thank Alex Yeara for their discovery.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "auth0/symfony"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-BETA0"
+            },
+            {
+              "fixed": "5.9.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.8.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/auth0/symfony/security/advisories/GHSA-ffq7-hh2j-r24p"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/auth0/symfony/commit/172d1d3e0b9d1e93610d786118389a811179bc8a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/auth0/symfony/commit/bd1851b14ae15e99cbe87c96496cf25da025288a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/auth0/symfony"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/auth0/symfony/releases/tag/5.9.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-598",
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-14T19:31:23Z",
+    "nvd_published_at": null
+  }
+}
