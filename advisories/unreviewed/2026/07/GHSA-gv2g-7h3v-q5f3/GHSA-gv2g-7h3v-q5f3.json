@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gv2g-7h3v-q5f3",
+  "modified": "2026-07-14T21:32:16Z",
+  "published": "2026-07-14T21:32:16Z",
+  "aliases": [
+    "CVE-2026-15709"
+  ],
+  "details": "A flaw was found in libsoup's WebSocket implementation when using the permessage-deflate extension. The extension's decompression loop (inflate()) processes data in chunks without enforcing an upper boundary limit on the output buffer size. While libsoup limits the incoming compressed frame size via max_incoming_payload_size, it fails to track or limit memory allocation during decompression. A separate check for decompressed size (max_total_message_size) exists but executes only after inflation is complete, and it is entirely disabled by default for client connections. A remote, unauthenticated attacker can exploit this by sending a small, highly compressed payload (a decompression bomb), causing unbounded memory allocation that triggers an Out-of-Memory (OOM) crash and a Denial of Service (DoS).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-15709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2499922"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.gnome.org/GNOME/libsoup/-/issues/511"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-409"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-14T20:16:57Z"
+  }
+}

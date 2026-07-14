@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8vvj-3j37-6m3p",
-  "modified": "2026-06-24T18:32:41Z",
+  "modified": "2026-07-14T21:31:27Z",
   "published": "2026-06-24T18:32:41Z",
   "aliases": [
     "CVE-2026-52968"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: pci: fix GAIT table indexing due to double-scaling pointer arithmetic\n\nkvm_s390_pci_aif_enable(), kvm_s390_pci_aif_disable(), and\naen_host_forward() index the GAIT by manually multiplying the index\nwith sizeof(struct zpci_gaite).\n\nSince aift->gait is already a struct zpci_gaite pointer, this\ndouble-scales the offset, accessing element aisb*16 instead of aisb.\n\nThis causes out-of-bounds accesses when aisb >= 32 (with\nZPCI_NR_DEVICES=512)\n\nFix by removing the erroneous sizeof multiplication.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -40,8 +45,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:07Z"

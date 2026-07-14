@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2hwx-f32f-7qp6",
-  "modified": "2026-06-24T18:32:44Z",
+  "modified": "2026-07-14T21:31:29Z",
   "published": "2026-06-24T18:32:44Z",
   "aliases": [
     "CVE-2026-53030"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni3c: master: renesas: Fix memory leak in renesas_i3c_i3c_xfers()\n\nThe xfer structure allocated by renesas_i3c_alloc_xfer() was never freed\nin the renesas_i3c_i3c_xfers() function. Use the __free(kfree) cleanup\nattribute to automatically free the memory when the variable goes out of\nscope.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:14Z"

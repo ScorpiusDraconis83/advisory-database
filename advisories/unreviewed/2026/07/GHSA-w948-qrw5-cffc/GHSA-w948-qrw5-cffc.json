@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w948-qrw5-cffc",
+  "modified": "2026-07-14T21:32:16Z",
+  "published": "2026-07-14T21:32:16Z",
+  "aliases": [
+    "CVE-2026-15711"
+  ],
+  "details": "A vulnerability was found in libsoup's WebSocket frame parsing implementation. The library fails to validate length rules specified in RFC 6455 §5.5, which mandates that all WebSocket control frames (e.g., PING, PONG, CLOSE) contain a payload of 125 bytes or less. A remote, unauthenticated attacker can exploit this by sending a non-compliant, oversized control frame. Because the parser handles this protocol violation improperly instead of throwing an immediate connection termination error, it triggers a internal processing crash, resulting in a remote denial of service (DoS) for applications utilizing libsoup WebSockets.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15711"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-15711"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2499924"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.gnome.org/GNOME/libsoup/-/issues/515"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-14T20:16:57Z"
+  }
+}
