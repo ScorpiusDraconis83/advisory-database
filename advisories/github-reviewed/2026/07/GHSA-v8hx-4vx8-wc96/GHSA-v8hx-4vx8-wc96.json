@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v8hx-4vx8-wc96",
+  "modified": "2026-07-14T00:33:39Z",
+  "published": "2026-07-14T00:33:39Z",
+  "aliases": [
+    "CVE-2026-52827"
+  ],
+  "summary": "Kimai: Pre-2FA KIMAI_SESSION cookie grants full authenticated REST API access, bypassing TOTP",
+  "details": "### Summary\nTwo-factor authentication (TOTP) can be fully bypassed for the REST API. The `KIMAI_SESSION` cookie returned in the response to the login request; issued after only the password is verified, before the TOTP step; is already accepted as authenticated by every `/api/*` endpoint.\n\nSo after submitting just the password, the web UI correctly holds the browser at the TOTP screen (`/en/auth/2fa`), but the cookie from that same login response can be replayed against the API to act as the user without ever entering the second factor. This affects any account with 2FA enabled and requires only the account password.\n\n### Details\n\n#### Affected Component\n- The API firewall / authorization.\n\n`config/packages/security.yaml` guards the API with `{ path: '^/api', roles: IS_AUTHENTICATED }`. During 2FA the session carries a Scheb `TwoFactorToken`, which satisfies `IS_AUTHENTICATED` (it is a real, non-anonymous token). `App\\API\\Authentication\\ApiRequestMatcher` returns `!$request->hasPreviousSession()`, so a request that carries the login session skips the stateless API firewall and is served by the main session firewall; Scheb's `TwoFactorAccessDecider::isAccessible()` then evaluates `IS_AUTHENTICATED` to true for `^/api` and lets it through, and `App\\Voter\\ApiVoter` grants `API` to any token whose user is a `User`. Web routes are not affected because they require concrete roles (e.g. `ROLE_USER`) that a `TwoFactorToken` does not hold.\n\n### PoC\n\n_A PoC was provided, but removed for security reasons._\n\n### Impact\n\nTwo-factor authentication provides no protection for the REST API. If an attacker obtains a user's password (phishing, credential stuffing, reuse, breach); exactly the threat 2FA is meant to defend against; they get full authenticated API access as that user without the second factor. The whole exploit is a single cookie taken from the login response; no API token, Bearer header or CSRF token is required.\n\n## Solution\n\n- The `/api/` firewall now uses `IS_AUTHENTICATED_REMEMBERED` which is only assigned after 2FA. The historically used `IS_AUTHENTICATED` flag  is applied immediately after login and before 2FA happened.\n- The APIVoter checks both `$token instanceof TwoFactorTokenInterface` and  `isGranted('IS_AUTHENTICATED_2FA_IN_PROGRESS', $user)` to make sure that the user is not currently in the  2FA step.\n- Regression tests were added to prevent future escalation of the same issue.\n\nSee [https://www.kimai.org/en/security/ghsa-v8hx-4vx8-wc96](https://www.kimai.org/en/security/ghsa-v8hx-4vx8-wc96) for more information.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "kimai/kimai"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.59.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/kimai/kimai/security/advisories/GHSA-v8hx-4vx8-wc96"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/kimai/kimai"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-14T00:33:39Z",
+    "nvd_published_at": null
+  }
+}
