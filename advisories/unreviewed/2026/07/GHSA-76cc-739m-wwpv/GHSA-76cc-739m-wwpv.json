@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-76cc-739m-wwpv",
+  "modified": "2026-07-14T06:31:21Z",
+  "published": "2026-07-14T06:31:21Z",
+  "aliases": [
+    "CVE-2026-15628"
+  ],
+  "details": "A security flaw has been discovered in zhayujie chatgpt-on-wechat CowAgent up to 2.1.1. This issue affects the function Vision._download_to_data_url of the file agent/tools/vision/vision.py of the component Vision Tool. Performing a manipulation of the argument image results in server-side request forgery. It is possible to initiate the attack remotely. The exploit has been released to the public and may be used for attacks. Upgrading to version 2.1.2 is capable of addressing this issue. The patch is named e85290cddcbb5ffc9c235927f4c92e5b4c3ec264. The affected component should be upgraded.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15628"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhayujie/CowAgent/issues/2878"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhayujie/CowAgent/pull/2886"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhayujie/CowAgent/commit/e85290cddcbb5ffc9c235927f4c92e5b4c3ec264"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zhayujie/CowAgent/releases/tag/2.1.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-15628"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/855849"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/378130"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/378130/cti"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-14T04:17:16Z"
+  }
+}
