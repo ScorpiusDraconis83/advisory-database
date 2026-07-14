@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-98qr-jpxv-vfp8",
+  "modified": "2026-07-14T12:31:15Z",
+  "published": "2026-07-14T12:31:15Z",
+  "aliases": [
+    "CVE-2026-15389"
+  ],
+  "details": "A vulnerability relating to insufficient access control has been identified in the session management of the Sesame Time web application and its REST v3 API. The flaw lies in the fact that the system uses the session identifier (USID) as the sole validation mechanism, without verifying whether that identifier legitimately belongs to the user making the request. As a result, an attacker who obtains a valid USID can impersonate a victim’s session and access their confidential information, including emails, user IDs, roles and corporate data. This vulnerability is exacerbated by poor session lifecycle management: new logins generate additional USIDs without revoking the previous ones, allowing multiple active sessions to coexist and thereby expanding the attack surface.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15389"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.incibe.es/en/incibe-cert/notices/aviso/inadequate-access-control-sesame-time-session-management"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-14T11:16:48Z"
+  }
+}
