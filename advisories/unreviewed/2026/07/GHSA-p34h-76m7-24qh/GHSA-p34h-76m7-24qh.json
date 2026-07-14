@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p34h-76m7-24qh",
+  "modified": "2026-07-14T00:31:02Z",
+  "published": "2026-07-14T00:31:02Z",
+  "aliases": [
+    "CVE-2026-56877"
+  ],
+  "details": "The SCORM lab launch endpoint in Skillable (scorm.skillable.com) through 2026-07-13 does not validate the client-supplied userId parameter against the authenticated SCORM session token. An authenticated user can substitute arbitrary userId values to bypass per-user lab launch rate limits and consume other users' lab allocations, resulting in denial of service against targeted users' lab and exam access. Skillable was formerly named Learn on Demand Systems.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56877"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.openwall.com/lists/oss-security/2026/07/12/1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.skillable.com/security"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/12/1"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/12/2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-472"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-13T22:16:48Z"
+  }
+}

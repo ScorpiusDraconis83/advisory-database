@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6q7w-q386-7c4j",
+  "modified": "2026-07-14T00:31:02Z",
+  "published": "2026-07-14T00:31:02Z",
+  "aliases": [
+    "CVE-2026-51541"
+  ],
+  "details": "OpENer 2.3.0 (commit 76b95cf) has an out-of-bounds read issue in CIP message parsing when handling malformed explicit requests with a forged EPath size. An attacker can send a valid ENIP SendRRData frame carrying a very short CIP payload whose path_size field claims that many more path words are present than are actually available. Because the parser trusts the attacker-controlled path_size and continues decoding path segments without a remaining-length boundary, it reads beyond the end of the stack receive buffer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51541"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/EIPStackGroup/OpENer/issues/582"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/MrAlaskan/705c680856e48c535148265c0899ad4b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-13T22:16:47Z"
+  }
+}

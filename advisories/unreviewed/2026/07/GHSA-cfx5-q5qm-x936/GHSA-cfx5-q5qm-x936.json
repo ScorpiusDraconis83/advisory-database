@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cfx5-q5qm-x936",
+  "modified": "2026-07-14T00:31:05Z",
+  "published": "2026-07-14T00:31:05Z",
+  "aliases": [
+    "CVE-2026-57856"
+  ],
+  "details": "Cockpit CMS contains a path traversal vulnerability in the Bucket file storage API (/system/buckets/api). The api() method in modules/System/Controller/Buckets.php sanitizes the bucket name with preg_replace('/[^a-zA-Z0-9-_\\\\.]/','', $bucket), which permits '..' and '../' sequences. The sanitized value is interpolated into a Flysystem path as uploads://buckets/{bucket}. Flysystem's WhitespacePathNormalizer resolves 'buckets/..' to the empty string (the uploads storage root) without raising PathTraversalDetected because the '..' has a preceding component to consume. An authenticated low-privileged user can send a crafted request with a '../' bucket name to list, upload, and delete files across all buckets, including those belonging to other users or roles",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57856"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cockpit-HQ/Cockpit/commit/dde2d1d74f5f4e11de42a298918ea8c9684f932c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/sermikr0/821c4edd3c34e98a62a50b07707785bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cockpit-hq/cockpit"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cockpit-cms-missing-authorization-in-bucket-file-storage-api"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cockpit-cms-path-traversal-via-bucket-name-in-bucket-file-storage-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-13T23:16:46Z"
+  }
+}

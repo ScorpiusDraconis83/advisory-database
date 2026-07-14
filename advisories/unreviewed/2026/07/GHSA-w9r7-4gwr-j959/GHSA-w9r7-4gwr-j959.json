@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9r7-4gwr-j959",
+  "modified": "2026-07-14T00:31:04Z",
+  "published": "2026-07-14T00:31:04Z",
+  "aliases": [
+    "CVE-2026-62239"
+  ],
+  "details": "FlashAttention through 2.8.3.post1, fixed in commit 0816ef1, contains a symlink attack vulnerability in the download_and_copy() function within hopper/setup.py that extracts NVIDIA toolchain archives without validating symlinks or filtering tar members. A local attacker can pre-plant a symlink in the predictable cache directory to redirect extracted binaries to an attacker-chosen location, enabling arbitrary file write with victim privileges during build time.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62239"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dao-AILab/flash-attention/issues/2637"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dao-AILab/flash-attention/pull/2702"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dao-AILab/flash-attention/commit/0816ef12f424c6ec94b057a72c275b14f6e6edb2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flashattention-symlink-attack-via-tarfile-extractall-in-hopper-setup-py"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-13T22:16:51Z"
+  }
+}

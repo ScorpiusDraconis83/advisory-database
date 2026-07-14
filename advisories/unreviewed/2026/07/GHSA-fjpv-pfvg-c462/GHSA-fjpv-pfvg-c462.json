@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fjpv-pfvg-c462",
+  "modified": "2026-07-14T00:31:04Z",
+  "published": "2026-07-14T00:31:04Z",
+  "aliases": [
+    "CVE-2026-57855"
+  ],
+  "details": "Cockpit CMS contains a missing authorization vulnerability in the Bucket file storage API (/system/buckets/api). The api() method in modules/System/Controller/Buckets.php executes bucket commands (ls, upload, removefiles, rename, createfolder) without performing any ACL or role check. Any authenticated user, regardless of role, can perform all bucket operations on any named bucket, including buckets intended for admin use only.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57855"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cockpit-HQ/Cockpit/commit/dde2d1d74f5f4e11de42a298918ea8c9684f932c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/sermikr0/821c4edd3c34e98a62a50b07707785bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cockpit-hq/cockpit"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cockpit-cms-missing-authorization-in-bucket-file-storage-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-13T23:16:46Z"
+  }
+}
