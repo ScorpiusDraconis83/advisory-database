@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8q6q-m837-fv64",
+  "modified": "2026-07-15T17:31:12Z",
+  "published": "2026-07-15T17:31:12Z",
+  "aliases": [],
+  "summary": " Koel has SSRF through Authenticated Subsonic podcast feed URLs",
+  "details": "## Summary\n\nKoel's Subsonic `createPodcastChannel.view` endpoint accepts a user supplied podcast feed URL and fetches it server-side before applying the safe URL checks that are used for podcast episode enclosure URLs. An authenticated Subsonic API user can provide a loopback or internal URL as the feed URL and cause the Koel backend to issue a request to that address.\n\nA related redirect gap exists in the podcast stream helper: `PodcastService::getStreamableUrl()` validates only the original URL, then lets Guzzle follow redirects and accepts the final redirected URL without re-validating it.\n\n## Impact\n\nAn attacker with any valid Koel account and Subsonic API key can trigger server-side requests from the Koel host to loopback or internal network services. This can be used for blind SSRF against internal HTTP endpoints reachable by the Koel deployment. If an internal service returns valid RSS/XML or permissive CORS responses, parts of the response or final URL may be reflected back through normal podcast or stream behavior.\n\n## Reproduction\n\n1. Start Koel v9.6.0 or current main and create a normal user.\n2. Obtain the user's Subsonic API key.\n3. Start a local canary HTTP server on the Koel host at `127.0.0.1:8103` that records requests and returns this minimal RSS feed:\n\n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rss version=\"2.0\">\n  <channel>\n    <title>Internal Canary Feed</title>\n    <link>https://example.com/</link>\n    <description>Internal feed SSRF canary</description>\n    <item>\n      <title>Episode One</title>\n      <guid>koel-internal-canary-episode-1</guid>\n      <pubDate>Mon, 01 Jun 2026 12:00:00 GMT</pubDate>\n      <enclosure url=\"https://example.com/episode.mp3\" length=\"1\" type=\"audio/mpeg\" />\n    </item>\n  </channel>\n</rss>\n```\n\n4. Send an authenticated Subsonic request:\n\n```http\nGET /rest/createPodcastChannel.view?apiKey=<SUBSONIC_API_KEY>&f=json&url=http://127.0.0.1:8103/feed.xml HTTP/1.1\nHost: koel.example\n```\n\n5. The endpoint returns a successful Subsonic response and the canary records a backend request:\n\n```text\nGET /feed.xml\n```\n\nUnauthenticated control: the same request without a valid API key fails and does not hit the canary.\n\nRedirect control for the stream helper: calling `PodcastService::getStreamableUrl()` with direct `http://127.0.0.1:8102/secret` returns `null` and makes no canary request. Calling it with a safe-looking public URL that redirects to `http://127.0.0.1:8102/secret` causes the backend to request `OPTIONS /secret` and returns the loopback final URL.\n\n## Root cause\n\n`app/Http/Requests/Subsonic/CreatePodcastChannelRequest.php` validates `url` only as `required|string|url`. The controller passes it to `PodcastService::addPodcast()`, where `PodcastService.php` calls `createParser($url)` and `Poddle::fromUrl($url, ...)` before any `Network::isSafeUrl()` check. The enclosure URL guard in `synchronizeEpisodes()` runs later and only covers episode enclosure URLs, not the feed URL that was already fetched.\n\nFor streaming, `PodcastService::getStreamableUrl()` checks `Network::isSafeUrl($url)` on the original URL, then follows redirects with Guzzle and accepts the last redirect target from `X-Guzzle-Redirect-History` without validating that target.\n\n## Remediation\n\nValidate the podcast feed URL with the same safe URL policy before `Poddle::fromUrl()` performs any request. Re-validate every redirect target before following it, or disable automatic redirects and manually fetch only targets that pass the safe URL policy. Apply the same redirect validation in `getStreamableUrl()`. Add regression tests for direct loopback and private IP feed URLs, DNS names resolving to private ranges, and public URL to loopback redirects.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "phanan/koel"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.7.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 9.6.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/koel/koel/security/advisories/GHSA-8q6q-m837-fv64"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/koel/koel"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/koel/koel/releases/tag/v9.7.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-15T17:31:12Z",
+    "nvd_published_at": null
+  }
+}
