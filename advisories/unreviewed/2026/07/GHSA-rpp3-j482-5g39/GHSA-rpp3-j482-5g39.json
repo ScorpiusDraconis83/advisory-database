@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rpp3-j482-5g39",
+  "modified": "2026-07-15T12:32:03Z",
+  "published": "2026-07-15T12:32:03Z",
+  "aliases": [
+    "CVE-2026-59236"
+  ],
+  "details": "Authorization Bypass Through User-Controlled Key (CWE-639) in the Excel import handlers (CustomerImport, LeadImport, ProductImport) in Roskus Prospero Flow CRM before 5.14.0 allows a remote, authenticated user of any role or company to create customer, lead, and product records inside another company's tenant via a spreadsheet whose company_id column points to the victim tenant, uploaded to POST /customer/import/excel/save, which maps company_id directly from the file and performs no check that it matches the authenticated user's company.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59236"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/commit/bdd6c9770a7435a45f0411154671b8a3e94dcdaa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/releases/tag/v5.14.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://secur0.com/en/cna/cve-list/cve-2026-59236-authorization-bypass-in-prospero-flow-crm-excel-import-allows-cross-tenant-record-injection"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-15T12:18:17Z"
+  }
+}

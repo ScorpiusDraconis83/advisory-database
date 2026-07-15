@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mg5f-qx7f-gf9j",
-  "modified": "2026-07-15T06:31:45Z",
+  "modified": "2026-07-15T12:32:00Z",
   "published": "2026-07-15T06:31:45Z",
   "aliases": [
     "CVE-2026-11580"
   ],
   "details": "The Kali Forms — Contact Form & Drag-and-Drop Builder WordPress plugin before 2.4.17 does not perform a per-object capability check in its post-duplication AJAX action, allowing users with Contributor-level access or above to duplicate any post (regardless of owner, post type, or status) into a published post they own and read its private post metadata, including secrets stored by other Kali Forms — Contact Form & Drag-and-Drop Builder WordPress plugin before 2.4.17.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-15T06:16:43Z"

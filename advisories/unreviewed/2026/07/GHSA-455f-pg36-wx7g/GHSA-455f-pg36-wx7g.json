@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-455f-pg36-wx7g",
+  "modified": "2026-07-15T12:32:02Z",
+  "published": "2026-07-15T12:32:02Z",
+  "aliases": [
+    "CVE-2026-56353"
+  ],
+  "details": "n8n contains an authentication bypass in the Chat Trigger node when configured with n8n User Auth (a non-default configuration). In affected releases — before 1.123.22, the 2.0.0 through 2.9.2 line, and 2.10.0 — the authentication check on the Chat Trigger webhook endpoint can be circumvented, allowing access without valid credentials. Fixed in 1.123.22, 2.9.3, and 2.10.1.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/n8n-io/n8n/security/advisories/GHSA-jh8h-6c9q-7gmw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56353"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/n8n-authentication-bypass-in-chat-trigger-node"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-15T12:18:02Z"
+  }
+}

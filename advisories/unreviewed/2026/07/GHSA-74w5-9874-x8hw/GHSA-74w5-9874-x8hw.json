@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-74w5-9874-x8hw",
+  "modified": "2026-07-15T12:32:02Z",
+  "published": "2026-07-15T12:32:01Z",
+  "aliases": [
+    "CVE-2026-59235"
+  ],
+  "details": "Missing Authorization (CWE-862) in BankAccountListController (app/Http/Controllers/Api/BankAccount/BankAccountListController.php), exposed at GET /api/bank-account, in Prospero Flow CRM <5.5.3, which allows a remote, authenticated attacker holding a low-privileged role (e.g. the \"User\"/\"Usuario\" role) to read arbitrary bank account records belonging to their company by sending an authenticated request to the endpoint with a valid bearer token, because the API route is protected only by the auth:api middleware and carries no permission gate, unlike the equivalent web route, which enforces can('read bank'), and the handler resolves records with Account::where('company_id', Auth::user()->company_id)->get(), performing only company scoping and no role or permission check before returning the data. This results in the unauthorized disclosure of sensitive banking information (e.g. IBAN, SWIFT/BIC, account identifiers) to users who should not have access to it.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/commit/57bb57212af03151c989d67d6723d5ddb3e81e7b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/releases#release-v5.5.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://secur0.com/en/cna/cve-list/cve-2026-59235-missing-authorization-in-prospero-flow-crm-allows-low-privileged-users-to-read-all-bank-accounts"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-15T11:16:33Z"
+  }
+}

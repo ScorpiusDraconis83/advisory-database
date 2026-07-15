@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r9r9-wg76-6qmq",
+  "modified": "2026-07-15T12:32:04Z",
+  "published": "2026-07-15T12:32:04Z",
+  "aliases": [
+    "CVE-2026-61451"
+  ],
+  "details": "The Grav API plugin (grav-plugin-api) before 1.0.4 does not validate the origin of the client-supplied admin_base_url field in the POST /api/v1/auth/forgot-password endpoint. The sanitizeHttpUrl() function only checks that the URL scheme is http/https and never verifies the host against the server's own origin, so an attacker can supply an arbitrary host. As a result, an unauthenticated attacker can cause the password reset email sent to a victim to contain a reset link pointing at an attacker-controlled server; when the victim follows the link, the valid reset token is disclosed to the attacker, enabling full account takeover. The vulnerable base URL can also be influenced via the Referer or Origin headers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-5xc4-j99p-cp4m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61451"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-before-password-reset-token-poisoning-via-admin-base-url"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-15T12:18:19Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qh3g-555w-f82q",
+  "modified": "2026-07-15T12:32:04Z",
+  "published": "2026-07-15T12:32:04Z",
+  "aliases": [
+    "CVE-2026-61438"
+  ],
+  "details": "PraisonAI before 4.6.78 contains a remote code execution vulnerability in JobWorkflowExecutor._exec_inline_python() due to insufficient AST validation of workflow script steps. Attackers can create malicious YAML workflow files with import os statements followed by os.system() calls that bypass sandbox checks and execute arbitrary OS commands with process privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-26mh-57q7-jfvr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61438"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/praisonai-before-remote-code-execution-via-broken-ast-sandbox"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-15T12:18:18Z"
+  }
+}

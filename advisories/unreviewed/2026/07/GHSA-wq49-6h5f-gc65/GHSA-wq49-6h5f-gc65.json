@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wq49-6h5f-gc65",
+  "modified": "2026-07-15T12:32:01Z",
+  "published": "2026-07-15T12:32:01Z",
+  "aliases": [
+    "CVE-2026-57821"
+  ],
+  "details": "A SQL Injection vulnerability exists in Apache Fineract's Office Search API (GET /api/v1/offices) in versions up to and including 1.14.0. The orderBy request parameter is concatenated into a SQL query without sufficient validation, allowing an authenticated user with permission to view offices to inject arbitrary SQL via a crafted orderBy value. This is a bypass of the ColumnValidator fix introduced for CVE-2024-32838, which does not detect bare subqueries in the ORDER BY position. This can be leveraged to perform time-based blind SQL injection for data exfiltration. Because the injected query blocks the database connection for its full duration, concurrent exploitation can exhaust the application's database connection pool, resulting in denial of service for other users. Users are recommended to upgrade to a version containing the fix.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/fineract/pull/6048"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/lb7zwdv7qntzy6z05gzf7m8mxw9cbgsj"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/rj5vwh3z2xcvsf0rqwj8kokpbrxkhq4n"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-15T10:16:47Z"
+  }
+}

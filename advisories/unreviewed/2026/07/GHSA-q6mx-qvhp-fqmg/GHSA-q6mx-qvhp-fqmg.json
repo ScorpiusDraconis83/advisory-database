@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q6mx-qvhp-fqmg",
+  "modified": "2026-07-15T12:32:03Z",
+  "published": "2026-07-15T12:32:03Z",
+  "aliases": [
+    "CVE-2026-59259"
+  ],
+  "details": "n8n before versions 1.123.61, 2.27.4, and 2.28.1 contains a permission bypass vulnerability in external secrets handling caused by a mismatch between the static validation check and the runtime expression engine. An authenticated user with credential create or update permissions but without the externalSecret:list scope can embed external secret references into credentials in forms the static validation does not detect; these references resolve at workflow execution time, exposing secret values the user is not authorized to access. This issue only affects instances where an external secrets provider is configured and Advanced Permissions are in use.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/n8n-io/n8n/security/advisories/GHSA-jp7m-xcgx-57qm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59259"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/n8n-permission-bypass-via-expression-parser-mismatch-in-external-secrets"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-15T12:18:17Z"
+  }
+}

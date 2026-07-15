@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7wcr-m737-mchr",
+  "modified": "2026-07-15T12:32:04Z",
+  "published": "2026-07-15T12:32:04Z",
+  "aliases": [
+    "CVE-2026-61457"
+  ],
+  "details": "The Grav API plugin (getgrav/grav-plugin-api) before 1.0.3 contains a file upload extension bypass in the API media controller. HandlesMediaUploads::validateFileExtension() inspects only the final file extension via pathinfo($filename, PATHINFO_EXTENSION), so a user with api.media.write permission can upload a file with a double extension such as shell.php.jpg to bypass the dangerous extensions blocklist. The web server may then execute the file as PHP, resulting in remote code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-66v2-vxxf-xc3v"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61457"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-before-remote-code-execution-via-file-upload-extension-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-15T12:18:20Z"
+  }
+}
