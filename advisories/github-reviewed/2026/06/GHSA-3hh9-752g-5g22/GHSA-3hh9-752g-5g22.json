@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3hh9-752g-5g22",
-  "modified": "2026-06-04T18:30:32Z",
+  "modified": "2026-07-15T22:10:24Z",
   "published": "2026-06-04T18:30:31Z",
   "aliases": [
     "CVE-2026-10813"
   ],
+  "summary": "LMCache: 16-bit multimodal hash collision can poison KV cache entries",
   "details": "A flaw has been found in LMCache up to 0.4.6. This affects the function hex_hash_to_int16 of the file lmcache/integration/vllm/utils.py of the component KV Cache Handler. Executing a manipulation can lead to use of weak hash. The attack needs to be launched locally. The attack requires a high level of complexity. It is indicated that the exploitability is difficult. The exploit has been published and may be used. The pull request to fix this issue awaits acceptance.",
   "severity": [
     {
@@ -14,10 +15,30 @@
     },
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:L/AC:H/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:L/AC:H/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:P"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "lmcache"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.4.6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -32,7 +53,7 @@
       "url": "https://github.com/LMCache/LMCache/pull/2932"
     },
     {
-      "type": "WEB",
+      "type": "PACKAGE",
       "url": "https://github.com/LMCache/LMCache"
     },
     {
@@ -57,8 +78,8 @@
       "CWE-327"
     ],
     "severity": "LOW",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-15T22:10:24Z",
     "nvd_published_at": "2026-06-04T16:16:32Z"
   }
 }
