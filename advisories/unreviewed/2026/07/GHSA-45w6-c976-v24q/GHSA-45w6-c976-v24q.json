@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-45w6-c976-v24q",
+  "modified": "2026-07-15T18:31:58Z",
+  "published": "2026-07-15T18:31:58Z",
+  "aliases": [
+    "CVE-2026-12382"
+  ],
+  "details": "A flaw was found in the AAP Gateway Envoy proxy configuration. The non-mTLS route to EDA event streams does not remove the Subject HTTP header from client requests, despite the source code defining requestHeadersToRemove for this header. An unauthenticated remote attacker can inject a spoofed Subject header matching a legitimate client certificate DN to bypass mTLS authentication and inject arbitrary events into protected EDA event streams.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12382"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-12382"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2489126"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-290"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-15T18:16:44Z"
+  }
+}

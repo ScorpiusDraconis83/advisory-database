@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mxpm-jvrh-gcj5",
+  "modified": "2026-07-15T18:31:58Z",
+  "published": "2026-07-15T18:31:58Z",
+  "aliases": [
+    "CVE-2026-59258"
+  ],
+  "details": "immich before 3.0.3 contains a broken access control vulnerability in the PUT /albums/:id/user/:userId endpoint that allows shared album editors to modify member roles without owner-only restrictions. Attackers with editor access can demote the album owner to editor and promote themselves to owner in sequential requests, gaining full control including deletion and eviction capabilities.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59258"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/immich-app/immich/issues/29857"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/immich-app/immich/pull/29883"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/immich-app/immich/commit/84dff19ca9a467752d848ff54763d62c04ebf960"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/immich-app/immich/releases/tag/v3.0.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/immich-shared-album-editor-ownership-takeover-via-updateuser"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-15T18:16:49Z"
+  }
+}
