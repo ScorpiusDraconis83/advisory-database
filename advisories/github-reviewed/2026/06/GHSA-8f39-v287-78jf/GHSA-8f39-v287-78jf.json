@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8f39-v287-78jf",
-  "modified": "2026-06-04T18:30:32Z",
+  "modified": "2026-07-15T22:32:28Z",
   "published": "2026-06-04T18:30:32Z",
   "aliases": [
     "CVE-2026-50076"
   ],
+  "summary": "Apache Fory Java SDK Has Deserialization of Untrusted Data in the Java replace-resolve path",
   "details": "Deserialization of Untrusted Data in the Java replace-resolve path in Apache Fory fory-core Java SDK before 1.1.0 on Java/JVM platforms allows a remote attacker to bypass class registration, TypeChecker, and DisallowedList checks and invoke classpath-present readResolve/readExternal hooks via crafted Fory serialized data.\n\nUsers are recommended to upgrade to version 1.1.0 or later, which fixes this issue.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.fory:fory-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.1.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -22,6 +43,10 @@
     {
       "type": "WEB",
       "url": "https://fory.apache.org/security"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/fory"
     },
     {
       "type": "WEB",
@@ -33,8 +58,8 @@
       "CWE-502"
     ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-15T22:32:28Z",
     "nvd_published_at": "2026-06-04T17:16:33Z"
   }
 }
