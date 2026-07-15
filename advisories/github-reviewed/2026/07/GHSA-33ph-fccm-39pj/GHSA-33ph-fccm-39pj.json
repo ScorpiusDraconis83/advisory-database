@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-33ph-fccm-39pj",
+  "modified": "2026-07-15T22:03:59Z",
+  "published": "2026-07-15T22:03:59Z",
+  "aliases": [
+    "CVE-2026-54464"
+  ],
+  "summary": "websocket-driver: Resource limit bypass via message compression",
+  "details": "### Impact\n\nIf this library is used in tandem with the `permessage-deflate` extension, a WebSocket server or client can be made to accept messages that are larger than the configured maximum message size. This is because this limit is checked against the message frames' length headers, which give the size of the compressed data, not the size after decompression. This can lead to applications accepting larger messages than expected and exceeding their intended resource usage.\n\n### Patches\n\nThe issue has been patched in version 0.8.1, by checking the length of messages after they are processed by incoming extensions. All users should upgrade to this version.\n\n### Workarounds\n\nNo known workarounds exist.\n\n### Acknowledgements\n\nThis issue was discovered and reported by Pranjali Thakur, DepthFirst Security Research Team.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "websocket-driver"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.8.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/faye/websocket-driver-ruby/security/advisories/GHSA-33ph-fccm-39pj"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/faye/websocket-driver-ruby"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/faye/websocket-driver-ruby/releases/tag/0.8.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/websocket-driver/CVE-2026-54464.yml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord/SearchResults?query=CVE-2026-54464"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-15T22:03:59Z",
+    "nvd_published_at": null
+  }
+}
