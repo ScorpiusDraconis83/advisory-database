@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j482-hm6j-v5jj",
+  "modified": "2026-07-15T21:31:22Z",
+  "published": "2026-07-15T21:31:22Z",
+  "aliases": [
+    "CVE-2026-26032"
+  ],
+  "details": "The PackagerResolver of Apache Ivy is able to download online\nartifacts and to (re)package them in a format defined by a\npackager.xml file. This repackaging is done by an Ant script, which is\nstored in a subdirectory of the configured \"buildRoot\" directory. This\nsubdirectory is calculated based on modules coordinates, like the\norganisation, name or version.\n\nIf one of the coordinates contains \"../\" sequences - which are valid\ncharacters for Ivy coordinates in general- it is possible to break out\nof the configured \"buildRoot\" directory where other files can be\noverwritten.\n\nIn order to exploit this vulnerability an attacker needs to have\naccess to a packager repository and add or modify the coordinates in\nivy.xml files to have such \"../\" sequences.\n\nUsers of Apache Ivy 2.0.0 to 2.5.3 (inclusive) should upgrade to Ivy 2.6.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26032"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/4d9dzrlnoplvywnyj9x6w84kxg7n3jyq"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/15/5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-15T19:17:10Z"
+  }
+}
