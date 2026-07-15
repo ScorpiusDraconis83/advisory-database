@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wj9x-8hv5-2p36",
-  "modified": "2026-07-15T00:31:43Z",
+  "modified": "2026-07-15T15:33:00Z",
   "published": "2026-07-15T00:31:43Z",
   "aliases": [
     "CVE-2025-56365"
   ],
   "details": "A reachable assertion vulnerability exists in the Matter SDK (connectedhomeip) before 1.4.0, in the interaction model command processing logic. When an InvokeCommandRequest is sent to a nonexistent endpoint and cluster (e.g., 0x34), the code incorrectly treats the endpoint as valid due to missing checks in CodegenDataModelProvider::Invoke. This causes a VerifyOrDie failure in ProcessCommandDataIB and results in a crash (SIGABRT). The issue has been acknowledged and fixed in a later revision (PR #37207).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-617"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-14T23:17:27Z"

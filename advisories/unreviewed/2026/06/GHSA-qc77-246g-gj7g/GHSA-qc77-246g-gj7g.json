@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qc77-246g-gj7g",
-  "modified": "2026-06-24T18:32:43Z",
+  "modified": "2026-07-15T15:32:43Z",
   "published": "2026-06-24T18:32:43Z",
   "aliases": [
     "CVE-2026-52997"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: sch_dualpi2: drain both C-queue and L-queue in dualpi2_change()\n\nFix dualpi2_change() to correctly enforce updated limit and memlimit\nvalues after a configuration change of the dualpi2 qdisc.\n\nBefore this patch, dualpi2_change() always attempted to dequeue packets\nvia the root qdisc (C-queue) when reducing backlog or memory usage, and\nunconditionally assumed that a valid skb will be returned. When traffic\nclassification results in packets being queued in the L-queue while the\nC-queue is empty, this leads to a NULL skb dereference during limit or\nmemlimit enforcement.\n\nThis is fixed by first dequeuing from the C-queue path if it is\nnon-empty. Once the C-queue is empty, packets are dequeued directly from\nthe L-queue. Return values from qdisc_dequeue_internal() are checked for\nboth queues. When dequeuing from the L-queue, the parent qdisc qlen and\nbacklog counters are updated explicitly to keep overall qdisc statistics\nconsistent.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:10Z"

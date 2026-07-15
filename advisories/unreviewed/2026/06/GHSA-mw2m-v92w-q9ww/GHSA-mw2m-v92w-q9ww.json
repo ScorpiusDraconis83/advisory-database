@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mw2m-v92w-q9ww",
-  "modified": "2026-06-24T18:32:44Z",
+  "modified": "2026-07-15T15:32:44Z",
   "published": "2026-06-24T18:32:43Z",
   "aliases": [
     "CVE-2026-53021"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: target: core: Fix integer overflow in UNMAP bounds check\n\nsbc_execute_unmap() checks LBA + range does not exceed the device capacity,\nbut does not guard against LBA + range wrapping around on 64-bit overflow.\n\nAdd an overflow check matching the pattern already used for WRITE_SAME in\nthe same file.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:13Z"

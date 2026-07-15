@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fcf9-3vvc-8qg6",
-  "modified": "2026-07-15T12:32:01Z",
+  "modified": "2026-07-15T15:33:01Z",
   "published": "2026-07-15T12:32:01Z",
   "aliases": [
     "CVE-2026-56287"
   ],
   "details": "A boolean-based SQL Injection vulnerability exists in Apache Fineract's Client Search API (GET /api/v1/clients) in versions up to and including 1.14.0. The orderBy and sortOrder request parameters are concatenated into a SQL query without sufficient validation, allowing an authenticated user with permission to view clients to inject arbitrary SQL via a crafted orderBy value. This can be leveraged to perform blind boolean-based data extraction and, on MySQL/MariaDB, to disclose arbitrary files readable by the database process via the LOAD_FILE() function. Users are recommended to upgrade to a version containing the fix",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -31,7 +36,7 @@
     "cwe_ids": [
       "CWE-89"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-15T10:16:47Z"

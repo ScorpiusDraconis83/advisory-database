@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m73p-xg7q-m8f2",
+  "modified": "2026-07-15T15:33:07Z",
+  "published": "2026-07-15T15:33:07Z",
+  "aliases": [
+    "CVE-2026-56434"
+  ],
+  "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_ssi_module module. This vulnerability may exist when the Server-Side Includes (SSI), proxy_pass, and proxy_buffering off directives are configured. With this configuration, an unauthenticated attacker with man-in-the-middle (MITM) ability to control responses from an upstream server may be able to cause a heap buffer over-read in the NGINX worker process. This issue may lead to limited modification of memory or a restart of the NGINX worker process.\n\nImpact:\nThis vulnerability may allow remote attackers to have limited control to modify memory contents or restart the NGINX worker process. There is no control plane exposure; this is a data plane issue only.\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56434"
+    },
+    {
+      "type": "WEB",
+      "url": "https://my.f5.com/manage/s/article/K000162098"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-15T15:16:45Z"
+  }
+}
