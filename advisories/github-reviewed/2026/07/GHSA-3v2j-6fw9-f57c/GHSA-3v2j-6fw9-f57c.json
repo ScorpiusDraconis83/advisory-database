@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3v2j-6fw9-f57c",
+  "modified": "2026-07-15T18:41:55Z",
+  "published": "2026-07-15T18:41:55Z",
+  "aliases": [
+    "CVE-2026-52882"
+  ],
+  "summary": "MantisBT: REST and SOAP API Issue Update Accepts Unreleased Product Versions From Updaters",
+  "details": "### Impact\nUsers below _report_issues_for_unreleased_versions_threshold_ can assign unreleased product versions.\n\n### Patches\n- https://github.com/mantisbt/mantisbt/commit/17072d4c322c85f7135ebec3417a6d90b525d12f\n\n### Workarounds\nNone\n\n### Resources\n- https://mantisbt.org/bugs/view.php?id=37065\n\n### Credits\nMantisBT thanks Vishal Shukla for discovering and responsibly reporting the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mantisbt/mantisbt"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.28.4"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2.28.3"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mantisbt/mantisbt/security/advisories/GHSA-3v2j-6fw9-f57c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mantisbt/mantisbt/commit/17072d4c322c85f7135ebec3417a6d90b525d12f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mantisbt/mantisbt"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mantisbt.org/bugs/view.php?id=37065"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-15T18:41:55Z",
+    "nvd_published_at": null
+  }
+}
