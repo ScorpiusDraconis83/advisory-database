@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mv6q-v23c-9757",
+  "modified": "2026-07-15T00:31:43Z",
+  "published": "2026-07-15T00:31:43Z",
+  "aliases": [
+    "CVE-2025-56363"
+  ],
+  "details": "A null pointer dereference vulnerability exists in the Matter SDK (connectedhomeip) before 1.4.0, affecting the ReadRevisionAttribute function used in multiple clusters (Channel, Account Login, TargetNavigator, etc.). The function lacks proper validation of the delegate pointer before dereferencing. A remote unauthenticated attacker can exploit this issue by sending a crafted read request, causing the device to crash (denial of service). This issue has been confirmed in SDK version v1.4 (commit ab3d5ae).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-56363"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/project-chip/connectedhomeip/issues/39173"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/project-chip/connectedhomeip"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-14T23:17:27Z"
+  }
+}
