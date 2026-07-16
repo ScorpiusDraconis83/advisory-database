@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6g26-7cx5-mrrg",
-  "modified": "2026-06-26T09:30:46Z",
+  "modified": "2026-07-16T19:26:10Z",
   "published": "2026-06-05T09:33:46Z",
   "aliases": [
     "CVE-2026-9088"
   ],
+  "summary": "Keycloak: Information disclosure due to user profile permission bypass",
   "details": "A flaw was found in org.keycloak.services. An administrator with delegated access to read group memberships and users can bypass user profile permissions by accessing the group members endpoint. This allows the administrator to view user attributes that are explicitly configured to be denied, leading to information disclosure.",
   "severity": [
     {
@@ -13,11 +14,43 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.keycloak:keycloak-services"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "26.7.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9088"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keycloak/keycloak/issues/49174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keycloak/keycloak/pull/49391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keycloak/keycloak/commit/bf0df40a91a05e550891dcdae2d922b556db7e7b"
     },
     {
       "type": "WEB",
@@ -42,6 +75,10 @@
     {
       "type": "WEB",
       "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2480179"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/keycloak/keycloak"
     }
   ],
   "database_specific": {
@@ -49,8 +86,8 @@
       "CWE-1220"
     ],
     "severity": "LOW",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-16T19:26:10Z",
     "nvd_published_at": "2026-06-05T08:16:30Z"
   }
 }
