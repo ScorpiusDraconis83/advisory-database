@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9836-vm3x-qwmj",
+  "modified": "2026-07-16T15:33:10Z",
+  "published": "2026-07-16T15:33:10Z",
+  "aliases": [
+    "CVE-2026-11386"
+  ],
+  "details": "An input validation and injection vulnerability exists in Canonical ubuntu-pro-client (formerly ubuntu-advantage-tools). The client constructs APT source files (such as /etc/apt/sources.list.d/ubuntu-.list or their DEB822 equivalents) using data received directly from the contract server response via the directives.suites[] and directives.aptURL fields. Because the client utilizes Python's str.format() to write these files without performing escaping, validation, or newline character filtering, a malicious or tampered contract response containing embedded newline (\\n) characters can successfully inject arbitrary, attacker-controlled deb configuration lines into root-owned APT sources. When combined with the unvalidated additionalPackages[] field—which is passed positionally into a root-executed apt-get install command—an attacker capable of spoofing or manipulating the contract response (e.g., via a compromised internal infrastructure, an intercepted connection utilizing a trusted CA, or local logical bugs) can force the client to fetch and install malicious packages. This ultimately leads to arbitrary code execution with root privileges on the affected system. This component is preinstalled on supported Ubuntu Server releases and auto-attaches by default on cloud provider Ubuntu Pro images.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11386"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ubuntu.com/security/CVE-2026-11386"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-16T13:16:24Z"
+  }
+}

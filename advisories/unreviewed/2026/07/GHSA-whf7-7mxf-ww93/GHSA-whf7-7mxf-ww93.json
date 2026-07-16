@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-whf7-7mxf-ww93",
+  "modified": "2026-07-16T15:33:10Z",
+  "published": "2026-07-16T15:33:10Z",
+  "aliases": [
+    "CVE-2026-12391"
+  ],
+  "details": "An insecure symlink following vulnerability exists in Canonical ubuntu-pro-client (formerly ubuntu-advantage-tools) within the pro collect-logs command framework. The utility creates or utilizes predictable temporary file paths or user-accessible log directories when gathering diagnostic information without verifying the file type or ownership. An unprivileged local attacker can exploit this behavior by creating a symbolic link (symlink) at a predictable destination path pointing to an arbitrary, root-readable file (such as /etc/shadow or private files within /root). When a root administrator or operator subsequently executes the pro collect-logs command, the tool follows the user-controlled symlink, reads the target file, and compresses its contents into the resulting diagnostic support archive. Because the output archive remains readable by the unprivileged user, the attacker can extract and read the sensitive root-owned files, leading to a complete information disclosure of system secrets.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ubuntu.com/security/CVE-2026-12391"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-16T13:16:24Z"
+  }
+}

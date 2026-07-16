@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j8mc-rrx2-537q",
-  "modified": "2026-07-16T09:32:17Z",
+  "modified": "2026-07-16T15:33:09Z",
   "published": "2026-07-16T09:32:17Z",
   "aliases": [
     "CVE-2026-12978"
   ],
   "details": "The FunnelKit  WordPress plugin before 3.15.0.6 does not escape a user-supplied parameter before reflecting it into the HTML response of one of its page-builder AJAX actions, allowing unauthenticated attackers to perform Reflected Cross-Site Scripting against logged-in users who open a crafted page. The affected action is only registered when the Divi /builder is active.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-16T07:16:47Z"

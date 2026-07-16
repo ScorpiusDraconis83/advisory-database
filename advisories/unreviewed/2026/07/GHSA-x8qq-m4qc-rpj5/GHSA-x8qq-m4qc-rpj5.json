@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x8qq-m4qc-rpj5",
+  "modified": "2026-07-16T15:33:11Z",
+  "published": "2026-07-16T15:33:11Z",
+  "aliases": [
+    "CVE-2026-59237"
+  ],
+  "details": "Authorization Bypass Through User-Controlled Key (CWE-639) in the Order and OrderItem REST API controllers in Roskus Prospero Flow CRM before 5.5.3 allows a remote, authenticated user to read, modify, and delete orders and order items belonging to any other company (tenant) via a sequential numeric {id} supplied to GET /api/order/{id}, PUT /api/order/{id}, GET /api/order-item/{id}, PUT /api/order-item/{id}, or DELETE /api/order-item/{id}, because the controllers resolve records with Order::find($id) / Item::find($id) without scoping by the authenticated user's company.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59237"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/commit/9a859c4de3d49674916773d346c60d89ad7febe0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/releases/tag/v5.5.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://secur0.com/en/cna/cve-list/cve-2026-59237-idor-in-prospero-flow-crm-order-api-allows-cross-tenant-read-and-modification-of-orders"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-16T15:16:34Z"
+  }
+}

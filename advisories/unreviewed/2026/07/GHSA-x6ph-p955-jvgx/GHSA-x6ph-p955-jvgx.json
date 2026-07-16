@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-x6ph-p955-jvgx",
-  "modified": "2026-07-16T09:32:16Z",
+  "modified": "2026-07-16T15:33:08Z",
   "published": "2026-07-16T09:32:16Z",
   "aliases": [
     "CVE-2026-11371"
   ],
   "details": "The BetterDocs  WordPress plugin before 4.5.5 does not sanitise an AI-generated documentation summary before storing and outputting it, and the feature that generates it is exposed to unauthenticated users, allowing them to store a malicious payload via prompt injection that executes in the browser of any visitor who views the affected page, including administrators.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-16T07:16:46Z"

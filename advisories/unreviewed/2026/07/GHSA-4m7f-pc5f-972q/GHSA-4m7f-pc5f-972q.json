@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4m7f-pc5f-972q",
+  "modified": "2026-07-16T15:33:11Z",
+  "published": "2026-07-16T15:33:11Z",
+  "aliases": [
+    "CVE-2026-35145"
+  ],
+  "details": "HCL DFXAnalytics is affected by a Missing HTTP Strict-Transport-Security Header vulnerability. The application fails to implement the HTTP Strict Transport Security (HSTS) policy within its responses, which could allow a remote attacker to downgrade the communication channel to an unencrypted connection (HTTP) and conduct man-in-the-middle (MitM) attacks. To remediate this, the application must include the \"Strict-Transport-Security\" header in all web application responses.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-35145"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.hcl-software.com/csm?id=kb_article&sysparm_article=KB0131787"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-16T14:16:51Z"
+  }
+}

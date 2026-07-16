@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mm7h-qq6c-6h9w",
-  "modified": "2026-07-16T09:32:16Z",
+  "modified": "2026-07-16T15:33:08Z",
   "published": "2026-07-16T09:32:16Z",
   "aliases": [
     "CVE-2026-12869"
   ],
   "details": "The Header Footer Builder for Elementor WordPress plugin before 1.2.1 does not require an administrative capability for its dashboard template-import action (it allows any edit_posts user), so a Contributor can import a template containing an Elementor HTML widget configured to display site-wide, injecting JavaScript that executes in the session of any visitor or administrator who loads the site.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-16T07:16:47Z"

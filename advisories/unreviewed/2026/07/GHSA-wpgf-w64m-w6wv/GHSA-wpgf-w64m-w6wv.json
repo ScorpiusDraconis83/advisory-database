@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wpgf-w64m-w6wv",
+  "modified": "2026-07-16T15:33:11Z",
+  "published": "2026-07-16T15:33:11Z",
+  "aliases": [
+    "CVE-2026-14254"
+  ],
+  "details": "A race condition in the account lockout mechanism in Delphix Continous Data allowed the lockout threshold to be bypassed through concurrent authentication requests. Parallel login attempts were processed before the failed-login counter and lockout status were updated, defeating brute-force protections and enabling continued password guessing against a targeted account.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14254"
+    },
+    {
+      "type": "WEB",
+      "url": "https://portal.perforce.com/s/cve/a91Qi0000036VKLIA2/improper-restriction-of-excessive-authentication-attempts-in-delphix-cd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-307"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-16T15:16:30Z"
+  }
+}
