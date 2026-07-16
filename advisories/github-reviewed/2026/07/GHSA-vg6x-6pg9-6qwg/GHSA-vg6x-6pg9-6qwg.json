@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vg6x-6pg9-6qwg",
+  "modified": "2026-07-16T20:08:24Z",
+  "published": "2026-07-16T20:08:24Z",
+  "aliases": [
+    "CVE-2026-54076"
+  ],
+  "summary": "ArcadeDB: Read-only users can mutate database schema (incomplete fix of CVE-2026-44221)",
+  "details": "### Impact\n\nThe fix for CVE-2026-44221 (GHSA-fxc7-fm93-6q77) added an `UPDATE_SCHEMA` authorization check to a single schema-mutating method (`LocalDocumentType.createProperty`). The remaining public schema mutators were left unchecked, so an authenticated identity (including a **read-only API token**) that lacks the `UPDATE_SCHEMA` permission could still mutate the database schema on its own database:\n\n- `DROP PROPERTY <type>.<property>`\n- `ALTER TYPE <name> SUPERTYPE +<other>` / `-<other>` (change the inheritance hierarchy)\n- `ALTER TYPE <name> NAME <newName>` (rename a type)\n- type alias and bucket changes\n- `ALTER PROPERTY <type>.<property> ...` (MANDATORY, READONLY, NOTNULL, MIN, MAX, REGEXP, DEFAULT, OF, CUSTOM) — the `LocalProperty` setters had no check at all\n\nThis does not directly disclose or write record data, but it corrupts the meaning of every stored record and breaches the documented permission model, which advertises `UPDATE_SCHEMA` as the gating right for schema mutation.\n\n### Affected component\n\nEngine schema layer: `engine/src/main/java/com/arcadedb/schema/LocalDocumentType.java` and `engine/src/main/java/com/arcadedb/schema/LocalProperty.java`, reachable via the SQL `DROP PROPERTY`, `ALTER TYPE`, and `ALTER PROPERTY` statements over the database command/query HTTP endpoints.\n\n### Patches\n\nEvery public schema-mutating method on `LocalDocumentType` and `LocalProperty` now enforces `checkPermissionsOnDatabase(UPDATE_SCHEMA)` via a shared helper. The check is a no-op in embedded mode and in system contexts with no bound user (schema load at startup, HA replication apply), so internal paths and administrators are unaffected.\n\n### Workarounds\n\nGrant write access only to trusted users and API tokens; treat all schema DDL as administrator-only at the application layer until upgraded.\n\n### Resources\n\nIncomplete-fix sibling of CVE-2026-44221 / GHSA-fxc7-fm93-6q77.\n\n### Credit\n\nReported by Kai Aizen (SnailSploit).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.arcadedb:arcadedb-engine"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "26.6.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-vg6x-6pg9-6qwg"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ArcadeData/arcadedb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ArcadeData/arcadedb/releases/tag/26.6.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862",
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-16T20:08:24Z",
+    "nvd_published_at": null
+  }
+}
