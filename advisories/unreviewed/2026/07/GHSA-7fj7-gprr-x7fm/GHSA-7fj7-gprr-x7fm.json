@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7fj7-gprr-x7fm",
+  "modified": "2026-07-16T21:30:38Z",
+  "published": "2026-07-16T21:30:37Z",
+  "aliases": [
+    "CVE-2026-15422"
+  ],
+  "details": "The illumos SCTP inbound path performs association lookup for INIT ACK chunks without adequately validating the address parameters carried in the chunk. Since this lookup runs during packet classification (i.e. before SCTP integrity checks or IPsec policy are applied) a remote, unauthenticated attacker can send a crafted SCTP INIT ACK packet with malformed address parameters to cause an out-of-bounds access and kernel heap corruption, which may lead to remote code execution. The flaw has existed since 2010 (illumos-gate commit a5407c02), and affects any illumos distribution prior to illumos-gate commit 53a3efde.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:U/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:P/AU:Y/R:U/V:C/RE:H/U:Red"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15422"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/illumos/illumos-gate/commit/53a3efdeff8e6745bbfb69c5360f94962fb79e75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://illumos.org/issues/18117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://illumos.topicbox.com/groups/developer/Ta1a8e2e1f7f928df/18117-sctp-needs-to-better-check-init-ack-chunk-parameters"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-16T20:16:44Z"
+  }
+}

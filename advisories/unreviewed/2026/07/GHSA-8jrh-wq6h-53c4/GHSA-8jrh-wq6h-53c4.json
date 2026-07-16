@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8jrh-wq6h-53c4",
+  "modified": "2026-07-16T21:30:36Z",
+  "published": "2026-07-16T21:30:36Z",
+  "aliases": [
+    "CVE-2026-47085"
+  ],
+  "details": "An issue was discovered in cyrus-imapd in Cyrus IMAP through 3.12.2. URLAUTH token forgery can occur via a missing mboxkey. If an attacker knew a folder name on the victim's account for which the victim had never issued an auth URL, they could forge a working URLAUTH token by computing an HMAC-SHA1 value with a predictable key, giving them read access to the mailbox. (URLAUTH is an obscure feature, meaning that the odds of any user actually being susceptible to this attack are very low. Perhaps no public clients use URLAUTH.)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47085"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cyrusimap.org/3.12/imap/download/release-notes/3.12/x/3.12.3.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cyrusimap.org/imap/download/release-notes/index.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-340"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-16T19:16:49Z"
+  }
+}
