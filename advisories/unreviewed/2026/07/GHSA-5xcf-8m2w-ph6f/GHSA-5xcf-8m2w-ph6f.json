@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5xcf-8m2w-ph6f",
+  "modified": "2026-07-16T03:32:44Z",
+  "published": "2026-07-16T03:32:44Z",
+  "aliases": [
+    "CVE-2026-1609"
+  ],
+  "details": "A flaw was found in Keycloak. When the JSON Web Token (JWT) authorization grant preview feature is enabled and a user account is disabled, Keycloak fails to validate the user’s disabled status during JWT authorization grant processing. A remote attacker with low privileges can exploit this improper access control vulnerability by presenting a valid assertion token from an external identity provider to obtain a JWT for a disabled user. This allows unauthorized access to sensitive resources.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1609"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keycloak/keycloak/issues/46144"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-1609"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2435257"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/keycloak/keycloak/releases/tag/26.5.3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-16T01:16:30Z"
+  }
+}
