@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2hfh-94w5-wxvf",
-  "modified": "2025-07-11T21:31:04Z",
+  "modified": "2026-07-16T23:14:11Z",
   "published": "2025-07-11T21:31:04Z",
   "aliases": [
     "CVE-2025-7453"
   ],
+  "summary": "ZPan Uses Hard-Coded Password",
   "details": "A vulnerability was found in saltbo zpan up to 1.6.5/1.7.0-beta2. It has been rated as problematic. This issue affects the function NewToken of the file zpan/internal/app/service/token.go of the component JSON Web Token Handler. The manipulation with the input 123 leads to use of hard-coded password. The attack may be initiated remotely. The complexity of an attack is rather high. The exploitation is known to be difficult. The exploit has been disclosed to the public and may be used.",
   "severity": [
     {
@@ -14,10 +15,30 @@
     },
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:P"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/saltbo/zpan"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.6.6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -26,6 +47,22 @@
     {
       "type": "WEB",
       "url": "https://github.com/saltbo/zpan/issues/219"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/saltbo/zpan/pull/410"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/saltbo/zpan/commit/8662db8d4b06057631faf3deba4132e66705e947"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/saltbo/zpan"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/saltbo/zpan/releases/tag/v1.6.6"
     },
     {
       "type": "WEB",
@@ -41,10 +78,12 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": "MODERATE",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "cwe_ids": [
+      "CWE-259"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-16T23:14:11Z",
     "nvd_published_at": "2025-07-11T19:15:23Z"
   }
 }
