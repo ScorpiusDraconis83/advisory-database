@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xfxg-9rjg-hqrw",
+  "modified": "2026-07-16T18:31:32Z",
+  "published": "2026-07-16T18:31:32Z",
+  "aliases": [
+    "CVE-2026-13397"
+  ],
+  "details": "HTML::Bare versions through 0.04 for Perl will hang in an infinite loop when parsing malformed attributes.\n\nThe parserc_parse function never advances the attribute-parse state cursor on certain malformed attribute forms, looping forever.\n\nNameless attributes such as \"<a ='c'>\" or unbalanced quotes \"<a b='''''''c'>\" can trigger this condition.\n\nNote that the latest version available on CPAN is version 0.02. Newer versions are available on the git repository.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13397"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nanoscopic/perl-HTML-Bare/pull/1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.metacpan.org/patches/H/HTML-Bare/0.02/CVE-2026-13397-r1.patch"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-16T17:16:55Z"
+  }
+}
