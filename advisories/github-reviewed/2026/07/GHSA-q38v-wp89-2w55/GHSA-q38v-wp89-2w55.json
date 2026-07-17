@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q38v-wp89-2w55",
+  "modified": "2026-07-17T18:41:38Z",
+  "published": "2026-07-17T18:41:38Z",
+  "aliases": [
+    "CVE-2026-54552"
+  ],
+  "summary": "sh _uid does not drop supplementary groups (incomplete privilege drop)",
+  "details": "### Impact\nThe `_uid` option performed an incomplete privilege drop on Linux/Unix-like systems.\n\nWhen `sh` was run from a process with elevated privileges, such as root, and a command was launched with `_uid=<unprivileged user>`, the child process changed its UID and primary GID but did not reset its supplementary groups. As a result, the child process could retain the parent process’s supplementary groups, potentially including privileged groups such as root, docker, disk, shadow, or sudo.\n\nThis could allow a subprocess that was expected to run with reduced privileges to access files or resources available to the original process’s supplementary groups. Users are impacted if they rely on `_uid` as a privilege boundary when launching commands from a privileged parent process.\n\n### Patches\nUpgrade to version >= 2.2.4\n\n### Workarounds\nAvoid using `_uid` when the user represents a less-privileged user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "sh"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.2.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/amoffat/sh/security/advisories/GHSA-q38v-wp89-2w55"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/amoffat/sh"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/amoffat/sh/releases/tag/2.2.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-273"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-17T18:41:38Z",
+    "nvd_published_at": null
+  }
+}
