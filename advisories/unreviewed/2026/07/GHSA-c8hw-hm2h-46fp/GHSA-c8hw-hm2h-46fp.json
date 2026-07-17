@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c8hw-hm2h-46fp",
+  "modified": "2026-07-17T06:30:59Z",
+  "published": "2026-07-17T06:30:59Z",
+  "aliases": [
+    "CVE-2026-15159"
+  ],
+  "details": "The Ninja Forms - Excel Export plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 3.3.6 via the 'spreadsheet_export_form_id' parameter due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with subscriber-level access and above, to enumerate any Ninja Forms form ID and download all stored submission data — including names, email addresses, phone numbers, physical addresses, and any other PII collected by site forms — as a downloadable XLSX file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15159"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ninja-forms-excel-export/trunk/ninja-forms-excel-export.php#L187"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/783ccf21-db16-4aac-9a3c-992b3aac5526?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-17T04:16:50Z"
+  }
+}
