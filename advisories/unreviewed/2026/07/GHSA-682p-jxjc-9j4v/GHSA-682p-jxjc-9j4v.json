@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-682p-jxjc-9j4v",
-  "modified": "2026-07-16T21:30:34Z",
+  "modified": "2026-07-17T15:32:23Z",
   "published": "2026-07-16T18:31:34Z",
   "aliases": [
     "CVE-2026-57073"
   ],
   "details": "HTML::Bare versions through 0.04 for Perl have an unbounded character lookahead.\n\nThe parserc_parse function attempts to check for multicharacter strings such as \"<![CDATA\" or element terminators such as \">\" without checking that the offsets are within the buffer.\n\nTruncated strings such as \"<a/\" can trigger an out-of-bounds read.\n\nNote that the latest version available on CPAN is version 0.02. Newer versions are available on the git repository.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -35,7 +40,7 @@
     "cwe_ids": [
       "CWE-125"
     ],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-16T17:16:58Z"
