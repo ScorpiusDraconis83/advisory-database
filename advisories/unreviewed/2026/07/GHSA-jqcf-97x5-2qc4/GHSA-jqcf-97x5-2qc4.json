@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jqcf-97x5-2qc4",
+  "modified": "2026-07-17T09:31:21Z",
+  "published": "2026-07-17T09:31:21Z",
+  "aliases": [
+    "CVE-2026-62764"
+  ],
+  "details": "Improper Handling of Insufficient Privileges vulnerability in Apache Accumulo.\nAn authenticated, but low-privileged user without system permissions may\nissue a remote command to gracefully shutdown system components\n(compaction-coordinator, compactor, gc, manager, monitor, tserver, or sserver),\nleading to a denial of service.\n\nThis issue affects Apache Accumulo 2.1.4 and 2.1.5.\n\nUsers are recommended to upgrade to version 2.1.6, which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:A/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:N/AU:Y/R:U/V:D/RE:L/U:Green"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62764"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/accumulo/issues/6478"
+    },
+    {
+      "type": "WEB",
+      "url": "https://accumulo.apache.org/downloads"
+    },
+    {
+      "type": "WEB",
+      "url": "https://accumulo.apache.org/release/accumulo-2.1.6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/qclg736k93oqn4qrpw9wxjbb3jhn6gm1"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/17/6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-274"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-17T09:16:41Z"
+  }
+}
