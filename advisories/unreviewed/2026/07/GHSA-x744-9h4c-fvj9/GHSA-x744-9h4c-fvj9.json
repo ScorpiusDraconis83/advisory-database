@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x744-9h4c-fvj9",
+  "modified": "2026-07-17T00:32:11Z",
+  "published": "2026-07-17T00:32:11Z",
+  "aliases": [
+    "CVE-2026-14782"
+  ],
+  "details": "The Booking for Appointments and Events Calendar – Amelia plugin for WordPress is vulnerable to SQL Injection via the Customer Import in all versions up to, and including, 2.4.3 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for authenticated attackers, with wpamelia-manager role, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14782"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ameliabooking/tags/2.4.3/src/Infrastructure/Repository/User/UserRepository.php#L476"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b3a58e68-d1f1-4d4f-ac64-bc6cb7dbdbfc?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-16T22:16:59Z"
+  }
+}
