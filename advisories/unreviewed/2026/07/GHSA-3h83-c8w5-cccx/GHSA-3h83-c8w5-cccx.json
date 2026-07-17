@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3h83-c8w5-cccx",
+  "modified": "2026-07-17T03:31:19Z",
+  "published": "2026-07-17T03:31:19Z",
+  "aliases": [
+    "CVE-2026-14956"
+  ],
+  "details": "The Bricksforge plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 3.1.8.6. This is due to improper validation of the fieldIds parameter in the Pro Forms registration action, which allows attacker-supplied field IDs to be added to the trusted form-field whitelist. This makes it possible for unauthenticated attackers to register a new administrator account by submitting a crafted request to a publicly accessible Bricksforge Pro Forms registration form. Successful exploitation requires that the site has a public Bricksforge Pro Forms element configured with the User Registration action.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14956"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bricksforge.io/version-changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d0538778-5ba4-4bec-a89d-ef90a9ba8375?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-17T02:18:03Z"
+  }
+}

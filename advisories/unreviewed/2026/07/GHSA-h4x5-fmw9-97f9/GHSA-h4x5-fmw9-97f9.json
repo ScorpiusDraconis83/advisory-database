@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h4x5-fmw9-97f9",
+  "modified": "2026-07-17T03:31:24Z",
+  "published": "2026-07-17T03:31:24Z",
+  "aliases": [
+    "CVE-2026-62387"
+  ],
+  "details": "The Grav API plugin (getgrav/grav-plugin-api) before 1.0.0-rc.16 shipped Access-Control-Allow-Origin: * as its default CORS configuration on all responses, including authenticated endpoints and preflight (OPTIONS) responses. Because the plugin accepts credentials via the Authorization and X-API-Token headers (set programmatically by JavaScript rather than via cookies), an attacker who obtains a valid access token (e.g., via log leakage, Referer headers, browser history, or network capture) can issue fully authenticated cross-origin requests from any malicious website to read sensitive data and perform write operations as the token's user. Fixed in 1.0.0-rc.16.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-93px-98wh-6fj2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62387"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-rc-16-cors-misconfiguration-via-api-plugin"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-942"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-17T02:18:12Z"
+  }
+}
