@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-25gv-rxp9-h9pc",
+  "modified": "2026-07-17T18:31:27Z",
+  "published": "2026-07-17T18:31:27Z",
+  "aliases": [
+    "CVE-2026-9587"
+  ],
+  "details": "An authenticated local file inclusion vulnerability exists in Sangoma Switchvox SMB Edition 8.3 (104997). The play_file functionality accepts user-controlled input through the sound_path parameter and fails to properly validate file paths before accessing the underlying filesystem. By supplying absolute paths, an authenticated attacker can retrieve files outside the intended directory scope.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/sangoma/security-switchvox/security/advisories/GHSA-mhp4-x83p-phh2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9587"
+    },
+    {
+      "type": "WEB",
+      "url": "https://labs.sra.io/posts/switchvox"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-17T17:17:18Z"
+  }
+}

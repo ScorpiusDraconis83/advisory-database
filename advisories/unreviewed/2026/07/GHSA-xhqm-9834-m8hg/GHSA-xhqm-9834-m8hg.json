@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xhqm-9834-m8hg",
+  "modified": "2026-07-17T18:31:25Z",
+  "published": "2026-07-17T18:31:25Z",
+  "aliases": [
+    "CVE-2026-63100"
+  ],
+  "details": "Maybe through 0.6.0 contains a missing authorization vulnerability that allows authenticated low-privilege member-role users to access and modify global hosting settings by exploiting unprotected show and update actions in the Settings::HostingsController, where the before_action ensure_admin filter is applied only to the clear_cache action. Attackers can read the operator's Synth API key rendered in plaintext via a form field value attribute, overwrite it with an attacker-controlled value, toggle public registration settings, and disable email confirmation requirements to disrupt the entire instance.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63100"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/geo-chen/oss/blob/main/maybe.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/maybe-missing-authorization-via-hostingscontroller-show-update"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-17T16:17:17Z"
+  }
+}

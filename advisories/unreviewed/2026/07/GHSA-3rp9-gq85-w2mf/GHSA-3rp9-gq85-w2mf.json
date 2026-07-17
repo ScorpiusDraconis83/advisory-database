@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3rp9-gq85-w2mf",
+  "modified": "2026-07-17T18:31:25Z",
+  "published": "2026-07-17T18:31:25Z",
+  "aliases": [
+    "CVE-2026-9537"
+  ],
+  "details": "Mojo::JWT versions before 1.02 for Perl verify HMAC signatures with a non-constant-time string comparison.\n\nThe decode() method compares the supplied signature to the recomputed HMAC with Perl's eq operator, which stops at the first differing byte, so the comparison time varies with the number of matching leading bytes.\n\nA caller that decodes attacker supplied tokens leaks the expected signature through this timing variation, which can be aggregated over many requests to recover the signature and forge a token.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9537"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jberger/Mojo-JWT/commit/b8aefb846613e44b5b12bc170898ffd5b05094a2.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/17/11"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-208"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-17T16:17:20Z"
+  }
+}

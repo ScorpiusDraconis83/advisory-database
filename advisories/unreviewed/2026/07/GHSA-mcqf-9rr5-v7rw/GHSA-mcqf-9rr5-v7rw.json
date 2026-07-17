@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mcqf-9rr5-v7rw",
+  "modified": "2026-07-17T18:31:24Z",
+  "published": "2026-07-17T18:31:24Z",
+  "aliases": [
+    "CVE-2026-14741"
+  ],
+  "details": "HTTP::Date versions before 6.08 for Perl allow CPU exhaustion via polynomial regex backtracking in parse_date.\n\nparse_date() matches the date string against a chain of alternative regexes, and str2time() delegates to it. Several of these patterns place unbounded quantifiers next to each other before a trailing `\\s*$` anchor. A valid date prefix followed by a long interior run of digits, letters, or whitespace and a single trailing byte that defeats the final match forces the engine to repartition the run, giving polynomial (about quadratic) backtracking. A header value of a few tens of kilobytes runs for tens of seconds of CPU.\n\nHTTP::Date parses timestamps such as HTTP `Date`, `Expires`, and `Last-Modified` headers, which commonly originate from untrusted sources. Any caller that passes an untrusted date header to str2time() or parse_date() can be driven to consume unbounded CPU, a denial of service.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14741"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libwww-perl/HTTP-Date/pull/33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libwww-perl/HTTP-Date/commit/78c20952cdfbf11e03cf1199ad70f13298a84c5c.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/OALDERS/HTTP-Date-6.08/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/17/10"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1333"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-17T16:17:13Z"
+  }
+}

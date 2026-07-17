@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qh48-wwv4-fmr8",
+  "modified": "2026-07-17T18:31:26Z",
+  "published": "2026-07-17T18:31:26Z",
+  "aliases": [
+    "CVE-2026-16104"
+  ],
+  "details": "A flaw was found in the authentication configuration endpoint of the keycloak-services component, which is the core engine for Red Hat Build of Keycloak identity and access management. The issue occurs because the system fails to mask sensitive configuration values, such as reCAPTCHA secret keys, when they are requested by administrators with view-only permissions. This can lead to the exposure of third-party service credentials to unauthorized personnel or through administrative logs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-16104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2501737"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-522"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-17T17:17:14Z"
+  }
+}
