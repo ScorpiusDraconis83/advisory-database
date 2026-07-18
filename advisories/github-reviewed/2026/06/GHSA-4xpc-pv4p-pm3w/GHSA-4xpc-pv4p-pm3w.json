@@ -1,7 +1,7 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4xpc-pv4p-pm3w",
-  "modified": "2026-06-16T23:38:26Z",
+  "modified": "2026-07-18T17:26:13Z",
   "published": "2026-06-16T23:38:26Z",
   "aliases": [
     "CVE-2026-49468"
@@ -9,6 +9,10 @@
   "summary": "LiteLLM: Authentication Bypass via Host Header Injection",
   "details": "### Impact\n\nA Host-header parsing flaw in the LiteLLM proxy could, under specific conditions, allow unauthenticated access to protected management routes.\n\nThe auth layer derived the effective route from `request.url.path` in `litellm/proxy/auth/auth_utils.py::get_request_route()`, which Starlette reconstructs from the `Host` header. A crafted `Host` could therefore make the auth gate evaluate a different route from the one FastAPI dispatched.\n\n**Most deployments are not affected.** The bypass is blocked by any upstream layer that validates or normalizes `Host`, such as:\n\n- a CDN or WAF, such as Cloudflare\n- a reverse proxy with `server_name` allowlists\n- a host-based load balancer\n\n**LiteLLM Cloud customers are not affected.**\n\n### Patches\n\nFixed in **`1.84.0`**. Upgrade to `1.84.0` or later. No configuration change is required.\n\n### Workarounds\n\nIf upgrading is not immediately possible, place the proxy behind an upstream component that validates or normalizes the `Host` header before forwarding (a CDN/WAF, a reverse proxy with explicit `server_name` allowlists, or a cloud load balancer with host-based routing rules), or otherwise restrict network access to the proxy listener.\n\n### References\n\n- Patched release: [`v1.84.0`](https://github.com/BerriAI/litellm/releases/tag/v1.84.0)\n\n**Discovery Credit**: Le The Thang (KCSC) and Kim Ngoc Chung (One Mount Group)",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H"
@@ -41,12 +45,40 @@
       "url": "https://github.com/BerriAI/litellm/security/advisories/GHSA-4xpc-pv4p-pm3w"
     },
     {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49468"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-49468"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2491520"
+    },
+    {
       "type": "PACKAGE",
       "url": "https://github.com/BerriAI/litellm"
     },
     {
       "type": "WEB",
       "url": "https://github.com/BerriAI/litellm/releases/tag/v1.84.0"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://github.com/advisories/GHSA-4xpc-pv4p-pm3w"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/litellm/PYSEC-2026-388.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/litellm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-49468.json"
     }
   ],
   "database_specific": {
@@ -56,6 +88,6 @@
     "severity": "CRITICAL",
     "github_reviewed": true,
     "github_reviewed_at": "2026-06-16T23:38:26Z",
-    "nvd_published_at": null
+    "nvd_published_at": "2026-06-22T21:16:25Z"
   }
 }
