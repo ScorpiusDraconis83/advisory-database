@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v877-m38r-6c5w",
-  "modified": "2026-07-01T15:35:20Z",
+  "modified": "2026-07-18T09:32:16Z",
   "published": "2026-07-01T15:35:20Z",
   "aliases": [
     "CVE-2026-53356"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/gem: Fix phys BO pread/pwrite with offset\n\nsg_page() returns struct page pointer not (void *) so the scaling\nof pread/pwrite is wrong for phys BO and wrong parts of BO would be\naccessed if non-zero offset is used.\n\nLast impacted platform with overlay or cursor planes using phys\nmapping was Gen3/945G/Lakeport.\n\n(cherry picked from commit 3e49a2f85070b2fb672c1e0fdba281a4ea3aebe6)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-01T14:16:44Z"

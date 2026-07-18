@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7xf9-r6gc-x4cm",
-  "modified": "2026-07-10T12:31:44Z",
+  "modified": "2026-07-18T09:32:16Z",
   "published": "2026-07-10T12:31:44Z",
   "aliases": [
     "CVE-2026-53363"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: iptfs: preserve shared-frag marker in iptfs_consume_frags()\n\niptfs_consume_frags() transfers paged fragments from one socket buffer\nto another but fails to propagate the SKBFL_SHARED_FRAG flag. This is\nthe same class of bug that was fixed in skb_try_coalesce() for\nCVE-2026-46300: when fragments backed by read-only page-cache pages are\nmerged, the marker indicating their shared nature must be preserved so\nthat ESP can decide correctly whether in-place encryption is safe.\n\nApply the same two-line fix used in skb_try_coalesce() to\niptfs_consume_frags().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-10T12:17:22Z"

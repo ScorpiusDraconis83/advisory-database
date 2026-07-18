@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-r67c-r6r6-mj6m",
-  "modified": "2026-07-16T06:31:27Z",
+  "modified": "2026-07-18T09:32:16Z",
   "published": "2026-07-16T06:31:27Z",
   "aliases": [
     "CVE-2026-53366"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: account for fraggap on the paged allocation path\n\nIn __ip_append_data(), when the paged-allocation branch is taken,\nalloclen and pagedlen are computed as\n\n\talloclen = fragheaderlen + transhdrlen;\n\tpagedlen = datalen - transhdrlen;\n\ndatalen already includes fraggap, but the fraggap bytes carried over\nfrom the previous skb are copied into the new skb's linear area at\noffset transhdrlen by the subsequent skb_copy_and_csum_bits(). The\nlinear area is therefore undersized by fraggap bytes while pagedlen is\noverstated by the same amount.\n\nThe non-paged branch sets alloclen to fraglen, which already accounts\nfor fraggap because datalen does. Bring the paged branch in line by\nadding fraggap to alloclen and subtracting it from pagedlen.\n\nAfter this adjustment, copy no longer collapses to -fraggap on the\npaged path, so remove the stale comment describing that old arithmetic.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-16T06:16:27Z"
