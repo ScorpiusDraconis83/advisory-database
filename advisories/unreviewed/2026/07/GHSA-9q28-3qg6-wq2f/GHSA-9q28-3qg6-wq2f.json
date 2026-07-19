@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9q28-3qg6-wq2f",
+  "modified": "2026-07-19T12:30:22Z",
+  "published": "2026-07-19T12:30:22Z",
+  "aliases": [
+    "CVE-2026-53377"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm: always recover the gpu\n\nPreviously, in case there was no more work to do, recover worker\nwouldn't trigger recovery and would instead rely on the gpu going to\nsleep and then resuming when more work is submitted.\n\nRecover_worker will first increment the fence of the hung ring so, if\nthere's only one job submitted to a ring and that causes an hang, it\nwill early out.\n\nThere's no guarantee that the gpu will suspend and resume before more\nwork is submitted and if the gpu is in a hung state it will stay in that\nstate and probably trigger a timeout again.\n\nJust stop checking and always recover the gpu.\n\nPatchwork: https://patchwork.freedesktop.org/patch/704066/",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53377"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01a0d6cd7032e9993feea19fadb03ef9d5b488f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/132b8d51f0ffbee6e4e1ebbe1a50330aaf2dbd5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f5c90478749dfd9a32386100b6078a364298b01"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T11:16:38Z"
+  }
+}

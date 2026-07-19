@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mppp-59pm-fqxw",
+  "modified": "2026-07-19T12:30:23Z",
+  "published": "2026-07-19T12:30:23Z",
+  "aliases": [
+    "CVE-2026-53403"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: Fix fb_new_modelist to prevent null-ptr-deref in fb_videomode_to_var\n\ninfo->var, a framebuffer's current mode, is expected to have a matching\nentry in info->modelist. var_to_display() relies on this and treats a\nfailed fb_match_mode() as \"This should not happen\". fb_set_var() keeps it\ntrue by adding the mode to the list on every change, and\ndo_register_framebuffer() does the same at registration.\n\nstore_modes() replaces the modelist from userspace. fb_new_modelist()\nvalidates the new modes but does not check that info->var still has a\nmatch. It relies on fbcon_new_modelist() to re-point consoles, but that\nonly handles consoles mapped to the framebuffer. With fbcon unbound there\nare none, so info->var is left describing a mode that is no longer in the\nlist.\n\nA later console takeover runs var_to_display(), where fb_match_mode()\nreturns NULL and leaves fb_display[i].mode NULL. fbcon_switch() passes it\nto display_to_var(), and fb_videomode_to_var() dereferences the NULL mode.\n\nKeep the current mode in the list in fb_new_modelist(), the same way\nfb_set_var() does.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53403"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d8c7f21ad8529d5c181e61f86be35b887ae2e4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1458a4d804550b7101e8bb02c1cb941088e4c0c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f1a7fe8ba845cb7d39580755f78c3b7b9a0b61e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7640b4f68acb54c2c4f6b4a8aee0e9849dacd929"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f08fc10fa3d3366dc3af723970bd03d7d6d10e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8707f02ac9f5f632039b60df2c9f3dc914709f72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88913059c77e171f44ba829282d42dde0d458811"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eea16b6f805c0b1fb2f72f0f771088ea45356956"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T12:16:51Z"
+  }
+}

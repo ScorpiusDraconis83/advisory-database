@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hfvv-wwwp-6wgr",
+  "modified": "2026-07-19T12:30:22Z",
+  "published": "2026-07-19T12:30:22Z",
+  "aliases": [
+    "CVE-2026-53398"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Fix SECINFO_NO_NAME decode error cleanup\n\nnfsd4_decode_secinfo_no_name() currently initializes sin_exp after\ndecoding sin_style. If the XDR stream is truncated, the decoder returns\nnfserr_bad_xdr before sin_exp is initialized.\n\nSince commit 3fdc54646234 (\"NFSD: Reduce amount of struct\nnfsd4_compoundargs that needs clearing\"), the inline iops array is not\ncleared between RPC calls. A failed SECINFO_NO_NAME decode can therefore\nleave sin_exp holding stale union contents from a previous operation.\n\nThe error response path still invokes nfsd4_secinfo_no_name_release(),\nwhich calls exp_put() on a non-NULL sin_exp.\n\nInitialize sin_exp before the first failable decode step, matching\nnfsd4_decode_secinfo().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53398"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/161d1aaeb04d620d3692639700512bb5038c1e10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e04be34cafae119e82bcaccd6d28a20f72a3647"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46eb17d45be69d28c7a23ea03283b207426a8232"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/49de5d31dd8fdebf78bdeaf196b0ca5cd5c75439"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ec37edcb534f3fc92304be236d37f08e6545585"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8836405abdc53ca3dd5fc68b2cf6f8f012fad011"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e18e83b8846a5c3fe13fc8a464b4865d33996c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c8a24effd96d4779e2ad779654682304491c55a5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T12:16:50Z"
+  }
+}

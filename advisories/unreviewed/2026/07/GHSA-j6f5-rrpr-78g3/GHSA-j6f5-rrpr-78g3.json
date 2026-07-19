@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j6f5-rrpr-78g3",
+  "modified": "2026-07-19T12:30:23Z",
+  "published": "2026-07-19T12:30:23Z",
+  "aliases": [
+    "CVE-2026-63793"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: serialize volume label accesses\n\nProtect vol->volume_label with a mutex and snaphost the label before\ncopy_to_user. This prevent a use-after-free when FS_IOC_SETFSLABEL\nreplaces the vol->volume_label and FS_IOC_GETTSLABEL reads it\nconcurrently.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63793"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/acd744019460bad22e43d4569a502f9c88d331ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e9e50ce4f13dc721014af622613409455c734942"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T12:16:51Z"
+  }
+}

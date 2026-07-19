@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-734m-rp66-35q4",
+  "modified": "2026-07-19T12:30:24Z",
+  "published": "2026-07-19T12:30:24Z",
+  "aliases": [
+    "CVE-2026-63824"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKEYS: fix overflow in keyctl_pkey_params_get_2()\n\nThe length for the internal output buffer is calculated incorrectly, which\ncan result overflow when a too small buffer is provided.\n\nFix the bug by allocating internal output with the size of the maximum\nlength of the cryptographic primitive instead of caller provided size.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63824"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f3058d7d26f81df9b68a18ddbe164bdc3c5eff3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5165f1cc727f1322456735df212d8e26ec237a8d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5966e4e2ba213ab7ad559166152eb4f1f170dd2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/622ec2dcd59f21623f2a7ab773c80ceb7d555e3a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/670fc6a311ed321522b7fff92cf0fc376b4f6e78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b11c1fa32667692a2c0566e10163758e786e430c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1e247338bc71826a2d2def3e0874c34749df69a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb481e59ea6cae3b7796ac1d7a22b6b24c3f3c0b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T12:16:55Z"
+  }
+}
