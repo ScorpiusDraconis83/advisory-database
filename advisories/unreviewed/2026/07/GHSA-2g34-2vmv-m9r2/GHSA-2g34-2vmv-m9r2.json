@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2g34-2vmv-m9r2",
+  "modified": "2026-07-19T18:31:52Z",
+  "published": "2026-07-19T18:31:52Z",
+  "aliases": [
+    "CVE-2026-64103"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: isci: Fix use-after-free in device removal path\n\nThe ISCI completion tasklet is initialized in isci_host_alloc()\n(drivers/scsi/isci/init.c:496) and scheduled from both MSI-X and legacy\ninterrupt handlers (drivers/scsi/isci/host.c:223,613).\n\nisci_host_deinit() stops the controller and waits for stop completion,\nbut it never kills completion_tasklet before teardown continues. A\ntop-of-function tasklet_kill() is not sufficient here: interrupts are\nonly disabled when isci_host_stop_complete() runs, so until\nwait_for_stop() returns the IRQ handlers can still requeue the\ntasklet. The tasklet callback also re-enables interrupts after draining\ncompletions, so killing the tasklet before the source is quiesced leaves\nthe same race open.\n\nOnce wait_for_stop() returns, no further IRQ-driven scheduling can\noccur. Kill completion_tasklet there so teardown cannot race a queued\ntasklet running on a dead ihost. On remove or unload, the stale callback\ncan otherwise dereference ihost and touch ihost->smu_registers after the\nhost lifetime ends.\n\nA UML + KASAN analogue reproduced the failure class both with no\ntasklet_kill() and with tasklet_kill() placed before source quiesce, and\nstayed clean once the kill happened after quiescing the scheduling\nsource.\n\nThis mirrors commit f6ab594672d4 (\"scsi: aic94xx: fix use-after-free in\ndevice removal path\"), but ISCI needs the kill after wait_for_stop().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64103"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1412995e10c74644b47f242aea6e4f3d4180e806"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/309c6058622d080fe8c2fab87c30da82d834d989"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d40f2f103bb30f52f3dbadbe2c3fdf274a9763c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a83d3e4daba40d49324cec1c51ed261e1ea48cf1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab2266601a875982f2d2033f41e070a6d5e615e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b52a8d52c3125ec9a93106ed816582368de34426"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9ff8631006233ba246828ac70409d2cb2da38d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb9e72c50e6c81a5903f27e0b397ce8525d7539b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:51Z"
+  }
+}

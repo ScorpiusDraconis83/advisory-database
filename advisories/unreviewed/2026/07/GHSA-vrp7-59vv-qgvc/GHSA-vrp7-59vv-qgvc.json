@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vrp7-59vv-qgvc",
+  "modified": "2026-07-19T18:31:49Z",
+  "published": "2026-07-19T18:31:49Z",
+  "aliases": [
+    "CVE-2026-64020"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-pci: fix dma_vecs leak on p2p memory\n\nWe don't unmap P2P memory, so we don't need to track it. The dma_vec\nallocation was getting leaked on the completion.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64020"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24ea0de233d9ebb5ebd6f6018eaf2084af25e3dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85686c72966c5ee637893f124ddb31a1cace7bee"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:42Z"
+  }
+}

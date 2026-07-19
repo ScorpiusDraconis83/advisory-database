@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7hr8-6q2g-wqfg",
+  "modified": "2026-07-19T18:31:48Z",
+  "published": "2026-07-19T18:31:48Z",
+  "aliases": [
+    "CVE-2026-63974"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: Set HCI_CMD_DRAIN_WORKQUEUE during device close\n\nSince hci_dev_close_sync() can now be called during the reset path, we\nshould also set HCI_CMD_DRAIN_WORKQUEUE. This avoids queuing timeouts\nwhile the hdev workqueue is being drained.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63974"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47330cc875b36a1cf7b3543cb2cf90a7c603ce0e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/525daaea459fc215f432de1b8debbd9144bf97b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60bceb9a4c693e68cc90ba4b2dfb9e000e8638ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9cebe4680bb9a72f80c6541eb24af06db7a1fbc9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:16Z"
+  }
+}

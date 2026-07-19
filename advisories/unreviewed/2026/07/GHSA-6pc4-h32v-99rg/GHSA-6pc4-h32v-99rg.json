@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6pc4-h32v-99rg",
+  "modified": "2026-07-19T18:31:47Z",
+  "published": "2026-07-19T18:31:47Z",
+  "aliases": [
+    "CVE-2026-63952"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmemfd: deny writeable mappings when implying SEAL_WRITE\n\nWhen SEAL_EXEC is added, SEAL_WRITE is implied to make W^X.  But the\nimplied seal is set after the check that makes sure the memfd can not have\nany writable mappings.  This means one can use SEAL_EXEC to apply\nSEAL_WRITE while having writeable mappings.\n\nThis breaks the contract that SEAL_WRITE provides and can be used by an\nattacker to pass a memfd that appears to be write sealed but can still be\nmodified arbitrarily.\n\nFix this by adding the implied seals before the call for\nmapping_deny_writable() is done.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63952"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0995d1f79aed8ccbf62056189dd53fd19726ea08"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b041514cb6eae45869b020f743c14d983363222"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3be2a24f7f72ad7321ed6ad1715b956a4527bcf4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/555702282d4536a865dfffb1cd4f6028f196e7e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3f4f82d1315f1439059a83d1c22c51a5b43d99e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:13Z"
+  }
+}

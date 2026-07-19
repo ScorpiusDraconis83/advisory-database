@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5w2v-4j6c-44h8",
+  "modified": "2026-07-19T18:31:46Z",
+  "published": "2026-07-19T18:31:46Z",
+  "aliases": [
+    "CVE-2026-63922"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: exthdrs: refresh nh after handling HAO option\n\nip6_parse_tlv() caches skb_network_header(skb) in nh while walking\nIPv6 TLVs.\n\nipv6_dest_hao() may call pskb_expand_head() for a cloned skb, which can\nmove the skb head and invalidate the cached network header pointer.\nRefresh nh after ipv6_dest_hao() returns so any trailing padding or TLVs\nare parsed from the current skb head.\n\nThis matches the existing pattern used in ip6_parse_tlv() after helpers\nthat can modify skb header storage.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63922"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12d957979e4a800167842f1b42be6a606d227ebe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a11eb7431e3d2882f5bd5939c5a9bbc65ccf4d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/751db1b802a067b7fff25880f4e9f9152a171538"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b6dcc0a39fd71752937f0b6b3973e1416085dcf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7b52afe3592eae66e160586b45a3f2242972c63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8aabed3ff3e986920cf02a2a2785e08e586b234"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff375ed1cba81392346c5bfbf0bb7a13b2946f99"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:10Z"
+  }
+}

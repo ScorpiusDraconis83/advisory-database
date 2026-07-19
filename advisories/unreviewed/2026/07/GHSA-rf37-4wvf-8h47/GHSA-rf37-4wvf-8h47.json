@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rf37-4wvf-8h47",
+  "modified": "2026-07-19T18:31:52Z",
+  "published": "2026-07-19T18:31:52Z",
+  "aliases": [
+    "CVE-2026-64111"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nlsm: hold cred_guard_mutex for lsm_set_self_attr()\n\nJust as proc_pid_attr_write() already does before calling the LSM\nhook. This only matters for SELinux and AppArmor which check\nwhether the process is being ptraced and if so, whether to\nallow the transition.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a9b16541ad3faf8bccb398532bf3f8b6bbf1188"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b906f31e977286888a9e31282589b545b249139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82d3acee88593e3d9e71cad4b7d6b3cf70de9d07"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a010cadaf5727b8417f62fe9021fcef14a5f9b51"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:52Z"
+  }
+}

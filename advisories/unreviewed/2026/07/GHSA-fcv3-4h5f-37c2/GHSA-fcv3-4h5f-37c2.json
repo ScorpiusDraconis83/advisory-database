@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fcv3-4h5f-37c2",
+  "modified": "2026-07-19T18:31:46Z",
+  "published": "2026-07-19T18:31:46Z",
+  "aliases": [
+    "CVE-2026-63927"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: dwc2: Fix use after free in debug code\n\nWe're not allowed to dereference \"urb\" after calling\nusb_hcd_giveback_urb() so save the urb->status ahead of time.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63927"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0584af4fe40fa5e254a05d69ce658746de641708"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63b0dafa676aad4d0c3f01a61ad8e2990907660c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d0b79d1d1118145e48a68192b6d733e39387053"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/84ea928ed584756e59c6ac09736f12d1db95ded0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ea06a3fbf9f16e0d98c52cb3b99642be15ec281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9fe1d84f7e2cf33634e8afb7f4b7f8de182dd913"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a15eeeceb94cbc04edef395e4d777ff554bdc27d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5fc183ed614aeba6779cc992325be560f9a4451"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:11Z"
+  }
+}

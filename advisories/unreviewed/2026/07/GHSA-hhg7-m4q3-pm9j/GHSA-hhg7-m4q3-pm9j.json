@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hhg7-m4q3-pm9j",
+  "modified": "2026-07-19T18:31:52Z",
+  "published": "2026-07-19T18:31:52Z",
+  "aliases": [
+    "CVE-2026-64110"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nigc: fix potential skb leak in igc_fpe_xmit_smd_frame()\n\nWhen igc_fpe_init_tx_descriptor() fails, no one takes care of an\nallocated skb, leaking it. [1]\nUse dev_kfree_skb_any() on failure.\n\nTested on an I226 adapter with the following command, while injecting\nfaults in igc_fpe_init_tx_descriptor() to trigger the error path.\n # ethtool --set-mm $DEV verify-enabled on tx-enabled on pmac-enabled on\n\n[1]\nunreferenced object 0xffff888113c6cdc0 (size 224):\n...\n  backtrace (crc be3d3fda):\n    kmem_cache_alloc_node_noprof+0x3b1/0x410\n    __alloc_skb+0xde/0x830\n    igc_fpe_xmit_smd_frame.isra.0+0xad/0x1b0\n    igc_fpe_send_mpacket+0x37/0x90\n    ethtool_mmsv_verify_timer+0x15e/0x300",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ebf056556138e74c640e6dc2b3848abd398b460"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e935c37b8a94bb256fada6395a5d05e1c0c6bdaf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1bafd35f11b3aca1c7bb38da173b8787364a04c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:52Z"
+  }
+}

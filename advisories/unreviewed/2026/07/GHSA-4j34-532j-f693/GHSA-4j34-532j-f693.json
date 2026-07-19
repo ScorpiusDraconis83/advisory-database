@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4j34-532j-f693",
+  "modified": "2026-07-19T18:31:46Z",
+  "published": "2026-07-19T18:31:46Z",
+  "aliases": [
+    "CVE-2026-63924"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: exthdrs: refresh nh pointer after ipv6_hop_jumbo()\n\nipv6_hop_jumbo() calls pskb_trim_rcsum(), which can change skb pointers.\nLet's recompute nh pointer to make sure any change won't mess things up.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63924"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b56bbd928c030894c270cd33d60286326919458"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/645b99b1a185c91a79bdac4c5de0f91b212d64f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72af7beae774e46ed543f3f2f267bf0a141bfcdd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e883eaa878f4337b5873c706efb5a192364ed18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3ac54e5c905f86d22b502eacb5686a282c5659f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bddaa4dfc7f36e1ee343a0622f69288af2b9ace9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c512e1c819dfbf6ae95ee7a44b65b9ad98979157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d47548a36639095939f4747d4c43f2271366f565"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:10Z"
+  }
+}

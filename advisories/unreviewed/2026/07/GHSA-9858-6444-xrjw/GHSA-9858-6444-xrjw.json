@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9858-6444-xrjw",
+  "modified": "2026-07-19T18:31:50Z",
+  "published": "2026-07-19T18:31:50Z",
+  "aliases": [
+    "CVE-2026-64050"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm/dpu: don't mix devm and drmm functions\n\nMixing devm and drmm functions will result in a use-after-free on msm\ndriver teardown if userspace keeps a reference on the drm device:\nThe WB connector data will be destroyed because of the use of\ndevm_kzalloc()), while the usersoace still can try interacting with the\nWB connector (which uses drmm_ functions).\n\nChange dpu_writeback_init() to use drmm_.\n\nPatchwork: https://patchwork.freedesktop.org/patch/722656/",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64050"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95048a12f48c627bc2ccc4d84f87640630ba2bdb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0c70a11365cba7fba25a77463582bcec0f7846e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff58e5ef1b46ce614af048d2d04986df05ffab90"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:45Z"
+  }
+}

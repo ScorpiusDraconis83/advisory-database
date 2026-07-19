@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h9jg-4972-qw48",
+  "modified": "2026-07-19T18:31:50Z",
+  "published": "2026-07-19T18:31:50Z",
+  "aliases": [
+    "CVE-2026-64042"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvfio/pci: Check BAR resources before exporting a DMABUF\n\nA DMABUF exports access to BAR resources and, although they are\nrequested at startup time, we need to ensure they really were reserved\nbefore exporting.  Otherwise, it's possible to access unreserved\nresources through the export.\n\nAdd a check to the DMABUF-creation path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64042"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/702809dabdecca807bdd50cfdcc1c980feb2ba62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8443cd4497a4498c4b01058d76a92116244cb605"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:44Z"
+  }
+}

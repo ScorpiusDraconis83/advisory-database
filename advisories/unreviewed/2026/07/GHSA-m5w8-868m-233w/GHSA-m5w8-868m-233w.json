@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m5w8-868m-233w",
+  "modified": "2026-07-19T18:31:50Z",
+  "published": "2026-07-19T18:31:50Z",
+  "aliases": [
+    "CVE-2026-64058"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfs: Fix netfs_read_folio() to wait on writeback\n\nFix netfs_read_folio() to wait for an ongoing writeback to complete so that\nit can trust the dirty flag and whatever is attached to folio->private\n(folio->private may get cleaned up by the collector before it clears the\nwriteback flag).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64058"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8271cccdd5e43cc8d738afb8b51f6ad05b1cb4b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ded0c6f1606061148c202825f7e53d711f9f84cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f17b9121bb99f88188ec9be2db5da1d561f4c01b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:46Z"
+  }
+}

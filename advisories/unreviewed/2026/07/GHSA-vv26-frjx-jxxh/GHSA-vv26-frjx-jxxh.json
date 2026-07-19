@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vv26-frjx-jxxh",
+  "modified": "2026-07-19T18:31:47Z",
+  "published": "2026-07-19T18:31:46Z",
+  "aliases": [
+    "CVE-2026-63937"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SEV: Use READ_ONCE() when reading entries/indices from PSC buffer\n\nUse READ_ONCE() when reading entries/indices from the guest-accessible\nPage State Change buffer to defend against TOCTOU bugs.\n\nDon't bother with READ_ONCE()/WRITE_ONCE() for cases where KVM is writing\n(and not consuming the result!), as the guest isn't supposed to touch the\nbuffer while it's being processed.  I.e. using READ_ONCE() is all about\nprotecting against misbehaving guests.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63937"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1dfaa6f7a957726a6800135be3659fbe4bbf2a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd232801ef1d1fd985d2d4ca3cd1d888303ca86f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c8cc238093ca6c99267032f6cfe78f59389f3157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/edbbe88f83b524434974e84808d3093199d67c24"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:12Z"
+  }
+}

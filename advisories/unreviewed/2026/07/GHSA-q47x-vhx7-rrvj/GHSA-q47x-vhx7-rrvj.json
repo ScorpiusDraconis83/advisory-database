@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q47x-vhx7-rrvj",
+  "modified": "2026-07-19T18:31:47Z",
+  "published": "2026-07-19T18:31:47Z",
+  "aliases": [
+    "CVE-2026-63938"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SEV: Check PSC request indices against the actual size of the buffer\n\nWhen processing Page State Change (PSC) requests, validate the PSC buffer\nagainst the effective size of the scratch area, which could be less than\nthe maximum size if the guest provided a pointer that isn't exactly at the\nstart of the GHCB shared buffer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63938"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/121d88de56bc5c0ba0ce2f6381af67f948a7e7c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/505a3b94535583e4265360e2621734e355ef263d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5198f70c09a5f6e9e5f5a0a2c6b388f24294b176"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75c8d1d7291268b479794fba5808971dc2f5eaf3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:12Z"
+  }
+}

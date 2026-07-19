@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vrpq-2gcp-g727",
+  "modified": "2026-07-19T18:31:46Z",
+  "published": "2026-07-19T18:31:46Z",
+  "aliases": [
+    "CVE-2026-63932"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: chemical: mhz19b: reject oversized serial replies\n\nmhz19b_receive_buf() appends each serdev chunk into the fixed\nMHZ19B_CMD_SIZE receive buffer and advances buf_idx by len without\nchecking that the chunk fits in the remaining space. A large callback\ncan therefore overflow st->buf before the command path validates the\nreply.\n\nReset the reply state before each command and reject oversized serial\nreplies before copying them into the fixed buffer. When an oversized\nreply is detected, wake the waiter and report -EMSGSIZE instead of\noverwriting st->buf.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63932"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/673478bc29cf72010faaf293c1c8c667393335a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a5a05410cb34bfa486d63684cdc1f87a3b13f20a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea69e7a6efa88ef32090a91064c362738cc19ddd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:11Z"
+  }
+}

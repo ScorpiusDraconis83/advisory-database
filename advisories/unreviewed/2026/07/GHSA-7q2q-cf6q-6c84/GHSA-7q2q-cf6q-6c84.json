@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7q2q-cf6q-6c84",
+  "modified": "2026-07-19T18:31:43Z",
+  "published": "2026-07-19T18:31:43Z",
+  "aliases": [
+    "CVE-2026-63878"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: check num_entries in GEM_OP GET_MAPPING_INFO\n\nkvcalloc(args->num_entries, sizeof(*vm_entries), GFP_KERNEL) at\namdgpu_gem.c:1050 uses the user-supplied num_entries directly without\nany upper bounds check. Since num_entries is a __u32 and\nsizeof(drm_amdgpu_gem_vm_entry) is 32 bytes, a large num_entries\nproduces an allocation exceeding INT_MAX, triggering\nWARNING in __kvmalloc_node_noprof(), causing a kernel WARNING,\nTAINT_WARN, and panic on CONFIG_PANIC_ON_WARN=y systems.\n\nAdd a size bounds check before we invoke the kvzalloc() to\nreject oversized num_entries early with -EINVAL.\n\n(cherry picked from commit 1fe7bf5457f6efd7be60b17e23163ba54341d73d)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63878"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/967a00b8e06a7734aded23861faba9ee2462be87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1ba4594232c87c3b8defd6f89a2e40f8b08395d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f059b4c493df3e54fe3ffe4658009c31864275da"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:04Z"
+  }
+}

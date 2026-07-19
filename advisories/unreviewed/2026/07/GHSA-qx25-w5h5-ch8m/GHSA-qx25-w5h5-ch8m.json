@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qx25-w5h5-ch8m",
+  "modified": "2026-07-19T18:31:47Z",
+  "published": "2026-07-19T18:31:47Z",
+  "aliases": [
+    "CVE-2026-63958"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: ucsi: validate connector number in ucsi_connector_change()\n\nThe connector number in a UCSI CCI notification is a 7-bit field\nsupplied by the PPM.  ucsi_connector_change() uses it to index the\nucsi->connector[] array without checking it against the number of\nconnectors the PPM reported at init time, so a buggy or malicious PPM\n(EC firmware, or an I2C-attached UCSI controller on the ccg / stm32g0 /\nglink transports) can drive schedule_work() on memory past the end of\nthe array.\n\nReject connector numbers that are zero or exceed cap.num_connectors\nbefore dereferencing the array.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63958"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0edd1e21587b0483c7ceb993b9fb9668bbef7433"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/156b6f0aec6108909b0c4aedc78865b12766b347"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/288a81a8507052bcfbf884d39a463c44c42c5fd9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5af2719b460ab904c504fc069d1dd2a3aa2b22b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd24d92af4ae021b6209f28e9a57e1bf2260d4fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cea949203faef9cb783adc7b978cce056271e057"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:14Z"
+  }
+}

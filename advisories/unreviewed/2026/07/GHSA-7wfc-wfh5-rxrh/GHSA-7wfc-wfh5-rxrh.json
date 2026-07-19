@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7wfc-wfh5-rxrh",
+  "modified": "2026-07-19T18:31:47Z",
+  "published": "2026-07-19T18:31:47Z",
+  "aliases": [
+    "CVE-2026-63965"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: pressure: bmp280: fix stack leak in bmp580 trigger handler\n\nbmp580_trigger_handler() declares its scan buffer on the stack without\nan initializer and then memcpy()s 3 bytes of 24-bit sensor data into\neach 4-byte __le32 field.  The high byte of comp_temp and comp_press is\nleft uninitialized, and the channel storagebits is 32, so two bytes of\nstack are pushed to userspace per scan.\n\nThis is a regression from when the buffer lived in the private data, the\nmove to a stack-local struct dropped the implicit zeroing.\nbme280_trigger_handler() was fixed up to handle this bug, but this\ndriver was not fixed because there was no padding hole, but rather a\nshort-fill issue.\n\nFix this all by just zero-initializing the structure on the stack.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63965"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/387c86b582e0782ab332e7bfcd4e6e3f93922961"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58dfb6fe9dc80270cf7cc014837af4cbf928e3aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a58400f58f82f3d8de9c067aa7cda690228c1ecc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:15Z"
+  }
+}

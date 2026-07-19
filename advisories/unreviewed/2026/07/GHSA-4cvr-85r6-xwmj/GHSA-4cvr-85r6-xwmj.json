@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4cvr-85r6-xwmj",
+  "modified": "2026-07-19T18:31:54Z",
+  "published": "2026-07-19T18:31:54Z",
+  "aliases": [
+    "CVE-2026-64172"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SVM: Disable AVIC IPI virtualization on Hygon Family 18h (erratum #1235)\n\nHygon Family 18h CPUs are derived from AMD Family 17h (Zen1) silicon and\nshare the same erratum #1235: hardware may read a stale IsRunning=1 bit\nduring ICR write emulation and silently fail to generate an\nAVIC_IPI_FAILURE_TARGET_NOT_RUNNING VM-Exit on the sending vCPU.\n\nThe absence of the VM-Exit causes KVM to miss the required wakeup of\nblocking target vCPUs, leading to hung vCPUs and unbounded delays in\nguest execution.\n\nExtend the existing AMD Family 17h erratum #1235 workaround to also cover\nHygon Family 18h.  With IPI virtualization disabled, KVM never sets\nIsRunning=1 in the Physical ID table, so every non-self IPI generates a\nVM-Exit and is correctly emulated.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64172"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94ade38f317ea086a181db0e6b69c574b3b70a5e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9560e6fee887a9594a89fa265b5b9c79b1591803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a12fa5213cfc391e0eed63902d3be98f0913765"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:59Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p7rq-pjmq-p6gw",
+  "modified": "2026-07-19T18:31:47Z",
+  "published": "2026-07-19T18:31:47Z",
+  "aliases": [
+    "CVE-2026-63943"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: xpad - fix out-of-bounds access for Share button\n\nxpadone_process_packet() receives len directly from urb->actual_length\nand uses it to index the share-button byte at data[len - 18] or\ndata[len - 26]. Since both len and data[0] are under the device's\ncontrol, a broken controller can send a GIP_CMD_INPUT packet with\nactual_length < 18 (e.g. 5 bytes) and reach this code path, causing\naccesses beyond the actual array.\n\nFix this by calculating the offset and checking bounds against the\npacket length.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63943"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/37ec54abfdd63a63fd50734a9c4e4cbc1e5795af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6346b0895b574ce45f3747b9c508c72f70e6abef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cdc46b38cf146ce81d4831b6472dbf7731849a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9749db57233b396353ad5dee81eec9d9880c9246"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bcfb4833cd4078a1a356ef451838b75cd233099e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:12Z"
+  }
+}

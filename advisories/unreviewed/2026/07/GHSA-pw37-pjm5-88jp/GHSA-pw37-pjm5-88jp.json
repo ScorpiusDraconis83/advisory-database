@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pw37-pjm5-88jp",
+  "modified": "2026-07-19T18:31:51Z",
+  "published": "2026-07-19T18:31:51Z",
+  "aliases": [
+    "CVE-2026-64062"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfs: Fix potential deadlock in write-through mode\n\nFix netfs_advance_writethrough() to always unlock the supplied folio and to\nmark it dirty if it isn't yet written to the end.  Unfortunately, it can't\nbe marked for writeback until the folio is done with as that may cause a\ndeadlock against mmapped reads and writes.\n\nEven though it has been marked dirty, premature writeback can't occur as\nthe caller is holding both inode->i_rwsem (which will prevent concurrent\ntruncation, fallocation, DIO and other writes) and ictx->wb_lock (which\nwill cause flushing to wait and writeback to skip or wait).\n\nNote that this may be easier to deal with once the queuing of folios is\nsplit from the generation of subrequests.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64062"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/003aa0dd26c964025acd6d1213bcdbd674db2ca9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1468f39243ccb155b6d97f9a9932f610d1205d75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b6a4ae1634b3ad2aaa05222e53d36da532852faf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e40e9cbf3ee4d30ee9a97bd128c85500b6ad0da1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:46Z"
+  }
+}

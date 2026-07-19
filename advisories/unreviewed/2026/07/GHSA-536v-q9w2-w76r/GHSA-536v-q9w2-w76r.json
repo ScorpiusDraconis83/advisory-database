@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-536v-q9w2-w76r",
+  "modified": "2026-07-19T18:31:53Z",
+  "published": "2026-07-19T18:31:53Z",
+  "aliases": [
+    "CVE-2026-64129"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/migrate_device: fix spinlock leak in migrate_vma_insert_huge_pmd_page\n\nWhen check_stable_address_space() fails after the PMD spinlock has\nbeen acquired via pmd_lock(), the code jumps directly to the abort\nlabel, bypassing the spin_unlock() call in unlock_abort. This causes\nthe PMD spinlock to be permanently held, leading to a deadlock.\n\nChange the goto target from abort to unlock_abort to ensure the\nspinlock is always released on this error path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64129"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63451de16e0a08be40f9ab5e7c5c8f5c79676fb1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c715f7ccf7a294c058667b678a4ba50fad933c62"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:54Z"
+  }
+}

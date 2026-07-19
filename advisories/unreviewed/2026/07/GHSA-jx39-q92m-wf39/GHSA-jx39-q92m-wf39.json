@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jx39-q92m-wf39",
+  "modified": "2026-07-19T18:31:47Z",
+  "published": "2026-07-19T18:31:47Z",
+  "aliases": [
+    "CVE-2026-63940"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SEV: Ignore Port I/O requests of length '0'\n\nExplicitly ignore Port I/O requests of length '0' (or count '0'), so that\nsetting up the software scratch area (and other code) doesn't have to\nworry about underflowing the length, and to allow for WARNing on trying\nto configure the scratch area with len==0.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63940"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2254972d4d69e279ba4e87bf0968eb08ad0d3c92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3988bd2723de407ae90fa7a6f6029b4e60238c58"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b6035bc6bff20e89752ce4358bc4c9a9d5883f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c30cde934c7813b4e3069765dac64ce3d31e34f2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:12Z"
+  }
+}

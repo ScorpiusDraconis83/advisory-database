@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-35qx-2fp8-64h3",
+  "modified": "2026-07-19T18:31:50Z",
+  "published": "2026-07-19T18:31:50Z",
+  "aliases": [
+    "CVE-2026-64038"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (lm90) Stop work before releasing hwmon device\n\nSashiko reports:\n\nIn lm90_probe(), the devm action to cancel the alert_work and report_work\n(lm90_restore_conf) is registered in lm90_init_client() before\ndevm_hwmon_device_register_with_info() is called.\n\nBecause devm executes cleanup actions in reverse order during module\nunbind or probe failure, the hwmon device is unregistered and freed first.\n\nIf lm90_alert_work() or lm90_report_alarms() runs in the window between\nthe hwmon device being freed and the delayed works being cancelled,\nlm90_update_alarms() will dereference the freed data->hwmon_dev here.\n\nFix the problem by canceling the workers separately after registering\nthe hwmon device and before registering the interrupt handler. This ensures\nthat the workers are canceled after interrupts are disabled and before\nthe hwmon device is released. Add \"shutdown\" flag to indicate that device\nshutdown is in progress to prevent workers from being re-armed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64038"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/479e297526aeb19c745eac5c1897f455f83dc5f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b09a45601094c7f4ec4db8090b825fa61e169d93"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c98107817b0f6cdf51adc5e84e75c39ee25d8b28"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:44Z"
+  }
+}

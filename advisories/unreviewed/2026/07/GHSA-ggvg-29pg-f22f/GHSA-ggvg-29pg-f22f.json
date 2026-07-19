@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ggvg-29pg-f22f",
+  "modified": "2026-07-19T18:31:46Z",
+  "published": "2026-07-19T18:31:46Z",
+  "aliases": [
+    "CVE-2026-63930"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: buffer: hw-consumer: fix use-after-free in error path\n\nIn the err_put_buffers cleanup path of iio_hw_consumer_alloc(), the code\nwas using list_for_each_entry() to iterate through buffers while calling\niio_buffer_put() which can free the current buffer if refcount drops to 0.\nThe list_for_each_entry() loop macro then evaluates buf->head.next to\ncontinue iteration, accessing the freed buffer.\n\nFix this by using list_for_each_entry_safe().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63930"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/29783e6b6ec0b7152a15e53a063f17537e81177d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ff615fc455acda5425c4900160cbe11cfea4449"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f5ed4f2c7c83f33344e0ba179f72a12e5dad4a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9319c94f63ed10723afd738d79f5617daba87cc8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3763ae33476328cf8d661742deb9daec78eac96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b71893c57730809c222766e5718bb33610f11963"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2759d49860b9a39b5cde2fb88e4b822ddf5f58f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e965627f0d442bfcae3f496c90cb653fb0917a61"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:11Z"
+  }
+}

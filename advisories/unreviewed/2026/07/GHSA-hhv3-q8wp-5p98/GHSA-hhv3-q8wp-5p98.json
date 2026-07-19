@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hhv3-q8wp-5p98",
+  "modified": "2026-07-19T18:31:48Z",
+  "published": "2026-07-19T18:31:48Z",
+  "aliases": [
+    "CVE-2026-63997"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nethtool: module: avoid leaking a netdev ref on module flash errors\n\nmodule_flash_fw_schedule() is missing undo for setting\nthe \"in_progress\" flag and taking the netdev reference.\nDelay taking these, the device can't disappear while\nwe are holding rtnl_lock.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63997"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61848c83b9132ab839809fe415ba7802a0aca4f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/956b134d917fd7e014dc7e39a9b7610c04fcc9ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7b4513e77f9571dc1041a798b93b5c4a4bfc191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb7f511d62692661846c47f199e0afe25c2982db"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:39Z"
+  }
+}

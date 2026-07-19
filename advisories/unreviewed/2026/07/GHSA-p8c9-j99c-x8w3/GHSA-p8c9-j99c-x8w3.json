@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p8c9-j99c-x8w3",
+  "modified": "2026-07-19T18:31:50Z",
+  "published": "2026-07-19T18:31:49Z",
+  "aliases": [
+    "CVE-2026-64027"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: shaper: rework the VALID marking (again)\n\nRecent commit changed the semantics from NOT_VALID to VALID.\nI didn't realize that the flags are not stored atomically\nwith the entry in XArray. There's still a race of reader\nobserving a VALID mark for a slot, getting interrupted,\nwriter replacing the entry with a different one, reader\ncontinuing, fetching the entry which is now a different\npointer than the pointer for which VALID was meant.\n\nThe biggest consequence of this is that we may see a UAF\nsince net_shaper_rollback() assumed that entries without\nVALID can be freed without observing RCU.\n\nLooks like the XArray marks are buying us nothing at this\npoint. Let's convert the code to an explicit valid field.\nThe smp_load_acquire() / smp_store_release() barriers are\nmarginally cleaner.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64027"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2417df5e7bb4184b9d3a2988036bf2c46e594545"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96ea960dd40fd55302e0fd755176f26a95e6a50c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8d7519352ba8c6df83259295d4a3bad093cae90"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:42Z"
+  }
+}

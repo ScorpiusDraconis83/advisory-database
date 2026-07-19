@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-856p-gwqh-fxcq",
+  "modified": "2026-07-19T18:31:47Z",
+  "published": "2026-07-19T18:31:46Z",
+  "aliases": [
+    "CVE-2026-63936"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: mt6359: fix unchecked return value in mt6358_read_imp\n\nIn mt6358_read_imp(), the variable val_v is passed to regmap_read()\nbut the return value is not checked. If the read fails, val_v remains\nuninitialized and its random stack content is subsequently reported\nas a measurement result.\n\nInitialize val_v to zero to ensure a predictable value is reported\nin case of bus failure and to prevent potential stack data leakage.\nThis also satisfies static analyzers that might otherwise flag the\nvariable as used uninitialized.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63936"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6258bfec51e894ea97b8e69f3cde7af269b37de9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/944082fdb0284a31c0b37a88c8a1d4404da3a6d9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a72f8e51d6ee66c255a8a93a4421b8a538d112a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9bbd943c34a9ad60e593a4b99ce2394e4e2381b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:12Z"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4pv-6p78-8g93",
+  "modified": "2026-07-19T18:31:47Z",
+  "published": "2026-07-19T18:31:47Z",
+  "aliases": [
+    "CVE-2026-63947"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: HIDP: fix missing length checks in hidp_input_report()\n\nhidp_input_report() reads keyboard and mouse payload data from an skb\nwithout first verifying that skb->len contains enough data.\n\nhidp_recv_intr_frame() pulls the 1-byte HIDP header before dispatching\nto hidp_input_report(). If a paired device sends a truncated packet,\nthe handler reads beyond the valid skb data, resulting in an\nout-of-bounds read of skb data. The OOB bytes may be interpreted as\nphantom key presses or spurious mouse movement.\n\nReplace the open-coded length tracking and pointer arithmetic with\nskb_pull_data() calls. skb_pull_data() returns NULL if the requested\nbytes are not present, eliminating the need for a manual size variable\nand the separate skb->len guard.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63947"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f08a90013e1e632b34321334e861fcefc056505"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a3ac9ee11dbb9845f3947cef4a79dba658cf6f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6348dfed5b0f9c6074f14322332e97493d32fef0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b83dcacd2ec7fcc5a48be215f82d573759f87ec2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc3832b19f863e3677c5651f001a2e3795f39eb8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d313683d6ccdd8c01e0562270a2ae25b86d8461d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7d6a81b8dd1a8d084a1b755db9406041d53adb5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:13Z"
+  }
+}

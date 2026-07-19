@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vghm-prgp-x82v",
+  "modified": "2026-07-19T18:31:47Z",
+  "published": "2026-07-19T18:31:47Z",
+  "aliases": [
+    "CVE-2026-63967"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: imu: st_lsm6dsx: fix stack leak in tagged FIFO buffer\n\nThe tagged FIFO path declares iio_buff on the stack with __aligned(8)\nbut no initializer, but there is a hole in the structure, which will\nthen leak to userspace as ST_LSM6DSX_SAMPLE_SIZE bytes (6) will be\ncopied, but the space between that and the timestamp are not\ninitialized.\n\nCommit c14edb4d0bdc (\"iio:imu:st_lsm6dsx Fix alignment and data leak\nissues\") moved the untagged FIFO path to a kzalloc'd buffer in hw->scan,\nbut for the tagged path it only added the alignment qualifier and not\nthe initializer :(\n\nFix this by just zero-initializing the structure on the stack.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63967"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3147b303b8c7d9f91da4b849ece33b45048f5eaf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/890d0312d5f94be43eac21f5a34d3bccc60d051b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/babf1943a40bb5669db57d30ca16c22504b18e07"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9d8e9adaa63150ef7e833480b799d0bab83a276"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d42ac0bfb6a16617c62a59d53706579c7fadbfa6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6bb3a49c5f9de870ea95e69775df785728e3366"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe1a7f99e72ebd2880515332b79b8c256be22aca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff8d3c088b77b11782f2c3b97e37425be050e8de"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:15Z"
+  }
+}

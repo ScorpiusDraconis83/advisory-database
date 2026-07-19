@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8577-pmm3-chq2",
+  "modified": "2026-07-19T18:31:45Z",
+  "published": "2026-07-19T18:31:45Z",
+  "aliases": [
+    "CVE-2026-63913"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: conntrack: tcp: do not force CLOSE on invalid-seq RST without direction check\n\nAn unintended behavior in the TCP conntrack state machine allows a\nconnection to be forced into the CLOSE state using an RST packet with an\ninvalid sequence number.\n\nSpecifically, after a SYN packet is observed, an RST with an invalid SEQ\ncan transition the conntrack entry to TCP_CONNTRACK_CLOSE, regardless of\nwhether the RST corresponds to the expected reply direction. The relevant\ncode path assumes the RST is a response to an outgoing SYN, but does not\nvalidate packet direction or ensure that a matching SYN was actually sent\nin the opposite direction.\n\nAs a result, a crafted packet sequence consisting of a SYN followed by an\ninvalid-sequence RST can prematurely terminate an active NAT entry. This\nmakes connection teardown easier than intended.\n\nSo, tighten the state transition logic to ensure that RST-triggered\nCLOSE transitions only occur when the RST is a valid response to a\npreviously observed SYN in the correct direction.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63913"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2006979a15af5404bf932a325357683c0bac1656"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2bb6d82b586ea5a4cb73bbdd6b7432e96096bc77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6476c17d536dbd321c073242e762ddb2713a1238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b98ab51c45c5608a1c19ce7fd17a3032469bb83f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bed6e04be8e6b9133d8b16d5a42d0e0ce674fa9a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d67c6adee8d1b65330d0174c4c367faba14e80a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f206def4e86d810f927ba1d8e322ea72b29bce58"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f5547bebc416d56f56fb5b86dc20aabfa42165a0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:09Z"
+  }
+}

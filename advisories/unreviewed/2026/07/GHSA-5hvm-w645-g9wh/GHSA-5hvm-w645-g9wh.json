@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5hvm-w645-g9wh",
+  "modified": "2026-07-19T18:31:48Z",
+  "published": "2026-07-19T18:31:48Z",
+  "aliases": [
+    "CVE-2026-63991"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: 6lowpan: check skb_clone() return value in send_mcast_pkt()\n\nThe skb_clone() function can return NULL if memory allocation fails.\nsend_mcast_pkt() calls skb_clone() without checking the return value, which\ncan lead to a NULL pointer dereference in send_pkt() when it dereferences\nskb->data.\nAdd a NULL check after skb_clone() and skip the peer if the clone fails.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63991"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2061d080a013c0ec0a56162cd501fb36d2befc26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c40d381ce04f9575a5d8b542898183c3b4b38dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d5d81d294ba09487c86bc4ba33dc4a4bec5d215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9903a04becf059e44cccf625e23689b7d4378384"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9afcb5ea080af13aab37930da627db43bd277665"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b06203ac5f12929d79146bb9f063c2af1d679e63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d630c4b25f36e0e68461561e4c70957ec37fdedd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e673889a35a5e4c586d0fae67d8755ca4367d3e2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:37Z"
+  }
+}

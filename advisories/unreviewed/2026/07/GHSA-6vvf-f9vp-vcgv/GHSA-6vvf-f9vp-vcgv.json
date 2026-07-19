@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6vvf-f9vp-vcgv",
+  "modified": "2026-07-19T18:31:53Z",
+  "published": "2026-07-19T18:31:53Z",
+  "aliases": [
+    "CVE-2026-64136"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: protect tc_count increment in smb2_find_smb_sess_tcon_unlocked()\n\nCommit 96c4af418586 (\"cifs: Fix locking usage for tcon fields\")\nrefactored cifs code to change cifs_tcp_ses_lock for tc_lock around\ntc_count changes.\n\nThere was missing lock around tc_count increment inside\nsmb2_find_smb_sess_tcon_unlocked().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13fb413ae22a37c69341918a6d651d19a9b0b9b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d8690dace005a38e6dbde9ecce2da3ad85c7c41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7df1df6f40c0720d30206aa35c0343b962350e0d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf4ebdb19ff9b3cdf992b50715fe61633327416a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e374f4e496fef8168784f93a4477d67be34485fd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:55Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jv9h-h3cq-mm9x",
+  "modified": "2026-07-19T18:31:51Z",
+  "published": "2026-07-19T18:31:51Z",
+  "aliases": [
+    "CVE-2026-64081"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_ffa: Validate framework notification message layout\n\nFramework notifications carry an indirect message in the shared RX\nbuffer. Validate the reported offset and size before using them, reject\nzero-length payloads, and ensure that any non-header payload starts at\nthe UUID field rather than in the middle of the message header.\n\nUse the validated offset and size values for both kmemdup() and the UUID\nparsing path so malformed firmware data cannot drive an out-of-bounds\nread or an oversized allocation.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64081"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c51d99449dc5a01c08a7fce6071d6721f5aac83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a1cc9e96b311d2609a6f963a5e35bd4ae730d97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/76eb90e2b03de147e12ab68ea8afd8ea0342df0a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:48Z"
+  }
+}

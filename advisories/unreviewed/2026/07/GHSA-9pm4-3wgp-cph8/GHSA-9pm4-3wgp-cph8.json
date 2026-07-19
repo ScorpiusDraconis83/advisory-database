@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9pm4-3wgp-cph8",
+  "modified": "2026-07-19T18:31:48Z",
+  "published": "2026-07-19T18:31:48Z",
+  "aliases": [
+    "CVE-2026-63999"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nethtool: rss: fix indir_table and hkey leak on get_rxfh failure\n\nrss_prepare_get() allocates the indirection table and hash key buffer\nvia rss_get_data_alloc(), then calls ops->get_rxfh() to populate them.\nIf get_rxfh() fails, the function returns an error without freeing\nthe allocation.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63999"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/266297692f97008ca48bc311775c087c59bd7fe3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/33d05c22d6f227c5ae171c46df2f6f8bf48047ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80d95d92f828cfcace955d673637d944178b435f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:39Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hcxq-wxqg-v33q",
+  "modified": "2026-07-19T18:31:54Z",
+  "published": "2026-07-19T18:31:53Z",
+  "aliases": [
+    "CVE-2026-64156"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfs, afs: Fix write skipping in dir/link writepages\n\nFix netfs_write_single() and afs_single_writepages() to better handle a\nwrite that would be skipped due to lock contention and WB_SYNC_NONE by\nreturning 1 from netfs_write_single() if it skipped and making\nafs_single_writepages() skip also.  If a skip occurs, the inode must be\nre-marked as the VFS may have cleared the mark.\n\nThis is really only theoretical for directories in netfs_write_single() as\nthe only path to that is through afs_single_writepages() that takes the\n->validate_lock around it, thereby serialising it.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64156"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77bb293049d61e04c12b24ebbffafaf5ab36af90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9871938f99cc6cb266a77265491660e2375271f5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f91e10435c0dd37c48b1b25e6236284f656ddc0c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:57Z"
+  }
+}

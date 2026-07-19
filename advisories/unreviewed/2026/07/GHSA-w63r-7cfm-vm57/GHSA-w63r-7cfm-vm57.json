@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w63r-7cfm-vm57",
+  "modified": "2026-07-19T18:31:49Z",
+  "published": "2026-07-19T18:31:49Z",
+  "aliases": [
+    "CVE-2026-64016"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix durable reconnect error path file lifetime\n\nAfter a durable reconnect succeeds, ksmbd_reopen_durable_fd() republishes\nthe same ksmbd_file into the session volatile-id table. If smb2_open()\nthen takes a later error path, cleanup first calls ksmbd_fd_put(work, fp)\nand then unconditionally calls ksmbd_put_durable_fd(dh_info.fp).\n\nIn this case fp and dh_info.fp are the same object. The first put drops the\nreconnect lookup reference, but the final durable put can run\n__ksmbd_close_fd(NULL, fp). Because the final close is not session-aware,\nit can free the file object without removing the volatile-id entry that was\njust published into the session table.\n\nUse the session-aware put for the final reconnect drop when the reconnect\nhad already succeeded and the error path is cleaning up the republished\nfile. Earlier reconnect failures, before fp is assigned to dh_info.fp, keep\nusing the durable-only put path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64016"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3515503322f4819277091839eed46b695096aca5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cb0b9385320110fe24a5d5ac0000ade4bb3a3f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1a39f227c80cbf369767badc32cba2b225147d1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:41Z"
+  }
+}

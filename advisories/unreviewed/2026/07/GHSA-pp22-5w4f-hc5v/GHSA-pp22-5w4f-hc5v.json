@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pp22-5w4f-hc5v",
+  "modified": "2026-07-19T18:31:49Z",
+  "published": "2026-07-19T18:31:49Z",
+  "aliases": [
+    "CVE-2026-64023"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: aggregator: fix a potential use-after-free\n\nOn error we free aggr->lookups->dev_id before removing the entry from\nthe lookup table. If a concurrent thread calls gpiod_find() before we\nremove the entry, it could iterate over the list and call\ngpiod_match_lookup_table() which unconditionally dereferences dev_id\nwhen calling strcmp(). Reverse the order of cleanup.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64023"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30c073cab97afb31901f94de9605177b6b84367e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ac4183a41ba048af89eddd82fe8be64619d0871"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea28b286649b70618e9dd3e895812417a7712a11"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:42Z"
+  }
+}

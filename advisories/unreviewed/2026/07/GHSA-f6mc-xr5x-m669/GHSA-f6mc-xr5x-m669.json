@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f6mc-xr5x-m669",
+  "modified": "2026-07-19T18:31:49Z",
+  "published": "2026-07-19T18:31:49Z",
+  "aliases": [
+    "CVE-2026-64004"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/iucv: fix locking in .getsockopt\n\nMirror iucv_sock_setsockopt() and wrap the whole switch in\nlock_sock()/release_sock(). The pre-existing SO_MSGLIMIT-only lock\nbecomes redundant and is removed.\n\nAny AF_IUCV HIPER user can potentially crash the kernel by racing\nrecvmsg() with getsockopt(SO_MSGSIZE): the SO_MSGSIZE arm dereferences\niucv->hs_dev->mtu after iucv_sock_close() (called from the racing\nrecvmsg()) has set hs_dev to NULL, producing a NULL pointer dereference\noops.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64004"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fc30bd4e55e2dd622d2d366cecd732c1841bbee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3589d20a666caf30ad100c960a2de7de390fce88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45bb8de8c95d8899f4b8f61bd9bceb8132af73cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69554adc7a6fa04ede3ad7512321d83748e3c920"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e792b8dd3002bbc4136745928a9605df1a72b8a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/884eb247b74d86db97e3a37f0d6fc8e1e83590dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9817369243380e287ebe5525411557eaa3aa2a79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd691beafea0dd779e69e81ccc26b0ab50efcb5e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:40Z"
+  }
+}

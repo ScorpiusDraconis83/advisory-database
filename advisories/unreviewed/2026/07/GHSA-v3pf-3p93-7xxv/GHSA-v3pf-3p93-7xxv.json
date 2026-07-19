@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v3pf-3p93-7xxv",
+  "modified": "2026-07-19T18:31:49Z",
+  "published": "2026-07-19T18:31:49Z",
+  "aliases": [
+    "CVE-2026-64019"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-pci: fix dma mapping leak on data setup error\n\nWe're leaking the initial DMA mapping during iteration if we fail to\nallocate the tracking descriptor for both PRP and SGL. Unmap the\niterator directly; we can't use the existing unmap helper because it\ndepends on the tracking descriptor being successfully allocated, so a\nnew one for an in-use iterator is provided.\n\nThe mappings were also leaking when the driver detects an invalid\nbio_vec when mapping PRPs, so fix that too.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64019"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1bf86336e4b6cf40873fda47a7fe191446864937"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e50db059ec8e63bc50b1cc039e2502cb5ea75a70"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:41Z"
+  }
+}

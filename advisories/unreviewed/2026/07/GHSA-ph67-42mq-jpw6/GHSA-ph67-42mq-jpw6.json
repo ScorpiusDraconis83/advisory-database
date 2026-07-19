@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ph67-42mq-jpw6",
+  "modified": "2026-07-19T18:31:46Z",
+  "published": "2026-07-19T18:31:46Z",
+  "aliases": [
+    "CVE-2026-63935"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: nxp-sar-adc: fix division by zero in write_raw\n\nAdd a validation check for the sampling frequency value before using it\nas a divisor. A user writing zero or a negative value to the\nsampling_frequency sysfs attribute triggers a division by zero in the\nkernel.\n\nAlso prevent unsigned integer underflow when the computed cycle count is\nsmaller than NXP_SAR_ADC_CONV_TIME, which would wrap the u32 inpsamp to\na huge value.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63935"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9aba21a539c668a66b58eeb08ad3909e5a54c2a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb6ea15e7d3c7518f806975a06b7d4c0a26402ea"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:11Z"
+  }
+}

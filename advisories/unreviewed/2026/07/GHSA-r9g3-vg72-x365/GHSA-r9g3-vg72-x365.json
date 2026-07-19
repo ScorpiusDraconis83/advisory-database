@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r9g3-vg72-x365",
+  "modified": "2026-07-19T18:31:54Z",
+  "published": "2026-07-19T18:31:54Z",
+  "aliases": [
+    "CVE-2026-64184"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/damon/sysfs-schemes: call missing mem_cgroup_iter_break()\n\ndamon_sysfs_memcg_path_to_id() breaks mem_cgroup_iter() loop without\ncalling mem_cgroup_iter_break().  This leaks the cgroup reference.  Fix\nthe issue by calling mem_cgroup_iter_break() before the break.\n\nThe issue was discovered [1] by Sashiko.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64184"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/082351f9d40007414ad6af062b3a26fa02fd4b5f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1bd31386ec3b9ccec10c04429948a306ec5897c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/302e02f9ba49f81418ec2a749ae6f5cac1d424e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30a361be33f3793b9ecbd10ab7be6d0564819b79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4e7b5c4cc353f154d5ab8bb2e1ce7714d77a6e9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:18:00Z"
+  }
+}

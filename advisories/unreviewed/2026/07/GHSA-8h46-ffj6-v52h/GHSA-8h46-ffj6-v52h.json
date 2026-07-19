@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8h46-ffj6-v52h",
+  "modified": "2026-07-19T18:31:54Z",
+  "published": "2026-07-19T18:31:54Z",
+  "aliases": [
+    "CVE-2026-64178"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: bnep: Fix UAF read of dev->name\n\nbnep_add_connection() needs to keep holding the bnep_session_sem while\nreading dev->name (just like bnep_get_connlist() does); otherwise the\nbnep_session() thread can concurrently free the net_device, which can for\nexample be triggered by a concurrent bnep_del_connection().\n\n(This UAF is fairly uninteresting from a security perspective;\ncalling bnep_add_connection() requires passing a capable(CAP_NET_ADMIN)\ncheck. It also requires completely tearing down a netdev during a fairly\ntight race window.)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64178"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4907596f25b1720fa948371ac5f6c1f8da10a5bc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5506aec795135cdd4cbf4e845929155663b25055"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59e932ded949fa6f0340bf7c6d7818f962fa4fd2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/915a92182e2cda9cd7d2479020a44c6eda986f7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a75bbcb10cb21acc169b785e9804f57d97873a9c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b21805258d7e926adfd455fc820a447b90da3b82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7578529b97e5d4e439cf8f3e637c2303015338f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe69f634b076ae3ca81c5a5b845d9bba527036f7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:18:00Z"
+  }
+}

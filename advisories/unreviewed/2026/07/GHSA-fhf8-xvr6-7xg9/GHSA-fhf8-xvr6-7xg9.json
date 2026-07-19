@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fhf8-xvr6-7xg9",
+  "modified": "2026-07-19T18:31:54Z",
+  "published": "2026-07-19T18:31:54Z",
+  "aliases": [
+    "CVE-2026-64155"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath11k: fix error path leaks in some WMI WOW calls\n\nFix two instances where we used to directly return the result of\nath11k_wmi_cmd_send(...). Because we did not check the return value, we\nalso did not free the skb in the error path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64155"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/008955b1348452de25bc19d6e0f0f673d4cb9a3c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d675896ea03aca631852a2a7e91e6cb8f664967"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/55dda532bbc261aef495e403c8900c5e2ab5fa34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/acde4692afcdaea6de3e2996ddfaeaa7ae6b0130"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd43d587dd333517c806cd24696e6e1a26b9951e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d618d322b95c80d5ad7091f35a7193e4050dcc27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d6c7b8d0dc22c0a8743435db8f42d98524b70df3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:57Z"
+  }
+}

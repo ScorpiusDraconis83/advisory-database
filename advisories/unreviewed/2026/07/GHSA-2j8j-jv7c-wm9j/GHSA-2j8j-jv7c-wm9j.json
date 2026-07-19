@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2j8j-jv7c-wm9j",
+  "modified": "2026-07-19T18:31:50Z",
+  "published": "2026-07-19T18:31:49Z",
+  "aliases": [
+    "CVE-2026-64030"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: bounds-check link_id in ieee80211_ml_epcs\n\nIEEE80211_MLE_STA_EPCS_CONTROL_LINK_ID is 0x000f, so link_id extracted\nfrom a PRIO_ACCESS ML element PER_STA_PROFILE subelement can be 0..15.\nsdata->link[] has IEEE80211_MLD_MAX_NUM_LINKS (15) entries (indices 0..14),\nmaking index 15 out-of-bounds.\n\nA connected WiFi 7 AP can trigger this by sending an EPCS Enable Response\naction frame with a PER_STA_PROFILE subelement where link_id = 15.  The\nunsolicited-notification path (dialog_token = 0) is reachable any time\nEPCS is already enabled, without any prior client request.\n\nsdata->link[15] reads into the first word of sdata->activate_links_work\n(a wiphy_work whose embedded list_head is non-NULL after INIT_LIST_HEAD),\nso the NULL check on the result does not catch the invalid access.  The\ngarbage pointer is then passed to ieee80211_sta_wmm_params(), which\ndereferences link->sdata and crashes the kernel.\n\nThe same class of bug was fixed for ieee80211_ml_reconfiguration() by\ncommit 162d331d833d (\"wifi: mac80211: bounds-check link_id in\nieee80211_ml_reconfiguration\").",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64030"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d8379834800c30602f24c71ab7c40f5fe84d200"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/863f1f02a3bd70dbd857b8ac4070292fde8cb4e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f718506edd2d9c6a308ded9d13c632bf7b7d5a2c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:43Z"
+  }
+}

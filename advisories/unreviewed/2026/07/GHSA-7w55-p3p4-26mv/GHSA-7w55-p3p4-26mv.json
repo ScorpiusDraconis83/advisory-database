@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7w55-p3p4-26mv",
+  "modified": "2026-07-19T18:31:48Z",
+  "published": "2026-07-19T18:31:47Z",
+  "aliases": [
+    "CVE-2026-63964"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: ucsi: ccg: reject firmware images without a ':' record header\n\ndo_flash() locates the first .cyacd record with\n\n\tp = strnchr(fw->data, fw->size, ':');\n\twhile (p < eof) {\n\t\ts = strnchr(p + 1, eof - p - 1, ':');\n\t\t...\n\t}\n\nIf the firmware image contains no ':' byte,  strnchr() returns NULL.\nNULL compares less than the valid kernel pointer eof, so the loop body\nruns and strnchr() is called with p + 1 == (void *)1 and a length of\nroughly (unsigned long)eof, causing a wonderful crash.\n\nThe not_signed_fw fallthrough earlier in do_flash() and the chip-state\nbranches in ccg_fw_update_needed() allow an unsigned blob to reach this\nloop, so a root user who can place a crafted file under /lib/firmware\nand write the do_flash sysfs attribute can trigger the oops.\n\nBail out with -EINVAL when the initial strnchr() returns NULL.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f395ca1263bd181995eb829f5943a83a20db213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f432b8203066c26770fe6ea591361f10021dd6b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6526f8684f72391138353642af908803ba70795e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a38ed87818b2419090fb1a6338ddce6842b65dfa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b41dfc033fe594e152648050e95b9489cd53e9e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4ee519b06389e59ba2d6aa722fcc4a02a8bbcbb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c8460de584fe5415d212cfdd127d4db90835a450"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7486952bf74e546ee3748fb14b2d07881fa6273"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T16:17:15Z"
+  }
+}
