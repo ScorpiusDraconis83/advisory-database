@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4gv8-vfvf-62f2",
+  "modified": "2026-07-19T15:30:28Z",
+  "published": "2026-07-19T15:30:28Z",
+  "aliases": [
+    "CVE-2026-63874"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mctp: usb: fix race between urb completion and rx_retry cancellation\n\nIt's possible that sequencing between setting ->stopped and cancelling\nthe rx_retry work (in ndo_stop) could leave us with an urb queued:\n\n    T1: ndo_stop                  T2: rx_retry_work\n    ------------                  ----------------\n                                  LD: ->stopped => false\n    ST: ->stopped <= true\n    usb_kill_urb()\n                                  mctp_usb_rx_queue()\n                                    usb_submit_urb()\n    cancel_delayed_work_sync()\n\nThat urb completion can then re-schedule rx_retry_work.\n\nStrenghen the sequencing between the stop (preventing another requeue)\nand the cancel by updating both atomically under a new rx lock. After\nsetting ->rx_stopped, and cancelling pending work, we know that the\nrequeue cannot occur, so all that's left is killing any pending urb.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63874"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/54665dce982689e2fd99b32e9a0dcc204fda8a51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c46f3ee1837f6881cb99a52ffecb2760f11dc73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d90feaa3f74bea8dafb6494631a194c70e547d94"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T15:16:54Z"
+  }
+}

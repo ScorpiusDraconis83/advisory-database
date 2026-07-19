@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-93j7-q4pr-7pmf",
+  "modified": "2026-07-19T15:30:27Z",
+  "published": "2026-07-19T15:30:27Z",
+  "aliases": [
+    "CVE-2026-63857"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: airoha: Do not read uninitialized fragment address in airoha_dev_xmit()\n\nThe transmit loop in airoha_dev_xmit() reads fragment address and length\nduring its final iteration, when the loop index equals\nskb_shinfo(skb)->nr_frags, at which point the fragment data is\nuninitialized. While these values are never consumed, the read itself is\nunsafe and may trigger a page fault. Fix this by avoiding the fragment\nread on the last iteration.\nAdditionally, move the skb pointer from the first to the last used packet\ndescriptor, so that airoha_qdma_tx_napi_poll() defers freeing the skb\nuntil the final descriptor is processed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63857"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bde34e84edc8b5571fbde7e941e175a4293ee1eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d78c8ab7bd84952e053d0c622b7fc1b4ad8a19a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f670fa4b19ceddc6d215dda4997888ccba9bbc61"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T15:16:52Z"
+  }
+}

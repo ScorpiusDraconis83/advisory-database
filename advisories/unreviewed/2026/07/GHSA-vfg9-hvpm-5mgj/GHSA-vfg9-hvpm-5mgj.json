@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vfg9-hvpm-5mgj",
+  "modified": "2026-07-19T15:30:26Z",
+  "published": "2026-07-19T15:30:26Z",
+  "aliases": [
+    "CVE-2026-63838"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: rsnd: Fix potential out-of-bounds access of component_dais[]\n\ncomponent_dais[RSND_MAX_COMPONENT] is initially zero-initialized\nand later populated in rsnd_dai_of_node(). However, the existing boundary check:\n  if (i >= RSND_MAX_COMPONENT)\n\ndoes not guarantee that the last valid element remains zero. As a result,\nthe loop can rely on component_dais[RSND_MAX_COMPONENT] being zero,\nwhich may lead to an out-of-bounds access.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63838"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/134c61925e9e9ee0f4fdbab5c3984d5bb024f5f5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15e7b2ac2455995a6af02b9d3da7a432837aaf72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f1daac27ca28e98c8c0e4450de42bb68d547250"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a62b3e6e42359a79158c134e3cf5c74fe160c3f5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9e437cddf6cf9e603bdaefe148c1f4792aaf39c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T15:16:50Z"
+  }
+}

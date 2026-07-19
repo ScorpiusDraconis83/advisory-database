@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fcmf-5wqg-hrw5",
+  "modified": "2026-07-19T15:30:28Z",
+  "published": "2026-07-19T15:30:28Z",
+  "aliases": [
+    "CVE-2026-63873"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/amdxdna: Fix mm_struct reference leak in aie2_populate_range()\n\naie2_populate_range() jumps back to the again label without calling\nmmput(mm), leaking a reference to the mm_struct.\n\nAdd the missing mmput() before jumping to again.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63873"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21dfec59939120b20d2c7794caaa421f9450be0a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f41af638c92bac6f1f9275ea2d1901baef578f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e83fc4c28226be75fbc0c41f2846935ba2b5f949"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T15:16:54Z"
+  }
+}

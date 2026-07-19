@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-84pw-g3hf-x32j",
+  "modified": "2026-07-19T15:30:26Z",
+  "published": "2026-07-19T15:30:26Z",
+  "aliases": [
+    "CVE-2026-63839"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: lenovo-wmi-helpers: Fix memory leak in lwmi_dev_evaluate_int()\n\nlwmi_dev_evaluate_int() leaks output.pointer when retval == NULL (found\nby sashiko.dev [1]).\n\nFix it by moving `ret_obj = output.pointer' outside of the `if (retval)'\nblock so that it is always freed by the __free cleanup callback.\n\nNo functional change intended.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63839"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c3887a134f191723b53e2a47e501b534c8723ee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40a984dd0602e238ad893b167751620e751d1199"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-19T15:16:50Z"
+  }
+}
