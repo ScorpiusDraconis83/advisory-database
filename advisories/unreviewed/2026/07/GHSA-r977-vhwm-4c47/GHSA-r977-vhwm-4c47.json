@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r977-vhwm-4c47",
+  "modified": "2026-07-20T12:33:08Z",
+  "published": "2026-07-20T12:33:08Z",
+  "aliases": [
+    "CVE-2026-16246"
+  ],
+  "details": "In BRAIN2 versions prior to 3.09, the\napplication LogPathConfig.exe is executed during setup. As a result, the\nWindows group Everyone is granted full control over %ProgramData% instead of\nbeing restricted to %ProgramData%\\Bizerba\\BRAIN2\\.\n\n\n\n\n\nStarting with BRAIN2 3.09, the setup no\nlonger executes this tool.\n\nHowever, the optional component Bizerba ScriptService still executes it.\n\n\n\n\n\nBizerba ScriptService is being\ndeprecated and will no longer be included starting with BRAIN2 version 3.11.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16246"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.bizerba.com/downloads/global/information-security/2026/bizerba-sa-2026-0003.pdf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-276"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-20T12:17:56Z"
+  }
+}

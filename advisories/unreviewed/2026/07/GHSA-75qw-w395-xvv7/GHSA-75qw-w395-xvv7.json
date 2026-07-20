@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-75qw-w395-xvv7",
+  "modified": "2026-07-20T12:33:09Z",
+  "published": "2026-07-20T12:33:09Z",
+  "aliases": [
+    "CVE-2026-63749"
+  ],
+  "details": "SurrealDB versions before 3.1.0 contain an authentication bypass vulnerability in LIVE SELECT subscriptions where permission expressions referencing $value, $before, $after, or $event are evaluated against attacker-controlled bindings instead of actual documents. Authenticated subscribers can bind chosen values to these parameter names and register LIVE SELECT queries to receive notifications for records that SELECT permission expressions should have hidden.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/surrealdb/surrealdb/security/advisories/GHSA-6wqw-vhfr-9999"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/surrealdb-before-authentication-bypass-via-live-select"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-20T12:19:44Z"
+  }
+}

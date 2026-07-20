@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gxr5-ww5q-wmqx",
+  "modified": "2026-07-20T12:33:08Z",
+  "published": "2026-07-20T12:33:08Z",
+  "aliases": [
+    "CVE-2026-16247"
+  ],
+  "details": "In _connect.BRAIN versions prior to 5.06,\nthe application LogPathConfig.exe is executed during setup. During this\nprocess, existing permissions on %ProgramData% are deleted and replaced,\ngranting the Windows group Everyone full control instead of restricting\naccess to %ProgramData%\\Bizerba\\_connect.BRAIN or %ProgramData%\\Bizerba\\BCT.\n\n\n\n\n\n\n\n\n\nStarting with _connect.BRAIN 5.06,\nthe setup no longer executes this tool.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.bizerba.com/downloads/global/information-security/2026/bizerba-sa-2026-0003.pdf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-276"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-20T12:17:56Z"
+  }
+}

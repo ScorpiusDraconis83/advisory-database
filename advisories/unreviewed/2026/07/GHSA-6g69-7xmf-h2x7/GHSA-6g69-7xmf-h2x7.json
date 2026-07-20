@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6g69-7xmf-h2x7",
+  "modified": "2026-07-20T12:33:08Z",
+  "published": "2026-07-20T12:33:08Z",
+  "aliases": [
+    "CVE-2026-63733"
+  ],
+  "details": "SurrealDB versions before 3.2.0 contain a permissions bypass vulnerability where data-modifying statements within PERMISSIONS clauses execute with enforcement disabled. Attackers with permission to perform a guarded operation can write to tables they lack permission for by embedding CREATE, UPDATE, DELETE, or UPSERT statements in the PERMISSIONS clause, causing unintended writes and data corruption.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/surrealdb/surrealdb/security/advisories/GHSA-66r2-5gwj-gxm2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63733"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/surrealdb-before-permissions-bypass-via-permissions-clause"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-20T12:19:42Z"
+  }
+}
