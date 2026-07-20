@@ -1,7 +1,7 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fg94-h982-f3mm",
-  "modified": "2026-06-17T18:06:42Z",
+  "modified": "2026-07-20T21:10:30Z",
   "published": "2026-06-17T18:06:06Z",
   "aliases": [
     "CVE-2026-54316"
@@ -9,6 +9,10 @@
   "summary": "Claude Code: Out-of-Band Data Exfiltration via Pre-Approved HuggingFace Domain in WebFetch",
   "details": "Because the hostname huggingface.co was pre-approved as a bare hostname for the WebFetch tool, any path on that domain—including attacker-controlled model repositories—was auto-approved without a permission prompt or being subject to --allowedTools restrictions. An attacker able to inject untrusted content into a Claude Code context could direct it to issue WebFetch requests against attacker-controlled repository files (e.g. /resolve/main/config.json), which HuggingFace counts as downloads server-side, creating a covert out-of-band channel for encoding and exfiltrating data Claude can access such as files, environment variables, or command output. Reliably exploiting this required the ability to add untrusted content into a Claude Code context window. Users on standard Claude Code auto-update have received this fix already; users performing manual updates are advised to update to the latest version.\n\nThank you to hackerone.com/novee for reporting this issue.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
@@ -41,6 +45,10 @@
       "url": "https://github.com/anthropics/claude-code/security/advisories/GHSA-fg94-h982-f3mm"
     },
     {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54316"
+    },
+    {
       "type": "PACKAGE",
       "url": "https://github.com/anthropics/claude-code"
     }
@@ -54,6 +62,6 @@
     "severity": "MODERATE",
     "github_reviewed": true,
     "github_reviewed_at": "2026-06-17T18:06:06Z",
-    "nvd_published_at": null
+    "nvd_published_at": "2026-06-23T18:18:08Z"
   }
 }
