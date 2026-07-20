@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-75x6-rxh4-mhv7",
-  "modified": "2026-07-19T18:31:45Z",
+  "modified": "2026-07-20T15:31:50Z",
   "published": "2026-07-19T18:31:45Z",
   "aliases": [
     "CVE-2026-63906"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: musb: omap2430: Fix use-after-free in omap2430_probe()\n\nIn omap2430_probe(), of_node_put(np) is called prematurely before the\nlast access to np, leading to a use-after-free if the node's reference\ncount drops to zero. Move the of_node_put() calls after the last use of\nnp in both the success and error paths.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:08Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-26m7-cqmr-vwvj",
-  "modified": "2026-07-19T18:31:50Z",
+  "modified": "2026-07-20T15:31:57Z",
   "published": "2026-07-19T18:31:50Z",
   "aliases": [
     "CVE-2026-64051"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/qaic: Add overflow check to remap_pfn_range during mmap\n\nThe call to remap_pfn_range in qaic_gem_object_mmap is susceptible to\n(re)mapping beyond the VMA if the BO is too large. This can cause use\nafter free issues when munmap() unmaps only the VMA region and not the\nadditional mappings. To prevent this, check the remaining size of the\nVMA before remapping and truncate the remapped length if sg->length is\ntoo large.\n\n[jhugo: fix braces from checkpatch --strict]",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:45Z"

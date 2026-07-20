@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rqjm-p6mw-3jj9",
-  "modified": "2026-07-19T09:31:36Z",
+  "modified": "2026-07-20T15:31:43Z",
   "published": "2026-07-19T09:31:36Z",
   "aliases": [
     "CVE-2026-53369"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nudf: reject descriptors with oversized CRC length\n\nudf_read_tagged() skips CRC verification when descCRCLength +\nsizeof(struct tag) exceeds the block size.  A crafted UDF image can\nset descCRCLength to an oversized value to bypass CRC validation\nentirely; the descriptor is then accepted based solely on the 8-bit\ntag checksum, which is trivially recomputable.\n\nReject such descriptors instead of silently accepting them.  A\nlegitimate single-block descriptor should never have a CRC length that\nexceeds the block.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T09:17:02Z"

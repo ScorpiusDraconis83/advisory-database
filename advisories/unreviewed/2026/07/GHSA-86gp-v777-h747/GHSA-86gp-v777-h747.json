@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-86gp-v777-h747",
-  "modified": "2026-07-19T12:30:23Z",
+  "modified": "2026-07-20T15:31:46Z",
   "published": "2026-07-19T12:30:23Z",
   "aliases": [
     "CVE-2026-63797"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrpmsg: char: Fix use-after-free on probe error path\n\nrpmsg_chrdev_probe() stores the newly allocated eptdev in the default\nendpoint's priv pointer before calling rpmsg_chrdev_eptdev_add(). If\nrpmsg_chrdev_eptdev_add() then fails, its error path frees eptdev while\nthe default endpoint may still dispatch callbacks with the stale priv\npointer.\n\nAvoid publishing eptdev through the default endpoint until\nrpmsg_chrdev_eptdev_add() succeeds. Messages received before the priv\npointer is published should be ignored by rpmsg_ept_cb(). Flow-control\nupdates can hit rpmsg_ept_flow_cb() in the same window, so make both\ncallbacks return success when priv is NULL.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T12:16:52Z"

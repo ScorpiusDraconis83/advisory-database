@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6p6q-g32r-gx25",
-  "modified": "2026-07-19T18:31:52Z",
+  "modified": "2026-07-20T15:32:00Z",
   "published": "2026-07-19T18:31:52Z",
   "aliases": [
     "CVE-2026-64116"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: ioam: add NULL check for idev in ipv6_hop_ioam()\n\nReported by Sashiko:\n\nThe function ipv6_hop_ioam() accesses\n__in6_dev_get(skb->dev)->cnf.ioam6_enabled without validating the returned\nidev pointer. Because addrconf_ifdown() can concurrently clear dev->ip6_ptr\nvia RCU, __in6_dev_get() can return NULL during interface teardown, which\ncould cause a NULL pointer dereference when processing an IOAM Hop-by-Hop\noption.\n\nLet's add a check and use SKB_DROP_REASON_IPV6DISABLED accordingly.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:53Z"

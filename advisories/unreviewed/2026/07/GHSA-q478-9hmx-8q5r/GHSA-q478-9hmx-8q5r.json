@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-q478-9hmx-8q5r",
-  "modified": "2026-07-19T18:31:53Z",
+  "modified": "2026-07-20T15:32:01Z",
   "published": "2026-07-19T18:31:53Z",
   "aliases": [
     "CVE-2026-64150"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nft_inner: release local_lock before re-enabling softirqs\n\nQuoting sashiko:\n In the error path, local_bh_enable() is called before\n local_unlock_nested_bh().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:56Z"

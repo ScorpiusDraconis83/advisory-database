@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-22rm-57qw-fv2w",
-  "modified": "2026-07-19T12:30:23Z",
+  "modified": "2026-07-20T15:31:47Z",
   "published": "2026-07-19T12:30:23Z",
   "aliases": [
     "CVE-2026-63802"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-cgroup: fix UAF in __blkcg_rstat_flush()\n\nWhen multiple blkgs in the same blkcg are released concurrently,\na use-after-free can occur. The race happens when one blkg's\n__blkcg_rstat_flush() removes another blkg's iostat entries via\nllist_del_all(). The second blkg sees an empty list and proceeds\nto free itself while the first is still iterating over its entries.\n\nMove the flush from __blkg_release() (RCU callback) to blkg_release()\n(before call_rcu). This ensures the RCU grace period waits for any\nconcurrent flush's rcu_read_lock() section to complete before freeing.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T12:16:52Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-83gv-5w7g-5pv2",
-  "modified": "2026-07-19T18:31:54Z",
+  "modified": "2026-07-20T15:32:02Z",
   "published": "2026-07-19T18:31:53Z",
   "aliases": [
     "CVE-2026-64160"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfs: Fix potential for tearing in ->remote_i_size and ->zero_point\n\nFix potential tearing in using ->remote_i_size and ->zero_point by copying\ni_size_read() and i_size_write() and using the same seqcount as for i_size.\n\nWe need to make sure that netfslib and the filesystems that use it always\nhold i_lock whilst updating any of the sizes to prevent i_size_seqcount\nfrom getting corrupted.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:58Z"

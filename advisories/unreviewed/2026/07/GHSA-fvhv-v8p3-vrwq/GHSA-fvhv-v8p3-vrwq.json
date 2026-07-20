@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fvhv-v8p3-vrwq",
-  "modified": "2026-07-19T12:30:24Z",
+  "modified": "2026-07-20T15:31:47Z",
   "published": "2026-07-19T12:30:24Z",
   "aliases": [
     "CVE-2026-63828"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\napparmor: mediate the implicit connect of TCP fast open sendmsg\n\nsendmsg()/sendto() with MSG_FASTOPEN is a combination of connect(2) and\nwrite(2): it opens the connection in the SYN. apparmor_socket_sendmsg()\nonly checks AA_MAY_SEND, so a profile that grants send but denies connect\nlets a confined task open an outbound TCP/MPTCP connection that connect(2)\nwould have refused, bypassing connect mediation.\n\nMediate the implicit connect when MSG_FASTOPEN is set and a destination\nis supplied. Add it to apparmor_socket_sendmsg() (not the shared\naa_sock_msg_perm() helper, which recvmsg also uses) and call aa_sk_perm()\ndirectly, mirroring the selinux and tomoyo fixes. sk_is_tcp() does not\ncover MPTCP fast open, so the SOCK_STREAM/IPPROTO_MPTCP arm is explicit.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T12:16:56Z"

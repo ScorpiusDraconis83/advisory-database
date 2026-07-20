@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-q6fc-4c58-35pf",
-  "modified": "2026-07-19T18:31:51Z",
+  "modified": "2026-07-20T15:31:58Z",
   "published": "2026-07-19T18:31:51Z",
   "aliases": [
     "CVE-2026-64074"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/statmount: fix slab out-of-bounds write in statmount_mnt_idmap\n\nstatmount_mnt_idmap() writes one mapping with seq_printf() and then\nmanually advances seq->count to include the NUL separator.\n\nIf seq_printf() overflows, seq_set_overflow() sets seq->count to\nseq->size. The manual seq->count++ changes this to seq->size + 1.\nseq_has_overflowed() then no longer detects the overflow. The corrupted\ncount returns to statmount_string(), which later executes:\n\n    seq->buf[seq->count++] = '\\0';\n\nThis causes a 1-byte NULL out-of-bounds write on the dynamically\nallocated seq buffer.\n\nFix this by checking for overflow immediately after seq_printf().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:48Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-497j-x834-cghh",
-  "modified": "2026-07-19T18:31:43Z",
+  "modified": "2026-07-20T15:31:49Z",
   "published": "2026-07-19T18:31:43Z",
   "aliases": [
     "CVE-2026-63879"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix amdgpu_hmm_range_get_pages\n\nThe notifier sequence must only be read once or otherwise we could work\nwith invalid pages.\n\nWhile at it also fix the coding style, e.g. drop the pre-initialized\nreturn value and use the common define for 2G range.\n\n(cherry picked from commit c08972f555945cda57b0adb72272a37910153390)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:04Z"

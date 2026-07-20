@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cqch-vjq7-8xrc",
-  "modified": "2026-07-19T15:30:27Z",
+  "modified": "2026-07-20T15:31:48Z",
   "published": "2026-07-19T15:30:27Z",
   "aliases": [
     "CVE-2026-63860"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/core: Prefer NLA_NUL_STRING\n\nThese attributes are evaluated as c-string (passed to strcmp), but\nNLA_STRING doesn't check for the presence of a \\0 terminator.\n\nEither this needs to switch to nla_strcmp() and needs to adjust printf fmt\nspecifier to not use plain %s, or this needs to use NLA_NUL_STRING.\n\nAs the code has been this way for long time, it seems to me that userspace\ndoes include the terminating nul, even tough its not enforced so far, and\nthus NLA_NUL_STRING use is the simpler solution.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T15:16:52Z"

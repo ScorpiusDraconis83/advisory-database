@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wqpm-3qh2-7cxj",
-  "modified": "2026-07-19T15:30:28Z",
+  "modified": "2026-07-20T15:31:49Z",
   "published": "2026-07-19T15:30:28Z",
   "aliases": [
     "CVE-2026-63867"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: close TOCTOU race while computing rcv_wnd\n\nThe MPTCP output path access locklessly the MPTCP-level ack_seq\nin multiple times, using possibly different values for the data_ack\nin the DSS option and to compute the announced rcv wnd for the same\npacket.\n\nRefactor the cote to avoid inconsistencies which may confuse the\npeer. Also ensure that the MPTCP level rcv wnd is updated only when\nthe egress packet actually contains a DSS ack.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T15:16:53Z"

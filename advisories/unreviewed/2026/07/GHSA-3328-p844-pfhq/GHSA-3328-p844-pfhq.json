@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3328-p844-pfhq",
-  "modified": "2026-07-19T18:31:49Z",
+  "modified": "2026-07-20T15:31:55Z",
   "published": "2026-07-19T18:31:49Z",
   "aliases": [
     "CVE-2026-64008"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/rocket: fix UAF via dangling GEM handle in create_bo\n\nrocket_ioctl_create_bo() inserts a GEM handle into the file's IDR via\ndrm_gem_handle_create() early on, then performs several operations that\ncan fail (sgt allocation, drm_mm insert, iommu_map). If any fail after\nthe handle is live, the error path calls drm_gem_shmem_object_free()\nwhich kfree's the object without removing the handle from the IDR.\n\nThis leaves a dangling handle pointing to freed slab memory. Any\nsubsequent ioctl using that handle (PREP_BO, FINI_BO, SUBMIT) calls\ndrm_gem_object_lookup() and dereferences freed memory (UAF).\n\nFix by moving drm_gem_handle_create() to after all fallible operations\nsucceed, matching the pattern used by panfrost, lima, and etnaviv.\n\nAlso fix drm_mm_insert_node_generic() whose return value was silently\noverwritten by iommu_map_sgtable() on the next line. Add the missing\nerror check.\n\n[tomeu: Move handle creation to the very end]",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:40Z"

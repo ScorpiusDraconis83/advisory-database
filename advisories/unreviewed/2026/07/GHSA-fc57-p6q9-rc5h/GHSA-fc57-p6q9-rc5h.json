@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fc57-p6q9-rc5h",
-  "modified": "2026-07-19T12:30:22Z",
+  "modified": "2026-07-20T15:31:43Z",
   "published": "2026-07-19T12:30:22Z",
   "aliases": [
     "CVE-2026-53380"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: rzv2h-ivc: Fix concurrent buffer list access\n\nThe list of buffers (`rzv2h_ivc::buffers.queue`) is protected by a\nspinlock (`rzv2h_ivc::buffers.lock`). However, in\n`rzv2h_ivc_transfer_buffer()`, which runs in a separate workqueue, the\n`list_del()` call is executed without holding the spinlock, which makes\nit possible for the list to be concurrently modified\n\nFix that by removing a buffer from the list in the lock protected section.\n\n[assign ivc->buffers.curr in critical section as reported by Barnabas]",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T11:16:39Z"

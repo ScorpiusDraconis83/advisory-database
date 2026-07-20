@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-665c-mwm9-rw7p",
-  "modified": "2026-07-19T18:31:48Z",
+  "modified": "2026-07-20T15:31:53Z",
   "published": "2026-07-19T18:31:48Z",
   "aliases": [
     "CVE-2026-63977"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndpll: zl3073x: use __dpll_device_change_ntf() and remove change_work\n\nThe change_work was introduced to send device change notifications\nfrom DPLL device callbacks without deadlocking on dpll_lock, since\nthe callbacks are already invoked under that lock. Now that\n__dpll_device_change_ntf() is exported for callers that already\nhold dpll_lock, use it directly and remove the change_work\ninfrastructure entirely.\n\nThis eliminates a race condition where change_work could be\nre-scheduled after cancel_work_sync() during device teardown,\npotentially causing the handler to dereference a freed or NULL\ndpll_dev pointer.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:16Z"

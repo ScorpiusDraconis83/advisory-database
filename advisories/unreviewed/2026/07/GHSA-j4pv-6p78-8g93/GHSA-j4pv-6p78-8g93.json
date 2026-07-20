@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j4pv-6p78-8g93",
-  "modified": "2026-07-19T18:31:47Z",
+  "modified": "2026-07-20T15:31:53Z",
   "published": "2026-07-19T18:31:47Z",
   "aliases": [
     "CVE-2026-63947"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: HIDP: fix missing length checks in hidp_input_report()\n\nhidp_input_report() reads keyboard and mouse payload data from an skb\nwithout first verifying that skb->len contains enough data.\n\nhidp_recv_intr_frame() pulls the 1-byte HIDP header before dispatching\nto hidp_input_report(). If a paired device sends a truncated packet,\nthe handler reads beyond the valid skb data, resulting in an\nout-of-bounds read of skb data. The OOB bytes may be interpreted as\nphantom key presses or spurious mouse movement.\n\nReplace the open-coded length tracking and pointer arithmetic with\nskb_pull_data() calls. skb_pull_data() returns NULL if the requested\nbytes are not present, eliminating the need for a manual size variable\nand the separate skb->len guard.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:13Z"

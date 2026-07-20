@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hpcr-c79h-7cww",
+  "modified": "2026-07-20T15:32:09Z",
+  "published": "2026-07-20T15:32:08Z",
+  "aliases": [
+    "CVE-2026-59238"
+  ],
+  "details": "Stored Cross-site Scripting (CWE-79) in the client-side report rendering functions (renderPreview, renderEditor, renderAuditData in js/app.js) in maalfer Pentestify before 1.1.0 allows a remote, authenticated attacker to execute arbitrary JavaScript in the browser of any user who views an affected report via a payload stored in a finding's images array or a report's client_logo array, which is interpolated into an <img> src attribute without escaping.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/maalfer/pentestify/commit/a058a22b42c6311895622645265df79a60265b1d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://secur0.com/en/cna/cve-list/cve-2026-59238-stored-xss-in-pentestify-via-unsanitized-finding-images-and-report-client-logo"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-20T15:16:44Z"
+  }
+}

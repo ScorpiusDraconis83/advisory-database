@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2q7w-rghx-vwh8",
-  "modified": "2026-07-19T12:30:23Z",
+  "modified": "2026-07-20T15:31:47Z",
   "published": "2026-07-19T12:30:23Z",
   "aliases": [
     "CVE-2026-63818"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: validate orphan inode entry count\n\nf2fs_recover_orphan_inodes() trusts the orphan block entry_count when\nreplaying orphan inodes from the checkpoint pack. A corrupted entry_count\nlarger than F2FS_ORPHANS_PER_BLOCK makes the recovery loop read past the\nino[] array and interpret footer or following data as inode numbers.\n\nOn a crafted image, mounting an unpatched kernel can drive orphan recovery\ninto f2fs_bug_on() and panic the kernel. Validate entry_count before\nconsuming entries so corrupted checkpoint data fails the mount with\n-EFSCORRUPTED and requests fsck instead.\n\nSet ERROR_INCONSISTENT_ORPHAN as well, so the corruption reason can be\nrecorded in the superblock s_errors[] field. This gives fsck a persistent\nhint even though mount-time orphan recovery failure may leave no chance to\npersist SBI_NEED_FSCK through a checkpoint.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T12:16:54Z"

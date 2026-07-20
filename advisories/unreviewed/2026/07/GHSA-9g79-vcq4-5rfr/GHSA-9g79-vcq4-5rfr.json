@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9g79-vcq4-5rfr",
-  "modified": "2026-07-19T18:31:47Z",
+  "modified": "2026-07-20T15:31:53Z",
   "published": "2026-07-19T18:31:47Z",
   "aliases": [
     "CVE-2026-63946"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: fix UAF in iso_recv_frame\n\niso_recv_frame reads conn->sk under iso_conn_lock but releases the lock\nbefore using sk, with no reference held. A concurrent iso_sock_kill()\ncan free sk in that window, causing use-after-free on sk->sk_state and\nsock_queue_rcv_skb().\n\nFix by replacing the bare pointer read with iso_sock_hold(conn), which\ncalls sock_hold() while the spinlock is held, atomically elevating the\nrefcount before the lock drops. Add a drop_put label so sock_put() is\ncalled on all exit paths where the hold succeeded.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:13Z"

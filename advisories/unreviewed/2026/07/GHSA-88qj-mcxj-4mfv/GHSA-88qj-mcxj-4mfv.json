@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-88qj-mcxj-4mfv",
-  "modified": "2026-07-19T18:31:48Z",
+  "modified": "2026-07-20T15:31:54Z",
   "published": "2026-07-19T18:31:48Z",
   "aliases": [
     "CVE-2026-63987"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nethtool: coalesce: cap profile updates at NET_DIM_PARAMS_NUM_PROFILES\n\nethnl_update_profile() walks the ETHTOOL_A_PROFILE_IRQ_MODERATION\nnest list with an index 'i' and writes new_profile[i++] without\nbounding i. The destination is kmemdup()'d at NET_DIM_PARAMS_NUM_PROFILES\nentries (5), but the Netlink nest count is entirely user-controlled.\nNetlink policies do not have support for constraining the number\nof nested entries (or number of multi-attr entries).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:17Z"

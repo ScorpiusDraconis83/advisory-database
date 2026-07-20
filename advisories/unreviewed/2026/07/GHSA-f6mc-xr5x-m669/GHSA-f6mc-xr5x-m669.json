@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f6mc-xr5x-m669",
-  "modified": "2026-07-19T18:31:49Z",
+  "modified": "2026-07-20T15:31:55Z",
   "published": "2026-07-19T18:31:49Z",
   "aliases": [
     "CVE-2026-64004"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/iucv: fix locking in .getsockopt\n\nMirror iucv_sock_setsockopt() and wrap the whole switch in\nlock_sock()/release_sock(). The pre-existing SO_MSGLIMIT-only lock\nbecomes redundant and is removed.\n\nAny AF_IUCV HIPER user can potentially crash the kernel by racing\nrecvmsg() with getsockopt(SO_MSGSIZE): the SO_MSGSIZE arm dereferences\niucv->hs_dev->mtu after iucv_sock_close() (called from the racing\nrecvmsg()) has set hs_dev to NULL, producing a NULL pointer dereference\noops.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:40Z"

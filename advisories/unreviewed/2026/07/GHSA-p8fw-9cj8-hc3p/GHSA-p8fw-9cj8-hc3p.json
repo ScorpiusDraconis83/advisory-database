@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-p8fw-9cj8-hc3p",
-  "modified": "2026-07-19T18:31:48Z",
+  "modified": "2026-07-20T15:31:53Z",
   "published": "2026-07-19T18:31:47Z",
   "aliases": [
     "CVE-2026-63971"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: fix race between sctp_wait_for_connect and peeloff\n\nsctp_wait_for_connect() drops and re-acquires the socket lock while\nwaiting for the association to reach ESTABLISHED state. During this\nwindow, another thread can peeloff the association to a new socket via\ngetsockopt(SCTP_SOCKOPT_PEELOFF), changing asoc->base.sk. After\nre-acquiring the old socket lock, sctp_wait_for_connect() returns\nsuccess without noticing the migration — the caller then accesses\nthe association under the wrong lock in sctp_datamsg_from_user().\n\nAdd the same sk != asoc->base.sk check that sctp_wait_for_sndbuf()\nalready has, returning an error if the association was migrated while\nwe slept.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:16Z"

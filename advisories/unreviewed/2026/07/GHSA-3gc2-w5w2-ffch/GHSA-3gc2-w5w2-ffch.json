@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3gc2-w5w2-ffch",
-  "modified": "2026-07-19T18:31:45Z",
+  "modified": "2026-07-20T15:31:50Z",
   "published": "2026-07-19T18:31:45Z",
   "aliases": [
     "CVE-2026-63911"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: iptfs: reset runtime state when cloning SAs\n\niptfs_clone_state() clones the IPTFS mode data with kmemdup(). This\ncopies runtime objects which must not be shared with the original SA,\nincluding the embedded sk_buff_head, hrtimers, spinlock, and in-flight\nreassembly/reorder state.\n\nIf xfrm_state_migrate() fails after clone_state() but before the later\ninit_state() call has reinitialized those fields, the cloned state can be\ndestroyed by xfrm_state_gc_task() with list and timer state copied from the\noriginal SA. With queued packets this lets the clone splice and free skbs\nowned by the original IPTFS queue, leading to use-after-free and\ndouble-free reports in iptfs_destroy_state() and skb release paths.\n\nReinitialize the clone's runtime state before publishing it through\nx->mode_data. Because clone_state() now publishes a destroyable mode_data\nobject before init_state(), take the mode callback module reference there.\nAvoid taking it again from __iptfs_init_state() for the same object.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:08Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hfvv-wwwp-6wgr",
-  "modified": "2026-07-19T12:30:22Z",
+  "modified": "2026-07-20T15:31:45Z",
   "published": "2026-07-19T12:30:22Z",
   "aliases": [
     "CVE-2026-53398"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Fix SECINFO_NO_NAME decode error cleanup\n\nnfsd4_decode_secinfo_no_name() currently initializes sin_exp after\ndecoding sin_style. If the XDR stream is truncated, the decoder returns\nnfserr_bad_xdr before sin_exp is initialized.\n\nSince commit 3fdc54646234 (\"NFSD: Reduce amount of struct\nnfsd4_compoundargs that needs clearing\"), the inline iops array is not\ncleared between RPC calls. A failed SECINFO_NO_NAME decode can therefore\nleave sin_exp holding stale union contents from a previous operation.\n\nThe error response path still invokes nfsd4_secinfo_no_name_release(),\nwhich calls exp_put() on a non-NULL sin_exp.\n\nInitialize sin_exp before the first failable decode step, matching\nnfsd4_decode_secinfo().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T12:16:50Z"

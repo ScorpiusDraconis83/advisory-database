@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9p96-44q4-p2j5",
-  "modified": "2026-07-19T12:30:23Z",
+  "modified": "2026-07-20T15:31:45Z",
   "published": "2026-07-19T12:30:23Z",
   "aliases": [
     "CVE-2026-53400"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: core: fix adapter registration race\n\nAdapters can be looked up based on their id using i2c_get_adapter()\nwhich takes a reference to the embedded struct device.\n\nMake sure that the adapter (including its struct device) has been\ninitialised before adding it to the IDR to avoid accessing uninitialised\ndata which could, for example, lead to NULL-pointer dereferences or\nuse-after-free.\n\nNote that the i2c-dev chardev, which is registered from a bus notifier,\ncurrently uses i2c_get_adapter() so the adapter needs to be added to the\nIDR before registration.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T12:16:51Z"

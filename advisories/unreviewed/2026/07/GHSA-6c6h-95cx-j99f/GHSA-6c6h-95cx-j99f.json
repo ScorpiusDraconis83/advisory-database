@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6c6h-95cx-j99f",
-  "modified": "2026-07-19T18:31:45Z",
+  "modified": "2026-07-20T15:31:50Z",
   "published": "2026-07-19T18:31:45Z",
   "aliases": [
     "CVE-2026-63912"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: esp: restore combined single-frag length gate\n\nThe ESP out-of-place fast path appends the trailer in esp_output_head()\nbefore esp_output_tail() allocates the destination page frag. The\nhead-side gate currently checks skb->data_len and tailen separately, but\nthe tail code allocates a single destination frag from the combined\npost-trailer skb->data_len.\n\nReject the page-frag fast path when the combined aligned length exceeds a\npage. Otherwise skb_page_frag_refill() may fall back to a single page while\nthe destination sg still spans the combined skb->data_len.\n\nRestore this combined-length page gate for both IPv4 and IPv6.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:09Z"

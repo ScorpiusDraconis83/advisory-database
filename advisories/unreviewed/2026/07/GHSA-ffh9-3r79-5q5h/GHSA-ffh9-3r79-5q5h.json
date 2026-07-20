@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-ffh9-3r79-5q5h",
-  "modified": "2026-07-19T18:31:50Z",
+  "modified": "2026-07-20T15:31:56Z",
   "published": "2026-07-19T18:31:50Z",
   "aliases": [
     "CVE-2026-64041"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: codecs: fs210x: fix possible buffer overflow\n\nIn fs210x_effect_scene_info(), a string was copied like this:\n\n    strscpy(DST, SRC, strlen(SRC) + 1);\n\nA buffer overflow would happen if strlen(SRC) >= sizeof(DST).\nActually, strscpy() must be used this way:\n\n    strscpy(DST, SRC, sizeof(DST));\n    strscpy(DST, SRC); // defaults to sizeof(DST)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:44Z"

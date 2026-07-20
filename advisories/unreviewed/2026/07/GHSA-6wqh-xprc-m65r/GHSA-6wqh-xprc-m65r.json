@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6wqh-xprc-m65r",
-  "modified": "2026-07-19T18:31:54Z",
+  "modified": "2026-07-20T15:32:02Z",
   "published": "2026-07-19T18:31:54Z",
   "aliases": [
     "CVE-2026-64175"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mld: stop TX during firmware restart\n\nWhen iwlwifi firmware crashes (e.g., NMI_INTERRUPT_UNKNOWN on Intel\nBE201/Wi-Fi 7), iwl_mld_nic_error() sets mld->fw_status.in_hw_restart\nto true. However, iwl_mld_tx_from_txq() does not check this flag before\ndequeuing frames from mac80211 and pushing them to the transport layer.\n\nSince the firmware is dead, iwl_trans_tx() returns -EIO for each frame,\nwhich then gets freed immediately. Under high-throughput conditions\n(e.g., Tailscale UDP traffic or active SSH sessions), this creates a\ntight dequeue-send-fail-free loop that wastes CPU cycles and generates\nrapid skb allocation churn, leading to memory pressure from slab\nfragmentation.\n\nThe RX path already has this guard (iwl_mld_rx_mpdu checks\nin_hw_restart at rx.c:1906), and so does the TXQ allocation worker\n(iwl_mld_add_txqs_wk at tx.c:156). Add the same guard to\niwl_mld_tx_from_txq() to stop all TX during firmware restart.\n\nFrames left in mac80211's TXQs are naturally drained after restart\ncompletes, when queue reallocation triggers iwl_mld_tx_from_txq()\nvia iwl_mld_add_txq_list(), or when new upper-layer traffic invokes\nwake_tx_queue.\n\nTested on ASUS Zenbook 14 UX3405CA with Intel BE201 (Wi-Fi 7) on\nkernel 6.19.5 where the firmware crashes approximately every 10-15\nminutes under Tailscale traffic.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:59Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g8p3-wvvx-m6mf",
-  "modified": "2026-07-19T18:31:53Z",
+  "modified": "2026-07-20T15:32:01Z",
   "published": "2026-07-19T18:31:53Z",
   "aliases": [
     "CVE-2026-64134"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: pcm: Don't setup bogus iov_iter for silencing\n\nAt transition to the iov_iter for PCM data transfer, we blindly\napplied the iov_iter setup also for silencing (i.e. data = NULL), and\nit leads to a calculation of bogus iov_iter.  Fortunately this didn't\ncause troubles on most of architectures but it goes wrong on RISC-V\nnow, causing a NULL dereference.\n\nHandle the NULL data case to treat the silencing in interleaved_copy()\nfor addressing the bug above.  noninterleaved_copy() has already the\nNULL data handling, so it doesn't need changes.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:55Z"

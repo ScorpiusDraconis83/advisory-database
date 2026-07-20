@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-85cw-fhvw-f94j",
-  "modified": "2026-07-19T18:31:50Z",
+  "modified": "2026-07-20T15:31:56Z",
   "published": "2026-07-19T18:31:50Z",
   "aliases": [
     "CVE-2026-64035"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nigc: set tx buffer type for SMD frames\n\nSashiko pointed out that igc_fpe_init_smd_frame() initializes\nigc_tx_buffer fields for an SMD skb, but does not set the buffer type:\nhttps://sashiko.dev/#/patchset/20260415025226.114115-1-kohei%40enjuk.jp\n\nSince igc_tx_buffer entries are reused, a stale XDP or XSK type can\nremain and make TX completion use the wrong cleanup path.\n\nSet the buffer type to IGC_TX_BUFFER_TYPE_SKB.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:43Z"

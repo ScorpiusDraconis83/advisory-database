@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-22cv-hg25-xph5",
-  "modified": "2026-07-19T18:31:50Z",
+  "modified": "2026-07-20T15:31:56Z",
   "published": "2026-07-19T18:31:49Z",
   "aliases": [
     "CVE-2026-64031"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs: fix managed cache race for unaligned extents\n\nAfter unaligned compressed extents were introduced, the following race\ncould occur:\n\n[Thread 1]                                   [Thread 2]\n(z_erofs_fill_bio_vec)\n<handle a Z_EROFS_PREALLOCATED_FOLIO folio>\n...\nfilemap_add_folio (1)\n                                             (z_erofs_bind_cache)\n                                             <the same folio is found..>\n                                             ..\n                                             ..\nfolio_attach_private (2)\n                                             filemap_add_folio (3) again\n\nSince (1) is executed but (2) hasn't been executed yet, it's possible\nthat another thread finds the same managed folio in z_erofs_bind_cache()\nfor a different pcluster and calls filemap_add_folio() again since\nfolio->private is still Z_EROFS_PREALLOCATED_FOLIO.\n\nFix this by explicitly clearing folio->private before making the folio\nvisible in the managed cache so that another pcluster can simply wait\non the locked managed folio as what we did for other shared cases [1].\n\nThis only impacts unaligned data compression (`-E48bit` with zstd,\nfor example).\n\n[1] Commit 9e2f9d34dd12 (\"erofs: handle overlapped pclusters out of\n crafted images properly\") was originally introduced to handle crafted\n overlapped extents, but it addresses unaligned extents as well.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:43Z"

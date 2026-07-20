@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fcv3-4h5f-37c2",
-  "modified": "2026-07-19T18:31:46Z",
+  "modified": "2026-07-20T15:31:52Z",
   "published": "2026-07-19T18:31:46Z",
   "aliases": [
     "CVE-2026-63927"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: dwc2: Fix use after free in debug code\n\nWe're not allowed to dereference \"urb\" after calling\nusb_hcd_giveback_urb() so save the urb->status ahead of time.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:11Z"

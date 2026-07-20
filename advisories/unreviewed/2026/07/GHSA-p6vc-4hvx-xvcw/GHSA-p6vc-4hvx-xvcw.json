@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-p6vc-4hvx-xvcw",
-  "modified": "2026-07-19T18:31:48Z",
+  "modified": "2026-07-20T15:31:54Z",
   "published": "2026-07-19T18:31:48Z",
   "aliases": [
     "CVE-2026-63993"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: do not reuse cached ip_hdr() value after skb_tunnel_check_pmtu()\n\nskb_tunnel_check_pmtu() can change skb->head.\n\nReusing old_iph afer skb_tunnel_check_pmtu() can cause an UAF.\n\nUse instead ip_hdr(skb) as done in drivers/net/bareudp.c\nand drivers/net/geneve.c.\n\nFound by Sashiko.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:38Z"

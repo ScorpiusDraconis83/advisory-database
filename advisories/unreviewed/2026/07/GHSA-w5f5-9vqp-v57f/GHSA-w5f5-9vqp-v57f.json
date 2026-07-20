@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-w5f5-9vqp-v57f",
-  "modified": "2026-07-19T18:31:51Z",
+  "modified": "2026-07-20T15:31:58Z",
   "published": "2026-07-19T18:31:51Z",
   "aliases": [
     "CVE-2026-64076"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: bridge: eb_tables: close module init race\n\nsashiko reports for unrelated patch:\n Does the core ebtables initialization in ebtables.c suffer from a similar race?\n Once nf_register_sockopt() completes, the sockopts are exposed globally.\n\nsockopt has to be registered last, just like in ip/ip6/arptables.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:48Z"

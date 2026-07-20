@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pg6j-5v22-gvqf",
-  "modified": "2026-07-19T18:31:43Z",
+  "modified": "2026-07-20T15:31:49Z",
   "published": "2026-07-19T18:31:43Z",
   "aliases": [
     "CVE-2026-63881"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: fix a vulnerability of integer overflow in kfd debugger\n\nget_queue_ids() computes array_size = num_queues * sizeof(uint32_t),\nwhich could overflow on 32-bit size_t build. using array_size()\ninstead, it saturates to SIZE_MAX on overflow.\n\n(cherry picked from commit 2d57a0475f085c08b49312dfd8edcb461845f285)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:05Z"

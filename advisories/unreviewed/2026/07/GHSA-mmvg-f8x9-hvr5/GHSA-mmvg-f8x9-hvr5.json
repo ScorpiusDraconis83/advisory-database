@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mmvg-f8x9-hvr5",
-  "modified": "2026-07-19T18:31:47Z",
+  "modified": "2026-07-20T15:31:53Z",
   "published": "2026-07-19T18:31:47Z",
   "aliases": [
     "CVE-2026-63970"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/virtio: bind uarg before filling zerocopy skb\n\nvirtio_transport_send_pkt_info() allocates or reuses the zerocopy uarg\nbefore entering the send loop, but virtio_transport_alloc_skb() still\nfills the skb before it inherits that uarg. When fixed-buffer vectored\nzerocopy hits MAX_SKB_FRAGS, io_sg_from_iter() may partially attach\nmanaged frags and return -EMSGSIZE. The rollback path call kfree_skb()\nto free an skb that carries SKBFL_MANAGED_FRAG_REFS but no uarg, so\nskb_release_data() falls through to ordinary frag unref.\n\nPass the uarg into virtio_transport_alloc_skb() and bind it immediately\nbefore virtio_transport_fill_skb(). This keeps control or no-payload skbs\nuntouched while ensuring success and rollback share one lifetime rule.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:16Z"

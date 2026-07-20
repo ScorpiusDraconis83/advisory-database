@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-r2vm-q278-6vpv",
-  "modified": "2026-07-19T18:31:49Z",
+  "modified": "2026-07-20T15:31:55Z",
   "published": "2026-07-19T18:31:49Z",
   "aliases": [
     "CVE-2026-64018"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mana: validate rx_req_idx to prevent out-of-bounds array access\n\nIn mana_hwc_rx_event_handler(), rx_req_idx is derived from\nsge->address in DMA-coherent memory. In Confidential VMs\n(SEV-SNP/TDX), this memory is shared unencrypted and HW can modify\nWQE contents at any time. No bounds check exists on rx_req_idx,\nwhich can lead to an out-of-bounds access into reqs[].\n\nAdd bounds check on rx_req_idx in mana_hwc_rx_event_handler() before\nusing it to index the reqs[] array.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:41Z"

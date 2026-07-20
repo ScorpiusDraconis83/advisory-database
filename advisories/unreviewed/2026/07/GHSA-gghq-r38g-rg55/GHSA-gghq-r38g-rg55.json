@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gghq-r38g-rg55",
-  "modified": "2026-07-19T18:31:49Z",
+  "modified": "2026-07-20T15:31:54Z",
   "published": "2026-07-19T18:31:49Z",
   "aliases": [
     "CVE-2026-64002"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: free net->ipv4.sysctl_local_reserved_ports after unregister_net_sysctl_table()\n\nipv4_sysctl_exit_net() is currently freeing net->ipv4.sysctl_local_reserved_ports\ntoo soon.\n\nOnly after unregister_net_sysctl_table() we can be sure no threads can possibly\nuse the sysctls, including /proc/sys/net/ipv4/ip_local_reserved_ports.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:39Z"

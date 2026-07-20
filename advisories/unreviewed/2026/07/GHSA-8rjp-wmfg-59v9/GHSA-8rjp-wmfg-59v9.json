@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8rjp-wmfg-59v9",
-  "modified": "2026-07-19T18:31:52Z",
+  "modified": "2026-07-20T15:31:59Z",
   "published": "2026-07-19T18:31:52Z",
   "aliases": [
     "CVE-2026-64104"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirt: sev-guest: Explicitly leak pages in unknown state\n\nWhen set_memory_{encrypted,decrypted}() fail, the user cannot know at which\npoint the function failed, meaning that the pages are left in an unknown state\nfrom the point of view of the caller.\n\nSince the pages may be left in an unencrypted state, they are not suitable for\ngeneral use, and cannot be returned safely to the buddy allocator. Avoid the\nissue by never freeing the pages, and then do the proper accounting by calling\nsnp_leak_pages().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:51Z"
