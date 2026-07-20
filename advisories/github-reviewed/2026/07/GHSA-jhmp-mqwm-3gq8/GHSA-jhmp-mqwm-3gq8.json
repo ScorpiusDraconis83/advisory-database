@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jhmp-mqwm-3gq8",
+  "modified": "2026-07-20T18:57:54Z",
+  "published": "2026-07-20T18:57:54Z",
+  "aliases": [
+    "CVE-2025-67726"
+  ],
+  "summary": "Tornado: Quadratic DoS via Crafted Multipart Parameters",
+  "details": "## Summary\n\nThe `_parseparam` function in Tornado's `httputil.py` is used to parse specific HTTP header values, such as those in `multipart/form-data`. This function uses an inefficient algorithm that repeatedly calls `string.count()` within a nested loop while processing quoted semicolons (e.g., `param=\";\"`).\n\nAs a result, if an attacker sends a request with a large number of maliciously crafted parameters in a `Content-Disposition` header, the server's CPU usage increases quadratically (O(n²)) during parsing. Due to Tornado's single event loop architecture, a single malicious request can cause the entire server to become unresponsive for an extended period, leading to a Denial of Service (DoS).\n\n**Severity: High**",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "tornado"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.5.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/tornadoweb/tornado/security/advisories/GHSA-jhmp-mqwm-3gq8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-67726"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tornadoweb/tornado/commit/771472cfdaeebc0d89a9cc46e249f8891a6b29cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/tornado/PYSEC-2025-267.yaml"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/tornadoweb/tornado"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tornadoweb/tornado/releases/tag/v6.5.3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-20T18:57:54Z",
+    "nvd_published_at": "2025-12-12T07:15:44Z"
+  }
+}
