@@ -1,13 +1,13 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2j5h-858j-5mpf",
-  "modified": "2026-06-16T23:32:08Z",
+  "modified": "2026-07-20T13:44:51Z",
   "published": "2026-06-16T23:32:08Z",
   "aliases": [
     "CVE-2026-54305"
   ],
   "summary": "n8n: Cross-Tenant Credential Takeover via Dynamic Credentials EE Endpoints",
-  "details": "## Impact\nThree EE endpoints used by the Dynamic Credentials feature accepted any authenticated n8n session without performing per-resource ownership or scope checks on the target workflow or credential. An authenticated user with no project membership or credential sharing relationship could enumerate credential identifiers, names, and types referenced by any private workflow in the instance, initiate an OAuth authorization flow against another user's credential to overwrite its stored tokens with tokens bound to an account they control, or revoke another user's stored credential tokens entirely.\n\nWorkflows relying on a hijacked credential would subsequently execute under the attacker's OAuth identity, enabling data exfiltration to attacker-controlled external services and persistent takeover of integrations. Token revocation would break affected workflows.\n\nThis issue only affects Enterprise instances where the Dynamic Credentials feature is enabled.\n\n## Patches\nThe issue has been fixed in n8n versions 1.123.55, 2.25.7, and 2.26.2. Users should upgrade to one of these versions or later to remediate the vulnerability.\n\n## Workarounds\nIf upgrading is not immediately possible, administrators should consider the following temporary mitigations:\n- Restrict n8n instance access to fully trusted users only.\n- If the Dynamic Credentials feature is not actively required, disable it by unsetting `N8N_ENV_FEAT_DYNAMIC_CREDENTIALS`.\n\nThese workarounds do not fully remediate the risk and should only be used as short-term mitigation measures.",
+  "details": "## Impact\nThree EE endpoints used by the Dynamic Credentials feature accepted any authenticated n8n session without performing per-resource ownership or scope checks on the target workflow or credential. An authenticated user with no project membership or credential sharing relationship could enumerate credential identifiers, names, and types referenced by any private workflow in the instance, initiate an OAuth authorization flow against another user's credential to overwrite its stored tokens with tokens bound to an account they control, or revoke another user's stored credential tokens entirely.\n\nWorkflows relying on a hijacked credential would subsequently execute under the attacker's OAuth identity, enabling data exfiltration to attacker-controlled external services and persistent takeover of integrations. Token revocation would break affected workflows.\n\nThis issue only affects Enterprise instances where the Dynamic Credentials feature is enabled.\n\n## Patches\nThe issue has been fixed in n8n versions 1.123.55, 2.25.7, and 2.26.2. Users should upgrade to one of these versions or later to remediate the vulnerability.\n\n## Workarounds\nIf upgrading is not immediately possible, administrators should consider the following temporary mitigations:\n- Restrict n8n instance access to fully trusted users only.\n- If the Dynamic Credentials feature is not actively required, disable it by unsetting `N8N_ENV_FEAT_DYNAMIC_CREDENTIALS`.\n\nThese workarounds do not fully remediate the risk and should only be used as short-term mitigation measures.\n\n---\nn8n has adopted CVSS 4.0 as primary score for all security advisories. CVSS 3.1 vector strings are provided for backwards compatibility.\n\nCVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L",
   "severity": [
     {
       "type": "CVSS_V3",
@@ -83,6 +83,10 @@
       "url": "https://github.com/n8n-io/n8n/security/advisories/GHSA-2j5h-858j-5mpf"
     },
     {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54305"
+    },
+    {
       "type": "PACKAGE",
       "url": "https://github.com/n8n-io/n8n"
     }
@@ -95,6 +99,6 @@
     "severity": "HIGH",
     "github_reviewed": true,
     "github_reviewed_at": "2026-06-16T23:32:08Z",
-    "nvd_published_at": null
+    "nvd_published_at": "2026-06-23T17:17:06Z"
   }
 }
