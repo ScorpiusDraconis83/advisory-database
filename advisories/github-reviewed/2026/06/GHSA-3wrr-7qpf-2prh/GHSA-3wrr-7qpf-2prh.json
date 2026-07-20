@@ -1,7 +1,7 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3wrr-7qpf-2prh",
-  "modified": "2026-06-23T21:21:12Z",
+  "modified": "2026-07-20T21:19:20Z",
   "published": "2026-06-23T21:21:12Z",
   "aliases": [
     "CVE-2026-50193"
@@ -9,6 +9,10 @@
   "summary": "jackson-databind: Deeply nested JsonNode throws StackOverflowError for toString()",
   "details": "### Impact\n\nPotential Denial-of-Service when attacker sends deeply nested JSON if (and only if) service:\n\n1. Reads deeply nested (1000s of levels) JSON as `JsonNode` (ObjectMapper.readTree())\n2. Writes out same (or modifided) node using `JsonNode.toString()`\n\nwhich can consume significant amount of resources with concurrent relatively small requests (1000 nested arrays is 2kB).\n\n### Patches\n\nFixed in 2.14.0 via https://github.com/FasterXML/jackson-databind/issues/3447.\n\n### Workarounds\n\nAvoid serializing `JsonNode` using `toString()`: use ObjectMapper.writeValueAsString(node)",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
@@ -44,6 +48,10 @@
       "url": "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-3wrr-7qpf-2prh"
     },
     {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-50193"
+    },
+    {
       "type": "WEB",
       "url": "https://github.com/FasterXML/jackson-databind/issues/3447"
     },
@@ -63,6 +71,6 @@
     "severity": "MODERATE",
     "github_reviewed": true,
     "github_reviewed_at": "2026-06-23T21:21:12Z",
-    "nvd_published_at": null
+    "nvd_published_at": "2026-06-23T21:17:01Z"
   }
 }
