@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7868-rq46-qvm4",
-  "modified": "2026-07-20T18:32:33Z",
+  "modified": "2026-07-20T21:31:46Z",
   "published": "2026-07-20T18:32:33Z",
   "aliases": [
     "CVE-2026-26483"
   ],
   "details": "Mettle SendPortal 3.0.1 and earlier contains a stored cross-site scripting (XSS) vulnerability in the template management functionality. The application fails to properly sanitize user-supplied input in the content parameter of the /templates endpoint, allowing an attacker to persistently inject malicious JavaScript code that is executed in the browsers of users who access the affected template.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-20T18:16:50Z"

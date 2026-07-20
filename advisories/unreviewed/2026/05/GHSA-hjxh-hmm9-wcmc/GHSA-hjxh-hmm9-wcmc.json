@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hjxh-hmm9-wcmc",
-  "modified": "2026-05-11T21:31:32Z",
+  "modified": "2026-07-20T21:31:40Z",
   "published": "2026-05-11T18:31:45Z",
   "aliases": [
     "CVE-2026-2291"
   ],
   "details": "dnsmasqs extract_name() function can be abused to cause a heap buffer overflow, allowing an attacker to inject false DNS cache entries, which could result in DNS lookups to redirect to an attacker-controlled IP address, or to cause a DoS.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,11 +50,15 @@
     {
       "type": "WEB",
       "url": "https://www.suse.com/security/cve/CVE-2026-2291.html"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/20/14"
     }
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-05-11T18:16:31Z"
