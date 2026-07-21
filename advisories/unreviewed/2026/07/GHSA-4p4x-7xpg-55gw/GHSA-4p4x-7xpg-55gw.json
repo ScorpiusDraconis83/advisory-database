@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4p4x-7xpg-55gw",
+  "modified": "2026-07-21T00:30:30Z",
+  "published": "2026-07-21T00:30:30Z",
+  "aliases": [
+    "CVE-2026-57852"
+  ],
+  "details": "Grav CMS scheduler-webhook plugin contains an authentication bypass vulnerability that allows unauthenticated remote attackers to trigger configured scheduled jobs by exploiting a short-circuit logic flaw in the webhook token validation. Attackers can send a single unauthenticated POST request to the scheduler webhook endpoint to execute all configured scheduled jobs or target a specific job, causing unintended execution of operator-defined commands under the web server process user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-xwv3-2mv2-w33x"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57852"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/authentication-bypass-via-null-short-circuit-in-grav-cms-scheduler-webhook-token-check"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-303"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-20T22:17:17Z"
+  }
+}

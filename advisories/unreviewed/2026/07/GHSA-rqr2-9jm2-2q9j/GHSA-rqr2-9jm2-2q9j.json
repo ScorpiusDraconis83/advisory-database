@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rqr2-9jm2-2q9j",
+  "modified": "2026-07-21T00:30:30Z",
+  "published": "2026-07-21T00:30:30Z",
+  "aliases": [
+    "CVE-2026-64626"
+  ],
+  "details": "AVideo versions from commit 0dbadbca through latest master contain a server-side request forgery vulnerability in the encoder download-by-URL flow due to an unpinned retry fallback that bypasses DNS pinning validation. An authenticated attacker can supply a downloadURL that redirects to an internal address, causing the unpinned retry to follow the redirect and reach internal targets for blind SSRF attacks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/security/advisories/GHSA-fr98-mjq9-7jmj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64626"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/commit/0dbadbcaaa1b415c7db078a72dc4b26d9fac0485"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/avideo-encoder-downloadurl-ssrf-via-unpinned-retry-fallback"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-20T22:17:18Z"
+  }
+}
