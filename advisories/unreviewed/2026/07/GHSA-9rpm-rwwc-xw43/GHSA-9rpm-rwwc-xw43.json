@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9rpm-rwwc-xw43",
+  "modified": "2026-07-21T06:31:18Z",
+  "published": "2026-07-21T06:31:18Z",
+  "aliases": [
+    "CVE-2026-15927"
+  ],
+  "details": "A flaw was found in Red Hat Quay's repository-level mirror configuration\nfeature. The POST and PUT handlers in endpoints/api/mirror.py accept an\nexternal_reference parameter without SSRF validation, unlike the\norganization-level mirror handlers which apply validate_external_registry_url().\nA repository administrator can supply a crafted hostname that causes the Quay\nmirror worker to make requests via Skopeo to internal network services, cloud\nmetadata endpoints, or other resources not intended to be reachable from the\nQuay application.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15927"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-15927"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2501256"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-21T06:16:28Z"
+  }
+}

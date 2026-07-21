@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c8xx-jpr5-7m25",
+  "modified": "2026-07-21T06:31:18Z",
+  "published": "2026-07-21T06:31:18Z",
+  "aliases": [
+    "CVE-2026-16266"
+  ],
+  "details": "Versions of the package mongo-object before 3.0.3 are vulnerable to Prototype Pollution via the expandKey() function in util.js. An attacker can modify the JavaScript prototype chain by supplying a crafted property path containing special keys such as __proto__.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16266"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/longshotlabs/mongo-object/issues/27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/longshotlabs/mongo-object/commit/638314107d8b397e5453c28e41729522b3e8d67c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/longshotlabs/mongo-object/blob/4f7a570f2a2fcfa9417b7870d5f859e9574ec73c/src/util.ts%23L251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.snyk.io/vuln/SNYK-JS-MONGOOBJECT-13816714"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1321"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-21T06:16:28Z"
+  }
+}
