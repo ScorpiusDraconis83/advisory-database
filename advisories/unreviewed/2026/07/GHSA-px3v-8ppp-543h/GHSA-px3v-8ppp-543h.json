@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-px3v-8ppp-543h",
+  "modified": "2026-07-21T15:30:44Z",
+  "published": "2026-07-21T15:30:44Z",
+  "aliases": [
+    "CVE-2024-5300"
+  ],
+  "details": "An access control bypass and information disclosure vulnerability exists in the base AppArmor security profile configuration of Canonical snapd. The abstraction rules located in /etc/apparmor.d/abstractions/nss-systemd (inherited via ) inadvertently permit strictly confined snap applications, which lack the privileged account-control interface, to interact directly with the io.systemd.Multiplexer and io.systemd.NameServiceSwitch UNIX domain sockets under /run/systemd/userdb/.\nOn systems where the systemd-userdbd service is installed and operational, the service fails to distinguish between an unconfined root user on the host system and a restricted root user running within a snap application's sandbox (such as a daemon or configuration hook). Because systemd-userdbd returns \"complete\" user records—including sensitive hashed user passwords from /etc/shadow—when queried by a process running as root, a compromised or malicious strictly confined snap executing code as root can successfully query the Varlink interface to retrieve all system password hashes, bypassing intended snap sandbox restrictions. This issue is mitigated by the fact that systemd-userdbd is not installed by default on standard Ubuntu deployments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-5300"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ubuntu.com/security/CVE-2024-5300"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-212"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-21T15:16:29Z"
+  }
+}

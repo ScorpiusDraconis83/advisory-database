@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7jmq-cfcx-7mr9",
+  "modified": "2026-07-21T15:30:44Z",
+  "published": "2026-07-21T15:30:44Z",
+  "aliases": [
+    "CVE-2026-11876"
+  ],
+  "details": "In zenml-io/zenml version 0.94.2, the `GET /api/v1/stack-deployment/stack` endpoint (`get_deployed_stack`) lacks proper RBAC authorization checks, allowing any authenticated user to enumerate all deployed stacks across all users and tenants. This includes stack component details, service connector information, and user IDs of stack owners. The vulnerability arises from two issues: missing endpoint-level RBAC checks and the use of a server-side `Client()` that bypasses the RBAC enforcement layer by directly accessing the database through `SqlZenStore`. This exposes sensitive information such as infrastructure topology, service connector details, stack ownership, and deployment metadata, potentially enabling cross-tenant reconnaissance and further attacks in multi-tenant ZenML Pro/Cloud deployments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11876"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zenml-io/zenml/commit/9ad2c65f24ded22a5a98d289d63a7f629b434b61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/3b434e02-0ee9-4b5e-a44b-0988b6f074c7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-21T15:16:30Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v566-43gw-4r9h",
-  "modified": "2026-07-20T09:31:08Z",
+  "modified": "2026-07-21T15:30:33Z",
   "published": "2026-07-20T09:31:07Z",
   "aliases": [
     "CVE-2026-13142"
   ],
   "details": "The Social Login, Passkeys, Magic Link & Email OTP  WordPress plugin before 1.4.1 does not enforce rate limiting or a working attempt lockout on its passwordless email one-time-password verification, and stores the short numeric codes in plaintext, allowing an unauthenticated attacker who knows a registered email address to brute-force the code and log in as that user, including an administrator, leading to full site takeover.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-20T07:16:35Z"

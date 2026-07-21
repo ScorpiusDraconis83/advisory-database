@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w952-x9hc-f66c",
+  "modified": "2026-07-21T15:30:45Z",
+  "published": "2026-07-21T15:30:45Z",
+  "aliases": [
+    "CVE-2026-65052"
+  ],
+  "details": "Ninja Forms WordPress plugin version 3.14.8 and prior contains an improper input validation vulnerability that allows unauthenticated attackers to inject arbitrary numeric values into form calculations and payment totals by submitting values that do not match any configured option in ListSelect or ListRadio fields. Attackers can tamper with form submission payloads to the ajax submit endpoint, causing the get_calc_value() method to fail open and return attacker-controlled values, enabling manipulation of payment amounts to zero or arbitrary figures and bypassing admin-configured pricing logic.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65052"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/ninja-forms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/ninja-forms/changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ninja-forms-calculation-and-payment-total-tampering-via-fail-open-get-calc-value-in-listselect-and-listradio-fields"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-472"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-21T15:16:39Z"
+  }
+}
