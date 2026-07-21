@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3jgv-34p5-3fxv",
+  "modified": "2026-07-21T21:32:39Z",
+  "published": "2026-07-21T21:32:39Z",
+  "aliases": [
+    "CVE-2026-59139"
+  ],
+  "details": "Data::ReqRep::Shared versions before 0.05 for Perl allow an out-of-bounds read via an unvalidated arena offset and length in reqrep_recv_locked.\n\nThe attach-time validator reqrep_validate_header checks the header scalars and region layout against the file size, but does not validate the array contents it then trusts. reqrep_recv_locked does memcpy(copy_buf, req_arena + arena_off, len) with arena_off and len read raw from the mmap'd segment and never bounded against the arena capacity (req_arena_cap).\n\nA local peer that can write the backing file can leave the header valid while poisoning a request slot's offset and length, so receiving the request copies a file-controlled offset and length out of the arena, reading adjacent memory or crashing the process.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/EGOR/Data-ReqRep-Shared-0.05/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/EGOR/Data-ReqRep-Shared-0.05/diff/EGOR/Data-ReqRep-Shared-0.04#reqrep.h"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-21T19:17:11Z"
+  }
+}

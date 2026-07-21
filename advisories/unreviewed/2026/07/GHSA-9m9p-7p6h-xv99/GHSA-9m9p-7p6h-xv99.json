@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9m9p-7p6h-xv99",
+  "modified": "2026-07-21T21:32:43Z",
+  "published": "2026-07-21T21:32:42Z",
+  "aliases": [
+    "CVE-2026-63358"
+  ],
+  "details": "FileGator accepts arbitrary Unix permission values via the '/chmoditems' API endpoint and passes the value directly to PHP's native 'chmod()' function through 'octdec()' conversion, with no validation. This allows an authenticated user with 'chmod' permission to upgrade their privileges to root.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63358"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/filegator/filegator/commit/4a44ed9a43f84505703dce669c68fb55270c3f2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/filegator/filegator/blob/master/CHANGELOG.md#7142---2026-05-18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/filegator/filegator/tree/master"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-202-03.json"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2026-63358"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-732"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-21T21:16:53Z"
+  }
+}

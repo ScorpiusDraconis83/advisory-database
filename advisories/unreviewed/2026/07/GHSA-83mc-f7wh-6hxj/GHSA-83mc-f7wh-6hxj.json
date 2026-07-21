@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-83mc-f7wh-6hxj",
+  "modified": "2026-07-21T21:32:42Z",
+  "published": "2026-07-21T21:32:42Z",
+  "aliases": [
+    "CVE-2026-56147"
+  ],
+  "details": "Authorization Bypass Through User-Controlled Key (CWE-639) in Kibana can lead to unauthorized information disclosure and case attachment integrity compromise via Privilege Abuse (CAPEC-122). An inconsistency in Kibana's file access authorization logic allows a low-privileged authenticated user to retrieve, modify, and delete case attachments that belong to feature areas they are not authorized to access. Because the access control check and the resource retrieval use different resolution mechanisms, an authenticated attacker with limited file management permissions can obtain the contents of, modify, or delete protected case attachments — such as those associated with Security Solution cases — without holding the privileges required to access those features.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56147"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-18-9-3-7-9-4-3-security-update-esa-2026-59/388558"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-21T21:16:52Z"
+  }
+}

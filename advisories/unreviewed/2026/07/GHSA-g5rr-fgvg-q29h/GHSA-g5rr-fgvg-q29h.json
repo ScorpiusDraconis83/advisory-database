@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g5rr-fgvg-q29h",
+  "modified": "2026-07-21T21:32:42Z",
+  "published": "2026-07-21T21:32:42Z",
+  "aliases": [
+    "CVE-2026-63136"
+  ],
+  "details": "Uncontrolled Resource Consumption (CWE-400) in Elasticsearch can lead to denial of service via Excessive Allocation (CAPEC-130). A user with search privileges can submit a specially crafted search request that causes a data node to exhaust available heap memory, resulting in node unavailability and cluster degradation. An attacker could leverage this vulnerability to cause cluster downtime requiring manual intervention to restore service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/elasticsearch-8-19-15-9-2-9-9-3-4-security-update-esa-2026-60/388559"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-21T21:16:52Z"
+  }
+}
