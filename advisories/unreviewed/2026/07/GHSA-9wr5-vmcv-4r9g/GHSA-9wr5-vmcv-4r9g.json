@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9wr5-vmcv-4r9g",
-  "modified": "2026-07-21T00:30:29Z",
+  "modified": "2026-07-21T18:30:55Z",
   "published": "2026-07-21T00:30:29Z",
   "aliases": [
     "CVE-2026-51031"
   ],
   "details": "FlareSolverr before version 3.4.7 contains a server-side request forgery (SSRF) vulnerability in the /v1 API endpoint. This allows a remote attacker to obtain sensitive information",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-20T22:17:15Z"

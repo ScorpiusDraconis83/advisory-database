@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-26qq-fq9w-jrj5",
-  "modified": "2026-06-24T18:32:47Z",
+  "modified": "2026-07-21T18:30:42Z",
   "published": "2026-06-24T18:32:47Z",
   "aliases": [
     "CVE-2026-53100"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: fix deadlock in remain-on-channel\n\nmt76_remain_on_channel() and mt76_roc_complete() call mt76_set_channel()\nwhile already holding dev->mutex. Since mt76_set_channel() also acquires\ndev->mutex, this results in a deadlock.\n\nUse __mt76_set_channel() instead of mt76_set_channel().\nAdd cancel_delayed_work_sync() for mac_work before acquiring the mutex\nin mt76_remain_on_channel() to prevent a secondary deadlock with the\nmac_work workqueue.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:24Z"

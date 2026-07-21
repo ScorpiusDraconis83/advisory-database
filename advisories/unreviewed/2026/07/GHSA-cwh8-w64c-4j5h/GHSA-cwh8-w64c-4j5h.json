@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cwh8-w64c-4j5h",
+  "modified": "2026-07-21T18:31:02Z",
+  "published": "2026-07-21T18:31:01Z",
+  "aliases": [
+    "CVE-2026-64824"
+  ],
+  "details": "Home Assistant Core before 2026.7.0 contains a path traversal vulnerability in the backup-restore function that allows attackers to write files to arbitrary absolute filesystem paths by supplying a crafted tar archive with a SYMTYPE entry containing a benign member name paired with an absolute linkname pointing outside the extraction directory. Because the official Docker image runs the Home Assistant process as root and the subsequent regular-file entry is written through the unvalidated symlink, attackers can achieve remote code execution by overwriting auto-imported Python paths such as site-packages/sitecustomize.py or custom component directories.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-78r8-wwqv-r299"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64824"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/home-assistant/core/pull/172252"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/home-assistant/core/commit/1e457600f1093c15e1325742d03e2b76498c79c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/home-assistant/core/releases/tag/2026.7.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/home-assistant-core-symlink-path-traversal-rce-via-backup-restore"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-21T16:17:21Z"
+  }
+}

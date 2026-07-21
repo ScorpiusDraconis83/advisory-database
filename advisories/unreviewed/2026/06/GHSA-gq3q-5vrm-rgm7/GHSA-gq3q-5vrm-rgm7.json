@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gq3q-5vrm-rgm7",
-  "modified": "2026-06-24T18:32:46Z",
+  "modified": "2026-07-21T18:30:38Z",
   "published": "2026-06-24T18:32:45Z",
   "aliases": [
     "CVE-2026-53065"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: sti: use managed regmap_field allocations\n\nThe regmap_field objects allocated at player init are never freed and\nmay leak resources if the driver is removed.\n\nSwitch to devm_regmap_field_alloc() to automatically limit the lifetime\nof the allocations the lifetime of the device.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:19Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7qff-cmg5-8pwm",
-  "modified": "2026-06-24T18:32:45Z",
+  "modified": "2026-07-21T18:30:38Z",
   "published": "2026-06-24T18:32:45Z",
   "aliases": [
     "CVE-2026-53066"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/sun4i: backend: fix error pointer dereference\n\nThe function drm_atomic_get_plane_state() can return an error pointer\nand is not checked for it. Add error pointer check.\n\nDetected by Smatch:\ndrivers/gpu/drm/sun4i/sun4i_backend.c:496 sun4i_backend_atomic_check() error:\n'plane_state' dereferencing possible ERR_PTR()",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -40,8 +45,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:19Z"

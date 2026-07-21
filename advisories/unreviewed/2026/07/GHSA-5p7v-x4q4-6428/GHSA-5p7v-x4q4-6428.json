@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5p7v-x4q4-6428",
-  "modified": "2026-07-21T09:31:42Z",
+  "modified": "2026-07-21T18:31:00Z",
   "published": "2026-07-21T09:31:42Z",
   "aliases": [
     "CVE-2026-14184"
   ],
   "details": "The Academy LMS WordPress plugin before 3.8.1 does not verify ownership of a user-supplied user identifier in several of its lesson AJAX handlers, allowing authenticated users with subscriber-level access to read and modify other users' lesson notes and mark other users' lesson content as completed.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-21T07:16:34Z"
