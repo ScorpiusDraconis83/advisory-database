@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8w3v-jcfp-ffw5",
+  "modified": "2026-07-21T12:33:36Z",
+  "published": "2026-07-21T12:33:35Z",
+  "aliases": [
+    "CVE-2026-64609"
+  ],
+  "details": "Out-of-bounds read via sun.misc.Unsafe in Apache Fory. When out-of-band zero-copy deserialization is used, readAlignedVarUint() can read beyond the bounds of the underlying buffer. Out-of-band zero-copy deserialization is an opt-in feature; applications that do not use it are not affected.\n\nThis issue affects Apache Fory (formerly Apache Fury): from 0.5.0 before 1.4.0. Versions before 0.11.0 were published under the Maven coordinates org.apache.fury:fury-core.\n\nUsers are recommended to upgrade to version 1.4.0, which fixes the issue.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64609"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/rdv22ks3b0cxh0r52w3ghxgkxqso3f1b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-21T10:16:25Z"
+  }
+}
