@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mvh2-crg5-v77c",
+  "modified": "2026-07-22T21:23:05Z",
+  "published": "2026-07-22T21:23:05Z",
+  "aliases": [
+    "CVE-2026-55833"
+  ],
+  "summary": "Netty SPDY zlib header block continues decoded expansion after maxHeaderSize truncation",
+  "details": "### Summary\nNetty SPDY header decoding continues inflating zlib-compressed header blocks after the raw header parser has already exceeded maxHeaderSize and marked the frame truncated. At commit b2d2137c4404af425bf9d5d601a62576f5c06925, a 12,253-byte compressed SPDY header block can declare and inflate a 12 MiB header-name field with maxHeaderSize=16, forcing compression-amplified decode and skip work in a reachable SpdyFrameCodec pipeline.\n\n### PoC\n[poc.zip](https://github.com/user-attachments/files/28445780/poc.zip)\n\nrun with:\n```bash\nbash ./poc/run.sh\n```\nexpected output:\n```text\nNETTY_SPDY_ZLIB_DECODED_AFTER_LIMIT_TRIGGERED compressed_bytes=12253 declared_name_length=12582912 max_header_size=16 truncated=true invalid=false\n```\n\nThe fingerprint means the compressed input was fully consumed while the raw header parser ended with `truncated=true` and `invalid=false` after processing the oversized decoded name. That specific state distinguishes this bug from a generic setup failure: the maxHeaderSize guard fired, but the zlib/raw decode path still inflated and skipped the full 12 MiB declared name.\n\n### Impact\nA remote unauthenticated peer that can speak SPDY to a Netty pipeline containing SpdyFrameCodec can send a small compressed HEADERS block that expands into much larger raw header data after the configured maxHeaderSize limit has already been exceeded. The attack requires a reachable SPDY codec, ordinary transport setup such as TCP and optional TLS, and no independent compressed-frame-size or connection-rate limit ahead of SpdyFrameCodec. The satisfied protocol guards are straightforward: the HEADERS frame uses a nonzero stream id and length >= 4, the decoder factory selects the zlib decoder, the payload uses the SPDY dictionary, and the raw block appends a zero-length value so the already-truncated frame reaches END_HEADER_BLOCK. The user-visible effect is denial of service through compression-amplified CPU and allocation churn.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec-http"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.2.0.Final"
+            },
+            {
+              "fixed": "4.2.16.Final"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.2.15.Final"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec-http"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.1.0.Final"
+            },
+            {
+              "fixed": "4.1.136.Final"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.1.135.Final"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/security/advisories/GHSA-mvh2-crg5-v77c"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55833"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/commit/5b68c61f37aa4a3045cba624cbea239655c9003b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/commit/bb2ff68a1fb71cb4b0eb9a9e17b66c52aff680c6"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/netty/netty"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/releases/tag/netty-4.1.136.Final"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/releases/tag/netty-4.2.16.Final"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-22T21:23:05Z",
+    "nvd_published_at": "2026-07-21T00:17:35Z"
+  }
+}
