@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qcp3-347v-7f6g",
+  "modified": "2026-07-22T00:32:36Z",
+  "published": "2026-07-22T00:32:36Z",
+  "aliases": [
+    "CVE-2026-63260"
+  ],
+  "details": "Uncontrolled Resource Consumption (CWE-400) in Kibana can lead to denial of service via Excessive Allocation (CAPEC-130). An authenticated attacker with low-privilege access can trigger a denial of service condition in Kibana by sending a specially crafted, oversized request payload. Processing this user-supplied input requires resource-intensive memory allocation that can exhaust the available heap memory in the Kibana process, causing it to crash and become unavailable to all users.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63260"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-19-9-3-8-9-4-4-security-update-esa-2026-71/388574"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-21T23:18:02Z"
+  }
+}
