@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xgr8-mrxv-f3p6",
-  "modified": "2026-07-21T18:31:02Z",
+  "modified": "2026-07-22T21:31:54Z",
   "published": "2026-07-21T18:31:02Z",
   "aliases": [
     "CVE-2026-15342"
   ],
   "details": "Plane contains a multi‑tenant authorization flaw in its asset‑management API that allows authenticated users from one workspace to access, delete, or duplicate assets belonging to another workspace by providing only the victim workspace slug and asset ID. The affected endpoints return presigned file URLs and enable destructive or duplicative actions without verifying that the requester is a member of the targeted workspace. This enables cross‑tenant data exposure, data deletion, and persistent exfiltration of files into an attacker‑controlled workspace.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-552"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-21T17:17:04Z"

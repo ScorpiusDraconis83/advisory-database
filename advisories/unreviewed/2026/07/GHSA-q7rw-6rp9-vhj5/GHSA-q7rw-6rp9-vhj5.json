@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-q7rw-6rp9-vhj5",
-  "modified": "2026-07-01T15:35:19Z",
+  "modified": "2026-07-22T21:31:46Z",
   "published": "2026-07-01T15:35:19Z",
   "aliases": [
     "CVE-2026-53350"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: wm_adsp: Fix NULL dereference when removing firmware controls\n\nIn wm_adsp_control_remove() check that the priv pointer is not NULL\nbefore attempting to cleanup what it points to.\n\nWhen cs_dsp creates a control it calls wm_adsp_control_add_cb() so that\nwm_adsp can create its own private control data. There are two cases\nwhere private data is not created:\n\n1. The control is a SYSTEM control, so an ALSA control is not created.\n\n2. The codec driver has registered a control_add() callback that\n   hides the control, so wm_adsp_control_add() is not called.\n\nWhen cs_dsp_remove destroys its control list it calls\nwm_adsp_control_remove() for each control. But wm_adsp_control_remove()\nwas attempting to cleanup the private data pointed to by cs_ctl->priv\nwithout checking the pointer for NULL.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -40,8 +45,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-01T14:16:43Z"
