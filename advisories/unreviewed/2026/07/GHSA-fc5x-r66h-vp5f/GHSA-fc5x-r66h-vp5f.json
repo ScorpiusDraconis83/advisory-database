@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fc5x-r66h-vp5f",
+  "modified": "2026-07-22T12:32:15Z",
+  "published": "2026-07-22T12:32:15Z",
+  "aliases": [
+    "CVE-2026-14551"
+  ],
+  "details": "The servereye client (also known as sensorhub, technically ClientAgentContainerService) versions 20.15 and earlier are vulnerable to Local Privilege Escalation. The high-privileged service SE3Recovery (EmergencyRecoveryService.exe), running as SYSTEM, periodically monitors the directory %ProgramData%\\ServerEye3\\update\\ for a trigger file named \"update_available\". Due to insufficient access restrictions on this directory, a local standard user can create the trigger file and provide a path to a directory containing malicious JSON instructions. The service subsequently executes the utility UpdaterAction.exe with SYSTEM privileges, which parses the instructions and performs an unvalidated file copy from a user-controlled source to a protected system destination (e.g., overwriting a service binary). This leads to full system compromise as the service automatically restarts the overwritten binary with SYSTEM privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14551"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.servereye.de/security-bulletins/2026-001"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T10:17:13Z"
+  }
+}

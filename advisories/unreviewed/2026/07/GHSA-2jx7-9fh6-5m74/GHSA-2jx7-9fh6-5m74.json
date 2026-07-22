@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2jx7-9fh6-5m74",
+  "modified": "2026-07-22T12:32:16Z",
+  "published": "2026-07-22T12:32:16Z",
+  "aliases": [
+    "CVE-2026-16544"
+  ],
+  "details": "A flaw was found in AWX. The websocket event consumer performs RBAC authorization checks only for event groups that are mapped in the consumer_access() function (job_events, workflow_events, ad_hoc_command_events). Three event groups - inventory_update_events, project_update_events, and system_job_events — are not mapped, causing the authorization check to be skipped. Any authenticated user can subscribe to these unmapped websocket event groups for any object ID and receive real-time stdout output from jobs belonging to organizations they have no access to. This is an incomplete remediation of CVE-2020-10698.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16544"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-16544"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2506053"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T12:17:10Z"
+  }
+}

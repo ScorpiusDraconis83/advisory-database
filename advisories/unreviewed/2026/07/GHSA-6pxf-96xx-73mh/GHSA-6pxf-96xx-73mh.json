@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6pxf-96xx-73mh",
+  "modified": "2026-07-22T12:32:16Z",
+  "published": "2026-07-22T12:32:16Z",
+  "aliases": [
+    "CVE-2025-13146"
+  ],
+  "details": "The The Contact Form 7 – Dynamic Text Extension plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 5.0.6. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for unauthenticated attackers to execute arbitrary shortcodes. The vulnerability was partially patched in version 5.0.4.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13146"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contact-form-7-dynamic-text-extension/trunk/contact-form-7-dynamic-text-extension.php#L765"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contact-form-7-dynamic-text-extension/trunk/contact-form-7-dynamic-text-extension.php#L782"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contact-form-7-dynamic-text-extension/trunk/includes/utilities.php#L265"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3430784"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/3e5ad3a7-03c5-4085-b330-bc77e7e46cea?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T12:16:54Z"
+  }
+}

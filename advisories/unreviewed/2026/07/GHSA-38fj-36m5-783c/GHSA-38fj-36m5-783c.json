@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-38fj-36m5-783c",
+  "modified": "2026-07-22T12:32:17Z",
+  "published": "2026-07-22T12:32:17Z",
+  "aliases": [
+    "CVE-2026-65593"
+  ],
+  "details": "n8n versions before 1.123.64 contain a server-side request forgery vulnerability in the dynamic-node-parameters endpoints that lack authorization scopes. Authenticated attackers can supply absolute URLs in routing configuration to override baseURL restrictions and make the n8n server issue HTTP requests to arbitrary internal targets when SSRF protection is disabled.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:H/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/n8n-io/n8n/security/advisories/GHSA-9w78-79q7-r4fp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65593"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/n8n-before-ssrf-via-dynamic-node-parameters"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T12:18:19Z"
+  }
+}

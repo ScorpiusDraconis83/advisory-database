@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2xmm-4jcc-wgxq",
+  "modified": "2026-07-22T12:32:16Z",
+  "published": "2026-07-22T12:32:15Z",
+  "aliases": [
+    "CVE-2026-16473"
+  ],
+  "details": "A flaw was found in the sbc library (BlueZ SBC codec). An off-by-one error in the SBC frame decoder allows a crafted audio payload to trigger a one-byte heap out-of-bounds read. This could allow an adjacent attacker streaming Bluetooth audio to read a single byte of adjacent heap memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16473"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-16473"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2503650"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/pub/scm/bluetooth/sbc.git"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T11:16:50Z"
+  }
+}

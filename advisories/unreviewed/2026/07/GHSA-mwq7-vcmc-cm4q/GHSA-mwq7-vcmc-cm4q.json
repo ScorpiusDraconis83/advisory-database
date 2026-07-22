@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mwq7-vcmc-cm4q",
+  "modified": "2026-07-22T12:32:17Z",
+  "published": "2026-07-22T12:32:17Z",
+  "aliases": [
+    "CVE-2026-65016"
+  ],
+  "details": "n8n versions before 1.123.64, 2.29.8, and 2.30.1 contain a privilege escalation vulnerability in Enterprise SSO instance-role provisioning. The provisioning path maps an IdP-asserted role claim to an n8n global role but does not prevent assignment of the global:owner role (unlike the token-exchange identity path, which rejects it). An SSO-authenticated user whose instance-role claim resolves to global:owner is provisioned as instance owner, gaining full administrative control over workflows, credentials, users, and instance configuration. Exploitation requires that Enterprise SSO is configured, instance-role provisioning is enabled via N8N_SSO_SCOPES_PROVISION_INSTANCE_ROLE (disabled by default), and the attacker controls the instance-role claim value issued by the IdP.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/n8n-io/n8n/security/advisories/GHSA-35q8-9mj6-wjmf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65016"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/n8n-before-privilege-escalation-via-sso-instance-role"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T12:18:18Z"
+  }
+}
