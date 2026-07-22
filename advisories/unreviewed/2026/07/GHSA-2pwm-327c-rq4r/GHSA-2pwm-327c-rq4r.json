@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2pwm-327c-rq4r",
+  "modified": "2026-07-22T15:31:24Z",
+  "published": "2026-07-22T15:31:24Z",
+  "aliases": [
+    "CVE-2026-42955"
+  ],
+  "details": "In NLnet Labs Unbound 1.16.2 up to and including 1.25.1, a similar vulnerability as with CVE-2026-40622 in the 'ghost domain names' family of attacks was found in Unbound that could extend the ghost domain window by up to one cached TTL configured value for A/AAAA glue records. Similar to other 'ghost domain names' attacks, an adversary needs to control a (ghost) zone and be able to query a vulnerable Unbound. A single client A/AAAA query can cause Unbound to overwrite the cached expired parent-side glue rrset and essentially extend the ghost domain window by up to one cached TTL configured value ('cache-max-ttl'). In configurations where 'harden-referral-path: yes' is used (non-default configuration), no client query is required since Unbound implicitly performs that query. This is a variant of CVE-2026-40622 which only addressed the NS query.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nlnetlabs.nl/downloads/unbound/CVE-2026-42955.txt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-672"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T14:17:18Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9vcf-h83p-jghm",
+  "modified": "2026-07-22T15:31:25Z",
+  "published": "2026-07-22T15:31:25Z",
+  "aliases": [
+    "CVE-2026-55717"
+  ],
+  "details": "In NLnet Labs Unbound 1.10.0 up to and including 1.25.1, when 'serve-expired: yes' is set together with a 'response-ip: <net> redirect' /'response-ip-data: <net> CNAME <target>' rule (or the RPZ 'rpz-cname-override' equivalent), a remote client who controls any delegated domain can crash the daemon. The serve-expired-client-timeout callback runs a two-pass loop to chase the respip-generated CNAME alias; on the second pass it resets 'alias_rrset' but not 'partial_rep'. Later, this inconsistency leads to a NULL pointer dereference and an eventual crash. A malicious actor can exploit the vulnerability by controlling any zone that replies with an A/AAAA record that falls inside the configured response-ip/rpz subnet. By delaying the answer when the previous record has expired, the vulnerable path of 'serve-expired-client-timeout' is taken leading to denial of service via the server crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55717"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nlnetlabs.nl/downloads/unbound/CVE-2026-55717.txt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T14:17:21Z"
+  }
+}

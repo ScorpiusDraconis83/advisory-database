@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g479-fg97-pf5w",
+  "modified": "2026-07-22T15:31:25Z",
+  "published": "2026-07-22T15:31:25Z",
+  "aliases": [
+    "CVE-2026-55973"
+  ],
+  "details": "In NLnet Labs Unbound 1.23.0 up to and including 1.25.1, when 'dns-error-reporting: yes' is set, the EDNS Report-Channel option (code 18) from the last upstream response is read and uses the option's length as the length of the agent domain. When a domain name check is performed on the agent domain, the returned lenght is not used and if the agent domain is followed by garbage, those bytes are moved onto the tail of the synthetic '_er.' report query name. That query name is later used in the iterator via a subquery to send out the DNS Error Report and when Unbound tries to walk that query name during 'find_closest_of_type()', it strips labels using the query name length rather than stopping at the embedded root, walks one byte past it, and feeds the first garbage byte to 'dname_query_hash()' as a label length writing over the stack variable 'labuf'. One ordinary upstream response from a delegated zone the attacker controls is sufficient to terminate the daemon.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55973"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nlnetlabs.nl/downloads/unbound/CVE-2026-55973.txt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T14:17:21Z"
+  }
+}

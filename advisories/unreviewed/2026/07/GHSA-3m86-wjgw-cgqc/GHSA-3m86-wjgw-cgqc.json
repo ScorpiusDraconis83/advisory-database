@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3m86-wjgw-cgqc",
+  "modified": "2026-07-22T15:31:24Z",
+  "published": "2026-07-22T15:31:24Z",
+  "aliases": [
+    "CVE-2026-44621"
+  ],
+  "details": "With NLnet Labs Unbound up to and including version 1.25.1, applications using libunbound and configured with 'unwanted-reply-threshold', could eventually be abruptly terminated if the threshold is reached and libunbound needs to call 'libworker_alloc_cleanup' since the function is absent from the function call allow list. When an application using libunbound sets 'unwanted-reply-threshold' to any non-zero value and the iterator queries an authoritative that replies with enough wrong-transaction-ID UDP datagrams to cross the threshold, the 'libworker_alloc_cleanup' will eventually be called. Since the function is absent from the function call allow list, this leads to a fatal exit of libunbound and eventual termination of the embedding application.Unbound itself is not affected since its relevant function 'worker_alloc_cleanup' is registed in the allow list and proceeds to perform the documented cache flush.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44621"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nlnetlabs.nl/downloads/unbound/CVE-2026-44621.txt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-754"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T14:17:18Z"
+  }
+}

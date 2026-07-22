@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2845-97v4-7wm3",
+  "modified": "2026-07-22T15:31:25Z",
+  "published": "2026-07-22T15:31:25Z",
+  "aliases": [
+    "CVE-2026-56416"
+  ],
+  "details": "In NLnet Labs Unbound up to and including version 1.25.1, when the validator builds the canonical RDATA form for an RRSIG-covered PX/RP/MINFO/SOA RRset, it computes the address of the second embedded domain name as 'datstart + dname_valid(datstart, ...)' and passes it straight to 'query_dname_tolower()' without checking that a second name is actually present in the RDATA. The wire-format parser accepts multi-dname RRs whose RDATA ends after the first name, so an attacker who runs a DNSSEC-signed authoritative server can deliver a record with an absent second domain name (e.g. SOA record) and cause 'query_dname_tolower()' to walk label-by-label through stale bytes in the per-worker 'env->scratch_buffer', past the end of that heap allocation if 'msg-buffer-size' has been lowered from the default. This leads to heap buffer overflow and on a release build the outcome relies heavily on the contents of the buffer tail and the adjacent heap chunk.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56416"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nlnetlabs.nl/downloads/unbound/CVE-2026-56416.txt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-354"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T14:17:22Z"
+  }
+}

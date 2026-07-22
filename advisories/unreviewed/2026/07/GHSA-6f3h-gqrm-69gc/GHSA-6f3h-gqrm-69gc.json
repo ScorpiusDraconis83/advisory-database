@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6f3h-gqrm-69gc",
+  "modified": "2026-07-22T15:31:21Z",
+  "published": "2026-07-22T15:31:21Z",
+  "aliases": [
+    "CVE-2026-8152"
+  ],
+  "details": "Unblu Spark contains an open redirect vulnerability that can be escalated to a DOM-based cross-site scripting (XSS) attack.\n\n\nWhen Unblu Spark is deployed with com.unblu.identifier.siteEmbeddedSetup=true, it runs in the same origin as the host application. Any JavaScript injected through this vulnerability therefore executes with full access to the host application's cookies, DOM, and same-origin APIs — an attacker can reach all resources of the host application, not just Unblu's. This expanded blast radius is the reason on-premises deployments using this configuration are rated CRITICAL.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.unblu.com/latest/security-bulletins/#UBL-2026-001"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T13:16:38Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vxvj-6rhp-3pqq",
+  "modified": "2026-07-22T15:31:24Z",
+  "published": "2026-07-22T15:31:24Z",
+  "aliases": [
+    "CVE-2026-40691"
+  ],
+  "details": "In Unbound 1.9.0 up to and including 1.25.1, when a DNSCrypt query is received over TCP, the routine that encrypts the reply in place fails to bound the reply length against the destination buffer size. The size clamp that protects the UDP path is not applied on the TCP path, so a reply larger than 65504 bytes is shifted forward by 48 bytes inside a buffer of capacity equal to 'msg-buffer-size', writing past the end of the heap allocation. A single malicious encrypted query crashes the resolver and lead to denial of service. This vulnerability needs Unbound to be compiled with DNSCrypt support ('--enable-dnscrypt') and the 'dnscrypt:' clause to be configured and enabled for the listening interfaces.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40691"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nlnetlabs.nl/downloads/unbound/CVE-2026-40691.txt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T14:17:18Z"
+  }
+}
