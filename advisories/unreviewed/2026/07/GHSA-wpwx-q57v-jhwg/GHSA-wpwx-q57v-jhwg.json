@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wpwx-q57v-jhwg",
+  "modified": "2026-07-22T09:32:13Z",
+  "published": "2026-07-22T09:32:13Z",
+  "aliases": [
+    "CVE-2026-12987"
+  ],
+  "details": "The Events Manager  WordPress plugin before 7.3.7 does not safely handle booking-registration data on sites using No-User-Account Booking Mode: a booker-supplied registration field is stored as booking meta and later deserialized without restricting allowed classes, enabling PHP object injection. The resulting gadget chain reaches a database query that is built without parameterisation, so an unauthenticated attacker can read arbitrary database data (e.g. user password hashes, secret keys) when the booking is later loaded.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12987"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/dac83702-298d-4422-b795-b7684cc3fb2b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-22T07:16:35Z"
+  }
+}
