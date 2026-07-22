@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-558v-64gr-wgg4",
+  "modified": "2026-07-22T21:50:47Z",
+  "published": "2026-07-22T21:50:47Z",
+  "aliases": [
+    "CVE-2026-59901"
+  ],
+  "summary": "Netty: [Bzip2Decoder] Infinite Loop in RLE State Machine Leads to Event-Loop Thread Hang",
+  "details": "The `Bzip2Decoder` handler in Netty's compression codec pipeline is vulnerable to a denial-of-service attack through a malformed bzip2 stream that permanently captures the event-loop thread in an infinite loop. The vulnerability exists in the run-length encoding (RLE) state machine within [`Bzip2BlockDecompressor.read()`]",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec-compression"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.2.0.Final"
+            },
+            {
+              "fixed": "4.2.16.Final"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.1.136.Final"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/security/advisories/GHSA-558v-64gr-wgg4"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/netty/netty"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/releases/tag/netty-4.1.136.Final"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/releases/tag/netty-4.2.16.Final"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-22T21:50:47Z",
+    "nvd_published_at": null
+  }
+}

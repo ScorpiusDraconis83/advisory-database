@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q4f6-jm68-57ww",
+  "modified": "2026-07-22T21:49:13Z",
+  "published": "2026-07-22T21:49:13Z",
+  "aliases": [
+    "CVE-2026-59899"
+  ],
+  "summary": "Netty: [HttpContentEncoder] Unbounded Per-Connection Queue Growth via HTTP/1.1 Pipelining Leads to Denial of Service",
+  "details": "### Impact\n`HttpContentEncoder` (the superclass of the production handler `HttpContentCompressor`) maintains a per-channel `ArrayDeque<CharSequence>` named `acceptEncodingQueue` that accumulates attacker-controlled data without any size limit. The queue is filled on the I/O thread for every inbound HTTP request and drained only when the application later writes a non-1xx response. This creates a resource exhaustion vulnerability when an attacker exploits HTTP/1.1 pipelining to flood the connection with requests faster than the application produces responses.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec-http"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.2.0.Final"
+            },
+            {
+              "fixed": "4.2.16.Final"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.2.15.Final"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec-http"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.1.136.Final"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/security/advisories/GHSA-q4f6-jm68-57ww"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/netty/netty"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/releases/tag/netty-4.1.136.Final"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/releases/tag/netty-4.2.16.Final"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-22T21:49:13Z",
+    "nvd_published_at": null
+  }
+}

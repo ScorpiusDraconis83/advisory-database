@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c69g-56f8-xwqj",
+  "modified": "2026-07-22T21:49:28Z",
+  "published": "2026-07-22T21:49:28Z",
+  "aliases": [
+    "CVE-2026-59900"
+  ],
+  "summary": "Netty: [codec-http2] Lack of Host Header Deduplication in HTTP/2→HTTP/1.x Translation Leads to Request Routing Bypass",
+  "details": "Netty's HTTP/2-to-HTTP/1.x translation layer (`Http2StreamFrameToHttpObjectCodec` and `InboundHttp2ToHttpAdapter`) fails to deduplicate or validate `Host` headers when an HTTP/2 client supplies both the `:authority` pseudo-header and a literal `host` header in a single HEADERS frame. The translator maps `:authority` to `Host` and separately copies the literal `host` header, producing an `HttpRequest` object containing two `Host` headers with attacker-controlled differing values.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec-http2"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.2.0.Final"
+            },
+            {
+              "fixed": "4.2.16.Final"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.2.15.Final"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec-http2"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.1.136.Final"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/security/advisories/GHSA-c69g-56f8-xwqj"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/netty/netty"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/releases/tag/netty-4.1.136.Final"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/releases/tag/netty-4.2.16.Final"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-444"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-22T21:49:28Z",
+    "nvd_published_at": null
+  }
+}

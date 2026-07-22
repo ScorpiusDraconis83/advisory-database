@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4mp9-239f-g9hg",
+  "modified": "2026-07-22T21:48:59Z",
+  "published": "2026-07-22T21:48:59Z",
+  "aliases": [
+    "CVE-2026-59898"
+  ],
+  "summary": "Netty: WebSockets V07/V08 handshaker missing Connection/Upgrade validation",
+  "details": "## Summary\nAn attacker can force WebSocket upgrade via the lax V07 (or V08) handshaker by sending `Sec-WebSocket-Version: 7` and omitting `Connection: Upgrade` / `Upgrade: websocket` headers, completing a protocol switch that a proxy would not recognize as an Upgrade request and enabling HTTP request smuggling / protocol-confusion attacks.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec-http"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.2.0.Final"
+            },
+            {
+              "fixed": "4.2.16.Final"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.2.15.Final"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec-http"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.1.136.Final"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/security/advisories/GHSA-4mp9-239f-g9hg"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/netty/netty"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/releases/tag/netty-4.1.136.Final"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/releases/tag/netty-4.2.16.Final"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-444"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-22T21:48:59Z",
+    "nvd_published_at": null
+  }
+}
