@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-98cx-cw6c-5pj4",
+  "modified": "2026-07-23T21:31:02Z",
+  "published": "2026-07-23T21:31:02Z",
+  "aliases": [
+    "CVE-2026-65704"
+  ],
+  "details": "FFmpeg through 8.1.2 contains an out-of-bounds write vulnerability that allows attackers to cause heap corruption by supplying a crafted ffconcat file processed with the -safe 0 flag. The TY demuxer's demux_audio() function decrements packet size without bounds checking, producing a negative size value that is passed to memcpy() in shorten_decode_frame(), where conversion to size_t wraps the value to near SIZE_MAX and triggers reads beyond the source allocation and writes far beyond the Shorten decoder's bitstream buffer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65704"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/de771bd52774a52d45b0e2c82e56995a1ef40df7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/23767"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ffmpeg-out-of-bounds-write-via-ty-demuxer-and-shorten-decoder"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-23T20:17:21Z"
+  }
+}

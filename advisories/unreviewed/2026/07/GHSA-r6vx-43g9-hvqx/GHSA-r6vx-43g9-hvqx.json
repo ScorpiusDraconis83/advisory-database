@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-r6vx-43g9-hvqx",
-  "modified": "2026-07-04T12:30:28Z",
+  "modified": "2026-07-23T21:30:35Z",
   "published": "2026-07-01T15:35:18Z",
   "aliases": [
     "CVE-2026-53326"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndebugobjects: Don't call fill_pool() in early boot hardirq context\n\nWhen booting a debug PREEMPT_RT kernel on an ARM64 system, a \"inconsistent\n{HARDIRQ-ON-W} -> {IN-HARDIRQ-W} usage\" lockdep warning message was\nreported to the console.\n\nDuring early boot, interrupts are enabled before the scheduler is\nenabled. In this window (before SYSTEM_SCHEDULING is set) interrupts can\nfire and in the hard interrupt context handler attempt to fill the pool\n\nThis can lead to a deadlock when the interrupt occurred when the interrupt\nhits a region which holds a lock that is required to be taken in the\nallocation path.\n\nAdd a new can_fill_pool() helper and reorder the exception rule and forbid\nthis scenario by excluding allocations from hard interrupt context.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -40,8 +45,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-01T14:16:40Z"

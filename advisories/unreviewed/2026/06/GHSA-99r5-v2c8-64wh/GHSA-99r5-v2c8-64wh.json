@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-99r5-v2c8-64wh",
-  "modified": "2026-06-24T18:32:47Z",
+  "modified": "2026-07-23T21:30:34Z",
   "published": "2026-06-24T18:32:47Z",
   "aliases": [
     "CVE-2026-53105"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7925: prevent NULL vif dereference in mt7925_mac_write_txwi\n\nCheck for a NULL `vif` before accessing `ieee80211_vif_is_mld(vif)` to\navoid a potential kernel panic in scenarios where `vif` might not be\ninitialized.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:24Z"

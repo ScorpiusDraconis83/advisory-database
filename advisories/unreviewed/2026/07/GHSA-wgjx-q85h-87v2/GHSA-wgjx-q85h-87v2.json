@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wgjx-q85h-87v2",
+  "modified": "2026-07-23T21:31:02Z",
+  "published": "2026-07-23T21:31:02Z",
+  "aliases": [
+    "CVE-2026-15981"
+  ],
+  "details": "The SAML Single Sign On – SSO Login plugin for WordPress is vulnerable to Authentication Bypass in all versions up to, and including, 5.4.4. This is due to the mo_saml_validate_signature() function performing a loose boolean check on the raw tri-state integer returned by PHP's openssl_verify(), causing an error return value of -1 to be evaluated as truthy and therefore treated as a successful signature verification. This makes it possible for unauthenticated attackers to log in as any existing WordPress user, including administrators, by submitting a crafted SAMLResponse containing an attacker-controlled NameID and a deliberately malformed signature value that triggers an OpenSSL processing error — bypassing verification entirely and resulting in wp_set_auth_cookie() being called for the targeted account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15981"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/miniorange-saml-20-single-sign-on/tags/5.4.4/class-mo-saml-login-validate.php#L118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/miniorange-saml-20-single-sign-on/tags/5.4.4/class-mo-saml-login-validate.php#L541"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/miniorange-saml-20-single-sign-on/tags/5.4.4/class-mo-saml-utilities.php#L403"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/miniorange-saml-20-single-sign-on/tags/5.4.4/includes/lib/SAML2Core/class-mo-saml-xml-security-dsig.php#L938"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/miniorange-saml-20-single-sign-on/tags/5.4.4/includes/lib/SAML2Core/class-mo-saml-xml-security-key.php#L621"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3611421/miniorange-saml-20-single-sign-on"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b412f60f-61ea-47b1-a3ef-17275f7951df?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-23T21:17:03Z"
+  }
+}

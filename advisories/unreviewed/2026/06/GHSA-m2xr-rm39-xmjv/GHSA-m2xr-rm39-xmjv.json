@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m2xr-rm39-xmjv",
-  "modified": "2026-06-24T18:32:47Z",
+  "modified": "2026-07-23T21:30:34Z",
   "published": "2026-06-24T18:32:47Z",
   "aliases": [
     "CVE-2026-53104"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: Fix memory leak destroying device\n\nAll MT76 rx queues have an associated page_pool even if the queue is not\nassociated to a NAPI (e.g. WED RRO queues with WED enabled). Destroy the\npage_pool running mt76_dma_cleanup routine during module unload.\nMoreover returns pages to the page pool if WED is not enabled for WED RRO\nqueues.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-06-24T17:17:24Z"
