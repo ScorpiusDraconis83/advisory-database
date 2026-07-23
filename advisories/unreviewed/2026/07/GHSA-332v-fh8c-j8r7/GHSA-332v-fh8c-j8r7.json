@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-332v-fh8c-j8r7",
+  "modified": "2026-07-23T09:32:01Z",
+  "published": "2026-07-23T09:32:01Z",
+  "aliases": [
+    "CVE-2026-9713"
+  ],
+  "details": "The Lumise Product Designer for WooCommerce plugin for WordPress is vulnerable to SQL Injection via the 'id' and 'table' parameters in the uploaded cart JSON file processed by the checkout AJAX action in versions up to, and including, 2.1.1. This is due to insufficient escaping on the user-supplied parameters before they are appended directly to a raw SQL query in the find_resource() function — the 'id' field is interpolated without quotes into a WHERE clause (numeric context) and 'table' is interpolated into the FROM clause, neither of which is protected by wp_magic_quotes or passed through $wpdb->prepare(). This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9713"
+    },
+    {
+      "type": "WEB",
+      "url": "https://codecanyon.net/item/lumise-product-designer-woocommerce-wordpress/21222684"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/ee7555a1-18dc-4b00-81f6-b26706cfb573?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-23T08:16:25Z"
+  }
+}
