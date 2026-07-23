@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-55h5-xmcq-c37v",
+  "modified": "2026-07-23T15:07:33Z",
+  "published": "2026-07-23T15:07:33Z",
+  "aliases": [
+    "CVE-2026-59937"
+  ],
+  "summary": "pypdf: Possible long runtimes for repeated malformed cross-reference entries ",
+  "details": "### Impact\n\nAn attacker who uses this vulnerability can craft a PDF which leads to long runtimes. This requires cross-reference streams with repeated malformed cross-reference streams.\n\n### Patches\n\nThis has been fixed in [pypdf==6.14.0](https://github.com/py-pdf/pypdf/releases/tag/6.14.0).\n\n### Workarounds\n\nIf you cannot upgrade yet, consider applying the changes from PR [#3887](https://github.com/py-pdf/pypdf/pull/3887).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pypdf"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.14.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/security/advisories/GHSA-55h5-xmcq-c37v"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59937"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/pull/3887"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/commit/b5fc5aa714f4b696fb9b1deaa35a9e4a4eb50dae"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/py-pdf/pypdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/releases/tag/6.14.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-23T15:07:33Z",
+    "nvd_published_at": "2026-07-08T18:16:34Z"
+  }
+}
