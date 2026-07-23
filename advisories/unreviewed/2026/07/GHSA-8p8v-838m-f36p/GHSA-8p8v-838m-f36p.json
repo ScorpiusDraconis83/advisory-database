@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8p8v-838m-f36p",
-  "modified": "2026-07-23T09:31:59Z",
+  "modified": "2026-07-23T15:30:44Z",
   "published": "2026-07-23T09:31:59Z",
   "aliases": [
     "CVE-2026-14291"
   ],
   "details": "The security-ninja-premium WordPress plugin before 5.290 does not verify the second authentication factor in one of its two-factor authentication code paths, allowing an unauthenticated attacker who knows a user's password to complete authentication without the one-time code and bypass enforced two-factor authentication for any account, including administrators. The affected two-factor module ships only in the premium build.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-23T07:16:32Z"

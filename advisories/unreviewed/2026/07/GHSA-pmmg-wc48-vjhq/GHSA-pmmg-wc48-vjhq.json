@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pmmg-wc48-vjhq",
-  "modified": "2026-07-21T21:32:41Z",
+  "modified": "2026-07-23T15:30:35Z",
   "published": "2026-07-21T21:32:41Z",
   "aliases": [
     "CVE-2026-64613"
   ],
   "details": "Data::Buffer::Shared versions before 0.05 for Perl create a world-readable mmap backing file and open it without O_NOFOLLOW.\n\nThe segment is created in buf_generic.h with open(path, O_RDWR|O_CREAT|O_EXCL, 0666). O_EXCL blocks a pre-seeded file on create, but the mode is 0666, so under the default umask 022 the file is created mode 0644 (world-readable), and O_NOFOLLOW is absent, so a symlink planted at the path is followed when the segment is attached.\n\nA \"Shared\" segment naturally lives in a shared directory such as /tmp or /dev/shm, where any local user can read the IPC payloads stored in the world-readable segment, and a pre-planted symlink at the path redirects the open to another file.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -27,7 +32,7 @@
     "cwe_ids": [
       "CWE-59"
     ],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-21T20:17:03Z"

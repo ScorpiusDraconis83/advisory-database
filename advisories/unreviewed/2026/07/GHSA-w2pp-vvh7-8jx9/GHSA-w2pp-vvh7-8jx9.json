@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-w2pp-vvh7-8jx9",
-  "modified": "2026-07-23T09:31:59Z",
+  "modified": "2026-07-23T15:30:44Z",
   "published": "2026-07-23T09:31:59Z",
   "aliases": [
     "CVE-2026-9066"
   ],
   "details": "The WP Compress  WordPress plugin before 7.10.04 does not validate the value of a query parameter that controls the asset CDN host before using it to build the URLs of JavaScript files emitted on the page, leading to Reflected XSS. When a visitor follows a crafted link, the WP Compress  WordPress plugin before 7.10.04's loader injects script elements pointing to an attacker-controlled origin, which lets the attacker execute arbitrary JavaScript in the visitor's session on the target site.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-23T07:16:32Z"
