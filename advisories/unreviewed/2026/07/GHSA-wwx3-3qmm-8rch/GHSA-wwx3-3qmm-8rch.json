@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wwx3-3qmm-8rch",
+  "modified": "2026-07-23T12:32:21Z",
+  "published": "2026-07-23T12:32:21Z",
+  "aliases": [
+    "CVE-2026-15017"
+  ],
+  "details": "The MDJM Event Management plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 1.7.8.4. This is due to missing capability checks and nonce verification in the `MDJM_Permissions::set_permissions()` and `MDJM_Employee_Manager::init()` functions, combined with the absence of server-side allow-list validation on the `employee_roles[]` and `new_role` POST parameters before they are passed to `mdjm_set_employee_role()` and `WP_User::set_role()`. This makes it possible for unauthenticated attackers to grant arbitrary MDJM capabilities — including `mdjm_employee` and `mdjm_employee_edit` — to any registered WordPress role, and subsequently leverage a subscriber-level account to escalate privileges to Administrator. `MDJM_Permissions::init()` is registered on the public WordPress `init` hook without any authentication gate, meaning the role-manipulation endpoint is reachable without any prior login.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15017"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mobile-dj-manager/tags/1.7.8.4/includes/admin/roles/class-mdjm-permissions.php#L24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mobile-dj-manager/tags/1.7.8.4/includes/admin/roles/class-mdjm-permissions.php#L36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mobile-dj-manager/tags/1.7.8.4/includes/admin/users/class-mdjm-employee-manager.php#L406"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mobile-dj-manager/tags/1.7.8.4/includes/employee-functions.php#L789"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mobile-dj-manager/tags/1.7.8.4/mobile-dj-manager.php#L107"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2a691f92-9eff-4777-8198-b7cc5d9e73c0?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-23T10:16:50Z"
+  }
+}

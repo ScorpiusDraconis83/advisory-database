@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2vq9-c755-fq2h",
+  "modified": "2026-07-23T12:32:30Z",
+  "published": "2026-07-23T12:32:30Z",
+  "aliases": [
+    "CVE-2026-65607"
+  ],
+  "details": "SiYuan before v3.7.2 contains a path traversal vulnerability in the /export/temp/ short-circuit branch of the serveExport handler (kernel/server/serve.go). Unlike the main export branch, this branch joins the raw, percent-decoded request path with util.TempDir and serves the file without the IsSubPath or IsSensitivePath checks added in the earlier export-disclosure hardening (GHSA-6865-qjcf-286f). An authenticated attacker can send percent-encoded traversal sequences (e.g. /export/temp/%2e%2e/.../etc/passwd, where %2e%2e is decoded to '..') to read arbitrary files outside TempDir, including /etc/passwd, SSH keys (~/.ssh/*), and SiYuan workspace *.db and *.log files, bypassing the sensitive-file protection.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-gw25-m53r-qh88"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65607"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/commit/bb481e1290c4a34255652ede85a546504505d2a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/siyuan-before-path-traversal-via-export-temp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-23T12:18:47Z"
+  }
+}

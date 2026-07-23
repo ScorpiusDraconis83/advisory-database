@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pp9r-ppc4-25w4",
+  "modified": "2026-07-23T12:32:30Z",
+  "published": "2026-07-23T12:32:30Z",
+  "aliases": [
+    "CVE-2026-65608"
+  ],
+  "details": "Grav versions >= 1.7.0 and before 2.0.9 contain a remote code execution vulnerability. FlexDirectory::dynamicDataField() resolves blueprint data-*@: directives by calling call_user_func_array() on attacker-influenced input, validating only that the target is callable (is_callable()) without restricting dangerous functions such as exec, system, passthru, or shell_exec. Because FlexDirectory registers this handler for every Flex directory, it bypasses the validation added to Blueprint::dynamicData() in 2.0.7 (GHSA-fj2p-qj2f-74v5). Any authenticated user with create or update permission on any Flex-based directory (Flex Users, Flex Pages, Flex Objects, or custom Flex types) can execute arbitrary shell commands on the server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-c4wf-2xxc-68qm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65608"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/fae9e1bf2c40ce0b50d0dfce647aaa1d22f98969"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-before-remote-code-execution-via-flexdirectory"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-470"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-23T12:18:47Z"
+  }
+}

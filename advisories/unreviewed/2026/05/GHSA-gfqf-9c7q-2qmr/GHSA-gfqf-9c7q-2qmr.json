@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gfqf-9c7q-2qmr",
-  "modified": "2026-05-22T03:30:26Z",
+  "modified": "2026-07-23T12:31:52Z",
   "published": "2026-05-22T03:30:26Z",
   "aliases": [
     "CVE-2026-9264"
   ],
   "details": "A cross-site scripting (XSS) vulnerability in SketchUp 2026's Dynamic Components feature allows remote code execution and local file exfiltration through maliciously crafted SKP files. The vulnerability stems from improper input sanitization in the component options window, enabling attackers to execute arbitrary system commands and read local files without user interaction by exploiting an embedded Internet Explorer 11 browser.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-05-22T02:16:35Z"
