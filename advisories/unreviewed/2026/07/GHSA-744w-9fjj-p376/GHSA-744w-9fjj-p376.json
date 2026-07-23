@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-744w-9fjj-p376",
+  "modified": "2026-07-23T18:31:45Z",
+  "published": "2026-07-23T18:31:45Z",
+  "aliases": [
+    "CVE-2026-16768"
+  ],
+  "details": "A flaw was found in gdk-pixbuf. When parsing a specially crafted ICO file with pixel values that exceed the defined palette range, an out-of-bounds read can occur due to improper bounds checking against the actual palette size. This vulnerability causes heap bytes to be interpreted as valid palette indices and rendered as RGB pixel values in the output image, allowing an attacker to extract heap content via the generated output, such as a thumbnail.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16768"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-16768"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2506437"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/issues/302"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-23T17:16:28Z"
+  }
+}

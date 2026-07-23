@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9576-hw58-7552",
+  "modified": "2026-07-23T18:31:46Z",
+  "published": "2026-07-23T18:31:46Z",
+  "aliases": [
+    "CVE-2026-65920"
+  ],
+  "details": "Diffusers through 0.39.0, fixed in commit cee298c, contains a path traversal vulnerability in the _get_checkpoint_shard_files function that allows attackers to read arbitrary files by supplying malicious weight_map values in model index JSON. Attackers can use ../ sequences or absolute paths in weight_map entries to escape the model directory and read safetensors files outside the intended location during model loading.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65920"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/diffusers/issues/14175"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/diffusers/pull/14182"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/diffusers/commit/cee298c1f37c439a9a408396b8283a921238a1c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/diffusers-path-traversal-via-weight-map-arbitrary-file-read"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-23T18:17:02Z"
+  }
+}

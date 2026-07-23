@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wwx9-477p-w7rm",
+  "modified": "2026-07-23T18:31:46Z",
+  "published": "2026-07-23T18:31:46Z",
+  "aliases": [
+    "CVE-2026-65699"
+  ],
+  "details": "AgentGPT through 1.0.0 contains an authorization bypass through user-controlled key vulnerability that allows authenticated users to attach tasks to another user's agent run by supplying a target run_id in the request body without ownership verification. The AgentCRUD.create_task and validate_task_count functions look up the target AgentRun using the client-supplied run_id without confirming the run belongs to the requesting user, enabling an attacker who obtains a valid run_id to corrupt task history, exhaust the per-run loop budget, and drive LLM costs against the victim's run.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65699"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/geo-chen/oss/blob/main/AgentGPT.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/agentgpt-authorization-bypass-via-agent-task-creation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-23T18:17:01Z"
+  }
+}
