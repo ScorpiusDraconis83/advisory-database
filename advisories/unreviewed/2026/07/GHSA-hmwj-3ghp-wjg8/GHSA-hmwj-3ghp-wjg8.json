@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hmwj-3ghp-wjg8",
-  "modified": "2026-07-01T15:35:19Z",
+  "modified": "2026-07-24T00:32:32Z",
   "published": "2026-07-01T15:35:19Z",
   "aliases": [
     "CVE-2026-53333"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/mincore: handle non-swap entries before !CONFIG_SWAP guard\n\nmincore_swap() also fields migration/hwpoison entries (and shmem\nswapin-error entries), which can exist on !CONFIG_SWAP builds when\nCONFIG_MIGRATION or CONFIG_MEMORY_FAILURE is enabled.  The\n!IS_ENABLED(CONFIG_SWAP) guard ran before the non-swap-entry early return,\nso mincore_pte_range() can spuriously WARN and report these pages\nnonresident on !CONFIG_SWAP kernels.\n\nMove the guard below the non-swap-entry check so only true swap entries\ntrip the WARN, and migration/hwpoison entries take the existing \"uptodate\n/ non-shmem\" path.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-01T14:16:41Z"
