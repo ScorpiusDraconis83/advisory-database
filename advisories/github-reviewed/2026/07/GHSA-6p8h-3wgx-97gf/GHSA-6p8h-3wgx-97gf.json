@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6p8h-3wgx-97gf",
+  "modified": "2026-07-24T16:42:09Z",
+  "published": "2026-07-24T16:42:09Z",
+  "aliases": [],
+  "summary": "GitPython: Incomplete unsafe_git_clone_options denylist omits --template enabling arbitrary command execution via clone hooks",
+  "details": "## Summary\nGitPython's `unsafe_git_clone_options` denylist omits `--template`. `git clone --template=<dir>` copies `<dir>/hooks/` into the new repository and runs them (`post-checkout` fires during clone), so a caller who can influence clone options can achieve arbitrary command execution in the default `allow_unsafe_options=False` configuration.\n\n## Root Cause\n`base.py:145-152` defines `unsafe_git_clone_options = [\"--upload-pack\",\"-u\",\"--config\",\"-c\"]` — `--template` is absent. The guard candidate `['--template']` passes `check_unsafe_options` (verified). git copies the hook directory and executes `post-checkout` at checkout time. git's `protocol.allow`/`GIT_ALLOW_PROTOCOL` do not gate `--template`; the incomplete denylist is the only defense.\n\n## Impact\nArbitrary OS command execution during clone (default config). Requires an attacker-readable directory containing an executable hook — a genuine second precondition (realistic via shared filesystems, upload dirs, `/tmp`, or attacker-writable network paths), reflected as AC:H.\n\n## Proof of Concept\n```python\n# attacker stages <dir>/hooks/post-checkout (chmod +x)\nfrom git import Repo\nRepo.clone_from(src, dst, template='<dir>')   # post-checkout hook executes -> marker created (verified)\n```\n\n## Attack Chain\n1. Setup: attacker stages `<dir>/hooks/post-checkout` (chmod +x). Guard: n/a (filesystem).\n2. Entry: `Repo.clone_from(url, path, template='<dir>')`. Guard: `check_unsafe_options(candidates=['--template'], unsafe=unsafe_git_clone_options)`. Bypass proof: `--template` not on the denylist -> passes (verified candidate `['--template']`, no error).\n3. Sink: git copies the hook and executes `post-checkout` at checkout. Impact: ACE, default config (verified marker created).\n\n## Bypass Evidence\nLive-verified on HEAD (tag 3.1.53): guard candidate `['--template']` passed with no error; staged `post-checkout` hook executed during `clone_from`, creating the marker. Independent of the value-smuggle bypass (`--template` is a legitimate long option that survives any single-char-value fix). Not covered by any existing advisory.\n\n## Affected Versions\n`<= 3.1.53`\n\n## Suggested Fix\nAdd `--template` (and audit for other hook/exec-influencing options) to `unsafe_git_clone_options`.\n\n---\nReported by **zx (Jace)** — GitHub: @manus-use",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "GitPython"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.1.54"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.1.53"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitpython-developers/GitPython/security/advisories/GHSA-6p8h-3wgx-97gf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitpython-developers/GitPython/pull/2180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitpython-developers/GitPython/commit/ffcb5359e87619f4fe4a70a4aff5f08c5580ba97"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/gitpython-developers/GitPython"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitpython-developers/GitPython/releases/tag/3.1.54"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-184",
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-24T16:42:09Z",
+    "nvd_published_at": null
+  }
+}
