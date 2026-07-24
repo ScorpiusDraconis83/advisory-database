@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wg5r-wc3x-39vc",
+  "modified": "2026-07-24T21:11:09Z",
+  "published": "2026-07-24T21:11:09Z",
+  "aliases": [
+    "CVE-2026-62379"
+  ],
+  "summary": "OpenAM: Unauthenticated Remote Code Execution via Class.forName in AuthXMLUtils.createCustomCallback",
+  "details": "## Summary\nA pre-authentication remote code execution vulnerability affects OpenAM. The\nremote authentication endpoint (`/authservice`, PLL) accepts an XML element\nthat names an arbitrary Java class, which the server then loads and\ninstantiates without validation. On a default configuration this is reachable\n**without authentication** and allows an attacker to run code on the server.\n\n## Impact\nUnauthenticated remote code execution / full server compromise on any OpenAM\ninstance with default settings.\n\n## Affected\nAll releases up to and including 16.1.1 (the defect predates the Open Identity\nPlatform fork).\n\n## Remediation\nUpgrade to `16.1.2`.\n\n## Interim mitigation\n- Require the remote-auth security token by enabling\n  `sunRemoteAuthSecurityEnabled` (rejects unauthenticated `/authservice` calls).\n- Restrict or block external network access to `/authservice` until patched.\n\n## Credit\nVulnerability discovered by Zhixi \"Jace\" Sun of ASM/VI at TikTok.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.openidentityplatform.openam:openam-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "16.1.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 16.1.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenIdentityPlatform/OpenAM/security/advisories/GHSA-wg5r-wc3x-39vc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenIdentityPlatform/OpenAM/commit/edcf968cad91a78b932dba4ad559ef94cbf35f5a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/OpenIdentityPlatform/OpenAM"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenIdentityPlatform/OpenAM/releases/tag/16.1.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-470",
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-24T21:11:09Z",
+    "nvd_published_at": null
+  }
+}
