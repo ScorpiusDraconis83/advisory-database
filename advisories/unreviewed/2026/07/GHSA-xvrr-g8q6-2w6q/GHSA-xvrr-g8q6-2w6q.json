@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xvrr-g8q6-2w6q",
+  "modified": "2026-07-24T18:31:29Z",
+  "published": "2026-07-24T18:31:29Z",
+  "aliases": [
+    "CVE-2026-65707"
+  ],
+  "details": "Likeshop through 3.0.5 contains an authenticated SQL injection vulnerability that allows admin-level users to extract arbitrary database contents by submitting unsanitized POST parameters to the adjustAccount endpoint. The adjustAccount method in UserLogic.php concatenates the money, integral, growth, and earnings parameters directly into Db::raw() SQL fragments without type casting, numeric validation, or parameter binding, enabling boolean-based binary-search extraction of credentials, PII, and session tokens via distinct success and failure response messages.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65707"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/peoz14/794521dc40f5bb7e6a6ec6630d894be6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/likeshop-authenticated-sql-injection-via-adjustaccount-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T17:17:34Z"
+  }
+}

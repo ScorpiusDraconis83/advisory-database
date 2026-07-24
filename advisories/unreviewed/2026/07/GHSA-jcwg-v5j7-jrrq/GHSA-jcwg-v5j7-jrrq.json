@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jcwg-v5j7-jrrq",
+  "modified": "2026-07-24T18:31:27Z",
+  "published": "2026-07-24T18:31:27Z",
+  "aliases": [
+    "CVE-2026-64218"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: bla: fix report_work leak on backbone_gw purge\n\nbatadv_bla_purge_backbone_gw() removes stale backbone gateway entries,\nbut fails to properly handle their associated report_work:\n\n- If report_work is running, the purge must wait for it to finish before\n  freeing the backbone_gw, otherwise the worker may access freed memory\n  (e.g. bat_priv).\n- If report_work is pending, the purge must cancel it and release the\n  reference held for that pending work item.\n\nThe previous implementation called hlist_for_each_entry_safe() inside a\nspin_lock_bh() section, but cancel_work_sync() may sleep and therefore\ncannot be called from within a spinlock-protected region.\n\nRestructure the loop to handle one entry per spinlock critical section:\nacquire the lock, find the next entry to purge, remove it from the hash\nlist, then release the lock before calling cancel_work_sync() and\ndropping the hash_entry reference. Repeat until no more entries require\npurging.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64218"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0459430add32ea41f3e2ef9351610e6d33627a6b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3423a45e5c3d3c5129f88143a9a969787d7d5a0a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48663158222b3b7f6ee6791a67d512ede7fc94bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95a7034661274cf5985708bd2f6d86ee46f88fa9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c6de1a5a9c406e30b91f1515a6ce05cc84023baa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce2c0ee4d76d5ee4b391fe0e31334361e25030ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eeddd7bab3d59c1e98642a204141f8c5d6194707"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1303adb1e59582f76c22798a2e2e150e054a9e7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T16:16:49Z"
+  }
+}

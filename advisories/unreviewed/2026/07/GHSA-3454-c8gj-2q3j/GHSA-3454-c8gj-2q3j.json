@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3454-c8gj-2q3j",
+  "modified": "2026-07-24T18:31:27Z",
+  "published": "2026-07-24T18:31:27Z",
+  "aliases": [
+    "CVE-2026-64226"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsched_ext: Avoid UAF in scx_root_enable_workfn() init failure path\n\nIn scx_root_enable_workfn(), put_task_struct(p) is called before scx_error()\ndereferences p->comm and p->pid. If the iterator's reference is the last\ndrop, the task is freed synchronously and the deref becomes a UAF.\n\nMove put_task_struct() past scx_error().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45c7c4e3db8b700307313c035ea08be829a7f21b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57e19ba3f58a67eb924022a5a60b67fd08e5cbbd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a415cc53711f2238e0f0ca8a6bcc796c003b127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf396941901858b0de426cdcd3974eea6a02c98c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T16:16:51Z"
+  }
+}

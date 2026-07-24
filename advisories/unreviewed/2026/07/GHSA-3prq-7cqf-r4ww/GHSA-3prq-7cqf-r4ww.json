@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3prq-7cqf-r4ww",
+  "modified": "2026-07-24T18:31:29Z",
+  "published": "2026-07-24T18:31:29Z",
+  "aliases": [
+    "CVE-2026-64255"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mld: validate sta_mask before ffs() in BA session handlers\n\nThree BA session handlers use ffs(ba_data->sta_mask) - 1 to derive a\nstation ID without checking that sta_mask is non-zero. When sta_mask is\nzero, ffs() returns 0 and the subtraction wraps to 0xFFFFFFFF, causing\nan out-of-bounds access on fw_id_to_link_sta[].\n\nAdd WARN_ON_ONCE(!ba_data->sta_mask) guards before each ffs() call,\nconsistent with the existing check in iwl_mld_ampdu_rx_start().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64255"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1de92789ce31e46fa7e7d8e89c90b19cdb1c103b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f056fc2b927448d37eca6b6cacc3d1b0f67b20d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe7f339f63c9dc4ca546ed7ac38ba4bb3a99dcfc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T16:16:55Z"
+  }
+}

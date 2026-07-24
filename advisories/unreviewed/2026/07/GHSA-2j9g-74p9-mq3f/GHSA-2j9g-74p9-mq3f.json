@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2j9g-74p9-mq3f",
+  "modified": "2026-07-24T18:31:26Z",
+  "published": "2026-07-24T18:31:26Z",
+  "aliases": [
+    "CVE-2026-64209"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nphy: qcom: qmp-usbc: Fix out-of-bounds array access in dp swing config\n\nswing_tbl and pre_emphasis_tbl are 4x4 arrays (valid indices 0-3), but\nthe boundary check uses \"> 4\" instead of \">= 4\", allowing index 4 to\ncause an out-of-bounds access.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64209"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb35af6e7f3d5628178b58c631e305b1def8edf7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea17fc4d7dc2ba6459b1a318962960520201baf1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T16:16:48Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6vgx-33c2-p4gc",
+  "modified": "2026-07-24T18:31:29Z",
+  "published": "2026-07-24T18:31:29Z",
+  "aliases": [
+    "CVE-2026-65710"
+  ],
+  "details": "sysPass through version 3.2.11 contains a missing authorization vulnerability that allows authenticated users with the PUBLICLINK_CREATE profile flag to trigger unauthorized decryption and persistent storage of any vault account's password by exploiting the absence of AccountAcl checks in the public link creation flow. Attackers can invoke the saveCreateFromAccountAction endpoint to cause AccountService::getDataForLink to load arbitrary target accounts without AccountFilterUser restrictions, decrypt credentials using the session master key, and serialize cleartext passwords into Vault storage on the PublicLink database row, enabling subsequent unauthenticated retrieval if the generated link hash is recovered.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65710"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Caycon/cve-advisories/blob/main/2026/sysPass/CVE-2026-65710.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/syspass-missing-authorization-via-publiclinkcontroller-account-decryption"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T17:17:34Z"
+  }
+}

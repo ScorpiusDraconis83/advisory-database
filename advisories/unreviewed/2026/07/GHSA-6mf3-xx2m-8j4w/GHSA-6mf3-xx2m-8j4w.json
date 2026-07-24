@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6mf3-xx2m-8j4w",
+  "modified": "2026-07-24T18:31:28Z",
+  "published": "2026-07-24T18:31:28Z",
+  "aliases": [
+    "CVE-2026-64242"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: net2280: Fix double free in probe error path\n\nusb_initialize_gadget() installs gadget_release() as the release\ncallback for the embedded gadget device.  The struct net2280 instance is\ntherefore released through gadget_release() when the gadget device's last\nreference is dropped.\n\nThe probe error path calls net2280_remove(), which tears down the\npartially initialized device and drops the gadget reference with\nusb_put_gadget().  Calling kfree(dev) afterwards can free the same object\nagain.\n\nDrop the explicit kfree() and let the gadget device release callback\nhandle the final free.  This issue was found by a static analysis tool\nI am developing.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64242"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/085652fda7f38040d1a2c42d72614f418feb843f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48f89ead20e48d447ad29fa937b43b9fa981cf28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/550fa4d071a8c8e53072900869d37ae6abf4999d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71b3391dc81655ff058492f8e9d013b2c6e5747b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c5b9fdb1e8ddf50bc6272927edb118679f170350"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c8547c74988e0b5f4cbb1b895e2a57aae084f070"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/db2b72e83a0208ae2b3b270bf91662b1c6849a9b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6f8be12f0307145b9a6010f044925952b37de8b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T16:16:53Z"
+  }
+}

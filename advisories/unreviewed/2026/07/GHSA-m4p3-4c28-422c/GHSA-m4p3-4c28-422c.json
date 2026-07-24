@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m4p3-4c28-422c",
-  "modified": "2026-07-24T09:32:16Z",
+  "modified": "2026-07-24T18:31:25Z",
   "published": "2026-07-24T09:32:16Z",
   "aliases": [
     "CVE-2026-49745"
   ],
   "details": "Kernel software installed and running inside a Guest VM may post improper commands to the GPU Firmware to trigger a write of data outside the Guest's virtualised GPU memory.\n\n\n\nSoftware installed and run under a Guest VM can send commands to the GPU which result in out of bounds memory accesses. These can be used to escalate privileges.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-823"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T09:16:24Z"

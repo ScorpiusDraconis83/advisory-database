@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wjrp-p8qr-8jr3",
+  "modified": "2026-07-24T18:31:27Z",
+  "published": "2026-07-24T18:31:27Z",
+  "aliases": [
+    "CVE-2026-64220"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndevice property: set fwnode->secondary to NULL in fwnode_init()\n\nIf a firmware node is allocated on the stack (for instance: temporary\nsoftware node whose life-time we control) or on the heap - but using a\nnon-zeroing allocation function - and initialized using fwnode_init(),\nits secondary pointer will contain uninitalized memory which likely will\nbe neither NULL nor IS_ERR() and so may end up being dereferenced (for\nexample: in dev_to_swnode()). Set fwnode->secondary to NULL on\ninitialization.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64220"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/215c90ee656114f5e8c32408228d97082f8e0eef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34bf74b1fd2e4a44e27821a329204caf09df2976"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/371f53925a6714d0aa35f1aefdffc3e8cd62f480"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f1024deeab3b5443c29b3de4fe475e87309b8fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/508fd8ab158abd04b7f7d0f707cd6d6c405df4ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0e211d6539fae800217c10797993b7592d6ab01"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f59e686c778cb41b8f7aa8fab2afd6a01afb3d47"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T16:16:49Z"
+  }
+}
