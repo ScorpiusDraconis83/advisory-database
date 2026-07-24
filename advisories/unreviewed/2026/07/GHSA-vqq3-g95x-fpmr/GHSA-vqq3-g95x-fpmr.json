@@ -1,13 +1,17 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vqq3-g95x-fpmr",
-  "modified": "2026-07-22T15:31:24Z",
+  "modified": "2026-07-24T15:32:55Z",
   "published": "2026-07-22T15:31:24Z",
   "aliases": [
     "CVE-2026-50243"
   ],
   "details": "In NLnet Labs Unbound 1.6.2 up to and including 1.25.1, when Unbound is configured with the 'respip' module in front of the validator together with a 'response-ip' redirect rule or an RPZ file with an RPZ-IP trigger, the rewriting handler does not check the security status of the upstream answer and can instead rewrite a BOGUS A/AAAA answer to point to an operator's configured IP. If the validator finds an expired or otherwise invalid RRSIG on an answer whose A record falls within a 'response-ip'/RPZ configuration, the answer is still rewritten and given a hard coded security level of INSECURE. This results in the client receiving an INSECURE NOERROR reply rewritten by the operator's configured IP. A malicious actor can exploit the possible poisonous effect by spoofing a BOGUS A/AAAA answer that falls inside the operator's configured subnet rewrites. Such DNSSEC protected answers are then insecurely redirected to the operator's configured target.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"

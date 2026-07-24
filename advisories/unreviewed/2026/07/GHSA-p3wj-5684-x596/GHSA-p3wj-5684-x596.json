@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p3wj-5684-x596",
+  "modified": "2026-07-24T15:33:01Z",
+  "published": "2026-07-24T15:33:01Z",
+  "aliases": [
+    "CVE-2026-17048"
+  ],
+  "details": "A flaw was found in the Keycloak Admin REST API, which is used to manage security realms and clients. The issue occurs when the system processes requests for rotated client secrets that are stored in a secure vault. Due to improper boundary enforcement, a delegated administrator with view-only permissions can retrieve the actual resolved secret instead of the vault placeholder, leading to the exposure of sensitive credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17048"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-17048"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2506743"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T14:16:26Z"
+  }
+}

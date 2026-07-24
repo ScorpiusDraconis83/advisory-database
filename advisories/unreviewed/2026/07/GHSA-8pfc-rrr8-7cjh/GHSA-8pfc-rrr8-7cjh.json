@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8pfc-rrr8-7cjh",
+  "modified": "2026-07-24T15:33:00Z",
+  "published": "2026-07-24T15:33:00Z",
+  "aliases": [
+    "CVE-2026-16743"
+  ],
+  "details": "A flaw was found in accountsservice. The systemd-homed code path for SetIconFile opens a user-supplied filename as root without the validation and privilege drop performed by the classic handler. A local attacker with a systemd-homed-managed account can read arbitrary files accessible to the accounts-daemon process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16743"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-16743"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2506381"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.freedesktop.org/accountsservice/accountsservice/-/work_items/138"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T13:17:27Z"
+  }
+}

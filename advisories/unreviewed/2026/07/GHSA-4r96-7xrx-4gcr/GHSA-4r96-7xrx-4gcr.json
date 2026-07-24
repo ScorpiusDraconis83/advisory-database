@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4r96-7xrx-4gcr",
+  "modified": "2026-07-24T15:33:03Z",
+  "published": "2026-07-24T15:33:03Z",
+  "aliases": [
+    "CVE-2026-66005"
+  ],
+  "details": "Jan through 0.8.4, fixed in commit 3e1c1e7, contains a CORS misconfiguration vulnerability in its local API server that allows network-adjacent attackers to bypass trusted host restrictions by exploiting the server's replacement of user-configured trusted hosts with a wildcard that reflects arbitrary origins with credentials. Attackers on the local network or using DNS rebinding can reach the unauthenticated OpenAI-compatible API to perform inference, enumerate models, invoke MCP tools, and read cross-origin responses.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66005"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/janhq/jan/issues/8453"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/janhq/jan/pull/8506"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/janhq/jan/commit/3e1c1e724f696620d89bb4a9cc18a380e0753757"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jan-local-api-server-cors-origin-reflection-via-binding"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-183"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T15:19:07Z"
+  }
+}

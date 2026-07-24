@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2vqf-9746-8h23",
+  "modified": "2026-07-24T15:33:01Z",
+  "published": "2026-07-24T15:33:01Z",
+  "aliases": [
+    "CVE-2026-45813"
+  ],
+  "details": "Out-of-bounds Write, Integer Underflow (Wrap or Wraparound) vulnerability in Apache NimBLE BASS service.\nImproper validation when parsing BASS service  \"Add Source\" and \"Modify Source\" operation PDU could results in stack buffer overflow or arbitrary out-of-bound read.\n\n\nThis can be triggered by nearby devices over Bluetooth connection, however pairing is required prior to accessing BASS service, which depending on device configuration may or may not require user action.\n\nThis issue affects Apache NimBLE: through 1.9.0.\n\nUsers are recommended to upgrade to version 1.10.0, which fixes the issue.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45813"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/mynewt-nimble/pull/2232"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/vc1ny73w243z5wr6t0y10gc6t2c9cytw"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/24/13"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T13:18:24Z"
+  }
+}
