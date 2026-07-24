@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6j6h-vfwh-mxgx",
+  "modified": "2026-07-24T09:32:15Z",
+  "published": "2026-07-24T09:32:15Z",
+  "aliases": [
+    "CVE-2026-16910"
+  ],
+  "details": "A flaw was found in Red Hat Quay's notification webhook feature. The Slack and generic webhook notification handlers accept user-supplied URLs without SSRF validation, allowing a repository administrator to make the Quay worker issue POST requests to internal network addresses or cloud infrastructure endpoints that should not be reachable from the application.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16910"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-16910"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2506685"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T08:16:26Z"
+  }
+}

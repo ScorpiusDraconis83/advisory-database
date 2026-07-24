@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-28x5-9357-94j7",
+  "modified": "2026-07-24T09:32:16Z",
+  "published": "2026-07-24T09:32:16Z",
+  "aliases": [
+    "CVE-2026-15739"
+  ],
+  "details": "The Rich Showcase for Google Reviews plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'pagination' Shortcode Attribute in all versions up to, and including, 6.9.9 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15739"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/widget-google-reviews/tags/6.9.7/includes/class-feed-old.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/widget-google-reviews/tags/6.9.7/includes/class-feed-shortcode.php#L33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/widget-google-reviews/tags/6.9.7/includes/class-view.php#L172"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/widget-google-reviews/tags/6.9.7/includes/class-view.php#L336"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/widget-google-reviews/tags/6.9.8/includes/class-feed-old.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/widget-google-reviews/tags/6.9.8/includes/class-feed-shortcode.php#L33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/widget-google-reviews/tags/6.9.8/includes/class-view.php#L172"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/widget-google-reviews/tags/6.9.8/includes/class-view.php#L336"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3610853%40widget-google-reviews%2Ftrunk&old=3606801%40widget-google-reviews%2Ftrunk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c3851607-73e7-44ae-8d5b-e8b7460851ea?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T09:16:24Z"
+  }
+}
