@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4vf6-f9c7-q6rp",
+  "modified": "2026-07-24T06:34:11Z",
+  "published": "2026-07-24T06:34:11Z",
+  "aliases": [
+    "CVE-2026-11922"
+  ],
+  "details": "A vulnerability in zenml-io/zenml versions 0.57.0 through 0.94.2 allows an attacker to bypass rate-limiting on the `POST /api/v1/login` and self password-change endpoints by rotating the `X-Forwarded-For` header. The rate limiter keys requests by `request.client.host`, which is derived from the `X-Forwarded-For` header when Uvicorn is launched with `--proxy-headers --forwarded-allow-ips *`. This configuration allows clients to control the value of `request.client.host`, effectively bypassing rate-limiting protections. This vulnerability leaves the affected endpoints open to unthrottled credential guessing attacks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11922"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zenml-io/zenml/commit/8a2214bdd63eb8200ce4719d82c6f0d935e922d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/3cb8bf6a-ae55-4b38-8da3-601c666a210e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-290"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T04:16:51Z"
+  }
+}
