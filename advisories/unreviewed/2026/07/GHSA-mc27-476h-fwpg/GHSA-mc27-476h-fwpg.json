@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mc27-476h-fwpg",
-  "modified": "2026-07-24T15:33:01Z",
+  "modified": "2026-07-24T21:32:21Z",
   "published": "2026-07-24T15:33:01Z",
   "aliases": [
     "CVE-2026-45811"
   ],
   "details": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow') vulnerability in Apache NimBLE.\nThe HCI socket transport did not check whether a received HCI event would fit the configured event pool before copying it, allowing a buffer overflow. Severity is low: exploitation requires either a misconfigured pool size or a malicious/compromised controller on the other end of the HCI socket link, not over-the-air Bluetooth access.\n\nThis issue affects Apache NimBLE: through 1.9.0.\n\nUsers are recommended to upgrade to version 1.10.0, which fixes the issue.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -31,7 +36,7 @@
     "cwe_ids": [
       "CWE-120"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T13:18:23Z"

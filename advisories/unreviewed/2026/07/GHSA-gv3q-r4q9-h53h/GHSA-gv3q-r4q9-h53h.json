@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gv3q-r4q9-h53h",
-  "modified": "2026-07-24T09:32:15Z",
+  "modified": "2026-07-24T21:32:21Z",
   "published": "2026-07-24T09:32:15Z",
   "aliases": [
     "CVE-2026-12689"
   ],
   "details": "The ProfileGrid  WordPress plugin before 5.9.9.7 does not perform any authorization or ownership check on some of its private-message thread actions, allowing authenticated users with Subscriber-level access and above to soft-delete, tamper with the metadata of, and mark as read other users' private message threads.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T07:16:32Z"

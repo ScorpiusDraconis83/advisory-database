@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v377-9cxj-ww4r",
-  "modified": "2026-07-24T15:33:01Z",
+  "modified": "2026-07-24T21:32:22Z",
   "published": "2026-07-24T15:33:01Z",
   "aliases": [
     "CVE-2026-45815"
   ],
   "details": "Reachable Assertion vulnerability in Apache NimBLE.\nA specially crafted ATT Read Multiple Variable Response (BLE_ATT_OP_READ_MULT_VAR_RSP) may trigger assert in ATT parser.\n\nSeverity is medium as this requires DUT to first send ATT Read Multiple Variable Request.\n\nThis issue affects Apache NimBLE: through 1.9.0.\n\nUsers are recommended to upgrade to version 1.10.0, which fixes the issue.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -31,7 +36,7 @@
     "cwe_ids": [
       "CWE-617"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T13:18:24Z"

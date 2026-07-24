@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6v2p-hv27-r8xg",
-  "modified": "2026-07-24T09:32:15Z",
+  "modified": "2026-07-24T21:32:21Z",
   "published": "2026-07-24T09:32:15Z",
   "aliases": [
     "CVE-2026-12877"
   ],
   "details": "The Project Management, Bug and Issue Tracking Plugin  WordPress plugin before 5.1.0 does not sanitise and escape user supplied input before using it in a SQL query, allowing unauthenticated attackers to perform SQL injection attacks. This is exploitable in the Project Management, Bug and Issue Tracking Plugin  WordPress plugin before 5.1.0's standard front-end issue-tracker configuration.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T07:16:32Z"
