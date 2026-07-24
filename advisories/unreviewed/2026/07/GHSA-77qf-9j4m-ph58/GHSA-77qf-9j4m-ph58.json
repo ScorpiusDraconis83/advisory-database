@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77qf-9j4m-ph58",
+  "modified": "2026-07-24T12:30:53Z",
+  "published": "2026-07-24T12:30:53Z",
+  "aliases": [
+    "CVE-2026-16730"
+  ],
+  "details": "A flaw was found in dbus-broker. When the process file-descriptor limit is reached, EMFILE/ENFILE errors during peer setup (notably SO_PEERPIDFD) are handled as fatal failures, causing the broker to exit. A local attacker who can open many connections to the user session bus can trigger this and deny service to the desktop session. Flatpak applications can reach the host session bus through the dbus proxy.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16730"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bus1/dbus-broker/issues/435"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-16730"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2506348"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-755"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T12:16:47Z"
+  }
+}

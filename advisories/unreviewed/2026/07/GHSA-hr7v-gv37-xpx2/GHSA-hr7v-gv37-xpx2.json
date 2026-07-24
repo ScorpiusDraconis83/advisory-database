@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hr7v-gv37-xpx2",
+  "modified": "2026-07-24T12:30:53Z",
+  "published": "2026-07-24T12:30:53Z",
+  "aliases": [
+    "CVE-2026-16634"
+  ],
+  "details": "TOML::XS versions before 0.06 for Perl bundle an unsupported and vulnerable version of tomlc99.\n\nThe tomlc99 library is no longer maintained, and has an uncontrolled recursion vulnerability publicly reported in the issue tracker.\n\nAny caller that passes untrusted TOML to from_toml risks a stack overflow from a deeply-nested document.\n\nTOML::XS version 0.06 or later uses the successor tomlc17 library.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16634"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cktan/tomlc99/issues/97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cktan/tomlc17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/FELIPE/TOML-XS-0.06/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/cktan/tomlc99/29076dfd095bbbbd50a3c1b2760d29f4b83e74ac/README.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://toml.io/en/v1.0.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1104"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T10:16:31Z"
+  }
+}
