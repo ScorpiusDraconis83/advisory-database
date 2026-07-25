@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6qx8-mxxj-98fc",
+  "modified": "2026-07-25T09:30:24Z",
+  "published": "2026-07-25T09:30:24Z",
+  "aliases": [
+    "CVE-2026-15425"
+  ],
+  "details": "The Yoast SEO – Advanced SEO with real-time guidance and built-in AI plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Post Slug (post_name) in all versions up to, and including, 28.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires pretty permalinks to be enabled, as the exploit chain depends on get_permalink() embedding the stored percent-encoded post_name in the generated URL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15425"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wordpress-seo/tags/27.6/admin/class-bulk-editor-list-table.php#L898"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wordpress-seo/tags/27.6/admin/class-bulk-editor-list-table.php#L900"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wordpress-seo/tags/28.0/admin/class-bulk-editor-list-table.php#L898"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wordpress-seo/tags/28.0/admin/class-bulk-editor-list-table.php#L900"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3598937/wordpress-seo/trunk/admin/class-bulk-editor-list-table.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?old_path=%2Fwordpress-seo/tags/28.0&new_path=%2Fwordpress-seo/tags/28.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4b2fa1b7-a5af-4ea6-9bee-19a6cdfd7701?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T07:17:09Z"
+  }
+}
