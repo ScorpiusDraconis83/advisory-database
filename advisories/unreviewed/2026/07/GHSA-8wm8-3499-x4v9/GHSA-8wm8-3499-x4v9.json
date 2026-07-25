@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8wm8-3499-x4v9",
+  "modified": "2026-07-25T00:31:48Z",
+  "published": "2026-07-25T00:31:48Z",
+  "aliases": [
+    "CVE-2026-66338"
+  ],
+  "details": "A flaw was found in libsoup. The chunked transfer encoding parser uses a permissive parsing function for chunk sizes that silently accepts inputs violating RFC 9112, including leading whitespace, plus sign prefixes, and trailing invalid characters. When libsoup operates behind a strict frontend proxy, this parsing differential can be exploited to smuggle HTTP requests.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66338"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-66338"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2506950"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-444"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-24T23:16:52Z"
+  }
+}
