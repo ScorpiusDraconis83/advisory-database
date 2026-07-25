@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gf4r-jj9w-gcc4",
+  "modified": "2026-07-25T12:31:39Z",
+  "published": "2026-07-25T12:31:39Z",
+  "aliases": [
+    "CVE-2026-64521"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npinctrl: meson: amlogic-a4: fix deadlock issue\n\nAccessing the pinconf-pins sysfs node may deadlock.\n\npinconf_pins_show() holds pctldev->mutex, and the platform driver\ncalls pinctrl_find_gpio_range_from_pin(), which tries to acquire\nthe same mutex again, leading to a deadlock.\n\nUse pinctrl_find_gpio_range_from_pin_nolock() to fix this issue.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64521"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/744ac926c0e55267a10b49b5b72582afef4ad49f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e72ce029810390eb987a036fb2c8a5da9a23b685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e917713f013423069782ff554935c7a5d4266783"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:38Z"
+  }
+}

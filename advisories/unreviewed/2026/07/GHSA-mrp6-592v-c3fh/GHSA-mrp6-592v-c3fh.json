@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrp6-592v-c3fh",
+  "modified": "2026-07-25T12:31:34Z",
+  "published": "2026-07-25T12:31:34Z",
+  "aliases": [
+    "CVE-2026-64399"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: add permission checks for FSCTL_DUPLICATE_EXTENTS_TO_FILE\n\nThe FSCTL_DUPLICATE_EXTENTS_TO_FILE arm of smb2_ioctl() overwrites the\ndestination file's data via vfs_clone_file_range() with neither the\nshare-level KSMBD_TREE_CONN_FLAG_WRITABLE check nor a per-handle\nfp->daccess check that the other write-bearing arms carry. A client can\noverwrite destination data on a read-only share, or from a handle opened\nwith only FILE_WRITE_ATTRIBUTES (which still yields an FMODE_WRITE filp).\nFILE_WRITE_ATTRIBUTES-only destination handle overwrote the file's data via\nthe clone. Add both checks, matching the FSCTL_SET_SPARSE permission fix;\nrequire FILE_WRITE_DATA since this writes data.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64399"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/388e4139db27a9e3612c9d356b826f5b1ff6a9e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/620d133d469295ee7c017ca6aafac335f65c4a5a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b9cf7e65cbeaae1b6636144bacee611cdd7a5d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/baae7b39673ec21073a25e3d14f8feaada01d5df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf460ad5958d506492de4524a656439da3f99c51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c917e4522d251071dde9871b9142d8ea1186ebfe"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:23Z"
+  }
+}

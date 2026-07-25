@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-987r-r7fx-f5cm",
+  "modified": "2026-07-25T12:31:33Z",
+  "published": "2026-07-25T12:31:33Z",
+  "aliases": [
+    "CVE-2026-64372"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncpufreq: pcc: fix use-after-free and double free in _OSC evaluation\n\npcc_cpufreq_do_osc() calls acpi_evaluate_object() twice for the\ntwo-phase _OSC negotiation. Between the two calls it freed\noutput.pointer but left output.length unchanged. Since\nacpi_evaluate_object() treats a non-zero length with a non-NULL\npointer as an existing buffer to write into, the second call wrote\ninto freed memory (use-after-free). The subsequent kfree(output.pointer)\nat out_free then freed the same pointer a second time (double free).\n\nReset output.pointer to NULL and output.length to ACPI_ALLOCATE_BUFFER\nafter freeing the first result, so ACPICA allocates a fresh buffer for\neach phase independently.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64372"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e3c739a2f6fc1de5b19a8839ab80696b9cb2a29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/266d3dd8b757b48a576e90f018b51f7b7563cc32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5cdb25f144b101083d8bf3fd023ad87fbe6850d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/632666a63116d8061c62a988d1ca39dcd6d27c9b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ba6f6783be2ffeb2cbcdc9321c4b9f708f796f7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e454e9d0bc03446d610ee49abec9dfd424f6541"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/982c9f92d57bda2b769851ff6d90d43dcf5f3734"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a36ca93a8ba57464e521d70a337d37f069064111"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:20Z"
+  }
+}

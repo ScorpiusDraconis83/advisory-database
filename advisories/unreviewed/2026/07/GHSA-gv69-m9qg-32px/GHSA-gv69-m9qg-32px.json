@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gv69-m9qg-32px",
+  "modified": "2026-07-25T12:31:39Z",
+  "published": "2026-07-25T12:31:39Z",
+  "aliases": [
+    "CVE-2026-64519"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Fix infinite loop in layout state revocation\n\nfind_one_sb_stid() skips stids whose sc_status is non-zero, but the\nSC_TYPE_LAYOUT case in nfsd4_revoke_states() never sets sc_status\nbefore calling nfsd4_close_layout(). The retry loop therefore finds\nthe same layout stid on every iteration, hanging the revoker\nindefinitely.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64519"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44e5e4eb3a07bf3e1d931dd9f96f3edcfa376605"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f8ef58c10bfe5f86a643c7c8331b37e69e3dae1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1fc00ec02e9deb3f8d2bd59caf938c554fbc576"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe59ae27d7346245f5d8d97220f374e63efd28b5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:38Z"
+  }
+}

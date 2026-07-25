@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rf9w-458j-7pqc",
+  "modified": "2026-07-25T12:31:30Z",
+  "published": "2026-07-25T12:31:30Z",
+  "aliases": [
+    "CVE-2026-64305"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: qat - protect service table iterations with service_lock\n\nThe service_table list is protected by service_lock when entries are\nadded or removed (in adf_service_add() and adf_service_remove()), but\nseveral functions iterate over the list without holding this lock.\n\nA concurrent adf_service_register() or adf_service_unregister() call\ncould modify the list during traversal, leading to list corruption or\na use-after-free.\n\nFix this by holding service_lock across all list_for_each_entry()\niterations of service_table in adf_dev_init(), adf_dev_start(),\nadf_dev_stop(), adf_dev_shutdown(), adf_dev_restarting_notify(),\nadf_dev_restarted_notify(), and adf_error_notifier().\n\nThe lock ordering is safe: callers of the static helpers (adf_dev_up()\nand adf_dev_down()) acquire state_lock before service_lock, and no\nevent_hld callback or service_lock holder ever acquires state_lock in\nthe reverse order.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64305"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0dbcecea740d943002c1cbdafa39bdfc108e32a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/222fa7b453b612f4407f260146d89a2ce2bc831d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c6f845e77ec35f9b7b047cc8f9789bf397cdd3e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3c5925791cff3b84d313293fd60f384d877d793"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:11Z"
+  }
+}

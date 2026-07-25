@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fmwh-mr5j-p6wq",
+  "modified": "2026-07-25T12:31:32Z",
+  "published": "2026-07-25T12:31:32Z",
+  "aliases": [
+    "CVE-2026-64343"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: ldusb: fix use-after-free on disconnect race\n\nmutex_unlock() may access the mutex structure after releasing the lock\nand therefore cannot be used to manage lifetime of objects directly\n(unlike spinlocks and refcounts). [1][2]\n\nUse a kref to release the driver data to avoid use-after-free in\nmutex_unlock() when release() races with disconnect().\n\n[1] a51749ab34d9 (\"locking/mutex: Document that mutex_unlock() is\n                   non-atomic\")\n[2] 2b9d9e0a9ba0 (\"locking/mutex: Clarify that mutex_unlock(), and most\n                   other sleeping locks, can still use the lock object\n                   after it's unlocked\")",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64343"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02ca08fff74cf9b0a3c4d2cacde1c6edeeb95bb4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/19bdfc7b3c179331eafa423d87e1336f43bbfeb8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2107a4fc8ff1cf1d52f416c1e5cc8e97413a5915"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3e794136ab5e3ad1e7019175a4b837aec86db4b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af59829e67e11ba2511a9f8e4b9111afc7d1f550"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8f69404e1d671326f86d378b9f5bfbd56490e9d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5a9bdce4bfd3e2226b5f3df5fb8385d6935ee69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc55923a972e715f9a27187b47d4920709e23d85"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:16Z"
+  }
+}

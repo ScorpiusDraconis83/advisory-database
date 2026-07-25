@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cg5c-7728-29v7",
+  "modified": "2026-07-25T12:31:34Z",
+  "published": "2026-07-25T12:31:34Z",
+  "aliases": [
+    "CVE-2026-64400"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: prevent path traversal bypass by restricting caseless retry\n\nksmbd_vfs_path_lookup() enforces LOOKUP_BENEATH to restrict path\nresolution within the share root. When a crafted path attempts to\nescape the share boundary using parent-directory components ('..'),\nvfs_path_parent_lookup() detects this and immediately fails,\nreturning -EXDEV.\n\nHowever, a bug exists in __ksmbd_vfs_kern_path() under caseless mode.\nThe function fails to intercept the -EXDEV error and erroneously\nfalls through to the caseless retry logic, which is intended only\nfor genuinely missing files. During this retry process, the path\nis reconstructed, leading to an unintended LOOKUP_BENEATH bypass\nthat allows write-capable users to create zero-length files or\ndirectories outside the exported share.\n\nFix this by ensuring that the execution only proceeds to the caseless\nlookup retry when the error is specifically -ENOENT. Any other errors,\nsuch as -EXDEV from a path traversal attempt, must be returned immediately.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64400"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/54bab9ba5a9f156ffa9324fcbe5a356fd0242f95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c9a4f1327eb71efbf14842e7b8a6d965077eb67"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:23Z"
+  }
+}

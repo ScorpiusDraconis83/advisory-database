@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cp5v-2q38-79vc",
+  "modified": "2026-07-25T12:31:33Z",
+  "published": "2026-07-25T12:31:33Z",
+  "aliases": [
+    "CVE-2026-64370"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nposix-cpu-timers: Fix pid refcount leak in do_cpu_nanosleep() error path\n\nIn do_cpu_nanosleep(), posix_cpu_timer_create() takes a pid reference\nvia get_pid() and stores it in timer.it.cpu.pid. If the subsequent\nposix_cpu_timer_set() call fails, the function returns immediately\nwithout calling posix_cpu_timer_del() to release the pid reference,\ncausing a leak.\n\nFix it by calling posix_cpu_timer_del() before the unlock-and-return\non the error path, consistent with the other exit paths in the same\nfunction.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64370"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7776f9226e99eb49d97492b0b445027cfcb189da"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87bd2ad568e15b90d5f7d4bcd70342d05dad649c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a270b1258797f61b61da44f8bfd41a581b5c85b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f06363446c5d043c9a7c008b250040e9de98cf9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/afed3cdc1cca133f804fcf57ff228974f424b23a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d605d00085adc3fddf67de01dc2a44aebf1a3fb5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5ffc638faf5dc7d9dc85c9a95e10bf97442e0c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb4cec29a78334d09bcfb41c0660cdd62ba05843"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:19Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fcgc-c7jf-cmfv",
+  "modified": "2026-07-25T12:31:36Z",
+  "published": "2026-07-25T12:31:36Z",
+  "aliases": [
+    "CVE-2026-64463"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: tcpci_rt1711h: unregister TCPCI port with devres\n\nrt1711h_probe() registers the TCPCI port before requesting the interrupt\nand enabling alert interrupts. If either of those later steps fails, the\nprobe function returns without unregistering the TCPCI port. The explicit\nunregister currently only happens from the remove callback.\n\nRegister a devres action immediately after tcpci_register_port() succeeds,\nso tcpci_unregister_port() runs on later probe failures and on driver\ndetach. Drop the remove callback to avoid unregistering the same port\ntwice.\n\nThis issue was identified during our ongoing static-analysis research while\nreviewing kernel code.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64463"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/569f18a83eed0b0be4615f0c7bed40fb5c50e2e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94b1abf1af94aa5a355e9f03675e07bccfc41c4b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce2e36e8759dfbfe546723810c306f42f484866d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5406c8fb71cd2f89a46300a746f6e7972e621e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8da46d99d3710106e7c44db14566bf9b57386b5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:31Z"
+  }
+}

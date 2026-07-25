@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5qhr-mh6g-f94h",
+  "modified": "2026-07-25T12:31:36Z",
+  "published": "2026-07-25T12:31:36Z",
+  "aliases": [
+    "CVE-2026-64466"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrust_binder: clear freeze listener on node removal\n\nGenerally userspace is supposed to explicitly clear freeze listeners\nbefore they drop the refcount on the node ref to zero, but there's\nnothing forcing that. Currently, in this scenario the freeze listener\nremains in the freeze_listeners rbtree and in the remote node's freeze\nlistener list, even though the ref for which the listener is registered\nis gone. This could potentially lead to a memory leak due to a refcount\ncycle. Thus, remove the freeze listener in this scenario.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64466"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0644da3621ddd8e146280675a2a31d1e06634a1d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91b27f8172cdbf265240104772fd042a461a7767"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc4a9828897871ff3e5a1f8a1d346decbf4ee95e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:31Z"
+  }
+}

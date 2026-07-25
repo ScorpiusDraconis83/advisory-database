@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vfc2-3rqx-xchh",
+  "modified": "2026-07-25T12:31:37Z",
+  "published": "2026-07-25T12:31:37Z",
+  "aliases": [
+    "CVE-2026-64486"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: cmipci: check snd_ctl_new1() return value\n\nsnd_ctl_new1() can return NULL when memory allocation fails.\nsnd_cmipci_spdif_controls() does not check the return value before\ndereferencing kctl->id.device, which can lead to a NULL pointer\ndereference.\n\nAdd NULL checks after snd_ctl_new1() calls and return -ENOMEM if any\nfails.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64486"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4dd5b0b1a52a8d6e59a3f217204817228ce0238b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67e9ea92cd598cba1783ff701553c776a6cedee9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8825a06bfa7932a7a74dec01669d405df0b47286"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af2b009b773bc42995546507963e5e78970dc3ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b44888c33c4f11277d0e5e023338f2740232a4ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c205bd1b28fb7e5f1061a4e78813fad7d315cb3e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:34Z"
+  }
+}

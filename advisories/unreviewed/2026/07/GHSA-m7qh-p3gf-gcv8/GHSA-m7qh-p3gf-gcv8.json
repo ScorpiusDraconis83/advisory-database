@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m7qh-p3gf-gcv8",
+  "modified": "2026-07-25T12:31:29Z",
+  "published": "2026-07-25T12:31:29Z",
+  "aliases": [
+    "CVE-2026-64289"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommufd: Set upper bounds on cache invalidation entry_num and entry_len\n\niommufd_hwpt_invalidate() takes a user-controlled entry_num and entry_len,\neach bounded only by U32_MAX. An entry_len beyond the kernel's struct size\nmakes the copy helper verify the extra bytes are zero, scanning that excess\nin one uninterruptible pass; a multi-gigabyte value over zeroed user memory\ntrips the soft-lockup watchdog.\n\nA large entry_num is the other half, driving the backend invalidation loop\nwith no reschedule. The VT-d nested handler, for one, copies each entry and\nflushes caches per iteration, pinning the CPU on a non-preemptible kernel.\n\nCap both in the ioctl. entry_len is held under PAGE_SIZE, above any request\nstruct, and entry_num under 1 << 19, the order of a hardware invalidation\nqueue and well beyond any real batch, bounding the per-call loop length.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64289"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c6381d90898089287e0a358f06f89f6b4b389f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32ca4aed2a66205b072fcfecabe220289a8149ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d70986002f2f3eaaed89124fb2522bded38b016"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2bd041e0efaf7d81789779b135279d18b33d6d5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:09Z"
+  }
+}

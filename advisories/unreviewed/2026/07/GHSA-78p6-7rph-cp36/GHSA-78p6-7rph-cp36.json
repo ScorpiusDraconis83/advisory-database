@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-78p6-7rph-cp36",
+  "modified": "2026-07-25T12:31:31Z",
+  "published": "2026-07-25T12:31:31Z",
+  "aliases": [
+    "CVE-2026-64319"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet-auth: validate reply message payload bounds against transfer length\n\nnvmet_auth_reply() accesses the variable-length rval[] array using\nattacker-controlled hl (hash length) and dhvlen (DH value length) fields\nwithout verifying they fit within the allocated buffer of tl bytes.\n\nA malicious NVMe-oF initiator can craft a DHCHAP_REPLY message with a\nsmall transfer length but large hl/dhvlen values, causing out-of-bounds\nheap reads when the target processes the DH public key (rval + 2*hl) or\nperforms the host response memcmp.\n\nWith DH authentication configured, the OOB pointer is passed directly to\nsg_init_one() and read by crypto_kpp_compute_shared_secret(), reaching\nup to 526 bytes past the buffer. This is exploitable pre-authentication.\n\nAdd bounds validation ensuring sizeof(*data) + 2*hl + dhvlen <= tl before\nany access to the variable-length fields.\n\nDiscovered by Atuin - Automated Vulnerability Discovery Engine.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64319"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a413ece2504c70aa34a20be4dafec04e8c741f9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d7649c1231dac14d906985d2936967e23041c26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80cd28b56ab62d3e7ed0a7bf05282e6d3ee5b2a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/999f6205ede984a786f35f727b01f971b98e215d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/caa71b3a43ea5c13fe7141cb019ebcb03b8ac857"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:13Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6gx3-fvx8-mx4p",
+  "modified": "2026-07-25T12:31:29Z",
+  "published": "2026-07-25T12:31:29Z",
+  "aliases": [
+    "CVE-2026-64291"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommufd: Set veventq_depth upper bound\n\niommufd_veventq_alloc() accepts any !0 veventq_depth from userspace, with\nan upper bound at U32_MAX.\n\nThis leaves a vulnerability where userspace can allocate excessively large\nqueues to exhaust kernel memory reserves.\n\nCap the veventq_depth (maximum number of entries) to 1 << 19, matching the\nmaximum number of entries in the SMMUv3 EVTQ (the largest use case today).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ebf2eb46fbd5b40393ff8fbb847ba96925beaff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7b5e55652746b1221b9c10ff80eae8a154101ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f565297edf316016be4a1a9e2eb9f39359313f43"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:09Z"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mgrm-7xvj-2jr3",
+  "modified": "2026-07-25T12:31:35Z",
+  "published": "2026-07-25T12:31:34Z",
+  "aliases": [
+    "CVE-2026-64408"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: bnep: pin L2CAP connection during netdev registration\n\nbnep_add_connection() reads the L2CAP connection without holding the\nchannel lock, then passes its HCI device to register_netdev(). Controller\nteardown can clear and release that connection concurrently, leaving the\nnetwork device registration path to dereference a freed parent device.\n\nTake a reference to the L2CAP connection while holding the channel lock.\nRetain it until register_netdev() has taken the parent device reference.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64408"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/390b5db3ff8745187f094c4e915663b7b1f98944"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46a88784c4c9b96954dd86f747ce93f65efa1302"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/551ae773ec64045b4e72099132654887e0270bcc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/563a8573047182f550b1e1e030615755cd8c41da"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6b22dbd80926556290ad2243be25218d6956a19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae215c5b6422d8eda443b861b124bd1be6969c31"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb067a99a0356196c0b89a95721985485ebce5a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df22adc7eafc22e651561813c11dc51a796b12ee"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:24Z"
+  }
+}

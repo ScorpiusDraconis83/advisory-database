@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-76f2-j4c3-m5v4",
+  "modified": "2026-07-25T12:31:34Z",
+  "published": "2026-07-25T12:31:34Z",
+  "aliases": [
+    "CVE-2026-64397"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: serialize QUERY_DIRECTORY requests per file\n\nsmb2_query_dir() stores a pointer to its stack-allocated private data in\nthe ksmbd_file readdir_data. Concurrent QUERY_DIRECTORY requests using the\nsame file handle can overwrite this pointer while an iterate_dir() callback\nis still using it, resulting in a stack use-after-free.\n\nAdd a per-file mutex and hold it while accessing the shared directory\nenumeration state. The lock covers scan restart, dot entry state,\nreaddir_data setup and iteration, and response construction. This prevents\nanother request from replacing readdir_data.private before the current\nrequest has finished using it and also serializes the shared file position.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64397"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1426fd79102539bc0ab5c8fced047ad4313b9908"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a64dbf9c739ddf7a25a066507597bf89f8f73d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/64dac2d486ec1eb18dc00968b16a230b6b75ec24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1d5d31cad593ea5e1b637f2f39c9ef6d09d1199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be6d26bf27499977c746abc163659915082348d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd22b039a5a05bc1d6818e9dcd1001fb432a829d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:23Z"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-86gc-pxpc-4p5h",
+  "modified": "2026-07-25T12:31:33Z",
+  "published": "2026-07-25T12:31:33Z",
+  "aliases": [
+    "CVE-2026-64380"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: harden POSIX SID length parsing\n\nposix_info_sid_size() reads sid[1] to obtain the subauthority count,\nbut its existing boundary check still accepts buffers with only one\nremaining byte. Require two bytes before reading sid[1] so all client\npaths that reuse the helper reject truncated POSIX SIDs safely.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64380"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0de5b8e76847f5de26f364a82c6602c4881c30da"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/171605aed68380c2fa75dff9b3a1ed427c50065b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4213c1208978483021d7d125c131de3985d38f61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/427eb7eb46425fec845a43e861f3d6e2899cae59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46a84715a015cb48e1b9c219dc88c03d8a541ea4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ad2bcf2441430bb2e918fb3ef9a90d775a6e422"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86c5d470f5d42e61123b2f4b4f0b91f4eee5b980"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96e889bc1e759c83f25093e8c2f3da31b4973f30"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:21Z"
+  }
+}

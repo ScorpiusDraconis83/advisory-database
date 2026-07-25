@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5rwh-cw23-rrm6",
+  "modified": "2026-07-25T12:31:29Z",
+  "published": "2026-07-25T12:31:29Z",
+  "aliases": [
+    "CVE-2026-64286"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Clear __hyp_running_vcpu when flushing the pKVM hyp vCPU\n\nflush_hyp_vcpu() copies the host vCPU context into the hyp's private\nvCPU on every run. ctxt_to_vcpu() expects a guest context to have a\nNULL __hyp_running_vcpu, which is only ever set on the host context, so\nthat it resolves the vCPU via container_of(). While this is generally\nthe case, flush_hyp_vcpu() copies the context verbatim and does not\nenforce this, so a value provided by the host is dereferenced at EL2\n(host -> EL2).\n\nFix by clearing __hyp_running_vcpu after the copy.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64286"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/477145860dba4c30f0b4e36f02f4c5291c1c888b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6bea2f8becdb20d34378493c3b77a9b9cf8c6cfa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4f4d61715d1061ba83b88196a3605662be30750"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dfaef40d8a1533940fc1af788d70fce07362b4ce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8042f6e1d7befb2fb6b10a75918642bcd0acf9a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:09Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vmjp-jvmv-9wwr",
+  "modified": "2026-07-25T12:31:38Z",
+  "published": "2026-07-25T12:31:38Z",
+  "aliases": [
+    "CVE-2026-64498"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: buffer: hw-consumer: free scan_mask on buffer release\n\nThe scan_mask lifetime changed in commit 9a2e1233d38c (\"iio: buffer:\nhw-consumer: remove redundant scan_mask flexible array\").\n\nBefore that change, the scan mask storage was embedded in struct\nhw_consumer_buffer, so iio_hw_buf_release() could free the whole\nallocation with a single kfree(hw_buf).\n\nThat commit moved the scan mask to a separate bitmap_zalloc() allocation\nstored in buffer.scan_mask, but left iio_hw_buf_release() unchanged.\n\nFree the scan mask in iio_hw_buf_release() before freeing the buffer\nwrapper.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64498"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6325d6e2204327965b849c0a16efb6ac9202e5a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb8e18f8ca724bd4de4643cad5b7c7230b9a5a71"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:35Z"
+  }
+}

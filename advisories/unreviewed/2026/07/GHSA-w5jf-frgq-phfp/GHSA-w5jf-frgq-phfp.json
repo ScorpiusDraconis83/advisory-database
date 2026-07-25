@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w5jf-frgq-phfp",
+  "modified": "2026-07-25T12:31:33Z",
+  "published": "2026-07-25T12:31:33Z",
+  "aliases": [
+    "CVE-2026-64385"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix double-free in SMB2_ioctl() replay\n\nA response-bearing attempt can return a replayable error and free its\nresponse buffer. If SMB2_ioctl_init() fails before the next send, cleanup\nretains the previous buffer type and frees that response again.\n\nReset response bookkeeping before each attempt to prevent the stale free.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0be4bc64882edaefaaee8d1e27d083643eb778e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/276c8efbc49f9303ac76d0d4deab7128581b0f3b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96fcfc8ae7359346156e492ca610e830d2649ad6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9bbadb6c94583e3b4af1afc449bfceb1d1ddec9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc65ffb4ef1bf540da16b17c225ae51091e07d72"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:21Z"
+  }
+}

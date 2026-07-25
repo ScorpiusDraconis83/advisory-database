@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-942f-2j62-7hwj",
+  "modified": "2026-07-25T12:31:27Z",
+  "published": "2026-07-25T12:31:27Z",
+  "aliases": [
+    "CVE-2026-64258"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse-uring: remove request-less entries from ent_w_req_queue to fix NULL deref\n\nIf a copy into the userspace ring buffer fails, a request will be\nterminated and fuse_uring_req_end() will set ent->fuse_req to NULL but\nit will leave the entry on ent_w_req_queue in FRRS_FUSE_REQ state. This\ncan lead to a NULL deref if the request expiration logic scans\nent_w_req_queue in the window before the entry is moved off it.\n\nFix this by taking the entry off ent_w_req_queue and changing its state\nfrom FRRS_FUSE_REQ to FRRS_INVALID before terminating the request.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64258"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a7f33010c0e4cd92937e088a54350381fd0fbf2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b466cf1b96e191b06b496c4de79da15315c3a9a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c57a69be962d459c5e705f5cb4355b841b3461c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:05Z"
+  }
+}

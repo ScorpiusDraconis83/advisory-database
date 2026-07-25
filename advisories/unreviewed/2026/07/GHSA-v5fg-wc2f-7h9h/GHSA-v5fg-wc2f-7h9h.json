@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v5fg-wc2f-7h9h",
+  "modified": "2026-07-25T12:31:33Z",
+  "published": "2026-07-25T12:31:33Z",
+  "aliases": [
+    "CVE-2026-64381"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: Fix next buffer leak in receive_encrypted_standard()\n\nreceive_encrypted_standard() allocates next_buffer before checking\nwhether the number of compound PDUs already reached MAX_COMPOUND. If\nthe limit check fails, the function returns immediately and the newly\nallocated next_buffer is not assigned to server->smallbuf/server->bigbuf,\nmaking it leaked.\n\nMove the MAX_COMPOUND check before allocating next_buffer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64381"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07e0ab81df1790afa35732a4e8e07ff831b29008"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c6267a1d5cf4c73b656f8181b310cbbb3e4767b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/297243e365fc9fe2f8e9b7dd535a65d922cd108b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67097772df7791c53d608f04bd31c676ccf79b83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/68fc0b6cc03ca58060c0f36454e169f5fe258974"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9136a08dc29328edd9867f2545e73906ac9df93b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/927d4805aea0a287d36dd4f826ee24d69a2afee3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94e4f672db029414b9888b5137a7559f1febf2d8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:21Z"
+  }
+}

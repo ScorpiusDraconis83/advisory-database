@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-783r-hxwf-2cjj",
+  "modified": "2026-07-25T12:31:37Z",
+  "published": "2026-07-25T12:31:37Z",
+  "aliases": [
+    "CVE-2026-64484"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: es1938: check snd_ctl_new1() return value\n\nsnd_ctl_new1() can return NULL when memory allocation fails.\nsnd_es1938_mixer() does not check the return value before dereferencing\nthe pointer, which can lead to a NULL pointer dereference.\n\nAdd a NULL check after snd_ctl_new1() and return -ENOMEM if it fails.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64484"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1949163dee39e0e4a1468f37dd7302962f6af45a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1edd1f02dddd20aeb6066ded41017615766ea42f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41759affbcfe3d51a32900da9547a1ffd744a85f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c4efebaf73e217efbd08cdbda805758a7db3680"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7531a37720c2545a480fd0fa464978569bf9d6a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96cad5bd7d0a176db3fdc06717a41271247336bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e53e99b6fa3cd82992d963cbff58dbbd1df8651"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af01c48e17a66fa038af210a5c49d6cdefd210bd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:34Z"
+  }
+}

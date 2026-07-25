@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7w4g-q985-4523",
+  "modified": "2026-07-25T12:31:32Z",
+  "published": "2026-07-25T12:31:31Z",
+  "aliases": [
+    "CVE-2026-64332"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: ulpi: fix memory leak on registration failure\n\nThe allocated device name is never freed on early ULPI device\nregistration failures.\n\nFix this by initialising the device structure earlier and releasing the\ninitial reference whenever registration fails.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64332"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1967a7f0cd5c08eb479196daa5aaa4b7b7a7bd04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c098f20f15db7f9126129686d1c6da2ce8bbeb0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/624c57147df1977e0d3da53f1da7117861b9cf19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/691e61e5d4cfc5a1b061e937f8cbf2126bfc19a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88187a43135c79d0e43573b4d8f880bbb919eceb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8af6812795869a66e9b26044f455b13deecdb69c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5b32f36c50894ac2df8fa184e6f35f3a6665ecd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5493c9a98ffe083acf13ac064828ae598ba3c16"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:14Z"
+  }
+}

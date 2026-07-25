@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hj85-3f53-vrg4",
+  "modified": "2026-07-25T12:31:29Z",
+  "published": "2026-07-25T12:31:29Z",
+  "aliases": [
+    "CVE-2026-64280"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfpga: dfl-afu: validate DMA mapping length in afu_dma_map_region()\n\nafu_ioctl_dma_map() accepts a 64-bit length from userspace via\nDFL_FPGA_PORT_DMA_MAP ioctl without an upper bound check. The value\nis passed to afu_dma_pin_pages() where npages is derived as\nlength >> PAGE_SHIFT and passed to pin_user_pages_fast() which takes\nint nr_pages, causing implicit truncation if length is very large.\n\nValidate map.length at the ioctl entry point before calling\nafu_dma_map_region(), rejecting values whose page count exceeds\nINT_MAX.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59070040fd12e0b78d7b4d341d9f9a183237c5ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb2c0eab51ae5b02d2bae7d67c2cfbec39b57231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc3b071a7c8dc0f5d56defddf6e6fd5aaa3e1e27"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:08Z"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9qr3-xg49-r8hq",
+  "modified": "2026-07-25T12:31:36Z",
+  "published": "2026-07-25T12:31:36Z",
+  "aliases": [
+    "CVE-2026-64444"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8723bs: fix OOB read in OnAssocRsp() IE loop\n\nThe IE parsing loop in OnAssocRsp() advances by (pIE->length + 2) each\niteration but only guards on i < pkt_len. When a malicious AP sends an\nAssocResponse whose last IE has only one byte remaining in the frame\n(the element_id byte lands at pkt_len-1), the loop reads pIE->length\nfrom pframe[pkt_len], which is one byte past the allocated receive buffer.\n\nAdditionally, even when the header bytes are in bounds, pIE->length\nitself can extend the data window beyond pkt_len, silently passing a\ntruncated IE to the handler functions.\n\nAdd two guards at the top of the loop body:\n  1. Break if fewer than sizeof(*pIE) bytes remain (can't read header).\n  2. Break if the IE's declared data extends past pkt_len.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64444"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0406d746574e875d8778552eb674fcfbf5330bfb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04f612dc03427e0b1ac80a2611b5ac0ba93ac446"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0970dd47726a57e52013594e9fbf667586eb3673"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a52a05471494546f955a58e8c170c0c796c52d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7e7741c8315e4160aead00a60cdd6f81ab880717"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/889ca6000ac7fa73457b041848fcb08e0d51b809"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9654207e92283e0acac5d64fe5f8835383b5a23"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:29Z"
+  }
+}

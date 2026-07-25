@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jrf5-24f4-rfq7",
+  "modified": "2026-07-25T12:31:38Z",
+  "published": "2026-07-25T12:31:38Z",
+  "aliases": [
+    "CVE-2026-64499"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: adc: ti-ads1119: fix PM reference leak in buffer preenable\n\nads1119_triggered_buffer_preenable() resumes the device with\npm_runtime_resume_and_get() before starting a conversion.\n\nIf i2c_smbus_write_byte() fails, the function returns the error directly\nand leaves the runtime PM usage counter elevated. The matching\npostdisable callback is not called when preenable fails, so the reference\nis leaked and the device may remain runtime-active indefinitely.\n\nStore the I2C transfer result in ret and drop the runtime PM reference on\nfailure before returning the error.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64499"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6537f08100189d12bec4975000244e6ac4873c28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/adf4bc07f814da8329278d32600147f5a150938c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f40292fb19399a3c3f82de698023ba87c01e66cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ffb2195921c3d629194b9807de589578df9f9cb8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:35Z"
+  }
+}

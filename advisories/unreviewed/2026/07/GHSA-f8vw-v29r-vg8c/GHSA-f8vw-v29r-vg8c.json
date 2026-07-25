@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f8vw-v29r-vg8c",
+  "modified": "2026-07-25T12:31:37Z",
+  "published": "2026-07-25T12:31:37Z",
+  "aliases": [
+    "CVE-2026-64488"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: aoa: check snd_ctl_new1() return value\n\nsnd_ctl_new1() can return NULL when memory allocation fails. In\nlayout.c, the function does not check the return value before\ndereferencing ctl->id.name or passing to aoa_snd_ctl_add(), which can\nlead to a NULL pointer dereference.\n\nAdd NULL checks after snd_ctl_new1() calls and return early if any\nfails.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64488"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ee9c46fd2dcd529cef18e37636ee12f5c3dbedd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8df560fefe6fed6a20b7e06720eeaeccec349ac0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0154ebc6dc552c389a574b1e221d728e10346e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d62624fe256b2d0d13454c78cbfc70ff5d954dc7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d73067e2bbf3775a495d9f38e38d0a3cf53ee790"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e47f2a341adbac001b6f5d0211b0cd1c1668637b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5e8c4508d95af82f9b4d065f658e5476a8e9bc8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd786466889e4a6e6de0f4462bd0068edea63960"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:34Z"
+  }
+}

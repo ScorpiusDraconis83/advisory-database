@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mhg5-fr5x-3g7c",
+  "modified": "2026-07-25T12:31:32Z",
+  "published": "2026-07-25T12:31:31Z",
+  "aliases": [
+    "CVE-2026-64336"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: serial: keyspan_pda: fix information leak\n\nThe write() callback is supposed to return the number of characters\naccepted or a negative errno. Since the addition of write fifo support\nthe keyspan_pda implementation will however return the number characters\nsubmitted to the device if the write urb is not already in use. If this\nnumber is larger than the number of characters passed to write(), the\nline discipline continues writing data from beyond the tty write buffer.\n\nFix the information leak by making sure that keyspan_pda_write_start()\nreturns zero on success as intended.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64336"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f7a6b8ab3845bd1da02604f1a874b52a4555a72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6bfc8d01ac4068eced509f8fc74d0cd205e4dcec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b069b7029862fafaff331d4c664d97d4ae828d6d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf6ca0aefae03958cfb5b189b0adbfb25c06bfac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4b12b6b395e43a2b1d80be3745631fcaa9c047b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e1494191a3aac665d3a2fce16169a97c346253ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e52ca411f50539ff1d0c877b9312771ca8a858c1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:15Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-prw5-9985-9rc7",
+  "modified": "2026-07-25T12:31:28Z",
+  "published": "2026-07-25T12:31:28Z",
+  "aliases": [
+    "CVE-2026-64272"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: mms114 - fix touch indexing for MMS134S and MMS136\n\nThe MMS134S and MMS136 touch controllers have an event size of 6 bytes\nrather than 8 bytes. When __mms114_read_reg() reads the touch data\npacket from the device into the touch buffer, the events are packed\ntightly at 6-byte intervals. However, the driver iterates through the\nevents using standard C array indexing (touch[index]), where each\nelement is sizeof(struct mms114_touch) (8 bytes) apart. As a result, any\ntouch events beyond the first one are read from incorrect offsets and\nparsed improperly.\n\nFix this by explicitly calculating the byte offset for each touch event\nbased on the device's specific event size.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64272"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/112666835071d935fef764aab590339e97216d4a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75b12874b4172533b9efc349db328cb1a59c3981"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7c00a0787af7164438bdbc97fcae9733cfc58d21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6ac4e24c1a8a533bb61035184fdcc7eede4cc8d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a747c4eb02656afdbd92eea83b88e92715a23977"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:07Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r9fc-rvh2-m2x5",
+  "modified": "2026-07-25T12:31:38Z",
+  "published": "2026-07-25T12:31:38Z",
+  "aliases": [
+    "CVE-2026-64506"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw89: correct drop logic for malformed AMPDU frames\n\nThe previous commit aims to fix issue caused by malformed AMPDU frames.\nBut the drop logic fails to deal with the first AMPDU packet paired with\ncertain range of sequence number, and leads to unexpected packet drop.\nIt is more likely to encounter this failure when there are busy traffic\nduring rekey process and could lead to disconnection from the AP.\nFix this by adding a initial state judgement and only reset status\nduring pairwise rekey.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64506"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63ccdfac8677387dfdbd9d4336089e9823280704"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/994994cfadaf1fd362dea9b8d9d633f85dc1b3c3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:36Z"
+  }
+}

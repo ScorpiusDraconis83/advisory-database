@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6ch7-9774-5q3m",
+  "modified": "2026-07-25T12:31:37Z",
+  "published": "2026-07-25T12:31:37Z",
+  "aliases": [
+    "CVE-2026-64482"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: gus: check snd_ctl_new1() return value\n\nsnd_ctl_new1() can return NULL when memory allocation fails.\nsnd_gf1_pcm_volume_control() does not check the return value before\ndereferencing kctl->id.index, which can lead to a NULL pointer\ndereference.\n\nAdd a NULL check after snd_ctl_new1() and return -ENOMEM if it fails.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64482"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/465075c6835103821d725c13f8c545898e5f2636"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5e74e5e8cb7cc25f7a89f59abaf3489bf0c6f4a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97f6bdf5d5ded2e37f358cacb5a95f1393356604"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7fa99d30c7a166a5e5db5a585ce7501ff68326b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eccf8e91266e39f6f15637702a04a1d344833fe2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc5d4f27ca1293bc1379ef8fff691c30d9803ca2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:33Z"
+  }
+}

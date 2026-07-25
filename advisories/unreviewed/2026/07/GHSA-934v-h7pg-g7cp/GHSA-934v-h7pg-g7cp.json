@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-934v-h7pg-g7cp",
+  "modified": "2026-07-25T12:31:37Z",
+  "published": "2026-07-25T12:31:37Z",
+  "aliases": [
+    "CVE-2026-64480"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: ice1712: check snd_ctl_new1() return value\n\nsnd_ctl_new1() can return NULL when memory allocation fails. The\nice1712 driver calls snd_ctl_new1() without checking the return value\nbefore dereferencing the pointer in multiple places (ice1712.c,\nice1724.c, aureon.c), which can lead to NULL pointer dereferences.\n\nAdd NULL checks after snd_ctl_new1() calls and return -ENOMEM if any\nfails.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64480"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b929b91b0f3bc6de8a844370049cd99ee8e31ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38a7cc46370a57122fb29c4bfe48a851c0c64459"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57d59be545b309d4bb54ac472b15d1e67f254d95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69bf1dfa3215524c4ae255bb9dce0770875abbeb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71b87108ad93d433cdb20704a8dc8852304cf2c2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d34ad480b8896d2b486e2cf29ce1790326cad205"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:33Z"
+  }
+}

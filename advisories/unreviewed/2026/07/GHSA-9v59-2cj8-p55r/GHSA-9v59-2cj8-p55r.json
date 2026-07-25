@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9v59-2cj8-p55r",
+  "modified": "2026-07-25T12:31:33Z",
+  "published": "2026-07-25T12:31:33Z",
+  "aliases": [
+    "CVE-2026-64382"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix double-free in SMB2_open() replay\n\nA response-bearing attempt can return a replayable error and free its\nresponse buffer. If SMB2_open_init() fails before the next send, cleanup\nretains the previous buffer type and frees that response again.\n\nReset response bookkeeping before each attempt to prevent the stale free.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64382"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02bc2896bdc3e29362d6e40d404006944a159c25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/14498ff5ce0f272ce0ef988721413e06b7038972"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3196b5192f246df4272072f61a2f4a3e9967f55d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b55e182f2324bc6a604c21a47aa6c448f719a532"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff2d30927bc3bf3c629f0768d2068096e64ef5ce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:21Z"
+  }
+}

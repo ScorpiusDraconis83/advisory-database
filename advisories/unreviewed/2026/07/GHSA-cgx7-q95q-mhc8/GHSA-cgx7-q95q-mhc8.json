@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cgx7-q95q-mhc8",
+  "modified": "2026-07-25T12:31:32Z",
+  "published": "2026-07-25T12:31:32Z",
+  "aliases": [
+    "CVE-2026-64357"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: fix exchmaps reservation limit check\n\nxfs_exchmaps_estimate_overhead() adds the bmbt and rmapbt\noverhead to a local resblks variable, but the final UINT_MAX\ncheck still tests req->resblks.  That is the reservation value\nfrom before the overhead was added.\n\nThe computed value is stored back in req->resblks and later passed\nto xfs_trans_alloc(), whose block reservation argument is unsigned\nint.  Check the computed reservation so the existing limit applies\nto the value that will be used.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64357"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a5213bbff62b51c7d4999ac8c7e11ea57d00d45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4707344b0d36d1012c8a1716e20167cd3afdd5f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a62ef2d13d6e7270dd5e88c6082bf2d0edcd5112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c597c8580d50127fc1221b5a5b653a94d49e23e3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:18Z"
+  }
+}

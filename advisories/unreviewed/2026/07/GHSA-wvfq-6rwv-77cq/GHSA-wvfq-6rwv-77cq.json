@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wvfq-6rwv-77cq",
+  "modified": "2026-07-25T12:31:32Z",
+  "published": "2026-07-25T12:31:31Z",
+  "aliases": [
+    "CVE-2026-64337"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: mtu3: unmap request DMA on queue failure\n\nmtu3_gadget_queue() maps the request before checking whether\nthe QMU GPD ring can accept another transfer. the request is\nreturned with -EAGAIN before it is linked on the endpoint\nrequest list if mtu3_prepare_transfer() fails.\n\nNormal completion and dequeue paths unmap requests from\nmtu3_req_complete(), but this error path never reaches that\nhelper, so the DMA mapping is left active. Unmap the request\nbefore returning from the failed queue path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64337"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/00c3fef4c2dc2c7cbd8281f8fda09d1913420f09"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0bddda5a11665c210339de76d27ebbd1a2e0b43c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cee30f1138281a1d247bb053a1ad4f7c5b04e98"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4183874b7925f4a98b400cf857bea26ee87da236"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/835b0596d4c9bdef93f842d8f826978fb4956b74"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c29d9cfab1c3cf0d0b7fcdf9255597be30aa3e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8f739a3860d043dcc135371637e82f53132efe5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f3c4026524d3660c73ef2838b99776d37631e039"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-25T10:17:15Z"
+  }
+}
