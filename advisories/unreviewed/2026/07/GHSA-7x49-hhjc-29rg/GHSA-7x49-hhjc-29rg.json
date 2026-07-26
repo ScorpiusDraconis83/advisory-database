@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7x49-hhjc-29rg",
+  "modified": "2026-07-26T06:31:26Z",
+  "published": "2026-07-26T06:31:26Z",
+  "aliases": [
+    "CVE-2026-63720"
+  ],
+  "details": "datamodel-code-generator prior to version 0.70.0 contains a code injection vulnerability that allows attackers who control input schemas to achieve remote code execution by supplying a malicious customBasePath value containing embedded newlines and a dot-free Python expression. The crafted value is emitted verbatim into a generated 'from ... import ...' statement without identifier validation, causing arbitrary Python code to execute when the generated module is imported.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63720"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/koxudaxi/datamodel-code-generator/commit/545a96c5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/koxudaxi/datamodel-code-generator"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/datamodel-code-generator-code-injection-via-unvalidated-custombasepath-schema-field"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-26T05:16:23Z"
+  }
+}
