@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r5ff-hq22-rhgv",
+  "modified": "2026-07-26T15:30:24Z",
+  "published": "2026-07-26T15:30:24Z",
+  "aliases": [
+    "CVE-2026-17497"
+  ],
+  "details": "NoteGen before 0.32.0 grants the Tauri shell plugin shell:allow-execute capability for bash, python, and python3 with arbitrary arguments in the default desktop capabilities. JavaScript running in the application webview can therefore invoke plugin:shell|execute to run attacker-controlled operating system commands with the privileges of the NoteGen process. In combination with script execution in the webview (for example via chat XSS), this enables full remote code execution on the user's machine.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17497"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codexu/note-gen/commit/00064a4a8ec4177d51094ffb3e15bf0758009c1f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codexu/note-gen"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codexu/note-gen/releases/tag/note-gen-v0.32.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-26T15:16:27Z"
+  }
+}
