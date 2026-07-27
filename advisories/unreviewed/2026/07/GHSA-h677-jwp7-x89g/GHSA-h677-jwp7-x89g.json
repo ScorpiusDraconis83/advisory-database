@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-h677-jwp7-x89g",
-  "modified": "2026-07-27T09:31:25Z",
+  "modified": "2026-07-27T15:32:28Z",
   "published": "2026-07-27T09:31:25Z",
   "aliases": [
     "CVE-2026-13390"
   ],
   "details": "The Events Calendar WordPress plugin before 6.16.5.1 does not perform an authorization check on one of its Event Aggregator import REST API routes and skips an integrity check for a particular status value, allowing unauthenticated attackers to mark existing import records as failed and to store arbitrary content in a hidden comment record.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-27T07:16:24Z"

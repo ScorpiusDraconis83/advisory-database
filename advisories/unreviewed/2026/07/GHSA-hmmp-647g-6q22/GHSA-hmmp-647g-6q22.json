@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hmmp-647g-6q22",
+  "modified": "2026-07-27T15:32:31Z",
+  "published": "2026-07-27T15:32:31Z",
+  "aliases": [
+    "CVE-2026-10600"
+  ],
+  "details": "Mattermost versions 11.8.x <= 11.8.0, 11.7.x <= 11.7.3, 11.6.x <= 11.6.5, 10.11.x <= 10.11.20 fail to bound the time and resource consumption of server-side document content extraction which allows an authenticated user with file-upload permission to degrade file uploads for all users on the server via repeatedly uploading small documents that are cheap to upload but expensive to extract, saturating the shared extraction worker pool.. Mattermost Advisory ID: MMSA-2026-00694",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10600"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mattermost.com/security-updates"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-27T15:16:46Z"
+  }
+}

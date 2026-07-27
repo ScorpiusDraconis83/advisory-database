@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v365-26q9-f844",
-  "modified": "2026-07-27T09:31:25Z",
+  "modified": "2026-07-27T15:32:28Z",
   "published": "2026-07-27T09:31:25Z",
   "aliases": [
     "CVE-2026-13400"
   ],
   "details": "Simply Schedule Appointments is vulnerable to unauthenticated Stored Cross-Site Scripting in all versions up to and including 1.6.12.2. The root cause is a sanitization-ordering defect: the rendered notification content is decoded back into live HTML after it has already passed through the Simply Schedule Appointments WordPress plugin before 1.6.12.4's wp_kses_post() filter, so a double-encoded payload survives intake and is reintroduced as an executable element at render time.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-27T07:16:25Z"
