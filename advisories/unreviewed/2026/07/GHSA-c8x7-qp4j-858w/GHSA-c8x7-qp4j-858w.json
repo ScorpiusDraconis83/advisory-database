@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c8x7-qp4j-858w",
-  "modified": "2026-07-27T18:31:48Z",
+  "modified": "2026-07-27T21:31:21Z",
   "published": "2026-07-27T18:31:47Z",
   "aliases": [
     "CVE-2026-51298"
   ],
   "details": "sqlite 3.41 is vulnerable to use after free in the JSON extraction function. After releasing JsonParse object memory via jsonParseFree(), the program still accesses internal member of the freed pointer, which can cause service crash and denial of service.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-27T16:17:39Z"

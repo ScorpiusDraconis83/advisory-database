@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3frj-6745-gjx4",
+  "modified": "2026-07-27T21:31:26Z",
+  "published": "2026-07-27T21:31:26Z",
+  "aliases": [
+    "CVE-2026-64537"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbridge: cfm: reject invalid CCM interval at configuration time\n\nccm_tx_work_expired() re-arms itself via queue_delayed_work() using\nthe configured exp_interval converted by interval_to_us(). When\nexp_interval is BR_CFM_CCM_INTERVAL_NONE or out of range,\ninterval_to_us() returns 0, causing the worker to fire immediately in\na tight loop that allocates skbs until OOM.\n\nFix this by validating exp_interval at configuration time:\n\n - Constrain IFLA_BRIDGE_CFM_CC_CONFIG_EXP_INTERVAL to the valid range\n   [BR_CFM_CCM_INTERVAL_3_3_MS, BR_CFM_CCM_INTERVAL_10_MIN] in the\n   netlink policy so userspace cannot set an invalid value.\n\n - Reject starting CCM TX in br_cfm_cc_ccm_tx() when exp_interval has\n   not yet been configured (defaults to 0 from kzalloc).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64537"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2870056a78961e0fecd652362ee9d3fcfd24a8a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53788b134519e995699ea3721969c96a08d64575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/865643640b5b5c4579b32d7a55ac9ad648362eaa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a090880c1f544589427e5b7050c40fb211ccecb4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b42aeb58317f12024734759ff745856b53948873"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0f5eb59a97ece0d85de8cfa95dc18c609302a8b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f3e02edd8322b31b8e6517faa6ba053bf29d1e26"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-27T21:17:05Z"
+  }
+}

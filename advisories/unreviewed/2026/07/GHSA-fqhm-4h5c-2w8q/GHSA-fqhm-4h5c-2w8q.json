@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fqhm-4h5c-2w8q",
+  "modified": "2026-07-27T21:31:21Z",
+  "published": "2026-07-27T21:31:21Z",
+  "aliases": [
+    "CVE-2026-51244"
+  ],
+  "details": "schreibfaul1 ESP32-audioI2S 3.4.5 has a buffer overflow vulnerability in UnpackFrameHeader(). Multiple attacker-controlled index parameters are used to access static and heap table arrays without range limitation. Invalid index values lead to out-of-bounds memory writing and heap buffer overflow.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/programmervuln/cveadvisory-/blob/main/CVE-2026-51244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/schreibfaul1/ESP32-audioI2S/blob/master/src/mp3_decoder/mp3_decoder.cpp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-27T19:17:16Z"
+  }
+}
