@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c2pq-vc2r-qrj3",
-  "modified": "2026-07-27T09:31:25Z",
+  "modified": "2026-07-27T18:31:46Z",
   "published": "2026-07-27T09:31:25Z",
   "aliases": [
     "CVE-2026-12493"
   ],
   "details": "The Clover Payment Gateway by Zaytech for WooCommerce WordPress plugin before 1.3.6 does not verify that an approved external payment record actually belongs to the WooCommerce order being completed, nor that the paid amount matches the order total, allowing unauthenticated users to mark arbitrary orders as paid by replaying a single genuinely-approved payment reference (for example one obtained from their own minimal purchase).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-27T07:16:24Z"

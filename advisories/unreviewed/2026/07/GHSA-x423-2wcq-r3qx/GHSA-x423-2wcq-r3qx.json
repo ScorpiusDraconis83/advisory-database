@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-x423-2wcq-r3qx",
-  "modified": "2026-07-27T09:31:26Z",
+  "modified": "2026-07-27T18:31:47Z",
   "published": "2026-07-27T09:31:26Z",
   "aliases": [
     "CVE-2026-14827"
   ],
   "details": "The Calendar WordPress plugin before 1.3.18 does not properly escape a user-supplied event field before outputting it inside an HTML attribute on a public-facing page, allowing users with the Contributor role to inject arbitrary JavaScript that executes in the browser of anyone viewing the calendar.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-27T07:16:26Z"

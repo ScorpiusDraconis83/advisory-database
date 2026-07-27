@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w2f6-h8v8-pw69",
+  "modified": "2026-07-27T18:31:48Z",
+  "published": "2026-07-27T18:31:48Z",
+  "aliases": [
+    "CVE-2026-51304"
+  ],
+  "details": "sqlite 3.41 has a use-after-free (UAF) vulnerability in the ORDER BY clause parsing routine. The affected code first releases the memory of an ExprList object via sqlite3ExprListDelete(), then attempts to access the nExpr member of the already freed object. This dangling pointer access causes invalid memory read operations. By constructing a malicious SQL statement containing an ORDER BY clause with a large number of items, a remote adversary can trigger this vulnerability. Successful exploitation can result in application crash (denial of service), leakage of sensitive memory contents, and under certain memory layout conditions, arbitrary code execution on the affected system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/programmervuln/cveadvisory-/blob/main/CVE-2026-51304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sqlite/sqlite/blob/master/src/expr.c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-27T16:17:39Z"
+  }
+}

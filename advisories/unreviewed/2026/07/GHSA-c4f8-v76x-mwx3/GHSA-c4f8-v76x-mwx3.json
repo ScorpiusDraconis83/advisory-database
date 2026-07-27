@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c4f8-v76x-mwx3",
+  "modified": "2026-07-27T18:31:49Z",
+  "published": "2026-07-27T18:31:49Z",
+  "aliases": [
+    "CVE-2026-66398"
+  ],
+  "details": "phpMyFAQ before v4.1.6 contains a remote code execution vulnerability in the configuration API that allows authenticated administrators with CONFIGURATION_EDIT and ATTACHMENT_ADD privileges to write arbitrary PHP files by manipulating the upgrade.lastDownloadedPackage setting. Attackers can upload a malicious ZIP file as an attachment, point the updater configuration to its stored path, and extract it into the application root to achieve code execution as the web server user.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thorsten/phpMyFAQ/security/advisories/GHSA-4fv7-8rr6-rf2w"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66398"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/phpmyfaq-before-remote-code-execution-via-configuration-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-494"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-27T16:18:12Z"
+  }
+}

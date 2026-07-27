@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v886-3pxh-g3xp",
-  "modified": "2026-07-27T09:31:25Z",
+  "modified": "2026-07-27T18:31:46Z",
   "published": "2026-07-27T09:31:25Z",
   "aliases": [
     "CVE-2026-14189"
   ],
   "details": "The WPBot  WordPress plugin before 8.5.2 does not validate administrator-configured field identifiers before using them in a SQL query, allowing users with administrator access to perform SQL injection that executes when a visitor triggers a search.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-27T07:16:25Z"

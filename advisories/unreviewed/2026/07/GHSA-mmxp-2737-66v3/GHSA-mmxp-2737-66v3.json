@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mmxp-2737-66v3",
+  "modified": "2026-07-27T18:31:47Z",
+  "published": "2026-07-27T18:31:47Z",
+  "aliases": [
+    "CVE-2025-50455"
+  ],
+  "details": "SQL injection vulnerability exists in the order_by parameter of the /customers/search endpoint in Alex Tselegidis EasyAppointments <= 1.5.1. The vulnerability arises from unsanitized user input passed to the order_by method of the CodeIgniter Query Builder, enabling attackers to perform time-based queries and schema enumeration. Under certain MySQL configurations, the flaw may lead to remote code execution by writing a PHP shell using INTO OUTFILE.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-50455"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/threatlance-org/security-advisories/blob/main/CVE-2025-50455/advisory.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/threatlance-org/security-advisories/blob/main/CVE-2025-50455/poc.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.linkedin.com/posts/michael-chesang_cve-securityadvisory-appsec-activity-7360754900827365376-Z-IY"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-27T16:16:58Z"
+  }
+}
