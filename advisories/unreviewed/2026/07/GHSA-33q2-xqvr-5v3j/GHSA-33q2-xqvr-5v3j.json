@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-33q2-xqvr-5v3j",
-  "modified": "2026-07-25T12:31:34Z",
+  "modified": "2026-07-27T06:30:36Z",
   "published": "2026-07-25T12:31:34Z",
   "aliases": [
     "CVE-2026-64395"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: require source read access for duplicate extents\n\nFSCTL_DUPLICATE_EXTENTS_TO_FILE passes the source file directly to\nvfs_clone_file_range() or vfs_copy_file_range() without checking the SMB\naccess mask granted to the source handle. A handle opened with attribute\naccess can consequently be used to copy file contents into an\nattacker-readable destination.\n\nRequire FILE_READ_DATA on the source handle before either VFS operation,\nmatching other ksmbd data-copy paths.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:22Z"

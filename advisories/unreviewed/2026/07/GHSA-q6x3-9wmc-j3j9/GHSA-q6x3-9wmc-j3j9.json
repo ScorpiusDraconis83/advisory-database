@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-q6x3-9wmc-j3j9",
-  "modified": "2026-07-25T12:31:31Z",
+  "modified": "2026-07-27T06:30:32Z",
   "published": "2026-07-25T12:31:31Z",
   "aliases": [
     "CVE-2026-64315"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: caam - use print_hex_dump_devel to guard key hex dumps\n\nUse print_hex_dump_devel() for dumping sensitive key material in\n*_setkey() to avoid leaking secrets at runtime when CONFIG_DYNAMIC_DEBUG\nis enabled.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:12Z"

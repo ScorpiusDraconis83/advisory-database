@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gwmg-q555-3325",
-  "modified": "2026-07-25T12:31:35Z",
+  "modified": "2026-07-27T06:30:36Z",
   "published": "2026-07-25T12:31:35Z",
   "aliases": [
     "CVE-2026-64422"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ipv4: bound TCP reordering sysctl writes and MTU probe sizes\n\nReject invalid `net.ipv4.tcp_reordering` values before they reach TCP\nsocket state. The sysctl is stored as an `int` but copied into the\n`u32` `tp->reordering` field for new sockets, so negative writes wrap\nto large values.\n\nWith `tcp_mtu_probing=2`, the wrapped value can overflow the\n`tcp_mtu_probe()` size calculation and drive the MTU probing path into\nan out-of-bounds read. Route `tcp_reordering` writes through\n`proc_dointvec_minmax()` and require it to be at least 1. Also require\n`tcp_max_reordering` to be at least 1 so the configured maximum cannot\nbecome negative either.\n\nWhen registering the table for a non-init network namespace, relocate\n`extra2` pointers that refer into `init_net.ipv4` so the\n`tcp_reordering` upper bound follows that namespace's\n`tcp_max_reordering`.\n\nHarden `tcp_mtu_probe()` itself by computing `size_needed` as `u64`.\nThis keeps the send queue and window checks from being bypassed through\nsigned integer overflow.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:26Z"

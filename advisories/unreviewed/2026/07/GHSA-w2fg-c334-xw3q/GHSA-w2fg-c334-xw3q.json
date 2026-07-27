@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-w2fg-c334-xw3q",
-  "modified": "2026-07-25T12:31:34Z",
+  "modified": "2026-07-27T06:30:36Z",
   "published": "2026-07-25T12:31:34Z",
   "aliases": [
     "CVE-2026-64396"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix UAF of struct file_lock in SMB2_LOCK deferred-lock cancellation\n\nWhen a blocking byte-range lock request is deferred in the\nFILE_LOCK_DEFERRED path, ksmbd registers the asynchronous work into\nthe connection's async_requests list via setup_async_work(). The cancel\ncallback smb2_remove_blocked_lock() holds a reference to the flock.\n\nIf the lock waiter is subsequently woken up but the work state is no\nlonger KSMBD_WORK_ACTIVE (e.g., due to a concurrent cancellation), the\ncleanup path calls locks_free_lock(flock) without dequeuing the work from\nthe async_requests list. Concurrently, smb2_cancel() walks the list\nunder conn->request_lock and invokes the cancel callback, which then\ndereferences the already freed 'flock'. This leads to a slab-use-after-free\ninside __wake_up_common.\n\nFix this by restructuring the cleanup logic after the worker returns\nfrom ksmbd_vfs_posix_lock_wait(). Move list_del(&smb_lock->llist) and\nrelease_async_work(work) to the top of the cleanup block. This guarantees\nthat the async work is completely dequeued and serialized under\nconn->request_lock before locks_free_lock(flock) is called, rendering\nthe flock unreachable for any concurrent smb2_cancel().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:23Z"

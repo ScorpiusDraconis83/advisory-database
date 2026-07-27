@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-p7m6-q3fj-3f6g",
-  "modified": "2026-07-25T12:31:34Z",
+  "modified": "2026-07-27T06:30:36Z",
   "published": "2026-07-25T12:31:34Z",
   "aliases": [
     "CVE-2026-64414"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: handle unreadable frags\n\nsashiko reports:\n When an skb with unreadable fragments (such as from devmem TCP, where\n skb_frags_readable(skb) returns false) is processed by the u32 module,\n skb_copy_bits() will safely return a negative error code [..]\n\nxt_u32: bail out with hotdrop in this case.\ngather_frags: return -1, just as if we had no fragment header.\nnfnetlink_queue: restrict to the linear part.\nnfnetlink_log: restrict to the linear part.\n\nv2:\n - skb_zerocopy helpers don't copy readable flag, i.e. nfnetlink_queue\n is broken too\n xt_u32 shouldn't return true if hotdrop was set.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:25Z"

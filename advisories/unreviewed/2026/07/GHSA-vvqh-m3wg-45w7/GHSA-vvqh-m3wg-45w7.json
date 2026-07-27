@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vvqh-m3wg-45w7",
-  "modified": "2026-07-25T12:31:32Z",
+  "modified": "2026-07-27T06:30:33Z",
   "published": "2026-07-25T12:31:32Z",
   "aliases": [
     "CVE-2026-64355"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Reject fragmented frames in devmap\n\nDevmap broadcast redirects clone the packet for all but the last\ndestination.\n\nFor native XDP, that clone path copies only the linear xdp_frame data,\nwhile fragmented frames keep skb_shared_info in tailroom outside the\nlinear area. Cloning such a frame leaves XDP_FLAGS_HAS_FRAGS set but\nwithout valid frag metadata, and the later free path can interpret\nuninitialized tail data as skb_shared_info, leading to an out-of-bounds\naccess during frame return.\n\nReject fragmented native XDP frames in dev_map_enqueue_clone().\n\nAdd the same restriction to the generic XDP clone path in\ndev_map_redirect_clone(). Generic XDP represents fragmented packets as\nnonlinear skbs, and rejecting them here keeps clone-based broadcast\nsupport aligned between native and generic XDP.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:17Z"

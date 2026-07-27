@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gjfp-5cfr-xp55",
-  "modified": "2026-07-24T18:31:27Z",
+  "modified": "2026-07-27T06:30:30Z",
   "published": "2026-07-24T18:31:27Z",
   "aliases": [
     "CVE-2026-64219"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Validate payload length and link_index in dc_process_dmub_aux_transfer_async\n\n[Why&How]\ndc_process_dmub_aux_transfer_async() copies payload->length bytes into a\n16-byte stack buffer (dpaux.data[16]) guarded only by an ASSERT(), which\nis a no-op in release builds. If a caller ever passes length > 16 this\nresults in a stack buffer overflow via memcpy.\n\nAdditionally, link_index is used to dereference dc->links[] without\nbounds checking against dc->link_count, risking an out-of-bounds access.\n\nReplace the ASSERT with a hard runtime check that returns false when\npayload->length exceeds the destination buffer size, and add a bounds\ncheck for link_index before it is used.\n\n(cherry picked from commit ba4caa9fecdf7a38f98c878ad05a8a64148b6881)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T16:16:49Z"

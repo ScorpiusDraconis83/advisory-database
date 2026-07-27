@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pwg2-g943-8mr4",
-  "modified": "2026-07-25T12:31:32Z",
+  "modified": "2026-07-27T06:30:33Z",
   "published": "2026-07-25T12:31:32Z",
   "aliases": [
     "CVE-2026-64354"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Validate BTF repeated field counts before expansion\n\nbtf_parse_struct_metas() walks user-supplied BTF during BPF_BTF_LOAD,\nand btf_repeat_fields() expands repeatable fields from array elements\ninto the fixed BTF_FIELDS_MAX scratch array used by btf_parse_fields().\n\nThe remaining-capacity check performs the expanded field count calculation\nin u32. A malformed BTF can wrap that calculation, causing the check to\npass even when the expanded field count exceeds the scratch array\ncapacity. The following memcpy() can then write past the end of the\narray.\n\nUse checked addition and multiplication before copying repeated fields\nand reject impossible counts.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:17Z"

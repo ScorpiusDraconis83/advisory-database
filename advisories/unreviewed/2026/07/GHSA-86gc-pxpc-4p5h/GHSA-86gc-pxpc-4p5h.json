@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-86gc-pxpc-4p5h",
-  "modified": "2026-07-25T12:31:33Z",
+  "modified": "2026-07-27T06:30:34Z",
   "published": "2026-07-25T12:31:33Z",
   "aliases": [
     "CVE-2026-64380"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: harden POSIX SID length parsing\n\nposix_info_sid_size() reads sid[1] to obtain the subauthority count,\nbut its existing boundary check still accepts buffers with only one\nremaining byte. Require two bytes before reading sid[1] so all client\npaths that reuse the helper reject truncated POSIX SIDs safely.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:21Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-985w-mqgj-6gfr",
-  "modified": "2026-07-25T12:31:27Z",
+  "modified": "2026-07-27T06:30:31Z",
   "published": "2026-07-25T12:31:27Z",
   "aliases": [
     "CVE-2026-64260"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse-uring: Avoid queue->stopped races and set/read that value under lock\n\nThere are several readers of queue->stopped that check the value\nunder lock, but fuse_uring_commit_fetch() did not and actually\nthe value was not set under the lock in fuse_uring_abort_end_requests()\neither. Especially in fuse_uring_commit_fetch it is important\nto check under a lock, because due to races 'struct fuse_req'\nmight be freed with fuse_request_end, but another thread/cpu\nmight already do teardown work.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:06Z"

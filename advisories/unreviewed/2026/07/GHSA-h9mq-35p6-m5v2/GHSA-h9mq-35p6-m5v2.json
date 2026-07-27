@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-h9mq-35p6-m5v2",
-  "modified": "2026-07-24T18:31:26Z",
+  "modified": "2026-07-27T06:30:30Z",
   "published": "2026-07-24T18:31:26Z",
   "aliases": [
     "CVE-2026-64208"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto/krb5, rxrpc: Fix lack of pre-decrypt/pre-verify length checks\n\nChange the krb5 crypto library to provide facilities to precheck the length\nof the message about to be decrypted or verified.\n\nFix AF_RXRPC to make use of this to validate DATA packets secured with\nRxGK.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T16:16:48Z"

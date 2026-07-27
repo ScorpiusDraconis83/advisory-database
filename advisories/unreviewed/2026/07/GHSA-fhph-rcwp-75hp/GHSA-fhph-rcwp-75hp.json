@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fhph-rcwp-75hp",
-  "modified": "2026-07-25T12:31:33Z",
+  "modified": "2026-07-27T06:30:34Z",
   "published": "2026-07-25T12:31:33Z",
   "aliases": [
     "CVE-2026-64379"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: mask server-provided mode to 07777 in modefromsid\n\nWhen modefromsid is active, parse_dacl() applies the server-provided\nsub_auth[2] value from the NFS mode SID to cf_mode without masking to\n07777. Apply the correct masking, same as in the read path.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:21Z"

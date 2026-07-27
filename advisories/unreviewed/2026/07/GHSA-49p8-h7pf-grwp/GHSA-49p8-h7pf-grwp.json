@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-49p8-h7pf-grwp",
-  "modified": "2026-07-25T12:31:27Z",
+  "modified": "2026-07-27T06:30:31Z",
   "published": "2026-07-25T12:31:27Z",
   "aliases": [
     "CVE-2026-64261"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse-uring: Avoid use-after-free in fuse_uring_async_stop_queues\n\nfuse_uring_async_stop_queues() might run when the last reference\non ring->queue_refs was already dropped.\n\nIn order to avoid an early destruction a reference on struct fuse_conn\nis now taken before starting fuse_uring_async_stop_queues() and that\nreference is only released when that delayed work queue terminates.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:06Z"

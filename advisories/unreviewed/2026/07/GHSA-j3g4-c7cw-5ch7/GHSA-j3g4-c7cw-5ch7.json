@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j3g4-c7cw-5ch7",
-  "modified": "2026-07-25T12:31:33Z",
+  "modified": "2026-07-27T06:30:34Z",
   "published": "2026-07-25T12:31:33Z",
   "aliases": [
     "CVE-2026-64383"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix double-free in SMB2_flush() replay\n\nSMB2_flush() keeps its response buffer bookkeeping across replay\nattempts. If a replayable flush response is received and the retry then\nfails before cifs_send_recv() stores a replacement response, flush_exit\nwill free the stale response pointer a second time.\n\nReinitialize resp_buftype and rsp_iov at the top of the replay loop so\ncleanup only acts on response state produced by the current attempt.\nThis fixes a double-free without changing replay handling for successful\nrequests.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:21Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cfrm-7rjv-hj84",
-  "modified": "2026-07-25T12:31:27Z",
+  "modified": "2026-07-27T06:30:31Z",
   "published": "2026-07-25T12:31:27Z",
   "aliases": [
     "CVE-2026-64257"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: reject overlapping data areas in SMB2 responses\n\nCommit 53b7c271f06b (\"smb: client: restrict implied bcc[0] exemption to\nresponses without data area\") restricted the implied bcc[0] length\nexception to responses without a data area. However, the overlap\nhandling in __smb2_calc_size() clears data_length, which can make an\ninvalid response appear to have no data area and so qualify for the\nexception.\n\nTrack data area overlap separately and reject such responses before\napplying the length compatibility exceptions.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:05Z"

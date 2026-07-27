@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4mm9-h7gj-362g",
-  "modified": "2026-07-24T18:31:29Z",
+  "modified": "2026-07-27T06:30:30Z",
   "published": "2026-07-24T18:31:29Z",
   "aliases": [
     "CVE-2026-64251"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npwrseq: core: fix use-after-free in pwrseq_debugfs_seq_next()\n\npwrseq_debugfs_seq_next() declares 'next' with __free(put_device),\nwhich causes put_device() to be called on the returned pointer when\nthe variable goes out of scope.  This results in a use-after-free\nsince the seq_file framework receives a pointer whose reference has\nalready been dropped.\n\nSimply removing __free(put_device) would fix the UAF but would leak\nthe reference acquired by bus_find_next_device(), as stop() only\ncalls up_read(&pwrseq_sem) and never releases the device reference.\n\nFix this by making the reference counting consistent across all\nseq_file callbacks, matching the standard pattern used by PCI and\nSCSI:\n\n- start(): use get_device() so it returns a referenced pointer.\n- next(): explicitly put_device(curr) to release the previous\n  device's reference (no NULL check needed - the seq_file framework\n  only calls next() while the previous return was non-NULL).\n- stop(): put_device(data) to release the last iterated device's\n  reference, with a NULL guard since stop() may be called with NULL\n  when start() returned NULL or next() reached end-of-sequence.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T16:16:54Z"

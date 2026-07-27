@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-782q-hrc8-fp6w",
-  "modified": "2026-07-24T18:31:27Z",
+  "modified": "2026-07-27T06:30:30Z",
   "published": "2026-07-24T18:31:27Z",
   "aliases": [
     "CVE-2026-64217"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfs: Fix overrun check in netfs_extract_user_iter()\n\nFix netfs_extract_user_iter() so that if iov_iter_extract_pages() overfills\npages[], then those pages don't get included in the iterator constructed at\nthe end of the function.  If there was an overfill, memory corruption has\nalready happened.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T16:16:49Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7j4q-9mx8-7779",
-  "modified": "2026-07-25T12:31:28Z",
+  "modified": "2026-07-27T06:30:31Z",
   "published": "2026-07-25T12:31:28Z",
   "aliases": [
     "CVE-2026-64276"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: synaptics-rmi4 - bound the F30 keymap to the GPIO/LED count\n\nrmi_f30_map_gpios() allocates gpioled_key_map with\nmin(gpioled_count, TRACKSTICK_RANGE_END) == at most 6 entries, but\nrmi_f30_attention() iterates the full f30->gpioled_count (device query\nregister, range 0..31) and dereferences gpioled_key_map[i], and\ninput->keycodemax is set to the full gpioled_count while input->keycode\npoints at the 6-entry allocation.\n\nA device that reports gpioled_count > 6 with GPIO support enabled\ntherefore causes an out-of-bounds read on the attention interrupt and\nout-of-bounds read/write through the EVIOCGKEYCODE/EVIOCSKEYCODE ioctls,\nwhich bound the index only against keycodemax. This is the same defect\nas the F3A handler, which was copied from F30.\n\nSize the keymap for the full gpioled_count; the mapping loop still\nassigns only the first min(gpioled_count, TRACKSTICK_RANGE_END) entries.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:08Z"

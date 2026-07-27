@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-r5f9-v87x-9739",
-  "modified": "2026-07-25T12:31:34Z",
+  "modified": "2026-07-27T06:30:36Z",
   "published": "2026-07-25T12:31:34Z",
   "aliases": [
     "CVE-2026-64393"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: run set info with opener credentials\n\nSMB2 SET_INFO handlers call path-based VFS helpers after checking the\naccess mask granted to the SMB handle. Those helpers perform their owner,\ninode permission and LSM checks using the current ksmbd worker credentials.\n\nRun the complete SET_INFO dispatch with the credentials captured when the\nhandle was opened. This also removes the separate security information\ncredential setup and keeps all SET_INFO classes under one credential scope.\n\nDirect override_creds() is used because it can nest with the request\ncredential overrides already used by rename and link helpers.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:22Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mgrm-7xvj-2jr3",
-  "modified": "2026-07-25T12:31:35Z",
+  "modified": "2026-07-27T06:30:36Z",
   "published": "2026-07-25T12:31:34Z",
   "aliases": [
     "CVE-2026-64408"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: bnep: pin L2CAP connection during netdev registration\n\nbnep_add_connection() reads the L2CAP connection without holding the\nchannel lock, then passes its HCI device to register_netdev(). Controller\nteardown can clear and release that connection concurrently, leaving the\nnetwork device registration path to dereference a freed parent device.\n\nTake a reference to the L2CAP connection while holding the channel lock.\nRetain it until register_netdev() has taken the parent device reference.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:24Z"

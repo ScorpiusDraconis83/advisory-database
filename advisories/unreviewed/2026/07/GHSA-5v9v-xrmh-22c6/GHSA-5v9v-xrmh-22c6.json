@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5v9v-xrmh-22c6",
-  "modified": "2026-07-25T12:31:37Z",
+  "modified": "2026-07-27T06:30:40Z",
   "published": "2026-07-25T12:31:37Z",
   "aliases": [
     "CVE-2026-64485"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: compress: Fix task creation error unwind\n\nsnd_compr_task_new() allocates the driver task before validating the\nreturned DMA buffers and reserving file descriptors. When either of\nthose later steps fails, the core frees its task wrapper and DMA-buffer\nreferences without calling the driver's task_free() callback. Any\ndriver resources allocated by task_create() are therefore leaked.\n\nThe dual-fd allocation path also jumps to cleanup without storing the\nnegative get_unused_fd_flags() result in retval. Since retval still\ncontains the successful task_create() return value, TASK_CREATE can\nincorrectly report success although the task was discarded.\n\nPreserve the fd allocation errors and call task_free() when failure\noccurs after a successful task_create() callback.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:34Z"

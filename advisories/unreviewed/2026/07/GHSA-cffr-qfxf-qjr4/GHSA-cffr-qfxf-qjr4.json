@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cffr-qfxf-qjr4",
-  "modified": "2026-07-25T12:31:36Z",
+  "modified": "2026-07-27T06:30:38Z",
   "published": "2026-07-25T12:31:36Z",
   "aliases": [
     "CVE-2026-64443"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8723bs: fix OOB read in update_beacon_info() IE loop\n\nThe IE parsing loop in update_beacon_info() advances by\n(pIE->length + 2) each iteration but only guards on i < len.\nWhen a malicious AP sends a Beacon whose last IE has only one byte\nremaining in the frame (the element_id byte lands at len-1), the loop\nreads pIE->length from one byte past the allocated receive buffer.\n\nAdditionally, even when the header bytes are in bounds, pIE->length\nitself can extend the data window beyond len, passing a truncated IE\nto the handler functions.\n\nAdd two guards at the top of the loop body:\n  1. Break if fewer than sizeof(*pIE) bytes remain (can't read header).\n  2. Break if the IE's declared data extends past len.\n\nAlso replace i += (pIE->length + 2) with i += sizeof(*pIE) + pIE->length\nfor consistency with the sizeof(*pIE) guards added above.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:28Z"

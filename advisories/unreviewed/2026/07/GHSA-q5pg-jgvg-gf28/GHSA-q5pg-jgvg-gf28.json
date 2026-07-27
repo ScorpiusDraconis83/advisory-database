@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-q5pg-jgvg-gf28",
-  "modified": "2026-07-25T12:31:29Z",
+  "modified": "2026-07-27T06:30:31Z",
   "published": "2026-07-25T12:31:29Z",
   "aliases": [
     "CVE-2026-64279"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: core: fix adapter deregistration race\n\nAdapters can be looked up by their id using i2c_get_adapter() which\ntakes a reference to the embedded struct device.\n\nRemove the adapter from the IDR before tearing it down during\nderegistration (and on registration failure) to make sure its resources\nare not accessed after having been freed (e.g. the device name).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:08Z"

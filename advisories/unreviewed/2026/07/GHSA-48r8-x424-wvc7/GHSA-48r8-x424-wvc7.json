@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-48r8-x424-wvc7",
-  "modified": "2026-07-25T12:31:34Z",
+  "modified": "2026-07-27T06:30:36Z",
   "published": "2026-07-25T12:31:34Z",
   "aliases": [
     "CVE-2026-64413"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ebtables: zero chainstack array\n\nsashiko reports:\n looking at ebtables table\n translation, could a sparse cpu_possible_mask lead to an uninitialized pointer\n free?\n\n If cpu_possible_mask is sparse (for example, CPU 0 and CPU 2 are possible,\n but CPU 1 is not), the allocation loop skips CPU 1. If vmalloc_node() fails at\n CPU 2, the cleanup loop will blindly decrement and call vfree() on\n newinfo->chainstack[1].\n\nNot a real-world bug, such allocation isn't expected to fail\nin the first place.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:25Z"

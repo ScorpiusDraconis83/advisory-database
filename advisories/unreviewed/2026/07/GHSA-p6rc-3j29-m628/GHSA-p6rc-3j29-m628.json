@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-p6rc-3j29-m628",
-  "modified": "2026-07-25T12:31:39Z",
+  "modified": "2026-07-27T06:30:40Z",
   "published": "2026-07-25T12:31:39Z",
   "aliases": [
     "CVE-2026-64520"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_ffa: Bound PARTITION_INFO_GET_REGS copies\n\nThe register-based PARTITION_INFO_GET path trusted the firmware-provided\nindices when copying partition descriptors into the caller buffer.\nReject inconsistent counts or index progressions so the copy loop cannot\nwrite past the allocated array.\n\n(fixed cur_idx when exactly one descriptor in the first fragment)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:38Z"

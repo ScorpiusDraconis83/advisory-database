@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-83mf-wfc5-x4x3",
-  "modified": "2026-07-25T12:31:33Z",
+  "modified": "2026-07-27T06:30:35Z",
   "published": "2026-07-25T12:31:33Z",
   "aliases": [
     "CVE-2026-64391"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: use opener credentials for ADS I/O\n\nAlternate data streams are stored as xattrs. Unlike regular file I/O,\ntheir read and write paths therefore call VFS xattr helpers which recheck\ninode permissions and LSM policy using the current task credentials.\n\nRun ADS I/O with the credentials captured when the SMB handle was opened.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:22Z"

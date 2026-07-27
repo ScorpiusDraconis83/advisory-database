@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5wjw-79g3-g2x9",
-  "modified": "2026-07-25T12:31:31Z",
+  "modified": "2026-07-27T06:30:32Z",
   "published": "2026-07-25T12:31:31Z",
   "aliases": [
     "CVE-2026-64312"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: pcrypt - restore callback for non-parallel fallback\n\npcrypt installs pcrypt_aead_done() on the child AEAD request before\ntrying to submit it through padata.  If padata_do_parallel() returns\n-EBUSY, pcrypt falls back to calling the child AEAD directly.\n\nThat fallback must not keep the padata completion callback.  Otherwise\nan asynchronous completion runs pcrypt_aead_done() even though the\nrequest was never enrolled in padata.\n\nRestore the original request callback and callback data before calling\nthe child AEAD directly.  This keeps the fallback path aligned with a\ndirect AEAD request while leaving the parallel path unchanged.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:12Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cq4q-mqm3-8r2p",
-  "modified": "2026-07-25T12:31:34Z",
+  "modified": "2026-07-27T06:30:35Z",
   "published": "2026-07-25T12:31:34Z",
   "aliases": [
     "CVE-2026-64392"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: use opener credentials for delete-on-close\n\nDelete-on-close can be completed by deferred or durable handle teardown,\nwhere no request work is available. Both the base-file unlink and the ADS\nxattr removal consequently run with the ksmbd worker credentials and can\nbypass filesystem permission checks.\n\nRun both operations with the credentials captured in struct file when the\nhandle was opened. This preserves the authenticated user's fsuid, fsgid,\nsupplementary groups and capability restrictions at final close.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:22Z"
