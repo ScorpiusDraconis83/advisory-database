@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4r9r-4425-74p7",
+  "modified": "2026-07-28T14:50:25Z",
+  "published": "2026-07-28T14:50:25Z",
+  "aliases": [
+    "CVE-2026-55771"
+  ],
+  "summary": "Cedar-Java has policy injection, type confusion, and incorrect equality comparison vulnerabilities",
+  "details": "### Summary\n\nCedarJava is an open source Java implementation of the Cedar policy language, used for fine-grained authorization decisions. Under certain circumstances, it could lead to incorrect equality comparisons.\n\n### Impact\n\n**`EntityIdentifier.equals()` has inverted null/self branches**\n\nThe `EntityIdentifier.equals()` method has inverted logic for null and self-reference checks, returning true for null comparisons and false for self-comparisons. This does not affect Cedar authorization decisions (computed in Rust from JSON), but could affect integrators who perform their own equality checks on entity identifiers.\n\n### Impacted versions: \n< 4.9\n\n### Patches\nIt has been addressed in CedarJava version 4.9 and above. We recommend upgrading to the latest version and ensuring any forked or derivative code is patched to incorporate the new fixes.\n\n### Workarounds\nAvoid relying on `EntityIdentifier.equals()` for security-sensitive comparisons until upgraded to version `4.9`.\n\n### References\nIf you have any questions or comments about this advisory, Cedar asks that you contact us directly via email to [cedar-policy-security@lists.cncf.io](mailto:cedar-policy-security@lists.cncf.io). Please do not create a public GitHub issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.cedarpolicy:cedar-java"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.3.6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.cedarpolicy:cedar-java"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.1.2"
+            },
+            {
+              "fixed": "3.4.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.cedarpolicy:cedar-java"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.9.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/cedar-policy/cedar-java/security/advisories/GHSA-4r9r-4425-74p7"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55771"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/cedar-policy/cedar-java"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94",
+      "CWE-697",
+      "CWE-843"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-28T14:50:25Z",
+    "nvd_published_at": "2026-07-13T20:16:48Z"
+  }
+}
