@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m6x4-f6j4-9qq6",
+  "modified": "2026-07-28T00:31:02Z",
+  "published": "2026-07-28T00:31:02Z",
+  "aliases": [
+    "CVE-2026-59240"
+  ],
+  "details": "The vulnerability involves an Insecure Direct Object Reference (IDOR) in the `DeleteNotificationController::delete()` method at endpoint `GET /notification/delete/{id}`. The flaw allows any authenticated user, regardless of company or permissions, to delete notifications belonging to any other user in the system. The controller retrieves the target record with `Notification::findOrFail($id)` and deletes it without validating `user_id` or `company_id` ownership, unlike the sibling `SetNotificationReadAjaxController`, which correctly scopes lookups by `Auth::id()`. Because notification identifiers are sequential, an attacker can iterate over IDs to systematically delete notifications belonging to any user, denying them visibility of ticket alerts, task assignments, and other system events.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59240"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/commit/eaee2ae018701d116164976cbfa37fa9294ab4cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/releases/tag/v5.5.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://secur0.com/en/cna/cve-list/cve-2026-59240-idor-in-prospero-flow-crm-allows-deletion-of-other-users-notifications"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-27T22:17:54Z"
+  }
+}
