@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cgxr-m8cj-3q4w",
+  "modified": "2026-07-28T15:32:17Z",
+  "published": "2026-07-28T15:32:17Z",
+  "aliases": [
+    "CVE-2026-66920"
+  ],
+  "details": "Pivotick contains an uncontrolled-recursion vulnerability when processing caller-supplied graph and node data. The affected graph algorithms recursively traversed graph edges, while the JSON viewer recursively processed each level of a node’s data structure. A specially crafted graph containing an excessively long path, deeply nested properties, or circular object references could therefore exhaust the JavaScript call stack when Pivotick calculates a layout or displays a node in the inspection modal.\n\nSuccessful exploitation may cause an uncaught exception, freeze the affected page, or crash the browser tab, resulting in a client-side denial of service. No confidentiality or integrity impact has been identified.\n\nThe patch replaces the recursive graph traversals with iterative stack-based implementations and limits the reachability calculation to 1,000,000 edge traversals. It also limits JSON rendering to 64 levels and detects circular references before descending further into an object.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:N/VA:H/SC:N/SI:N/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66920"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Pivotick/Pivotick/commit/66373141eb7892fc29a3b42cfb2c160af16765fe"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T13:19:07Z"
+  }
+}

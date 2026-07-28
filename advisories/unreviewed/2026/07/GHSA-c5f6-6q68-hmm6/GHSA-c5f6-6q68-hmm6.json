@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c5f6-6q68-hmm6",
-  "modified": "2026-07-28T09:31:28Z",
+  "modified": "2026-07-28T15:32:11Z",
   "published": "2026-07-28T09:31:28Z",
   "aliases": [
     "CVE-2026-14819"
   ],
   "details": "The Event Tickets and Registration WordPress plugin before 5.28.4 does not properly escape event titles before outputting them in a ticket history log, allowing users with the Editor role and above to perform Stored Cross-Site Scripting attacks that execute against higher-privileged users on multisite installations.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-28T07:16:41Z"

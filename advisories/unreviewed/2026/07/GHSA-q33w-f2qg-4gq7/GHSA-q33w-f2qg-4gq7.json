@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q33w-f2qg-4gq7",
+  "modified": "2026-07-28T15:32:19Z",
+  "published": "2026-07-28T15:32:19Z",
+  "aliases": [
+    "CVE-2026-67174"
+  ],
+  "details": "Pivotick contains a DOM-based cross-site scripting vulnerability in its generic UI element resolution and icon-rendering utilities.\n\nThe tryResolveHTMLElement function treated any resolved string as HTML markup by assigning it to a <template> element through innerHTML. Strings derived from untrusted graph properties or custom rendering callbacks could therefore introduce arbitrary HTML or SVG elements into the live document. The vulnerable function was used by multiple UI components, including headers, property panels, extra panels, and tooltips.\n\nAdditionally, createIcon inserted caller-supplied svgIcon markup into a template without sanitization. An application integrating Pivotick and deriving icon markup from untrusted data could therefore expose a second script-execution path.\n\nAn unauthenticated attacker able to provide a crafted graph, property value, rendering result, or SVG icon could execute JavaScript in another user's browser when the affected content is displayed or interacted with. Successful exploitation could allow the attacker to access information available to the victim, manipulate graph data or application state, and perform actions with the victim's privileges.\n\nThe patch changes string rendering to use textContent, requiring callers to explicitly return an Element when HTML rendering is intended. It also sanitizes SVG icon markup before inserting it into the DOM.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:L/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Pivotick/Pivotick/commit/67c597cdf7f6910f97a4c73905a7b845e0d039f1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T15:17:51Z"
+  }
+}

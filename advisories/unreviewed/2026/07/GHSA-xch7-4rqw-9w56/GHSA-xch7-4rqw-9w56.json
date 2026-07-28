@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xch7-4rqw-9w56",
-  "modified": "2026-07-28T09:31:28Z",
+  "modified": "2026-07-28T15:32:12Z",
   "published": "2026-07-28T09:31:28Z",
   "aliases": [
     "CVE-2026-14926"
   ],
   "details": "The FluentCart A New Era of eCommerce  WordPress plugin before 1.4.0 does not verify that a subscription belongs to the requesting customer in several of its payment-method endpoints, allowing any authenticated customer to act on another customer's subscription (changing its payment method, or cancelling and re-binding it) when they know the target subscription identifier.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-28T07:16:41Z"

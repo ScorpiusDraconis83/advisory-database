@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5rvw-g8r8-hfmx",
+  "modified": "2026-07-28T15:32:17Z",
+  "published": "2026-07-28T15:32:17Z",
+  "aliases": [
+    "CVE-2026-42495"
+  ],
+  "details": "[This CNA information record relates to multiple CVEs; the\ntext explains which aspects/vulnerabilities correspond to which CVE.]\n\nThe directory and Rock Ridge / SUSP walk in libfsimage's iso9660 driver\nderives several lengths directly from attacker-controlled on-disk fields\nwithout validating them:\n\n * The directory loop itself assumes a good record length.  This is\n   CVE-2026-42494.\n\n * The calculation of the System Use area may underflow.  This is\n   CVE-2026-42495.\n\n * The Rock Ridge extension loop assumes a good (inner) record length.\n   This is CVE-2026-62423.\n\n * The Rock Ridge NM record processing assumes a good entry length.\n   This is CVE-2026-62424.\n\n * The Rock Ridge CE record processing assumes a good size and offset.\n   This is CVE-2026-62425.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42495"
+    },
+    {
+      "type": "WEB",
+      "url": "https://xenbits.xenproject.org/xsa/advisory-497.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T13:18:32Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2hv5-3qjg-gjqr",
+  "modified": "2026-07-28T15:32:17Z",
+  "published": "2026-07-28T15:32:17Z",
+  "aliases": [
+    "CVE-2026-42492"
+  ],
+  "details": "Xenstore, to have an up-to-date picture of the entire system, wants to\nknow of domains appearing and disappearing.  To make this more robust, a\nnew XEN_DOMCTL_get_domain_state was introduced.  The management of the\nbitmap underlying that operation is tied into the binding of the\nVIRQ_DOM_EXC virtual IRQ.  Unfortunately an error path there would tear\ndown the bitmap even in cases when it wasn't set up.  Unprivileged domains\ncan trigger that error path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42492"
+    },
+    {
+      "type": "WEB",
+      "url": "https://xenbits.xenproject.org/xsa/advisory-496.html"
+    },
+    {
+      "type": "WEB",
+      "url": "http://xenbits.xen.org/xsa/advisory-496.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T13:18:32Z"
+  }
+}

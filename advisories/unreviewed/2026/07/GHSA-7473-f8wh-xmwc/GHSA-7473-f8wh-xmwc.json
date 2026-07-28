@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7473-f8wh-xmwc",
+  "modified": "2026-07-28T15:32:17Z",
+  "published": "2026-07-28T15:32:17Z",
+  "aliases": [
+    "CVE-2026-66919"
+  ],
+  "details": "Pivotick contains a cross-site scripting vulnerability in the inspect and edit node modals. Node labels and descriptions originating from graph data were interpolated directly into HTML used to construct the modal headers.\n\nAn attacker able to supply or modify graph data could insert a malicious HTML or JavaScript payload into a node’s label or description. The payload would be parsed and executed in the application’s origin when a user opened the affected node’s inspect or edit modal.\n\nSuccessful exploitation could allow the attacker to access information available to the victim, modify application data, or perform actions using the victim’s active session.\n\nThe vulnerability has been addressed by creating the modal elements without embedding graph data in HTML and assigning node labels and descriptions through textContent.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66919"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Pivotick/Pivotick/commit/71d72d59234c65c423cb8d45eaa291a7b2a9b5e1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T13:19:06Z"
+  }
+}

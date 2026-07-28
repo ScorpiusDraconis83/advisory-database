@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vx7v-g6x3-qh2m",
+  "modified": "2026-07-28T15:32:17Z",
+  "published": "2026-07-28T15:32:17Z",
+  "aliases": [
+    "CVE-2026-66921"
+  ],
+  "details": "Pivotick’s Markdown node-reference renderer failed to HTML-escape the attacker-controlled nodeName value before interpolating it into both the data-node-name attribute and the body of a generated <span> element.\n\nBecause the node-reference tokenizer rejected only square brackets, a crafted node name could still contain quotation marks, angle brackets, or other HTML metacharacters. An attacker could therefore terminate the quoted attribute or inject additional HTML elements and event-handler attributes.\n\nWhen malicious node-reference content is rendered by a consumer that does not apply DOMPurify or equivalent sanitization, arbitrary JavaScript may execute in the victim’s browser in the security context of the application. Successful exploitation requires a victim to open or render a crafted graph or note and could allow the attacker to access same-origin information, modify displayed content, or perform actions using the victim’s session.\n\nThe patch resolves the issue by applying context-appropriate HTML escaping to node names before inserting them into either HTML text or quoted attribute values. The shared escaping function now encodes ampersands, angle brackets, and both types of quotation marks.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:L/VI:L/VA:N/SC:N/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66921"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Pivotick/Pivotick/commit/4c13ff2b0ec769881b5526feddef37c0c5a08885"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T14:16:40Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w4qm-qcx6-wmw8",
+  "modified": "2026-07-28T15:32:17Z",
+  "published": "2026-07-28T15:32:17Z",
+  "aliases": [
+    "CVE-2026-62430"
+  ],
+  "details": "Accesses to the CMOS memory contents are done using an indirect IO port\npair.  Therefore Xen needs to cache the guest chosen index, and one of\nthe usages of the index didn't take the necessary locking to avoid\nconcurrent changes.  As a result, a guest could change the index after\nit being checked, causing a subsequent out-of-bound read access to the\ncontents of an array.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62430"
+    },
+    {
+      "type": "WEB",
+      "url": "https://xenbits.xenproject.org/xsa/advisory-503.html"
+    },
+    {
+      "type": "WEB",
+      "url": "http://xenbits.xen.org/xsa/advisory-503.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T13:19:01Z"
+  }
+}
