@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6h35-9p2w-3j3r",
-  "modified": "2026-06-08T03:47:24Z",
+  "modified": "2026-07-28T20:54:00Z",
   "published": "2026-06-08T03:47:24Z",
   "aliases": [
     "CVE-2026-11479"
   ],
+  "summary": "grepai Uses a Broken or Risky Cryptographic Algorithm",
   "details": "A vulnerability has been found in yoanbernabeu grepai 0.35.0. This issue affects some unknown processing of the file indexer/chunker.go of the component Qdrant Backend. Such manipulation leads to use of weak hash. The attack may be performed from remote. Attacks of this nature are highly complex. The exploitability is assessed as difficult. The exploit has been disclosed to the public and may be used. The pull request to fix this issue awaits acceptance.",
   "severity": [
     {
@@ -14,10 +15,30 @@
     },
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:P"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/yoanbernabeu/grepai"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.35.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -32,7 +53,7 @@
       "url": "https://github.com/yoanbernabeu/grepai/pull/248"
     },
     {
-      "type": "WEB",
+      "type": "PACKAGE",
       "url": "https://github.com/yoanbernabeu/grepai"
     },
     {
@@ -57,8 +78,8 @@
       "CWE-327"
     ],
     "severity": "LOW",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-28T20:54:00Z",
     "nvd_published_at": "2026-06-08T03:16:20Z"
   }
 }
