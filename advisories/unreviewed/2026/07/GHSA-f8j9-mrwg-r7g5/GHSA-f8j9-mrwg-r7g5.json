@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f8j9-mrwg-r7g5",
-  "modified": "2026-07-28T15:32:17Z",
+  "modified": "2026-07-28T18:33:02Z",
   "published": "2026-07-28T15:32:17Z",
   "aliases": [
     "CVE-2026-62426"
   ],
   "details": "[This CNA information record relates to multiple CVEs; the\ntext explains which aspects/vulnerabilities correspond to which CVE.]\n\nTo manage the system, sysctl and platform operations are used by the\ncontrol domain or a possible Xenstore domain.  Some of these operations\nmay not be executed in parallel, so a system-wide lock each is used.\nThe way those locks are acquired is, however, not providing any fairness.\nFurthermore, with XSM/Flask in use, the lock acquire will, for some\noperations, occur ahead of any permission checking.\n\nThe sysctl issue is CVE-2026-62426.\n\nThe platform-op issue is CVE-2026-62427.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-412"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-28T13:19:01Z"

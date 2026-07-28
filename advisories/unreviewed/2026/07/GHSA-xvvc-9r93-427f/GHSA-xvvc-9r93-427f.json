@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xvvc-9r93-427f",
-  "modified": "2026-07-28T00:31:01Z",
+  "modified": "2026-07-28T18:32:55Z",
   "published": "2026-07-28T00:31:01Z",
   "aliases": [
     "CVE-2021-32084"
   ],
   "details": "An issue was discovered in Quest KACE Systems Deployment Appliance (SMA) 11.0.273. If a customer restricts access to the web console by IP address or subnets, the API endpoints are not restricted. If credentials/API keys are known to an attacker, the appliance can still be accessed via the API, leading to a potential compromise of the entire environment that is configured for KACE.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-27T22:16:56Z"

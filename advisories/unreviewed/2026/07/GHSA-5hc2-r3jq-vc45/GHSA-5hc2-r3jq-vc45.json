@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5hc2-r3jq-vc45",
+  "modified": "2026-07-28T18:33:03Z",
+  "published": "2026-07-28T18:33:03Z",
+  "aliases": [
+    "CVE-2026-66752"
+  ],
+  "details": "tiny-http through 0.12.0 contains an HTTP request smuggling vulnerability that allows remote attackers to desynchronize request framing by sending a Transfer-Encoding header with any value, including non-chunked codings, which causes the library to unconditionally apply chunk-decoding and discard Content-Length. Attackers can exploit the discrepancy between tiny_http's improper Transfer-Encoding parsing and a correctly-implemented front-end proxy to produce two distinct interpretations of a single byte stream, enabling request smuggling, and can additionally send non-chunked bodies with non-chunked Transfer-Encoding values to cause failed body reads that tie up connections and consume worker threads without signaling errors to clients.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66752"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/theopaid/HTTP-Request-Smuggling-via-Unparsed-Transfer-Encoding-Values-tiny_http-/tree/master"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/tiny-http-http-request-smuggling-via-transfer-encoding-handling"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-444"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T16:20:16Z"
+  }
+}

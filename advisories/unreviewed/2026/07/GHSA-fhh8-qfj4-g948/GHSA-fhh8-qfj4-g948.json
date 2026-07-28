@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fhh8-qfj4-g948",
-  "modified": "2026-07-28T15:32:19Z",
+  "modified": "2026-07-28T18:33:02Z",
   "published": "2026-07-28T15:32:19Z",
   "aliases": [
     "CVE-2026-66713"
   ],
   "details": "Deserialization of Untrusted Data (CWE-502) in the Tribes-based clustering component\n\n  in Apache Software Foundation Apache Axis2/Java through 2.0.0 on Apache Tomcat\n\n  (only when Tribes clustering is enabled, which is off by default) allows an\n\n  unauthenticated remote attacker with network access to the clustering port to\n\n  execute arbitrary code via a crafted serialized Java object delivered to the cluster\n\n  channel and deserialized in\n\n  org.apache.axis2.clustering.tribes.Axis2ChannelListener#messageReceived. Users are\n\n  recommended to upgrade to version 2.0.1, which fixes this issue by removing the\n\n  clustering feature entirely.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -21,13 +26,17 @@
     {
       "type": "WEB",
       "url": "https://lists.apache.org/thread/fgggbv3sjjqw7p6q0j88gspt9b2rb728"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/28/2"
     }
   ],
   "database_specific": {
     "cwe_ids": [
       "CWE-502"
     ],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-28T15:17:50Z"

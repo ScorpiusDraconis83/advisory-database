@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ggph-9w4x-rf98",
+  "modified": "2026-07-28T18:33:04Z",
+  "published": "2026-07-28T18:33:04Z",
+  "aliases": [
+    "CVE-2026-51275"
+  ],
+  "details": "In schreibfaul1 ESP32-audioI2S 3.4.5, a heap-based buffer overflow in the ID3v2 APIC frame parsing function in audiolib allows remote attackers to execute arbitrary code or cause a denial of service (crash) via a crafted MP3 file. The vulnerability exists due to missing length validation when processing the APIC frame size field, leading to an out-of-bounds memory write.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51275"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/programmervuln/cveadvisory-/blob/main/CVE-2026-51275"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/schreibfaul1/ESP32-audioI2S/blob/master/src/Audio.cpp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T17:16:46Z"
+  }
+}

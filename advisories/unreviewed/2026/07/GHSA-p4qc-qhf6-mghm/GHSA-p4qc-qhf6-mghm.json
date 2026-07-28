@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p4qc-qhf6-mghm",
+  "modified": "2026-07-28T18:33:02Z",
+  "published": "2026-07-28T18:33:02Z",
+  "aliases": [
+    "CVE-2026-51266"
+  ],
+  "details": "schreibfaul1 ESP32-audioI2S 3.4.5 has a heap-based buffer overflow vulnerability in the HTTP request header construction logic. The application dynamically splices attacker-controlled host name, path, query string, and multiple HTTP header fields into a fixed ps_ptr heap buffer without proper size limitation and boundary validation. Remote attackers can use an oversized crafted network request parameter to trigger out-of-bounds heap write, leading to arbitrary code execution.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51266"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/programmervuln/cveadvisory-/blob/main/CVE-2026-51266"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/schreibfaul1/ESP32-audioI2S/blob/master/src/Audio.cpp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T16:18:50Z"
+  }
+}

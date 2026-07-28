@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5h6h-pp43-x3rj",
-  "modified": "2026-07-28T00:31:01Z",
+  "modified": "2026-07-28T18:32:55Z",
   "published": "2026-07-28T00:31:01Z",
   "aliases": [
     "CVE-2021-32086"
   ],
   "details": "An issue was discovered in Quest KACE Systems Deployment Appliance (SMA) 11.0.273. It uses a hardcoded symmetric encryption key to encrypt secrets in the MySQL databases. (This key is not unique for each installation.) An attacker that gains access to the MySQL server or a backup files can decrypt the secrets. Often, the decrypted secrets can be used to escalate privileges within KACE, or gain privileged access to unrelated systems or services.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-321"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-27T22:16:57Z"

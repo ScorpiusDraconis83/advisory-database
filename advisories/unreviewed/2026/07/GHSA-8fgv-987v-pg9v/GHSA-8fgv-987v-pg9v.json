@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8fgv-987v-pg9v",
-  "modified": "2026-07-28T15:32:17Z",
+  "modified": "2026-07-28T18:33:02Z",
   "published": "2026-07-28T15:32:17Z",
   "aliases": [
     "CVE-2026-62429"
   ],
   "details": "Accessing the vNUMA configuration data of a guest is still possible when\ndomain destruction has already started.  The cleaning up of that\nconfiguration information is not synchronized with its retrieval by a\ndevice model controlling the guest.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,12 +25,18 @@
     },
     {
       "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/28/18"
+    },
+    {
+      "type": "WEB",
       "url": "http://xenbits.xen.org/xsa/advisory-502.html"
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-28T13:19:01Z"

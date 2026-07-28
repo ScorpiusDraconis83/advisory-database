@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3x42-qh3f-f9p5",
+  "modified": "2026-07-28T18:33:02Z",
+  "published": "2026-07-28T18:33:02Z",
+  "aliases": [
+    "CVE-2026-51270"
+  ],
+  "details": "schreibfaul1 ESP32-audioI2S 3.4.5 has a heap-based buffer overflow vulnerability in the htmlToUTF8() HTML entity decoding function. The function parses attacker-controlled malicious HTML entities and uses memmove and memcpy to rearrange string content without validating buffer remaining size and boundary limits. Crafted oversized HTML entity strings can trigger heap out-of-bounds write, allowing remote code execution, memory information leakage, service crash or privilege escalation.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/programmervuln/cveadvisory-/blob/main/CVE-2026-51270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/schreibfaul1/ESP32-audioI2S/blob/master/src/Audio.cpp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T16:18:50Z"
+  }
+}
