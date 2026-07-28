@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4p37-mx5p-f6gr",
+  "modified": "2026-07-28T09:31:28Z",
+  "published": "2026-07-28T09:31:28Z",
+  "aliases": [
+    "CVE-2026-15012"
+  ],
+  "details": "The Demi – One Click Demo Import, WP Backup & Site Migration plugin for WordPress is vulnerable to Arbitrary Directory Copy in all versions up to, and including, 0.0.8 via the handle_restore_step function. This is due to missing HTTP access controls on the wp-content/uploads/demi-backup-state/ directory, which exposes the cryptographic restore key used to both authenticate the unauthenticated AJAX handler and forge signed restore-state envelopes. This makes it possible for unauthenticated attackers to copy arbitrary files to attacker-controlled destinations on the server. An active restore operation must have been initiated, which writes the .restore_key and .restore_step_token files to the public upload directory, before the exposed secrets can be harvested and chained to achieve unauthenticated arbitrary file copy.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15012"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/demi-backup-migration/tags/0.0.6/classes/Import/Manager.php#L287"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/demi-backup-migration/tags/0.0.6/classes/Import/Manager.php#L460"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/demi-backup-migration/tags/0.0.6/classes/Import/Manager.php#L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/demi-backup-migration/tags/0.0.6/classes/Import/Tasks/RestoreFiles.php#L168"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/demi-backup-migration/tags/0.0.6/includes/helper-functions.php#L55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/demi-backup-migration/trunk/classes/Import/Manager.php#L287"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/demi-backup-migration/trunk/classes/Import/Manager.php#L460"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/demi-backup-migration/trunk/classes/Import/Manager.php#L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/demi-backup-migration/trunk/classes/Import/Tasks/RestoreFiles.php#L168"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/demi-backup-migration/trunk/includes/helper-functions.php#L55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3616690%40demi-backup-migration&new=3616690%40demi-backup-migration"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/61ee1857-aa85-4d37-a347-a1f59c95cbff?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T07:16:41Z"
+  }
+}

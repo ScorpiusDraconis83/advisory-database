@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h976-4r88-23hx",
+  "modified": "2026-07-28T09:31:28Z",
+  "published": "2026-07-28T09:31:28Z",
+  "aliases": [
+    "CVE-2026-6251"
+  ],
+  "details": "The Chaty Pro plugin for WordPress is vulnerable to Authenticated Time-Based Blind SQL Injection in versions up to and including 3.5.5. This is due to the fetch_custom_field() function in admin/class-admin-base.php retrieving the widget_id POST parameter via filter_input(INPUT_POST, ...) and directly concatenating the value into a raw SQL query in a numeric context without using $wpdb->prepare() or any integer casting. Additionally, the nonce verification check is performed after the SQL query has already executed, providing no protection against the injection. This makes it possible for authenticated attackers with subscriber-level access and above to inject arbitrary SQL commands, potentially leading to unauthorized extraction of sensitive database contents including user credentials and configuration data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/chaty-pro/tags/3.5.0/admin/class-admin-base.php#L3623"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/chaty-pro/tags/3.5.0/admin/class-admin-base.php#L3626"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/chaty-pro/trunk/admin/class-admin-base.php#L3623"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/chaty-pro/trunk/admin/class-admin-base.php#L3626"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/582fa92d-8e52-49a9-94ce-f1b49229f591?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T07:16:42Z"
+  }
+}
