@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rghc-64r6-9px3",
+  "modified": "2026-07-28T21:31:31Z",
+  "published": "2026-07-28T21:31:31Z",
+  "aliases": [
+    "CVE-2026-15992"
+  ],
+  "details": "The WP Password Policy plugin for WordPress is vulnerable to Privilege Escalation in all versions up to and including 3.7.1. This is due to missing authorization checks and nonce verification in the `get_user()` function of the `Module_Password_Hint` class, which unconditionally calls `WP_User::set_role()` with the attacker-supplied `role` parameter on any account resolved via `$_POST['user_login']`, without confirming the requesting user holds the capability to assign roles. This makes it possible for authenticated attackers, with subscriber-level access and above, to escalate their own privileges to Administrator by submitting a crafted POST request — with `action` set to `createuser` and `role` set to `administrator` — to the password-reset form endpoint. The vulnerable code path is reachable via the `password_hint` filter hooked during the WordPress password-reset form render, meaning an attacker need only possess a valid password-reset cookie to reach the sink.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15992"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/password-requirements/tags/3.7.1/src/modules/password-hint/class-module-password-hint.php#L39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/password-requirements/tags/3.7.1/src/modules/password-hint/class-module-password-hint.php#L54"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4ad5ca1c-b8c3-42c0-8170-821ada826cbb?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T19:17:31Z"
+  }
+}

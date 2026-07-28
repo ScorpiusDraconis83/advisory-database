@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-48r5-qhcj-7g87",
+  "modified": "2026-07-28T21:31:33Z",
+  "published": "2026-07-28T21:31:33Z",
+  "aliases": [
+    "CVE-2026-66745"
+  ],
+  "details": "Artica Proxy before 4.50.000000 Service Pack 7 (fixed in hotfix 20260724-02) contains a session fixation vulnerability that allows unauthenticated attackers to hijack administrative sessions by setting a known PHPSESSID on a victim's browser prior to authentication. Attackers can pre-set a controlled session identifier and wait for a victim to authenticate through fw.login.php, after which the attacker gains a fully authenticated administrative session on port 9000.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66745"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wiki.articatech.com/maintenance/upgrade-artica/hotfix-450000000"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.articatech.com/hotfixes.php?main=4.50.000000&sp=7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/artica-proxy-session-fixation-via-fw-login-php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-28T19:17:41Z"
+  }
+}

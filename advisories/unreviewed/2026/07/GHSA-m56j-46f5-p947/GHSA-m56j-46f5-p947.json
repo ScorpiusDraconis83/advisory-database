@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m56j-46f5-p947",
-  "modified": "2026-07-28T15:32:17Z",
+  "modified": "2026-07-28T21:31:30Z",
   "published": "2026-07-28T15:32:17Z",
   "aliases": [
     "CVE-2026-51254"
   ],
   "details": "schreibfaul1 ESP32-audioI2S v3.4.5 has an integer underflow vulnerability in the MP3Decoder::GetBits() function of the MP3 decoder due to unchecked bit reading operations. The lack of validation on the nBits parameter causes the cachedBits counter to underflow to negative values, leading to invalid bit manipulation, incorrect bitstream parsing, application crash, or arbitrary code execution via a specially crafted MP3 file.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-28T15:17:16Z"
