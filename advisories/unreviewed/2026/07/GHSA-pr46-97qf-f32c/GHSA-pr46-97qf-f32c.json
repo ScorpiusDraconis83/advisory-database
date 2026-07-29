@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pr46-97qf-f32c",
+  "modified": "2026-07-29T15:31:12Z",
+  "published": "2026-07-29T15:31:12Z",
+  "aliases": [
+    "CVE-2026-67217"
+  ],
+  "details": "cJSON through 1.7.19 applies RFC 6902 JSON Patch operations non-atomically in apply_patch() in cJSON_Utils.c. For a replace operation that is missing its value member, or a move operation whose destination path cannot be resolved, the existing target member is detached and deleted before the operation is fully validated, so the target document is mutated while cJSONUtils_ApplyPatches() or cJSONUtils_ApplyPatchesCaseSensitive() returns a failure status. An attacker who can supply the patch document can destroy addressable members of the target document even though the API reports that the patch failed, defeating the all-or-nothing behavior callers rely on to reject bad patches.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/DaveGamble/cJSON/blob/v1.7.19/cJSON_Utils.c#L887-L948"
+    },
+    {
+      "type": "WEB",
+      "url": "https://joshua.hu/cjson-json-parser-cve-vulnerabilities"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cjson-json-patch-non-atomic-application-destroys-data-before-validation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-696"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-29T14:16:35Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fj8r-hgww-qgmw",
-  "modified": "2026-07-29T09:31:26Z",
+  "modified": "2026-07-29T15:31:10Z",
   "published": "2026-07-29T09:31:26Z",
   "aliases": [
     "CVE-2026-11974"
   ],
   "details": "The wp-media-folder-addon WordPress plugin through 4.1.6 does not validate a user-supplied parameter before using it in a file read operation in two AJAX actions available to unauthenticated users, leading to Arbitrary File Disclosure and Server-Side Request Forgery on sites where a cloud storage connection has been configured. This is an incomplete fix of CVE-2026-9690, whose patch hardened only one of the affected cloud-storage handlers and left the others unpatched.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-29T07:16:41Z"
