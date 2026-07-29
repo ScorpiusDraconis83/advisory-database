@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8vr5-4pf2-6p73",
+  "modified": "2026-07-29T06:32:05Z",
+  "published": "2026-07-29T06:32:05Z",
+  "aliases": [
+    "CVE-2026-5626"
+  ],
+  "details": "The Survey Form Block plugin for WordPress is vulnerable to unauthorized access of data due to a missing capability check on the get_all_data() function in all versions up to, and including, 1.0.1. This makes it possible for authenticated attackers, with Subscriber-level access and above, to export all survey submission data and column metadata.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5626"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/survey-form-block/tags/1.0.1/inc/SVBAjax.php#L52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/survey-form-block/trunk/inc/SVBAjax.php#L52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3502334%40survey-form-block%2Ftrunk%2Finc%2FSVBAjax.php&old=3223297%40survey-form-block%2Ftrunk%2Finc%2FSVBAjax.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/survey-form-block"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e98d4f04-74cd-486f-bb2f-fad76895f386?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-29T04:17:13Z"
+  }
+}
