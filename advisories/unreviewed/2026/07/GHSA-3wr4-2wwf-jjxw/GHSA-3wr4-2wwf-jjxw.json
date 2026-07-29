@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3wr4-2wwf-jjxw",
+  "modified": "2026-07-29T12:31:23Z",
+  "published": "2026-07-29T12:31:23Z",
+  "aliases": [
+    "CVE-2026-5060"
+  ],
+  "details": "The MasterStudy LMS WordPress Plugin – for Online Courses and Education plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 3.7.14. This is due to the `stm_lms_delete_cover()` function lacking ownership validation on the `file_id` parameter before passing it to `wp_delete_attachment()`. This makes it possible for authenticated attackers, with Instructor-level access and above, to delete arbitrary attachments belonging to any user by enumerating sequential attachment IDs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5060"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/masterstudy-lms-learning-management-system/tags/3.7.14/_core/lms/classes/user.php#L2093"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/masterstudy-lms-learning-management-system/tags/3.7.14/_core/lms/classes/user.php#L2107"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3501788%40masterstudy-lms-learning-management-system%2Ftrunk&old=3496678%40masterstudy-lms-learning-management-system%2Ftrunk&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/de11c9ad-0b9f-4934-8dc9-dc324d77d702?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-29T11:16:50Z"
+  }
+}

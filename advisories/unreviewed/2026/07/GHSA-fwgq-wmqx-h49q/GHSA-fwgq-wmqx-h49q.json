@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fwgq-wmqx-h49q",
+  "modified": "2026-07-29T12:31:23Z",
+  "published": "2026-07-29T12:31:23Z",
+  "aliases": [
+    "CVE-2026-4604"
+  ],
+  "details": "The Klubraum Membership Request plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the `kr_mr_store_settings()` function in all versions up to, and including, 1.1.0. This makes it possible for unauthenticated attackers to update the plugin's settings, including the Klubraum API token and introduction text, effectively hijacking the plugin's integration with the Klubraum service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4604"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/klubraum-membership-request/tags/1.1.0/admin/class-klubraum-membership-request-widget-admin.php#L151"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/klubraum-membership-request/tags/1.1.0/admin/class-klubraum-membership-request-widget-admin.php#L152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/klubraum-membership-request/trunk/admin/class-klubraum-membership-request-widget-admin.php#L152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3491619%40klubraum-membership-request%2Ftrunk%2Fadmin%2Fclass-klubraum-membership-request-widget-admin.php&old=2512635%40klubraum-membership-request%2Ftrunk%2Fadmin%2Fclass-klubraum-membership-request-widget-admin.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/09e158d2-f9a6-41a6-a91f-1763a1a44b04?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-29T11:16:49Z"
+  }
+}
