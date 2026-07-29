@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fq3f-m5qm-99f5",
+  "modified": "2026-07-29T17:16:32Z",
+  "published": "2026-07-29T17:16:32Z",
+  "aliases": [
+    "CVE-2026-54712"
+  ],
+  "summary": "OpenTelemetry Javaagent RMI context propagation allows resource exhaustion",
+  "details": "The RMI context propagation payload reader limits the number of context entries but does not limit the aggregate size of the strings read from the stream.\n\nAn attacker who can reach an RMI endpoint on an instrumented JVM can send an oversized context propagation payload. This can cause excessive memory allocation while the JVM reads the payload, potentially leading to denial of service.\n\nThe issue affects only deployments where RMI instrumentation is enabled and an RMI endpoint is network-reachable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.opentelemetry.javaagent:opentelemetry-javaagent"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.27.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-telemetry/opentelemetry-java-instrumentation/security/advisories/GHSA-fq3f-m5qm-99f5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54712"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/17870"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-telemetry/opentelemetry-java-instrumentation/commit/6ef18806d5daa4913619e4cb33d2d7ed6a853c22"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/open-telemetry/opentelemetry-java-instrumentation"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v2.27.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-29T17:16:32Z",
+    "nvd_published_at": "2026-07-01T22:16:50Z"
+  }
+}
