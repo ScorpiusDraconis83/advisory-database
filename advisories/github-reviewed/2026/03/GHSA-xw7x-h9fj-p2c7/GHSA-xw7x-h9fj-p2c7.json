@@ -1,7 +1,7 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xw7x-h9fj-p2c7",
-  "modified": "2026-03-27T21:37:04Z",
+  "modified": "2026-07-29T15:43:41Z",
   "published": "2026-03-25T21:27:43Z",
   "aliases": [
     "CVE-2026-33701"
@@ -9,6 +9,10 @@
   "summary": "OpenTelemetry: Unsafe Deserialization in RMI Instrumentation may Lead to Remote Code Execution",
   "details": "In versions prior to 2.26.1, the RMI instrumentation registered a custom endpoint that deserialized incoming data without applying serialization filters. An attacker with network access to a JMX or RMI port on an instrumented JVM could exploit this to potentially achieve remote code execution. All three of the following conditions must be true to exploit this vulnerability:\n1. OpenTelemetry Java instrumentation is attached as a Java agent (`-javaagent`)\n2. An RMI endpoint is network-reachable (e.g. JMX remote port, an RMI registry, or any application-exported RMI service)\n3. A gadget-chain-compatible library is present on the classpath\n\n### Impact\nArbitrary remote code execution with the privileges of the user running the instrumented JVM.\n\n### Recommendation\nUpgrade to version 2.26.1 or later.\n\n### Workarounds\nSet the following system property to disable the RMI integration:\n\n```\n-Dotel.instrumentation.rmi.enabled=false\n```\n\n### Credits\nThis vulnerability was responsibly disclosed in coordination with Datadog.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
@@ -49,12 +53,24 @@
       "url": "https://github.com/open-telemetry/opentelemetry-java-instrumentation/commit/9cf4fbaaa9e79226142b2ed42a6f6b4ac0be2197"
     },
     {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-33701"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2452071"
+    },
+    {
       "type": "PACKAGE",
       "url": "https://github.com/open-telemetry/opentelemetry-java-instrumentation"
     },
     {
       "type": "WEB",
       "url": "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v2.26.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-33701.json"
     }
   ],
   "database_specific": {
