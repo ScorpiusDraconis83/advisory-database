@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-h5mw-rxh6-g2x3",
-  "modified": "2026-07-19T09:31:36Z",
+  "modified": "2026-07-29T18:31:31Z",
   "published": "2026-07-19T09:31:36Z",
   "aliases": [
     "CVE-2026-53372"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/vt-d: Block PASID attachment to nested domain with dirty tracking\n\nKernel lacks dirty tracking support on nested domain attached to PASID,\nfails the attachment early if nesting parent domain is dirty tracking\nconfigured, otherwise dirty pages would be lost.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T09:17:02Z"

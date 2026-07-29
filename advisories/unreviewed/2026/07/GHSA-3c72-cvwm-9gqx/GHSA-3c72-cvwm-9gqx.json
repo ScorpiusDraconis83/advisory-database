@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3c72-cvwm-9gqx",
+  "modified": "2026-07-29T18:31:38Z",
+  "published": "2026-07-29T18:31:38Z",
+  "aliases": [
+    "CVE-2026-67193"
+  ],
+  "details": "Xlight FTP Server before 3.9.5 contains an information disclosure vulnerability that allows unauthenticated attackers to obtain the server's current GetTickCount() value by sending a USER command with a username ending in the :adm suffix. Attackers can trigger the admin protocol path within the standard FTP listener pre-authentication to leak timing information from the FTP 331 response without requiring a separate port or configuration change.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67193"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/xlight-ftp-server-information-disclosure-via-user-command"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.xlightftpd.com/whatsnew.htm"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-203"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-29T16:17:57Z"
+  }
+}
