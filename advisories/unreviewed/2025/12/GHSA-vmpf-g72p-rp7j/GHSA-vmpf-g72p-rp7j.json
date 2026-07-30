@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vmpf-g72p-rp7j",
-  "modified": "2025-12-09T18:30:36Z",
+  "modified": "2026-07-30T06:32:23Z",
   "published": "2025-12-09T18:30:36Z",
   "aliases": [
     "CVE-2025-40344"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: Intel: avs: Disable periods-elapsed work when closing PCM\n\navs_dai_fe_shutdown() handles the shutdown procedure for HOST HDAudio\nstream while period-elapsed work services its IRQs. As the former\nfrees the DAI's private context, these two operations shall be\nsynchronized to avoid slab-use-after-free or worse errors.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-09T16:17:44Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-264m-hxmc-hwjf",
-  "modified": "2026-01-13T18:31:04Z",
+  "modified": "2026-07-30T06:32:28Z",
   "published": "2026-01-13T18:31:04Z",
   "aliases": [
     "CVE-2025-68805"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse: fix io-uring list corruption for terminated non-committed requests\n\nWhen a request is terminated before it has been committed, the request\nis not removed from the queue's list. This leaves a dangling list entry\nthat leads to list corruption and use-after-free issues.\n\nRemove the request from the queue's list for terminated non-committed\nrequests.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-01-13T16:16:02Z"

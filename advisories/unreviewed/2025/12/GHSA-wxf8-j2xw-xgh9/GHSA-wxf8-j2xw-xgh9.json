@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wxf8-j2xw-xgh9",
-  "modified": "2025-12-08T03:31:01Z",
+  "modified": "2026-07-30T06:32:21Z",
   "published": "2025-12-08T03:31:01Z",
   "aliases": [
     "CVE-2025-40302"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: videobuf2: forbid remove_bufs when legacy fileio is active\n\nvb2_ioctl_remove_bufs() call manipulates queue internal buffer list,\npotentially overwriting some pointers used by the legacy fileio access\nmode. Forbid that ioctl when fileio is active to protect internal queue\nstate between subsequent read/write calls.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-08T01:16:02Z"

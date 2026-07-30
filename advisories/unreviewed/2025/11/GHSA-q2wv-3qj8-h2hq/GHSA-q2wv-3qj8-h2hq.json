@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-q2wv-3qj8-h2hq",
-  "modified": "2025-11-12T12:30:27Z",
+  "modified": "2026-07-30T06:32:16Z",
   "published": "2025-11-12T12:30:27Z",
   "aliases": [
     "CVE-2025-40133"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: Use __sk_dst_get() and dst_dev_rcu() in mptcp_active_enable().\n\nmptcp_active_enable() is called from subflow_finish_connect(),\nwhich is icsk->icsk_af_ops->sk_rx_dst_set() and it's not always\nunder RCU.\n\nUsing sk_dst_get(sk)->dev could trigger UAF.\n\nLet's use __sk_dst_get() and dst_dev_rcu().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-11-12T11:15:42Z"

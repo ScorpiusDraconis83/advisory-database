@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3vr4-gx8q-4fgg",
-  "modified": "2026-01-08T12:30:28Z",
+  "modified": "2026-07-30T06:32:17Z",
   "published": "2025-11-12T12:30:28Z",
   "aliases": [
     "CVE-2025-40170"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: use dst_dev_rcu() in sk_setup_caps()\n\nUse RCU to protect accesses to dst->dev from sk_setup_caps()\nand sk_dst_gso_max_size().\n\nAlso use dst_dev_rcu() in ip6_dst_mtu_maybe_forward(),\nand ip_dst_mtu_maybe_forward().\n\nip4_dst_hoplimit() can use dst_dev_net_rcu().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-11-12T11:15:47Z"

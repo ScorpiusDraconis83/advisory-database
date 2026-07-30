@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-58x9-22gw-84q7",
-  "modified": "2025-10-30T12:31:10Z",
+  "modified": "2026-07-30T06:32:15Z",
   "published": "2025-10-30T12:31:10Z",
   "aliases": [
     "CVE-2025-40099"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: parse_dfs_referrals: prevent oob on malformed input\n\nMalicious SMB server can send invalid reply to FSCTL_DFS_GET_REFERRALS\n\n- reply smaller than sizeof(struct get_dfs_referral_rsp)\n- reply with number of referrals smaller than NumberOfReferrals in the\nheader\n\nProcessing of such replies will cause oob.\n\nReturn -EINVAL error on such replies to prevent oob-s.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-10-30T10:15:34Z"

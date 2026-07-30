@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gvgm-wg7j-vj8f",
-  "modified": "2025-12-09T18:30:36Z",
+  "modified": "2026-07-30T06:32:23Z",
   "published": "2025-12-09T18:30:36Z",
   "aliases": [
     "CVE-2025-40342"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-fc: use lock accessing port_state and rport state\n\nnvme_fc_unregister_remote removes the remote port on a lport object at\nany point in time when there is no active association. This races with\nwith the reconnect logic, because nvme_fc_create_association is not\ntaking a lock to check the port_state and atomically increase the\nactive count on the rport.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-09T16:17:44Z"

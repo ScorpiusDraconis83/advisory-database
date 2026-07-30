@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vvjm-j2jq-pjc2",
-  "modified": "2025-10-28T12:30:16Z",
+  "modified": "2026-07-30T06:32:13Z",
   "published": "2025-10-28T12:30:16Z",
   "aliases": [
     "CVE-2025-40045"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: codecs: wcd937x: set the comp soundwire port correctly\n\nFor some reason we endup with setting soundwire port for\nHPHL_COMP and HPHR_COMP as zero, this can potentially result\nin a memory corruption due to accessing and setting -1 th element of\nport_map array.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-10-28T12:15:38Z"

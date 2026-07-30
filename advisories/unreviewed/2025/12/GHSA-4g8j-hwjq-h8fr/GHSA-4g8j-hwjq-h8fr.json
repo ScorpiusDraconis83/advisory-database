@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4g8j-hwjq-h8fr",
-  "modified": "2026-04-11T15:30:24Z",
+  "modified": "2026-07-30T06:32:17Z",
   "published": "2025-12-04T18:30:52Z",
   "aliases": [
     "CVE-2025-40242"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngfs2: Fix unlikely race in gdlm_put_lock\n\nIn gdlm_put_lock(), there is a small window of time in which the\nDFL_UNMOUNT flag has been set but the lockspace hasn't been released,\nyet.  In that window, dlm may still call gdlm_ast() and gdlm_bast().\nTo prevent it from dereferencing freed glock objects, only free the\nglock if the lockspace has actually been released.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-04T16:16:17Z"

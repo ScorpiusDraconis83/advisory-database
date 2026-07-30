@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c9g4-75m8-v388",
-  "modified": "2025-11-12T12:30:27Z",
+  "modified": "2026-07-30T06:32:16Z",
   "published": "2025-11-12T12:30:27Z",
   "aliases": [
     "CVE-2025-40129"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsunrpc: fix null pointer dereference on zero-length checksum\n\nIn xdr_stream_decode_opaque_auth(), zero-length checksum.len causes\nchecksum.data to be set to NULL. This triggers a NPD when accessing\nchecksum.data in gss_krb5_verify_mic_v2(). This patch ensures that\nthe value of checksum.len is not less than XDR_UNIT.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-11-12T11:15:42Z"

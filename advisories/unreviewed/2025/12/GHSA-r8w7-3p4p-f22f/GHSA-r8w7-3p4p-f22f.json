@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-r8w7-3p4p-f22f",
-  "modified": "2025-12-16T18:31:34Z",
+  "modified": "2026-07-30T06:32:25Z",
   "published": "2025-12-16T18:31:34Z",
   "aliases": [
     "CVE-2025-68321"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npage_pool: always add GFP_NOWARN for ATOMIC allocations\n\nDriver authors often forget to add GFP_NOWARN for page allocation\nfrom the datapath. This is annoying to users as OOMs are a fact\nof life, and we pretty much expect network Rx to hit page allocation\nfailures during OOM. Make page pool add GFP_NOWARN for ATOMIC allocations\nby default.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-16T16:16:11Z"

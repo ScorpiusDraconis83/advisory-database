@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pfch-hqrr-v4q4",
-  "modified": "2025-11-12T12:30:28Z",
+  "modified": "2026-07-30T06:32:17Z",
   "published": "2025-11-12T12:30:28Z",
   "aliases": [
     "CVE-2025-40169"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Reject negative offsets for ALU ops\n\nWhen verifying BPF programs, the check_alu_op() function validates\ninstructions with ALU operations. The 'offset' field in these\ninstructions is a signed 16-bit integer.\n\nThe existing check 'insn->off > 1' was intended to ensure the offset is\neither 0, or 1 for BPF_MOD/BPF_DIV. However, because 'insn->off' is\nsigned, this check incorrectly accepts all negative values (e.g., -1).\n\nThis commit tightens the validation by changing the condition to\n'(insn->off != 0 && insn->off != 1)'. This ensures that any value\nother than the explicitly permitted 0 and 1 is rejected, hardening the\nverifier against malformed BPF programs.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-11-12T11:15:47Z"

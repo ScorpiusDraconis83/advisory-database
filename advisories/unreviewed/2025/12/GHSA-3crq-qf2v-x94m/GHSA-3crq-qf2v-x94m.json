@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3crq-qf2v-x94m",
-  "modified": "2025-12-24T12:30:29Z",
+  "modified": "2026-07-30T06:32:25Z",
   "published": "2025-12-24T12:30:29Z",
   "aliases": [
     "CVE-2025-68370"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncoresight: tmc: add the handle of the event to the path\n\nThe handle is essential for retrieving the AUX_EVENT of each CPU and is\nrequired in perf mode. It has been added to the coresight_path so that\ndependent devices can access it from the path when needed.\n\nThe existing bug can be reproduced with:\nperf record -e cs_etm//k -C 0-9 dd if=/dev/zero of=/dev/null\n\nShowing an oops as follows:\nUnable to handle kernel paging request at virtual address 000f6e84934ed19e\n\nCall trace:\n tmc_etr_get_buffer+0x30/0x80 [coresight_tmc] (P)\n catu_enable_hw+0xbc/0x3d0 [coresight_catu]\n catu_enable+0x70/0xe0 [coresight_catu]\n coresight_enable_path+0xb0/0x258 [coresight]",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-24T11:16:00Z"

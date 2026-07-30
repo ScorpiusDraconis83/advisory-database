@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7fq2-6xq4-hq67",
-  "modified": "2025-12-16T15:30:46Z",
+  "modified": "2026-07-30T06:32:24Z",
   "published": "2025-12-16T15:30:46Z",
   "aliases": [
     "CVE-2025-68218"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-multipath: fix lockdep WARN due to partition scan work\n\nBlktests test cases nvme/014, 057 and 058 fail occasionally due to a\nlockdep WARN. As reported in the Closes tag URL, the WARN indicates that\na deadlock can happen due to the dependency among disk->open_mutex,\nkblockd workqueue completion and partition_scan_work completion.\n\nTo avoid the lockdep WARN and the potential deadlock, cut the dependency\nby running the partition_scan_work not by kblockd workqueue but by\nnvme_wq.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-16T14:15:54Z"

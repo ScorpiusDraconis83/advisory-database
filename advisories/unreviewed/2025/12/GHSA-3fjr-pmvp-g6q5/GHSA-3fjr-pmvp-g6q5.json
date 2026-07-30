@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3fjr-pmvp-g6q5",
-  "modified": "2025-12-04T18:30:53Z",
+  "modified": "2026-07-30T06:32:18Z",
   "published": "2025-12-04T18:30:53Z",
   "aliases": [
     "CVE-2025-40266"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Check the untrusted offset in FF-A memory share\n\nVerify the offset to prevent OOB access in the hypervisor\nFF-A buffer in case an untrusted large enough value\n[U32_MAX - sizeof(struct ffa_composite_mem_region) + 1, U32_MAX]\nis set from the host kernel.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-04T16:16:20Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-h5vm-jvgf-qf7m",
-  "modified": "2025-10-29T15:31:52Z",
+  "modified": "2026-07-30T06:32:12Z",
   "published": "2025-10-15T09:30:17Z",
   "aliases": [
     "CVE-2025-39998"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: target: target_core_configfs: Add length check to avoid buffer overflow\n\nA buffer overflow arises from the usage of snprintf to write into the\nbuffer \"buf\" in target_lu_gp_members_show function located in\n/drivers/target/target_core_configfs.c. This buffer is allocated with\nsize LU_GROUP_NAME_BUF (256 bytes).\n\nsnprintf(...) formats multiple strings into buf with the HBA name\n(hba->hba_group.cg_item), a slash character, a devicename (dev->\ndev_group.cg_item) and a newline character, the total formatted string\nlength may exceed the buffer size of 256 bytes.\n\nSince snprintf() returns the total number of bytes that would have been\nwritten (the length of %s/%sn ), this value may exceed the buffer length\n(256 bytes) passed to memcpy(), this will ultimately cause function\nmemcpy reporting a buffer overflow error.\n\nAn additional check of the return value of snprintf() can avoid this\nbuffer overflow.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -53,7 +58,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-10-15T08:15:38Z"

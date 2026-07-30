@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vv4p-ph8q-2hhx",
-  "modified": "2025-12-04T15:30:33Z",
+  "modified": "2026-07-30T06:32:17Z",
   "published": "2025-12-04T15:30:33Z",
   "aliases": [
     "CVE-2025-40216"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/rsrc: don't rely on user vaddr alignment\n\nThere is no guaranteed alignment for user pointers, however the\ncalculation of an offset of the first page into a folio after coalescing\nuses some weird bit mask logic, get rid of it.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-04T15:15:57Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-348v-47hf-22wr",
-  "modified": "2025-12-24T15:30:44Z",
+  "modified": "2026-07-30T06:32:26Z",
   "published": "2025-12-24T15:30:44Z",
   "aliases": [
     "CVE-2025-68747"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: Fix UAF on kernel BO VA nodes\n\nIf the MMU is down, panthor_vm_unmap_range() might return an error.\nWe expect the page table to be updated still, and if the MMU is blocked,\nthe rest of the GPU should be blocked too, so no risk of accessing\nphysical memory returned to the system (which the current code doesn't\ncover for anyway).\n\nProceed with the rest of the cleanup instead of bailing out and leaving\nthe va_node inserted in the drm_mm, which leads to UAF when other\nadjacent nodes are removed from the drm_mm tree.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-24T13:16:29Z"

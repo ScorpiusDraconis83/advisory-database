@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m7p7-jwxv-mmf9",
-  "modified": "2025-11-12T12:30:28Z",
+  "modified": "2026-07-30T06:32:17Z",
   "published": "2025-11-12T12:30:28Z",
   "aliases": [
     "CVE-2025-40174"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/mm: Fix SMP ordering in switch_mm_irqs_off()\n\nStephen noted that it is possible to not have an smp_mb() between\nthe loaded_mm store and the tlb_gen load in switch_mm(), meaning the\nordering against flush_tlb_mm_range() goes out the window, and it\nbecomes possible for switch_mm() to not observe a recent tlb_gen\nupdate and fail to flush the TLBs.\n\n[ dhansen: merge conflict fixed by Ingo ]",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-11-12T11:15:47Z"

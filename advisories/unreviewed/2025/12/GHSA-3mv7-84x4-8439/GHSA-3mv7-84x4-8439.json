@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3mv7-84x4-8439",
-  "modified": "2025-12-08T03:31:00Z",
+  "modified": "2026-07-30T06:32:20Z",
   "published": "2025-12-08T03:31:00Z",
   "aliases": [
     "CVE-2025-40292"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirtio-net: fix received length check in big packets\n\nSince commit 4959aebba8c0 (\"virtio-net: use mtu size as buffer length\nfor big packets\"), when guest gso is off, the allocated size for big\npackets is not MAX_SKB_FRAGS * PAGE_SIZE anymore but depends on\nnegotiated MTU. The number of allocated frags for big packets is stored\nin vi->big_packets_num_skbfrags.\n\nBecause the host announced buffer length can be malicious (e.g. the host\nvhost_net driver's get_rx_bufs is modified to announce incorrect\nlength), we need a check in virtio_net receive path. Currently, the\ncheck is not adapted to the new change which can lead to NULL page\npointer dereference in the below while loop when receiving length that\nis larger than the allocated one.\n\nThis commit fixes the received length check corresponding to the new\nchange.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-08T01:16:01Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pxm9-5xjv-gw34",
-  "modified": "2025-11-03T03:30:25Z",
+  "modified": "2026-07-30T06:32:15Z",
   "published": "2025-10-29T15:31:56Z",
   "aliases": [
     "CVE-2025-40084"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: transport_ipc: validate payload size before reading handle\n\nhandle_response() dereferences the payload as a 4-byte handle without\nverifying that the declared payload size is at least 4 bytes. A malformed\nor truncated message from ksmbd.mountd can lead to a 4-byte read past the\ndeclared payload size. Validate the size before dereferencing.\n\nThis is a minimal fix to guard the initial handle read.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-10-29T14:15:55Z"

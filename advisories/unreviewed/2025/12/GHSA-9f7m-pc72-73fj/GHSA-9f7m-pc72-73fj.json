@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9f7m-pc72-73fj",
-  "modified": "2025-12-04T18:30:52Z",
+  "modified": "2026-07-30T06:32:17Z",
   "published": "2025-12-04T18:30:52Z",
   "aliases": [
     "CVE-2025-40241"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs: fix crafted invalid cases for encoded extents\n\nRobert recently reported two corrupted images that can cause system\ncrashes, which are related to the new encoded extents introduced\nin Linux 6.15:\n\n  - The first one [1] has plen != 0 (e.g. plen == 0x2000000) but\n    (plen & Z_EROFS_EXTENT_PLEN_MASK) == 0. It is used to represent\n    special extents such as sparse extents (!EROFS_MAP_MAPPED), but\n    previously only plen == 0 was handled;\n\n  - The second one [2] has pa 0xffffffffffdcffed and plen 0xb4000,\n    then \"cur [0xfffffffffffff000] += bvec.bv_len [0x1000]\" in\n    \"} while ((cur += bvec.bv_len) < end);\" wraps around, causing an\n    out-of-bound access of pcl->compressed_bvecs[] in\n    z_erofs_submit_queue().  EROFS only supports 48-bit physical block\n    addresses (up to 1EiB for 4k blocks), so add a sanity check to\n    enforce this.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-04T16:16:17Z"

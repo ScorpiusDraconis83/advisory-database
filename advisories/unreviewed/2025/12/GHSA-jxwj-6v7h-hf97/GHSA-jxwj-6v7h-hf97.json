@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jxwj-6v7h-hf97",
-  "modified": "2025-12-16T18:31:34Z",
+  "modified": "2026-07-30T06:32:25Z",
   "published": "2025-12-16T18:31:34Z",
   "aliases": [
     "CVE-2025-68303"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: intel: punit_ipc: fix memory corruption\n\nThis passes the address of the pointer \"&punit_ipcdev\" when the intent\nwas to pass the pointer itself \"punit_ipcdev\" (without the ampersand).\nThis means that the:\n\n\tcomplete(&ipcdev->cmd_complete);\n\nin intel_punit_ioc() will write to a wrong memory address corrupting it.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-16T16:16:09Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hcjg-xhvj-4968",
-  "modified": "2025-12-08T03:31:00Z",
+  "modified": "2026-07-30T06:32:20Z",
   "published": "2025-12-08T03:31:00Z",
   "aliases": [
     "CVE-2025-40291"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: fix regbuf vector size truncation\n\nThere is a report of io_estimate_bvec_size() truncating the calculated\nnumber of segments that leads to corruption issues. Check it doesn't\noverflow \"int\"s used later. Rough but simple, can be improved on top.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-08T01:16:01Z"

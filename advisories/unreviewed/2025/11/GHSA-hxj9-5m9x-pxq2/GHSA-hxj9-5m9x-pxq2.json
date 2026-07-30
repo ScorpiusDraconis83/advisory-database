@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hxj9-5m9x-pxq2",
-  "modified": "2025-11-24T18:31:12Z",
+  "modified": "2026-07-30T06:32:17Z",
   "published": "2025-11-24T18:31:11Z",
   "aliases": [
     "CVE-2025-40213"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: MGMT: fix crash in set_mesh_sync and set_mesh_complete\n\nThere is a BUG: KASAN: stack-out-of-bounds in set_mesh_sync due to\nmemcpy from badly declared on-stack flexible array.\n\nAnother crash is in set_mesh_complete() due to double list_del via\nmgmt_pending_valid + mgmt_pending_remove.\n\nUse DEFINE_FLEX to declare the flexible array right, and don't memcpy\noutside bounds.\n\nAs mgmt_pending_valid removes the cmd from list, use mgmt_pending_free,\nand also report status on error.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-11-24T16:15:49Z"

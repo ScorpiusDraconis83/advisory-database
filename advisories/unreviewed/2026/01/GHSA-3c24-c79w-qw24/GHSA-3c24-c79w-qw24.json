@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3c24-c79w-qw24",
-  "modified": "2026-01-13T18:31:04Z",
+  "modified": "2026-07-30T06:32:27Z",
   "published": "2026-01-13T18:31:04Z",
   "aliases": [
     "CVE-2025-68794"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niomap: adjust read range correctly for non-block-aligned positions\n\niomap_adjust_read_range() assumes that the position and length passed in\nare block-aligned. This is not always the case however, as shown in the\nsyzbot generated case for erofs. This causes too many bytes to be\nskipped for uptodate blocks, which results in returning the incorrect\nposition and length to read in. If all the blocks are uptodate, this\nunderflows length and returns a position beyond the folio.\n\nFix the calculation to also take into account the block offset when\ncalculating how many bytes can be skipped for uptodate blocks.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-01-13T16:16:01Z"

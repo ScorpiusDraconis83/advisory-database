@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hcc6-6437-vwm2",
-  "modified": "2025-12-08T03:31:02Z",
+  "modified": "2026-07-30T06:32:23Z",
   "published": "2025-12-08T03:31:01Z",
   "aliases": [
     "CVE-2025-40322"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: bitblit: bound-check glyph index in bit_putcs*\n\nbit_putcs_aligned()/unaligned() derived the glyph pointer from the\ncharacter value masked by 0xff/0x1ff, which may exceed the actual font's\nglyph count and read past the end of the built-in font array.\nClamp the index to the actual glyph count before computing the address.\n\nThis fixes a global out-of-bounds read reported by syzbot.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-08T01:16:04Z"

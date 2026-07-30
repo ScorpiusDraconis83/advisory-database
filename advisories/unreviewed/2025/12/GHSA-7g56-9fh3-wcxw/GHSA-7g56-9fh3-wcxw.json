@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7g56-9fh3-wcxw",
-  "modified": "2026-01-02T18:30:20Z",
+  "modified": "2026-07-30T06:32:18Z",
   "published": "2025-12-07T00:30:56Z",
   "aliases": [
     "CVE-2025-40269"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb-audio: Fix potential overflow of PCM transfer buffer\n\nThe PCM stream data in USB-audio driver is transferred over USB URB\npacket buffers, and each packet size is determined dynamically.  The\npacket sizes are limited by some factors such as wMaxPacketSize USB\ndescriptor.  OTOH, in the current code, the actually used packet sizes\nare determined only by the rate and the PPS, which may be bigger than\nthe size limit above.  This results in a buffer overflow, as reported\nby syzbot.\n\nBasically when the limit is smaller than the calculated packet size,\nit implies that something is wrong, most likely a weird USB\ndescriptor.  So the best option would be just to return an error at\nthe parameter setup time before doing any further operations.\n\nThis patch introduces such a sanity check, and returns -EINVAL when\nthe packet size is greater than maxpacksize.  The comparison with\nep->packsize[1] alone should suffice since it's always equal or\ngreater than ep->packsize[0].",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -69,7 +74,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-06T22:15:54Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9hm8-83j2-jcqx",
-  "modified": "2026-01-19T15:30:35Z",
+  "modified": "2026-07-30T06:32:28Z",
   "published": "2026-01-13T18:31:04Z",
   "aliases": [
     "CVE-2025-68808"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: vidtv: initialize local pointers upon transfer of memory ownership\n\nvidtv_channel_si_init() creates a temporary list (program, service, event)\nand ownership of the memory itself is transferred to the PAT/SDT/EIT\ntables through vidtv_psi_pat_program_assign(),\nvidtv_psi_sdt_service_assign(), vidtv_psi_eit_event_assign().\n\nThe problem here is that the local pointer where the memory ownership\ntransfer was completed is not initialized to NULL. This causes the\nvidtv_psi_pmt_create_sec_for_each_pat_entry() function to fail, and\nin the flow that jumps to free_eit, the memory that was freed by\nvidtv_psi_*_table_destroy() can be accessed again by\nvidtv_psi_*_event_destroy() due to the uninitialized local pointer, so it\nis freed once again.\n\nTherefore, to prevent use-after-free and double-free vulnerability,\nlocal pointers must be initialized to NULL when transferring memory\nownership.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-01-13T16:16:02Z"

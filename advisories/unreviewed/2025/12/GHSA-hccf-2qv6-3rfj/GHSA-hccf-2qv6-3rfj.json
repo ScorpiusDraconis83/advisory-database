@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hccf-2qv6-3rfj",
-  "modified": "2025-12-16T18:31:34Z",
+  "modified": "2026-07-30T06:32:25Z",
   "published": "2025-12-16T18:31:34Z",
   "aliases": [
     "CVE-2025-68313"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/CPU/AMD: Add RDSEED fix for Zen5\n\nThere's an issue with RDSEED's 16-bit and 32-bit register output\nvariants on Zen5 which return a random value of 0 \"at a rate inconsistent\nwith randomness while incorrectly signaling success (CF=1)\". Search the\nweb for AMD-SB-7055 for more detail.\n\nAdd a fix glue which checks microcode revisions.\n\n  [ bp: Add microcode revisions checking, rewrite. ]",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-16T16:16:10Z"

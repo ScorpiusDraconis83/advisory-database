@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3m9h-22j9-8m85",
-  "modified": "2025-12-16T15:30:46Z",
+  "modified": "2026-07-30T06:32:24Z",
   "published": "2025-12-16T15:30:46Z",
   "aliases": [
     "CVE-2025-68243"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFS: Check the TLS certificate fields in nfs_match_client()\n\nIf the TLS security policy is of type RPC_XPRTSEC_TLS_X509, then the\ncert_serial and privkey_serial fields need to match as well since they\ndefine the client's identity, as presented to the server.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-16T15:15:53Z"

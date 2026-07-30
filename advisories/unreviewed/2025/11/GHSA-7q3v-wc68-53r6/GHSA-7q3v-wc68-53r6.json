@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7q3v-wc68-53r6",
-  "modified": "2025-11-21T12:32:23Z",
+  "modified": "2026-07-30T06:32:17Z",
   "published": "2025-11-21T12:32:23Z",
   "aliases": [
     "CVE-2025-40210"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRevert \"NFSD: Remove the cap on number of operations per NFSv4 COMPOUND\"\n\nI've found that pynfs COMP6 now leaves the connection or lease in a\nstrange state, which causes CLOSE9 to hang indefinitely. I've dug\ninto it a little, but I haven't been able to root-cause it yet.\nHowever, I bisected to commit 48aab1606fa8 (\"NFSD: Remove the cap on\nnumber of operations per NFSv4 COMPOUND\").\n\nTianshuo Han also reports a potential vulnerability when decoding\nan NFSv4 COMPOUND. An attacker can place an arbitrarily large op\ncount in the COMPOUND header, which results in:\n\n[   51.410584] nfsd: vmalloc error: size 1209533382144, exceeds total\npages, mode:0xdc0(GFP_KERNEL|__GFP_ZERO),\nnodemask=(null),cpuset=/,mems_allowed=0\n\nwhen NFSD attempts to allocate the COMPOUND op array.\n\nLet's restore the operation-per-COMPOUND limit, but increased to 200\nfor now.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-11-21T11:15:49Z"

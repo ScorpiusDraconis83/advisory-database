@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-x52f-2whg-fhgm",
-  "modified": "2026-04-18T09:30:17Z",
+  "modified": "2026-07-30T06:32:24Z",
   "published": "2025-12-16T15:30:47Z",
   "aliases": [
     "CVE-2025-68256"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8723bs: fix out-of-bounds read in rtw_get_ie() parser\n\nThe Information Element (IE) parser rtw_get_ie() trusted the length\nbyte of each IE without validating that the IE body (len bytes after\nthe 2-byte header) fits inside the remaining frame buffer. A malformed\nframe can advertise an IE length larger than the available data, causing\nthe parser to increment its pointer beyond the buffer end. This results\nin out-of-bounds reads or, depending on the pattern, an infinite loop.\n\nFix by validating that (offset + 2 + len) does not exceed the limit\nbefore accepting the IE or advancing to the next element.\n\nThis prevents OOB reads and ensures the parser terminates safely on\nmalformed frames.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-16T15:15:54Z"

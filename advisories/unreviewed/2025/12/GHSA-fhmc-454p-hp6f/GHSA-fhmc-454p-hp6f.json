@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fhmc-454p-hp6f",
-  "modified": "2026-07-14T15:31:29Z",
+  "modified": "2026-07-30T06:32:25Z",
   "published": "2025-12-24T12:30:30Z",
   "aliases": [
     "CVE-2025-68724"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: asymmetric_keys - prevent overflow in asymmetric_key_generate_id\n\nUse check_add_overflow() to guard against potential integer overflows\nwhen adding the binary blob lengths and the size of an asymmetric_key_id\nstructure and return ERR_PTR(-EOVERFLOW) accordingly. This prevents a\npossible buffer overflow when copying data from potentially malicious\nX.509 certificate fields that can be arbitrarily large, such as ASN.1\nINTEGER serial numbers, issuer names, etc.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -53,7 +58,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-24T11:16:01Z"

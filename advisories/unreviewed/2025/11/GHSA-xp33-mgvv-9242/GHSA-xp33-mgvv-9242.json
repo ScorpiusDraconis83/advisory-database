@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xp33-mgvv-9242",
-  "modified": "2025-11-13T00:30:18Z",
+  "modified": "2026-07-30T06:32:17Z",
   "published": "2025-11-13T00:30:17Z",
   "aliases": [
     "CVE-2025-40187"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sctp: fix a null dereference in sctp_disposition sctp_sf_do_5_1D_ce()\n\nIf new_asoc->peer.adaptation_ind=0 and sctp_ulpevent_make_authkey=0\nand sctp_ulpevent_make_authkey() returns 0, then the variable\nai_ev remains zero and the zero will be dereferenced\nin the sctp_ulpevent_free() function.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-11-12T22:15:45Z"

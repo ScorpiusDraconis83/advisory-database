@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rxpf-8w5h-7fch",
-  "modified": "2025-10-28T12:30:17Z",
+  "modified": "2026-07-30T06:32:14Z",
   "published": "2025-10-28T12:30:17Z",
   "aliases": [
     "CVE-2025-40067"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: reject index allocation if $BITMAP is empty but blocks exist\n\nIndex allocation requires at least one bit in the $BITMAP attribute to\ntrack usage of index entries. If the bitmap is empty while index blocks\nare already present, this reflects on-disk corruption.\n\nsyzbot triggered this condition using a malformed NTFS image. During a\nrename() operation involving a long filename (which spans multiple\nindex entries), the empty bitmap allowed the name to be added without\nvalid tracking. Subsequent deletion of the original entry failed with\n-ENOENT, due to unexpected index state.\n\nReject such cases by verifying that the bitmap is not empty when index\nblocks exist.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-10-28T12:15:41Z"

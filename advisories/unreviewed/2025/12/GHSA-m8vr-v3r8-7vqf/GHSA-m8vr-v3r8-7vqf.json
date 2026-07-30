@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m8vr-v3r8-7vqf",
-  "modified": "2025-12-08T03:31:01Z",
+  "modified": "2026-07-30T06:32:22Z",
   "published": "2025-12-08T03:31:01Z",
   "aliases": [
     "CVE-2025-40318"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: fix race in hci_cmd_sync_dequeue_once\n\nhci_cmd_sync_dequeue_once() does lookup and then cancel\nthe entry under two separate lock sections. Meanwhile,\nhci_cmd_sync_work() can also delete the same entry,\nleading to double list_del() and \"UAF\".\n\nFix this by holding cmd_sync_work_lock across both\nlookup and cancel, so that the entry cannot be removed\nconcurrently.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-08T01:16:04Z"

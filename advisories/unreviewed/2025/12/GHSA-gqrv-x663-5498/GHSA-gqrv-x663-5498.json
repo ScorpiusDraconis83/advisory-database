@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gqrv-x663-5498",
-  "modified": "2025-12-16T15:30:46Z",
+  "modified": "2026-07-30T06:32:24Z",
   "published": "2025-12-16T15:30:46Z",
   "aliases": [
     "CVE-2025-68226"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix incomplete backport in cfids_invalidation_worker()\n\nThe previous commit bdb596ceb4b7 (\"smb: client: fix potential UAF in\nsmb2_close_cached_fid()\") was an incomplete backport and missed one\nkref_put() call in cfids_invalidation_worker() that should have been\nconverted to close_cached_dir().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -21,7 +26,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-16T14:15:56Z"

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q4w9-fxpc-cjc5",
+  "modified": "2026-07-30T06:32:35Z",
+  "published": "2026-07-30T06:32:35Z",
+  "aliases": [
+    "CVE-2026-16610"
+  ],
+  "details": "The Admin and Site Enhancements (ASE) Pro plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 8.9.0 via the recursive_html function. This is due to the frontend save handler enforces only a publicly emitted nonce with no authentication check, CAPTCHA validation is bypassable by omitting an attacker-supplied key, and repeater row keys from cfgroup[input] are stored verbatim and later spliced into an eval() call in recursive_html without any sanitization or identifier validation. This makes it possible for unauthenticated attackers to execute code on the server. This requires the [post_cf_form] shortcode to be present on at least one publicly accessible page, as the nonce and session ID needed to reach the vulnerable save handler are emitted to unauthenticated visitors by that shortcode.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16610"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2ef21a44-6d03-4197-b49c-d881f9831f46?source=cve"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wpase.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T05:16:34Z"
+  }
+}

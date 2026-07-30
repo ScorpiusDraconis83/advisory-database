@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c7q5-6cjw-qjwq",
-  "modified": "2025-12-07T00:30:56Z",
+  "modified": "2026-07-30T06:32:18Z",
   "published": "2025-12-04T18:30:53Z",
   "aliases": [
     "CVE-2025-40253"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/ctcm: Fix double-kfree\n\nThe function 'mpc_rcvd_sweep_req(mpcginfo)' is called conditionally\nfrom function 'ctcmpc_unpack_skb'. It frees passed mpcginfo.\nAfter that a call to function 'kfree' in function 'ctcmpc_unpack_skb'\nfrees it again.\n\nRemove 'kfree' call in function 'mpc_rcvd_sweep_req(mpcginfo)'.\n\nBug detected by the clang static analyzer.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-04T16:16:18Z"

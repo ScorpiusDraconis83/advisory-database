@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j9g6-49hr-w92p",
-  "modified": "2025-10-15T09:30:16Z",
+  "modified": "2026-07-30T06:32:11Z",
   "published": "2025-10-15T09:30:16Z",
   "aliases": [
     "CVE-2025-39973"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni40e: add validation for ring_len param\n\nThe `ring_len` parameter provided by the virtual function (VF)\nis assigned directly to the hardware memory context (HMC) without\nany validation.\n\nTo address this, introduce an upper boundary check for both Tx and Rx\nqueue lengths. The maximum number of descriptors supported by the\nhardware is 8k-32.\nAdditionally, enforce alignment constraints: Tx rings must be a multiple\nof 8, and Rx rings must be a multiple of 32.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-10-15T08:15:35Z"

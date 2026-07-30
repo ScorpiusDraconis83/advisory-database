@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cc93-7wpm-wqh7",
-  "modified": "2025-11-13T00:30:18Z",
+  "modified": "2026-07-30T06:32:17Z",
   "published": "2025-11-13T00:30:18Z",
   "aliases": [
     "CVE-2025-40202"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipmi: Rework user message limit handling\n\nThe limit on the number of user messages had a number of issues,\nimproper counting in some cases and a use after free.\n\nRestructure how this is all done to handle more in the receive message\nallocation routine, so all refcouting and user message limit counts\nare done in that routine.  It's a lot cleaner and safer.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-11-12T22:15:47Z"

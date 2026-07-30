@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xxpg-m5qg-jjxh",
-  "modified": "2025-10-15T09:30:16Z",
+  "modified": "2026-07-30T06:32:11Z",
   "published": "2025-10-15T09:30:16Z",
   "aliases": [
     "CVE-2025-39969"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni40e: fix validation of VF state in get resources\n\nVF state I40E_VF_STATE_ACTIVE is not the only state in which\nVF is actually active so it should not be used to determine\nif a VF is allowed to obtain resources.\n\nUse I40E_VF_STATE_RESOURCES_LOADED that is set only in\ni40e_vc_get_vf_resources_msg() and cleared during reset.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-10-15T08:15:34Z"

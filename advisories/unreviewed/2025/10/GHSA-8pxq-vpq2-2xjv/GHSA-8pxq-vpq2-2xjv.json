@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8pxq-vpq2-2xjv",
-  "modified": "2025-10-29T15:31:54Z",
+  "modified": "2026-07-30T06:32:14Z",
   "published": "2025-10-28T12:30:17Z",
   "aliases": [
     "CVE-2025-40081"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: arm_spe: Prevent overflow in PERF_IDX2OFF()\n\nCast nr_pages to unsigned long to avoid overflow when handling large\nAUX buffer sizes (>= 2 GiB).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-10-28T12:15:42Z"

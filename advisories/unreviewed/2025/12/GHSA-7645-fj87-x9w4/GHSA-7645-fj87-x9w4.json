@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7645-fj87-x9w4",
-  "modified": "2025-12-07T00:30:56Z",
+  "modified": "2026-07-30T06:32:20Z",
   "published": "2025-12-07T00:30:56Z",
   "aliases": [
     "CVE-2025-40285"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/server: fix possible refcount leak in smb2_sess_setup()\n\nReference count of ksmbd_session will leak when session need reconnect.\nFix this by adding the missing ksmbd_user_session_put().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-06T22:15:56Z"

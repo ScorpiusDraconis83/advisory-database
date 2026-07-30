@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2x57-vxvc-jh3v",
-  "modified": "2025-12-16T15:30:45Z",
+  "modified": "2026-07-30T06:32:24Z",
   "published": "2025-12-16T15:30:45Z",
   "aliases": [
     "CVE-2025-68208"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: account for current allocated stack depth in widen_imprecise_scalars()\n\nThe usage pattern for widen_imprecise_scalars() looks as follows:\n\n    prev_st = find_prev_entry(env, ...);\n    queued_st = push_stack(...);\n    widen_imprecise_scalars(env, prev_st, queued_st);\n\nWhere prev_st is an ancestor of the queued_st in the explored states\ntree. This ancestor is not guaranteed to have same allocated stack\ndepth as queued_st. E.g. in the following case:\n\n    def main():\n      for i in 1..2:\n        foo(i)        // same callsite, differnt param\n\n    def foo(i):\n      if i == 1:\n        use 128 bytes of stack\n      iterator based loop\n\nHere, for a second 'foo' call prev_st->allocated_stack is 128,\nwhile queued_st->allocated_stack is much smaller.\nwiden_imprecise_scalars() needs to take this into account and avoid\naccessing bpf_verifier_state->frame[*]->stack out of bounds.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-16T14:15:53Z"

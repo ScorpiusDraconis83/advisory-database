@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8rp7-mg54-f432",
-  "modified": "2025-12-16T15:30:44Z",
+  "modified": "2026-07-30T06:32:24Z",
   "published": "2025-12-16T15:30:44Z",
   "aliases": [
     "CVE-2025-68170"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/radeon: Do not kfree() devres managed rdev\n\nSince the allocation of the drivers main structure was changed to\ndevm_drm_dev_alloc() rdev is managed by devres and we shouldn't be calling\nkfree() on it.\n\nThis fixes things exploding if the driver probe fails and devres cleans up\nthe rdev after we already free'd it.\n\n(cherry picked from commit 16c0681617b8a045773d4d87b6140002fa75b03b)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-16T14:15:48Z"

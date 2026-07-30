@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2wfq-pvgx-w5wx",
-  "modified": "2026-01-17T18:30:19Z",
+  "modified": "2026-07-30T06:32:27Z",
   "published": "2026-01-13T18:31:03Z",
   "aliases": [
     "CVE-2025-68792"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntpm2-sessions: Fix out of range indexing in name_size\n\n'name_size' does not have any range checks, and it just directly indexes\nwith TPM_ALG_ID, which could lead into memory corruption at worst.\n\nAddress the issue by only processing known values and returning -EINVAL for\nunrecognized values.\n\nMake also 'tpm_buf_append_name' and 'tpm_buf_fill_hmac_session' fallible so\nthat errors are detected before causing any spurious TPM traffic.\n\nEnd also the authorization session on failure in both of the functions, as\nthe session state would be then by definition corrupted.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-01-13T16:16:01Z"
