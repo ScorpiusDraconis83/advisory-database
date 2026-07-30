@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-38w4-qxg9-xg36",
+  "modified": "2026-07-30T15:31:52Z",
+  "published": "2026-07-30T15:31:52Z",
+  "aliases": [
+    "CVE-2026-41187"
+  ],
+  "details": "Calico's apiserver wraps tier-scoped resources so that every operation runs through AuthorizeTierOperation, but the Delete override on NetworkPolicy, GlobalNetworkPolicy, and their staged variants is not invoked for DeleteCollection requests. A user holding the deletecollection verb or wildcard verbs on tier-scoped policy resources can bulk-delete policies in tiers they otherwise have no rights on, breaking the tier authorization boundary.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:L/VA:L/SC:N/SI:L/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41187"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectcalico/calico/pull/12731"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectcalico/calico/pull/12735"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectcalico/calico/pull/12736"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectcalico/calico/pull/12737"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tigera.io/security-bulletins/tta-2026-006"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T15:16:31Z"
+  }
+}

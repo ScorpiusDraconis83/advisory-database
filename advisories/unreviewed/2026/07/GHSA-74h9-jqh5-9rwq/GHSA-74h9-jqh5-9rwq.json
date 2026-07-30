@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-74h9-jqh5-9rwq",
-  "modified": "2026-07-30T06:32:36Z",
+  "modified": "2026-07-30T15:31:46Z",
   "published": "2026-07-30T06:32:36Z",
   "aliases": [
     "CVE-2026-13330"
   ],
   "details": "The Animation Addons for Elementor  WordPress plugin before 2.7.0 does not sanitise uploaded SVG/SVGZ files, which it adds to the list of allowed upload types, allowing users with the upload_files capability (Author and above) to upload files containing malicious JavaScript, leading to Stored Cross-Site Scripting.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-30T06:24:59Z"

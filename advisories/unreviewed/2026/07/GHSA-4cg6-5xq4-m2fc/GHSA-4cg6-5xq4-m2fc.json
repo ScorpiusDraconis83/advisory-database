@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4cg6-5xq4-m2fc",
-  "modified": "2026-07-30T06:32:36Z",
+  "modified": "2026-07-30T15:31:47Z",
   "published": "2026-07-30T06:32:36Z",
   "aliases": [
     "CVE-2026-15252"
   ],
   "details": "The Search Atlas SEO  WordPress plugin before 2.6.12 does not perform a capability or nonce check in one of its AJAX handlers, allowing any authenticated user such as a Subscriber to invoke the site's Google Indexing API integration, submitting or removing the site's URLs from Google's index and consuming its indexing quota.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-30T06:25:01Z"

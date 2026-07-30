@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v37m-33r4-9ggf",
+  "modified": "2026-07-30T15:31:52Z",
+  "published": "2026-07-30T15:31:52Z",
+  "aliases": [
+    "CVE-2026-67346"
+  ],
+  "details": "Swarms through 6.8.1, fixed in commit 8b0fc9e, contains a server-side request forgery vulnerability in the _is_safe_url function that fails to validate hostnames through DNS resolution, allowing attackers to bypass the blocklist. Attackers can supply user-controlled image or audio URLs that resolve to private, loopback, or metadata addresses to reach internal services and exfiltrate credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67346"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kyegomez/swarms/issues/1714"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kyegomez/swarms/pull/1734"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kyegomez/swarms/commit/8b0fc9e4645603ad94d5fcf4da86e3b9c71f4743"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/swarms-server-side-request-forgery-via-dns-rebinding-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T15:16:35Z"
+  }
+}

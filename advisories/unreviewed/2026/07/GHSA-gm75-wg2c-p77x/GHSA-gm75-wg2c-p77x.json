@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gm75-wg2c-p77x",
+  "modified": "2026-07-30T15:31:53Z",
+  "published": "2026-07-30T15:31:52Z",
+  "aliases": [
+    "CVE-2026-6540"
+  ],
+  "details": "Calico's Application Layer Policy (disabled by default), which enforces HTTP rules through Dikastes, fails to perform URL path normalization. As a result, HTTP requests using path-traversal segments, encoded slashes, or repeated slashes are not correctly evaluated by Prefix path rules. Dikastes authorizes the request under the permitted prefix while the downstream workload or a fronting proxy normalizes the path and serves the restricted endpoint. An attacker with network access and no special RBAC can potentially reach HTTP endpoints the policy was intended to restrict.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6540"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectcalico/calico/pull/12531"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectcalico/calico/pull/12532"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectcalico/calico/pull/12533"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tigera.io/security-bulletins/tta-2026-005"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T15:16:37Z"
+  }
+}
