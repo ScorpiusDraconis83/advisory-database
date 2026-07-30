@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-376c-j8f6-2fff",
+  "modified": "2026-07-30T21:31:49Z",
+  "published": "2026-07-30T21:31:49Z",
+  "aliases": [
+    "CVE-2026-51272"
+  ],
+  "details": "In schreibfaul1 ESP32-audioI2S 3.4.5, a heap-based buffer overflow vulnerability exists in the latinToUTF8() character encoding conversion function. The function calculates required buffer size by simply doubling input length and reallocates ps_ptr heap buffer without strict boundary validation. Malicious oversized input can trigger insufficient buffer allocation and out-of-bounds write during Latin-1 to UTF-8 conversion, leading to code execution, information disclosure, denial of service or privilege escalation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51272"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/programmervuln/5d1388bb85dfaf2e7e2700c5a2bceef5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/schreibfaul1/ESP32-audioI2S/blob/master/src/Audio.cpp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T19:18:05Z"
+  }
+}

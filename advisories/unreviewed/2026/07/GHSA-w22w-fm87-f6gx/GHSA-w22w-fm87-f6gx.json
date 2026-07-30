@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w22w-fm87-f6gx",
+  "modified": "2026-07-30T21:31:49Z",
+  "published": "2026-07-30T21:31:49Z",
+  "aliases": [
+    "CVE-2026-66416"
+  ],
+  "details": "Leantime 3.6.2 contains a cross-site request forgery vulnerability that allows unauthenticated attackers to perform state-changing actions on behalf of authenticated users by excluding the Laravel VerifyCsrfToken middleware from the global middleware stack in app/Http/Kernel.php. Attackers can craft malicious pages delivered via phishing emails or malicious websites to trigger unauthorized POST, PUT, and DELETE requests that create or delete projects, modify settings, and change permissions as any authenticated user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/javokhir-sec/CVE-PoC-Hub/security/advisories/GHSA-x8vx-9g5w-w5rr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66416"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Leantime/leantime/pull/3659"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Leantime/leantime"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/leantime-csrf-protection-globally-disabled-by-omission-of-laravel-verifycsrftoken-middleware"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T19:18:36Z"
+  }
+}

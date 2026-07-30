@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-59rr-38mm-f3g9",
+  "modified": "2026-07-30T21:31:50Z",
+  "published": "2026-07-30T21:31:50Z",
+  "aliases": [
+    "CVE-2026-52539"
+  ],
+  "details": "Outstatic CMS <= 2.1.9 contains a hardcoded JWT signing secret. When the OST_TOKEN_SECRET environment variable is not set, the application falls back to the default value which is publicly visible in the source code repository. An unauthenticated remote attacker can exploit this by forging JWT session tokens with arbitrary user data and full administrative permissions.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-52539"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/avitorio/outstatic"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/avitorio/outstatic/blob/canary/packages/outstatic/src/utils/constants.ts"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T21:17:47Z"
+  }
+}

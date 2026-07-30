@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-49jm-q6q7-76gc",
-  "modified": "2026-07-30T06:32:36Z",
+  "modified": "2026-07-30T21:31:43Z",
   "published": "2026-07-30T06:32:36Z",
   "aliases": [
     "CVE-2026-11870"
   ],
   "details": "The WP Ghost (Hide My WP Ghost)  WordPress plugin before 7.0.05 does not verify that client IP information comes from a trusted proxy before trusting attacker-controllable HTTP headers, allowing unauthenticated attackers to spoof their IP address to bypass the WP Ghost (Hide My WP Ghost)  WordPress plugin before 7.0.05's own brute-force protection and to downgrade its firewall by matching a hardcoded whitelisted IP range.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-290"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-30T06:24:58Z"

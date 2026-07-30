@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r344-357p-w9pp",
+  "modified": "2026-07-30T21:31:49Z",
+  "published": "2026-07-30T21:31:49Z",
+  "aliases": [
+    "CVE-2026-15976"
+  ],
+  "details": "SGLang contains a RCE vulnerability when attempting to load model weights from a HuggingFace repository, specifically within the /update_weights_from_disk, where torch.load(..., weights_only=False) fallback enables pickle deserialization of .bin files.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/security/advisories/GHSA-wf98-gv64-5wrf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15976"
+    },
+    {
+      "type": "WEB",
+      "url": "https://thoughts.apoorvdayal.com/posts/sglang-disclosures"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T19:17:08Z"
+  }
+}

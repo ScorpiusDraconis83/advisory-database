@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4g54-v22x-6xq2",
-  "modified": "2026-07-28T18:33:02Z",
+  "modified": "2026-07-30T21:31:27Z",
   "published": "2026-07-28T18:33:02Z",
   "aliases": [
     "CVE-2026-51268"
   ],
   "details": "schreibfaul1 ESP32-audioI2S 3.4.5 has a heap-based buffer overflow vulnerability in the host parsing logic. The dismantle_host() function parses untrusted host and URL input, and subsequent code uses clone_from() to copy parsed host, request host, extension and query_string segments into fixed heap buffers without boundary checking.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-28T16:18:50Z"
