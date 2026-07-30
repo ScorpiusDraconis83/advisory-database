@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p8vm-xf6w-g5jx",
+  "modified": "2026-07-30T12:32:17Z",
+  "published": "2026-07-30T12:32:17Z",
+  "aliases": [
+    "CVE-2022-4994"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: x86: wean fast IN from emulator_pio_in\n\nUse __emulator_pio_in() directly for fast PIO instead of bouncing through\nemulator_pio_in() now that __emulator_pio_in() fills \"val\" when handling\nin-kernel PIO.  vcpu->arch.pio.count is guaranteed to be '0', so this a\npure nop.\n\nemulator_pio_in_emulated is now the last caller of emulator_pio_in.\n\nNo functional change intended.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-4994"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc7a4bfde507ffe1d8bef49aba1322f1d20c2cb3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T10:16:34Z"
+  }
+}
