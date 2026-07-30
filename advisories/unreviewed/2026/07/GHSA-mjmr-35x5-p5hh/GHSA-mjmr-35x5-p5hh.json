@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mjmr-35x5-p5hh",
+  "modified": "2026-07-30T03:31:20Z",
+  "published": "2026-07-30T03:31:20Z",
+  "aliases": [
+    "CVE-2026-16092"
+  ],
+  "details": "The Improved Save Button plugin for WordPress is vulnerable to second-order SQL Injection via 'meta_key' Custom Field via 'Save and Duplicate' Action in all versions up to, and including, 1.2.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with author-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16092"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/improved-save-button/tags/1.2.1/actions/class-lb-save-and-then-action-duplicate.php#L173"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/improved-save-button/tags/1.2.1/actions/class-lb-save-and-then-action-duplicate.php#L179"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/improved-save-button/tags/1.2.1/lib/class-lb-save-and-then-post-save.php#L86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a1dbc2ca-eb3f-4c0f-a5c0-28579f694237?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T03:16:23Z"
+  }
+}
