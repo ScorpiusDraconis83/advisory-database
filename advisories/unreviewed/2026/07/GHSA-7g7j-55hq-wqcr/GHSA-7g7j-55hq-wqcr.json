@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7g7j-55hq-wqcr",
+  "modified": "2026-07-30T18:31:40Z",
+  "published": "2026-07-30T18:31:40Z",
+  "aliases": [
+    "CVE-2026-51295"
+  ],
+  "details": "SQLite 3.41 is vulnerable to use after free in the jsonExtractFunc function. Premature release of parsed JSON object memory leads to subsequent illegal access of freed pointer. Remote attackers can trigger this flaw via specially crafted SQL queries, resulting in service crash and sensitive memory information leakage.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51295"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/programmervuln/cveadvisory-/blob/main/CVE-2026-51295"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sqlite/sqlite/blob/master/src/json.c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T17:16:32Z"
+  }
+}

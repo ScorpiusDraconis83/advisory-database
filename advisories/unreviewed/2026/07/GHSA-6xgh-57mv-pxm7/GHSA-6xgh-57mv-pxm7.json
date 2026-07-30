@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6xgh-57mv-pxm7",
-  "modified": "2026-07-29T09:31:27Z",
+  "modified": "2026-07-30T18:31:22Z",
   "published": "2026-07-29T09:31:27Z",
   "aliases": [
     "CVE-2026-14300"
   ],
   "details": "The miniOrange Social Login and Register (Discord, Google, Twitter, LinkedIn) WordPress plugin before 7.8.0 does not bind the one-time code used by its optional email-verification (Profile Completion) feature to the account it was issued for, allowing unauthenticated attackers to obtain a valid session for any account, including administrators, by requesting a code for an email address they control and replaying it against the victim's email address. Exploitation requires the Profile Completion feature to be enabled and social login to be configured.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-29T07:16:41Z"

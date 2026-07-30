@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5vr6-8x5x-h94q",
+  "modified": "2026-07-30T18:31:40Z",
+  "published": "2026-07-30T18:31:40Z",
+  "aliases": [
+    "CVE-2026-51290"
+  ],
+  "details": "SQLite 3.41 has a use-after-free vulnerability in the shared cache lock management logic of the btree module. The program frees a BtLock structure without removing the node from the linked list. Subsequent linked list traversal accesses the released memory, which can lead to denial of service and sensitive memory information disclosure.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51290"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/programmervuln/cveadvisory-/blob/main/CVE-2026-51290md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sqlite/sqlite/blob/master/src/btree.c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T17:16:32Z"
+  }
+}

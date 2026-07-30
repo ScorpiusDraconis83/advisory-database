@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-853r-vxg2-55r2",
+  "modified": "2026-07-30T18:31:39Z",
+  "published": "2026-07-30T18:31:39Z",
+  "aliases": [
+    "CVE-2026-44617"
+  ],
+  "details": "LDAP filter injection vulnerability in Apache Zeppelin. LdapRealm used RFC 4514 distinguished-name escaping when constructing LDAP search filters instead of RFC 4515 filter escaping, leaving special filter characters insufficiently escaped.                   This is an incomplete fix of CVE-2024-31867. This issue affects Apache Zeppelin versions 0.11.1, 0.11.2, and 0.12.0. Users are recommended to upgrade to version 0.12.1, which fixes this issue.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44617"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/zeppelin/pull/5226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/s65t6n3s1v4j5b1w7zvv5w73ko69m1zv"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2024-31867"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-90"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T16:17:12Z"
+  }
+}

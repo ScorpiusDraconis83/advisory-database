@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h9qj-gx4p-69cp",
+  "modified": "2026-07-30T18:31:39Z",
+  "published": "2026-07-30T18:31:39Z",
+  "aliases": [
+    "CVE-2026-52680"
+  ],
+  "details": "Apache Kyuubi REST batch multipart upload handling uses the client-supplied multipart filename when creating a temporary uploaded resource. A remote attacker who can access the REST batch upload endpoint can provide path traversal sequences in the filename and cause the Kyuubi server process to write controlled content outside the intended upload directory, subject to filesystem permissions.\n\n\nThis issue affects Apache Kyuubi: from 1.7.0 through 1.11.1.\n\nUsers are recommended to upgrade to version 1.12.0, which fixes the issue.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-52680"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/b0qx2v8k5v4rrqsh53pb146t7so0lmrk"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/30/5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T16:17:14Z"
+  }
+}

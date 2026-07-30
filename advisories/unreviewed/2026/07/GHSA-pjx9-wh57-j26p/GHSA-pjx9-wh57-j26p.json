@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pjx9-wh57-j26p",
+  "modified": "2026-07-30T18:31:41Z",
+  "published": "2026-07-30T18:31:41Z",
+  "aliases": [
+    "CVE-2026-66414"
+  ],
+  "details": "Leantime 3.6.2 contains an open redirect vulnerability in the Login controller that allows unauthenticated attackers to redirect authenticated users to arbitrary external sites by manipulating the redirectUrl POST parameter. Attackers can craft a malicious login URL with a tampered redirectUrl value that bypasses FILTER_SANITIZE_URL validation to redirect victims to attacker-controlled sites for phishing or credential theft.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/javokhir-sec/CVE-PoC-Hub/security/advisories/GHSA-wprg-q8m6-jhp9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66414"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Leantime/leantime/pull/3658"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Leantime/leantime"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/leantime-open-redirect-in-login-controller-via-redirecturl-parameter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T17:16:34Z"
+  }
+}

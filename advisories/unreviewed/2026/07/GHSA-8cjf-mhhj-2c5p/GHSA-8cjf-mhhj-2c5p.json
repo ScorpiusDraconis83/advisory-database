@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8cjf-mhhj-2c5p",
+  "modified": "2026-07-30T18:31:39Z",
+  "published": "2026-07-30T18:31:39Z",
+  "aliases": [
+    "CVE-2026-44616"
+  ],
+  "details": "LDAP injection vulnerability in Apache Zeppelin. ActiveDirectoryGroupRealm constructed LDAP search filters without escaping user-controlled input, allowing an authenticated attacker to inject LDAP filter syntax through the user-search endpoint                   and potentially expose directory information. The role-lookup path was also affected after successful LDAP authentication. This issue affects Apache Zeppelin versions 0.6.0 through 0.12.0. Users are recommended to upgrade to version 0.12.1, which                   fixes this issue.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44616"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/zeppelin/pull/5226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/p6llqpvcszpg1wc8kx5ncfkdbms3g0rn"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/30/3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-90"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T16:17:12Z"
+  }
+}

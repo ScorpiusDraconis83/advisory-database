@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mppp-59pm-fqxw",
-  "modified": "2026-07-19T12:30:23Z",
+  "modified": "2026-07-30T18:31:12Z",
   "published": "2026-07-19T12:30:23Z",
   "aliases": [
     "CVE-2026-53403"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: Fix fb_new_modelist to prevent null-ptr-deref in fb_videomode_to_var\n\ninfo->var, a framebuffer's current mode, is expected to have a matching\nentry in info->modelist. var_to_display() relies on this and treats a\nfailed fb_match_mode() as \"This should not happen\". fb_set_var() keeps it\ntrue by adding the mode to the list on every change, and\ndo_register_framebuffer() does the same at registration.\n\nstore_modes() replaces the modelist from userspace. fb_new_modelist()\nvalidates the new modes but does not check that info->var still has a\nmatch. It relies on fbcon_new_modelist() to re-point consoles, but that\nonly handles consoles mapped to the framebuffer. With fbcon unbound there\nare none, so info->var is left describing a mode that is no longer in the\nlist.\n\nA later console takeover runs var_to_display(), where fb_match_mode()\nreturns NULL and leaves fb_display[i].mode NULL. fbcon_switch() passes it\nto display_to_var(), and fb_videomode_to_var() dereferences the NULL mode.\n\nKeep the current mode in the list in fb_new_modelist(), the same way\nfb_set_var() does.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T12:16:51Z"
