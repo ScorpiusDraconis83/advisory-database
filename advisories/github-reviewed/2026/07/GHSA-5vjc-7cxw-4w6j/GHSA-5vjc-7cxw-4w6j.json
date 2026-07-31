@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5vjc-7cxw-4w6j",
+  "modified": "2026-07-31T18:58:28Z",
+  "published": "2026-07-31T18:58:28Z",
+  "aliases": [
+    "CVE-2026-53504"
+  ],
+  "summary": "Thumbor has Regex Denial of Service (ReDoS) in `convolution` filter",
+  "details": "### Summary\nThe regular expression used to parse the `convolution` filter exhibits exponential-time backtracking for certain inputs, enabling a Regular Expression Denial of Service (ReDoS).\n\n### Details\nThe RegExp for `convolution` is defined as `convolution\\((?:\\s*((?:[-]?[\\d]+\\.?[\\d]*[;])*(?:[-]?[\\d]+\\.?[\\d]*))\\s*)(?:,\\s*([\\d]+)\\s*)(?:,\\s*([Tt]rue|[Ff]alse|1|0)\\s*)?\\)`. Within this expression a dangerous subpattern effectively behaves like `(\\d+)*,\\d+`.\n\n### PoC\nA filter string containing many repeated values will exhaust `re.match`:\n- `convolution(-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11)`\n- http://localhost:8888/unsafe/0x0/smart/filters:convolution(-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11;-11)/x.png\n\nThe evaluation occurs on https://github.com/thumbor/thumbor/blob/master/thumbor/filters/__init__.py#L189.\n\n### Impact\nA specially crafted URL will lead to denial of service, as new images won't be processed until `re.match` returns.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "thumbor"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "7.8.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 7.7.7"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thumbor/thumbor/security/advisories/GHSA-5vjc-7cxw-4w6j"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thumbor/thumbor/commit/3f38fe1610d20168e91f76d432212de30727eb2e"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/thumbor/thumbor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thumbor/thumbor/releases/tag/7.8.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-31T18:58:28Z",
+    "nvd_published_at": null
+  }
+}
