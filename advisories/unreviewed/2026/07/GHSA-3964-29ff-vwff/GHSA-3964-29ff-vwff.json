@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3964-29ff-vwff",
+  "modified": "2026-07-31T00:30:22Z",
+  "published": "2026-07-31T00:30:22Z",
+  "aliases": [
+    "CVE-2026-10031"
+  ],
+  "details": "SFTPGo prior to 2.7.4 contains a permission bypass vulnerability that allows authenticated users to circumvent per-directory access controls by creating symbolic links in a permitted directory that point to files in directories where download, upload, or overwrite permissions are denied. Attackers can exploit the create_symlinks permission combined with read and write access in one directory to read or modify files in restricted directories, as operations are authorized against the link's directory permissions rather than the dereferenced target's directory permissions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/drakkan/sftpgo/security/advisories/GHSA-fj9v-mxr3-w75w"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10031"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/drakkan/sftpgo"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/drakkan/sftpgo/releases/tag/v2.7.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sftpgo-permission-bypass-via-symbolic-link-creation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T23:16:51Z"
+  }
+}

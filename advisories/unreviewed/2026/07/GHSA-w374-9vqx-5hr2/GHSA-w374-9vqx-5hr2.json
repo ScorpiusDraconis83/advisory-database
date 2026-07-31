@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w374-9vqx-5hr2",
+  "modified": "2026-07-31T00:30:21Z",
+  "published": "2026-07-31T00:30:21Z",
+  "aliases": [
+    "CVE-2026-12562"
+  ],
+  "details": "The RCU II+ and Multiload II+ are vulnerable to an unauthenticated \nservice that exposes a debug interface granting full root-level access \nto the embedded system. This vulnerability stems from a \nnetwork-accessible port running a Target Communications Framework (TCF) \nservice that does not require any authentication, allowing an attacker \nto directly interact with the Linux environment that powers the device. \nOnce connected, an attacker can freely view and modify the filesystem, \nmanipulate running processes, and control network interfaces, enabling \ndeep alteration of system behavior.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12562"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-211-03.json"
+    },
+    {
+      "type": "WEB",
+      "url": "https://s3.amazonaws.com/docs.toptech.com/index.html#downloads/Firmware/RCUII+_MLII+_SMPII+"
+    },
+    {
+      "type": "WEB",
+      "url": "https://s3.amazonaws.com/docs.toptech.com/nonpublic/2025%2012%2001%20RCU%20IIPlus%20MultiLoad%20IIPlus%20Vulnerability%20Notice.pdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://s3.amazonaws.com/docs.toptech.com/nonpublic/rcuiip_mliip_vrt.gz"
+    },
+    {
+      "type": "WEB",
+      "url": "https://s3.amazonaws.com/docs.toptech.com/nonpublic/rcuiip_mliip_vrt.zip"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-211-03"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-30T22:16:53Z"
+  }
+}
