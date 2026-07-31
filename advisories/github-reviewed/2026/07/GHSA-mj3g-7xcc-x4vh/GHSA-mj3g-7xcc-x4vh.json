@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mj3g-7xcc-x4vh",
+  "modified": "2026-07-31T17:49:09Z",
+  "published": "2026-07-31T17:49:08Z",
+  "aliases": [
+    "CVE-2026-54737"
+  ],
+  "summary": "@phun-ky/defaults-deep Has a Prototype Pollution issue via Unsafe Recursive Property Merging",
+  "details": "### Impact\n\nA prototype pollution vulnerability exists in @phun-ky/defaults-deep prior to version 2.0.5.\n\nThe library recursively merged user-supplied objects without filtering unsafe property names such as `__proto__`, `constructor`, and `prototype`. An attacker able to supply crafted input could cause properties to be written to `Object.prototype`, resulting in prototype pollution affecting all objects within the running process.\n\nApplications that pass untrusted input to `defaultsDeep()` may be impacted. Depending on how the application uses merged objects, this could lead to unexpected behavior, logic bypasses, denial of service, or other security issues.\n\n### Patches\n\nThis issue has been fixed in version 2.0.5.\n\nUsers should upgrade to version 2.0.5 or later.\n\nThe fix prevents unsafe prototype-related keys (`__proto__`, `constructor`, and `prototype`) from being processed during recursive merge operations and includes regression tests covering known prototype pollution vectors.\n\n### Workarounds\n\nUsers unable to upgrade should ensure that untrusted input is sanitized before being passed to `defaultsDeep()`.\n\nAt a minimum, applications should reject or remove the following property names from all levels of user-controlled objects:\n\n- `__proto__`\n- `constructor`\n- `prototype`\n\nUpgrading to a patched version remains the recommended mitigation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@phun-ky/defaults-deep"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/phun-ky/defaults-deep/security/advisories/GHSA-mj3g-7xcc-x4vh"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phun-ky/defaults-deep/pull/49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phun-ky/defaults-deep/commit/807dba930f8718f9126cad59d949b8fd3539b059"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/phun-ky/defaults-deep"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phun-ky/defaults-deep/releases/tag/2.0.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1321"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-31T17:49:08Z",
+    "nvd_published_at": null
+  }
+}
