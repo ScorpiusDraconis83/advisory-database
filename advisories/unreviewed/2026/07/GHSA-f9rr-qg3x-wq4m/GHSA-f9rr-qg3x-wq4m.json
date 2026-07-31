@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f9rr-qg3x-wq4m",
+  "modified": "2026-07-31T03:31:17Z",
+  "published": "2026-07-31T03:31:17Z",
+  "aliases": [
+    "CVE-2026-18157"
+  ],
+  "details": "A flaw was found in yggdrasil-worker-package-manager. A local attacker with existing access to the system could exploit an argument injection vulnerability in the APT backend. This allows specially crafted package names, which begin with a hyphen, to be misinterpreted as command options by apt-get. Successful exploitation could lead to remote code execution (RCE) with root privileges, enabling the attacker to fully compromise the system's integrity, confidentiality, and availability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RedHatInsights/yggdrasil-worker-package-manager/commit/959745bb5917c17f0316af199aace6c71baa5ad7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-18157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2465250"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RedHatInsights/yggdrasil-worker-package-manager/releases/tag/0.1.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RedHatInsights/yggdrasil-worker-package-manager/releases/tag/0.2.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-88"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-31T03:16:25Z"
+  }
+}
