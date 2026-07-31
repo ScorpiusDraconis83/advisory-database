@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mx5j-mp4f-g8jg",
+  "modified": "2026-07-31T19:38:25Z",
+  "published": "2026-07-31T19:38:25Z",
+  "aliases": [
+    "CVE-2026-53510"
+  ],
+  "summary": "Savon::Model evaluates WSDL operation names as Ruby source",
+  "details": "### Impact\n\n`Savon::Model` generated SOAP operation methods by interpolating operation names into Ruby source passed to `module_eval`. An attacker who can control the operation names of a WSDL, can inject Ruby code that executes in the application process. This affects only the `.all_operations` class method provided by `Savon::Model` to automatically register all operations provided by the WSDL. Configuring `Savon::Model` with trusted operation names via `.operations` is safe.\n\n### Patches\n\nPatched in Savon 2.17.2.\n\nUsers should upgrade to 2.17.2 or later.\n\n### Workarounds\n\nAvoid `.all_operations` for untrusted WSDL documents. Use `.operations` with trusted operation names instead.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "savon"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.9.8"
+            },
+            {
+              "fixed": "2.17.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/savonrb/savon/security/advisories/GHSA-mx5j-mp4f-g8jg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/savonrb/savon/commit/8f22eb543e7436f6247172c9be47e22792d375e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/savon/CVE-2026-53510.yml"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/savonrb/savon"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/savonrb/savon/releases/tag/v2.17.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord/SearchResults?query=CVE-2026-53510"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-31T19:38:25Z",
+    "nvd_published_at": null
+  }
+}
