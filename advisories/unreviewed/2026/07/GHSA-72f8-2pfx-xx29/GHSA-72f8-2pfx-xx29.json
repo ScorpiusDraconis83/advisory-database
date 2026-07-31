@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-72f8-2pfx-xx29",
-  "modified": "2026-07-30T21:31:49Z",
+  "modified": "2026-07-31T21:31:52Z",
   "published": "2026-07-30T21:31:49Z",
   "aliases": [
     "CVE-2025-51684"
   ],
   "details": "CleverTap Web SDK v1.15.1 is vulnerable to Cross Site Scripting (XSS). The application does not sanitize untrusted data received via window.postMessage before injecting it into the page DOM. An attacker can craft a malicious message that, when processed by renderCustomHtml, results in execution of arbitrary JavaScript in the context of the hosting site.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-30T20:16:51Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-96j3-rjf9-2hxp",
-  "modified": "2026-07-30T21:31:49Z",
+  "modified": "2026-07-31T21:31:52Z",
   "published": "2026-07-30T21:31:49Z",
   "aliases": [
     "CVE-2026-15971"
   ],
   "details": "SGLang contains an RCE vulnerability when the optional dumper subsystem is enabled, allowing for a sandbox escape when DUMPER_SERVER_PORT is set, enabling code execution on inference requests.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-95"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-30T19:17:08Z"

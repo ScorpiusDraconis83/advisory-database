@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xmq9-mfwm-hg4m",
-  "modified": "2026-07-31T09:31:17Z",
+  "modified": "2026-07-31T21:31:53Z",
   "published": "2026-07-31T09:31:17Z",
   "aliases": [
     "CVE-2026-14922"
   ],
   "details": "WP Photo Album Plus is vulnerable to stored Cross-Site Scripting in all versions up to, and including, 9.2.03.001 through a decode-after-sanitize (double-encoding) flaw in the photo-comment pipeline. On write, `wppa_do_comment()` sanitizes the comment with `wppa_filter_html()` (wp_kses) followed by `wp_strip_all_tags()` (`wppa-functions.php:2623-2624`). Because `wp_strip_all_tags()` only removes *real* tags, an attacker who submits a **double HTML-entity-encoded** payload (e.g. `&amp;lt;img src=... onload=...&amp;gt;`) passes the write filters as harmless entity text and is stored one decode-level down (`&lt;img ... onload=...&gt;`).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-31T07:16:26Z"

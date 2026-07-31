@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xgf9-46hc-5c98",
-  "modified": "2026-07-31T09:31:17Z",
+  "modified": "2026-07-31T21:31:53Z",
   "published": "2026-07-31T09:31:17Z",
   "aliases": [
     "CVE-2026-14834"
   ],
   "details": "The Mailgun for WordPress plugin before 2.2.1 does not perform any capability or nonce check on an unauthenticated AJAX action that adds subscribers to the site owner's configured email service mailing lists, allowing unauthenticated attackers to enrol arbitrary email addresses into those lists using the owner's stored API credentials.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-31T07:16:25Z"
