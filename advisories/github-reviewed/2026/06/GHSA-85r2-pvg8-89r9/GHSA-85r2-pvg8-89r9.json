@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-85r2-pvg8-89r9",
-  "modified": "2026-06-09T18:30:37Z",
+  "modified": "2026-07-31T15:51:04Z",
   "published": "2026-06-09T09:32:07Z",
   "aliases": [
     "CVE-2026-34905"
   ],
+  "summary": "Apache Answer has an Exposure of Sensitive Information to an Unauthorized Actor vulnerability",
   "details": "Exposure of Sensitive Information to an Unauthorized Actor vulnerability in Apache Answer.\n\nThis issue affects Apache Answer: through 2.0.0.\n\nThe unlisted question feature did not enforce access restrictions on direct API endpoints, allowing authenticated users to discover and access unlisted questions, their answers, comments, and revision history.\nUsers are recommended to upgrade to version 2.0.1, which fixes the issue.",
   "severity": [
     {
@@ -13,11 +14,43 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/apache/incubator-answer"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.7.2-0.20260509071350-11c80384f13a"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34905"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/answer/commit/11c80384f13a27e27c871c05bb353489d1363ee2"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/answer"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/answer/releases/tag/v2.0.1"
     },
     {
       "type": "WEB",
@@ -33,8 +66,8 @@
       "CWE-200"
     ],
     "severity": "MODERATE",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-31T15:51:03Z",
     "nvd_published_at": "2026-06-09T09:16:29Z"
   }
 }
