@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fw4x-rfrx-9g6f",
-  "modified": "2026-07-31T09:31:17Z",
+  "modified": "2026-07-31T15:32:49Z",
   "published": "2026-07-31T09:31:17Z",
   "aliases": [
     "CVE-2026-14843"
   ],
   "details": "The Events Made Easy WordPress plugin before 3.1.4 does not verify that the requester is authorized to modify the targeted record when handling an unauthenticated data-change request, relying only on a public nonce with no per-record token or ownership check, allowing unauthenticated attackers to overwrite the personal data of any person record.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-31T07:16:25Z"

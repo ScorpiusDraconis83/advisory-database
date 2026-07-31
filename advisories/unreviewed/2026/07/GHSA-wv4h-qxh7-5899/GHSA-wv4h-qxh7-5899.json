@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wv4h-qxh7-5899",
-  "modified": "2026-07-31T09:31:17Z",
+  "modified": "2026-07-31T15:32:49Z",
   "published": "2026-07-31T09:31:17Z",
   "aliases": [
     "CVE-2026-14849"
   ],
   "details": "The Paid Membership Subscriptions  WordPress plugin before 3.0.7 does not protect the member and payment export files it writes to a predictable location in the uploads directory, allowing unauthenticated users to download the exported member and payment data (including PII) while an export artifact is present.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-552"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-31T07:16:25Z"
