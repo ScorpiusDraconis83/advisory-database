@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jg59-c35g-76r8",
+  "modified": "2026-07-31T09:31:18Z",
+  "published": "2026-07-31T09:31:18Z",
+  "aliases": [
+    "CVE-2026-18208"
+  ],
+  "details": "A flaw was found in the OIDC token introspection endpoint of the keycloak-services component. Keycloak is an open-source identity and access management solution used to secure modern applications and services. The issue occurs when a confidential client, configured to receive signed JWT introspection responses, attempts to introspect a token issued for a different audience. Although the endpoint correctly identifies the token as inactive for that client, it still returns the full set of token claims within a signed JWT field. This allows an unauthorized client to bypass audience-based restrictions and access sensitive information contained in the token.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-18208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2508304"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-31T08:16:27Z"
+  }
+}

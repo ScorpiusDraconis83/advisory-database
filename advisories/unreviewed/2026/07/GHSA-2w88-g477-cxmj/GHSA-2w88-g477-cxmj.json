@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2w88-g477-cxmj",
+  "modified": "2026-07-31T09:31:18Z",
+  "published": "2026-07-31T09:31:18Z",
+  "aliases": [
+    "CVE-2026-18206"
+  ],
+  "details": "A flaw was found in the keycloak-services component of Keycloak, which provides identity and access management services. The issue occurs when a realm administrator uses a wildcard domain (like *.example.com) to restrict which hosts can register or update clients. Due to improper validation, the system accepts any hostname that ends with the specified domain suffix, even if it is not a legitimate subdomain. An attacker who can control the reverse DNS of their connection can bypass these host-based restrictions, potentially allowing unauthorized client modifications.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-18206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2508292"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-31T08:16:27Z"
+  }
+}

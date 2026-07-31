@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wx5m-whr8-48h5",
+  "modified": "2026-07-31T09:31:18Z",
+  "published": "2026-07-31T09:31:18Z",
+  "aliases": [
+    "CVE-2026-18203"
+  ],
+  "details": "A flaw was found in the group policy evaluation logic of Keycloak, an identity and access management solution. When a group policy is set to extend permissions to child groups, the system incorrectly uses a simple text-based prefix check to verify group membership. This allows a user who belongs to a different group with a similar starting name to bypass security checks and gain unauthorized access to administrative functions or protected resources.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18203"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-18203"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2508291"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-31T08:16:27Z"
+  }
+}
