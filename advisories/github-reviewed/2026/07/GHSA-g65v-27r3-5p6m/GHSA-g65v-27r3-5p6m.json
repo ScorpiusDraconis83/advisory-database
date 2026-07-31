@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g65v-27r3-5p6m",
+  "modified": "2026-07-31T22:33:01Z",
+  "published": "2026-07-31T22:33:01Z",
+  "aliases": [
+    "CVE-2016-1000305"
+  ],
+  "summary": "guard-livereload has a directory traversal vulnerability",
+  "details": "The vulnerability allows remote attackers to read arbitrary files\non the server by exploiting improper path validation in the\nlivereload server functionality.\n\nThis vulnerability is related to the handling of file paths in the\nlivereload server component, which could allow an attacker to traverse\ndirectories and access files outside the intended web root directory.\n\nThe issue was identified and reported through the DWF (Distributed\nWeakness Filing) project, which assigns CVE identifiers for\nsecurity vulnerabilities.\n\nA directory traversal vulnerability exists in\nguard-livereload before version 2.5.2.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "guard-livereload"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.5.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/guard/guard-livereload/issues/159"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/guard/guard-livereload/pull/158"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/guard/guard-livereload/commit/0e98469e6b9d81a5bd415781534a23d087c271f8"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/guard/guard-livereload"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rubysec/ruby-advisory-db/blob/master/gems/guard-livereload/CVE-2016-1000305.yml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.snyk.io/vuln/SNYK-RUBY-GUARDLIVERELOAD-20361"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-31T22:33:01Z",
+    "nvd_published_at": null
+  }
+}
