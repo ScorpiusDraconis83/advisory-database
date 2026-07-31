@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5c37-5j7w-8mh8",
-  "modified": "2026-06-09T18:31:04Z",
+  "modified": "2026-07-31T19:22:30Z",
   "published": "2026-06-09T18:31:04Z",
   "aliases": [
     "CVE-2026-50635"
   ],
+  "summary": "LimeSurvey constructs account password-reset links from the client-supplied HTTP Host header without validating it.",
   "details": "LimeSurvey constructs account password-reset links from the client-supplied HTTP Host header without validating it. The optional allowedHosts allowlist that would constrain this is undefined in the default (and documented) configuration, so LSHttpRequest::checkIsAllowedHost() results in no operation. A remote, unauthenticated attacker who submits a forgotten-password request for a known account (requiring only the target's username and email) with a spoofed Host header causes LimeSurvey to email that account a reset link whose hostname is attacker-controlled while embedding the genuine validation_key. When the recipient or an automated inbound mail-security link scanner dereferences the link, the valid reset token is disclosed to the attacker, who replays it against the legitimate host's newPassword endpoint to set a new password and take over the account.",
   "severity": [
     {
@@ -14,10 +15,30 @@
     },
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "limesurvey/limesurvey"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "7.0.0-beta1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -26,6 +47,18 @@
     {
       "type": "WEB",
       "url": "https://github.com/LimeSurvey/LimeSurvey/pull/5032"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LimeSurvey/LimeSurvey/commit/ac2a4f1673de7b56e7a342c338f36e8bb077d4b3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LimeSurvey/LimeSurvey/commit/b394cb64328aa6db95e3304f82c8c9e603e9ceb0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/LimeSurvey/LimeSurvey"
     },
     {
       "type": "WEB",
@@ -41,8 +74,8 @@
       "CWE-640"
     ],
     "severity": "HIGH",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-07-31T19:22:30Z",
     "nvd_published_at": "2026-06-09T18:17:10Z"
   }
 }
