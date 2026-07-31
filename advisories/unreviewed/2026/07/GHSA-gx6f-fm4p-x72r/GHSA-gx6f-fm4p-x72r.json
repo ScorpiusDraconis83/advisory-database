@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gx6f-fm4p-x72r",
+  "modified": "2026-07-31T12:30:29Z",
+  "published": "2026-07-31T12:30:29Z",
+  "aliases": [
+    "CVE-2026-17567"
+  ],
+  "details": "The Fluent Forms – Customizable Contact Forms, Survey, Quiz, & Conversational Form Builder plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 6.2.8 via the 'transaction' parameter due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to brute-force valid transaction hashes and view sensitive payment receipt data including customer name, email address, billing address, order items, payment method, and payment status belonging to other users. Because submission ID, form ID, and transaction creation time are either observable or guessable by an attacker, the effective brute-force space is bounded to approximately 900 candidates per second per (submission, form) pair, making exploitation practical without any prior authentication or account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17567"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluentform/tags/6.2.4/app/Modules/Payments/PaymentHandler.php#L218"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluentform/tags/6.2.4/app/Modules/Payments/PaymentMethods/BaseProcessor.php#L959"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluentform/tags/6.2.4/app/Modules/Payments/TransactionShortcodes.php#L107"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluentform/tags/6.2.8/app/Modules/Payments/PaymentHandler.php#L218"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluentform/tags/6.2.8/app/Modules/Payments/PaymentMethods/BaseProcessor.php#L959"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluentform/tags/6.2.8/app/Modules/Payments/TransactionShortcodes.php#L107"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3625751/fluentform/trunk/app/Modules/Payments/PaymentMethods/BaseProcessor.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?old_path=%2Ffluentform/tags/6.2.8&new_path=%2Ffluentform/tags/6.2.9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/565980d7-8dc9-42a4-90c5-2f75af52fb8e?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-31T11:17:05Z"
+  }
+}

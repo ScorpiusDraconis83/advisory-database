@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vfgx-g9m5-wfgv",
+  "modified": "2026-07-31T12:30:29Z",
+  "published": "2026-07-31T12:30:29Z",
+  "aliases": [
+    "CVE-2026-18436"
+  ],
+  "details": "The MailPress plugin for WordPress is vulnerable to unauthorized access in versions up to, and including, 1.5.0 via the campaign revision-restore REST endpoint (POST /wp-json/mailpress/v1/campaign/<id>/restore-revision/<revision_id>). The route in the vulnerable range was registered without a permissionCallback, allowing the restoreRevision() handler to run for unauthenticated requests and overwrite a campaign's content_html with any prior revision. This makes it possible for unauthenticated attackers to modify campaign content by restoring an arbitrary revision.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18436"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mailerpress/trunk/src/Api/CampaignRevisions.php#L155"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mailerpress/trunk/src/Api/CampaignRevisions.php#L156"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/793a7ef0-8938-47a6-80ed-83f69fbbb27f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-07-31T10:16:45Z"
+  }
+}
