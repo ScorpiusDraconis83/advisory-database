@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5fj7-xcmr-5r75",
-  "modified": "2026-07-31T09:31:17Z",
+  "modified": "2026-07-31T18:32:17Z",
   "published": "2026-07-31T09:31:16Z",
   "aliases": [
     "CVE-2026-13393"
   ],
   "details": "The ElementsKit Elementor Addons  WordPress plugin before 3.10.01 does not sanitize or escape certain megamenu menu-item settings before storing them and outputting them on the front end, and does not require the unfiltered_html capability to save them, allowing users with administrative capabilities to store malicious JavaScript; on a multisite network this lets a non-super subsite Administrator, who is denied unfiltered_html, plant a stored Cross-Site Scripting payload that executes in the sessions of the network Super Admin and site visitors.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-31T07:16:24Z"

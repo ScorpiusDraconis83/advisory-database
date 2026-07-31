@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3qxc-7g4v-3gm9",
-  "modified": "2026-07-30T18:31:39Z",
+  "modified": "2026-07-31T18:32:12Z",
   "published": "2026-07-30T18:31:39Z",
   "aliases": [
     "CVE-2026-28812"
   ],
   "details": "UserManager lack of checks allows impersonation in Apache JSPWiki up to 2.12.3 which may allow attackers to escalate privileges.\nUsers are recommended to upgrade to version 2.12.4 or newer which fixes this issue.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-290"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-30T16:17:10Z"

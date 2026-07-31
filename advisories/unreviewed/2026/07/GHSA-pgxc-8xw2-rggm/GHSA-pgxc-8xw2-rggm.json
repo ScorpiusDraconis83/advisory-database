@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pgxc-8xw2-rggm",
-  "modified": "2026-07-31T09:31:16Z",
+  "modified": "2026-07-31T18:32:17Z",
   "published": "2026-07-31T09:31:16Z",
   "aliases": [
     "CVE-2026-13609"
   ],
   "details": "The Frontend Admin by DynamiApps WordPress plugin before 3.29.9 decodes HTML entities in a submitted form field value after sanitizing it, which restores HTML tags that the sanitizer had neutralized. A double-encoded payload submitted by an unauthenticated visitor is therefore stored as a live tag and later output without escaping on the Frontend Admin by DynamiApps WordPress plugin before 3.29.9's front-end display surfaces, resulting in stored cross-site scripting that executes in the browser of any user, including an administrator, who views a page displaying the submitted value.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-31T07:16:24Z"

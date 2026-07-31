@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-x3gc-pq2r-3884",
-  "modified": "2026-07-31T09:31:16Z",
+  "modified": "2026-07-31T18:32:16Z",
   "published": "2026-07-31T09:31:16Z",
   "aliases": [
     "CVE-2026-12251"
   ],
   "details": "The Ultimate Member  WordPress plugin before 2.12.1 does not filter administrator-level capabilities from the roles it makes selectable on its registration forms, and its post-registration safeguard against elevated accounts is disabled by default, allowing unauthenticated users to register with a site-defined role that carries administrator capabilities and gain administrative access, when such a role exists and a role-selection field is present on a published registration form.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-31T07:16:23Z"

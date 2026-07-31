@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8m37-w7r8-hcp2",
-  "modified": "2026-07-31T09:31:16Z",
+  "modified": "2026-07-31T18:32:17Z",
   "published": "2026-07-31T09:31:16Z",
   "aliases": [
     "CVE-2026-12721"
   ],
   "details": "The Kirki  WordPress plugin before 6.0.13 does not properly sanitise and escape a value taken from the request before using it in a SQL statement, allowing unauthenticated attackers to perform SQL injection attacks.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-31T07:16:24Z"
