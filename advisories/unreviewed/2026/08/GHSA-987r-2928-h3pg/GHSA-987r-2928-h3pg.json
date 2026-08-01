@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-987r-2928-h3pg",
+  "modified": "2026-08-01T09:30:25Z",
+  "published": "2026-08-01T09:30:25Z",
+  "aliases": [
+    "CVE-2026-16614"
+  ],
+  "details": "The GSheetConnector – CF7 Google Sheets Connector with Real-Time Sync plugin for WordPress is vulnerable to generic SQL Injection via the 's' parameter in all versions up to, and including, 5.2.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. wp_unslash() strips magic-quote protection and sanitize_text_field() does not escape SQL metacharacters, leaving single quotes and other SQL metacharacters intact before the value is interpolated into the query.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16614"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cf7-google-sheets-connector/tags/5.1.7/includes/pages/class-gs-cf7db-formEntryList.php#L34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cf7-google-sheets-connector/tags/5.1.7/includes/pages/class-gs-cf7db-formEntryList.php#L64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/cf7-google-sheets-connector/tags/5.1.7/includes/pages/gs-cf7db.php#L340"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3628480%40cf7-google-sheets-connector&new=3628480%40cf7-google-sheets-connector"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/83455de5-4fb2-4782-8063-646d3daf29e5?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-01T09:17:00Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5f44-9hfv-q32p",
+  "modified": "2026-08-01T09:30:24Z",
+  "published": "2026-08-01T09:30:24Z",
+  "aliases": [
+    "CVE-2025-14469"
+  ],
+  "details": "The Theme Editor plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 3.1. This is due to missing nonce validation on the ms_update AJAX action. This makes it possible for unauthenticated attackers to modify child theme CSS styles via a forged request granted they can trick an administrator into performing an action such as clicking on a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14469"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/theme-editor/trunk/includes/classes/ms_theme_editor_controller.php#L13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/theme-editor/trunk/includes/classes/ms_theme_editor_controller.php#L60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/theme-editor/#developers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/1dd4e39a-9b2f-4728-b026-2dee60257c46?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-01T08:16:29Z"
+  }
+}
