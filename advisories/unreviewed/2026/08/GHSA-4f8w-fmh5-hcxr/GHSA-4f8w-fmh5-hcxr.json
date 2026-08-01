@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4f8w-fmh5-hcxr",
+  "modified": "2026-08-01T15:30:27Z",
+  "published": "2026-08-01T15:30:27Z",
+  "aliases": [
+    "CVE-2026-67310"
+  ],
+  "details": "OpenRemote (org.openremote:openremote) versions <= 1.26.2 contain an insecure direct object reference vulnerability in the setAssetLinks endpoint of AlarmResourceImpl. The realm access check validates only a single realm obtained via realms.stream().findFirst() on a HashSet of realms from the request, rather than all realms. Because HashSet iteration order is non-deterministic, an authenticated attacker who includes alarm-asset links from both their own realm and a victim realm can, with roughly 50% probability per request (retryable), persist cross-tenant links and disclose victim asset names (returned via @Formula fields) through GET requests on the attacker's own alarm. Fixed in 1.27.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openremote/openremote/security/advisories/GHSA-q2gm-frx3-2qjr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67310"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openremote-before-cross-tenant-idor-via-setassetlinks"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-01T13:17:00Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9v65-w6j3-v2w8",
+  "modified": "2026-08-01T15:30:27Z",
+  "published": "2026-08-01T15:30:27Z",
+  "aliases": [
+    "CVE-2026-67311"
+  ],
+  "details": "Budibase before 3.38.1 contains a server-side request forgery vulnerability in the REST datasource integration that fails to validate HTTP redirects against the IP blacklist. Attackers with Builder role can configure a REST datasource pointing to an external server that returns a redirect to internal IP addresses, bypassing blacklist protection to access cloud metadata endpoints and internal services.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Budibase/budibase/security/advisories/GHSA-86f3-cqpq-wp9m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67311"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/budibase-before-ssrf-blacklist-bypass-via-http-redirect"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-01T13:17:01Z"
+  }
+}

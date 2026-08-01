@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gj37-5j8h-j367",
+  "modified": "2026-08-01T15:30:29Z",
+  "published": "2026-08-01T15:30:29Z",
+  "aliases": [
+    "CVE-2026-67331"
+  ],
+  "details": "better-auth SCIM versions from 1.5.0 before 1.7.0-beta.4 fail to bind non-organization SCIM providers to their creator by default, allowing authenticated users to manage other users' providers. Attackers can regenerate SCIM bearer tokens, invalidate legitimate tokens, and authenticate to SCIM API routes with the attacker-controlled token.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/better-auth/better-auth/security/advisories/GHSA-j8v8-g9cx-5qf4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67331"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/better-auth-scim-before-beta-4-authorization-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-01T13:17:03Z"
+  }
+}

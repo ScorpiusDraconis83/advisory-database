@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v7qc-fpqm-p46f",
+  "modified": "2026-08-01T15:30:27Z",
+  "published": "2026-08-01T15:30:27Z",
+  "aliases": [
+    "CVE-2026-67307"
+  ],
+  "details": "Wazuh 5.0.0-beta1 (fixed in 5.0.0-beta3) does not validate or override the cluster_name and cluster_node fields in inventory-sync Start FlatBuffer messages, while validating only the agentid against the authenticated agent identity. This allows a low-privileged enrolled agent to spoof cluster attribution in indexed inventory and vulnerability documents by forging wazuh.cluster.name values and influencing the document _id prefix, potentially tampering with inventory records or, in shared-indexer multi-cluster deployments, poisoning another cluster's records when numeric agent IDs collide.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/wazuh/wazuh/security/advisories/GHSA-jv5p-fhwh-9w55"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67307"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wazuh/wazuh/commit/b3dae02ec9ddcfd449cb61b4c76d180e3e43f79a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wazuh-before-beta3-cluster-attribution-spoofing-via-inventory-sync"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-01T13:17:00Z"
+  }
+}

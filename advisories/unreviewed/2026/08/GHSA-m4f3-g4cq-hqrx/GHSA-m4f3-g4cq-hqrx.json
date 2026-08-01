@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m4f3-g4cq-hqrx",
+  "modified": "2026-08-01T15:30:28Z",
+  "published": "2026-08-01T15:30:28Z",
+  "aliases": [
+    "CVE-2026-67322"
+  ],
+  "details": "GitPython before 3.1.52 is vulnerable to environment-variable exfiltration in Repo.clone_from(). The caller-supplied remote URL is passed through Git.polish_url(), which on non-Cygwin platforms calls os.path.expandvars() on the URL before invoking git clone. An attacker who controls the clone URL can embed $NAME or ${NAME} tokens that are expanded to the values of the hosting process's environment variables (e.g., AWS_SECRET_ACCESS_KEY or GITHUB_TOKEN). The resulting URL, now containing the secret, is transmitted over the network to an attacker-controlled host during the clone attempt, disclosing the secret.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitpython-developers/GitPython/security/advisories/GHSA-rwj8-pgh3-r573"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gitpython-before-environment-variable-exfiltration-via-clone-from"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-01T13:17:02Z"
+  }
+}

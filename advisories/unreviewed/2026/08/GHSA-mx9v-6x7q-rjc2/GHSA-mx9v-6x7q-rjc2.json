@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mx9v-6x7q-rjc2",
+  "modified": "2026-08-01T15:30:26Z",
+  "published": "2026-08-01T15:30:26Z",
+  "aliases": [
+    "CVE-2026-67295"
+  ],
+  "details": "FreeRDP before 3.29.0 fails to properly validate server-supplied RDPDR paths in drive redirection, allowing attackers to access prefix-sibling paths outside the configured shared root. A malicious RDP server can read, write, delete, and enumerate files in sibling directories by sending non-rooted paths that bypass the shared-root boundary check.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-8xqm-wp3f-rfp9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67295"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/commit/8d3b86022f0d71aefa7bd2e466d2d391693a41b3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/freerdp-before-path-traversal-via-drive-redirection"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-01T13:16:58Z"
+  }
+}

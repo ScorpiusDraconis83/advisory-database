@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4ww2-rjh2-xpv9",
+  "modified": "2026-08-01T15:30:27Z",
+  "published": "2026-08-01T15:30:27Z",
+  "aliases": [
+    "CVE-2026-67312"
+  ],
+  "details": "axios versions from 0.28.0 before 0.33.0 and from 1.0.0 before 1.18.0 contain uncontrolled recursion in formDataToJSON (exposed as axios.formToJSON() and used internally when serializing FormData with Content-Type: application/json). When an application passes attacker-controlled FormData field names, a field name with thousands of nested bracket-delimited segments causes unbounded recursion in buildPath(), exhausting the JavaScript call stack (RangeError: Maximum call stack size exceeded) and causing denial of service for that request, or process termination in applications without appropriate error handling.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/axios/axios/security/advisories/GHSA-pmv8-rq9r-6j72"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67312"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/axios-before-denial-of-service-via-formtojson"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-01T13:17:01Z"
+  }
+}

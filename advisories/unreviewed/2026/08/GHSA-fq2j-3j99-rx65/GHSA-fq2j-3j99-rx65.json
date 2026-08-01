@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fq2j-3j99-rx65",
+  "modified": "2026-08-01T15:30:27Z",
+  "published": "2026-08-01T15:30:27Z",
+  "aliases": [
+    "CVE-2026-67313"
+  ],
+  "details": "axios versions 0.28.0 and later contain uncontrolled recursion in formDataToJSON when processing FormData field names with deeply nested bracket segments. Attackers can supply FormData with field names containing thousands of nested brackets to exhaust the JavaScript call stack and trigger RangeError, causing request failure or process termination in applications that do not handle the exception.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/axios/axios/security/advisories/GHSA-42h9-826w-cgv3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67313"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/axios-before-denial-of-service-via-formdatatojson"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-01T13:17:01Z"
+  }
+}

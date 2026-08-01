@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hq8h-rvcv-jvh4",
+  "modified": "2026-08-01T15:30:25Z",
+  "published": "2026-08-01T15:30:25Z",
+  "aliases": [
+    "CVE-2026-67288"
+  ],
+  "details": "FreeRDP before 3.29.0 contains a null pointer dereference vulnerability in smartcard cache request decoders that accept NULL NDR pointers for LookupName in SCARD_IOCTL_READCACHEA and SCARD_IOCTL_WRITECACHEA operations. When smartcard emulation is enabled, attackers can send crafted smartcard cache requests with NULL lookup-name pointers to trigger strlen() on a null pointer, causing client process termination.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-ph3q-f9w8-7jf3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67288"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/commit/5370fb26fbf034ecd11d3026b6ad639b5fff493f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/commit/f3b4347105114fe7453828736bea069999af319f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/freerdp-before-denial-of-service-via-smartcard-cache"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-01T13:16:57Z"
+  }
+}

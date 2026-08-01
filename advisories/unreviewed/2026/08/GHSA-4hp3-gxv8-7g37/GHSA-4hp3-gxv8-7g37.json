@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4hp3-gxv8-7g37",
+  "modified": "2026-08-01T15:30:29Z",
+  "published": "2026-08-01T15:30:29Z",
+  "aliases": [
+    "CVE-2026-67335"
+  ],
+  "details": "better-auth versions before 1.6.2 fail to validate the OAuth state parameter against the stored nonce when using cookie-backed state storage without PKCE. Attackers can forge the state parameter and supply an attacker-controlled authorization code to create authenticated sessions bound to the attacker's external identity or persistently link attacker accounts to victim profiles.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/better-auth/better-auth/security/advisories/GHSA-wxw3-q3m9-c3jr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67335"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/better-auth-before-oauth-state-validation-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-01T13:17:04Z"
+  }
+}
