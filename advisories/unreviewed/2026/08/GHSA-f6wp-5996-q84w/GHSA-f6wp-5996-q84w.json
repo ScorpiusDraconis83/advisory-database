@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f6wp-5996-q84w",
+  "modified": "2026-08-03T12:32:36Z",
+  "published": "2026-08-03T12:32:36Z",
+  "aliases": [
+    "CVE-2026-69079"
+  ],
+  "details": "CTI-Transmute contains an uncontrolled resource-consumption vulnerability in the unauthenticated /activity_timeline endpoint. The endpoint accepts a user-controlled days query parameter that was not restricted to a reasonable range.\n\nA remote, unauthenticated attacker could submit an excessively large value for this parameter, causing the application to retrieve and process activity data over an arbitrarily large period. This could consume excessive database, CPU, or memory resources, delay the processing of concurrent requests, or trigger an internal server error. Repeated requests could further degrade the availability of the CTI-Transmute website.\n\nThe vulnerability is corrected by clamping the requested timeline range to a minimum of one day and a maximum of 1,095 days.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69079"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/cti-transmute/commit/321892d26b82c8a5af1e210ee30735abb109fac2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-03T10:16:33Z"
+  }
+}

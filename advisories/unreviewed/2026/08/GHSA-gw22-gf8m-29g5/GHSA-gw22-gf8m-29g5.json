@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gw22-gf8m-29g5",
+  "modified": "2026-08-03T12:32:36Z",
+  "published": "2026-08-03T12:32:36Z",
+  "aliases": [
+    "CVE-2026-0392"
+  ],
+  "details": "eParakstītājs 3.0 for Windows before version\n1.10.0 retrieves and executes its automatic updates over a channel that is not\nauthenticated or integrity-protected. On each launch the application fetches an\nupdate descriptor (XML) over TLS but accepts any TLS certificate (a permissive\nTrustManager and a HostnameVerifier that always returns true), does not verify\nany digital signature on the update descriptor, and does not verify the\nAuthenticode signature or a checksum of the downloaded installer before running\nit. A man-in-the-middle attacker able to redirect www.eparaksts.lv can serve a\ncrafted update descriptor pointing to an attacker-controlled executable, which\nthe client downloads and executes, resulting in arbitrary code execution on the\nvictim host.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:P/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0392"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cvd.cert.lv/inbox/view/vuln-all-1689187061"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.eparaksts.lv/lv/par_mums/Jaunumi/Jauna_eParakstitajs_30_versija_1100"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-03T10:16:27Z"
+  }
+}
