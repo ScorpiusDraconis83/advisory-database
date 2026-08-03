@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vj8r-wqrg-59qf",
+  "modified": "2026-08-03T03:31:56Z",
+  "published": "2026-08-03T03:31:56Z",
+  "aliases": [
+    "CVE-2026-18582"
+  ],
+  "details": "A security flaw has been discovered in mz-automation libiec61850 up to 1.6.1. This vulnerability affects the function Reporting_RCBWriteAccessHandler of the file src/iec61850/server/mms_mapping/reporting.c of the component Report Sending Path Handler. The manipulation results in free of memory not on the heap. It is possible to launch the attack remotely. The exploit has been released to the public and may be used for attacks. Upgrading to version 1.6.2 is able to resolve this issue. The patch is identified as 5b2a69f44256b8548927d8afdd7ac5f5381abe1e. It is suggested to upgrade the affected component. The vendor was contacted early about this disclosure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mz-automation/libiec61850/security/advisories/GHSA-7qg8-hm25-rv5v"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18582"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gff-cw/information/issues/2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mz-automation/libiec61850/commit/5b2a69f44256b8548927d8afdd7ac5f5381abe1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mz-automation/libiec61850"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mz-automation/libiec61850/releases/tag/v1.6.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-18582"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/844920"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/385411"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/385411/cti"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-590"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-03T02:16:29Z"
+  }
+}
