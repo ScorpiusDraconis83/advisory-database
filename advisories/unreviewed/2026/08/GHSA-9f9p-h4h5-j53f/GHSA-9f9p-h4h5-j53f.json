@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9f9p-h4h5-j53f",
+  "modified": "2026-08-03T21:31:36Z",
+  "published": "2026-08-03T21:31:36Z",
+  "aliases": [
+    "CVE-2026-38444"
+  ],
+  "details": "osTicket v1.18.3 is vulnerable to Stored Cross-Site Scripting (XSS) via the email From-header display name. The value is extracted without sanitization in include/class.mailparse.php and stored raw in the poster field of ost_thread_entry. When an unauthenticated attacker sends a reply email to an existing ticket from an unregistered address with an XSS payload in the From display name.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-38444"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/osTicket/osTicket/commit/c54a6ac79de42cff35b453882d1d94cd38adb17f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fr3akhacks/cve-disclosures/blob/master/osTicket/CVE-2026-38444.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/osTicket/osTicket/blob/develop/include/class.mailparse.php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-03T19:16:46Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mhmm-7px6-jx3j",
-  "modified": "2026-08-03T15:32:49Z",
+  "modified": "2026-08-03T21:31:35Z",
   "published": "2026-08-03T15:32:49Z",
   "aliases": [
     "CVE-2026-9390"
   ],
   "details": "XML::Sig versions before 0.71 for Perl allow XPath injection in ID lookup.\n\nverify() and _get_signed_xml() in lib/XML/Sig.pm build XPath expressions by concatenating the SignedInfo/Reference/@URI value read from the document being verified. The value is neither escaped nor checked against the NCName grammar that XML requires of an ID, so a URI containing a single quote closes the string literal in the generated expression and appends arbitrary XPath operators.\n\nA crafted URI can make the lookup match elements the reference does not name, or every element in the document, so which node is selected for digest verification is decided by the injected expression rather than by the reference.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -31,7 +36,7 @@
     "cwe_ids": [
       "CWE-643"
     ],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-03T14:16:30Z"

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ghrv-q878-w45x",
+  "modified": "2026-08-03T21:31:38Z",
+  "published": "2026-08-03T21:31:38Z",
+  "aliases": [
+    "CVE-2026-18738"
+  ],
+  "details": "Shlink versions 5.0.0 through 5.1.5 contain a CSV formula injection vulnerability that allows unauthenticated remote attackers to plant spreadsheet formulas into exported visit data by supplying malicious values in User-Agent, Referer, or request path headers beginning with formula-triggering characters such as =, +, -, or @. Attackers can craft a single unauthenticated request against any short URL to embed DDE or WEBSERVICE formula payloads into CSV cells, which are then executed on an administrator's client machine when the exported CSV file is opened in a spreadsheet application that evaluates formulas.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18738"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/shlinkio/shlink"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/theopaid/CSV-formula-injection-in-visit-exports-shlink-"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/shlink-csv-formula-injection-via-visit-export-cli"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1236"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-03T21:16:38Z"
+  }
+}

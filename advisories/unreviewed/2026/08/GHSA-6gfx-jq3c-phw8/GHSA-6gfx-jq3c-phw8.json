@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6gfx-jq3c-phw8",
-  "modified": "2026-08-01T09:30:23Z",
+  "modified": "2026-08-03T21:31:30Z",
   "published": "2026-08-01T09:30:23Z",
   "aliases": [
     "CVE-2026-14839"
   ],
   "details": "The Mapster WP Maps WordPress plugin before 1.24.0 does not perform any authorization or post-status check on a public REST endpoint, allowing unauthenticated users to retrieve the title and full content of any post regardless of its status, including unpublished (draft, pending, private, and trashed) posts.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-01T07:16:30Z"
