@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5hm3-fq9v-vwj3",
-  "modified": "2026-08-02T06:30:22Z",
+  "modified": "2026-08-03T18:30:41Z",
   "published": "2026-08-02T06:30:22Z",
   "aliases": [
     "CVE-2026-16261"
   ],
   "details": "The login-social WordPress plugin through 1.0.4 does not validate password-reset requests against a reset key or the requester's identity, and it issues authentication sessions from unverified third-party sign-in data, allowing unauthenticated attackers to reset any user's password or log in as any existing account, including administrators, and take over the site.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-02T06:16:39Z"

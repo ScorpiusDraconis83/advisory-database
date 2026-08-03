@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xw6w-vrqp-fhq4",
-  "modified": "2026-08-02T06:30:21Z",
+  "modified": "2026-08-03T18:30:40Z",
   "published": "2026-08-02T06:30:21Z",
   "aliases": [
     "CVE-2026-13389"
   ],
   "details": "The webtoffee-cookie-consent WordPress plugin before 3.5.3 does not perform authorization checks on several of its REST API routes, allowing unauthenticated attackers to export and delete stored visitor consent records, create posts, and modify the webtoffee-cookie-consent WordPress plugin before 3.5.3's licensing state.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-02T06:16:34Z"

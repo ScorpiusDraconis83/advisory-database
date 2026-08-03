@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xqfh-qj3w-mr75",
-  "modified": "2026-08-02T06:30:22Z",
+  "modified": "2026-08-03T18:30:41Z",
   "published": "2026-08-02T06:30:22Z",
   "aliases": [
     "CVE-2026-15241"
   ],
   "details": "The AI ChatBot for WooCommerce  WordPress plugin before 4.8.4 does not perform any authorization or nonce check on one of its AJAX actions, allowing unauthenticated users to abuse the site owner's stored third-party API key to send requests billed to the owner's account and, when an optional feature is enabled, to retrieve indexed knowledge-base content.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-02T06:16:37Z"

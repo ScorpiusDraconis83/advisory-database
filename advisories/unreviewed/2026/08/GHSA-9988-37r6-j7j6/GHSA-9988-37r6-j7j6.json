@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9988-37r6-j7j6",
-  "modified": "2026-08-03T09:32:37Z",
+  "modified": "2026-08-03T18:30:42Z",
   "published": "2026-08-03T09:32:37Z",
   "aliases": [
     "CVE-2026-16563"
   ],
   "details": "The Academy LMS WordPress plugin before 3.8.3 does not verify course enrollment or lesson publication status when returning a single lesson through its REST API, allowing users with a self-service student (Subscriber-level) account to disclose the content of arbitrary lessons, including lessons of paid courses they are not enrolled in and unpublished (draft, pending, private) lessons.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-03T07:16:41Z"

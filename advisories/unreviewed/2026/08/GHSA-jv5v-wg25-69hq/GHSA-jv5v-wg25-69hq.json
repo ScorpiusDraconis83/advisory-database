@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jv5v-wg25-69hq",
-  "modified": "2026-08-02T06:30:21Z",
+  "modified": "2026-08-03T18:30:40Z",
   "published": "2026-08-02T06:30:21Z",
   "aliases": [
     "CVE-2026-14864"
   ],
   "details": "The JetEngine WordPress plugin before 3.8.12 does not escape a post meta value before outputting it through one of its shortcodes, allowing users with the Contributor role and above to perform Stored Cross-Site Scripting attacks that execute in the context of higher-privileged users such as administrators.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-02T06:16:35Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-63jw-46hv-gwp2",
-  "modified": "2026-08-02T06:30:22Z",
+  "modified": "2026-08-03T18:30:40Z",
   "published": "2026-08-02T06:30:22Z",
   "aliases": [
     "CVE-2026-15206"
   ],
   "details": "The SMS Alert  WordPress plugin before 3.9.8 does not bind its \"mobile verified\" session flag to the phone number that was actually verified: after an attacker verifies an OTP sent to their own phone, the signup/login handler reads a fresh, attacker-supplied phone number to select the account and logs them in. An unauthenticated attacker can therefore log in as any user, including an administrator, who has a billing phone on file.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-02T06:16:36Z"

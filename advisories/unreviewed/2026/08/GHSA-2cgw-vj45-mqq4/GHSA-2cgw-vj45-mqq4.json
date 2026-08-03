@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2cgw-vj45-mqq4",
-  "modified": "2026-08-03T09:32:37Z",
+  "modified": "2026-08-03T18:30:42Z",
   "published": "2026-08-03T09:32:37Z",
   "aliases": [
     "CVE-2026-16289"
   ],
   "details": "The ProfileGrid  WordPress plugin before 6.0.0.0 does not perform authorization checks when listing a group's pending membership requests, allowing any authenticated user such as a Subscriber to disclose the names and request dates of the users awaiting approval to join any group, including private ones.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-03T07:16:41Z"

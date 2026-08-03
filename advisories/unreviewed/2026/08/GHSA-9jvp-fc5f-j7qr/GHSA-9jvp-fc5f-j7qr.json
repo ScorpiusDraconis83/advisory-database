@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9jvp-fc5f-j7qr",
-  "modified": "2026-08-02T06:30:22Z",
+  "modified": "2026-08-03T18:30:41Z",
   "published": "2026-08-02T06:30:22Z",
   "aliases": [
     "CVE-2026-15385"
   ],
   "details": "The RT Mega Menu  WordPress plugin before 1.5.2 does not perform a capability check on the AJAX action that saves mega-menu configuration and per-menu-item settings; its only gate is a nonce that any logged-in user can read from a standard admin page. A subscriber-level user can therefore enable the mega menu on a site menu and store a menu-item style value that is rendered, without output escaping, into a style attribute on the public navigation. By breaking out of that attribute the user persists a JavaScript event handler that executes for every visitor who hovers the navigation, including administrators, leading to session/site takeover.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-02T06:16:37Z"

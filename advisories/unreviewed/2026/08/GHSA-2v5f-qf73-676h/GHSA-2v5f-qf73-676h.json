@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2v5f-qf73-676h",
-  "modified": "2026-08-03T09:32:36Z",
+  "modified": "2026-08-03T18:30:42Z",
   "published": "2026-08-03T09:32:36Z",
   "aliases": [
     "CVE-2026-13340"
   ],
   "details": "The SVG Support WordPress plugin before 2.5.17 does not apply its SVG sanitisation to uploaded files using the .svgz extension, even though it registers and serves them as SVG, allowing a user permitted to upload SVGs (such as an Author once granted upload access) to store a script-bearing file that executes in the browser of anyone who later views it, including an administrator.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-03T07:16:39Z"
