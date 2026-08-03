@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mmwh-j75q-gxp8",
+  "modified": "2026-08-03T15:32:48Z",
+  "published": "2026-08-03T15:32:48Z",
+  "aliases": [
+    "CVE-2026-69089"
+  ],
+  "details": "Grav CMS 2.0.10 contains a path traversal vulnerability in ImageMedium::watermark(), which passes its unsanitized $image argument to RocketTheme\\Toolbox\\ResourceLocator\\UniformResourceLocator::findResource(). Because the file:// scheme branch only lexically collapses '..' segments without a realpath/containment check, an editor authoring Markdown image syntax with traversal sequences can cause arbitrary image files outside Grav's media sandbox to be composited into a carrier image, which is then cached and served from a public, unauthenticated URL — disclosing those files to anonymous visitors.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-w3f4-8pj2-599w"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69089"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/b282200a65ce979377963180629babd2335212ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/c569a53304cd7d95ff21bffa6fc590adcf0be83d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/db8c1fcd63aaaf6d6b244bc6b4cfa5f7b96bbc7f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-cms-before-path-traversal-via-watermark"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-03T14:16:29Z"
+  }
+}

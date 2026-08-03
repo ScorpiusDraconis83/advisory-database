@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mmp5-653m-6rjv",
+  "modified": "2026-08-03T15:32:49Z",
+  "published": "2026-08-03T15:32:49Z",
+  "aliases": [
+    "CVE-2026-69094"
+  ],
+  "details": "Admidio before 5.0.11 contains an insecure direct object reference vulnerability in the save_temporary mode of mylist_function.php that allows authenticated users to hijack list configurations. Attackers can enumerate global list UUIDs and overwrite admin-curated global lists or other users' private lists by supplying a list_uuid parameter, transferring ownership and demoting global lists to personal configurations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Admidio/admidio/security/advisories/GHSA-rw2j-8c57-x6h2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/admidio-before-idor-via-save-temporary-mylist-function-php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-03T14:16:30Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xp3j-j2g9-8cmv",
+  "modified": "2026-08-03T15:32:49Z",
+  "published": "2026-08-03T15:32:49Z",
+  "aliases": [
+    "CVE-2026-69093"
+  ],
+  "details": "Admidio before 5.0.11 does not validate the adm_csrf_token in modules/category-report/preferences.php, which performs persistent Category Report configuration changes based on GET parameters (delete and copy). An attacker can trick an authenticated administrator into visiting a crafted URL to delete or duplicate Category Report configurations, affecting the integrity and availability of that module's configuration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Admidio/admidio/security/advisories/GHSA-mvx3-m6p6-7r9w"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69093"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Admidio/admidio/commit/e1fe6fd2fcafb6a65a550760f79447abdef31461"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/admidio-before-csrf-via-category-report-preferences"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-03T14:16:30Z"
+  }
+}
