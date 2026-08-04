@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v35f-xcmj-3g2x",
-  "modified": "2024-05-20T12:30:28Z",
+  "modified": "2026-08-04T12:33:07Z",
   "published": "2024-05-20T12:30:28Z",
   "aliases": [
     "CVE-2024-35954"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: sg: Avoid sg device teardown race\n\nsg_remove_sfp_usercontext() must not use sg_device_destroy() after calling\nscsi_device_put().\n\nsg_device_destroy() is accessing the parent scsi_device request_queue which\nwill already be set to NULL when the preceding call to scsi_device_put()\nremoved the last reference to the parent scsi_device.\n\nThe resulting NULL pointer exception will then crash the kernel.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2024-05-20T10:15:10Z"

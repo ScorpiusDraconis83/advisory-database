@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9m7h-hjwm-6r7m",
-  "modified": "2024-06-21T12:31:19Z",
+  "modified": "2026-08-04T12:33:25Z",
   "published": "2024-06-21T12:31:19Z",
   "aliases": [
     "CVE-2024-33619"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nefi: libstub: only free priv.runtime_map when allocated\n\npriv.runtime_map is only allocated when efi_novamap is not set.\nOtherwise, it is an uninitialized value.  In the error path, it is freed\nunconditionally.  Avoid passing an uninitialized value to free_pool.\nFree priv.runtime_map only when it was allocated.\n\nThis bug was discovered and resolved using Coverity Static Analysis\nSecurity Testing (SAST) by Synopsys, Inc.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2024-06-21T11:15:09Z"
