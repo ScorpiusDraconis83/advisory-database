@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5mjf-g86r-2c6f",
+  "modified": "2026-08-04T09:31:35Z",
+  "published": "2026-08-04T09:31:35Z",
+  "aliases": [
+    "CVE-2026-16548"
+  ],
+  "details": "The Chat Widget: Floating Customer Support Button for 30+ Channels, Supporting SMS, Calls, and Chat  WordPress plugin before 1.8.2 does not validate the type, extension, content, or size of files submitted to its public response endpoint and stores them under the uploads directory, so an unauthenticated user can upload arbitrary files. The original extension is discarded (files are stored under a bare UUID), so this does not yield code execution or stored XSS; impact is bounded to disk consumption and content hosting. The storing path requires the channel's response storage or mail-forwarding to be configured.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16548"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/14d5f86b-f0ab-4920-99d0-8e2a66486232"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-04T07:16:30Z"
+  }
+}
