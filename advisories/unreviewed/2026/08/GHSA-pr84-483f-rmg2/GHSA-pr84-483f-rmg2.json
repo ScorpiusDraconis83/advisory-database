@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pr84-483f-rmg2",
+  "modified": "2026-08-04T15:32:23Z",
+  "published": "2026-08-04T15:32:23Z",
+  "aliases": [
+    "CVE-2026-67198"
+  ],
+  "details": "Perspective 5.0.0 contains a denial-of-service vulnerability in the VirtualServer protocol dispatcher that allows unauthenticated remote attackers to crash the server process by sending malformed or incomplete protobuf messages. Attackers can send well-formed requests such as ViewToArrowReq with no viewport set or MakeTableReq with no data field to trigger unwrap() calls on None values at nine distinct sites, causing the process to abort with SIGABRT.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67198"
+    },
+    {
+      "type": "WEB",
+      "url": "https://christbowel.com/blog/perspective-5-0-0-five-cves"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/perspective-dos-via-virtualserver-protocol-dispatcher"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-616"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-04T15:16:40Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xpm5-253f-8839",
-  "modified": "2026-08-04T09:31:35Z",
+  "modified": "2026-08-04T15:32:21Z",
   "published": "2026-08-04T09:31:35Z",
   "aliases": [
     "CVE-2026-16069"
   ],
   "details": "The Brizy  WordPress plugin before 2.8.19 does not sanitize or escape featured-image focal-point coordinates submitted through one of its AJAX actions before storing them and later echoing them into HTML attributes in the post editor's Featured Image meta box, allowing users with the Contributor role or above to inject arbitrary web scripts that execute in the session of a higher-privileged user who opens the post for review.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-04T07:16:29Z"

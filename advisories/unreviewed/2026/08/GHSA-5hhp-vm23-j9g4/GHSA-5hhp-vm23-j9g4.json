@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5hhp-vm23-j9g4",
-  "modified": "2026-08-04T09:31:34Z",
+  "modified": "2026-08-04T15:32:21Z",
   "published": "2026-08-04T09:31:34Z",
   "aliases": [
     "CVE-2026-10526"
   ],
   "details": "The EmbedPress  WordPress plugin before 4.6.1 does not validate user-supplied URLs before making server-side requests through unauthenticated endpoints, allowing unauthenticated attackers to induce the site to send HTTP requests to internal hosts and services that WordPress core URL validation does not cover (a blind Server-Side Request Forgery).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-04T07:16:28Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9984-4442-697f",
-  "modified": "2026-08-04T09:31:34Z",
+  "modified": "2026-08-04T15:32:21Z",
   "published": "2026-08-04T09:31:34Z",
   "aliases": [
     "CVE-2026-11366"
   ],
   "details": "The MonsterInsights  WordPress plugin before 11.1.0 does not correctly validate the signature on one of its unauthenticated AJAX actions: when the MonsterInsights  WordPress plugin before 11.1.0 is not connected to Google Analytics the HMAC signing key is empty, which lets unauthenticated attackers forge a valid signature and overwrite a MonsterInsights  WordPress plugin before 11.1.0 configuration value, disrupting the MonsterInsights  WordPress plugin before 11.1.0's server-side analytics in Manual GA4 mode.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-04T07:16:28Z"
