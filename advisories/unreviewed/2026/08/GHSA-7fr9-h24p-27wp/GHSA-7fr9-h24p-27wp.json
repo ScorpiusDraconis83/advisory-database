@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7fr9-h24p-27wp",
+  "modified": "2026-08-04T18:31:27Z",
+  "published": "2026-08-04T18:31:27Z",
+  "aliases": [
+    "CVE-2026-69110"
+  ],
+  "details": "OpenCode Studio before 2.4.4 contains a missing authentication vulnerability that allows unauthenticated remote attackers to read arbitrary files within the temp and static/music directories by directly accessing the GET /api/tmp/:tmpFile and GET /api/music/:fileName endpoints. Attackers can retrieve intermediate audio, video artifacts, and subtitles belonging to other users' jobs, and additionally delete any video by ID through the unauthenticated DELETE /api/short-video/:videoId endpoint.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Microck/opencode-studio/issues/54"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Microck/opencode-studio/pull/55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Microck/opencode-studio/commit/1f4d7a7f52beb43105d345b26fd0c0ffc2bf0004"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Microck/opencode-studio/releases/tag/v2.4.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/opencode-studio-unauthenticated-file-read-via-api-tmp-and-api-music"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-04T16:16:28Z"
+  }
+}

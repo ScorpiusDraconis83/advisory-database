@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2rf9-6fhx-g6mg",
-  "modified": "2026-08-02T06:30:23Z",
+  "modified": "2026-08-04T18:31:21Z",
   "published": "2026-08-02T06:30:23Z",
   "aliases": [
     "CVE-2026-16292"
   ],
   "details": "The Frontend File Manager Plugin WordPress plugin through 23.6 does not perform nonce validation on one of its file-metadata update actions, allowing an attacker to modify the metadata of a logged-in user's uploaded file via a CSRF attack, which can be leveraged to download that file. When guest uploads are enabled, the same action is reachable unauthenticated against any user's file.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-02T06:16:40Z"

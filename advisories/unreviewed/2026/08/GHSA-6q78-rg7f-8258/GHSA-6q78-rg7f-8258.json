@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6q78-rg7f-8258",
-  "modified": "2026-08-04T09:31:35Z",
+  "modified": "2026-08-04T18:31:25Z",
   "published": "2026-08-04T09:31:35Z",
   "aliases": [
     "CVE-2026-15233"
   ],
   "details": "The Nested Pages WordPress plugin before 3.2.15 does not properly escape post titles before outputting them into HTML attributes on an administrative listing screen, allowing users with the Editor role (or Contributor/Author when the Nested Pages WordPress plugin before 3.2.15 is enabled for the post type) to inject arbitrary JavaScript that executes in the session of any higher-privileged user who views that screen.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-04T07:16:29Z"
