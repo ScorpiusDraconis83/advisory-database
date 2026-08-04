@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f688-j3hq-jm53",
-  "modified": "2025-12-24T12:30:26Z",
+  "modified": "2026-08-04T12:34:43Z",
   "published": "2025-12-24T12:30:26Z",
   "aliases": [
     "CVE-2023-53867"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nceph: fix potential use-after-free bug when trimming caps\n\nWhen trimming the caps and just after the 'session->s_cap_lock' is\nreleased in ceph_iterate_session_caps() the cap maybe removed by\nanother thread, and when using the stale cap memory in the callbacks\nit will trigger use-after-free crash.\n\nWe need to check the existence of the cap just after the 'ci->i_ceph_lock'\nbeing acquired. And do nothing if it's already removed.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-24T11:15:51Z"

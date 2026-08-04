@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-756h-2p6r-crqr",
-  "modified": "2025-12-24T15:30:39Z",
+  "modified": "2026-08-04T12:34:45Z",
   "published": "2025-12-24T15:30:39Z",
   "aliases": [
     "CVE-2023-54128"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs: drop peer group ids under namespace lock\n\nWhen cleaning up peer group ids in the failure path we need to make sure\nto hold on to the namespace lock. Otherwise another thread might just\nturn the mount from a shared into a non-shared mount concurrently.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-24T13:16:14Z"

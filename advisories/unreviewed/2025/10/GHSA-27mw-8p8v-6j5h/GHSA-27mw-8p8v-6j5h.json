@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-27mw-8p8v-6j5h",
-  "modified": "2025-10-22T15:31:11Z",
+  "modified": "2026-08-04T12:34:37Z",
   "published": "2025-10-22T15:31:11Z",
   "aliases": [
     "CVE-2023-53705"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: Fix out-of-bounds access in ipv6_find_tlv()\n\noptlen is fetched without checking whether there is more than one byte to parse.\nIt can lead to out-of-bounds access.\n\nFound by InfoTeCS on behalf of Linux Verification Center\n(linuxtesting.org) with SVACE.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-10-22T14:15:45Z"

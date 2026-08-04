@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8m2v-q2gj-8gq3",
-  "modified": "2025-12-30T15:30:36Z",
+  "modified": "2026-08-04T12:34:50Z",
   "published": "2025-12-30T15:30:36Z",
   "aliases": [
     "CVE-2023-54317"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm flakey: don't corrupt the zero page\n\nWhen we need to zero some range on a block device, the function\n__blkdev_issue_zero_pages submits a write bio with the bio vector pointing\nto the zero page. If we use dm-flakey with corrupt bio writes option, it\nwill corrupt the content of the zero page which results in crashes of\nvarious userspace programs. Glibc assumes that memory returned by mmap is\nzeroed and it uses it for calloc implementation; if the newly mapped\nmemory is not zeroed, calloc will return non-zeroed memory.\n\nFix this bug by testing if the page is equal to ZERO_PAGE(0) and\navoiding the corruption in this case.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-30T13:16:20Z"

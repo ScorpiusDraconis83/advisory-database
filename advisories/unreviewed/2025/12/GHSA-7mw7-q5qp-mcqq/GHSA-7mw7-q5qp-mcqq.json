@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7mw7-q5qp-mcqq",
-  "modified": "2025-12-09T03:31:11Z",
+  "modified": "2026-08-04T12:34:39Z",
   "published": "2025-12-09T03:31:11Z",
   "aliases": [
     "CVE-2023-53803"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: ses: Fix slab-out-of-bounds in ses_enclosure_data_process()\n\nA fix for:\n\nBUG: KASAN: slab-out-of-bounds in ses_enclosure_data_process+0x949/0xe30 [ses]\nRead of size 1 at addr ffff88a1b043a451 by task systemd-udevd/3271\n\nChecking after (and before in next loop) addl_desc_ptr[1] is sufficient, we\nexpect the size to be sanitized before first access to addl_desc_ptr[1].\nMake sure we don't walk beyond end of page.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-09T01:16:52Z"

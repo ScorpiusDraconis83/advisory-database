@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wv6p-qh73-f5xp",
-  "modified": "2025-12-30T12:30:29Z",
+  "modified": "2026-08-04T12:34:45Z",
   "published": "2025-12-30T12:30:28Z",
   "aliases": [
     "CVE-2022-50785"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfsi: occ: Prevent use after free\n\nUse get_device and put_device in the open and close functions to\nmake sure the device doesn't get freed while a file descriptor is\nopen.\nAlso, lock around the freeing of the device buffer and check the\nbuffer before using it in the submit function.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-30T12:15:44Z"

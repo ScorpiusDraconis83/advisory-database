@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6fx2-6qwr-35w9",
-  "modified": "2025-12-30T15:30:32Z",
+  "modified": "2026-08-04T12:34:49Z",
   "published": "2025-12-30T15:30:32Z",
   "aliases": [
     "CVE-2023-54234"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: mpi3mr: Fix missing mrioc->evtack_cmds initialization\n\nCommit c1af985d27da (\"scsi: mpi3mr: Add Event acknowledgment logic\")\nintroduced an array mrioc->evtack_cmds but initialization of the array\nelements was missed. They are just zero cleared. The function\nmpi3mr_complete_evt_ack() refers host_tag field of the elements. Due to the\nzero value of the host_tag field, the function calls clear_bit() for\nmrico->evtack_cmds_bitmap with wrong bit index. This results in memory\naccess to invalid address and \"BUG: KASAN: use-after-free\". This BUG was\nobserved at eHBA-9600 firmware update to version 8.3.1.0. To fix it, add\nthe missing initialization of mrioc->evtack_cmds.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-30T13:16:11Z"

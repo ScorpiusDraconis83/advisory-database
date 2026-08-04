@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-35g5-mqjg-qfr4",
-  "modified": "2025-12-24T15:30:34Z",
+  "modified": "2026-08-04T12:34:43Z",
   "published": "2025-12-24T15:30:34Z",
   "aliases": [
     "CVE-2022-50758"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: vt6655: fix potential memory leak\n\nIn function device_init_td0_ring, memory is allocated for member\ntd_info of priv->apTD0Rings[i], with i increasing from 0. In case of\nallocation failure, the memory is freed in reversed order, with i\ndecreasing to 0. However, the case i=0 is left out and thus memory is\nleaked.\n\nModify the memory freeing loop to include the case i=0.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-24T13:16:02Z"

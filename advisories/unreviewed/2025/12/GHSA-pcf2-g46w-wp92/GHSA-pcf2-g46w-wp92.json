@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pcf2-g46w-wp92",
-  "modified": "2025-12-24T12:30:28Z",
+  "modified": "2026-08-04T12:34:43Z",
   "published": "2025-12-24T12:30:28Z",
   "aliases": [
     "CVE-2023-54035"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: fix underflow in chain reference counter\n\nSet element addition error path decrements reference counter on chains\ntwice: once on element release and again via nft_data_release().\n\nThen, d6b478666ffa (\"netfilter: nf_tables: fix underflow in object\nreference counter\") incorrectly fixed this by removing the stateful\nobject reference count decrement.\n\nRestore the stateful object decrement as in b91d90368837 (\"netfilter:\nnf_tables: fix leaking object reference count\") and let\nnft_data_release() decrement the chain reference counter, so this is\ndone only once.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-24T11:15:56Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g5ph-9wmf-49w8",
-  "modified": "2025-12-30T15:30:28Z",
+  "modified": "2026-08-04T12:34:46Z",
   "published": "2025-12-30T15:30:28Z",
   "aliases": [
     "CVE-2022-50860"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\napparmor: Fix memleak in alloc_ns()\n\nAfter changes in commit a1bd627b46d1 (\"apparmor: share profile name on\nreplacement\"), the hname member of struct aa_policy is not valid slab\nobject, but a subset of that, it can not be freed by kfree_sensitive(),\nuse aa_policy_destroy() to fix it.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-30T13:16:00Z"

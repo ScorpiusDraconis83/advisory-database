@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-x47f-6fjp-7wj4",
-  "modified": "2025-12-09T03:31:11Z",
+  "modified": "2026-08-04T12:34:38Z",
   "published": "2025-12-09T03:31:11Z",
   "aliases": [
     "CVE-2023-53794"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: fix session state check in reconnect to avoid use-after-free issue\n\nDon't collect exiting session in smb2_reconnect_server(), because it\nwill be released soon.\n\nNote that the exiting session will stay in server->smb_ses_list until\nit complete the cifs_free_ipc() and logoff() and then delete itself\nfrom the list.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-09T01:16:50Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-54vr-v43g-gq47",
-  "modified": "2025-12-30T15:30:30Z",
+  "modified": "2026-08-04T12:34:47Z",
   "published": "2025-12-30T15:30:30Z",
   "aliases": [
     "CVE-2023-54168"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/mlx4: Prevent shift wrapping in set_user_sq_size()\n\nThe ucmd->log_sq_bb_count variable is controlled by the user so this\nshift can wrap.  Fix it by using check_shl_overflow() in the same way\nthat it was done in commit 515f60004ed9 (\"RDMA/hns: Prevent undefined\nbehavior in hns_roce_set_user_sq_size()\").",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-30T13:16:04Z"

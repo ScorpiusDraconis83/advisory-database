@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j6jv-hgrf-2v93",
-  "modified": "2025-12-24T15:30:32Z",
+  "modified": "2026-08-04T12:34:43Z",
   "published": "2025-12-24T15:30:32Z",
   "aliases": [
     "CVE-2022-50719"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: line6: fix stack overflow in line6_midi_transmit\n\nCorrectly calculate available space including the size of the chunk\nbuffer. This fixes a buffer overflow when multiple MIDI sysex\nmessages are sent to a PODxt device.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -53,7 +58,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-24T13:15:58Z"

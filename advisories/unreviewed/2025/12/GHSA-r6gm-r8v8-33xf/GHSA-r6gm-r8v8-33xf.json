@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-r6gm-r8v8-33xf",
-  "modified": "2025-12-08T03:31:03Z",
+  "modified": "2026-08-04T12:34:37Z",
   "published": "2025-12-08T03:31:03Z",
   "aliases": [
     "CVE-2023-53753"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: fix mapping to non-allocated address\n\n[Why]\nThere is an issue mapping non-allocated location of memory.\nIt would allocate gpio registers from an array out of bounds.\n\n[How]\nPatch correct numbers of bounds for using.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-08T02:15:50Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wf2j-c3q8-8c84",
-  "modified": "2025-12-09T03:31:11Z",
+  "modified": "2026-08-04T12:34:39Z",
   "published": "2025-12-09T03:31:11Z",
   "aliases": [
     "CVE-2023-53804"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnilfs2: fix use-after-free bug of nilfs_root in nilfs_evict_inode()\n\nDuring unmount process of nilfs2, nothing holds nilfs_root structure after\nnilfs2 detaches its writer in nilfs_detach_log_writer().  However, since\nnilfs_evict_inode() uses nilfs_root for some cleanup operations, it may\ncause use-after-free read if inodes are left in \"garbage_list\" and\nreleased by nilfs_dispose_list() at the end of nilfs_detach_log_writer().\n\nFix this issue by modifying nilfs_evict_inode() to only clear inode\nwithout additional metadata changes that use nilfs_root if the file system\nis degraded to read-only or the writer is detached.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-09T01:16:52Z"

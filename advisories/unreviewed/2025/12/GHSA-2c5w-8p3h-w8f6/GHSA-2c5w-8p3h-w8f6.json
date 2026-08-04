@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2c5w-8p3h-w8f6",
-  "modified": "2025-12-30T15:30:34Z",
+  "modified": "2026-08-04T12:34:50Z",
   "published": "2025-12-30T15:30:34Z",
   "aliases": [
     "CVE-2023-54280"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: fix potential race when tree connecting ipc\n\nProtect access of TCP_Server_Info::hostname when building the ipc tree\nname as it might get freed in cifsd thread and thus causing an\nuse-after-free bug in __tree_connect_dfs_target().  Also, while at it,\nupdate status of IPC tcon on success and then avoid any extra tree\nconnects.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-30T13:16:16Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8g62-7g79-h3h2",
-  "modified": "2025-10-22T15:31:10Z",
+  "modified": "2026-08-04T12:34:37Z",
   "published": "2025-10-22T15:31:10Z",
   "aliases": [
     "CVE-2023-53695"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nudf: Detect system inodes linked into directory hierarchy\n\nWhen UDF filesystem is corrupted, hidden system inodes can be linked\ninto directory hierarchy which is an avenue for further serious\ncorruption of the filesystem and kernel confusion as noticed by syzbot\nfuzzed images. Refuse to access system inodes linked into directory\nhierarchy and vice versa.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-10-22T14:15:44Z"

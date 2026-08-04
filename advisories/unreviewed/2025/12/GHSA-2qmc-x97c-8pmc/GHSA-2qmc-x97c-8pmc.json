@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2qmc-x97c-8pmc",
-  "modified": "2025-12-30T15:30:28Z",
+  "modified": "2026-08-04T12:34:46Z",
   "published": "2025-12-30T15:30:28Z",
   "aliases": [
     "CVE-2022-50865"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: fix a signed-integer-overflow bug in tcp_add_backlog()\n\nThe type of sk_rcvbuf and sk_sndbuf in struct sock is int, and\nin tcp_add_backlog(), the variable limit is caculated by adding\nsk_rcvbuf, sk_sndbuf and 64 * 1024, it may exceed the max value\nof int and overflow. This patch reduces the limit budget by\nhalving the sndbuf to solve this issue since ACK packets are much\nsmaller than the payload.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-30T13:16:01Z"

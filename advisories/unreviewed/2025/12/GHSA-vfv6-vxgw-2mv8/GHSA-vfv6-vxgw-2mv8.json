@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vfv6-vxgw-2mv8",
-  "modified": "2025-12-24T15:30:37Z",
+  "modified": "2026-08-04T12:34:44Z",
   "published": "2025-12-24T15:30:37Z",
   "aliases": [
     "CVE-2023-54088"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-cgroup: hold queue_lock when removing blkg->q_node\n\nWhen blkg is removed from q->blkg_list from blkg_free_workfn(), queue_lock\nhas to be held, otherwise, all kinds of bugs(list corruption, hard lockup,\n..) can be triggered from blkg_destroy_all().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-24T13:16:10Z"

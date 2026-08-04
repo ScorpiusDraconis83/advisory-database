@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-chf6-hvqj-hp2j",
-  "modified": "2025-12-09T18:30:32Z",
+  "modified": "2026-08-04T12:34:41Z",
   "published": "2025-12-09T18:30:32Z",
   "aliases": [
     "CVE-2022-50677"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipmi: fix use after free in _ipmi_destroy_user()\n\nThe intf_free() function frees the \"intf\" pointer so we cannot\ndereference it again on the next line.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-09T16:17:19Z"

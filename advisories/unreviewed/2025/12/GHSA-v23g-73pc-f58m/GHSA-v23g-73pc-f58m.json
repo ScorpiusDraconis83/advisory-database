@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v23g-73pc-f58m",
-  "modified": "2025-12-24T15:30:33Z",
+  "modified": "2026-08-04T12:34:43Z",
   "published": "2025-12-24T15:30:33Z",
   "aliases": [
     "CVE-2022-50732"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8192u: Fix use after free in ieee80211_rx()\n\nWe cannot dereference the \"skb\" pointer after calling\nieee80211_monitor_rx(), because it is a use after free.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -53,7 +58,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-24T13:15:59Z"

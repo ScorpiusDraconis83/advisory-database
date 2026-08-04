@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3w8q-vg6g-cg46",
-  "modified": "2025-12-09T03:31:12Z",
+  "modified": "2026-08-04T12:34:40Z",
   "published": "2025-12-09T03:31:11Z",
   "aliases": [
     "CVE-2023-53817"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: lib/mpi - avoid null pointer deref in mpi_cmp_ui()\n\nDuring NVMeTCP Authentication a controller can trigger a kernel\noops by specifying the 8192 bit Diffie Hellman group and passing\na correctly sized, but zeroed Diffie Hellamn value.\nmpi_cmp_ui() was detecting this if the second parameter was 0,\nbut 1 is passed from dh_is_pubkey_valid(). This causes the null\npointer u->d to be dereferenced towards the end of mpi_cmp_ui()",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-09T01:16:53Z"

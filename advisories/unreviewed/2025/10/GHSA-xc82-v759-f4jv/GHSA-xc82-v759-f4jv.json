@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xc82-v759-f4jv",
-  "modified": "2025-10-22T15:31:11Z",
+  "modified": "2026-08-04T12:34:37Z",
   "published": "2025-10-22T15:31:11Z",
   "aliases": [
     "CVE-2023-53707"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix integer overflow in amdgpu_cs_pass1\n\nThe type of size is unsigned int, if size is 0x40000000, there will\nbe an integer overflow, size will be zero after size *= sizeof(uint32_t),\nwill cause uninitialized memory to be referenced later.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-10-22T14:15:45Z"

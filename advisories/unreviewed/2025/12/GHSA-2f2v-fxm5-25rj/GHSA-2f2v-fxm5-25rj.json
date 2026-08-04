@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2f2v-fxm5-25rj",
-  "modified": "2025-12-24T15:30:39Z",
+  "modified": "2026-08-04T12:34:45Z",
   "published": "2025-12-24T15:30:39Z",
   "aliases": [
     "CVE-2023-54130"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhfs/hfsplus: avoid WARN_ON() for sanity check, use proper error handling\n\nCommit 55d1cbbbb29e (\"hfs/hfsplus: use WARN_ON for sanity check\") fixed\na build warning by turning a comment into a WARN_ON(), but it turns out\nthat syzbot then complains because it can trigger said warning with a\ncorrupted hfs image.\n\nThe warning actually does warn about a bad situation, but we are much\nbetter off just handling it as the error it is.  So rather than warn\nabout us doing bad things, stop doing the bad things and return -EIO.\n\nWhile at it, also fix a memory leak that was introduced by an earlier\nfix for a similar syzbot warning situation, and add a check for one case\nthat historically wasn't handled at all (ie neither comment nor\nsubsequent WARN_ON).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-24T13:16:14Z"

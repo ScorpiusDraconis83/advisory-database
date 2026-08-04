@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f7vc-g3xh-9xx2",
-  "modified": "2025-10-22T15:31:10Z",
+  "modified": "2026-08-04T12:34:37Z",
   "published": "2025-10-22T15:31:10Z",
   "aliases": [
     "CVE-2023-53698"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxsk: fix refcount underflow in error path\n\nFix a refcount underflow problem reported by syzbot that can happen\nwhen a system is running out of memory. If xp_alloc_tx_descs() fails,\nand it can only fail due to not having enough memory, then the error\npath is triggered. In this error path, the refcount of the pool is\ndecremented as it has incremented before. However, the reference to\nthe pool in the socket was not nulled. This means that when the socket\nis closed later, the socket teardown logic will think that there is a\npool attached to the socket and try to decrease the refcount again,\nleading to a refcount underflow.\n\nI chose this fix as it involved adding just a single line. Another\noption would have been to move xp_get_pool() and the assignment of\nxs->pool to after the if-statement and using xs_umem->pool instead of\nxs->pool in the whole if-statement resulting in somewhat simpler code,\nbut this would have led to much more churn in the code base perhaps\nmaking it harder to backport.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-10-22T14:15:44Z"

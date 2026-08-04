@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f39w-x49r-j8p2",
-  "modified": "2025-12-30T15:30:33Z",
+  "modified": "2026-08-04T12:34:49Z",
   "published": "2025-12-30T15:30:33Z",
   "aliases": [
     "CVE-2023-54250"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: avoid out of bounds access in decode_preauth_ctxt()\n\nConfirm that the accessed pneg_ctxt->HashAlgorithms address sits within\nthe SMB request boundary; deassemble_neg_contexts() only checks that the\neight byte smb2_neg_context header + (client controlled) DataLength are\nwithin the packet boundary, which is insufficient.\n\nChecking for sizeof(struct smb2_preauth_neg_context) is overkill given\nthat the type currently assumes SMB311_SALT_SIZE bytes of trailing Salt.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-30T13:16:13Z"

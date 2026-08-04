@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-h8wx-9xh3-9g66",
-  "modified": "2025-12-30T15:30:33Z",
+  "modified": "2026-08-04T12:34:49Z",
   "published": "2025-12-30T15:30:33Z",
   "aliases": [
     "CVE-2023-54254"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/ttm: Don't leak a resource on eviction error\n\nOn eviction errors other than -EMULTIHOP we were leaking a resource.\nFix.\n\nv2:\n- Avoid yet another goto (Andi Shyti)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-30T13:16:14Z"

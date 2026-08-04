@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-25gx-7w99-7j35",
-  "modified": "2025-12-30T15:30:31Z",
+  "modified": "2026-08-04T12:34:48Z",
   "published": "2025-12-30T15:30:31Z",
   "aliases": [
     "CVE-2023-54201"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/efa: Fix wrong resources deallocation order\n\nWhen trying to destroy QP or CQ, we first decrease the refcount and\npotentially free memory regions allocated for the object and then\nrequest the device to destroy the object. If the device fails, the\nobject isn't fully destroyed so the user/IB core can try to destroy the\nobject again which will lead to underflow when trying to decrease an\nalready zeroed refcount.\n\nDeallocate resources in reverse order of allocating them to safely free\nthem.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-30T13:16:08Z"

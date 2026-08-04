@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9rf3-hx86-5f4p",
-  "modified": "2025-12-24T15:30:33Z",
+  "modified": "2026-08-04T12:34:43Z",
   "published": "2025-12-24T15:30:33Z",
   "aliases": [
     "CVE-2022-50746"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs: validate the extent length for uncompressed pclusters\n\nsyzkaller reported a KASAN use-after-free:\nhttps://syzkaller.appspot.com/bug?extid=2ae90e873e97f1faf6f2\n\nThe referenced fuzzed image actually has two issues:\n - m_pa == 0 as a non-inlined pcluster;\n - The logical length is longer than its physical length.\n\nThe first issue has already been addressed.  This patch addresses\nthe second issue by checking the extent length validity.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-24T13:16:01Z"

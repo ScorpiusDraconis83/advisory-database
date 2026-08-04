@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wxfw-x294-cg88",
-  "modified": "2025-12-09T18:30:33Z",
+  "modified": "2026-08-04T12:34:42Z",
   "published": "2025-12-09T18:30:33Z",
   "aliases": [
     "CVE-2023-53851"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm/dp: Drop aux devices together with DP controller\n\nUsing devres to depopulate the aux bus made sure that upon a probe\ndeferral the EDP panel device would be destroyed and recreated upon next\nattempt.\n\nBut the struct device which the devres is tied to is the DPUs\n(drm_dev->dev), which may be happen after the DP controller is torn\ndown.\n\nIndications of this can be seen in the commonly seen EDID-hexdump full\nof zeros in the log, or the occasional/rare KASAN fault where the\npanel's attempt to read the EDID information causes a use after free on\nDP resources.\n\nIt's tempting to move the devres to the DP controller's struct device,\nbut the resources used by the device(s) on the aux bus are explicitly\ntorn down in the error path. The KASAN-reported use-after-free also\nremains, as the DP aux \"module\" explicitly frees its devres-allocated\nmemory in this code path.\n\nAs such, explicitly depopulate the aux bus in the error path, and in the\ncomponent unbind path, to avoid these issues.\n\nPatchwork: https://patchwork.freedesktop.org/patch/542163/",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-09T16:17:25Z"

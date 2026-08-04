@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cphq-rv4m-x79g",
-  "modified": "2025-12-30T15:30:34Z",
+  "modified": "2026-08-04T12:34:49Z",
   "published": "2025-12-30T15:30:33Z",
   "aliases": [
     "CVE-2023-54269"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nSUNRPC: double free xprt_ctxt while still in use\n\nWhen an RPC request is deferred, the rq_xprt_ctxt pointer is moved out\nof the svc_rqst into the svc_deferred_req.\nWhen the deferred request is revisited, the pointer is copied into\nthe new svc_rqst - and also remains in the svc_deferred_req.\n\nIn the (rare?) case that the request is deferred a second time, the old\nsvc_deferred_req is reused - it still has all the correct content.\nHowever in that case the rq_xprt_ctxt pointer is NOT cleared so that\nwhen xpo_release_xprt is called, the ctxt is freed (UDP) or possible\nadded to a free list (RDMA).\nWhen the deferred request is revisited for a second time, it will\nreference this ctxt which may be invalid, and the free the object a\nsecond time which is likely to oops.\n\nSo change svc_defer() to *always* clear rq_xprt_ctxt, and assert that\nthe value is now stored in the svc_deferred_req.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2025-12-30T13:16:15Z"
