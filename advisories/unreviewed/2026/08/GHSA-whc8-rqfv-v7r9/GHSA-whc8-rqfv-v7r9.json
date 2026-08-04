@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-whc8-rqfv-v7r9",
+  "modified": "2026-08-04T00:34:54Z",
+  "published": "2026-08-04T00:34:54Z",
+  "aliases": [
+    "CVE-2026-67673"
+  ],
+  "details": "A stack-based buffer overflow vulnerability exists in the cmd_edl function of OreSat Firmware v1.0. The vulnerability is triggered when processing the edl fw_flash command, where the <filename> argument is copied to a 64-byte stack buffer via memcpy without proper length validation. An attacker with physical access to the UART3 serial interface can exploit this vulnerability by sending a maliciously crafted command with an oversized filename parameter,",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67673"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dazuo233/cve/issues/2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-03T23:16:47Z"
+  }
+}
