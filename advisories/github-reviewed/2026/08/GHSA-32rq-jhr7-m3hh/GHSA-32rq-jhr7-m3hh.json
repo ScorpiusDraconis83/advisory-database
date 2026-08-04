@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-32rq-jhr7-m3hh",
+  "modified": "2026-08-04T12:49:43Z",
+  "published": "2026-08-01T15:30:29Z",
+  "withdrawn": "2026-08-04T12:49:04Z",
+  "aliases": [],
+  "summary": "Duplicate Advisory: Guzzle: Proxy-Authorization headers can be sent to origin servers",
+  "details": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-94pj-82f3-465w. This link is maintained to preserve external references.\n\n## Original Description\n\nguzzlehttp/guzzle versions before 7.14.2 fail to properly isolate Proxy-Authorization headers from origin servers in cURL handlers. Attackers can capture proxy credentials through origin server access logs when requests are redirected, bypassed, or sent through SOCKS proxies that Guzzle misclassifies as direct connections.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "guzzlehttp/guzzle"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 7.14.2"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/guzzle/guzzle/security/advisories/GHSA-94pj-82f3-465w"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/guzzlehttp-guzzle-before-proxy-authorization-header-disclosure"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-04T12:49:04Z",
+    "nvd_published_at": "2026-08-01T13:17:04Z"
+  }
+}
