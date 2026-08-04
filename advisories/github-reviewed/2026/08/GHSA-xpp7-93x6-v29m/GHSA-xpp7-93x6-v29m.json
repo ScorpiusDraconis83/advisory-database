@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xpp7-93x6-v29m",
+  "modified": "2026-08-04T21:54:01Z",
+  "published": "2026-08-04T21:54:01Z",
+  "aliases": [
+    "CVE-2026-53950"
+  ],
+  "summary": "XSS in Ghost's ActivityPub client",
+  "details": "### Impact\n\nThe ActivityPub client in Ghost was vulnerable to JavaScript injection on posts shared by a maliciously customised ActivityPub server.\n\n### Vulnerable Versions\n\nThis vulnerability is present in the @tryghost/activitypub package up to v3.0.8. All prior versions are also affected. \n\n### Patches\n\n@tryghost/activitypub v3.1.0 contains a fix for this issue and is also automatically fetched by Ghost.\n\n### References\n\nGhost thanks Brad Geesaman, Ghost Security for disclosing this vulnerability responsibly. \n\n### For more information\n\nIf you have any questions or comments about this advisory, email Ghost at [security@ghost.org](mailto:security@ghost.org).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@tryghost/activitypub"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.1.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/TryGhost/Ghost/security/advisories/GHSA-xpp7-93x6-v29m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53950"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/TryGhost/Ghost"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-04T21:54:01Z",
+    "nvd_published_at": "2026-06-24T19:17:12Z"
+  }
+}
