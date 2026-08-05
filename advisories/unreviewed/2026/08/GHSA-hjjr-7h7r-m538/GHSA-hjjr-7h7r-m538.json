@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hjjr-7h7r-m538",
+  "modified": "2026-08-05T06:30:31Z",
+  "published": "2026-08-05T06:30:31Z",
+  "aliases": [
+    "CVE-2026-11421"
+  ],
+  "details": "The ERP: Complete HR, Accounting & CRM Suite with WooCommerce CRM Support plugin for WordPress is vulnerable to SQL Injection via the 'erpadvancefilter' parameter in all versions up to, and including, 1.17.4 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. The handler runs the value through sanitize_text_field, which preserves single quotes, and the downstream erp_crm_contact_advance_filter() function interpolates it directly into a single-quoted SQL WHERE clause before execution via $wpdb->get_results(). This makes it possible for authenticated attackers, with the plugin-supplied CRM Agent role (or higher CRM Manager / WordPress admin) and the erp_crm_list_contact capability, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11421"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/erp/tags/1.17.4/includes/functions-people.php#L203"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/erp/tags/1.17.4/includes/functions-people.php#L228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/erp/tags/1.17.4/modules/crm/CRM.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/erp/tags/1.17.4/modules/crm/includes/AjaxHandler.php#L180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/erp/tags/1.17.4/modules/crm/includes/functions-customer.php#L2376"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3577284%40erp%2Ftrunk%2Fmodules%2Fcrm%2Fincludes%2Ffunctions-customer.php&old=3479082%40erp%2Ftrunk%2Fmodules%2Fcrm%2Fincludes%2Ffunctions-customer.php&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c8f3c96b-9a78-47cb-9266-ff87d9409160?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T06:16:36Z"
+  }
+}
