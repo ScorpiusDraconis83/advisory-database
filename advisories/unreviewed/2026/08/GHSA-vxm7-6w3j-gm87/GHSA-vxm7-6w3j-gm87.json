@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vxm7-6w3j-gm87",
-  "modified": "2026-08-05T18:31:40Z",
+  "modified": "2026-08-05T21:31:37Z",
   "published": "2026-08-05T18:31:40Z",
   "aliases": [
     "CVE-2026-70431"
   ],
   "details": "Jenkins Multijob Plugin 669.v9d96a_d9c71b_0 and earlier provides Groovy scripting features that do not integrate with Script Security Plugin, allowing attackers with Item/Create or Item/Configure permission to execute arbitrary code in the context of the Jenkins controller JVM.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-05T18:17:12Z"

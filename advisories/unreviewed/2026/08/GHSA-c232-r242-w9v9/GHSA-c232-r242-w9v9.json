@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c232-r242-w9v9",
-  "modified": "2026-08-05T18:31:40Z",
+  "modified": "2026-08-05T21:31:37Z",
   "published": "2026-08-05T18:31:40Z",
   "aliases": [
     "CVE-2026-70428"
   ],
   "details": "Jenkins 2.575 and earlier, LTS 2.568.1 and earlier improperly identifies file paths attempting path traversal in file parameter names, allowing attackers with Item/Configure and Item/Build permission to write files to arbitrary locations on the controller file system.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-05T18:17:12Z"

@@ -1,13 +1,17 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-54cr-fx8f-gpc5",
-  "modified": "2026-08-04T15:32:22Z",
+  "modified": "2026-08-05T21:31:34Z",
   "published": "2026-08-04T15:32:22Z",
   "aliases": [
     "CVE-2026-61387"
   ],
   "details": "In Eclipse Milo versions 1.0.0 through 1.1.4, monitored-item quota accounting is not exception-safe: if item creation fails with an unchecked error, the server-global reservation is not restored. Deeply nested PubSub ExtensionObjects in a `CreateMonitoredItems` event filter can trigger a `StackOverflowError` during decoding, allowing an unauthenticated remote client to exhaust a finite global monitored-item quota and prevent all clients from creating new monitored items until restart. Existing monitored items and other server functions remain unaffected.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"

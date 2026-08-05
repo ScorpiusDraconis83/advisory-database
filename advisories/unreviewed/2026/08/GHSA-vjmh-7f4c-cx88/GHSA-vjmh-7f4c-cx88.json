@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vjmh-7f4c-cx88",
-  "modified": "2026-08-05T00:30:38Z",
+  "modified": "2026-08-05T21:31:35Z",
   "published": "2026-08-04T21:30:31Z",
   "aliases": [
     "CVE-2026-66902"
   ],
   "details": "Google::Auth versions before 0.06 for Perl run a command named in an external_account credentials JSON via an ungated system call.\n\nThe Pluggable subclass reads credential_source.executable.command from the credentials JSON and runs it as `system($command)`, a single argument call that passes the whole string to /bin/sh -c. The executable's environment_variables map from the same JSON is copied into %ENV first. No opt-in gate guards the call. make_creds selects the Pluggable subclass whenever credential_source.executable is present, so the path is reached from the standard Application Default Credentials flow, including a \"type\": \"external_account\" configuration read from the file named by GOOGLE_APPLICATION_CREDENTIALS. Configurations without credential_source.executable do not select this subclass and do not reach the call.\n\nAny caller that builds credentials from a configuration it does not fully control runs the embedded command with the privileges of the application process.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -31,7 +36,7 @@
     "cwe_ids": [
       "CWE-78"
     ],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-04T21:16:37Z"

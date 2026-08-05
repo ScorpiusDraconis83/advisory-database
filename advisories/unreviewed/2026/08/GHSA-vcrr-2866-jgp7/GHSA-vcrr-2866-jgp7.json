@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vcrr-2866-jgp7",
-  "modified": "2026-08-03T21:31:39Z",
+  "modified": "2026-08-05T21:31:34Z",
   "published": "2026-08-03T21:31:38Z",
   "aliases": [
     "CVE-2026-52520"
   ],
   "details": "Emlog CMS <= 2.6.14 contains a stored cross-site scripting (XSS) vulnerability in the article publishing module (/admin/article.php). A remote authenticated attacker can inject arbitrary JavaScript code via the article content. When an administrator reviews or previews the submitted article in the backend, the malicious script executes in the admin's browser session, allowing the attacker to perform administrative actions such as creating a backdoor administrator account.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-03T21:16:40Z"

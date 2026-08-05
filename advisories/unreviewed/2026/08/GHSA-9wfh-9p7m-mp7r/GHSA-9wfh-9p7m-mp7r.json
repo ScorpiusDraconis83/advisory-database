@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9wfh-9p7m-mp7r",
-  "modified": "2026-08-05T15:32:22Z",
+  "modified": "2026-08-05T21:31:36Z",
   "published": "2026-08-05T15:32:22Z",
   "aliases": [
     "CVE-2025-70962"
   ],
   "details": "Zosi C519M V4.2.8.823C01450BA is vulnerable to Incorrect Access Control. The application contains hardcoded credentials in the RTSP authentication mechanism. An attacker with network access can use the unchangeable default credentials to access the RTSP video stream, resulting in unauthorized viewing of camera footage.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-05T14:16:58Z"
