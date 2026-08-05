@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vq5v-m87m-6pqm",
+  "modified": "2026-08-05T12:31:31Z",
+  "published": "2026-08-05T12:31:31Z",
+  "aliases": [
+    "CVE-2026-71235"
+  ],
+  "details": "Magistrala's Rules Engine allows authenticated users to create rules with embedded Go or Lua scripts executed server-side when IoT messages arrive. The Go script engine (re/golang.go) runs scripts through the Yaegi interpreter with stdlib.Symbols, exposing the full Go standard library (including os and net/http) with validation limited to a regex blocking goroutines and panic() calls; dangerous functions such as os.ReadFile, os.WriteFile, os.Remove, and os.Environ remain fully accessible. The Lua script engine (re/lua.go) performs no input validation at all and preloads dangerous libraries: db (arbitrary database access), ioutil (file I/O), an HTTP client (SSRF), and filepath (traversal). An authenticated low-privileged user can achieve arbitrary file read/write, environment variable leakage, database access, and SSRF against internal microservices.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/absmach/magistrala"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:26Z"
+  }
+}

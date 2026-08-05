@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2467-45mc-2xp5",
+  "modified": "2026-08-05T12:31:32Z",
+  "published": "2026-08-05T12:31:32Z",
+  "aliases": [
+    "CVE-2026-71242"
+  ],
+  "details": "Crater's NotePolicy checks only a blanket Bouncer ability (manage-all-notes / view-all-notes) with no company-ownership comparison, unlike InvoicePolicy and other sibling policies which additionally verify $user->hasCompany($model->company_id). NotesController's show(), update(), and destroy() actions authorize via $this->authorize('view notes'/'manage notes') without passing the target Note model, and Note's company-scoping (scopeWhereCompany) is applied only in the list endpoint, not in show/update/destroy. Any authenticated user of one company can read, edit, or delete another company's notes by ID. This is a distinct finding from the previously reported CustomerPolicy company-ownership omission (a different policy class and controller).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71242"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/crater-invoice/crater"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:27Z"
+  }
+}

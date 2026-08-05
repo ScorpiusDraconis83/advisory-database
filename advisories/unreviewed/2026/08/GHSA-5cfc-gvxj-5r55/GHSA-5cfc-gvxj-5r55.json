@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5cfc-gvxj-5r55",
+  "modified": "2026-08-05T12:31:32Z",
+  "published": "2026-08-05T12:31:32Z",
+  "aliases": [
+    "CVE-2026-71246"
+  ],
+  "details": "Pixelfed's SearchController (behind the auth middleware) accepts a URL via its remote-search parameters and fetches it server-side through ActivityPubFetchService, whose validateUrl() only blocks the literal hosts 127.0.0.1, localhost, and ::1 and requires https, without checking the resolved IP against private, internal, or link-local ranges (e.g. 169.254.169.254). Optional DNS validation is disabled by default and, when enabled, only confirms a DNS record exists without filtering by IP range. The fetch response body is returned to the requester only when the Content-Type matches an ActivityPub content type, making this a semi-blind but authenticated SSRF primitive reachable by any logged-in user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71246"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pixelfed/pixelfed"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:27Z"
+  }
+}

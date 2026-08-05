@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wjx2-3579-9x87",
+  "modified": "2026-08-05T12:31:31Z",
+  "published": "2026-08-05T12:31:31Z",
+  "aliases": [
+    "CVE-2026-71237"
+  ],
+  "details": "Miantang/IoT-PHP's index.php implements a POST /userlogin route that reads the password directly from $_POST['pwd'] with no sanitization and concatenates it into a raw SQL string: mysql_query(\"select * from userlists where username='$username' and password='$password' limit 1\"). The username value is passed through htmlspecialchars(), which does not encode single quotes by default and therefore does not prevent SQL injection through the password field. An unauthenticated attacker can submit a payload such as pwd=' OR '1'='1 to bypass authentication and, via UNION-based injection, extract arbitrary data from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71237"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Miantang/IoT-PHP"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:26Z"
+  }
+}

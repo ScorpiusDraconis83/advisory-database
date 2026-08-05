@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q389-cg45-h4hc",
+  "modified": "2026-08-05T12:31:32Z",
+  "published": "2026-08-05T12:31:32Z",
+  "aliases": [
+    "CVE-2026-71240"
+  ],
+  "details": "DjangoCRM's toggle_default_sorting view is the only route in common/urls.py that is not wrapped in login_required or staff_member_required, and it redirects to a caller-supplied next_url GET parameter after only checking secure_url(next_url), which merely verifies the target host matches the current site's domain (blocking only cross-domain redirects) while allowing any same-site path with no authentication required to reach the view. This enables unauthenticated phishing redirects and referrer-based token leakage via redirect chains.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71240"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/DjangoCRM/django-crm"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:26Z"
+  }
+}

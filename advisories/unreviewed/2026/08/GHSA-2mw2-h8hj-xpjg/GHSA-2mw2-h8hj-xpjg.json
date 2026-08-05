@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2mw2-h8hj-xpjg",
+  "modified": "2026-08-05T12:31:30Z",
+  "published": "2026-08-05T12:31:30Z",
+  "aliases": [
+    "CVE-2026-60009"
+  ],
+  "details": "In Eclipse Theia versions up to and including 1.73.1, the `@theia/filesystem` backend binds `POST /file-upload` in every filesystem-enabled deployment. The handler takes an attacker-supplied absolute path from the multipart `uri` field and calls `fs.move(tmp, target, { overwrite: true })` with no workspace confinement and no authentication. In browser (non-Electron) deployments the connection token is enforced only on WebSocket upgrades; the HTTP middleware in `@theia/core` re-issues the cookie and calls `next()` without rejecting tokenless HTTP requests. Because `multipart/form-data` is a CORS-safelisted request type, a cross-origin web page can trigger the write with no preflight and no credentials, resulting in an unauthenticated arbitrary file write outside the workspace to any absolute path the backend process can write. This can escalate to remote code execution, for example by overwriting a startup-executed file such as `~/.bashrc`. Electron mode uses a separate `ElectronSecurityToken` and is not affected via this path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-theia/theia/security/advisories/GHSA-62f6-wcvg-54h3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60009"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/issues/595"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:25Z"
+  }
+}

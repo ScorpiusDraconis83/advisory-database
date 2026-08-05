@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9q89-f4h2-5wx7",
+  "modified": "2026-08-05T12:31:32Z",
+  "published": "2026-08-05T12:31:32Z",
+  "aliases": [
+    "CVE-2026-71241"
+  ],
+  "details": "Book-Management-System's Flask API endpoints /student, /record, /books, /find_stu_book, and /find_not_return_book are missing the @login_required decorator that protects sibling routes (/search_student, /storage) in the same file. This allows any unauthenticated remote user to retrieve student PII (name, gender, card validity, debt status) and full book-borrowing history by supplying a card_id. Because card_id values are sequential integers, the entire student database can be enumerated without authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71241"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lyric777/Book-Management-System"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:26Z"
+  }
+}

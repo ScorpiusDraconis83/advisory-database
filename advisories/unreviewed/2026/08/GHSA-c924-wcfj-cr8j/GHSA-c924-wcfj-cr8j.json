@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c924-wcfj-cr8j",
+  "modified": "2026-08-05T12:31:31Z",
+  "published": "2026-08-05T12:31:31Z",
+  "aliases": [
+    "CVE-2026-71236"
+  ],
+  "details": "Grocy's API request-body parser (controllers/Api/BaseApiController.php, GetParsedAndFilteredRequestBody) purifies incoming field values with HTMLPurifier, then manually reverses HTML-entity encoding of the resulting output by replacing &amp;lt;, &amp;gt;, and &amp;amp; back to <, >, and & immediately after purification. This double-decode reconstructs live HTML/script tags from the entity-encoded form that HTMLPurifier produced to neutralize them, re-introducing stored XSS across API-writable fields (products, recipes, stock, users, chores, and others) that are rendered elsewhere without re-sanitization.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71236"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grocy/grocy"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:26Z"
+  }
+}

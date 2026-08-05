@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cv48-22qx-mpmx",
+  "modified": "2026-08-05T12:31:30Z",
+  "published": "2026-08-05T12:31:30Z",
+  "aliases": [
+    "CVE-2026-71232"
+  ],
+  "details": "MacCMS10's admin template editor (application/admin/controller/Template.php) blocks dangerous PHP functions in template content via a blacklist regex, but the blacklist omitted exec, passthru, popen, show_source, create_function, register_shutdown_function, register_tick_function, and error_log. Combined with ThinkPHP's {if} template tag, which embeds the condition attribute directly into raw PHP (<?php if(condition): ?>), an authenticated administrator could inject a payload such as {if condition=\"exec('id > /tmp/pwned.txt')\"}{/if} to achieve remote code execution. Fixed in commit 71ad3bb29570e110d8e973acff68040a3050ddf0 (2026-06-22), which added the missing functions to the filter.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71232"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/magicblack/maccms10/commit/71ad3bb29570e110d8e973acff68040a3050ddf0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:25Z"
+  }
+}

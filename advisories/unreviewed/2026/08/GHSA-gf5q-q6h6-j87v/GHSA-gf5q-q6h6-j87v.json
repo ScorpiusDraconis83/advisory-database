@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gf5q-q6h6-j87v",
+  "modified": "2026-08-05T12:31:30Z",
+  "published": "2026-08-05T12:31:30Z",
+  "aliases": [
+    "CVE-2026-66747"
+  ],
+  "details": "Zbtlink router firmware ships an embedded remote-control implant, ENDLESSDOORS, present in every published build across the product line. It is the open-source ycsunjane/rctl tool built in as an OpenWrt package (librctl.so), started at boot and run as root under the process name kworker to blend in with the kernel's [kworker/*] threads. It opens no listening port; it phones home over cleartext TCP to a hardcoded command-and-control server (command channel 7000, interactive-shell callback 7001) with no authentication and no transport encryption, re-attempting contact roughly every 35 seconds. Its command handler passes any received string to popen() as uid=0, and a reserved rctlbash command returns an interactive root shell. Because the channel is unauthenticated and cleartext, control is not limited to whoever planted it: any party that answers at the C2 address, occupies the network path (DNS or route hijack), or acquires the hardcoded fallback domain obtains unauthenticated remote code execution as root.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66747"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ycsunjane/rctl"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/zbt-endlessdoors"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/blog/zbt-endlessdoors"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.zbtlink.com/pages/zbt-router-firmware-download"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-506"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:25Z"
+  }
+}

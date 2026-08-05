@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pf9g-3vw7-vgqf",
+  "modified": "2026-08-05T12:31:32Z",
+  "published": "2026-08-05T12:31:32Z",
+  "aliases": [
+    "CVE-2026-71249"
+  ],
+  "details": "299Ko's public contact form (plugin/contact/controllers/ContactController.php, home()) sets raw POST field values (name, firstname, email, message) into the page template with no sanitization. The template engine's variable output function (common/Template.php, _show_var()) echoes values with no htmlspecialchars() call, and the sink template (contact.tpl) outputs these values unescaped into an HTML attribute and a textarea. An unauthenticated attacker can submit a payload such as name=\"><script>alert(document.domain)</script> to achieve reflected XSS against any visitor who submits or is tricked into auto-submitting the form, including a targeted administrator, enabling session token theft.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/search?q=299ko&type=repositories"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:27Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w54w-xf28-wf79",
+  "modified": "2026-08-05T12:31:32Z",
+  "published": "2026-08-05T12:31:32Z",
+  "aliases": [
+    "CVE-2026-71248"
+  ],
+  "details": "Inventory-Management-System-PHP's login.php constructs its authentication query via direct string concatenation of raw POST parameters: $sql = \"select * from user where email = '$email' and password = '$password'\", with no escaping or parameterization, allowing authentication bypass via a payload such as email=' OR 1=1 LIMIT 1-- -. Separately, delete.php executes mysqli_query($db, \"DELETE FROM product WHERE product_id=\" . $_GET['id']) with no authentication check and no validation of the id parameter, allowing an unauthenticated attacker to delete arbitrary product rows or perform blind SQL injection via payloads such as id=0 OR SLEEP(5).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71248"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Harsh21Patel/Inventory-Management-System-PHP/pull/3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Harsh21Patel/Inventory-Management-System-PHP"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:27Z"
+  }
+}

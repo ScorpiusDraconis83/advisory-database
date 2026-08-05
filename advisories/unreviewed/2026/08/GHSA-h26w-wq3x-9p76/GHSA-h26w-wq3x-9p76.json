@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h26w-wq3x-9p76",
+  "modified": "2026-08-05T12:31:33Z",
+  "published": "2026-08-05T12:31:33Z",
+  "aliases": [
+    "CVE-2026-71251"
+  ],
+  "details": "Akaunting's shared download route (app/Http/Controllers/Common/Uploads.php::download(), reachable at uploads/{id}/download behind only generic auth middleware) fetched the requested Media record by ID with no verification that it belonged to the requesting portal customer's own company, allowing any authenticated portal customer to download any other company's uploaded files by guessing or enumerating media IDs. Fixed in commit 80ef6d3 (2026-07-12), which added an explicit ownership check comparing the media's parent record contact_id against the requesting user's own contact.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/akaunting/akaunting"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:28Z"
+  }
+}

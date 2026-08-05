@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v65x-57rf-cpg3",
+  "modified": "2026-08-05T12:31:32Z",
+  "published": "2026-08-05T12:31:32Z",
+  "aliases": [
+    "CVE-2026-71247"
+  ],
+  "details": "Documenso's sign-field-with-token.ts, used by the live document-signing UI, allows a recipient with the ASSISTANT role to fetch and complete fields belonging to any later-or-equal-order, not-yet-signed recipient in the same envelope, with no restriction on field type. The handler upserts a Signature record tied to the target field's recipientId with no check that field.type is SIGNATURE and the acting recipient owns it. A newer V2 signing path (sign-envelope-field.ts) explicitly blocks assistants from completing SIGNATURE fields, and the project's own test suite comments confirm this guard is absent from the V1 path used here. In a sequential-signing document, an assistant recipient can therefore forge another signer's signature field.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/documenso/documenso"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:27Z"
+  }
+}

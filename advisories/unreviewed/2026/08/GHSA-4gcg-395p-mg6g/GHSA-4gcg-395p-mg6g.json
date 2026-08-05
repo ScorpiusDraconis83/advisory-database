@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4gcg-395p-mg6g",
+  "modified": "2026-08-05T12:31:31Z",
+  "published": "2026-08-05T12:31:31Z",
+  "aliases": [
+    "CVE-2026-71234"
+  ],
+  "details": "Documize Community's attachment download route (domain/attachment/endpoint.go, Download function, registered via AddPublic with no auth middleware) accepts a `secure` query parameter and grants access whenever the parameter is simply non-empty (len(secureToken) > 0), without comparing it to any server-stored value. Any non-empty string, such as ?secure=x, bypasses authentication entirely and allows downloading any organization's attachments. Sibling handlers in the same file (togglePublish, delete) correctly enforce session-based authorization, confirming this is an inconsistency rather than intended design.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71234"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/documize/community"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T11:16:26Z"
+  }
+}
