@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jh69-g63c-w587",
+  "modified": "2026-08-05T00:30:39Z",
+  "published": "2026-08-05T00:30:39Z",
+  "aliases": [
+    "CVE-2026-67858"
+  ],
+  "details": "Buffer Overflow vulnerability exists in open62541 1.5.5 when the Local Discovery Server (LDS) is built with multicast discovery enabled through the MDNSD backend. An unauthenticated remote attacker can send a RegisterServer or RegisterServer2 request containing many unique discoveryUrls. This allows remote attackers to cause a denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67858"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541/issues/8094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541/blob/master/doc/building.rst"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541/blob/master/src/server/ua_discovery_mdns.c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541/blob/master/src/server/ua_services_discovery.c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541/tree/master/examples/discovery"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-04T22:17:16Z"
+  }
+}

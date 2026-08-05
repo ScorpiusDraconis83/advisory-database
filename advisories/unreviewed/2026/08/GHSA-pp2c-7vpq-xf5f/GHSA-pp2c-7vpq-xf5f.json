@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pp2c-7vpq-xf5f",
+  "modified": "2026-08-05T00:30:40Z",
+  "published": "2026-08-05T00:30:40Z",
+  "aliases": [
+    "CVE-2026-70620"
+  ],
+  "details": "Odysseus before commit 87babb5 contains a server-side request forgery vulnerability that allows admin-privileged attackers to direct the server to probe internal network resources by supplying arbitrary URLs to the embedding endpoint configuration without scheme, host, IP range, or DNS rebind validation. Attackers can submit loopback addresses, RFC 1918 ranges, or link-local addresses through the embedding endpoint API to partially read responses from cloud instance metadata services, internal APIs, and other hosts reachable from the server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70620"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/odysseus-dev/odysseus/issues/132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/odysseus-dev/odysseus/pull/1206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/odysseus-dev/odysseus/commit/87babb58d57897089b133b313e2ab6d09e7ef54e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://aydinnyunus.github.io/2026/06/16/odysseus-embedding-endpoint-takeover"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/odysseus-ssrf-via-embedding-endpoint-configuration"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-04T22:17:17Z"
+  }
+}
