@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-72rr-952g-697v",
+  "modified": "2026-08-05T15:32:17Z",
+  "published": "2026-08-05T15:32:17Z",
+  "aliases": [
+    "CVE-2026-16022"
+  ],
+  "details": "@oblique/cli 15.4.0 contains an OS command injection vulnerability in the project creation functionality. The CLI constructs shell commands through string concatenation and executes them with execSync(). A user-controlled project-name argument is inserted into the shell command without proper neutralization, allowing shell metacharacters to execute additional operating-system commands when the CLI is invoked with a crafted project name.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16022"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/oblique-bit/oblique/blob/master/projects/cli/CHANGELOG.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:20:39Z"
+  }
+}

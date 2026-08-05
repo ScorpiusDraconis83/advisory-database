@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fjcf-648f-mmhx",
+  "modified": "2026-08-05T15:32:22Z",
+  "published": "2026-08-05T15:32:22Z",
+  "aliases": [
+    "CVE-2026-7456"
+  ],
+  "details": "The Udimi Tools plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the `ajax_disconnect()` function in all versions up to, and including, 3.2. This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete the plugin's six configuration options — including the API key, connected Udimi user email, and tracking-script payload — effectively disconnecting the site from the configured Udimi account. The companion `ajax_connect()` handler is missing the same checks, allowing the same low-privilege attackers to overwrite those options with an attacker-supplied API key.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7456"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/udimi-optin/tags/3.2/class.php#L47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/udimi-optin/tags/3.2/class.php#L82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/udimi-optin/tags/3.2/udimi-optin.php#L22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/udimi-optin/tags/3.2/udimi-optin.php#L23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/udimi-optin/trunk/class.php#L82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3525585%40udimi-optin%2Ftrunk&old=3352707%40udimi-optin%2Ftrunk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/263f7a72-8887-42c3-a1df-3dee904f957e?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T14:17:14Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qc6r-chrx-m659",
+  "modified": "2026-08-05T15:32:21Z",
+  "published": "2026-08-05T15:32:21Z",
+  "aliases": [
+    "CVE-2026-71283"
+  ],
+  "details": "Fledge's backup-restore upload handler, upload_backup() (python/fledge/services/core/api/backup_restore.py), calls tarfile.extractall(temp_path) on an admin-uploaded tar archive with no filter argument and no per-member path validation. A crafted tar archive containing member names with `../` path components extracts files outside the intended temporary directory, allowing arbitrary file writes anywhere on the filesystem reachable by the Fledge process. Requires the admin role (@has_permission(\"admin\")).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71283"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fledge-iot/fledge"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fledge-iot/fledge/blob/main/python/fledge/services/core/api/backup_restore.py"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:52Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jjh5-p3gc-84xr",
+  "modified": "2026-08-05T15:32:20Z",
+  "published": "2026-08-05T15:32:20Z",
+  "aliases": [
+    "CVE-2026-71271"
+  ],
+  "details": "Memos' webhook URL validation, isReservedIP() (internal/webhook/validate.go), checks a candidate IP against a reservedCIDRs list that omits 0.0.0.0/8 and never calls ip.IsUnspecified() — unlike the correctly implemented sibling function isInternalIP() in internal/httpgetter/html_meta.go, which does. Because Linux redirects connections to 0.0.0.0 to loopback (127.0.0.1), an attacker registering a webhook URL of http://0.0.0.0:PORT/ bypasses the reserved-IP check and causes the Memos server to make outbound HTTP requests to its own loopback interface, exposing internal-only services.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71271"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/usememos/memos"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/usememos/memos/blob/main/internal/webhook/validate.go"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:51Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fgwp-vhm9-7g5q",
+  "modified": "2026-08-05T15:32:19Z",
+  "published": "2026-08-05T15:32:19Z",
+  "aliases": [
+    "CVE-2026-71265"
+  ],
+  "details": "Domoticz's MochadTCP::MatchLine() handler for MOCHAD_RFSEC messages (hardware/MochadTCP.cpp) copies network-received data from the up-to-1028-byte m_mochadbuffer into a fixed 50-byte stack buffer tempRFSECbuf using strcpy() with no length check, across three separate code branches (DS10A/KR10A/MS10A device types). An attacker on the local network segment able to reach the Mochad TCP bridge (default port 1099, no authentication) can send a crafted packet that overflows tempRFSECbuf by up to several hundred bytes, corrupting the Domoticz worker thread's stack.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71265"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/domoticz/domoticz"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/domoticz/domoticz/blob/master/hardware/MochadTCP.cpp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:50Z"
+  }
+}

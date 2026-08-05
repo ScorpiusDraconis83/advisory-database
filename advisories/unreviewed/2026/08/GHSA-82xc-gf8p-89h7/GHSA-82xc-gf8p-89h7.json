@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-82xc-gf8p-89h7",
+  "modified": "2026-08-05T15:32:20Z",
+  "published": "2026-08-05T15:32:20Z",
+  "aliases": [
+    "CVE-2026-71277"
+  ],
+  "details": "rust-iot-platform's AuthToken request-guard implementation (api/src/main.rs) only checks whether the Authorization HTTP header is present, and never validates its value against any session, token store, or signature. Any request carrying an arbitrary non-empty Authorization header (e.g. `Authorization: fake`) satisfies the guard, granting access to every endpoint protected only by this request guard.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71277"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/iot-ecology/rust-iot-platform"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/iot-ecology/rust-iot-platform/blob/main/api/src/main.rs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:52Z"
+  }
+}

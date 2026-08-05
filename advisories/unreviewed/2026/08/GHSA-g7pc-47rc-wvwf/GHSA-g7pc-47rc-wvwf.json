@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g7pc-47rc-wvwf",
+  "modified": "2026-08-05T15:32:20Z",
+  "published": "2026-08-05T15:32:20Z",
+  "aliases": [
+    "CVE-2026-71281"
+  ],
+  "details": "Hugging Face peft's LoRA-GA and CorDA initialization modules (src/peft/tuners/lora/corda.py lines ~102 and ~163, and src/peft/tuners/lora/loraga.py line ~101) call torch.load() on config-specified cache/covariance files without weights_only=True, bypassing peft's own safe-loading wrapper used elsewhere in the codebase. Because torch.load() without weights_only=True performs full pickle deserialization, loading a malicious cache or covariance file (e.g. a shared/downloaded LoRA-GA or CorDA cache) results in arbitrary code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/peft"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/peft/blob/main/src/peft/tuners/lora/corda.py"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:52Z"
+  }
+}

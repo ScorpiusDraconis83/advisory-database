@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gr59-p4q8-r75g",
+  "modified": "2026-08-05T15:32:19Z",
+  "published": "2026-08-05T15:32:19Z",
+  "aliases": [
+    "CVE-2026-71266"
+  ],
+  "details": "tinyobjloader-c's tinyobj_parse_and_index_mtl_file() (tinyobj_loader_c.h) reads each line of a .mtl material file into a fixed 4096-byte stack buffer `linebuf` via memcpy(linebuf, p, p_len), guarded only by `assert(p_len < 4095)`. Because assert() compiles to a no-op under -DNDEBUG (standard for release builds), a crafted .mtl file containing a line (e.g. a \"newmtl\" material name) longer than 4096 bytes overflows linebuf into the adjacent stack variable namebuf and beyond, corrupting the stack of any application that loads attacker-supplied 3D model/material files. The identical vulnerable pattern is duplicated in a second function in the same file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71266"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/syoyo/tinyobjloader-c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/syoyo/tinyobjloader-c/blob/master/tinyobj_loader_c.h"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:50Z"
+  }
+}

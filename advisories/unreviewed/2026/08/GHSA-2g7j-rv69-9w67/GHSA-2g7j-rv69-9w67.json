@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2g7j-rv69-9w67",
+  "modified": "2026-08-05T15:32:19Z",
+  "published": "2026-08-05T15:32:19Z",
+  "aliases": [
+    "CVE-2026-71259"
+  ],
+  "details": "ESPHome through 2026.7.0-dev contains an operator-precedence bug in the cv.url() validator in esphome/config_validation.py: `if parsed.scheme and parsed.netloc or parsed.scheme == \"file\": return parsed.geturl()`. Because `and` binds tighter than `or`, any file: URI passes validation regardless of netloc. This validator gates the `url:` field of the external_components YAML directive's git source schema, which is passed to `git clone` (git supports file:// natively). A crafted `external_components` block with `url: \"file:///attacker/repo\"` clones an attacker-controlled local path, which is then added to Python's import machinery via ESPHome's component loader, executing arbitrary Python code when the YAML configuration is processed (e.g. via `esphome config`/`esphome run`).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71259"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/esphome/esphome"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/esphome/esphome/blob/dev/esphome/config_validation.py"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-184"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:49Z"
+  }
+}

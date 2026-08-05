@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p2pj-7344-wr5m",
+  "modified": "2026-08-05T15:32:19Z",
+  "published": "2026-08-05T15:32:19Z",
+  "aliases": [
+    "CVE-2026-71262"
+  ],
+  "details": "IoTSharp BlobStorageController.cs lacks the [Authorize] attribute applied to every other controller in the application (DevicesController, CustomersController, TenantsController, etc.), and no global authorization FallbackPolicy is configured in Startup.cs, leaving its Upload/Download/List/Modify/Delete endpoints reachable by unauthenticated remote attackers. The path/filename parameters passed to these endpoints (e.g. `_blob.WriteFileAsync($\"{path}/{formFile.FileName}\", ...)`) are used without sanitization, enabling path traversal that allows writing, reading, modifying, and deleting arbitrary files outside the intended blob storage directory, including web-accessible paths that can be leveraged for remote code execution via webshell upload.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71262"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/IoTSharp/IoTSharp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/IoTSharp/IoTSharp/blob/master/IoTSharp/Controllers/BlobStorageController.cs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:50Z"
+  }
+}

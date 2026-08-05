@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hxw9-fq53-ph7w",
+  "modified": "2026-08-05T15:32:20Z",
+  "published": "2026-08-05T15:32:20Z",
+  "aliases": [
+    "CVE-2026-71273"
+  ],
+  "details": "OpenBK7231T's /cfg_wifi_set endpoint (src/httpserver/http_fns.c) accepts configuration changes via a plain GET request with no CSRF token. If the `web_admin_password_enabled` parameter is absent from the request, an else-branch silently clears the device's web admin password to an empty string. A one-click CSRF payload (e.g. an <img> tag pointing at /cfg_wifi_set with new SSID/password parameters and web_admin_password_enabled omitted) visited by an authenticated admin's browser both hijacks the device's WiFi configuration and disables its web password protection.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71273"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openshwprojects/OpenBK7231T_App"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openshwprojects/OpenBK7231T_App/blob/main/src/httpserver/http_fns.c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:51Z"
+  }
+}

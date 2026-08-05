@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f3wc-7g8m-89m9",
+  "modified": "2026-08-05T15:32:20Z",
+  "published": "2026-08-05T15:32:20Z",
+  "aliases": [
+    "CVE-2026-71269"
+  ],
+  "details": "Node-RED's local-filesystem library storage module (getLibraryEntry() and saveLibraryEntry() in packages/node_modules/@node-red/runtime/lib/storage/localfilesystem/library.js), reachable via GET/POST /library/:lib/:type/*path, joins the user-supplied path parameter directly into the filesystem path via fspath.join(libDir, type, path) with no traversal sanitization, containment check, or path normalization/prefix verification. An authenticated user (including read-only-scoped tokens for the read path) can supply a path containing `../` sequences to read arbitrary files outside the library directory; a user with write access can write arbitrary files, enabling remote code execution via SSH authorized_keys or cron injection. This is a distinct, separately unpatched traversal from the previously fixed CVE-2021-21298 (Projects API).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71269"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/node-red/node-red"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/node-red/node-red/blob/master/packages/node_modules/@node-red/runtime/lib/storage/localfilesystem/library.js"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:51Z"
+  }
+}

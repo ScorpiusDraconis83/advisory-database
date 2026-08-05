@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cfw7-vmp5-wg69",
+  "modified": "2026-08-05T15:32:19Z",
+  "published": "2026-08-05T15:32:19Z",
+  "aliases": [
+    "CVE-2026-71261"
+  ],
+  "details": "dr_libs dr_wav.h (all versions through current master) contains an integer overflow in W64 CUE chunk metadata parsing. In drwav__metadata_process_chunk(), a stage-1 capacity estimate truncates the 64-bit W64 chunk sizeInBytes to size_t before dividing by DRWAV_CUE_POINT_BYTES; on 32-bit builds this truncation causes the pre-allocated extra metadata capacity to be computed incorrectly. The subsequent read in drwav__read_cue_to_metadata_obj() computes the actual cue point count and allocation size using the full-precision, attacker-controlled cuePointCount field without cross-checking it against the stage-1 capacity estimate, and the only bounds enforcement on the resulting memory region (drwav__metadata_get_memory()) is a DRWAV_ASSERT, which compiles to a no-op under -DNDEBUG (the default for release builds). A crafted W64 WAV file can therefore cause a heap buffer overflow in any 32-bit application parsing untrusted WAV metadata.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mackron/dr_libs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mackron/dr_libs/blob/master/dr_wav.h"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:50Z"
+  }
+}

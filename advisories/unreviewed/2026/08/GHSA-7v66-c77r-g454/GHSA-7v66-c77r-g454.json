@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7v66-c77r-g454",
+  "modified": "2026-08-05T15:32:21Z",
+  "published": "2026-08-05T15:32:21Z",
+  "aliases": [
+    "CVE-2026-71287"
+  ],
+  "details": "Cacti's sanitize_sql_column() (lib/functions.php) sanitizes user-supplied ORDER BY column names using the regex `preg_replace('/[^a-zA-Z0-9_().]/', '', $column)`. Because this allowlist retains letters, digits, underscore, parentheses, and dot (intended to support expressions like COUNT(id) and table.column), a payload such as `SLEEP(5)` passes through completely unmodified. The sanitized value is concatenated directly into raw SQL ORDER BY clauses (which cannot be parameterized) driven by a `sort_column` GET parameter in at least user_log.php, utilities.php, user_domains.php, and user_group_admin.php, allowing any authenticated Cacti user, regardless of privilege level, to perform time-based blind SQL injection against the Cacti database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71287"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cacti/cacti"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cacti/cacti/blob/develop/lib/functions.php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:53Z"
+  }
+}

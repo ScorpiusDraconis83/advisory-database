@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w8cc-xr9f-mrh7",
+  "modified": "2026-08-05T15:32:20Z",
+  "published": "2026-08-05T15:32:20Z",
+  "aliases": [
+    "CVE-2026-71272"
+  ],
+  "details": "Memos' webhook dispatch function safeDialContext() (internal/webhook/webhook.go) resolves the target hostname via net.DefaultResolver.LookupHost() and validates the resulting IPs against reserved ranges, but then dials net.JoinHostPort(host, port) using the original hostname rather than the already-validated IP address. Because net.Dialer.DialContext() performs its own independent DNS resolution, an attacker controlling DNS for the webhook's hostname (e.g. via a short TTL) can return a public, allowed IP during validation and a different, internal IP at dial time — a classic time-of-check/time-of-use DNS-rebinding bypass of the SSRF protection.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71272"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/usememos/memos"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/usememos/memos/blob/main/internal/webhook/webhook.go"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:51Z"
+  }
+}

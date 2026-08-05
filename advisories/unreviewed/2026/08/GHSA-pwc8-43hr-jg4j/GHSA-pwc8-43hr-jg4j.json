@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pwc8-43hr-jg4j",
+  "modified": "2026-08-05T15:32:20Z",
+  "published": "2026-08-05T15:32:20Z",
+  "aliases": [
+    "CVE-2026-71276"
+  ],
+  "details": "Magistrala (formerly Mainflux)'s message-readers API reads a `format` value from the HTTP query string (readers/api/http/transport.go) with no validation and interpolates it directly into raw SQL queries via fmt.Sprintf() in both the PostgreSQL reader (readers/postgres/messages.go: `fmt.Sprintf(\"SELECT * FROM %s WHERE %s ...\", format, cond)`) and the TimescaleDB reader (readers/timescale/messages.go, same pattern), enabling SQL injection by any authenticated user able to query channel messages.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71276"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/absmach/magistrala"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/absmach/magistrala/blob/main/readers/postgres/messages.go"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:52Z"
+  }
+}

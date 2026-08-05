@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pf4v-rpp4-fp6r",
+  "modified": "2026-08-05T15:32:21Z",
+  "published": "2026-08-05T15:32:21Z",
+  "aliases": [
+    "CVE-2026-71285"
+  ],
+  "details": "Uptime Kuma's Matomo analytics integration (server/analytics/matomo-analytics.js) injects the admin-configurable Matomo `siteId` value as a bare, unquoted JavaScript expression inside a <script> block rendered on every public status page: `_paq.push(['setSiteId', ${escapedSiteIdHTMLAttribute}]);`. The escaping pipeline used (jsesc with isScriptContext:true, then html-escaper.escape()) does not escape the characters `]`, `)`, `;`, `(`, which are sufficient to break out of the array/push expression context. A siteId value such as `1]);alert(document.cookie)//`, once saved by an editor/admin, executes arbitrary JavaScript for every unauthenticated visitor of the public /status/<slug> page, enabling session-cookie theft and full page takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71285"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/louislam/uptime-kuma"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/louislam/uptime-kuma/blob/master/server/analytics/matomo-analytics.js"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:53Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9g5q-g36m-7qqq",
+  "modified": "2026-08-05T15:32:21Z",
+  "published": "2026-08-05T15:32:21Z",
+  "aliases": [
+    "CVE-2026-71282"
+  ],
+  "details": "ChirpStack's SQLite-backend device tag filtering (chirpstack/src/storage/device.rs, in both get_count() and list()) interpolates the user-supplied tag KEY directly into a raw SQL fragment via Rust's format!() macro (`dsl::sql::<Bool>(&format!(\"device.tags->>'{}' =\", k)).bind::<Text, _>(v)`), while only the tag VALUE is safely parameter-bound via Diesel's .bind(). An authenticated user with device-list access can inject SQL via a crafted tag key when the SQLite backend (chirpstack-sqlite package) is in use; the PostgreSQL backend is unaffected as it uses Diesel's native JSONB containment operator instead of raw SQL string formatting.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71282"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chirpstack/chirpstack"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chirpstack/chirpstack/blob/master/chirpstack/src/storage/device.rs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:52Z"
+  }
+}

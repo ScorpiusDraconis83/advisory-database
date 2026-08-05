@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m6xj-xx3f-5vv9",
+  "modified": "2026-08-05T15:32:21Z",
+  "published": "2026-08-05T15:32:21Z",
+  "aliases": [
+    "CVE-2026-71291"
+  ],
+  "details": "Bolt CMS renders content field values through Twig's full application-level Environment with no SandboxExtension registered anywhere in the codebase. In src/Entity/Field.php, getTwigValue() calls shouldBeRenderedAsTwig(), which gates rendering only on the field definition's allow_twig flag and a regex checking for `{{`, `{%`, or `{#`; when true, the raw field value is compiled and rendered via `self::getTwig()->createTemplate($value)->render(['record' => $this->getContent()])` with no sandboxing. Bolt's own bundled config/bolt/contenttypes.yaml sets `allow_twig: true` on the default \"pages\" contenttype's content field out of the box. Any user with edit access to that content type (a standard editor role, not just an administrator) can inject a Twig payload such as `{{ ['id']|map('passthru')|join }}` that executes arbitrary OS commands when the content is saved and rendered, achieving remote code execution as the web server user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bolt/core"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bolt/core/blob/6.1/src/Entity/Field.php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1336"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:53Z"
+  }
+}

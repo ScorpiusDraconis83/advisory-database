@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qprq-675r-82h6",
+  "modified": "2026-08-05T15:32:20Z",
+  "published": "2026-08-05T15:32:20Z",
+  "aliases": [
+    "CVE-2026-71268"
+  ],
+  "details": "OpenPLC Runtime v3's compile_program() function (webserver/openplc.py) parses `(*FILE:path content*)` directives from uploaded Structured Text (.st) program files and writes the referenced content to `os.path.join('./core', file_path)` with no validation that file_path stays within the ./core directory. A crafted .st file containing a directive such as `(*FILE:../../../etc/cron.d/x * * * * root <command>*)` writes attacker-controlled content to an arbitrary filesystem path, enabling remote code execution (e.g. via cron or SSH authorized_keys). A path-validation function, validate_file_path(), exists elsewhere in the codebase (webserver/credentials.py) but is never invoked from compile_program(), leaving the sink unprotected. OpenPLC additionally ships with hardcoded default credentials (openplc:openplc), lowering the practical bar for exploitation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71268"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thiagoralves/OpenPLC_v3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thiagoralves/OpenPLC_v3/blob/master/webserver/openplc.py"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T13:24:51Z"
+  }
+}

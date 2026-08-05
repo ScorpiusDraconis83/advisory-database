@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-q7cc-q448-hh85",
-  "modified": "2026-08-05T09:31:15Z",
+  "modified": "2026-08-05T15:32:14Z",
   "published": "2026-08-05T09:31:15Z",
   "aliases": [
     "CVE-2026-16993"
   ],
   "details": "The DHL Shipping Germany for WooCommerce WordPress plugin before 4.0.1 does not protect its shipping-label storage directory with server-independent access control, relying only on an Apache .htaccess file, so on a web server that does not honor .htaccess (such as nginx) an unauthenticated visitor can download stored shipping labels (each containing a customer's name and postal address) by requesting predictable filenames.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-05T07:16:37Z"

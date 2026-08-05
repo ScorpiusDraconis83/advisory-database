@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rrqj-x694-jg5v",
-  "modified": "2026-08-05T09:31:15Z",
+  "modified": "2026-08-05T15:32:14Z",
   "published": "2026-08-05T09:31:15Z",
   "aliases": [
     "CVE-2026-17515"
   ],
   "details": "The MLSImport: IDX Plugin & MLS Plugin for Real Estate Listings WordPress plugin before 7.0.4 does not have authorisation and CSRF checks in one of its AJAX actions, allowing any authenticated user, such as a subscriber, to read the contents of the MLSImport: IDX Plugin & MLS Plugin for Real Estate Listings WordPress plugin before 7.0.4's import log file as well as import-related metadata belonging to arbitrary posts.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-05T07:16:37Z"
