@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4x2h-wcjq-p974",
+  "modified": "2026-08-05T18:31:35Z",
+  "published": "2026-08-05T18:31:35Z",
+  "aliases": [
+    "CVE-2026-39924"
+  ],
+  "details": "Flarum before 1.8.16 contains an improper session invalidation vulnerability that allows attackers who hold a valid session token to retain full account access after a victim changes their password, because the access_tokens table is never cleared on password change events. The TokensClearer::clearPasswordTokens() function only removes rows from the password_tokens table while leaving all active session cookies and API bearer tokens intact, including long-lived RememberAccessToken entries, and administrator-forced password resets via the user update endpoint are equally ineffective at revoking attacker-held sessions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39924"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flarum/framework/pull/4546"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flarum/framework/commit/5f080293a029d0d273eb9678d597c74ea86a3bcc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flarum/framework/releases/tag/v1.8.16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flarum-session-persistence-via-improper-access-token-revocation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T16:16:56Z"
+  }
+}

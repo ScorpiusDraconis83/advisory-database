@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-74rr-m8c4-9693",
-  "modified": "2026-08-05T09:31:14Z",
+  "modified": "2026-08-05T18:31:29Z",
   "published": "2026-08-05T09:31:14Z",
   "aliases": [
     "CVE-2026-16604"
   ],
   "details": "The Passster  WordPress plugin before 4.3.6 outputs password-protected block content in the public page response before verifying the password, allowing unauthenticated users to recover the protected content without knowing the password.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-05T07:16:36Z"

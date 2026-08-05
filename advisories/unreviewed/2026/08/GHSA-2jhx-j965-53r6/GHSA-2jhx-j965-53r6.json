@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2jhx-j965-53r6",
-  "modified": "2026-08-05T09:31:14Z",
+  "modified": "2026-08-05T18:31:29Z",
   "published": "2026-08-05T09:31:14Z",
   "aliases": [
     "CVE-2026-16036"
   ],
   "details": "The miniOrange 2FA  WordPress plugin before 6.2.7 does not bind the second factor being configured during the pre-login two-factor challenge to the target account's existing factor, allowing an attacker who knows a user's password to rebind that user's second factor to an attacker-controlled destination, complete the challenge, and take over the account, including administrator accounts.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-05T07:16:35Z"

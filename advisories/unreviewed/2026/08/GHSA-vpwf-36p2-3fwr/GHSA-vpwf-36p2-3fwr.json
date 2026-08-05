@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vpwf-36p2-3fwr",
-  "modified": "2026-08-02T06:30:22Z",
+  "modified": "2026-08-05T18:31:28Z",
   "published": "2026-08-02T06:30:22Z",
   "aliases": [
     "CVE-2026-15248"
   ],
   "details": "The Meta Box WordPress plugin before 5.13.1 does not verify that a user is authorized to delete the supplied attachment before deleting it, allowing users with a low-privilege role such as Contributor to permanently delete arbitrary media attachments belonging to other users.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-02T06:16:37Z"

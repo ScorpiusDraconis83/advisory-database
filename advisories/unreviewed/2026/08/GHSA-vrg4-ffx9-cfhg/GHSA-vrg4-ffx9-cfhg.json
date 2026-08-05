@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vrg4-ffx9-cfhg",
-  "modified": "2026-08-02T06:30:22Z",
+  "modified": "2026-08-05T18:31:28Z",
   "published": "2026-08-02T06:30:22Z",
   "aliases": [
     "CVE-2026-16256"
   ],
   "details": "The POUCO Import Users WordPress plugin through 1.0.0 does not perform any capability or nonce checks on AJAX actions available to unauthenticated users that create and update WordPress accounts, and it trusts an attacker-supplied role value, allowing unauthenticated attackers to create a new administrator account and take over the site.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-02T06:16:39Z"

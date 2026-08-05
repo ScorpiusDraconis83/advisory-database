@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8cq8-g7rh-54g9",
-  "modified": "2026-08-01T09:30:23Z",
+  "modified": "2026-08-05T18:31:26Z",
   "published": "2026-08-01T09:30:23Z",
   "aliases": [
     "CVE-2026-14195"
   ],
   "details": "The Brizy  WordPress plugin before 2.8.18 does not properly verify authorization on a request handler before returning post content, allowing users with the Contributor role or higher to read the content of arbitrary posts, including other users' private, pending, and draft posts.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-01T07:16:29Z"

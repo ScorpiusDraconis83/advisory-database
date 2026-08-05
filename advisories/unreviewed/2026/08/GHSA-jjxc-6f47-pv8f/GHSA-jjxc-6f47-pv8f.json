@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jjxc-6f47-pv8f",
-  "modified": "2026-08-01T09:30:23Z",
+  "modified": "2026-08-05T18:31:25Z",
   "published": "2026-08-01T09:30:23Z",
   "aliases": [
     "CVE-2026-10827"
   ],
   "details": "The Spectra Legacy  WordPress plugin before 2.20.0 does not validate or escape several block style attributes before using them to build the CSS it outputs on the front end, allowing users with the Contributor role and above to inject arbitrary CSS into the pages that render the affected block. The injected styles are served to anonymous visitors of those pages and can force external resource loads, deface/redress the page, or exfiltrate data via CSS attribute selectors. JavaScript execution is not possible at this role (the script-tag breakout is removed by KSES), so the impact is limited to CSS injection.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-01T07:16:28Z"

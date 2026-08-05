@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-r795-xx32-3hg7",
-  "modified": "2026-08-05T09:31:14Z",
+  "modified": "2026-08-05T18:31:29Z",
   "published": "2026-08-05T09:31:14Z",
   "aliases": [
     "CVE-2026-15372"
   ],
   "details": "The WP 2FA  WordPress plugin before 4.1.0 does not validate the second authentication factor when one of its supported methods is selected at login, allowing an attacker who already knows a user's password to bypass two-factor authentication and fully access the account, including administrator accounts.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-05T07:16:35Z"

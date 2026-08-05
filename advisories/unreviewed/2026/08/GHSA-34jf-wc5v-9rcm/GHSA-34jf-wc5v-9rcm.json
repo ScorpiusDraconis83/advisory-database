@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-34jf-wc5v-9rcm",
-  "modified": "2026-08-05T09:31:15Z",
+  "modified": "2026-08-05T18:31:29Z",
   "published": "2026-08-05T09:31:15Z",
   "aliases": [
     "CVE-2026-16942"
   ],
   "details": "The WP Custom HTML Page WordPress plugin through 0.6.2 does not sanitise HTML stored through one of its custom page handlers, nor restrict it to users allowed to post unfiltered HTML, allowing users with the Author role to store JavaScript that is served unescaped at a public URL and executes for any visitor, including administrators.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-05T07:16:36Z"

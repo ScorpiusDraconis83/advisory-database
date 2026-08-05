@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7ff3-w2cq-gmpq",
-  "modified": "2026-08-05T15:32:22Z",
+  "modified": "2026-08-05T18:31:34Z",
   "published": "2026-08-05T15:32:22Z",
   "aliases": [
     "CVE-2026-17613"
   ],
   "details": "Penpot’s ::import-binfile RPC command lacks authorization on the optional file-id parameter, allowing any authenticated user to overwrite any files on the target server and subscribe to WebSocket events, enabling full data exfiltration and data poisoning.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-05T15:16:40Z"

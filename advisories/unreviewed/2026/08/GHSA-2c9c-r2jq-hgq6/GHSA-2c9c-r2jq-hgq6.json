@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2c9c-r2jq-hgq6",
-  "modified": "2026-08-01T09:30:23Z",
+  "modified": "2026-08-05T18:31:26Z",
   "published": "2026-08-01T09:30:23Z",
   "aliases": [
     "CVE-2026-13729"
   ],
   "details": "The Podlove Podcast Publisher WordPress plugin before 4.5.3 does not perform nonce validation on some of its administrative create and delete actions, allowing attackers to create rogue records or delete legitimate ones via a forged request (CSRF) when a logged-in administrator is tricked into visiting a crafted page.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-01T07:16:29Z"

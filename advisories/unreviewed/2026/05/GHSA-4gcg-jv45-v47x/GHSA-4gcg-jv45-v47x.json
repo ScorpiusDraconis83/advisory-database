@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4gcg-jv45-v47x",
-  "modified": "2026-05-11T18:31:45Z",
+  "modified": "2026-08-05T18:31:19Z",
   "published": "2026-05-11T18:31:45Z",
   "aliases": [
     "CVE-2026-3609"
   ],
   "details": "Wellbia's XIGNCODE3 xhunter1.sys kernel driver Privilege Escalation Vulnerability provides access to IRP_MJ_REITS command interface, which allows any user process to request a PROCESS_ALL_ACCESS.\nCross reference to KVE 2023-5589 (https://krcert.or.kr)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,12 +25,16 @@
     },
     {
       "type": "WEB",
+      "url": "https://blacksnufkin.github.io/posts/Hunting-the-Hunter"
+    },
+    {
+      "type": "WEB",
       "url": "https://crcert.or.kr"
     }
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-05-11T18:16:33Z"

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fqv5-gx59-2xgv",
+  "modified": "2026-08-05T18:31:43Z",
+  "published": "2026-08-05T18:31:43Z",
+  "aliases": [
+    "CVE-2026-9081"
+  ],
+  "details": "IBM Langflow OSS 1.0.0 through 1.10.3, and 1.0.0 through 1.10.3 contains a Server-Side Request Forgery (SSRF) vulnerability in the validate_model_provider_key() function for the Ollama provider. The function accepts a user-supplied OLLAMA_BASE_URL parameter and passes it directly to requests.get() without validation, scheme/host allowlisting, or filtering of private IP ranges (loopback, RFC1918, link-local addresses).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9081"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ibm.com/support/pages/node/7282650"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T18:17:16Z"
+  }
+}

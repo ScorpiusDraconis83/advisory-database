@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-q7qm-9x83-phwf",
-  "modified": "2026-08-01T09:30:23Z",
+  "modified": "2026-08-05T18:31:25Z",
   "published": "2026-08-01T09:30:23Z",
   "aliases": [
     "CVE-2026-11882"
   ],
   "details": "The Builderall for WordPress plugin before 3.0.2 does not bind the state value of its public OAuth authentication routes to the initiating user session, allowing unauthenticated attackers to complete the connection flow and overwrite the stored third-party integration access token. A durable overwrite requires the site to already be connected to a paid account.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-01T07:16:28Z"

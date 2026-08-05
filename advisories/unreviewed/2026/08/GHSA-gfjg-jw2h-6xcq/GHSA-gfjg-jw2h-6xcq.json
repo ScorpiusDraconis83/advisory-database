@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gfjg-jw2h-6xcq",
-  "modified": "2026-08-05T09:31:14Z",
+  "modified": "2026-08-05T18:31:29Z",
   "published": "2026-08-05T09:31:14Z",
   "aliases": [
     "CVE-2026-15210"
   ],
   "details": "The OTP Login With Phone Number, OTP Verification WordPress plugin before 1.8.71 does not limit the number of OTP verification attempts or invalidate a one-time login code after a wrong guess, and an unauthenticated user can request a login code for any account. Because the code is a short numeric OTP, an attacker can brute-force it and take over any account, including an administrator's.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-05T07:16:34Z"

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6chj-7h9j-x3p6",
+  "modified": "2026-08-05T18:31:36Z",
+  "published": "2026-08-05T18:31:36Z",
+  "aliases": [
+    "CVE-2026-49331"
+  ],
+  "details": "A flaw was found in openshift/oauth-proxy. On paths configured to bypass authentication (skip-auth-regex), the proxy forwards client-supplied identity headers (X-Forwarded-User, X-Forwarded-Email, X-Forwarded-Access-Token) to the upstream application without stripping them. An unauthenticated attacker can inject forged identity headers on whitelisted paths.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49331"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-49331"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2483252"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T16:16:57Z"
+  }
+}

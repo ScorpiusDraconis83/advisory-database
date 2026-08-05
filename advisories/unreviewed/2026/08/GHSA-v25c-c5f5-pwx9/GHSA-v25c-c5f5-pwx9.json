@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v25c-c5f5-pwx9",
+  "modified": "2026-08-05T18:31:35Z",
+  "published": "2026-08-05T18:31:35Z",
+  "aliases": [
+    "CVE-2026-10025"
+  ],
+  "details": "IBM QRadar 7.6.0.0 through 7.6.0.1, and 7.5.0 through 7.5.0 UP 15 Interim Fix 005 has an XML External Entity (XXE) injection vulnerability. The vulnerability resides in the parseXmlPayload() function within the event processing pipeline ( q1labs_core.jar ). When at least one log source type is configured to use XML-format property autodetection, the system processes XML-formatted syslog events sent to port 514 (UDP/TCP) without authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10025"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ibm.com/support/pages/node/7282394"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-611"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T16:16:49Z"
+  }
+}

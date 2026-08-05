@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vprj-v253-jvjv",
-  "modified": "2026-08-01T09:30:23Z",
+  "modified": "2026-08-05T18:31:26Z",
   "published": "2026-08-01T09:30:23Z",
   "aliases": [
     "CVE-2026-14197"
   ],
   "details": "The Fluent Support  WordPress plugin before 2.3.1 does not perform a per-ticket access check before reassigning a ticket's customer, allowing a restricted support agent to change the assigned customer of any ticket in the system, including tickets outside their granted scope.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-01T07:16:29Z"
