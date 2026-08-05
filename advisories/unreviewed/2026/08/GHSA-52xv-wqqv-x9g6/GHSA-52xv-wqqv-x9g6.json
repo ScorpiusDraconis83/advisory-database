@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-52xv-wqqv-x9g6",
+  "modified": "2026-08-05T09:31:16Z",
+  "published": "2026-08-05T09:31:16Z",
+  "aliases": [
+    "CVE-2026-11454"
+  ],
+  "details": "The Groundhogg — CRM, Newsletters, and Marketing Automation plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 4.5.2 via the GET /wp-json/gh/v4/contacts/<id> REST endpoint. The endpoint's permission callback checks only the role-level view_contacts capability and read_single() returns the full contact record by sequential integer ID without the object-level view_contact ownership check applied elsewhere in the codebase. This makes it possible for authenticated attackers holding view_contacts but not view_others_contacts — notably Groundhogg's built-in Sales Rep role, designed to see only its own contacts — to read any contact record on the site, including PII, contact meta, owner IDs, the admin edit URL, and (for contacts linked to a WordPress user) that user's full capability set.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11454"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.2/api/v4/base-object-api.php#L124"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.2/api/v4/contacts-api.php#L426"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.2/api/v4/contacts-api.php#L946"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.2/includes/main-roles.php#L163"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.2/includes/main-roles.php#L374"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.2/includes/main-roles.php#L43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.3/api/v4/contacts-api.php#L437"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?new=3569222%40groundhogg%2Ftags%2F4.5.3&old=3562726%40groundhogg%2Ftags%2F4.5.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/7fe3d251-4edf-4d94-a946-0aa918135784?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:28Z"
+  }
+}

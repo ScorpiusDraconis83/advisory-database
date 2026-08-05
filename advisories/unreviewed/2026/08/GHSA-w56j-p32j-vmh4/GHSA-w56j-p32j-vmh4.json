@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w56j-p32j-vmh4",
+  "modified": "2026-08-05T09:31:18Z",
+  "published": "2026-08-05T09:31:18Z",
+  "aliases": [
+    "CVE-2026-71208"
+  ],
+  "details": "KubeSphere's cluster-controller reconciliation (pkg/utils/clusterclient/clusterclient.go, addCluster) processes every Cluster custom resource's connection configuration and immediately calls Discovery().ServerVersion() against the CRD-specified Kubernetes API endpoint, which is parsed only for URL syntax (url.Parse) with no allow/deny-list for loopback, RFC1918 private ranges, link-local, or cloud-metadata addresses (e.g. 169.254.169.254). A user able to create or update a Cluster CRD can force the controller-manager and apiserver pods to issue outbound requests to arbitrary internal or metadata endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ashikmd7/kubeSphere/blob/main/SSRF%20via%20Cluster%20CRD%20KubeConfig/README.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kubesphere/kubesphere"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:42Z"
+  }
+}

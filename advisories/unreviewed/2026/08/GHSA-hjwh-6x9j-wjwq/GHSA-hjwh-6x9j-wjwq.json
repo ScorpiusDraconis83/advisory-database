@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hjwh-6x9j-wjwq",
+  "modified": "2026-08-05T09:31:18Z",
+  "published": "2026-08-05T09:31:18Z",
+  "aliases": [
+    "CVE-2026-71202"
+  ],
+  "details": "The raster Rust crate's crop() function (src/editor.rs) clamps the crop width/height against source dimensions but only clamps the offset_x/offset_y parameters against 0, never against the source width/height. When an offset exceeds the corresponding source dimension, `width2 - offset_x` (or the height equivalent) underflows to a negative i32, which release builds do not trap; the negative value is then cast to usize inside Image::blank()'s Vec::with_capacity() call, triggering a capacity-overflow panic and crashing the process on a single crafted crop request.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71202"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kosinix/raster/issues/30"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:42Z"
+  }
+}

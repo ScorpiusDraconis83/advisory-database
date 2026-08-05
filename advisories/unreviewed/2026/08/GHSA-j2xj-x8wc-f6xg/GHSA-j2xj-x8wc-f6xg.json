@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j2xj-x8wc-f6xg",
+  "modified": "2026-08-05T09:31:17Z",
+  "published": "2026-08-05T09:31:17Z",
+  "aliases": [
+    "CVE-2026-55739"
+  ],
+  "details": "Crater isolates data per company_id, and its Invoice/Estimate/Payment/Expense policies enforce both a Bouncer ability check and $user->hasCompany($model->company_id). CustomerPolicy's view/update/delete methods omit the company-ownership check entirely, checking only the blanket ability. Route-model-bound customer lookups and the bulk Customer::deleteCustomers() method are similarly unscoped (self::find($id) with no company filter). Any authenticated user of one company can read, reassign (steal), or delete another company's customer records, with deletion cascading to that customer's invoices and payments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55739"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/crater-invoice/crater"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:33Z"
+  }
+}

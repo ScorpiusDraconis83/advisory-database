@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qg2j-83g4-98r4",
+  "modified": "2026-08-05T09:31:18Z",
+  "published": "2026-08-05T09:31:18Z",
+  "aliases": [
+    "CVE-2026-70376"
+  ],
+  "details": "Pluck CMS's admin panel relies solely on a Referer-header comparison (requestedByTheSameDomain() in data/inc/functions.admin.php, gating every admin.php action) for CSRF protection, with no per-request anti-CSRF token anywhere in the admin area. When a request carries no Referer/Host information, the function's elseif branch returns true, treating the request as same-origin. Because a cross-site attacker page can suppress the Referer header (e.g. via <meta name=referrer content=no-referrer>), it can force an authenticated administrator's browser to submit forged admin actions with no valid Referer, including creating pages with raw HTML (stored XSS via the rendered page) and installing PHP modules/themes (remote code execution).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70376"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pluck-cms/pluck"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:41Z"
+  }
+}

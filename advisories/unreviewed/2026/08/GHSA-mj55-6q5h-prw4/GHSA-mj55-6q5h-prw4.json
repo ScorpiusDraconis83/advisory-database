@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mj55-6q5h-prw4",
+  "modified": "2026-08-05T09:31:18Z",
+  "published": "2026-08-05T09:31:18Z",
+  "aliases": [
+    "CVE-2026-71215"
+  ],
+  "details": "art-template's sub-template resolution logic (src/compile/adapter/resolve-filename.js), used by both the include() and extend() template directives, resolves the target file path via path.resolve(root, filename) with no check afterward that the result remains inside root. Because path.resolve() discards root entirely when filename is an absolute path, and does not block '../' traversal sequences, and the resolved path is passed directly to fs.readFileSync() in loader.js with its contents compiled and rendered, an application that lets a sub-template name be influenced by external input (e.g. a query parameter passed into {{include page}}) allows an attacker to read arbitrary files on disk that the Node process can access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aui/art-template"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:43Z"
+  }
+}

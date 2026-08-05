@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8v55-7p5p-6r5c",
+  "modified": "2026-08-05T09:31:17Z",
+  "published": "2026-08-05T09:31:17Z",
+  "aliases": [
+    "CVE-2026-55747"
+  ],
+  "details": "The pocketflow-coding-agent cookbook example in The-Pocket/PocketFlow implements a `_path(workdir, p)` helper as a thin os.path.join(workdir, p) wrapper with no canonicalization or containment check, used unguarded by the ReadFile, ListFiles, PatchRead, and PatchApply file-access tools. Because os.path.join returns an absolute `p` unchanged (ignoring workdir) and does not resolve '../' sequences, an agent invocation whose file-tool arguments include an absolute path or a traversal sequence can read or write files outside the configured working directory. Severity reflects that this affects an illustrative cookbook example rather than a core library API; applications that copy this pattern into production are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55747"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/The-Pocket/PocketFlow"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:34Z"
+  }
+}

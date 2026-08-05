@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f3j9-9qqv-p4r8",
+  "modified": "2026-08-05T09:31:18Z",
+  "published": "2026-08-05T09:31:18Z",
+  "aliases": [
+    "CVE-2026-71212"
+  ],
+  "details": "xidown (a yt-dlp/ffmpeg GUI wrapper) builds its yt-dlp command-line invocation (xidown/core/scanner.py and downloader.py) by appending the user-provided or scanned URL as a bare trailing positional argument, with no '--' end-of-options marker and no scheme validation anywhere in the codebase. Because yt-dlp parses any argument beginning with '-' as a CLI option rather than link text, a crafted 'URL' value such as -U (yt-dlp's self-update flag) or --exec=... is parsed as a real yt-dlp option instead of a URL, altering the tool's control flow before its own URL validation runs. Full code execution via --exec was not demonstrated in the single-URL flow tested, but the underlying argument-injection primitive is confirmed and unmitigated across all call sites.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71212"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cwe.mitre.org/data/definitions/88.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-88"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:43Z"
+  }
+}

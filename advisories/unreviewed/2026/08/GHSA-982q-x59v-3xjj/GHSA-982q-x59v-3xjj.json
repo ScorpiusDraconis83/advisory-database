@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-982q-x59v-3xjj",
+  "modified": "2026-08-05T09:31:19Z",
+  "published": "2026-08-05T09:31:19Z",
+  "aliases": [
+    "CVE-2026-7693"
+  ],
+  "details": "The Backup Migration plugin for WordPress is vulnerable to OS Command Injection in all versions up to, and including, 2.1.5.1 due to insufficient sanitization of the `file` POST parameter on the `restoreBackup()` AJAX handler. The handler applies `esc_attr()` — an HTML-context sanitizer that does not strip shell metacharacters — and concatenates the result, unquoted, into a `php-cli -f … bmi_restore <file> <remote>` command passed to `exec()`. This makes it possible for authenticated attackers, with Administrator-level access (or any user granted the plugin's `do_backups` capability) and above, to execute arbitrary OS commands as the web-server user, bypassing WordPress hardening constants such as `DISALLOW_FILE_EDIT` and `DISALLOW_FILE_MODS` that would otherwise prevent code execution from the admin UI. This is an incomplete fix of CVE-2023-7002, which patched the same pattern only in the `$_POST['url']` path of `handleQuickMigration()`; the equivalent mitigations (`rawurlencode()` + explicit shell-metachar replacement + double-quoting in `exec()`) were never applied to `$backupName`.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/backup-backup/tags/2.1.5.1/includes/ajax.php#L3019"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/backup-backup/tags/2.1.5.1/includes/ajax.php#L3025"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/backup-backup/tags/2.1.5.1/includes/ajax.php#L3422"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/backup-backup/tags/2.1.5.1/includes/ajax.php#L3444"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/backup-backup/tags/2.1.5.1/includes/initializer.php#L136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/backup-backup/trunk/includes/ajax.php#L3025"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?new=3540041%40backup-backup%2Ftags%2F2.1.5.2&old=3512153%40backup-backup%2Ftags%2F2.1.5.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/af6a7052-6dab-42f0-a2af-0cf459d309d7?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:44Z"
+  }
+}

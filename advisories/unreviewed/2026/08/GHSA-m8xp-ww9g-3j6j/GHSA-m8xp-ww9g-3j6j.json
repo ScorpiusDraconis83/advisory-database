@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m8xp-ww9g-3j6j",
+  "modified": "2026-08-05T09:31:18Z",
+  "published": "2026-08-05T09:31:18Z",
+  "aliases": [
+    "CVE-2026-71206"
+  ],
+  "details": "Shiori's CheckToken function (internal/domains/auth.go) validates only the JWT's HMAC signature and returns the embedded claims.Account object unmodified, never re-fetching the account from the database. No session store or token-revocation mechanism exists in the codebase. Deleting an account or demoting it from owner to a regular role has no effect on tokens already issued to that account — a deleted or demoted owner's token continues authenticating with its original owner-level privileges until natural expiry, which can be up to 30 days with 'remember me' enabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-shiori/shiori"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:42Z"
+  }
+}

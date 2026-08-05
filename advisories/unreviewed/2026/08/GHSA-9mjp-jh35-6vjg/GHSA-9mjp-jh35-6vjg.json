@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9mjp-jh35-6vjg",
+  "modified": "2026-08-05T09:31:18Z",
+  "published": "2026-08-05T09:31:18Z",
+  "aliases": [
+    "CVE-2026-7105"
+  ],
+  "details": "The Xpro Addons plugin for WordPress is vulnerable to unauthorized creation of data due to a missing capability check on the `get_menu_content_editor()` function in all versions up to, and including, 1.5.1. This makes it possible for authenticated attackers, with Subscriber-level access and above, to create arbitrary published posts of the `xpro_content` custom post type with attacker-controlled titles. The created posts are publicly queryable on the front-end, enabling content injection, SEO spam, and database pollution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7105"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/xpro-elementor-addons/tags/1.5.1/classes/class-ajax-handler.php#L137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/xpro-elementor-addons/tags/1.5.1/classes/class-ajax-handler.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/xpro-elementor-addons/tags/1.5.1/classes/class-ajax-handler.php#L64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/xpro-elementor-addons/trunk/classes/class-ajax-handler.php#L137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3519528%40xpro-elementor-addons%2Ftrunk&old=3492377%40xpro-elementor-addons%2Ftrunk&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/eef0796f-f56d-4be3-8fbd-010ac0fb3448?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:44Z"
+  }
+}

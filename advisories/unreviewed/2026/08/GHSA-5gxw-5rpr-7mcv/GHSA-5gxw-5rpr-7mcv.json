@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5gxw-5rpr-7mcv",
+  "modified": "2026-08-05T09:31:17Z",
+  "published": "2026-08-05T09:31:17Z",
+  "aliases": [
+    "CVE-2026-64570"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: fix fils_discovery double free on alloc failure\n\nieee80211_set_fils_discovery() calls kfree_rcu() on the old template\nbefore allocating the replacement. If the kzalloc() then fails, it\nreturns -ENOMEM while link->u.ap.fils_discovery still points at the\nobject already queued for freeing. A later update or AP teardown\n(ieee80211_stop_ap()) re-queues that same rcu_head; the second free is\ncaught by KASAN when the RCU sheaf is processed in softirq:\n\n  BUG: KASAN: double-free in rcu_free_sheaf (mm/slub.c:5850)\n  Free of addr ffff88800c065280 by task swapper/0/0\n   ...\n   __rcu_free_sheaf_prepare (mm/slub.c:2634 mm/slub.c:2940)\n   rcu_free_sheaf (mm/slub.c:5850)\n   rcu_core (kernel/rcu/tree.c:2617 kernel/rcu/tree.c:2869)\n   handle_softirqs (kernel/softirq.c:622)\n  The buggy address belongs to the cache kmalloc-96 of size 96\n\nQueue the old object for kfree_rcu() only after the new one is published,\nmatching ieee80211_set_probe_resp() and ieee80211_set_s1g_short_beacon().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64570"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1981fba71797ec95e6755fb882cad88899a2a84f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/286e52a799fa158bdbd77da1426c4d93f9a6e7ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5baaa1042f71dd4b8e418f2cdd516808702d229b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2c55079155a953db669ca1986a985fa286bad95"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:36Z"
+  }
+}

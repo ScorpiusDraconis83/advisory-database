@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4265-6rqg-273h",
+  "modified": "2026-08-05T09:31:18Z",
+  "published": "2026-08-05T09:31:18Z",
+  "aliases": [
+    "CVE-2026-71213"
+  ],
+  "details": "Typemill's login endpoint (POST /tm/login, ControllerWebAuth::login()) performs no rate-limiting, failed-attempt counting, or account lockout when captcha is disabled, which is the default configuration. An unauthenticated attacker can send unlimited password-guessing requests against any account, including administrators, with no throttling. The only attempt-counting/lockout logic present in the same file protects an optional secondary email-authcode step and does not apply to the primary password check.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/typemill/typemill"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-307"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:43Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fvwx-9qcr-crph",
+  "modified": "2026-08-05T09:31:16Z",
+  "published": "2026-08-05T09:31:16Z",
+  "aliases": [
+    "CVE-2026-54416"
+  ],
+  "details": "Pluck CMS through 4.7.21 restricts dangerous file uploads in its admin file-management feature using a fixed blacklist in data/inc/files.php ('.php','php3','php4','php5','php6','php7','phtml','.phtm','.pht','.ph3','.ph4','.ph5','.asp','.cgi','.phar'), checked against the last 4-5 characters of the filename. The blacklist omits the '.php8' extension. An authenticated administrator can upload a file named e.g. shell.php8, which is stored unmodified and, on servers running PHP 8.x, is executed as PHP by the web server, resulting in remote code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54416"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pluck-cms/pluck"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-05T08:16:33Z"
+  }
+}
