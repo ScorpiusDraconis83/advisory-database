@@ -1,12 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c8q4-9h32-2ww8",
-  "modified": "2026-06-22T20:43:37Z",
+  "modified": "2026-08-05T22:37:48Z",
   "published": "2026-06-22T20:43:37Z",
   "aliases": [
     "CVE-2026-44795"
   ],
-  "summary": "Spinnaker has uon-safe yaml deserialization, allowing RCE when using specific types",
+  "summary": "Spinnaker has non-safe yaml deserialization, allowing RCE when using specific types",
   "details": "### Impact\nThere's an unsafe YAML processing vulnerability that bypasses safe deserialization. This impacts users when when performing:\n* CloudFormation deployments\n* CloudFoundry Baking\n\nThe usage of a non-safe constructor use allows arbitrary loading of Java classes leading to RCE.\n\n### Patches\n 2025.3.3, 2026.0.3 and 2025.4.4.\n\n### Workarounds\nDisable the CloudFormation system and cloudfoundry baking operations.\n\n### Resources\nJoin Spinnaker on Slack for more information!",
   "severity": [
     {
@@ -136,6 +136,22 @@
       "url": "https://github.com/spinnaker/spinnaker/security/advisories/GHSA-c8q4-9h32-2ww8"
     },
     {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44795"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spinnaker/spinnaker/commit/4cbe1d5fea9df573aadfd8b093fb4b594b354ee5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spinnaker/spinnaker/commit/e57c0db4584b398473a7bbb19402ce6c1e89b627"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spinnaker/spinnaker/commit/f69d7b534d068ed74d0d3a1fbf17e2c945d36e5e"
+    },
+    {
       "type": "PACKAGE",
       "url": "https://github.com/spinnaker/spinnaker"
     }
@@ -148,6 +164,6 @@
     "severity": "HIGH",
     "github_reviewed": true,
     "github_reviewed_at": "2026-06-22T20:43:37Z",
-    "nvd_published_at": null
+    "nvd_published_at": "2026-07-10T22:16:41Z"
   }
 }
