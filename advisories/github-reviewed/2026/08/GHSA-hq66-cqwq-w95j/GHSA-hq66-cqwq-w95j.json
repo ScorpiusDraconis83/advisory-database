@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hq66-cqwq-w95j",
+  "modified": "2026-08-06T21:12:27Z",
+  "published": "2026-08-06T21:12:27Z",
+  "aliases": [
+    "CVE-2026-16633"
+  ],
+  "summary": "PDF.js: Arbitrary JavaScript execution upon opening a malicious PDF ",
+  "details": "### Impact\n\nIf PDF.js is used to load a malicious PDF, and PDF.js is configured with `enableScripting` set to true (which is the default value) and no CSP for disallowing script-src, unrestricted attacker-controlled JavaScript will be executed in the context of the hosting domain.\n\n### Patches\n\n### Workarounds\nSet `enableScripting` to `false` or set a CSP.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "pdfjs-dist"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.6.83"
+            },
+            {
+              "fixed": "6.2.108"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mozilla/pdf.js/security/advisories/GHSA-hq66-cqwq-w95j"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.mozilla.org/show_bug.cgi?id=2055885"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mozilla/pdf.js"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-06T21:12:27Z",
+    "nvd_published_at": null
+  }
+}
