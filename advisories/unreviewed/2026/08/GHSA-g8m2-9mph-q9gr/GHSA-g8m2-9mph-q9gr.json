@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g8m2-9mph-q9gr",
-  "modified": "2026-08-06T00:31:27Z",
+  "modified": "2026-08-06T15:32:35Z",
   "published": "2026-08-06T00:31:27Z",
   "aliases": [
     "CVE-2025-63822"
   ],
   "details": "SirenGPS Android Application 2.19.44 is vulnerable to Incorrect Access Control. An authenticated attacker can manipulate user identifier parameters to bypass authorization controls and gain unauthorized READ and WRITE access to other users' personal information. The API fails to validate that the requesting user is authorized to access the target user's data.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-05T22:17:06Z"

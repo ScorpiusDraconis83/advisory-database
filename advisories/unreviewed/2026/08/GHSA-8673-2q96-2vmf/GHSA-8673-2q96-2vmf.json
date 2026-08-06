@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8673-2q96-2vmf",
-  "modified": "2026-08-06T09:30:29Z",
+  "modified": "2026-08-06T15:32:38Z",
   "published": "2026-08-06T09:30:29Z",
   "aliases": [
     "CVE-2026-16734"
   ],
   "details": "The Stripe Payment Forms by WP Full Pay  WordPress plugin before 8.5.2 does not verify that the caller owns the Stripe payment intent referenced by two unauthenticated payment-form AJAX actions, allowing an unauthenticated visitor — using a nonce that is embedded in every public page containing a payment form — to change the amount of a payment intent that the Stripe Payment Forms by WP Full Pay  WordPress plugin before 8.5.2 then updates server-side through the Stripe API with the store's secret key. An ownership check added in 8.5.0 was applied to only one payment-intent handler, leaving the pricing-recalculation and payment-intent-update actions unprotected against amount manipulation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-06T07:16:28Z"

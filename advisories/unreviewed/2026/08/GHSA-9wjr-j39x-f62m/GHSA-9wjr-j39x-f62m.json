@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9wjr-j39x-f62m",
-  "modified": "2026-08-06T09:30:29Z",
+  "modified": "2026-08-06T15:32:38Z",
   "published": "2026-08-06T09:30:29Z",
   "aliases": [
     "CVE-2026-16954"
   ],
   "details": "The AI Engine  WordPress plugin before 3.6.4 does not redact secret configuration values before exposing them in an admin page's inline script data, allowing users with the Editor role to read the site's stored third-party API key and authentication tokens in cleartext, despite those secrets being restricted to administrators everywhere else.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-06T07:16:28Z"

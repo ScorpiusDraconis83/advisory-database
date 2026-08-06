@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mhrm-79mh-vhfj",
-  "modified": "2026-08-06T09:30:29Z",
+  "modified": "2026-08-06T15:32:37Z",
   "published": "2026-08-06T09:30:29Z",
   "aliases": [
     "CVE-2026-16268"
   ],
   "details": "The Newsletters WordPress plugin before 4.16 does not authenticate or validate a bounce-processing request before fetching a user-supplied URL on the server side, allowing unauthenticated attackers to make the site issue requests to arbitrary internal or external hosts.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-06T07:16:28Z"
