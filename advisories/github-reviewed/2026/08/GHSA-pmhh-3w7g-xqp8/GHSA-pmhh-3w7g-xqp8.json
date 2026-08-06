@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pmhh-3w7g-xqp8",
+  "modified": "2026-08-06T21:09:36Z",
+  "published": "2026-08-06T21:09:36Z",
+  "aliases": [
+    "CVE-2026-71497"
+  ],
+  "summary": "jsoup: Cleaner may expose markup with custom raw-text elements",
+  "details": "When a custom `Safelist` permits certain raw-text elements, jsoup may incorrectly sanitize malformed HTML containing a tag name that ends in a control character. The tag may acquire the parsing behavior of a different element, causing content that should remain text to be emitted as active markup after serialization and potentially allowing XSS.\n\njsoup’s built-in Safelists are unaffected.\n\n## Patches\n\nUpgrade to jsoup 1.23.1.\n\n## Workarounds\n\nUntil upgrading, do not permit raw-text elements in custom Safelists used to clean untrusted HTML.\n\n## Additional security considerations\n\nThis fix addresses malformed tag-name handling only.\n\nPermitting raw-text elements in a custom `Safelist` does not make their contents inherently safe. For example, applications that permit `style` must apply appropriate CSS safeguards separately, because jsoup does not parse or sanitize CSS.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jsoup:jsoup"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.14.3"
+            },
+            {
+              "fixed": "1.23.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/jhy/jsoup/security/advisories/GHSA-pmhh-3w7g-xqp8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jhy/jsoup/issues/2538"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jhy/jsoup/commit/92f1aca552548b484bc7d4b94c51e48b8e6eca70"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jhy/jsoup"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jhy/jsoup/releases/tag/jsoup-1.23.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-06T21:09:36Z",
+    "nvd_published_at": null
+  }
+}
