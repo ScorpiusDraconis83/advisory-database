@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g8w9-p6wx-8fxc",
+  "modified": "2026-08-06T09:30:30Z",
+  "published": "2026-08-06T09:30:30Z",
+  "aliases": [
+    "CVE-2025-13736"
+  ],
+  "details": "When Multi-Attribute Login is enabled, the login interface fails to consistently mask the existence of user accounts. For valid users, the server resolves and displays their canonical username, while for non-existent users, it echoes the original input. This occurs regardless of the validate_username configuration.\n\nThe discovery of valid usernames can increase the risk of brute force attacks, social engineering attacks, and targeted information leakage. Attackers can leverage this information to craft more effective phishing campaigns or social engineering tactics to compromise user accounts or extract sensitive data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13736"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2025-4013"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-203"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T08:16:28Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-66c7-2f58-rwhj",
+  "modified": "2026-08-06T09:30:30Z",
+  "published": "2026-08-06T09:30:30Z",
+  "aliases": [
+    "CVE-2024-8995"
+  ],
+  "details": "Unused authorization codes issued to deleted users are not being properly invalidated or removed from the system. This allows for the persistence of these codes, enabling them to be potentially reused.\n\nIf an attacker possesses both the authorization code and the associated client credentials (client ID and client secret), they can leverage these unused codes to obtain access tokens on behalf of users who have already been deleted. This may lead to unauthorized access to sensitive resources and services, contingent on the scopes originally authorized for the compromised authorization code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-8995"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2024-2753"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T08:16:27Z"
+  }
+}

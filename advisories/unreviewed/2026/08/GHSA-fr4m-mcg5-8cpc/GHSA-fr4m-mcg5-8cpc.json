@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fr4m-mcg5-8cpc",
+  "modified": "2026-08-06T09:30:30Z",
+  "published": "2026-08-06T09:30:30Z",
+  "aliases": [
+    "CVE-2024-6832"
+  ],
+  "details": "The account locking mechanism fails to trigger when secondary user stores are inaccessible. The software does not maintain a consistent state for account locking if it cannot reach all configured user stores, allowing an attacker to repeatedly attempt authentication with invalid credentials without triggering the lockout mechanism for users within active stores.\n\nWhen the account locking mechanism is bypassed due to the inaccessibility of secondary user stores, users in accessible user stores are left vulnerable to brute force attacks. A malicious actor can exploit this by attempting numerous invalid password combinations against a user account without the expected account lockout consequence.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-6832"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2024-3352"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-693"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T08:16:27Z"
+  }
+}

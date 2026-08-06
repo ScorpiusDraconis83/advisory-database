@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8j24-697m-8w28",
+  "modified": "2026-08-06T09:30:30Z",
+  "published": "2026-08-06T09:30:30Z",
+  "aliases": [
+    "CVE-2025-12627"
+  ],
+  "details": "The user impersonation flow in WSO2 Identity Server fails to properly manage refresh tokens associated with impersonated sessions. This allows an attacker who has obtained an access token for an impersonated user to leverage the refresh token grant to obtain new access tokens, extending their ability to act as the legitimate user.\n\nAn attacker who gains access to an impersonated user's access token can exploit this weakness to renew their authorization. This results in the continued ability to perform actions on behalf of the actual user, compromising log integrity and traceability by masking the true actor.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-12627"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2025-4619"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T08:16:28Z"
+  }
+}

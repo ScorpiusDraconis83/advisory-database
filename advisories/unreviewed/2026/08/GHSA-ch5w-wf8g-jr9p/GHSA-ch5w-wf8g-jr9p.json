@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ch5w-wf8g-jr9p",
+  "modified": "2026-08-06T09:30:33Z",
+  "published": "2026-08-06T09:30:33Z",
+  "aliases": [
+    "CVE-2026-64595"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: hid-lenovo-go: cancel cfg_setup work in hid_go_cfg_remove()\n\nhid_go_cfg_probe() initialises drvdata.go_cfg_setup and schedules it\nto run 2 ms later:\n\n    INIT_DELAYED_WORK(&drvdata.go_cfg_setup, &cfg_setup);\n    schedule_delayed_work(&drvdata.go_cfg_setup, msecs_to_jiffies(2));\n\ncfg_setup() dereferences drvdata.hdev to issue MCU command requests.\nhid_go_cfg_remove() tears down sysfs and stops the HID device, but\nnever drains the delayed work.  If the device is unbound within the\n2 ms scheduling delay (a probe failure rolling back via remove, or a\nfast rmmod after probe), the work fires after hid_destroy_device()\nhas dropped its reference and released the underlying hdev struct,\nleaving cfg_setup() with a stale drvdata.hdev pointer.\n\nMirror the sibling driver hid-lenovo-go-s.c, whose hid_gos_cfg_remove()\nalready calls cancel_delayed_work_sync() on its analogous work, and\ndrain go_cfg_setup at the top of hid_go_cfg_remove().  The cancel\nmust come before guard(mutex)(&drvdata.cfg_mutex) because cfg_setup()\nacquires that mutex; reversing the order would deadlock.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64595"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3e7761f7bf9f0187bb18cf52b5119bdf4940e686"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73fde0cbff7d9d618591774a12c23434232752c1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T08:16:35Z"
+  }
+}

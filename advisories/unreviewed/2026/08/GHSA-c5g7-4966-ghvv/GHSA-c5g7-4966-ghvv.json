@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c5g7-4966-ghvv",
+  "modified": "2026-08-06T09:30:31Z",
+  "published": "2026-08-06T09:30:31Z",
+  "aliases": [
+    "CVE-2025-13909"
+  ],
+  "details": "The system accepts authentication requests without sufficient validation to enforce tenant isolation when using Email OTP, SMS OTP, or Magic Link as first-factor authenticators. This failure to adequately separate user data between tenants can lead to the exposure of personally identifiable information.\n\nSuccessful exploitation allows an attacker to disclose personally identifiable information of users in different tenants, resulting in privacy violations and potential regulatory non-compliance. This may include unauthorized access to user details such as mobile numbers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13909"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2025-4731"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T08:16:28Z"
+  }
+}

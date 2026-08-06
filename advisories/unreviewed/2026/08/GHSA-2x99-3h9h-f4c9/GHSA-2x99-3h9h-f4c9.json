@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2x99-3h9h-f4c9",
+  "modified": "2026-08-06T09:30:33Z",
+  "published": "2026-08-06T09:30:33Z",
+  "aliases": [
+    "CVE-2026-64601"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: us144mkii: capture_urb_complete: redundant usb_anchor_urb corrupts anchor list on each resubmission\n\nIn capture_urb_complete(), usb_anchor_urb() is called on every\ncompletion callback, but the URB is already anchored from the\ninitial submission in tascam_trigger_start(). Each redundant call\ncorrupts the anchor's doubly-linked list and inflates the URB\nrefcount. When usb_kill_anchored_urbs() traverses the list during\nstream stop / suspend / disconnect, the corrupted list leads to\nuse-after-free.\n\nRemove the redundant usb_anchor_urb() from the resubmit path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64601"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16f14f55141d4c55c3f321f93c328fff7cd6860a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5cff1529a2f9b3461a7f5a6e36a86682fc290534"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab1db64912428cdf06a4f9542e16e0575e9ad59f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T08:16:35Z"
+  }
+}

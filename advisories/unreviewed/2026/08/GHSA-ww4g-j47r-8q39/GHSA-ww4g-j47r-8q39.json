@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ww4g-j47r-8q39",
+  "modified": "2026-08-06T09:30:32Z",
+  "published": "2026-08-06T09:30:32Z",
+  "aliases": [
+    "CVE-2026-64588"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse-uring: fix data races on ring->ready\n\nOn weakly-ordered architectures, the store to fiq->ops can be\nreordered past the store to ring->ready, allowing a CPU that sees\nring->ready == true via fuse_uring_ready() to dispatch requests\nthrough a stale fiq->ops pointer. Upgrade the store to\nsmp_store_release() and the load in fuse_uring_ready() to\nsmp_load_acquire() so that the preceding WRITE_ONCE(fiq->ops, ...)\nis visible to any CPU that observes ring->ready == true.\n\nAdditionally, fuse_uring_do_register() publishes ring->ready with\nWRITE_ONCE() but the fast-path check reads it with a plain load.\nThis is a marked-vs-unmarked access that KCSAN will flag. Wrap it in\nREAD_ONCE() to mark it without adding unnecessary ordering.\n\nAlso wrap the fc->ring load in fuse_uring_ready() in READ_ONCE() to\nprevent the compiler from reloading it between the NULL check and the\ndereference.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64588"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46725a0056c884cf58a6897f222892807327d82d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b156bb9966972122b148acab8bdf415cdb8176a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d01a09b442cb786cd44ccc7c84d57e2856d6737c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T08:16:34Z"
+  }
+}

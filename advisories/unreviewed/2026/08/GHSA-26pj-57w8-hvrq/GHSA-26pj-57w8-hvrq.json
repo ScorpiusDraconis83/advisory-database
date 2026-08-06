@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-26pj-57w8-hvrq",
+  "modified": "2026-08-06T09:30:30Z",
+  "published": "2026-08-06T09:30:30Z",
+  "aliases": [
+    "CVE-2024-10302"
+  ],
+  "details": "The user self-signup flow in multiple WSO2 products fails to adequately validate user-supplied input. This weakness allows arbitrary unvalidated data to be included within user claims, which are then used by downstream processes.\n\nAllowing unvalidated input into user claims can lead to various security risks. Malicious or malformed data injected during signup could be processed by other parts of the application, potentially enabling attacks such as content manipulation, redirection, user interface inconsistencies, unauthorized actions, and data exposure. The actual impact depends on how the compromised data is consumed and the privileges associated with the affected users.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-10302"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2024-3740"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T08:16:26Z"
+  }
+}

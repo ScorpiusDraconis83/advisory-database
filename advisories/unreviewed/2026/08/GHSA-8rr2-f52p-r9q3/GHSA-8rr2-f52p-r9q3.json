@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8rr2-f52p-r9q3",
+  "modified": "2026-08-06T09:30:31Z",
+  "published": "2026-08-06T09:30:31Z",
+  "aliases": [
+    "CVE-2025-13394"
+  ],
+  "details": "The Ajax processor within the Carbon console fails to adequately protect state-changing operations from Cross-Site Request Forgery (CSRF) attacks. Specifically, it utilizes the HTTP GET method for these operations, and while the SameSite=Lax cookie attribute is employed for mitigation, this mechanism is bypassed as it permits cookies to be sent with cross-origin top-level navigation requests, including GET requests. This allows an attacker to trick an authenticated user's browser into unknowingly executing unintended actions.\n\nAn attacker can exploit this vulnerability to perform unauthorized state-altering requests on behalf of authenticated users. This could lead to consequences such as data modification, account changes, or other actions that could result in data compromise or loss of user control over their account. However, this attack is only feasible if the Carbon console and related services are exposed to the public internet, which is not recommended according to WSO2's security guidelines.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13394"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2025-4800"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T08:16:28Z"
+  }
+}
