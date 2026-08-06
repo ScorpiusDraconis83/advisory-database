@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v4r4-2fwc-5qq5",
+  "modified": "2026-08-06T06:30:32Z",
+  "published": "2026-08-06T06:30:31Z",
+  "aliases": [
+    "CVE-2026-16636"
+  ],
+  "details": "The FluentSMTP – WP SMTP Plugin with Amazon SES, SendGrid, MailGun, Postmark, Google and Any SMTP Provider plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Recipient Display Name (to.name) in Email Logs in all versions up to, and including, 2.2.95 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The payload is delivered via an attacker-controlled recipient display name (to.name) in a wp_mail() call and does not fire in the log list view — only in the detail view when an administrator uses the Prev/Next navigation controls, as that path bypasses the escapeHtml pipeline used by the list view.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16636"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluent-smtp/tags/2.2.95/app/Models/Logger.php#L165"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluent-smtp/tags/2.2.95/app/Models/Logger.php#L310"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluent-smtp/tags/2.2.95/app/Services/Mailer/BaseHandler.php#L290"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluent-smtp/tags/2.2.95/app/Services/Mailer/BaseHandler.php#L357"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/fluent-smtp/tags/2.2.95/assets/admin/js/fluent-mail-admin-app.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3635135/fluent-smtp/trunk/assets/admin/js/fluent-mail-admin-app.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?old_path=%2Ffluent-smtp/tags/2.2.95&new_path=%2Ffluent-smtp/tags/2.3.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3635135%40fluent-smtp%2Ftags%2F2.3.0&old=3428610%40fluent-smtp%2Ftags%2F2.2.95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4ad3ed6b-19d4-47c7-a56c-54092c767fe9?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T05:16:39Z"
+  }
+}
