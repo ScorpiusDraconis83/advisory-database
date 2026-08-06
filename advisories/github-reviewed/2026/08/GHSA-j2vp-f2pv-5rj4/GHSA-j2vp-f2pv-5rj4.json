@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j2vp-f2pv-5rj4",
+  "modified": "2026-08-06T19:28:08Z",
+  "published": "2026-08-06T19:28:08Z",
+  "aliases": [
+    "CVE-2026-64663"
+  ],
+  "summary": "Statamic: Unsafe method invocation via Antlers template resolution allows data destruction",
+  "details": "### Impact\n\nManipulating user-supplied input incorporated into Antlers templates could result in the loss of content and assets.\n\nExploitation requires a site to have templates that pass untrusted input into affected areas. It does not require authentication.\n\n### Patches\n\nThis has been fixed in 5.74.1 and 6.24.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.74.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.24.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/security/advisories/GHSA-j2vp-f2pv-5rj4"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/statamic/cms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-470"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-06T19:28:08Z",
+    "nvd_published_at": null
+  }
+}

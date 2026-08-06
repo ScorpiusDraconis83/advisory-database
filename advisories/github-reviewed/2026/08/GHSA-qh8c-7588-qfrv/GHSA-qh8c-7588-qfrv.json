@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qh8c-7588-qfrv",
+  "modified": "2026-08-06T19:30:39Z",
+  "published": "2026-08-06T19:30:39Z",
+  "aliases": [
+    "CVE-2026-64662"
+  ],
+  "summary": "Statamic: Missing authorization on navigation endpoint allows disclosure of restricted entries",
+  "details": "### Impact\n\nAn authenticated Control Panel user could view content from entries they don't have permission to view, including entry content and custom field values, from any collection and including unpublished entries. No data could be modified.\n\n### Patches\n\nThis has been fixed in 5.74.1 and 6.24.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.74.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.24.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/security/advisories/GHSA-qh8c-7588-qfrv"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/pull/14906"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/commit/6557f1d8a0d61c0e7ad9c9a8f42cb3288607495d"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/statamic/cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/releases/tag/v5.74.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/releases/tag/v6.24.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639",
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-06T19:30:39Z",
+    "nvd_published_at": null
+  }
+}
