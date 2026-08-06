@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-225x-3jhx-wh4q",
+  "modified": "2026-08-06T19:22:34Z",
+  "published": "2026-08-06T19:22:34Z",
+  "aliases": [
+    "CVE-2026-64664"
+  ],
+  "summary": "Statamic: Missing authorization on Control Panel endpoint allows disclosure of user existence",
+  "details": "### Impact\nAn authenticated Control Panel user could use an endpoint intended for the user creation wizard to determine if a given email address belongs to an existing user, without having permission to view users.\n\nThe endpoint only exposed user existence, not any of its data.\n\n### Patches\nThis has been fixed in 5.74.1 and 6.24.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.74.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.24.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/security/advisories/GHSA-225x-3jhx-wh4q"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/pull/14905"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/commit/aea68053cedab5c79d10102820b57345a7d7102e"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/statamic/cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/releases/tag/v5.74.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/releases/tag/v6.24.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200",
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-06T19:22:34Z",
+    "nvd_published_at": null
+  }
+}
