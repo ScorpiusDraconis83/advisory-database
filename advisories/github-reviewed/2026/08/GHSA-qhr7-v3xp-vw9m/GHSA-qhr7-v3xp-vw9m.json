@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qhr7-v3xp-vw9m",
+  "modified": "2026-08-06T19:35:00Z",
+  "published": "2026-08-06T19:35:00Z",
+  "aliases": [
+    "CVE-2026-71434"
+  ],
+  "summary": "Statamic: Missing file upload validation on frontend forms allows uploading disallowed file types",
+  "details": "### Impact\nPublic frontend forms did not enforce the file upload restrictions that the Control Panel enforces, so an unauthenticated visitor could upload file types an administrator had intended to disallow through a form's `assets` or `files` field. For `assets` fields, files could be stored on a public, web-accessible disk. Statamic's global upload allowlist still applied, so executable types such\nas `.php` and `.html` remained blocked.\n\n\n### Patches\nThis has been fixed in 5.74.3 and 6.24.2.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.74.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.24.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/security/advisories/GHSA-qhr7-v3xp-vw9m"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/pull/14958"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/commit/8be7b6c961536d3173ec4e0965d17b1cf820b7ae"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/statamic/cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/releases/tag/v5.74.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/releases/tag/v6.24.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-06T19:35:00Z",
+    "nvd_published_at": null
+  }
+}
