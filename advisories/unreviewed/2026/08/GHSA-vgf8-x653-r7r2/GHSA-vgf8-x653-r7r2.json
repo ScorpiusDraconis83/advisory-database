@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vgf8-x653-r7r2",
+  "modified": "2026-08-06T00:31:32Z",
+  "published": "2026-08-06T00:31:32Z",
+  "aliases": [
+    "CVE-2026-67873"
+  ],
+  "details": "A heap-based buffer overflow exists in lib60870-C 2.4.0 in the server-side FileSegment ASDU encoding path. The issue occurs because FileSegment_encode() validates only the standalone segment length via FileSegment_GetMaxDataSize() and does not verify the residual capacity of the current ASDU frame before encoding object fields and segment data",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67873"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mz-automation/lib60870/issues/201"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mz-automation/lib60870"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mz-automation/lib60870/blob/master/user_guide.adoc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mz-automation/lib60870/releases/tag/v2.4.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T00:16:54Z"
+  }
+}

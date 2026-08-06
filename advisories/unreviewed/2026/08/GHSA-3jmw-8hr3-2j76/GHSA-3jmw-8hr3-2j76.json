@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3jmw-8hr3-2j76",
+  "modified": "2026-08-06T00:31:32Z",
+  "published": "2026-08-06T00:31:31Z",
+  "aliases": [
+    "CVE-2026-67870"
+  ],
+  "details": "In open62541 v1.5.5, the server-side AddReferences implementation contains an incomplete validation flaw for non-local ExpandedNodeId targets. A remote attacker can send a crafted AddReferencesRequest with an empty targetServerUri and a non-zero targetNodeId.serverIndex, causing the target node pointer to remain NULL while execution continues.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67870"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541/issues/8172"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541/blob/v1.5.5/include/open62541/types.h"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541/blob/v1.5.5/src/server/ua_services_nodemanagement.c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open62541/open62541/blob/v1.5.5/src/ua_types.c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T00:16:54Z"
+  }
+}
