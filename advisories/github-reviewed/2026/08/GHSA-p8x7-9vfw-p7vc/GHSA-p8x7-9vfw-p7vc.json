@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p8x7-9vfw-p7vc",
+  "modified": "2026-08-06T21:04:11Z",
+  "published": "2026-08-06T21:04:11Z",
+  "aliases": [],
+  "summary": "Craft CMS: Arbitrary user password reset leading to administrator account takeover",
+  "details": "The vulnerability allows any authenticated user to change their own password without providing the current password or having an active elevated session. It also allows the attacker to change other users’ passwords if the attacker’s account has `edit users` permission (which doesn’t allow changing others’ passwords) and lacks `Administrate users` permission (which is required to change others’ passwords).\n\nThe vulnerability exists in the `elements/save` action when saving a User element. The `UserPasswordValidator` applies only a `safe` validator to the `newPassword` field without an `on` scenario restriction. This makes `newPassword` mass-assignable during the generic element save flow, completely bypassing the dedicated `users/set-password` action that enforces elevated session verification.\n\nAn attacker with any authenticated session (whether it’s hijacked or a normal / low-privileged user) can change their own password, and potentially take over administrator accounts.\n\n## Required Permissions\n- Access the control panel\n- Edit users (needed for the account takeover attack scenario)\n\n## Impact\n- Any authenticated user can change their own password without providing their current password.\n- Users with Edit users permission can change any user’s password, including administrators.",
+  "severity": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-RC1"
+            },
+            {
+              "fixed": "5.10.8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-p8x7-9vfw-p7vc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/commit/cbdf45fbd3ab548b147d7de375f6f6f580b7c294"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/craftcms/cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/releases/tag/5.10.8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-06T21:04:11Z",
+    "nvd_published_at": null
+  }
+}
