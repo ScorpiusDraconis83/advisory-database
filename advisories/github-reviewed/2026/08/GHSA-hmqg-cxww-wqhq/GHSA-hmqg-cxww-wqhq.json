@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hmqg-cxww-wqhq",
+  "modified": "2026-08-06T21:31:34Z",
+  "published": "2026-08-06T21:31:34Z",
+  "aliases": [
+    "CVE-2026-67434"
+  ],
+  "summary": "PHP_CodeSniffer gitblame report command injection via crafted filename",
+  "details": "### Impact\n\nPHP_CodeSniffer versions before v3.13.6 and v4.0.2 contain a command injection vulnerability in the code creating the `Gitblame`, `Hgblame` and `Svnblame` report(s).\n\nAs a result, running PHP_CodeSniffer over untrusted files, for example, in a CI pipeline that scans pull requests, or on a developer machine reviewing third-party code, could result in attacker-controlled shell commands being executed when the `Gitblame`, `Hgblame` or `Svnblame` report(s) would process a file whose name contains shell metacharacters.\n\n* Users using the default `Full` report, or any of the other non-*blame reports, are not affected.\n* Users on a runtime platform which does not allow filenames to contain shell metacharacters, such as `\"` and `;`, are not affected.\n\n### Patched versions\n\nThe issue has been fixed in PHP_CodeSniffer v3.13.6 and v4.0.2. We recommend all users upgrade to these versions at their earliest convenience.\n\n### Workaround\n\nUsers of PHP_CodeSniffer who cannot upgrade immediately should ensure they do not use the `Gitblame`, `Hgblame` or the `Svnblame` reports when scanning untrusted code.\n\nThis is especially relevant for CI jobs, pre-commit or review tooling, automated review services, and any service that scans untrusted repositories or uploaded source trees.\n\n### Credits\n\nMany thanks to both [@Faze-up](https://github.com/Faze-up) and [@edorian](https://github.com/edorian) for responsibly disclosing this vulnerability.\n\n### How can I report a security bug?\n\nPlease report security vulnerabilities privately via [the \"Security and quality\" tab on the PHP_CodeSniffer repository](https://github.com/PHPCSStandards/PHP_CodeSniffer/security).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "squizlabs/php_codesniffer"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.13.6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "squizlabs/php_codesniffer"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.0.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer/security/advisories/GHSA-hmqg-cxww-wqhq"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer/pull/1473"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer/commit/7a3a6bbf153a03fa3a9413afc60bded6b764e76b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer/commit/f0e1ebb0563f0e5d7f190497a787bcaf8474f3fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FriendsOfPHP/security-advisories/blob/master/squizlabs/php_codesniffer/CVE-2026-67434.yaml"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/tag/3.13.6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/tag/4.0.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-06T21:31:34Z",
+    "nvd_published_at": null
+  }
+}
