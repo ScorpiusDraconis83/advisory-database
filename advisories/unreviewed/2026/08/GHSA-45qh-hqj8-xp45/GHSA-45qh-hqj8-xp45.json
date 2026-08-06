@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-45qh-hqj8-xp45",
-  "modified": "2026-08-06T09:30:29Z",
+  "modified": "2026-08-06T18:30:44Z",
   "published": "2026-08-06T09:30:29Z",
   "aliases": [
     "CVE-2026-13154"
   ],
   "details": "The Gutenberg Essential Blocks  WordPress plugin before 6.4.0 does not verify that an attacker-supplied post type is publicly viewable before querying it in one of its public REST routes, allowing unauthenticated users to read published entries of custom post types that the site registered as non-public.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-06T07:16:27Z"

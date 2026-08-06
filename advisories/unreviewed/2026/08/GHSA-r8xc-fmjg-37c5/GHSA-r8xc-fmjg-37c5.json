@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r8xc-fmjg-37c5",
+  "modified": "2026-08-06T18:30:49Z",
+  "published": "2026-08-06T18:30:49Z",
+  "aliases": [
+    "CVE-2026-66370"
+  ],
+  "details": "URL Redirection to Untrusted Site ('Open Redirect') vulnerability in the HTML5 scrubber in rrrene html_sanitize_ex allows an unauthenticated remote attacker to retarget a form already on the rendering page and receive whatever the victim submits, including credentials, via the form and formaction attributes on an <input> element in sanitized HTML. HTML's form attribute associates an input with any form on the page by its id even when the input sits outside that form, and formaction on a submit control overrides the owning form's action. Neither attribute receives a scheme check, so an absolute cross-origin URL survives sanitizing.\n\nNo script executes. The scrubber allows neither form nor button, so the attacker cannot introduce a form of their own and the rendering page must already contain a form carrying an id.\n\nThis issue affects html_sanitize_ex: from 0.3.1 before 1.5.3.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:N/VI:N/VA:N/SC:H/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/rrrene/html_sanitize_ex/security/advisories/GHSA-w3f9-jjhw-wwvq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66370"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rrrene/html_sanitize_ex/commit/a1e804ed997e780ea71d14393cf2f701330553a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cna.erlef.org/cves/CVE-2026-66370.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://osv.dev/vulnerability/EEF-CVE-2026-66370"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T16:16:48Z"
+  }
+}

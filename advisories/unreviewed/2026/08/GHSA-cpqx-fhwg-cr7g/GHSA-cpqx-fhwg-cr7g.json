@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cpqx-fhwg-cr7g",
+  "modified": "2026-08-06T18:30:48Z",
+  "published": "2026-08-06T18:30:48Z",
+  "aliases": [
+    "CVE-2026-18359"
+  ],
+  "details": "Server-side request forgery in the METS and IIIF import URI handling in Scripta eScriptorium through 26.04.1 allows a remote authenticated user to make the server issue arbitrary HTTP requests to internal hosts, including the cloud instance metadata service, via the mets_uri or iiif_uri parameter of POST /api/documents/{pk}/imports/, because the IMPORT_ALLOWED_DOMAINS setting defaults to '*' and no address filtering, redirect cap or timeout is applied",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18359"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/scripta/escriptorium/-/work_items/1230"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T16:16:38Z"
+  }
+}

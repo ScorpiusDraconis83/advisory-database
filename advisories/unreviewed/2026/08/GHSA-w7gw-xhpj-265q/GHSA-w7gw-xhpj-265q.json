@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w7gw-xhpj-265q",
+  "modified": "2026-08-06T18:30:47Z",
+  "published": "2026-08-06T18:30:47Z",
+  "aliases": [
+    "CVE-2026-18277"
+  ],
+  "details": "Missing authorization in the OcrModelRight create and delete views in Scripta eScriptorium through 26.04.1 allows a remote authenticated user to grant themselves access to another user's private OCR model and to revoke any user's OCR model access via a POST request, because the ownership check is placed in get_context_data() and therefore runs only on the GET rendering path",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18277"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/scripta/escriptorium/-/work_items/1227"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T16:16:38Z"
+  }
+}
