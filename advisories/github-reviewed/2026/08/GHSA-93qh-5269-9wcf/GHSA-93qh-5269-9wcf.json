@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-93qh-5269-9wcf",
+  "modified": "2026-08-06T19:25:05Z",
+  "published": "2026-08-06T19:25:05Z",
+  "aliases": [
+    "CVE-2026-64665"
+  ],
+  "summary": "Statamic: Account takeover via OAuth email matching without email-verification check",
+  "details": "### Impact\n\nWhen OAuth login is enabled with a provider that does not guarantee verified email addresses, an unauthenticated attacker could sign in as an existing user — potentially including a super admin — without their password. Exploitation requires OAuth to be explicitly enabled with such a provider.\n\n### Patches\n\nFixed in 5.74.1 and 6.24.0.\n\n### Workarounds\n\nOnly enable OAuth with providers that guarantee verified email addresses, or disable OAuth login.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.74.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "statamic/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.24.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/security/advisories/GHSA-93qh-5269-9wcf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/pull/14887"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/commit/e59dd342c83bc45de26573cfb0536a0bca98255a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/statamic/cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/releases/tag/v5.74.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/statamic/cms/releases/tag/v6.24.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287",
+      "CWE-290"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-06T19:25:05Z",
+    "nvd_published_at": null
+  }
+}
