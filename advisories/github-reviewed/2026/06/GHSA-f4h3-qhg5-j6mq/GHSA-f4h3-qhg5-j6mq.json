@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f4h3-qhg5-j6mq",
+  "modified": "2026-08-06T21:56:22Z",
+  "published": "2026-06-21T15:31:24Z",
+  "withdrawn": "2026-08-06T21:56:22Z",
+  "aliases": [],
+  "summary": "Duplicate Advisory: Craft CMS: Authorized asset \"preview file\" requests bypass allows users without asset access to retrieve private preview metadata",
+  "details": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-44px-qjjc-xrhq. This link is maintained to preserve external references.\n\n## Original Description\nCraft CMS versions >= 5.0.0-RC1, <= 5.9.13 and >= 4.0.0-RC1, <= 4.17.7 contain an authorization bypass in the assets/preview-file endpoint. The action does not enforce per-asset view authorization before returning preview content, allowing an authenticated low-privileged user to supply a controlled assetId for an asset they are not permitted to view and still receive preview response data (previewHtml), including a private preview image route containing the target private assetId. Fixed in 5.9.14 and 4.17.8.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-RC1"
+            },
+            {
+              "last_affected": "5.9.13"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-44px-qjjc-xrhq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/commit/d30df3112220db1ffd6726a3ed11857014c7fb27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/craft-cms-authorization-bypass-in-assets-preview-file-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-06T21:56:22Z",
+    "nvd_published_at": "2026-06-21T14:16:26Z"
+  }
+}
