@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mh25-x5hq-wrqp",
+  "modified": "2026-08-06T20:41:45Z",
+  "published": "2026-08-06T20:41:45Z",
+  "aliases": [],
+  "summary": "league/commonmark: Denial of service via colliding heading slugs",
+  "details": "### Impact\n\n`UniqueSlugNormalizer::normalize()` makes each slug document-unique by searching for an unused numeric suffix, but **restarts that search from `1` on every collision**. The k-th heading that collapses to the same base slug performs k−1 array lookups, so K colliding slugs cost Σ(k−1) = **O(K²)**. An attacker can force every heading onto a single base slug trivially — many empty ATX headings, identical heading text, or punctuation-only headings that normalize to the empty string.\n\nThe path is reached whenever the shared slug normalizer runs over attacker-controlled text. That happens when `HeadingPermalinkExtension` is registered (its `HeadingPermalinkProcessor` normalizes every heading), independently through `FootnoteExtension` (its `AnonymousFootnoteRefParser` normalizes every `^[label]` reference), and on any `TableOfContentsExtension` site (which requires `HeadingPermalinkExtension` to be co-registered). The default `slug_normalizer/unique` setting (`UniqueSlugNormalizerInterface::PER_DOCUMENT`) accumulates collisions across the whole document. No authentication is required — a small document body turns into seconds of CPU and denies service. Availability impact only. **`UniqueSlugNormalizer` was introduced in 2.0.0 (first shipped in 2.0.0-beta1, May 2021); the 1.x heading-permalink slug generator performed no de-duplication and is not affected. All 2.x releases (including 2.8.x) are affected.**\n\n### Workarounds\n\nIntegrators who cannot upgrade immediately can:\n\n- **Set `slug_normalizer/unique` to `false` / `UniqueSlugNormalizerInterface::DISABLED`**, which stops the de-duplication scan entirely — at the cost of losing id uniqueness (colliding headings then share an anchor).\n- **Disable `HeadingPermalinkExtension`** (and `TableOfContentsExtension`, which depends on it), and `FootnoteExtension` where anonymous footnotes reach the same normalizer, for untrusted Markdown.\n- **Cap the accepted document size / heading count upstream** so K cannot reach the quadratic danger zone.\n\nEach of these trades off functionality or correctness; upgrading to the patched release (which removes the quadratic behavior while keeping unique ids and identical output) is the recommended remediation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "league/commonmark"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0"
+            },
+            {
+              "fixed": "2.9.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thephpleague/commonmark/security/advisories/GHSA-mh25-x5hq-wrqp"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/thephpleague/commonmark"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thephpleague/commonmark/releases/tag/2.9.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-407"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-06T20:41:45Z",
+    "nvd_published_at": null
+  }
+}
