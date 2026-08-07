@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-28wg-ghj8-5hjv",
-  "modified": "2026-07-29T15:31:12Z",
+  "modified": "2026-08-07T20:52:58Z",
   "published": "2026-07-29T15:31:12Z",
   "aliases": [
     "CVE-2026-67214"
   ],
+  "summary": "nanoid: non-secure generators can loop indefinitely with negative size",
   "details": "nanoid (Nano ID) before 5.1.16 contains an infinite loop in the customAlphabet and nanoid functions of its non-secure module (nanoid/non-secure). When these functions are given a negative size, the loop counter is decremented from a negative value and never reaches its termination condition, spinning indefinitely and hanging the calling thread. An application that passes an unvalidated, attacker-controlled negative size to these functions is exposed to a denial-of-service condition.",
   "severity": [
     {
@@ -14,10 +15,49 @@
     },
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "nanoid"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.3.16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "nanoid"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "5.1.16"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -25,7 +65,23 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/ai/nanoid/pull/600"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ai/nanoid/pull/601"
+    },
+    {
+      "type": "WEB",
       "url": "https://github.com/ai/nanoid/commit/6ccc67bbaba71d3d77a21d9b636f4171a268ce49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ai/nanoid/commit/e835c9b71eab832bc6106944bdd26ea96cf2c66d"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/ai/nanoid"
     },
     {
       "type": "WEB",
@@ -41,8 +97,8 @@
       "CWE-835"
     ],
     "severity": "HIGH",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-07T20:52:58Z",
     "nvd_published_at": "2026-07-29T14:16:35Z"
   }
 }
