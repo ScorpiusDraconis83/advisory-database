@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x5h9-fc29-gm85",
+  "modified": "2026-08-07T00:31:14Z",
+  "published": "2026-08-07T00:31:14Z",
+  "aliases": [
+    "CVE-2026-15208"
+  ],
+  "details": "The RegistrationMagic WordPress plugin before 6.0.9.5 does not compare the verified PayPal capture's amount, currency, payee, or prior use against the registration it is finalising: its server-side check only confirms the capture status is COMPLETED. An unauthenticated attacker can therefore finalise an expensive paid registration with any genuinely-completed low-value capture, and replay a single capture across unlimited registrations because captures are not de-duplicated.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/b8c75098-41a9-4b24-9f6b-c3144f230cd8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T22:16:47Z"
+  }
+}

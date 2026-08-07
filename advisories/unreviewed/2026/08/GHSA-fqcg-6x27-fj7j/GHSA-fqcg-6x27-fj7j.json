@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fqcg-6x27-fj7j",
+  "modified": "2026-08-07T00:31:15Z",
+  "published": "2026-08-07T00:31:15Z",
+  "aliases": [
+    "CVE-2026-16620"
+  ],
+  "details": "The WPC Name Your Price for WooCommerce WordPress plugin before 2.2.5 does not enforce its server-side price allowlist for products configured in \"Select\" price mode, allowing an unauthenticated visitor to add such a product to the cart at an arbitrary value below the merchant-defined allowed prices and commit a real order at that price (revenue loss / underpriced orders). This is a distinct, unfixed vector from CVE-2025-12115, whose 2.2.0 fix only addressed applying a custom price to products where Name Your Price is disabled and left the Select-mode allowlist unenforced through 2.2.4.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16620"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/71e6ccc0-5626-4cce-986e-5591f5df92bd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T22:16:49Z"
+  }
+}

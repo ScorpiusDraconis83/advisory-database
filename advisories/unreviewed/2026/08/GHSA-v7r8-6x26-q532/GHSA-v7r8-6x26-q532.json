@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v7r8-6x26-q532",
-  "modified": "2026-08-06T09:30:29Z",
+  "modified": "2026-08-07T00:31:08Z",
   "published": "2026-08-06T09:30:29Z",
   "aliases": [
     "CVE-2026-13703"
   ],
   "details": "The SEO Redirection Plugin  WordPress plugin before 9.19 does not perform a capability check in one of its authenticated AJAX actions, allowing any logged-in user such as a subscriber to read the site's configured 301 redirect rules, including their source and destination URLs.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-06T07:16:27Z"

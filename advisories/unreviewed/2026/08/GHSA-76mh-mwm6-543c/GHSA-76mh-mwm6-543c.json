@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-76mh-mwm6-543c",
+  "modified": "2026-08-07T00:31:20Z",
+  "published": "2026-08-07T00:31:20Z",
+  "aliases": [
+    "CVE-2026-68480"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/bugs: Make Safe-RET robust against interrupt injection\n\nAn attacker injecting interrupts while the Safe-RET mitigation executes\non machines affected by SRSO can neutralize the safe return sequence,\npotentially leading to data leakage through speculative execution.\n\nFixup register state as if the Safe-RET sequence executed successfully\nby \"emulating\" it, in a manner of speaking, and avoid executing a RET\ninstruction after returning from the interrupt.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68480"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/608c8f5dccaaf8b8d2b28c0fbdd439d144be62b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61649a2d61cb0dbc673f0f232f0f0c298bf50442"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95b08cdd603fe79d2e9d5212fbb13d577c835f4f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c0b8105e919be5208c81d5516a194a28c58fe1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9de1a49e8f1fbf7c372902573a27a97d4ab4d0af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bfe7f9993467ba431b2731437949ac1e2634e771"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T22:18:24Z"
+  }
+}

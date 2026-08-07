@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rm7q-w9c9-27rj",
-  "modified": "2026-08-03T21:31:38Z",
+  "modified": "2026-08-07T00:31:07Z",
   "published": "2026-08-03T21:31:38Z",
   "aliases": [
     "CVE-2026-51190"
   ],
   "details": "The \"s init\" command in Serverless-Devs @serverless-devs/s <= 3.1.11 passes unsanitized user input to child_process.spawn() with shell: true. A URL ending in \".git\" bypasses the only input check, allowing OS command injection when a user runs \"s init\" with an attacker-controlled argument.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-03T21:16:40Z"

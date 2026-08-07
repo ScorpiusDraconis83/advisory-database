@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9f3p-792w-mhv3",
+  "modified": "2026-08-07T00:31:21Z",
+  "published": "2026-08-07T00:31:21Z",
+  "aliases": [
+    "CVE-2026-70633"
+  ],
+  "details": "TimescaleDB through 2.29.1, fixed in commit 517c13e, contains an out-of-bounds read vulnerability in the Gorilla compression reverse row iterator that allows authenticated attackers to cause a denial of service by storing a crafted compressed datum with an internally inconsistent BitArray. Attackers with DML access to a compressed hypertable can trigger an unsigned integer wraparound in the reverse iterator bucket index computation, causing a read beyond the end of the bucket array, resulting in a SIGSEGV crash that can be repeatedly triggered on each subsequent reverse-order scan.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/timescale/timescaledb/pull/10360"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/timescale/timescaledb/commit/517c13e7cc6afadb4a7deaa7a5a5a29065e5b5a3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-06T22:18:27Z"
+  }
+}

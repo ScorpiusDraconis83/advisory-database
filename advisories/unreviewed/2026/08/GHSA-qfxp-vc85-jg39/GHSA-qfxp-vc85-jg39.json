@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qfxp-vc85-jg39",
-  "modified": "2026-08-06T15:32:45Z",
+  "modified": "2026-08-07T00:31:11Z",
   "published": "2026-08-06T15:32:45Z",
   "aliases": [
     "CVE-2026-32327"
   ],
   "details": "A bug in APR-util version 1.6.3 (and earlier) allows a stack recursion attack against any library consumer which parses XML from untrusted sources and uses the apr_xml_quote_elem() function.\n\nUsers are recommended to upgrade to version 1.6.4, which fixes this issue.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -17,13 +22,17 @@
     {
       "type": "WEB",
       "url": "https://lists.apache.org/thread/hq27vj8yfno9tkwv0fpj6jksfzgxvth1"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/08/06/9"
     }
   ],
   "database_specific": {
     "cwe_ids": [
       "CWE-674"
     ],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-06T15:16:54Z"

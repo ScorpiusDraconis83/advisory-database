@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-53x4-p5j7-29q6",
-  "modified": "2026-08-05T18:31:36Z",
+  "modified": "2026-08-07T00:31:08Z",
   "published": "2026-08-05T18:31:36Z",
   "aliases": [
     "CVE-2026-60053"
   ],
   "details": "Insufficient Session Expiration vulnerability in Apache Answer.\n\nThis issue affects Apache Answer: through 2.0.1.\n\nAdministrative API keys remained usable after the owning administrator was demoted or the account was marked inactive, suspended, or deleted, allowing continued access until the keys were explicitly removed.\nUsers are recommended to upgrade to version 2.0.2, which fixes the issue.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -27,7 +32,7 @@
     "cwe_ids": [
       "CWE-613"
     ],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-05T16:16:58Z"
