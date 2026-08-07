@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rghw-4g53-4wwv",
+  "modified": "2026-08-07T12:32:00Z",
+  "published": "2026-08-07T12:32:00Z",
+  "aliases": [
+    "CVE-2026-54210"
+  ],
+  "details": "Tobit Laboratories AG TeamDavid's Webbox application implements various file upload functionalities that are \nvulnerable to a buffer overflow condition. By specifying an excessively \nlong filename in a file upload request, an unauthenticated attacker can \ntrigger a crash of the server, resulting in a denial of service. \nDepending on the stack state or if a stack canary can be disclosed \nthrough another vulnerability, this buffer overflow could potentially be\n exploited for remote code execution, leading to full compromise of the \nserver. This issue affects TeamDavid through Rollout 524.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54210"
+    },
+    {
+      "type": "WEB",
+      "url": "https://david.tobit.software/releasenotes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://labs.infoguard.ch/posts/22-cves-in-david-a-secure-m365-alternative"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-07T10:16:58Z"
+  }
+}

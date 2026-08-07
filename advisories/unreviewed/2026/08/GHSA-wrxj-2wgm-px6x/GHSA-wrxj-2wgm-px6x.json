@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wrxj-2wgm-px6x",
+  "modified": "2026-08-07T12:32:00Z",
+  "published": "2026-08-07T12:32:00Z",
+  "aliases": [
+    "CVE-2026-54213"
+  ],
+  "details": "Tobit Laboratories AG TeamDavid's Webbox application exposes a functionality that allows the server to be \nshut down when a specific endpoint (/internalRestart) is accessed. This \nendpoint is accessible to unauthenticated users over the public \nInternet. Instead of “restarting”, the server shuts completely down. As a\n result, a remote attacker can trigger a persistent denial of service by\n shutting down the web server without requiring authentication. Recovery\n requires manual administrator intervention to restart the service. This issue affects TeamDavid through Rollout 524.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://david.tobit.software/releasenotes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://labs.infoguard.ch/posts/22-cves-in-david-a-secure-m365-alternative"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-07T10:16:58Z"
+  }
+}
