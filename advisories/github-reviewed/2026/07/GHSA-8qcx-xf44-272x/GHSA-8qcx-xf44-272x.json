@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8qcx-xf44-272x",
+  "modified": "2026-08-07T20:00:49Z",
+  "published": "2026-07-07T15:32:57Z",
+  "aliases": [
+    "CVE-2026-53878"
+  ],
+  "summary": "Django: DomainNameValidator permits newline characters that may enable HTTP header injection",
+  "details": "An issue was discovered in Django 6.0 before 6.0.7 and 5.2 before 5.2.16.\n`DomainNameValidator` does not prohibit newlines in domain names (unless used via a form field, since `CharField` strips newlines). If an application uses values with newlines in an HTTP response, header injection can occur. Django itself is unaffected because `HttpResponse` prohibits newlines in HTTP headers.\nEarlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected.\nDjango would like to thank Bence Nagy for reporting this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "django"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.2.16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "django"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.0.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53878"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/3a720d0d8bf2529253b98968f10ca73daf6d693c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/a5de13f1491f1dbf2bb0ad9b91570524ebbc8acd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/d5d60ed0323cddaa0ce0237a26a3d49ac21ee05e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.djangoproject.com/en/dev/releases/security"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/django/django"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-2092.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://groups.google.com/g/django-announce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.djangoproject.com/weblog/2026/jul/07/security-releases"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-144"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-07T20:00:49Z",
+    "nvd_published_at": "2026-07-07T15:16:48Z"
+  }
+}

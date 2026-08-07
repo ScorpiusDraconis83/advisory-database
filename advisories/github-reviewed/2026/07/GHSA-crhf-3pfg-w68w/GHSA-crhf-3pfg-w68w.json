@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-crhf-3pfg-w68w",
+  "modified": "2026-08-07T20:01:06Z",
+  "published": "2026-07-07T15:32:57Z",
+  "aliases": [
+    "CVE-2026-53877"
+  ],
+  "summary": " Django: GDALRaster may over-read heap memory when constructed from bytes",
+  "details": "An issue was discovered in Django 6.0 before 6.0.7 and 5.2 before 5.2.16.\n`django.contrib.gis.gdal.GDALRaster` over-reads its in-memory buffer when constructed from a bytes object, which can disclose adjacent memory or cause service degradation via a potential segmentation fault when the `vsi_buffer` property is accessed.\nEarlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected.\nDjango would like to thank Bence Nagy for reporting this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "django"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.2.16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "django"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.0.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53877"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/38dfbd27d7d4f4e6eaa087d7a90f2613fbf55b3a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/6c66eb8cec52b303af85c2c6e4dd00aa37654dbc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/6ca2bbe2efce21010eff48f1f36a3f621d698ed8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.djangoproject.com/en/dev/releases/security"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-2091.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://groups.google.com/g/django-announce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.djangoproject.com/weblog/2026/jul/07/security-releases"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-805"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-07T20:01:06Z",
+    "nvd_published_at": "2026-07-07T15:16:48Z"
+  }
+}

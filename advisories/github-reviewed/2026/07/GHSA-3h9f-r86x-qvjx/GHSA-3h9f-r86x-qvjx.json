@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3h9f-r86x-qvjx",
+  "modified": "2026-08-07T20:00:57Z",
+  "published": "2026-07-07T15:32:57Z",
+  "aliases": [
+    "CVE-2026-48588"
+  ],
+  "summary": "Django: cache middleware may expose private responses when unrelated request cookies are present",
+  "details": "An issue was discovered in Django 6.0 before 6.0.7 and 5.2 before 5.2.16.\n`UpdateCacheMiddleware` and the `cache_page()` decorator cache responses that vary on cookies when the incoming request carries unrelated cookies, which allows remote attackers to read private data from the shared cache.\nEarlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected.\nDjango would like to thank Chris Whyland for reporting this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "django"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.2.16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "django"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.0.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48588"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/64f9a2b2283fde3ec69fb0dfe441cf0f6f411ba3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/6e365f8d01f2ba0bbd90968d76a42600fb8bc4b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/721685aa7799cc9327bd202cd1f70bd012ca95a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.djangoproject.com/en/dev/releases/security"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/django/django"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-2090.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://groups.google.com/g/django-announce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.djangoproject.com/weblog/2026/jul/07/security-releases"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-524"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-07T20:00:57Z",
+    "nvd_published_at": "2026-07-07T15:16:47Z"
+  }
+}
