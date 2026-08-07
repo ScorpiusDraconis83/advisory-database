@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-923m-gv2p-w5qp",
+  "modified": "2026-08-07T19:56:56Z",
+  "published": "2026-06-03T15:30:43Z",
+  "aliases": [
+    "CVE-2026-48587"
+  ],
+  "summary": "Django: has_vary_header may expose cached responses when Vary values contain whitespace",
+  "details": "An issue was discovered in Django 5.2 before 5.2.15 and 6.0 before 6.0.6.\n`django.utils.cache.has_vary_header()` in Django does not strip leading or trailing whitespace from `Vary` response header values before comparison, which allows remote attackers to read cached responses via requests to URLs whose responses contain whitespace-padded Vary header values.\nEarlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected.\nDjango would like to thank Navid Rezazadeh for reporting this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "django"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.2.15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "django"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.0.6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48587"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/1721035a72624aad7b38dd19b14013efd94b24b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/42aa0b3364d312e7c6472258d8b0e9c0277fbf22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/django/django/commit/9b62b0af71a14c657d19d95371630ba839e83d9a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.djangoproject.com/en/dev/releases/security"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/django/django"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/django/PYSEC-2026-198.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://groups.google.com/g/django-announce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.djangoproject.com/weblog/2026/jun/03/security-releases"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1023"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-07T19:56:56Z",
+    "nvd_published_at": "2026-06-03T14:16:44Z"
+  }
+}
