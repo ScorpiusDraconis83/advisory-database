@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5jh3-q5p5-fq9r",
+  "modified": "2026-08-07T18:31:44Z",
+  "published": "2026-08-07T18:31:44Z",
+  "aliases": [
+    "CVE-2026-17595"
+  ],
+  "details": "Nexus Repository 3 did not fully sandbox JEXL expressions used in Content Selectors. An account holding the nexus:selectors:create permission could construct an expression that read Java object properties not intended to be exposed to the expression engine, disclosing internal JVM class metadata such as class and classloader names. This issue does not permit method invocation, object construction, or arbitrary code execution. This has been fixed by restricting property access in the JEXL sandbox to the intended data types.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17595"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.sonatype.com/en/sonatype-nexus-repository-3-95-0-release-notes.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.sonatype.com/hc/en-us/articles/53863820953747"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-497"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-07T17:16:59Z"
+  }
+}

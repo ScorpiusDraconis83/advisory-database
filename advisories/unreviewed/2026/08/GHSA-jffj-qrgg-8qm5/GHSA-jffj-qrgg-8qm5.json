@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jffj-qrgg-8qm5",
+  "modified": "2026-08-07T18:31:44Z",
+  "published": "2026-08-07T18:31:44Z",
+  "aliases": [
+    "CVE-2026-17599"
+  ],
+  "details": "Nexus Repository 3 contained an endpoint used to change the administrator account password during initial onboarding. This endpoint did not verify that onboarding was still in progress before allowing the password change, relying instead on the presence of a local onboarding artifact. As a result, an account holding the nexus:* permission could invoke the endpoint outside the intended onboarding flow to replace the administrator password, and existing sessions were not invalidated after the change.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17599"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.sonatype.com/en/sonatype-nexus-repository-3-95-0-release-notes.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.sonatype.com/hc/en-us/articles/53884654627475"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-620"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-07T17:17:00Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rwv5-p9fv-c8fp",
-  "modified": "2026-08-07T12:32:00Z",
+  "modified": "2026-08-07T18:31:43Z",
   "published": "2026-08-07T12:32:00Z",
   "aliases": [
     "CVE-2026-71558"
   ],
   "details": "Heap type confusion vulnerability in Apache Fory C++ deserialization.\n\nThis issue affects Apache Fory C++ versions from 0.14.0 before 1.5.0. A crafted input payload can bypass type compatibility checks during polymorphic smart-pointer deserialization, causing an object of an incompatible type to be treated as the declared base type. This may result in undefined behavior and potentially lead to denial of service or arbitrary code execution.\n\n\nUsers are recommended to upgrade to Apache Fory 1.5.0, which fixes this issue. Applications not using Apache Fory C++ polymorphic smart-pointer deserialization are not affected.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -17,13 +22,17 @@
     {
       "type": "WEB",
       "url": "https://lists.apache.org/thread/oywndv60jwqdv6j37t7bc1qbcc4b235r"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/08/07/3"
     }
   ],
   "database_specific": {
     "cwe_ids": [
       "CWE-502"
     ],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-07T10:16:59Z"

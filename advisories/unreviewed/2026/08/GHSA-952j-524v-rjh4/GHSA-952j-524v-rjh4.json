@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-952j-524v-rjh4",
-  "modified": "2026-08-07T03:30:28Z",
+  "modified": "2026-08-07T18:31:42Z",
   "published": "2026-08-07T03:30:28Z",
   "aliases": [
     "CVE-2026-45198"
   ],
   "details": "Kernel software from a non-secure operating system on a platform with Trusted Execution Environment support, may cause GPU Firmware to boot up using data from non-secure memory.\n\n\n\nThe GPU thread of control (Firmware) uses a pointer from non-secure memory belonging to the Rich Execution Environment (REE) when saving or retrieving internal data between the tightly coupled private memory to main memory. An attacker with control over the REE kernel may modify the pointer value, corrupting the data used by the GPU Firmware.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-822"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-07T03:16:19Z"

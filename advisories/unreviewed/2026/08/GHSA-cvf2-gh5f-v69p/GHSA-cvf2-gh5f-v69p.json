@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cvf2-gh5f-v69p",
+  "modified": "2026-08-07T18:31:45Z",
+  "published": "2026-08-07T18:31:45Z",
+  "aliases": [
+    "CVE-2026-67585"
+  ],
+  "details": "Allocation of Resources Without Limits or Throttling vulnerability in DivvyPayHQ absinthe_federation allows an unauthenticated remote attacker to abort the Erlang VM via crafted _entities representation keys.\n\nEvery key of every object in the representations argument of the federation-mandated _entities field is converted with String.to_atom/1 by convert_key/2 in lib/absinthe/federation/schema/entities_field.ex. representations is typed as the open-ended _Any scalar, so its keys bypass schema coercion and the attacker names them freely. Atoms are never garbage collected and the BEAM atom table is hard-capped (about 1,048,576 entries by default), so one request carrying tens of thousands of unique keys creates that many permanent atoms and a handful of such requests exhausts the table and aborts the node. The impact is confined to availability: no data is read or altered, and recovery requires restarting the application.\n\nThis issue affects absinthe_federation: from 0.1.0 before 0.9.3.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/DivvyPayHQ/absinthe_federation/security/advisories/GHSA-55hv-mwvr-phf3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67585"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/DivvyPayHQ/absinthe_federation/commit/c3838cda2a7f65c4893291668c223b0d6acf4516"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cna.erlef.org/cves/CVE-2026-67585.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://osv.dev/vulnerability/EEF-CVE-2026-67585"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-07T17:17:06Z"
+  }
+}

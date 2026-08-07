@@ -1,13 +1,17 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5f8h-2xph-wwxv",
-  "modified": "2026-08-05T15:32:15Z",
+  "modified": "2026-08-07T18:31:36Z",
   "published": "2026-08-05T12:31:30Z",
   "aliases": [
     "CVE-2026-14574"
   ],
   "details": "In Eclipse Theia versions 0.7.0 and up until including 1.73.1, the `PreferenceUtils.merge` function in `@theia/core` recursively merges preference values without rejecting prototype-related keys (`__proto__`, `constructor`, `prototype`). Because this function is invoked by `PreferenceServiceImpl.doResolve` for every preference resolution across scopes (default, user, workspace, folder), a crafted preference value in a workspace settings file (`.theia/settings.json` or `.vscode/settings.json`) can pollute `Object.prototype` when the user opens the workspace, potentially altering application logic across the Theia process.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:A/VC:L/VI:H/VA:L/SC:N/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
