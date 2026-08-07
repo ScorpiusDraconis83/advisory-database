@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-98h7-6m49-37qg",
-  "modified": "2026-08-07T18:31:46Z",
+  "modified": "2026-08-07T21:30:36Z",
   "published": "2026-08-07T18:31:46Z",
   "aliases": [
     "CVE-2026-47362"
   ],
   "details": "The Datadog Android application stores operationally sensitive content in plaintext SQLite databases via Room. Two databases were reviewed: LocalNotificationDatabase (table local_notifications, columns including title, message, recipient, service, tags, and on-call/incident deeplinks) and SearchRecentDatabase (table search_recents, storing every in-app search query the user typed).\nA repository-wide search for SQLCipher, SupportFactory, openHelperFactory, or any Room encryption configuration returns no matches. Databases are stored as cleartext SQLite files in /data/data/com.datadog.app/databases/. At-rest protection therefore depends solely on the Android application sandbox — the standard Android baseline, adequate for many applications but flagged here as a hardening recommendation because the stored content is operationally sensitive (customer infrastructure monitoring metadata, incident notification recipients, and free-text search queries that may reveal service names, dashboards, and queries of interest).\nExploitation paths include rooted or jailbroken devices, adb backup if android:allowBackup is misconfigured for any build flavor, physical-device handover scenarios, and forensic acquisition.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -31,7 +36,7 @@
     "cwe_ids": [
       "CWE-922"
     ],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-07T18:17:15Z"

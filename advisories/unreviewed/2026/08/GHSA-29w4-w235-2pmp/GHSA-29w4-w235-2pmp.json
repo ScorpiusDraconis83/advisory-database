@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-29w4-w235-2pmp",
-  "modified": "2026-08-07T06:30:28Z",
+  "modified": "2026-08-07T21:30:34Z",
   "published": "2026-08-07T06:30:28Z",
   "aliases": [
     "CVE-2026-16265"
   ],
   "details": "The WP Maps  WordPress plugin before 4.9.7 does not perform a capability check in one of its AJAX actions and does not restrict the operation it dispatches, allowing users with a Subscriber account to trigger uncontrolled recursion that exhausts server resources, resulting in a Denial of Service.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-07T06:16:56Z"

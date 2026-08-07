@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cc3w-v57m-93mp",
+  "modified": "2026-08-07T21:30:36Z",
+  "published": "2026-08-07T21:30:36Z",
+  "aliases": [
+    "CVE-2025-63235"
+  ],
+  "details": "In sol commit 373d848 (2024-12-12), the broker does not fully release resources when handling malformed or duplicate CONNECT packets. When clients send invalid CONNECT packets - either due to repeated attempts or failed authentication - the server may silently drop the connection or send a CONNACK but fail to close the session or deallocate internal resources. This behavior allows an attacker to create numerous half-open connections that consume memory and file descriptors indefinitely, potentially triggering the Linux OOM killer and causing a denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-63235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codepr/sol/issues/12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/peter-pe/sol-vulnerabilities/blob/main/CVE-2025-63235.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-07T19:17:33Z"
+  }
+}

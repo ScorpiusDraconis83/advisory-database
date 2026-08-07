@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3f8p-349v-j5h8",
+  "modified": "2026-08-07T21:30:39Z",
+  "published": "2026-08-07T21:30:39Z",
+  "aliases": [
+    "CVE-2026-11425"
+  ],
+  "details": "Domoticz versions prior to 2026.3 contains a stored cross-site scripting vulnerability in the mobile dashboard that allows authenticated attackers to inject arbitrary HTML and JavaScript by updating Text or Alert subtype device values through the API. The mobile dashboard renders device data via ng-bind-html with only an nl2br() transform that performs no HTML escaping, allowing attackers to store malicious payloads that execute in any administrator's browser upon viewing the mobile dashboard, enabling session cookie theft and account takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:A/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11425"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/domoticz/domoticz/commit/f734fde31a4c2ecab3edd825ceb9854719444f64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/domoticz/domoticz"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/domoticz-mobile-dashboard-versions-prior-to-stored-xss-via-text-alert-device-rendering"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-07T21:17:27Z"
+  }
+}

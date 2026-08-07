@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-34j2-7r4g-h79x",
-  "modified": "2026-08-07T06:30:28Z",
+  "modified": "2026-08-07T21:30:32Z",
   "published": "2026-08-07T06:30:28Z",
   "aliases": [
     "CVE-2026-15245"
   ],
   "details": "The BNE Testimonials WordPress plugin before 2.0.8.2 does not properly escape a shortcode attribute for a JavaScript context before echoing it into an inline script, allowing users with the contributor role and above to inject arbitrary JavaScript that executes in the browser of anyone viewing the affected content.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-07T06:16:55Z"

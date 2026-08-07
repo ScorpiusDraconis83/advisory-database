@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jqr2-6x6h-fvmp",
-  "modified": "2026-08-07T06:30:28Z",
+  "modified": "2026-08-07T21:30:33Z",
   "published": "2026-08-07T06:30:28Z",
   "aliases": [
     "CVE-2026-16262"
   ],
   "details": "The Estatik Real Estate Plugin WordPress plugin before 4.3.3 does not bind its OAuth social login flow to the initiating user session, allowing an unauthenticated attacker to log a victim into an attacker-controlled account (login CSRF), so that the victim's subsequent activity is stored under and readable by the attacker.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-07T06:16:56Z"

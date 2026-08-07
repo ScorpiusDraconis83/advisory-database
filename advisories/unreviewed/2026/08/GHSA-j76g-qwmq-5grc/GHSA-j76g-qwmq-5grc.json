@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j76g-qwmq-5grc",
-  "modified": "2026-08-07T18:31:46Z",
+  "modified": "2026-08-07T21:30:36Z",
   "published": "2026-08-07T18:31:46Z",
   "aliases": [
     "CVE-2026-47363"
   ],
   "details": "The launcher activity AppActivity in the Datadog Android application is declared android:exported=\"true\" with launchMode=\"singleTask\" and no permission guard. On every onCreate and onNewIntent, it invokes Intent.getUserSession(), an extension that deserializes a full UserSession — user identity, OAuth access and refresh tokens, host, organization, datacenter, and permissions — from Bundle extras keyed under the com.datadog.app.* namespace. This extension lives in the main sourceset, not a test-only sourceset, despite a misleading comment referencing internal test fixtures.\nAny application installed on the device can invoke the launcher with arbitrary session extras. The startup pipeline accepts the injected session, persists it to user storage, optionally rotates persisted token storage when an OAUTH_OVERRIDE_TOKEN extra is set, and performs an automatic login under the attacker-chosen identity. The session preparer returns Ready without contacting the backend whenever the injected access token is not flagged as expired-or-expiring-soon, so no server-side token introspection takes place before auto-login.\nPreconditions: the Datadog application installed on the victim device, and a zero-permission co-installed malicious application. The attacker must possess any OAuth access token they are willing to have the victim use, including the attacker's own Datadog tokens.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -27,7 +32,7 @@
     "cwe_ids": [
       "CWE-926"
     ],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-07T18:17:16Z"
