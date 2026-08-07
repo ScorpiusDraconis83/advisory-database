@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hhmc-q9hp-r662",
+  "modified": "2026-08-07T18:23:46Z",
+  "published": "2026-08-07T18:23:46Z",
+  "aliases": [
+    "CVE-2026-63222"
+  ],
+  "summary": "CodeIgniter: Path traversal in UploadedFile::move() when using client-provided filenames",
+  "details": "### Impact\nIn affected versions, calling `UploadedFile::move()` **without a second argument** uses the client-provided filename without sanitization. Depending on the destination path and server configuration, an attacker can supply a filename containing path traversal sequences (e.g. `../../public/shell.php`) to write uploaded content outside the intended upload directory.\n\nThe patch sanitizes this default (no-argument) path.\n\n**Note:** The patch only sanitizes the filename when no second argument is passed. If your application **explicitly** passes a client-provided name as the second argument, you remain responsible for sanitizing it - the patch does not (and cannot) sanitize a caller-supplied filename:\n```php\n// Unsafe - even after upgrading:\n$file->move(WRITEPATH . 'uploads', $file->getName());\n$file->move(WRITEPATH . 'uploads', $file->getClientName());\n```\n\n### Patches\nUpgrade to v4.7.4 or later.\n\n### Workarounds\nIf you cannot upgrade immediately, use a generated filename or sanitize the client filename before passing it to `move()`.\n\nUse a generated filename:\n```php\n$file->move(WRITEPATH . 'uploads', $file->getRandomName());\n```\nOr sanitize the client filename before passing it to `move()`:\n```php\nhelper('security');\n\n$name = sanitize_filename($file->getClientName());\n$file->move(WRITEPATH . 'uploads', $name);\n```",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "codeigniter4/framework"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.7.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/codeigniter4/CodeIgniter4/security/advisories/GHSA-hhmc-q9hp-r662"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63222"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codeigniter4/CodeIgniter4/commit/20ebcf4694d96d3c97fbc3938e360730e4f54618"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/codeigniter4/CodeIgniter4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codeigniter4/CodeIgniter4/releases/tag/v4.7.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-07T18:23:46Z",
+    "nvd_published_at": "2026-07-31T06:16:31Z"
+  }
+}

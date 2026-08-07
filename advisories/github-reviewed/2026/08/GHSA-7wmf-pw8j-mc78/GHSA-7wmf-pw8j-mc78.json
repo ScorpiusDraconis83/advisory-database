@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7wmf-pw8j-mc78",
+  "modified": "2026-08-07T18:21:54Z",
+  "published": "2026-08-07T18:21:54Z",
+  "aliases": [
+    "CVE-2026-63220"
+  ],
+  "summary": "CodeIgniter: Spoofable forwarded HTTPS headers in IncomingRequest::isSecure()",
+  "details": "### Impact\n`IncomingRequest::isSecure()` trusted the `X-Forwarded-Proto` and `Front-End-Https` headers from any incoming request. In affected deployments, an attacker could spoof these headers and cause the application to incorrectly treat an HTTP request as secure.\n\nThis may impact applications that rely on `isSecure()`, `force_https()`, `forceGlobalSecureRequests`, or similar logic to enforce HTTPS-only access or make security-sensitive decisions.\n\nExploitability depends on deployment configuration. Applications are most exposed if the backend is reachable directly over HTTP, or if a reverse proxy/load balancer forwards client-supplied forwarding headers without stripping or overwriting them.\n\n### Patches\nUpgrade to v4.7.4 or later.\n\n### Workarounds\nUsers who cannot upgrade immediately should enforce HTTP-to-HTTPS redirects outside CodeIgniter, for example with Apache `.htaccess`/virtual host rules, nginx server blocks, Caddy site config, or load balancer redirect rules.\n\nUsers should also ensure that reverse proxies strip or overwrite client-supplied `X-Forwarded-Proto` and `Front-End-Https` headers before forwarding requests to the application.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "codeigniter4/framework"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.7.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/codeigniter4/CodeIgniter4/security/advisories/GHSA-7wmf-pw8j-mc78"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63220"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codeigniter4/CodeIgniter4/commit/ecbf044666bed41d23f07518096d9843fe6c08b0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/codeigniter4/CodeIgniter4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/codeigniter4/CodeIgniter4/releases/tag/v4.7.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-348"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-07T18:21:54Z",
+    "nvd_published_at": "2026-07-31T04:17:24Z"
+  }
+}
