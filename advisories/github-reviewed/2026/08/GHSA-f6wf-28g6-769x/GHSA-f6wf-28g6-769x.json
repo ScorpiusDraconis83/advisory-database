@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f6wf-28g6-769x",
+  "modified": "2026-08-07T15:02:40Z",
+  "published": "2026-08-07T15:02:39Z",
+  "aliases": [
+    "CVE-2026-62992"
+  ],
+  "summary": "Smarty: Symlink path traversal out of trusted directories",
+  "details": "When Smarty's Security policy is enabled, secure_dir (and the configured template/trusted directories) restrict which local files a template may read via {include} and {fetch}. The trust check in Security::_checkDir() resolved the requested path with Smarty::_realpath(), which normalizes the path as a string only and does not follow symbolic links. A symlink placed inside a trusted directory therefore passed the trust check, while the underlying file_get_contents() followed it to an arbitrary file outside the sandbox (e.g. /etc/passwd).\n\n## Impact\nAn attacker able to (a) cause a symlink to exist inside a trusted directory (e.g. a user-upload area located within the template path) and (b) cause a template to reference that path can read arbitrary files readable by the PHP process, escaping the secure_dir boundary. Confidentiality impact only.\n\n## Patches\nFixed in 5.8.2. Security::_checkDir() now resolves the requested file with native realpath() and re-validates the canonical, symlink-free path against the trusted directories (which are canonicalized the same way, so legitimate symlinked deployment paths such as a Capistrano current symlink or macOS /var → /private/var keep working). It falls back to string normalization only when the file does not yet exist on disk.\n\n## Workarounds\nEnsure no untrusted symlinks can be created within any directory listed in secure_dir/the trusted template directories; restrict write access to those directories to trusted processes only.\n\n## References\n- Fix commit: 99c048c\n- CWE-22",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "smarty/smarty"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.8.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "smarty/smarty"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.5.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/smarty-php/smarty/security/advisories/GHSA-f6wf-28g6-769x"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/smarty-php/smarty/commit/99c048ce7a590c519b79fbd38ad0143a08183a1f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/smarty-php/smarty/commit/a1ccdb0518021a559b4066c37b76a42c86bbce90"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/smarty-php/smarty"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/smarty-php/smarty/releases/tag/v4.5.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/smarty-php/smarty/releases/tag/v5.8.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22",
+      "CWE-61"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-07T15:02:39Z",
+    "nvd_published_at": null
+  }
+}
