@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w6f5-3mw7-jjxq",
+  "modified": "2026-08-07T09:31:52Z",
+  "published": "2026-08-07T09:31:52Z",
+  "aliases": [
+    "CVE-2026-15239"
+  ],
+  "details": "The Simple CAPTCHA with Cloudflare Turnstile WordPress plugin before 1.42.0 does not bind its Turnstile validation cache to the single-use challenge token in its Forminator integration, instead keying it to an attacker-controlled, reusable request value, allowing unauthenticated attackers to solve one challenge and then replay token-less form submissions for a short window, defeating the anti-abuse protection the plugin provides.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15239"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/28d3bda2-501c-4eeb-9184-c343367adbea"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-07T08:16:45Z"
+  }
+}
