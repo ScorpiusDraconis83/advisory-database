@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-32fh-qx9x-qfwj",
+  "modified": "2026-08-10T03:31:01Z",
+  "published": "2026-08-10T03:31:01Z",
+  "aliases": [
+    "CVE-2026-19387"
+  ],
+  "details": "A heap out-of-bounds write vulnerability was found in the GStreamer gst-plugins-bad adpcmdec element when decoding IMA/DVI ADPCM audio. Insufficient validation of the per-block sample count for multi-channel streams allows a crafted WAV file to cause writes beyond the allocated output buffer. This can lead to application crash, denial of service, memory corruption, or potentially arbitrary code execution when untrusted media is processed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19387"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-19387"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2513015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/12235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gstreamer.freedesktop.org/releases/1.28"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T03:16:40Z"
+  }
+}
