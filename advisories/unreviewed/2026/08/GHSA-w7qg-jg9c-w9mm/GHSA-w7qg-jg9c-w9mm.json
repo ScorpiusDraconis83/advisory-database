@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w7qg-jg9c-w9mm",
+  "modified": "2026-08-10T21:32:06Z",
+  "published": "2026-08-10T21:32:06Z",
+  "aliases": [
+    "CVE-2026-16456"
+  ],
+  "details": "A flaw was found in the `odh-model-controller`. An authenticated user with permissions to create custom resources can exploit a vulnerability in the `loadSecret` function. This function improperly reads the Secret namespace from user-controlled input without validation. This allows an attacker to read sensitive API keys and cloud credentials from other namespaces, leading to information disclosure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16456"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-16456"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2503159"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-441"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T21:17:19Z"
+  }
+}

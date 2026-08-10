@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mf39-7j64-g95c",
+  "modified": "2026-08-10T21:32:03Z",
+  "published": "2026-08-10T21:32:03Z",
+  "aliases": [
+    "CVE-2026-71962"
+  ],
+  "details": "Flowise versions 2.2.4 through 3.1.4 contain a missing authorization vulnerability in the POST /api/v1/openai-assistants-file/download endpoint that allows unauthenticated attackers to access private files by exploiting the endpoint's inclusion in the global authentication whitelist, which bypasses all session and API key verification. Attackers can supply valid chatflowId, chatId, and fileName identifiers to retrieve files from any chatflow on the instance, including private chatflows belonging to other workspaces or organizations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71962"
+    },
+    {
+      "type": "WEB",
+      "url": "https://flowiseai.com/sunset"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/haidang-infosec/402db84bee7aca2f57bb109b31574649?utm_source=chatgpt.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flowise-missing-authorization-via-openai-assistants-file-download"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T19:17:31Z"
+  }
+}

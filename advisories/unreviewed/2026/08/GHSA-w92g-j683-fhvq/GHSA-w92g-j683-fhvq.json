@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w92g-j683-fhvq",
+  "modified": "2026-08-10T21:32:04Z",
+  "published": "2026-08-10T21:32:04Z",
+  "aliases": [
+    "CVE-2026-69116"
+  ],
+  "details": "FlyEnv before 4.18.0 fails to sanitize HTML from markdown rendering and AI chat content passed to Vue v-html directives. Attackers can inject malicious scripts through markdown sources or chat messages that execute in the Electron renderer process with access to Node.js APIs and the filesystem.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69116"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xpf0000/FlyEnv/issues/809"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xpf0000/FlyEnv/pull/810"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xpf0000/FlyEnv/commit/68fd6d7b200273ad0a8bce09424b8bd87134cfb6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xpf0000/FlyEnv/releases/tag/v4.18.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flyenv-cross-site-scripting-via-v-html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T20:17:32Z"
+  }
+}

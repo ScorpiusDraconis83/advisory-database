@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6hh8-5xhj-2p65",
-  "modified": "2026-08-09T06:31:36Z",
+  "modified": "2026-08-10T21:32:00Z",
   "published": "2026-08-09T06:31:36Z",
   "aliases": [
     "CVE-2026-17017"
   ],
   "details": "The CubeWP Framework WordPress plugin before 1.1.31 does not properly sanitize and escape a parameter before using it in a SQL statement through an AJAX action, and does not include a capability check on that action, allowing users with Subscriber-level access and above to perform SQL injection attacks.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-09T06:18:17Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vgj5-89vw-rww2",
-  "modified": "2026-08-10T09:31:21Z",
+  "modified": "2026-08-10T21:32:01Z",
   "published": "2026-08-10T09:31:21Z",
   "aliases": [
     "CVE-2026-13701"
   ],
   "details": "The Advanced Excerpt WordPress plugin before 4.5 does not sanitise and escape one of its settings before outputting it on the front end of the site, which could allow administrators (including those without the unfiltered_html capability, such as on multisite) to perform Stored Cross-Site Scripting attacks that execute in the context of any visitor viewing affected pages.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T07:16:46Z"

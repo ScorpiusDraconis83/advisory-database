@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cg97-7v4v-qg3v",
+  "modified": "2026-08-10T21:32:03Z",
+  "published": "2026-08-10T21:32:03Z",
+  "aliases": [
+    "CVE-2026-71967"
+  ],
+  "details": "OP-TEE OS through 4.10.0, fixed in commit 0aadfc2, contains a null pointer dereference vulnerability in the Widevine pseudo-TA open_session handler that allows Normal World clients to cause a denial of service when CFG_WIDEVINE_PTA is enabled. Attackers can open a session directly on the Widevine PTA to trigger an unconditional dereference of a NULL calling session pointer via is_user_ta_ctx(), faulting the TEE at S-EL1 and crashing the trusted execution environment.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71967"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OP-TEE/optee_os/pull/7899"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OP-TEE/optee_os/commit/0aadfc23407f50e770eb5ddd871fc208f5626833"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/op-tee-os-null-pointer-dereference-dos-via-widevine-pta-open-session"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T19:17:32Z"
+  }
+}

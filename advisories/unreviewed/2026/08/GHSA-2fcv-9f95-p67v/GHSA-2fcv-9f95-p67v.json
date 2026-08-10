@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2fcv-9f95-p67v",
+  "modified": "2026-08-10T21:32:09Z",
+  "published": "2026-08-10T21:32:09Z",
+  "aliases": [
+    "CVE-2026-73030"
+  ],
+  "details": "unearth through 0.18.2, fixed in commit 6c78164, contains a path traversal vulnerability in the is_within_directory function that fails to normalize paths before validation, allowing ../ sequences to bypass directory containment checks. Attackers can supply malicious tar archives with symlink members or traversal sequences to write files to arbitrary filesystem locations accessible to the process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73030"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/frostming/unearth/issues/180"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/frostming/unearth/pull/181"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/frostming/unearth/commit/6c78164e7bfa28b8b3d6f247b87e560692e3c8ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/unearth-path-traversal-via-unnormalized-paths-and-symlink-escape"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T21:17:26Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vq2q-3r2q-4h83",
+  "modified": "2026-08-10T21:32:03Z",
+  "published": "2026-08-10T21:32:03Z",
+  "aliases": [
+    "CVE-2026-71964"
+  ],
+  "details": "CyberPanel 2.4.3, fixed in commit eca0c3c, contains an arbitrary file read vulnerability in the file manager component that allows authenticated attackers to read sensitive system files by uploading a crafted ZIP archive containing symbolic links. Attackers can exploit the application's failure to validate symlinks before extraction, causing symbolic links targeting arbitrary filesystem paths outside the user's home directory to persist on disk and be accessed through the web interface.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/usmannasir/cyberpanel/commit/eca0c3cbeb35af8eaae9fafb094e8ef3cd923643"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themcsam.github.io/posts/cyberpanel-2.4.3-vulnerabilties"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cyberpanel-arbitrary-file-read-via-file-manager-zip-upload"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T19:17:31Z"
+  }
+}

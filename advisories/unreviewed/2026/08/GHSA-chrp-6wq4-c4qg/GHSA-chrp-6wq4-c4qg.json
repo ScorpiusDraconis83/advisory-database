@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-chrp-6wq4-c4qg",
-  "modified": "2026-08-09T06:31:36Z",
+  "modified": "2026-08-10T21:32:00Z",
   "published": "2026-08-09T06:31:36Z",
   "aliases": [
     "CVE-2026-18032"
   ],
   "details": "The WP Data Access  WordPress plugin before 5.5.79 does not validate the column names it accepts on one of its unauthenticated AJAX actions, and the nonce guarding that action does not cover them, allowing unauthenticated attackers to read arbitrary columns of the database table the affected front-end form is bound to, including user password hashes where that table is the users table.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-09T06:18:22Z"

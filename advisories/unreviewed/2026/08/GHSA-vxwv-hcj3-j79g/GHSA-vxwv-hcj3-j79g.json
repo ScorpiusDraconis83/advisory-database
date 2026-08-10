@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vxwv-hcj3-j79g",
+  "modified": "2026-08-10T21:32:09Z",
+  "published": "2026-08-10T21:32:09Z",
+  "aliases": [
+    "CVE-2026-73033"
+  ],
+  "details": "Sucuri Security WordPress plugin through version 2.7.3 contains a path traversal vulnerability in the pageIntegritySubmission() method in src/integrity.lib.php that allows authenticated administrators to delete arbitrary files by supplying directory traversal sequences in the sucuriscan_integrity parameter. Attackers can manipulate the unsanitized file path concatenated with ABSPATH to traverse outside the WordPress installation directory and invoke unlink() on sensitive files such as wp-config.php and .htaccess, causing site outage or enabling malicious reinstallation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73033"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Sucuri/sucuri-wordpress-plugin/issues/217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sucuri-wordpress-plugin-path-traversal-via-integrity-lib-php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T21:17:26Z"
+  }
+}

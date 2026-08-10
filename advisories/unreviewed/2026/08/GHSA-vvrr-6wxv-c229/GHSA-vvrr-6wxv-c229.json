@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vvrr-6wxv-c229",
-  "modified": "2026-08-08T09:30:21Z",
+  "modified": "2026-08-10T21:31:58Z",
   "published": "2026-08-08T09:30:21Z",
   "aliases": [
     "CVE-2026-16562"
   ],
   "details": "The WP Statistics  WordPress plugin before 14.16.10 does not perform a capability check on a set of dashboard analytics AJAX handlers, relying only on a nonce that every authenticated user holds, allowing users with Subscriber-level access and above to disclose the site's visitor analytics data.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-08T07:17:10Z"
