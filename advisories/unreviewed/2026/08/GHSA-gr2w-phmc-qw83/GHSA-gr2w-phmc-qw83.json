@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gr2w-phmc-qw83",
+  "modified": "2026-08-10T15:33:37Z",
+  "published": "2026-08-10T15:33:37Z",
+  "aliases": [
+    "CVE-2026-68145"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niomap: fix out-of-bounds bitmap_set() with zero-length range\n\nifs_set_range_dirty() and ifs_set_range_uptodate() compute last_blk\nas (off + len - 1) >> i_blkbits.  When off is 0 and len is 0, the\nunsigned subtraction underflows to SIZE_MAX, producing a huge\nlast_blk and nr_blks value that causes bitmap_set() to write far\nbeyond the ifs->state allocation.\n\nRegarding ifs_set_range_uptodate(), it is temporarily safe because len\ncannot be passed in as 0. However, for ifs_set_range_dirty() this is\nreachable from __iomap_write_end(): when copy_folio_from_iter_atomic()\nreturns 0 (e.g. user buffer fault) and the folio is already uptodate,\nthe guard at the top of __iomap_write_end() does not trigger because\n!folio_test_uptodate() is false, and iomap_set_range_dirty() is called\nwith copied == 0.\n\nAdd a !len guard to both functions before the computation, so that a\nzero-length range is a no-op.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68145"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7037e7bdcd26f46c080b8ce307dee5cb471c4b7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c7d8f7c8994c790fca501dc45ce66e7356cbe05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c5b6a48a8a716a7730e39af1cad083dc4ec955ce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb4fad9105c88b1d82f1b3c39e3b6abea8249af6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:00Z"
+  }
+}

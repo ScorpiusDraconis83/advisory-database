@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j86x-f498-4jqp",
+  "modified": "2026-08-10T15:33:45Z",
+  "published": "2026-08-10T15:33:45Z",
+  "aliases": [
+    "CVE-2026-68290"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrds: tcp: unregister sysctl before tearing down listen socket\n\nrds_tcp_exit_net() frees the per-netns RDS TCP listen socket via\nrds_tcp_kill_sock() before unregistering the per-netns sysctl table.  Since\nrds_tcp_skbuf_handler() derives the netns from\nrtn->rds_tcp_listen_sock->sk, a concurrent sysctl write can race with\nnetns teardown and dereference the freed socket/sk.\n\nKASAN reports the race as:\n\n  BUG: KASAN: slab-use-after-free in rds_tcp_skbuf_handler+0x2aa/0x2e0\n  rds_tcp_skbuf_handler              net/rds/tcp.c:721\n  proc_sys_call_handler              fs/proc/proc_sysctl.c\n  vfs_write                          fs/read_write.c\n  __x64_sys_pwrite64                 fs/read_write.c\n\nFix this by unregistering the RDS TCP sysctl table before calling\nrds_tcp_kill_sock().  unregister_net_sysctl_table() prevents new sysctl\nhandlers from starting and waits for in-flight handlers to finish, so\nthe listen socket can then be released safely. The fix was tested\nagainst the linked reproducer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68290"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/167e54c703ccd4fa028feb568b0d1002020cff86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16df2d154ec82e2f7e7585b4fa154751ba37729a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3aa13fe0c1bb7bc5312f878e61523e5d8cf3f85d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80fffed08dc1c10e971066941d2daa56253f1552"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:18Z"
+  }
+}

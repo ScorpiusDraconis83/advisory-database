@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hxmx-3v2p-jphh",
+  "modified": "2026-08-10T15:33:48Z",
+  "published": "2026-08-10T15:33:48Z",
+  "aliases": [
+    "CVE-2026-68355"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath11k: fix potential buffer underflow in ath11k_hal_rx_msdu_list_get()\n\nWhen the first entry in msdu_details has a zero buffer address,\nthe code accesses msdu_details[i - 1] with i == 0, causing a\nbuffer underflow.\n\nFix similarly to ath12k_wifi7_hal_rx_msdu_list_get() by adding\na separate check for i == 0 before the main condition to prevent\nthe out-of-bounds access.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68355"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69a6a4f60b2da92c0bdfd9264b8ffe053f51f52a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/725c1c3a8c5d920a7d3f5887412f2ad8e95a74f5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f11e70629650ff6ea140984e5ce188b775b2683"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/904367381a922aa2dc3e8bd2488e6c9180516c7a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a154ca3c441a67d36b3a9ea63a4f11b06abe6223"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:27Z"
+  }
+}

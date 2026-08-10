@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-998j-mxm9-vqxj",
+  "modified": "2026-08-10T15:33:47Z",
+  "published": "2026-08-10T15:33:47Z",
+  "aliases": [
+    "CVE-2026-68341"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\novpn: fix use after free in unlock_ovpn()\n\nunlock_ovpn() iterates over the release_list using llist_for_each_entry()\nand drops the peer reference inside the loop body via ovpn_peer_put().\n\nIf this drops the last reference, the peer is eventually freed. However,\nllist_for_each_entry() reads peer->release_entry.next in the loop advance\nexpression, which runs after the body. By that time the peer may have\nalready been freed, resulting in a use after free when advancing to the\nnext list entry.\n\nFix this by using llist_for_each_entry_safe(), which caches the next\npointer before executing the loop body.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68341"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4cdb209f12a89c5faf9be0c45edb90ccdf65db0c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b96227c0e8b212b74838424c929fc889aedb555"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e1ad6fe5db719874efa45b2caf9934552e09fc43"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:24Z"
+  }
+}

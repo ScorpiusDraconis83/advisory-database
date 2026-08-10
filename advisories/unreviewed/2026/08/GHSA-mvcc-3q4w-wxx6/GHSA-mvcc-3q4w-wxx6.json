@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mvcc-3q4w-wxx6",
+  "modified": "2026-08-10T15:33:47Z",
+  "published": "2026-08-10T15:33:47Z",
+  "aliases": [
+    "CVE-2026-68339"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btusb: validate Realtek vendor event length\n\nbtusb_recv_event_realtek() reads the event code at data[0] and the Realtek\nsubevent code at data[2] before deciding whether to consume a vendor event\nas a coredump.\n\nFor example, the two-byte event ff 00 contains a complete vendor-event\nheader declaring zero parameters. The old classifier still reads a\nnonexistent third byte and can misclassify the event as a coredump if the\nadjacent byte is 0x34.\n\nRequire the HCI event header and first parameter to be present before\ninspecting the Realtek subevent code. Short events continue through the\nnormal HCI receive path, which owns their protocol validation.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24b0758193d70da47ef8b979153d2a181dbdf34e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/400267bab0f4076088e163e58cad2bb41c3cf5e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8881daaafadbe7fb2b7341d16a3949114409c90c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8de58bfa26e028f99271dde5a92107cd07f5e063"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df541cd485ff80a5ddc579d99687bc7506df9851"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:24Z"
+  }
+}

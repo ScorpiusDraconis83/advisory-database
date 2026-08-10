@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-76fm-3jg5-qp3h",
+  "modified": "2026-08-10T15:33:41Z",
+  "published": "2026-08-10T15:33:41Z",
+  "aliases": [
+    "CVE-2026-68210"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: stm32: dcmi: unregister notifier on probe failure\n\ndcmi_graph_init() registers the async notifier before dcmi_probe() toggles\nthe reset line. If reset_control_assert() or reset_control_deassert()\nfails afterwards, probe returns through err_cleanup and the driver core\nwill not call dcmi_remove().\n\nUnregister the notifier before cleaning it up on that error path,\nmatching the successful remove path and the V4L2 async notifier lifetime\nrules.\n\n[hverkuil: added Fixes tag]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68210"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/084973ebd67b28f0945c5d45408f86c58b540110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/37ff63c5d7119cbc5c6bacdcc658add6008a8e1f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b7ee504969e074725e439c949f2483e5fa5572a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c6f22b7e6cbc4e8c1e359fc9b190419391c3db7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/931abe1deb65b919d23fa203d7f6d6fbd4fccd8e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:08Z"
+  }
+}

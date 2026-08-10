@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-78gm-4hww-qgr6",
+  "modified": "2026-08-10T15:33:40Z",
+  "published": "2026-08-10T15:33:40Z",
+  "aliases": [
+    "CVE-2026-68199"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath6kl: fix OOB access from firmware ADDBA window size\n\naggr_recv_addba_req_evt() logs a debug message when the firmware-supplied\nwin_sz is outside [AGGR_WIN_SZ_MIN, AGGR_WIN_SZ_MAX] but does not\nreturn. The out-of-range win_sz is then used in TID_WINDOW_SZ() to\ncompute a kzalloc size and stored in rxtid->hold_q_sz, leading to\nzero-size or overflowed allocations and subsequent out-of-bounds access.\n\nClean up any previously active aggregation session for the TID first,\nthen return early when win_sz is out of the valid range, instead of\nproceeding with a broken allocation size.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44126b6994eeb28f2103b638e698f40a1244f327"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58c6c8dc2e022e1b4f3dc58725a1ca49ff470f9c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a65fd4722416061698b0a3277222381efbc4882"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cec0a487cf38ac1f9bca240ffe8a94c5014b72f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4558c140782180e2c80a7588a4af9f8675adfc4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:07Z"
+  }
+}

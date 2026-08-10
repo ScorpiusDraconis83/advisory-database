@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2f7w-jqwh-gfwp",
+  "modified": "2026-08-10T15:33:44Z",
+  "published": "2026-08-10T15:33:44Z",
+  "aliases": [
+    "CVE-2026-68276"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/gfx: fix cleaner shader IB buffer overflow\n\nThe cleaner shader sysfs path allocates a 16-dword (64 byte) IB but\nincorrectly fills (align_mask + 1) dwords. On GFX rings align_mask is\n0xff, so the loop wrote 256 dwords into a 64-byte buffer, causing a\nkernel page fault.\n\nThe IB only needs to be a minimal NOP shell to schedule the job; the\ncleaner shader itself is emitted on the ring via emit_cleaner_shader().\nFill 16 dwords to match the allocation.\n\nv2: Use ib_size_dw variable (Lijo)\n\n(cherry picked from commit bf21af331ebf72d0935fd70c73192414a422c03a)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68276"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/201633f47b542a99bb7baafdfcda7781249fb3d9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3e864bf2a32a1cbdf1e0f9c5a5a4176e8575f4a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9cd9a983769a4d0e9cc80a287316ee79685d38b3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e28420e36542ae8b66a5bdcec419525f521bddf8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:16Z"
+  }
+}

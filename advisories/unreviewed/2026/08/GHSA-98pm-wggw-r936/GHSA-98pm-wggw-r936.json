@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-98pm-wggw-r936",
+  "modified": "2026-08-10T15:33:43Z",
+  "published": "2026-08-10T15:33:43Z",
+  "aliases": [
+    "CVE-2026-68267"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/rtp: Add RING_FORCE_TO_NONPRIV_DENY to OA whitelists\n\nUnconditionally whitelisting OA registers is a security violation. Set\nRING_FORCE_TO_NONPRIV_DENY bit in OA nonpriv slots, so that OA registers\ndon't get whitelisted by default after probe, gt reset, resume and engine\nreset.\n\n(cherry picked from commit 90511bdcfda97211c01f1d945d4ea616578d8fca)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68267"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e6d07abbc0c41cb3259042794ad3deca79dd14e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7982678fa21eda02a9111d2646be6762b5e3a64d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9852aa87ecba95d7bf9fb94a9d6c4f69312c9682"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e70086a3a06d276b4a5d9a2c51c9330c6cf72780"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:15Z"
+  }
+}

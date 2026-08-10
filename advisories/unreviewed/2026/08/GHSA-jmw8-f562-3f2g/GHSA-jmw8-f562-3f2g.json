@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jmw8-f562-3f2g",
+  "modified": "2026-08-10T15:33:48Z",
+  "published": "2026-08-10T15:33:48Z",
+  "aliases": [
+    "CVE-2026-68368"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_ncm: validate datagram bounds in ncm_unwrap_ntb()\n\nWhen unpacking host-supplied NTBs, ncm_unwrap_ntb() checks datagram length\nagainst frame_max but does not verify that the datagram fits within the\ndeclared block length. Additionally, when decoding multiple NTBs from a\nsingle socket buffer, subsequent block lengths are not checked against the\nactual remaining buffer data.\n\nWith these checks missing, a malicious USB host can specify datagram\noffsets and lengths that point beyond the block, or supply secondary NTB\nheaders declaring lengths larger than the buffer. skb_put_data() then\ncopies adjacent kernel memory from skb_shared_info into the network skb.\n\nFix this by verifying that sufficient buffer space remains for the NTB\nheader before parsing, handling zero-length block declarations, ensuring\nthat block lengths never exceed the remaining buffer space, and verifying\nthat each datagram payload stays strictly within the block boundary.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68368"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1febec7e47cdcd01f43fb0211094e3010474666e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40c706a0224bde194667e3378c689b542fec4b44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41fd5f2fb0027d3773ae949e3247c2e0a2a7fe5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e07751d0527ccc2a1c32eb0b0b7da3b4b9b5381f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fff1059d139ef798bab917990524faaf25854ca8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:29Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vq2x-638j-2gq9",
+  "modified": "2026-08-10T15:33:40Z",
+  "published": "2026-08-10T15:33:40Z",
+  "aliases": [
+    "CVE-2026-68208"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: ti: vpe: Fix the error code of devm_kzalloc() in vip_probe_slice()\n\nIn vip_probe_slice(), the error check for devm_kzalloc() incorrectly\nuses PTR_ERR_OR_ZERO() which returns 0 for NULL pointer.\n\nReturn -ENOMEM for devm_kzalloc() failure.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/956879b173c2cf782fbc3d18947fd1da286359cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8f319eae96a3d718e810d52432020a2b77f5f60"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:08Z"
+  }
+}

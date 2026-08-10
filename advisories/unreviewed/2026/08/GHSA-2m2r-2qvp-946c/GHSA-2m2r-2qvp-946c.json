@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2m2r-2qvp-946c",
+  "modified": "2026-08-10T15:33:48Z",
+  "published": "2026-08-10T15:33:48Z",
+  "aliases": [
+    "CVE-2026-68362"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath11k: fix NULL pointer dereference in ath11k_hal_srng_access_begin\n\nIn ATH11K_QMI_EVENT_FW_READY, ATH11K_FLAG_REGISTERED is set\nunconditionally even when ath11k_core_qmi_firmware_ready() fails.\nThis leaves the driver in an inconsistent state where\ninitialization is considered complete although the firmware ready\nhandling did not finish successfully. During the subsequent SSR,\nthe driver enters the restart path based on this incorrect state\nand dereferences uninitialized srng members, resulting in a NULL\npointer dereference.\n\nCall trace:\n  ath11k_hal_srng_access_begin+0xc/0x60 [ath11k] (P)\n  ath11k_ce_cleanup_pipes+0x17c/0x180 [ath11k]\n  ath11k_core_restart+0x40/0x168 [ath11k]\n\nFix this by:\n- skipping firmware_ready if ATH11K_FLAG_REGISTERED is already set\n- setting ATH11K_FLAG_REGISTERED only when firmware_ready succeeds\n- setting ATH11K_FLAG_QMI_FAIL and aborting the FW_READY handling\non error\n\nTested-on: WCN6750 hw1.0 AHB WLAN.MSL.2.0.c2-00204-QCAMSLSWPLZ-1",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68362"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4abb4e284d8897176e91d7a3168ee29ed876bb41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d6bba659ac30d862ee7bab92862cd6e514f07521"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e517e207300edcf7f3a8f6c45f9155c0e419ffb9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5394605f9a985cc3a8263e610ba84b33cbe7b0c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8d85672dd7e2523f774caafba8f858384e18df7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:28Z"
+  }
+}

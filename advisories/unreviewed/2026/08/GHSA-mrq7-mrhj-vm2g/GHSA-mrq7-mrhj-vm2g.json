@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrq7-mrhj-vm2g",
+  "modified": "2026-08-10T15:33:40Z",
+  "published": "2026-08-10T15:33:40Z",
+  "aliases": [
+    "CVE-2026-68198"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath6kl: fix use-after-free in aggr_reset_state()\n\nThe aggr_reset_state() function uses timer_delete() (non-synchronous)\nfor the aggregation timer before proceeding to delete TID state and\nbefore the structure is freed by callers like aggr_module_destroy().\n\nIf the timer callback (aggr_timeout) is executing when aggr_reset_state()\nis called, the callback will continue to access aggr_conn fields like\nrx_tid[] and stat[] which may be freed immediately after by\nkfree(aggr_info->aggr_conn) in aggr_module_destroy().\n\nAdditionally, the timer callback can re-arm itself via mod_timer() while\naggr_reset_state() is running, creating a more complex race condition.\n\nUse timer_delete_sync() instead to ensure any running timer callback\nhas completed before returning.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68198"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/18965470d41e69d3fc10eb62afae29d10f4cdfd1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/64af6534a085f49d6ed33338a19ab9cf0d0523c9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3313111b5d9046af60b370c93eec105b27380c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5d618fd61b9069b4c0a6b487022dd3117ad5acc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba7debb4dd6427386862220e8335a53a4bfc235d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:07Z"
+  }
+}

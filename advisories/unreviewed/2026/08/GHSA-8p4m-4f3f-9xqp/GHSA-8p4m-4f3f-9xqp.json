@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8p4m-4f3f-9xqp",
+  "modified": "2026-08-10T15:33:37Z",
+  "published": "2026-08-10T15:33:37Z",
+  "aliases": [
+    "CVE-2026-68140"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/iucv: fix use-after-free of a severed iucv_path\n\naf_iucv queues not-yet-received message notifications on iucv->message_q,\neach holding a raw pointer to the connection's iucv_path.  When the peer\nsevers the connection, iucv_sever_path() frees that path with\niucv_path_free() but leaves the notifications queued.  A later recvmsg()\ndrains message_q via iucv_process_message_q() and hands the stale path to\nmessage_receive() -- a use-after-free of the freed iucv_path.\n\nDrop the queued notifications when the path is severed; once the path is\ngone they can no longer be received.  This also frees the notifications\nleaked when a socket is closed with messages still queued.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23658b350b4107e8292045c2044983fd426fa15d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/900cd6d8119b7f3ae5c4bf82f922ff5957df43db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a5bbaddf69853117f28173c3f5c8fc14c6b2ec82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be7cc4656eb1f54029610e82d1f0fdd3f9b5ec0a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f579582c03ed526281a8450159baf1d35099a85f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:19:59Z"
+  }
+}

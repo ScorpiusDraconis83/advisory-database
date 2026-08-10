@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r4m3-927r-4wxc",
+  "modified": "2026-08-10T15:33:45Z",
+  "published": "2026-08-10T15:33:45Z",
+  "aliases": [
+    "CVE-2026-68311"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7925: guard link STA in decap offload\n\nmt7925_sta_set_decap_offload() iterates over the vif valid_links mask\nwhen updating decap offload state for an MLO station. The station may not\nhave a link STA for every valid link of the vif, so mt792x_sta_to_link()\ncan return NULL for a link that belongs to the vif but not to the station.\n\nThe function currently dereferences mlink before checking whether the\nlink WCID is ready. If mlink is NULL, setting or clearing\nMT_WCID_FLAG_HDR_TRANS dereferences a NULL pointer.\n\nSkip links without a station link before touching mlink->wcid.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68311"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e608cae1ba0b4a600b752efa223fd2be376b143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96ea44f2269f30364cffa054ee3a87e595bef0d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d86883f7e8f03a5b81b4e59f2c0b6c05f79e01fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1ee53e08fdd2906e90c6a6d71e1368fcd52bfc3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:20Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-83x3-qgq9-rfcq",
+  "modified": "2026-08-10T15:33:35Z",
+  "published": "2026-08-10T15:33:35Z",
+  "aliases": [
+    "CVE-2026-19429"
+  ],
+  "details": "Jenkins FilePath.untarFrom() (all versions) validates symlink destinations but not targets, bypassing CVE-2026-33001. Any user with Item/Build access triggers tar extraction via POST /job/{name}/build, writing persistent symlinks into the tool cache. Symlinks to secrets/master.key, hudson.util.Secret, credentials.xml, and users/*/config.xml read via GET /job/{name}/lastBuild/consoleText enable offline AES decryption of all credentials and admin API tokens without bcrypt cracking, achieving RCE.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19429"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/jenkins"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisories/2026-03-19"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:17:58Z"
+  }
+}

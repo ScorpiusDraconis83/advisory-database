@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w385-33fw-3fww",
+  "modified": "2026-08-10T15:33:53Z",
+  "published": "2026-08-10T15:33:53Z",
+  "aliases": [
+    "CVE-2026-72760"
+  ],
+  "details": "Affected versions of MISP cti-transmute disclose users' email addresses through the account following-list endpoint. When an authenticated user follows another account, get_following() includes the followed user's email field in the API response alongside their name, user ID, and follow date. Because the email address is not required for the functionality and other related user lists omit it, an authenticated attacker could systematically follow users and collect their email addresses. The fix removes user.email from the returned object.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72760"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/cti-transmute/commit/4bad9f105a824979e0ae79fd6115cd7a88c84ee5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T15:17:44Z"
+  }
+}

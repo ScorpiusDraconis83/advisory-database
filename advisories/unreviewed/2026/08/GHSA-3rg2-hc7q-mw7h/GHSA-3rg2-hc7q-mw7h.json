@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3rg2-hc7q-mw7h",
+  "modified": "2026-08-10T15:33:48Z",
+  "published": "2026-08-10T15:33:48Z",
+  "aliases": [
+    "CVE-2026-68364"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Fix ISM dc_lock deadlock during suspend\n\n[Why]\nSystem hang observed during suspend/resume while video is playing.\namdgpu_dm_ism_disable() is called under dc_lock and waits for ISM\ndelayed work via disable_delayed_work_sync(). The work handlers\nthemselves take dc_lock, producing an ABBA deadlock when a worker is\nin flight at suspend time.\n\n[How]\nSplit the disable path into two phases with opposite locking\ncontracts:\n  1. amdgpu_dm_ism_disable() -- quiesces workers, must NOT hold\n     dc_lock.\n  2. amdgpu_dm_ism_force_full_power() (new) -- drives the ISM FSM\n     back to FULL_POWER_RUNNING, must hold dc_lock.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68364"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3714fe242592e3699ac5e2c19d68b275a210be7d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95776812e6b8f908563e8994d5d947b68baf68a6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:29Z"
+  }
+}

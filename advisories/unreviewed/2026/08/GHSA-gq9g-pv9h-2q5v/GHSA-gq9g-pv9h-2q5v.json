@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gq9g-pv9h-2q5v",
+  "modified": "2026-08-10T15:33:49Z",
+  "published": "2026-08-10T15:33:49Z",
+  "aliases": [
+    "CVE-2026-68381"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: pin conn during async oplock break notification\n\nsmb2_oplock_break_noti() and smb2_lease_break_noti() store a ksmbd_conn\npointer in an async ksmbd_work and then queue that work on ksmbd-io.  The\nwork only increments conn->r_count, which prevents teardown from passing\nthe pending-request wait after the increment, but it does not pin the\nstruct ksmbd_conn object.\n\nIf connection teardown races with an oplock break notification, the last\nconn reference can be dropped before the queued worker finishes.  The\nworker then uses the freed conn in ksmbd_conn_write() and\nksmbd_conn_r_count_dec().\n\nTake a real conn reference when publishing the conn pointer to the async\nwork item, and drop it after the notification work has decremented\nr_count.  Apply the same lifetime rule to lease break notification, which\nuses the same work->conn pattern.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68381"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f72fc9659d7f585460d43c158055df5afdcffb6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/14062c74e5b25c27edcff7a2fe0dc701c930b372"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ecb252efa0b413ac3d9979fb4eec247f8fc1258"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/793e1c7041b93af96ff87e678329bc16aee7ba88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa5d8f3f96aa11a4a54ce993c11ce8af11c546f9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:31Z"
+  }
+}

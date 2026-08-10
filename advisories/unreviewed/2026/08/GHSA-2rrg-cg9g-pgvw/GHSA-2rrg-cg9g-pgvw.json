@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2rrg-cg9g-pgvw",
+  "modified": "2026-08-10T15:33:37Z",
+  "published": "2026-08-10T15:33:37Z",
+  "aliases": [
+    "CVE-2026-68142"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ngeneve: require CAP_NET_ADMIN in the device netns for changelink\n\nA tunnel changelink() operates on at most two netns, dev_net(dev) and\nthe sticky underlay netns geneve->net. They differ once the device is\ncreated in or moved to a netns other than the one the request runs in.\nThe rtnl changelink path checks CAP_NET_ADMIN only against dev_net(dev),\nso a caller privileged there but not in geneve->net can rewrite a geneve\ndevice whose underlay lives in geneve->net.\n\ngeneve_changelink() applies the new configuration against geneve->net:\ngeneve_link_config() and the geneve_quiesce()/geneve_unquiesce() pair\nreopen the underlay sockets in that netns (geneve_sock_add() uses\ngeneve->net), so the same reasoning as the tunnel changelink series\napplies here.\n\nGate geneve_changelink() with rtnl_dev_link_net_capable(), at the top of\nthe op before any attribute is parsed, matching ipgre_changelink() and\nthe rest of the \"require CAP_NET_ADMIN in the device netns for\nchangelink\" series.\n\nFound by 0sec automated security-research tooling (https://0sec.ai).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68142"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2abdacc927c92fa6a9cc8341e8c9b88dcb561553"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8efb8f8bbb353b8f2fdf4f37534c6d96c9f69e01"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95f45e20f1b2cec13823f0f68060ab4b2261b2c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9de5518fc1fab583526a8f66b8e505c4864dc60a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8c498585d2a08aa623748353c3e61467b7e9fd2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:19:59Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jwjj-cxp5-4ffw",
+  "modified": "2026-08-10T15:33:39Z",
+  "published": "2026-08-10T15:33:39Z",
+  "aliases": [
+    "CVE-2026-68168"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nafs: Fix afs_edit_dir_remove() to get, not find, block 0\n\nFix afs_edit_dir_remove() to use afs_dir_get_block() to get block 0 rather\nthan afs_dir_find_block() as the latter caches the found block in the\nafs_dir_iter and may[*] switch out the page it's on if another\nafs_dir_find_block() is done.  This parallels what afs_edit_dir_add() does.\n\n[*] There's more than one block per page.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68168"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62d9853aa4ce6e9797b6949804891be14b219752"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bfdfc7782ada6f3a4df7182889b66039f8e4131c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2b293359924117736218701ebd8b40618d73e6f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:03Z"
+  }
+}

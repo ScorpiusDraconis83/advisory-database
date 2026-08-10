@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9fcx-rhjm-5qjm",
+  "modified": "2026-08-10T15:33:40Z",
+  "published": "2026-08-10T15:33:40Z",
+  "aliases": [
+    "CVE-2026-68207"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: ti: vpe: unwind v4l2 device registration on probe error\n\nIf the vpe_top resource is missing, vpe_probe() returns -ENODEV after\nv4l2_device_register() has succeeded. Probe failures do not call the\ndriver's remove callback, so the v4l2 device remains registered on that\nerror path.\n\nRoute that failure through the existing v4l2_device_unregister() unwind\nlabel, matching the other errors after v4l2_device_register().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ecf0cc0cf59032a89bcdf36fbbb03bff5455fd9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d383357905de975e1dbde639e5fa7477075d104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7e6521dd747eca3cb3d4cd3ddcf20f266494f63d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0f1c9a90ef665f2587c274a8fed59f2dfc575a6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fcbbaf9cb9722a82f0221c56114037fc537f4ada"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:08Z"
+  }
+}

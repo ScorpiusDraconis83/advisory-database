@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7xvp-vq9h-5h28",
+  "modified": "2026-08-10T15:33:43Z",
+  "published": "2026-08-10T15:33:43Z",
+  "aliases": [
+    "CVE-2026-68247"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/bios: range check LFP Data Block panel_type2\n\nWhile the panel_type from LFP Data Block is range checked, panel_type2\nis not. Add a few helpers for range checking, and use them to not only\ncheck panel_type2, but also improve clarity and correctness in the panel\ntype selection.\n\nDiscovered using AI-assisted static analysis confirmed by Intel Product\nSecurity.\n\nv2:\n- Fix commit message typo (Michał)\n- Add is_panel_type_pnp() (Ville)\n\n(cherry picked from commit c9ebe5d2f25729d6cfbbb1235d640bf67f9275df)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2084503f2d087bf956198e7f6eb25b03a7049cb2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8887b94d2fc93071bf6ff09c39d474510e6f582f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b2da44446f9dce2ae50fee78bac2734d4277143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7b5694645b03e80830dc141b59fc65aac693c70"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:13Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrp3-x3ff-8xj3",
+  "modified": "2026-08-10T15:33:49Z",
+  "published": "2026-08-10T15:33:49Z",
+  "aliases": [
+    "CVE-2026-68393"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: extend conn_hash lookup critical sections\n\nUsing RCU-protected pointers outside the critical sections without\nrefcount is incorrect and may result to UAF.\n\nExtend critical section to cover both hci_conn_hash lookup and use of\nthe returned conn.\n\nAdd surrounding rcu_read_lock() also when return value is not used, in\npreparation for RCU lockdep requirement to hci_lookup_le_connect().\n\nThis avoids concurrent deletion of the conn before we are done\ndereferencing it.\n\nAlso, make sure to hold hdev->lock when accessing hdev->accept_list.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68393"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38326774df6198df0cc2744cc73bf77cb741c538"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83b7e67698d0b93f685875ce82c8d335436834f7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5efd6e4b8b0634af6843178fe1a7dd2b2178a3d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:32Z"
+  }
+}

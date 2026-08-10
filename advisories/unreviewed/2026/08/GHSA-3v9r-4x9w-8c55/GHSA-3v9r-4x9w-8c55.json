@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3v9r-4x9w-8c55",
+  "modified": "2026-08-10T15:33:38Z",
+  "published": "2026-08-10T15:33:38Z",
+  "aliases": [
+    "CVE-2026-68152"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\namt: fix use-after-free in AMT delayed works\n\nWhen an AMT device is removed, pending delayed works can still access\nthe freed amt_dev structure, which may result in kernel crashes or\nmemory corruption.\n\namt_dev_stop() cancels req_wq and discovery_wq with\ncancel_delayed_work_sync(), but these works can be scheduled again\nfrom event_wq after the cancellation. This allows delayed works to\naccess the freed amt_dev structure after the netdev has been released.\n\nThe following is a simple race scenario:\n\nCPU0                         CPU1\n\namt_dev_stop()\ncancel_delayed_work_sync()\n                             amt_event_work()\n                             mod_delayed_work(req_wq)\nfree netdev\n                             req_wq accesses freed amt_dev\n\nUse disable_delayed_work_sync() in amt_dev_stop() to prevent req_wq and\ndiscovery_wq from being queued again and wait for running work items\nto complete.\n\nThe delayed works are disabled after initialization in\namt_newlink() and enabled only when the device is successfully opened.\nThis keeps the delayed work lifecycle synchronized with the lifetime\nof the AMT device.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/006340cf06881b6ff49767d8b6f3c4f7b892670c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a644db2cf59f164cdf3c75995bab5aadc097528"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a46bfa01e01df0f6f6dc4b0be18db002d6d2dbd2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea20c44935d6142daecfa9b39d635033a7553e1b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:01Z"
+  }
+}

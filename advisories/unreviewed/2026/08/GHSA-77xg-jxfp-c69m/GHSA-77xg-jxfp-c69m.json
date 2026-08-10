@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77xg-jxfp-c69m",
+  "modified": "2026-08-10T15:33:48Z",
+  "published": "2026-08-10T15:33:48Z",
+  "aliases": [
+    "CVE-2026-68375"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbnxt_en: Handle partially initialized auxiliary devices\n\nbnxt_aux_devices_init() calls auxiliary_device_init() before all fields\nused by bnxt_aux_dev_release() are initialized.  After\nauxiliary_device_init() succeeds, later errors must unwind with\nauxiliary_device_uninit(), which invokes the release callback.\n\nThe release callback assumes that aux_priv->id, aux_priv->edev,\nedev->net and edev->ulp_tbl are all populated.  If allocation fails\nafter auxiliary_device_init(), the release path can otherwise dereference\nor clear partially initialized state.\n\nAllocate and attach the bnxt_en_dev and ULP table before calling\nauxiliary_device_init(), so the release callback only sees a fully\ninitialized auxiliary private object.  If auxiliary_device_init() itself\nfails, free those allocations directly because device_initialize() has not\nrun and the release callback will not be invoked.\n\nThis issue was found by a static analysis checker and confirmed by manual\nsource review.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68375"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1cb8553c02e93e5a150cebd42f9ee3db0ece4707"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e1caa5fdd0dea36938fe39cceb1522e9d86c937"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:30Z"
+  }
+}

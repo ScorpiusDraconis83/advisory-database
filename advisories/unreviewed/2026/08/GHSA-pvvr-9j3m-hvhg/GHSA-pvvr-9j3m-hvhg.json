@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pvvr-9j3m-hvhg",
+  "modified": "2026-08-10T15:33:43Z",
+  "published": "2026-08-10T15:33:43Z",
+  "aliases": [
+    "CVE-2026-68256"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: detect_link_and_local_sink: DP alt mode timeout path leaks prev_sink reference\n\nprev_sink is unconditionally retained via dc_sink_retain at function\n  entry, but the DP alt mode timeout path inside SIGNAL_TYPE_DISPLAY_PORT\n  returns false without releasing prev_sink. All other return paths in the\n  function correctly call dc_sink_release(prev_sink), making this the only\n  missing cleanup.\n\n(cherry picked from commit 45510cf662dcf46b5d8926d454f338809f107b9d)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ee77643e6194f2deb62fe62f04396f9825e27d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58ea24dd96848626039296e9e8510270ec8dc4bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a59e493567d18ef3858be9368acd132a01ebfa09"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6e14b976be48eebd8769cb5b883a6af7fc5ade1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9922828a4ebd26286fbe0286cc61695e7d9b07b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:14Z"
+  }
+}

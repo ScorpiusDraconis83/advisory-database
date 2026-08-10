@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hrw3-v9rv-877r",
+  "modified": "2026-08-10T15:33:41Z",
+  "published": "2026-08-10T15:33:41Z",
+  "aliases": [
+    "CVE-2026-68225"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: i2c: alvium: fix critical pointer access in alvium_ctrl_init\n\nThe current implementation of alvium_ctrl_init creates several controls in\nfunction alvium_ctrl_init and uses the returned pointer without check. That\ncan cause write access over NULL-pointer for several controls. The reworked\ncode checks the pointers before adding flags.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68225"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4bacfda44d36f165f6cb57bea408912886400ffa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f6f28ff24709710c08557c127b3e4c3fb1b4159"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7337c88205ed0ffc654f40266be0d3c3eb15fb29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb2f934646aefb06314cecd1deb020794829b207"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:10Z"
+  }
+}

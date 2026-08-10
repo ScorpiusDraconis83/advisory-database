@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h49p-x9p9-q3f3",
+  "modified": "2026-08-10T15:33:39Z",
+  "published": "2026-08-10T15:33:39Z",
+  "aliases": [
+    "CVE-2026-68177"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Delay module ref count for \"enable_event\" trigger\n\nTriggers are now delayed from freeing, but can still be triggered until\nafter the RCU grace period has ended. The freeing of the enable_event data\nis put into the private_data_free() callback, but the put of the module\nrefcount is done immediately.\n\nIt is possible that if a module is removed that has an event that would\nenable (or disable) it is still active, it can read the data of the module\nafter it is removed causing a use-after-free bug.\n\nMove the trace_event_put_ref() that releases the module into the delayed\ncallback so that the module can not be removed until any reference to its\nevents are finished.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/159fdc3e01dca5fdbc412fcd8b239895733a270d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e091351b38818ef620d27f44f4bfd625f13afbff"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:04Z"
+  }
+}

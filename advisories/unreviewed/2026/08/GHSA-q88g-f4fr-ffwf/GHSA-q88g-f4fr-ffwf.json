@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q88g-f4fr-ffwf",
+  "modified": "2026-08-10T15:33:49Z",
+  "published": "2026-08-10T15:33:48Z",
+  "aliases": [
+    "CVE-2026-68380"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/amdxdna: Fix use-after-free of mm_struct in job scheduler\n\namdxdna_cmd_submit() stores current->mm in job->mm without holding any\nreference. aie2_sched_job_run() later access job->mm from the DRM\nscheduler worker thread. With only a raw pointer and no structural\nreference, the mm_struct can be freed before the scheduler runs the job.\n\nFix this by calling mmgrab() to hold a structural mm_count reference for\nthe lifetime of the job, paired with mmdrop() in every cleanup path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68380"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6875ee2bef48f5d9f045d81a8a4d68893f768a8a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8fadbffc19a233d1eedebfb8df0f522d1388280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/faebb7ba1ac65fa5810b640df02ce04e509fdc11"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:31Z"
+  }
+}

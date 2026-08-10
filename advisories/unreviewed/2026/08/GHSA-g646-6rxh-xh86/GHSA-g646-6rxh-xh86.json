@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g646-6rxh-xh86",
+  "modified": "2026-08-10T15:33:48Z",
+  "published": "2026-08-10T15:33:48Z",
+  "aliases": [
+    "CVE-2026-68359"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (nzxt-smart2) Stop device IO before calling hid_hw_stop\n\nCalling hid_hw_stop() does not stop the device IO.\nThis results in a race condition between hid_input_report() and the point\nimmediately following the execution of hid_device_io_start() within\nthe driver probe function. If the probe operation fails after \"io start\"\nhas been initiated, this race condition will result in a UAF vulnerability.\n\nFix the problem by calling hid_device_io_stop() before calling\nhid_hw_stop().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68359"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/185c0880397aee9def0af5a59ea65f22f37ad658"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/18d7c523891004226bccdba39dd681eca22ceb8a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/205cff797a94757ec88ba299c8e2bf2e1e3f4bbf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59d104b54b0b42e30fd2a68d24ee5c49dcc54d1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a2a15de020597efbff84b4281dd472e5860b7e3e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:28Z"
+  }
+}

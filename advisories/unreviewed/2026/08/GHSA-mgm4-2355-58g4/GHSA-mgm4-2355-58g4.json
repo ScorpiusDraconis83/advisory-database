@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mgm4-2355-58g4",
+  "modified": "2026-08-10T15:33:51Z",
+  "published": "2026-08-10T15:33:51Z",
+  "aliases": [
+    "CVE-2026-72689"
+  ],
+  "details": "A broken object-level authorization vulnerability in OpenSignLabs opensignserver through 2.37.0 allows an unauthenticated remote attacker to read complete contract records via the getDocument Parse cloud function. The function fetches documents using useMasterKey, bypassing the object ACL, and returns full records including sender and signer PII and a pre-signed document download URL whenever the document's IsEnableOTP flag is unset, which is the default configuration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72689"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenSignLabs/OpenSign"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:39Z"
+  }
+}

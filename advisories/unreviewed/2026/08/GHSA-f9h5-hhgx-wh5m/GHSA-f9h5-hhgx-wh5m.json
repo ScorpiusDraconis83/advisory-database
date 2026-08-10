@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f9h5-hhgx-wh5m",
+  "modified": "2026-08-10T15:33:45Z",
+  "published": "2026-08-10T15:33:45Z",
+  "aliases": [
+    "CVE-2026-68301"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: hsr: fix memory leak on slave unregistration by removing synced VLANs\n\nWhen an HSR master device is brought UP, it auto-adds VLAN 0 via\nvlan_vid0_add(), which propagates VID 0 to its slave devices (slave A and B).\n\nIf a slave device is later unregistered while HSR is active (e.g., during\nnetns cleanup or interface destruction), hsr_del_port() is called to\ndetach the slave port from the HSR master. However, hsr_del_port() currently\ndoes not delete the VLAN IDs that were synced to the slave device by HSR.\n\nAs a result, the slave device retains a refcount on VID 0 (and any other\nsynced VLANs). When the slave device is destroyed, its vlan_info /\nvlan_vid_info structure remains allocated, leading to a memory leak.\n\nFix this by calling vlan_vids_del_by_dev(port->dev, master->dev) in\nhsr_del_port() before unlinking slave A or slave B ports, matching the\npropagation logic in hsr_ndo_vlan_rx_add_vid() / hsr_ndo_vlan_rx_kill_vid()\nand the cleanup behavior in bonding and team drivers.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68301"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21d48408479a17eb65568a765930adea37e4d804"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae995b8002d3af134560a706c0e111a89e26317c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5ded444621b6180df9f3d4e07045fc1fc1e8cd9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dcf15eaf5641812f1cfc5e96537380132a7da89d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f72c312af6c7897ab0f8a2b5a63f917a207a4143"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:19Z"
+  }
+}

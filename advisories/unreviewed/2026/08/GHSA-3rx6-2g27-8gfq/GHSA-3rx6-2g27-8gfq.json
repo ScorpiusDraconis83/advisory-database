@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3rx6-2g27-8gfq",
+  "modified": "2026-08-10T15:33:52Z",
+  "published": "2026-08-10T15:33:52Z",
+  "aliases": [
+    "CVE-2026-18412"
+  ],
+  "details": "OpenCart extensions are uploaded as zip files with .ocmod.zip extensions. Upon installation, the OpenCart v4.2.0.0 extension installer extracts these zip files, but does not validate that the extracted paths stay inside the intended extraction directory. An attacker can craft a malicious extension containing file path traversal sequences, such as ../. With this vulnerability, an attacker can write files, such as a PHP web shell, into the webroot directory.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18412"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kb.cert.org/vuls/id/614868"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T15:17:42Z"
+  }
+}

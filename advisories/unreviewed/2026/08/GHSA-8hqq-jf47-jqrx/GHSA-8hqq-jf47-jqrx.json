@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8hqq-jf47-jqrx",
+  "modified": "2026-08-10T15:33:50Z",
+  "published": "2026-08-10T15:33:50Z",
+  "aliases": [
+    "CVE-2026-68423"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmtd: virt_concat: fix use-after-free in mtd_virt_concat_destroy()\n\nmtd_concat_destroy() frees item->concat so calling\nmtd_virt_concat_put_mtd_devices(item->concat) after that leads to a\nuse-after-free.\n\nFix it by moving mtd_virt_concat_put_mtd_devices() before\nmtd_concat_destroy().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b45d7836b9526b8776af5f29219615be9417230"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d36520e5da8bf87265b334def0daaadf3603cc62"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:36Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7c5g-xvpm-qr5v",
+  "modified": "2026-08-10T15:33:35Z",
+  "published": "2026-08-10T15:33:35Z",
+  "aliases": [
+    "CVE-2026-19278"
+  ],
+  "details": "A flaw was found in StackRox/RHACS Central's Auth Machine-to-Machine (M2M) token exchange. When an administrator configures M2M role mappings, the system uses unanchored regular expressions for matching claim values. This allows an attacker with a valid OpenID Connect (OIDC) token, whose claim value is a superstring of a configured pattern, to gain unauthorized access to roles they were not intended to receive. This can lead to privilege escalation within the system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19278"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-19278"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2512524"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-625"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:17:58Z"
+  }
+}

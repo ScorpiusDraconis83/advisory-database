@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gfh5-q868-q4pw",
+  "modified": "2026-08-10T15:33:35Z",
+  "published": "2026-08-10T15:33:35Z",
+  "aliases": [
+    "CVE-2026-59090"
+  ],
+  "details": "A flaw was found in GIMP's PSD file format plugin. This vulnerability, an unsigned integer underflow in the `block_rem` variable, occurs when a user opens a specially crafted `.psd` image file. The underflow leads to parser confusion, enabling an attacker to inject arbitrary data as layer resource blocks. This can ultimately result in arbitrary code execution, allowing the attacker to run malicious code on the victim's system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:L/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59090"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-59090"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2496584"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.gnome.org/GNOME/gimp/-/work_items/16509"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:19:51Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hf9m-85m8-5qmr",
+  "modified": "2026-08-10T15:33:51Z",
+  "published": "2026-08-10T15:33:51Z",
+  "aliases": [
+    "CVE-2026-63105"
+  ],
+  "details": "ReadyEcommerce before 4.5.2 contains a stored cross-site scripting (XSS) vulnerability that allows authenticated customers to inject malicious HTML payloads through the chat and support ticket messaging systems by exploiting unsanitized rendering via the v-html directive in Messages.vue, RightChatSidebar.vue, SupportTicketMessages.vue, and SupportTicketDetails.vue. Attackers can submit crafted message content that executes arbitrary JavaScript in the browser of any shop owner or administrator who views the message, enabling session cookie theft and account takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63105"
+    },
+    {
+      "type": "WEB",
+      "url": "https://codecanyon.net/item/ready-ecommerce-complete-multi-vendor-ecommerce-mobile-app-website-rider-app-with-seller-app/52519302"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/readyecommerce-stored-xss-via-chat-and-support-ticket-systems"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T14:17:25Z"
+  }
+}

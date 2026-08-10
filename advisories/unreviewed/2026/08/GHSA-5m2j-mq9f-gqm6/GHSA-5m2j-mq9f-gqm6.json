@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5m2j-mq9f-gqm6",
+  "modified": "2026-08-10T15:33:40Z",
+  "published": "2026-08-10T15:33:39Z",
+  "aliases": [
+    "CVE-2026-68183"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: stratix10-svc: fix memory leaks and list corruption bugs\n\nFix a memory leak when gen_pool_alloc() fails by freeing pmem on the error\npath. Switch pmem allocation from devm_kzalloc() to kzalloc() with\nexplicit kfree() in the free path to match its list-managed lifetime.\nRemove the erroneous list_del(&svc_data_mem) which corrupted the list head\non failed lookups.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68183"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f2db41a09eba7a45abd140bb86ffc519c191886"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e93a083456d78f6b0aa1f58d2b0c7071a2a7a47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9119ceb76e987c2ec2b549ea100e3268ce3a1c7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95f702e372964aff486338783f49e28a40a53127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fff6e5ff0318315998b540896537eaaa2ebf9f7b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:05Z"
+  }
+}

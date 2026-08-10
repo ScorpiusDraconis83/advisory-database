@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f527-f42m-rc5q",
+  "modified": "2026-08-10T15:33:50Z",
+  "published": "2026-08-10T15:33:50Z",
+  "aliases": [
+    "CVE-2026-68419"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/irdma: Prevent rereg_mr for non-mem regions\n\nWhen a QP/CQ/SRQ is created, a two step process is used\nwhere the buffer is allocated in userspace and explicitly\nregistered with the normal reg_mr mechanism prior to creating\nthe actual QP/CQ/SRQ object.\n\nThese special registrations are indicated via an ABI field\nso the driver knows that they do not have a valid mkey and\nto skip the actual CQP command submission.\n\nSince these are real MR objects from the core's perspective,\nit is possible for a user application to invoke rereg_mr on them\nand cause a real CQP op to be emitted with the zero-initialized\nmkey value of 0.\n\nFix this by preventing rereg_mr on these special regions.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68419"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a846aecb931b4d65d5eafa92a0623545af46d4f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5029e91c63406e4f4c8d58161048b41b6f0bd8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca1c29f05274b737dc964e28b97803750d7cf7ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dbaa37e060918c45517786e37ecab0f300b48fa9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb46d134e1b8690bed2da9005b36d32d2efd34ac"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:35Z"
+  }
+}

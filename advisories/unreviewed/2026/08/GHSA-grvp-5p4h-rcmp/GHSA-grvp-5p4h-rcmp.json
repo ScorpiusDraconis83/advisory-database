@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-grvp-5p4h-rcmp",
+  "modified": "2026-08-10T15:33:48Z",
+  "published": "2026-08-10T15:33:48Z",
+  "aliases": [
+    "CVE-2026-68351"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: carl9170: bound memcpy length in cmd callback to prevent OOB read\n\nWhen the firmware sends a command response with a length mismatch,\ncarl9170_cmd_callback() logs the mismatch and calls carl9170_restart()\nbut then falls through to memcpy(ar->readbuf, buffer + 4, len - 4).\nSince len comes from the firmware and can exceed ar->readlen, this\ncopies more data than the readbuf was allocated for.\n\nBound the memcpy to min(len - 4, ar->readlen) so that the response\nis still completed -- avoiding repeated restarts from queued garbage --\nwhile preventing an overread past the response buffer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68351"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4cde55b2feff9504d1f993ab80e84e7ccb62791c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/500c36649f270de05a56591fcc1aaaa36687958e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9aee949c68dc6dccbc54333537b109c53fe2079f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb7a38810cf25738176dac32dec7a146b3f959cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f74e34e66379e487a09009a4f2d42470051672bd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:27Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8f8h-f232-g757",
+  "modified": "2026-08-10T15:33:46Z",
+  "published": "2026-08-10T15:33:46Z",
+  "aliases": [
+    "CVE-2026-68321"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: txgbe: fix FDIR filter leak on remove\n\nPerfect FDIR filters can be added while the interface is down and are\nkept on the software list for later restore. unregister_netdev() only\ncalls ndo_stop when the device is up, so txgbe_fdir_filter_exit() in\ntxgbe_close() is skipped in that case and the filters are leaked on\ndriver remove. Free the filter list from txgbe_remove() as well.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68321"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d34421bfa261f7e83bea2f2f75fa75e0c3037d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4946dea2386333e5d93bfb36df803fefb5a8c635"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c2f04258be2645cdd8f87553990948e7054e7fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ecaa37826340520664a4e5522f803ff48fc3f564"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:22Z"
+  }
+}

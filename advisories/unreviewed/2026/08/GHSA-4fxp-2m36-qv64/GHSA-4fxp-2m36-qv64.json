@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4fxp-2m36-qv64",
+  "modified": "2026-08-10T15:33:35Z",
+  "published": "2026-08-10T15:33:35Z",
+  "aliases": [
+    "CVE-2026-59233"
+  ],
+  "details": "Missing Authorization in the permission management component in Roskus Prospero Flow CRM before 5.2.1 allows any authenticated user to grant any role, including their own, the complete set of application permissions via a crafted POST request to the permission save endpoint, which performs no authorization check before synchronizing the submitted permissions to the specified role.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59233"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/commit/86a7d6557bd111518a221f4575ad6e36087e19d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/releases/tag/v5.5.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://secur0.com/en/cna/cve-list/cve-2026-59233-missing-authorization-in-prospero-flow-crm-permission-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:19:51Z"
+  }
+}

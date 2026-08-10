@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gwv8-m63h-cvjc",
+  "modified": "2026-08-10T15:33:41Z",
+  "published": "2026-08-10T15:33:41Z",
+  "aliases": [
+    "CVE-2026-68215"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: radio-si476x: Unregister v4l2_device on probe failure\n\nsi476x_radio_probe() registers radio->v4l2dev before allocating the V4L2\ncontrols and before registering the video device. If any of those later\nsteps fails, probe returns through the exit label after freeing only the\ncontrol handler.\n\nA failed probe does not call si476x_radio_remove(), so the\nv4l2_device_unregister() there is not reached. This leaves the parent\ndevice reference taken by v4l2_device_register() behind on the error path.\n\nUnregister the V4L2 device in the probe error path after freeing the\ncontrols.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/436a693af04ffb889aaf87cb69ec1f2b21d3569c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ca9c9f12b1bc341a0a3bbbd2090fd182db53771"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/64cb15878b35e5574ff4f80a0b613a79e47867ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/730c235d7d2c80a401dac56b0f5066c889aa442d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ef9f1659404544a8dddd68842bafcb4a38197af"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:09Z"
+  }
+}

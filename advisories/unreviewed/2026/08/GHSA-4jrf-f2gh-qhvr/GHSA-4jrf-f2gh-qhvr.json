@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4jrf-f2gh-qhvr",
+  "modified": "2026-08-10T15:33:41Z",
+  "published": "2026-08-10T15:33:41Z",
+  "aliases": [
+    "CVE-2026-68224"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: mali-c55: Fix possible ERR_PTR in enable_streams\n\nThe media_pad_remote_pad_unique() function returns either a valid\npointer or an ERR_PTR() on failure (-ENOTUNIQ if multiple links are\nenabled, -ENOLINK if no connected pad is found). The return value\nwas assigned directly to isp->remote_src and dereferenced in the\nnext line without checking for errors, which could lead to an\nERR_PTR dereference.\n\nAdd proper error checking with IS_ERR() before dereferencing the\npointer. Also set isp->remote_src to NULL on error to maintain\nconsistency with other error paths in the function.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68224"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65d4424275845e9f9012b40b5cbff4572771d768"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94c6402e423d36a2bd6f62055a65a0d439d84da7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:10Z"
+  }
+}

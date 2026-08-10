@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-76xv-8vj7-3x63",
+  "modified": "2026-08-10T15:33:36Z",
+  "published": "2026-08-10T15:33:36Z",
+  "aliases": [
+    "CVE-2026-68122"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\novpn: fix peer refcount leak in TCP error paths\n\nWhen either the TCP RX or TX error path calls ovpn_peer_hold() followed\nby schedule_work(&peer->tcp.defer_del_work), and the work item is already\npending from the other path, schedule_work() returns false and the work\nruns only once. Since ovpn_tcp_peer_del_work() calls ovpn_peer_put()\nexactly once, the extra reference taken by the losing path is never\ndropped, leaking the peer object.\n\nThe race window:\n\n  CPU0 (strparser/RX error):       CPU1 (tcp_tx_work/TX error):\n  ovpn_peer_hold()   <- refcnt+1   ovpn_peer_hold()   <- refcnt+2\n  schedule_work()    <- queued      schedule_work()    <- NO-OP\n                                    (work already pending)\n  ovpn_tcp_peer_del_work runs:\n    ovpn_peer_del()\n    ovpn_peer_put()  <- refcnt+1\n                                   <- peer never freed\n\nFix by checking the return value of schedule_work() in both paths and\ncalling ovpn_peer_put() to drop the extra reference if the work was\nalready pending. ovpn_peer_hold() is kept unconditional in the TX path\nas it cannot fail at that point.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68122"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63bbe18fc03062f483c627838a566a707b62da79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b08526bf0bbf84ceebd29033783e8e0c9f451286"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f08f39c1f43f3980d46b06af8ed99ffe84ac294a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:19:57Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-432r-7fw5-c4hj",
+  "modified": "2026-08-10T15:33:45Z",
+  "published": "2026-08-10T15:33:45Z",
+  "aliases": [
+    "CVE-2026-68314"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mctp i3c: clean up notifier and buses if driver register fails\n\nmctp_i3c_mod_init() registers the I3C bus notifier and then walks the\nexisting buses with i3c_for_each_bus_locked(mctp_i3c_bus_add_new, NULL)\nbefore registering the I3C device driver.  If i3c_driver_register()\nfails, the function returns the error directly, leaving the notifier\nregistered and every mctp_i3c_bus object created for the existing buses\nallocated.  The notifier is left pointing into the module that failed to\nload and the bus list is leaked.\n\nMirror the module exit path on this failure: unregister the notifier and\ntear down the buses that were added before returning the error.\n\nThis issue was identified during our ongoing static-analysis research while\nreviewing kernel code.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68314"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03d1057305ef17ac3f5936ac1580bc9a1a826e14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/49d15cfab247c0f60ce1800bdcd66850beea7b3a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a40e83a34eaa2be64372286040696f04eabcd09f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a8bd8c109da5a87f0c5db0c23cf550d039fde77c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:21Z"
+  }
+}

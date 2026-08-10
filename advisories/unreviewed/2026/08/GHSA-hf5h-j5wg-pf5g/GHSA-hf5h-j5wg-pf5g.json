@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hf5h-j5wg-pf5g",
+  "modified": "2026-08-10T15:33:49Z",
+  "published": "2026-08-10T15:33:49Z",
+  "aliases": [
+    "CVE-2026-68383"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/guc: Keep scheduler timeline name alive\n\nThe scheduler keeps a pointer to the timeline name, but q->name\nis freed with the exec queue while scheduler fences can still\nreference it.\n\nStore the name in struct xe_guc_exec_queue so it shares\nthe scheduler's RCU-deferred lifetime.\n\n(cherry picked from commit 41075f0eb5dcbd3b065d15f15ef7bbe9315188e8)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68383"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/299bc6d50b1bed7d1f408391736712f01a0855e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77fd62412431e8c80ef2ad61466bc76fe425f80a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:31Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4cj7-cqhw-3cg9",
+  "modified": "2026-08-10T15:33:42Z",
+  "published": "2026-08-10T15:33:42Z",
+  "aliases": [
+    "CVE-2026-68242"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/gt: Fix NULL deref on sched_engine alloc failure\n\nAvoid using intel_context_put() before intel_context_init() in\nexeclists_create_virtual() as the kref_put() inside would lead\nto NULL deref on the IOCTL path when sched_engine allocation fails.\n\nDiscovered using AI-assisted static analysis confirmed by\nIntel Product Security.\n\n(cherry picked from commit 4f2a12f2d50e9f48227656e4dcbd6423506be31d)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68242"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82ec992c404c3dc774c5e9f3d4aa858e97187675"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/edd4804f07b8369ed472de19272974e2bf2a6271"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:12Z"
+  }
+}

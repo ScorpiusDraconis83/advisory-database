@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fpjh-9gv6-cr6g",
+  "modified": "2026-08-10T15:33:47Z",
+  "published": "2026-08-10T15:33:47Z",
+  "aliases": [
+    "CVE-2026-68349"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: carl9170: fix buffer overflow in rx_stream failover path\n\nThe failover continuation in carl9170_rx_stream() copies the full tlen\nfrom the second USB transfer instead of capping at rx_failover_missing\nbytes. When both transfers are near maximum size, the total exceeds the\n65535-byte failover SKB, triggering skb_over_panic.\n\nLimit the copy size to the missing byte count.\n\n[Fix checkpatch CHECK:PARENTHESIS_ALIGNMENT]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68349"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21f59906ea75618fdd46a7e32754d54fbee083ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4503829843353dbb18b879c35be1cdfc9af677b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5acfa18de66b6089b81c1c0bf1a3ae3c940ec39e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1a21995c2e1cc2ca6b2226cfe4f5f018370182a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9dfee5e63ee9b5c47be9e344ebc5bd3f43fca78"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T13:20:26Z"
+  }
+}
