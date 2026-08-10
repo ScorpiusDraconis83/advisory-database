@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8vfr-hg2j-ch26",
+  "modified": "2026-08-10T12:31:52Z",
+  "published": "2026-08-10T12:31:52Z",
+  "aliases": [
+    "CVE-2026-72566"
+  ],
+  "details": "A server-side request forgery (SSRF) vulnerability in automatisch through commit 41f3c56 allows a low-privileged authenticated user with 'manage Flow' permission to make the server fetch arbitrary URLs and retrieve the full response body via the HTTP Request app's Custom Request action.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72566"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/automatisch/automatisch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/automatisch/automatisch/blob/main/packages/backend/src/apps/http-request/actions/custom-request/index.js"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T11:17:29Z"
+  }
+}

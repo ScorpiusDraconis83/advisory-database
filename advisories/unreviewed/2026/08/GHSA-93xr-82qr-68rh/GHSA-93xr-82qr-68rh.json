@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-93xr-82qr-68rh",
+  "modified": "2026-08-10T12:31:55Z",
+  "published": "2026-08-10T12:31:55Z",
+  "aliases": [
+    "CVE-2026-68089"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: core: fix uninitialized data in debugfs\n\nIf *ppos is non-zero then simple_write_to_buffer() will not initialize\nthe start of buf[].  Non zero values for *ppos aren't going to work\nanyway.  Test for them at the start of the function and return -EINVAL.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68089"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/89fbd3e32dffb6227f936a9578e6eb4632aa4580"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab92ed206d41fd171ebd37bc46360d9f2140d043"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e166a8cfb28a3d0da260dd70cae274eb8c7cec8d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T12:17:21Z"
+  }
+}

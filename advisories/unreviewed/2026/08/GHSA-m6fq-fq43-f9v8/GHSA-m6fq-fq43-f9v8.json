@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m6fq-fq43-f9v8",
+  "modified": "2026-08-10T12:31:52Z",
+  "published": "2026-08-10T12:31:52Z",
+  "aliases": [
+    "CVE-2026-72573"
+  ],
+  "details": "An OS command injection vulnerability in 4xmen/pm2panel (all versions) allows an authenticated remote attacker to execute arbitrary system commands on the host. The pm2panel.js handler at line 188 passes the unsanitized req.query.id parameter directly to exec('pm2 restart ' + id) without input validation or shell escaping, enabling command chaining via semicolons or other shell metacharacters.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72573"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/4xmen/pm2panel"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/4xmen/pm2panel/blob/main/pm2panel.js"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T11:17:30Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w34h-746p-3wp3",
+  "modified": "2026-08-10T12:31:52Z",
+  "published": "2026-08-10T12:31:52Z",
+  "aliases": [
+    "CVE-2026-72575"
+  ],
+  "details": "An improper authorization vulnerability in daptin through v0.12.34 allows unauthenticated remote attackers to read, create, update, and delete usergroup records. The permission check functions (CanRead, CanPeek, CanCreate, CanUpdate, CanDelete, CanRefer) in server/permission/permission.go return true whenever p.UserId equals the requesting userId, but fail to reject the null/zero reference — unlike CanExecute, which explicitly guards it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/daptin/daptin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/daptin/daptin/blob/master/server/permission/permission.go"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T11:17:30Z"
+  }
+}

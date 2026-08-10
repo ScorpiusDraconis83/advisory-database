@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p5w5-qcg3-g8gx",
+  "modified": "2026-08-10T12:31:50Z",
+  "published": "2026-08-10T12:31:50Z",
+  "aliases": [
+    "CVE-2026-66486"
+  ],
+  "details": "GNU cpio is vulnerable to improper encoding or escaping of output in its archive member listing functionality. When listing archive members via cpio -it, member names are printed directly to output without quoting or escaping. An attacker can craft a cpio archive containing member names with embedded newline characters or ANSI escape sequences, causing forged listing entries or terminal control sequence injection when the listing is displayed.\n\n\n\n\nThis issue has been fixed in commit 2ff9600c9ef32e88759843cdbde74c8db5ae9b30",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66486"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2026/08/CVE-2026-66484"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.savannah.gnu.org/cgit/cpio.git"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-116"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T11:17:27Z"
+  }
+}

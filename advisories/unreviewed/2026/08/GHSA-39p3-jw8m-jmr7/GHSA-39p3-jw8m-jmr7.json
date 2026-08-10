@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-39p3-jw8m-jmr7",
+  "modified": "2026-08-10T12:31:51Z",
+  "published": "2026-08-10T12:31:51Z",
+  "aliases": [
+    "CVE-2026-71392"
+  ],
+  "details": "GNU Emacs for Android is vulnerable to an integer overflow in the sfnt_read_cmap_format_12() function in src/sfnt.c. When processing a crafted TrueType font file, an unguarded addition in the xmalloc allocation call wraps around on 32-bit builds, causing a heap buffer overflow write. An attacker can deliver a malicious font file via email, EWW (Emacs Web Wowser), or documents with custom faces, causing Emacs to load it. This results in heap memory corruption that can lead to code execution.\n\n\nThis issue was fixed in commit c4e20777c26548722a37b03db93243e83a0d6188",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71392"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2026/08/CVE-2026-71391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.savannah.gnu.org/cgit/emacs.git/commit/?id=c4e20777c26548722a37b03db93243e83a0d6188"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.gnu.org/savannah-checkouts/gnu/emacs/emacs.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T11:17:28Z"
+  }
+}

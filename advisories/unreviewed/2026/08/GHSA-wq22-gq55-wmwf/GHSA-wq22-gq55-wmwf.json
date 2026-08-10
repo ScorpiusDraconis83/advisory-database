@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wq22-gq55-wmwf",
+  "modified": "2026-08-10T12:31:54Z",
+  "published": "2026-08-10T12:31:54Z",
+  "aliases": [
+    "CVE-2026-68084"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: vme_user: fix location monitor leak in tsi148 bridge\n\ntsi148_probe() allocates a location monitor resource and links it into\ntsi148_bridge->lm_resources. The probe error path frees this list, but\ntsi148_remove() only frees the dma, slave and master resource lists, so\nthe location monitor resource is leaked on device unbind or module\nunload.\n\nFree the lm_resources list in tsi148_remove() as well, before\ntsi148_bridge is freed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68084"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/151edde741f8bc7f2931c5f44ab376d32b0c8beb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/18be0ad31b161a8b6fbc90d14355ad40c061b6b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36902ab588ccc2fa07994adf6c5f51cbfe379177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c6cda17e98545980e42291fc4282daa8a8ebe384"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3ceafa6d8ee6b3a0f7fabe7a551fda909edbd46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eef048dd77ebfbf99d7c28f9e9dd331d2af7b6f6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T12:17:20Z"
+  }
+}

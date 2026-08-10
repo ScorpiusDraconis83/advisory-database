@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9pgj-cxw3-gw33",
+  "modified": "2026-08-10T12:31:52Z",
+  "published": "2026-08-10T12:31:52Z",
+  "aliases": [
+    "CVE-2026-72572"
+  ],
+  "details": "A path traversal vulnerability in o1lab/xmysql (all versions) allows an unauthenticated remote attacker to read and download arbitrary files from the server. The lib/xapi.js file at lines 338 and 424 uses the user-controlled req.query.name parameter in path.join(cwd, name) without sanitization before passing it to res.download, enabling directory traversal via ../ sequences to access sensitive system files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72572"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/o1lab/xmysql"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/o1lab/xmysql/blob/master/lib/xapi.js"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T11:17:29Z"
+  }
+}

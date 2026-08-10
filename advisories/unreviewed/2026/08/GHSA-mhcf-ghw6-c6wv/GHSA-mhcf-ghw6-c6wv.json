@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mhcf-ghw6-c6wv",
+  "modified": "2026-08-10T12:31:55Z",
+  "published": "2026-08-10T12:31:55Z",
+  "aliases": [
+    "CVE-2026-68085"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_uart: clear HCI_UART_SENDING when write_work is canceled\n\nHCI_UART_SENDING bit in tx_state means write_work is pending and blocks\nqueueing it again.  Currently this bit is not cleared when canceling the\nwork in hci_uart_close(), which blocks future writes when device is\nreopened later if write_work was pending.\n\nFix by clearing HCI_UART_SENDING when canceling the work.\n\nAlso make clearing of tx_skb safe by using disable_work_sync +\nenable_work instead of just cancel_work_sync.  hci_uart_flush() purges\nthe proto tx queue so we can cancel the pending write_work there,\ninstead of doing it just in hci_uart_close().  Re-enable and possibly\nrequeue the work after queue flush.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68085"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b0d946d6f08bd39211385bc703a440911b41e46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/714d861d35d937f23375a4517569b13917bbbe51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9dd39cf1667e378b25a082ca796d495d578c5d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d52446b3e735cfdbdc2a58342163803bc2e64249"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T12:17:21Z"
+  }
+}

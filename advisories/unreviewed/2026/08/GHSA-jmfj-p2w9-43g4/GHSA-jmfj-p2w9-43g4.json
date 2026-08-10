@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jmfj-p2w9-43g4",
+  "modified": "2026-08-10T12:31:55Z",
+  "published": "2026-08-10T12:31:55Z",
+  "aliases": [
+    "CVE-2026-68091"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: wacom: stop hardware after post-start probe failures\n\nwacom_parse_and_register() starts HID hardware before registering inputs\nand initializing pad LEDs/remotes. Those later steps can fail, but their\nerror paths currently release Wacom resources without stopping the HID\nhardware.\n\nRoute post-hid_hw_start() failures through hid_hw_stop() before\nreleasing driver resources.\n\nThis issue was identified during our ongoing static-analysis research while\nreviewing kernel code.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68091"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a1ebdcb56ae58a0ee2c54dd15d75121e30424e3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3e6473a4f0596182acdda5219b4bebfbee76514f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/416095e9a6037b4b39fcadd0d2bd77a8852211ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46d8b8c85ae0589fb85746a64e8908160e52aac3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a7ca028facf04921b2c1c2e4d1ee7f282510555"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75eb2173b63ab41c24d80cd641af18f3c117a267"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2cc711a9df37f359159b21db56cea9c21f58a9c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec2612b8ad9e642596db011dd8b6568ef1edeaa1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T12:17:21Z"
+  }
+}

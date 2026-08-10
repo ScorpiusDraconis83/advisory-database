@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mxx3-r9xg-4hf6",
+  "modified": "2026-08-10T12:31:53Z",
+  "published": "2026-08-10T12:31:53Z",
+  "aliases": [
+    "CVE-2026-72581"
+  ],
+  "details": "A server-side request forgery (SSRF) vulnerability in duhow/xiaoai-patch through commit fb07049 allows a remote attacker to make the Xiaomi smart speaker perform HTTP requests to arbitrary internal or external URLs. The /auth endpoint in api/main.py uses the user-supplied url POST parameter to redirect to a Home Assistant instance without validating the destination URL, enabling internal network scanning and access to internal services.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72581"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/duhow/xiaoai-patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/duhow/xiaoai-patch/blob/main/api/main.py"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T11:17:31Z"
+  }
+}

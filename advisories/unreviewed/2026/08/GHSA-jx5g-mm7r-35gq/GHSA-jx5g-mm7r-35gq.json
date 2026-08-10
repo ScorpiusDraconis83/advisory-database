@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jx5g-mm7r-35gq",
+  "modified": "2026-08-10T12:31:51Z",
+  "published": "2026-08-10T12:31:51Z",
+  "aliases": [
+    "CVE-2026-71394"
+  ],
+  "details": "GNU Emacs for Android improperly validates the table header input in sfnt_read_table_directory() in src/sfnt.c. Due to an incorrect comparison variable in the read-length check, a crafted font file that claims to contain more table directory entries than actually present causes the parser to return a struct with uninitialized heap memory in the table directory entries. An attacker can deliver a malicious font file via email, EWW (Emacs Web Wowser), or documents with custom faces, causing Emacs to load it. This leads to the use of uninitialized heap data in subsequent table lookups, potentially resulting in information disclosure, crashes, or arbitrary memory access on 32-bit targets.\n\n\nThis issue is fixed after commit 7621ee1d01229d50e5c0cddea6bf0b01095a62cf",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71394"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2026/08/CVE-2026-71391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.gnu.org/savannah-checkouts/gnu/emacs/emacs.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-10T11:17:28Z"
+  }
+}
