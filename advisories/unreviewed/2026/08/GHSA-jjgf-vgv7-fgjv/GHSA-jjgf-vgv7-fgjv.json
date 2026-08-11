@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jjgf-vgv7-fgjv",
+  "modified": "2026-08-11T12:30:29Z",
+  "published": "2026-08-11T12:30:29Z",
+  "aliases": [
+    "CVE-2026-72610"
+  ],
+  "details": "A stored SQL injection vulnerability in Koha through 24.11.17, 25.05.12, 25.11.06, and 26.05.01 allows authenticated staff with the borrowers => edit_borrowers permission to cause a time-based denial of service by storing a SQL payload in a patron lang field. The value is concatenated raw into a subquery in Koha::AdditionalContents->search_for_display when an issue slip is printed for the affected patron. The 25-character column length limits exploitation to timing attacks; data extraction is not practical. The stored payload executes on each subsequent issue-slip print, scaling linearly with the SLEEP value and the number of slip-news rows.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72610"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.koha-community.org/bugzilla3/show_bug.cgi?id=42866"
+    },
+    {
+      "type": "WEB",
+      "url": "https://koha-community.org"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-11T12:17:44Z"
+  }
+}

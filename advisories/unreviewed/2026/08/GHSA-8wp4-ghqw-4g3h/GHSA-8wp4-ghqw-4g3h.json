@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8wp4-ghqw-4g3h",
+  "modified": "2026-08-11T12:30:23Z",
+  "published": "2026-08-11T12:30:23Z",
+  "aliases": [
+    "CVE-2026-72536"
+  ],
+  "details": "A missing authentication vulnerability in Chaskiq through commit 46dfdd1 allows unauthenticated remote attackers to manipulate any tenant Stripe subscription via the stripeCreateIntent GraphQL mutation. The mutation lacks authentication and authorization checks, exposing Stripe payment intent creation to unauthenticated callers. An attacker can create payment intents and alter billing for any tenant without credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72536"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chaskiq/chaskiq"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-11T12:17:38Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rvg3-vfj6-mf9f",
+  "modified": "2026-08-11T12:30:24Z",
+  "published": "2026-08-11T12:30:24Z",
+  "aliases": [
+    "CVE-2026-72546"
+  ],
+  "details": "An insecure direct object reference vulnerability in Attendize through commit 9289acb allows any authenticated event organiser to inject attendees and orders into events belonging to other accounts via the postInviteAttendee endpoint. The endpoint loads the target event by ID without scoping the query to the authenticated organiser account. An attacker can modify event data and financial records across account boundaries.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72546"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Attendize/Attendize"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-11T12:17:40Z"
+  }
+}
