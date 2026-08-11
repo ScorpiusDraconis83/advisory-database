@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8r52-43hm-h433",
+  "modified": "2026-08-11T18:31:54Z",
+  "published": "2026-08-11T18:31:54Z",
+  "aliases": [
+    "CVE-2016-20097"
+  ],
+  "details": "Weaver (Fanwei) E-cology 8.0 contains a SQL injection vulnerability in the SignatureDownLoad servlet that allows unauthenticated remote attackers to read arbitrary files by injecting a UNION SELECT payload into the markId GET parameter, which is concatenated unsanitized into a SQL query. Attackers can control the markPath value returned by the query to supply an attacker-controlled filesystem path, causing the servlet to read and stream back arbitrary files accessible to the application server process, including sensitive configuration files containing database credentials. Disclosure materials indicate that this vulnerability has been remediated, but it's unclear which version resolved the issue. Exploitation evidence was first observed by the Shadowserver Foundation on 2023-10-18 (UTC).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-20097"
+    },
+    {
+      "type": "WEB",
+      "url": "https://qkl.seebug.org/vuldb/ssvid-98091"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/weaver-e-cology-sql-injection-file-read-via-signaturedownload"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.weaver.com.cn/cs/ecology_full_log_en.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.weaver.com.cn/cs/securityDownload.html#"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wy.zone.ci/bug_detail.php?wybug_id=wooyun-2016-0198158"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-11T18:17:16Z"
+  }
+}
