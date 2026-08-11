@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vg2p-rf25-4wrx",
+  "modified": "2026-08-11T21:33:08Z",
+  "published": "2026-08-11T21:33:08Z",
+  "aliases": [
+    "CVE-2026-72742"
+  ],
+  "details": "DSPy 3.3.0b1 contains a file exfiltration vulnerability in the Image and Audio output field adapters that allows attackers with influence over language model outputs to read arbitrary local files by injecting a filesystem path into the url field of a parsed Image or Audio typed output. The JSONAdapter and ChatAdapter parse untrusted language model completions through parse_value into TypeAdapter validation, which triggers encode_image or encode_audio to read and base64-encode any local file path via the os.path.isfile branch in image.py and audio.py, subsequently embedding the file contents into outgoing prompt messages sent to the attacker-controlled model endpoint.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72742"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/stanfordnlp/dspy/issues/10067"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/stanfordnlp/dspy/commit/c69136b29aca4c00ca6da7667f7b80783188980e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/stanfordnlp/dspy"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dspy-0b1-local-file-read-via-image-audio-output-field-parsing"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-11T19:18:49Z"
+  }
+}

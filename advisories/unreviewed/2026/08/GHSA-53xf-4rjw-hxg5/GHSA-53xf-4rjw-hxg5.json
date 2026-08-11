@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-53xf-4rjw-hxg5",
-  "modified": "2026-08-10T09:31:22Z",
+  "modified": "2026-08-11T21:32:30Z",
   "published": "2026-08-10T09:31:22Z",
   "aliases": [
     "CVE-2026-18469"
   ],
   "details": "The Login & Register Forms  WordPress plugin before 4.0.2 does not enforce its password reset attempt limit against a server-derived value, keying both the verification code and the per-source attempt counter on client-controlled data, allowing unauthenticated attackers to reset the limit at will and brute-force the code to take over any account, including administrators, when the verification-code reset mode is enabled.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T07:16:50Z"

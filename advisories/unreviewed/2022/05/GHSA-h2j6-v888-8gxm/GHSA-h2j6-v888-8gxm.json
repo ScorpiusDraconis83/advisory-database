@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-h2j6-v888-8gxm",
-  "modified": "2022-05-24T17:17:17Z",
+  "modified": "2026-08-11T21:31:36Z",
   "published": "2022-05-24T17:17:17Z",
   "aliases": [
     "CVE-2020-3186"
   ],
   "details": "A vulnerability in the management access list configuration of Cisco Firepower Threat Defense (FTD) Software could allow an unauthenticated, remote attacker to bypass a configured management interface access list on an affected system. The vulnerability is due to the configuration of different management access lists, with ports allowed in one access list and denied in another. An attacker could exploit this vulnerability by sending crafted remote management traffic to the local IP address of an affected system. A successful exploit could allow the attacker to bypass the configured management access list policies, and traffic to the management interface would not be properly denied.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,7 +25,9 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
+    "cwe_ids": [
+      "CWE-284"
+    ],
     "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,

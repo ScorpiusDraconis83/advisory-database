@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c64r-rhpr-pqr5",
-  "modified": "2026-08-10T09:31:22Z",
+  "modified": "2026-08-11T21:32:30Z",
   "published": "2026-08-10T09:31:22Z",
   "aliases": [
     "CVE-2026-18960"
   ],
   "details": "The Block User Account WordPress plugin before 2.0.1 does not enforce its account block on every authentication path, allowing a blocked user who holds an application password created before the block to retain their full role-level read and write access through the REST API.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T07:16:50Z"

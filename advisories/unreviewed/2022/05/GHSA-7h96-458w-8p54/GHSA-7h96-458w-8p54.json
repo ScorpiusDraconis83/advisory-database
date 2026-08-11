@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7h96-458w-8p54",
-  "modified": "2022-05-24T16:45:07Z",
+  "modified": "2026-08-11T21:31:33Z",
   "published": "2022-05-24T16:45:07Z",
   "aliases": [
     "CVE-2019-1703"
   ],
   "details": "A vulnerability in the internal packet-processing functionality of Cisco Firepower Threat Defense (FTD) Software for the Cisco Firepower 2100 Series could allow an unauthenticated, remote attacker to cause an affected device to stop processing traffic, resulting in a denial of service (DoS) condition. The vulnerability is due to a logic error, which may prevent ingress buffers from being replenished under specific traffic conditions. An attacker could exploit this vulnerability by sending a series of crafted packets to an affected device. A successful exploit could allow the attacker to consume all input buffers, which are shared between all interfaces, leading to a queue wedge condition in all active interfaces. This situation would cause an affected device to stop processing any incoming traffic and result in a DoS condition until the device is reloaded manually.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,7 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
+    "cwe_ids": [
+      "CWE-400",
+      "CWE-770"
+    ],
     "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,

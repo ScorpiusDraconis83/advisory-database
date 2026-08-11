@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pmqf-jjx9-qv6f",
-  "modified": "2026-07-19T18:31:54Z",
+  "modified": "2026-08-11T21:32:23Z",
   "published": "2026-07-19T18:31:54Z",
   "aliases": [
     "CVE-2026-64182"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrivers/base/memory: fix memory block reference leak in poison accounting\n\nmemblk_nr_poison_inc() and memblk_nr_poison_sub() look up a memory block\nvia find_memory_block_by_id(), which acquires a reference to the memory\nblock device.\n\nBoth helpers use the returned memory block without dropping that\nreference, leaking the device reference on each successful lookup.  Drop\nthe reference after updating nr_hwpoison.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:18:00Z"

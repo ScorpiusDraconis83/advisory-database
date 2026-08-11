@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mr78-php7-96p9",
-  "modified": "2026-08-10T09:31:22Z",
+  "modified": "2026-08-11T21:32:30Z",
   "published": "2026-08-10T09:31:22Z",
   "aliases": [
     "CVE-2026-17540"
   ],
   "details": "The File Manager WordPress plugin before 6.9.1 does not properly authorise its file management commands, allowing any authenticated user, such as a subscriber, to read and delete arbitrary files under the WordPress installation directory, which could lead to the disclosure of the site's configuration secrets and to denial of service.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T07:16:49Z"

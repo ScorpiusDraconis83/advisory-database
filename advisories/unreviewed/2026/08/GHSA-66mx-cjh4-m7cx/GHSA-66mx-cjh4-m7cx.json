@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-66mx-cjh4-m7cx",
-  "modified": "2026-08-09T06:31:36Z",
+  "modified": "2026-08-11T21:32:29Z",
   "published": "2026-08-09T06:31:36Z",
   "aliases": [
     "CVE-2026-16992"
   ],
   "details": "The Create WordPress plugin before 2.5.4 does not perform an authorization check before returning content over one of its REST API routes, and that route additionally publishes the requested content as a side effect, allowing unauthenticated attackers to read unpublished content and to make it publicly available.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-09T06:18:10Z"

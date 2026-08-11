@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8m4x-wmgm-h3w9",
-  "modified": "2022-05-24T19:18:55Z",
+  "modified": "2026-08-11T21:31:47Z",
   "published": "2022-05-24T19:18:55Z",
   "aliases": [
     "CVE-2021-34762"
   ],
   "details": "A vulnerability in the web-based management interface of Cisco Firepower Management Center (FMC) Software could allow an authenticated, remote attacker to perform a directory traversal attack on an affected device. The attacker would require valid device credentials. The vulnerability is due to insufficient input validation of the HTTPS URL by the web-based management interface. An attacker could exploit this vulnerability by sending a crafted HTTPS request that contains directory traversal character sequences to an affected device. A successful exploit could allow the attacker to read or write arbitrary files on the device.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -21,7 +26,8 @@
   ],
   "database_specific": {
     "cwe_ids": [
-      "CWE-22"
+      "CWE-22",
+      "CWE-26"
     ],
     "severity": "HIGH",
     "github_reviewed": false,

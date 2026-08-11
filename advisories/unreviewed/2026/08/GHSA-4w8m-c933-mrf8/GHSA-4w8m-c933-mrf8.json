@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4w8m-c933-mrf8",
-  "modified": "2026-08-10T09:31:21Z",
+  "modified": "2026-08-11T21:32:29Z",
   "published": "2026-08-10T09:31:21Z",
   "aliases": [
     "CVE-2026-16298"
   ],
   "details": "The FoodBoxBooker WordPress plugin before 1.0.7 does not properly validate the password reset request, allowing unauthenticated attackers to reset the password of arbitrary users, including administrators, which could lead to a full site takeover.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T07:16:48Z"

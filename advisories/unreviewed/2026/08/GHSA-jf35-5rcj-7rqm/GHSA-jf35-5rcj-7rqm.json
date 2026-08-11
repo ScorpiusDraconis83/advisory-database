@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jf35-5rcj-7rqm",
-  "modified": "2026-08-10T09:31:22Z",
+  "modified": "2026-08-11T21:32:30Z",
   "published": "2026-08-10T09:31:22Z",
   "aliases": [
     "CVE-2026-17021"
   ],
   "details": "The Salon Booking System  WordPress plugin through 10.30.33 does not properly restrict access to some of its booking-modification AJAX actions and does not verify ownership of the targeted booking, allowing unauthenticated users to tamper with the stored total of arbitrary bookings.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T07:16:49Z"

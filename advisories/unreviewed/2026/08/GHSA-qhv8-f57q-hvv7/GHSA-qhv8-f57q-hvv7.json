@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qhv8-f57q-hvv7",
-  "modified": "2026-08-10T09:31:21Z",
+  "modified": "2026-08-11T21:32:29Z",
   "published": "2026-08-10T09:31:21Z",
   "aliases": [
     "CVE-2026-16257"
   ],
   "details": "The Arvow AI SEO Writer WordPress plugin before 1.5.4 does not properly restrict access to one of its REST endpoints, whose only access control can be bypassed by unauthenticated users through type juggling when the Arvow AI SEO Writer WordPress plugin before 1.5.4 has not been configured, allowing them to create arbitrary posts and pages and to disclose author account and taxonomy information.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T07:16:47Z"

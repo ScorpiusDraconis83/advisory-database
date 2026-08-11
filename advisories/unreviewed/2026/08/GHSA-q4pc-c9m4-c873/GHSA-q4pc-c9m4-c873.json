@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q4pc-c9m4-c873",
+  "modified": "2026-08-11T21:33:05Z",
+  "published": "2026-08-11T21:33:05Z",
+  "aliases": [
+    "CVE-2026-18687"
+  ],
+  "details": "MongoDB Server's handling of a Queryable Encryption maintenance operation did not properly validate certain request parameters against the collection's encrypted field configuration before use. An authenticated user with readWrite privileges could submit a specially formed request that leads to a server crash or excessive internal writes, resulting in resource exhaustion and corruption of encrypted index data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18687"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jira.mongodb.org/browse/SERVER-130628"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-11T19:17:22Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qgw2-v7vq-9g5r",
-  "modified": "2026-08-08T09:30:21Z",
+  "modified": "2026-08-11T21:32:28Z",
   "published": "2026-08-08T09:30:21Z",
   "aliases": [
     "CVE-2026-16559"
   ],
   "details": "The YMC Filter WordPress plugin before 3.12.9 does not sanitize SVG files uploaded through one of its icon upload features and permits their upload by low-privileged users, allowing users with the Author role and above to upload a file containing JavaScript that executes in the site's origin when the file is viewed.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-08T07:17:10Z"

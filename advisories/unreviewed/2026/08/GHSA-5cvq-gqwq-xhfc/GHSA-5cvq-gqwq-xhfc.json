@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5cvq-gqwq-xhfc",
+  "modified": "2026-08-11T21:33:08Z",
+  "published": "2026-08-11T21:33:08Z",
+  "aliases": [
+    "CVE-2026-69117"
+  ],
+  "details": "NetBox 4.5.8 contains an ORM injection vulnerability that allows authenticated attackers, including those with read-only API tokens, to inject arbitrary Django ORM lookup expressions into nested object references by supplying crafted JSON dictionary keys in POST, PUT, or PATCH requests to any REST API endpoint. Attackers can exploit the unrestricted queryset used by WritableNestedSerializer to perform boolean-based blind data extraction of sensitive field values and bypass object-level permissions across all application modules including dcim, ipam, tenancy, virtualization, circuits, and extras.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69117"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netbox-community/netbox/issues/21988"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netbox-community/netbox/pull/22013"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netbox-community/netbox/commit/b3489cd529ca00703a0b7fe4c45e91539add6df6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netbox-community/netbox"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netbox-orm-injection-via-writablenestedserializer"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-11T19:18:42Z"
+  }
+}

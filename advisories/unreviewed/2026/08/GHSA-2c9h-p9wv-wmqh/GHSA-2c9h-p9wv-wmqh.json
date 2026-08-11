@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2c9h-p9wv-wmqh",
-  "modified": "2026-08-10T09:31:22Z",
+  "modified": "2026-08-11T21:32:30Z",
   "published": "2026-08-10T09:31:22Z",
   "aliases": [
     "CVE-2026-18666"
   ],
   "details": "The Library Management System WordPress plugin before 3.6.7 does not sanitize and escape a user-supplied parameter before using it in a SQL statement, allowing users with a role as low as Subscriber to perform SQL injection and extract arbitrary data from the database, including user password hashes.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T07:16:50Z"
