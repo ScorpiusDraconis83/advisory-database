@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xvrx-cw3m-h23c",
+  "modified": "2026-08-11T21:33:11Z",
+  "published": "2026-08-11T21:33:11Z",
+  "aliases": [
+    "CVE-2026-29035"
+  ],
+  "details": "CivetWeb (commit 4a4f0c95) contains a heap and stack buffer overflow vulnerability in the read_websocket() function that allows unauthenticated remote attackers to corrupt memory by sending compressed WebSocket frames when both USE_ZLIB and MG_EXPERIMENTAL_INTERFACES are defined. Attackers can negotiate permessage-deflate during the WebSocket handshake and send a crafted frame with the RSV1 bit set, causing the server to write a 4-byte zlib sync trailer out-of-bounds past the allocated buffer, leading to heap metadata corruption, denial of service, or potential code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-29035"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/civetweb/civetweb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/civetweb-heap-stack-buffer-overflow-via-websocket-permessage-deflate-decompression"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-11T21:17:35Z"
+  }
+}

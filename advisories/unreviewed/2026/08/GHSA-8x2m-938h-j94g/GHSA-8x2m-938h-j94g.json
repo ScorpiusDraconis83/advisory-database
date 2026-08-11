@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8x2m-938h-j94g",
+  "modified": "2026-08-11T21:33:10Z",
+  "published": "2026-08-11T21:33:10Z",
+  "aliases": [
+    "CVE-2026-71467"
+  ],
+  "details": "A flaw was found in search-v2-api. The authentication middleware in the affected component unconditionally skips authentication when a request includes an `Upgrade: websocket` header. An unauthenticated attacker can exploit this by sending a specially crafted HTTP POST request to the `/federated` endpoint with the `Upgrade: websocket` header. This allows the attacker to bypass authentication and access federated search results across all configured remote managed hubs, leading to information disclosure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71467"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-71467"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2512146"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-11T20:18:45Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-27wm-9rgh-2vcq",
+  "modified": "2026-08-11T21:33:10Z",
+  "published": "2026-08-11T21:33:10Z",
+  "aliases": [
+    "CVE-2026-73032"
+  ],
+  "details": "PapersGPT for Zotero 0.6.1 contains a remote code execution vulnerability that allows attackers to execute arbitrary JavaScript by returning malicious code from an LLM endpoint that is passed unsanitized to window.eval() in views.ts. Attackers can exploit this through prompt injection in PDFs, MITM interception of API requests, or a malicious custom LLM endpoint to execute arbitrary code in Zotero's chrome-privileged context, enabling file read/write, process execution, and access to all Zotero data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73032"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/papersgpt/papersgpt-for-zotero/issues/154"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/papersgpt/papersgpt-for-zotero/pull/155"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/papersgpt/papersgpt-for-zotero/commit/094134172ce4a344a31e4b196cc75d1806383658"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/papersgpt/papersgpt-for-zotero"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/papersgpt-for-zotero-rce-via-unsanitized-llm-response-eval"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-11T20:18:46Z"
+  }
+}
