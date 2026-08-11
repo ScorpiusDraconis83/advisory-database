@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jm4c-88wp-rfjq",
+  "modified": "2026-08-11T15:32:45Z",
+  "published": "2026-08-11T15:32:45Z",
+  "aliases": [
+    "CVE-2026-18860"
+  ],
+  "details": "Velociraptor allows multi-tenant deployments named \"Orgs\".\n\nBy default Velociraptor, uses the ROOT org, but users can create child orgs for other tenants within the same deployment.\n\nUsers can have different permissions in each org. To manage Orgs, Velociraptor usually examines the ORG_ADMIN permission on the ROOT org.\n\nThis issue results from the Velociraptor server allowing for the deletion of Orgs by incorrectly checking the ORG_ADMIN permission of callers within the calling ORG instead of the ROOT org. However, Org admins of child orgs were able to add this permission to their ACL token within their own org. This allows an administrator in a child org, which is not also an administrator in the ROOT org, to delete other orgs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18860"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Velocidex/velociraptor/commit/dc38bd6a7e12a678cd79e726bdd1ded4eed75967"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.velociraptor.app/announcements/advisories/cve-2026-18860"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-280"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-11T15:17:28Z"
+  }
+}

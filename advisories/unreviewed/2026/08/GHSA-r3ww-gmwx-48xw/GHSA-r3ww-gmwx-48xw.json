@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r3ww-gmwx-48xw",
+  "modified": "2026-08-11T15:32:38Z",
+  "published": "2026-08-11T15:32:38Z",
+  "aliases": [
+    "CVE-2026-72774"
+  ],
+  "details": "n8n before 1.123.67, 2.31.5, and 2.32.1 contains a credential authorization bypass in the HTTP Request node. An authenticated member with edit access to a shared workflow can reference another user's credential while specifying the credential type via an expression. Because the pre-execution permission check compares the unresolved expression instead of the resolved credential type, the ownership check is skipped and the credential is loaded at execution time, allowing the member to use or exfiltrate a credential they were not granted. Exploitation requires knowing the target credential's identifier.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:N/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/n8n-io/n8n/security/advisories/GHSA-6qc9-mqvw-jg7x"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72774"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/n8n-before-authentication-bypass-via-http-request-node"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-11T13:19:07Z"
+  }
+}

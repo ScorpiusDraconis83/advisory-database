@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mg62-j9w6-5hfh",
+  "modified": "2026-08-11T15:32:37Z",
+  "published": "2026-08-11T15:32:37Z",
+  "aliases": [
+    "CVE-2026-72747"
+  ],
+  "details": "AVideo fails to sanitize the phone field during user registration, allowing unauthenticated attackers to inject malicious JavaScript that persists in the database. When administrators visit the users management page, the unsanitized phone value is rendered via innerHTML, executing the injected script in the admin's browser session.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/security/advisories/GHSA-cfvq-r985-84wj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72747"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/commit/1adcb75458a3b31058655698a833e8cbde4d0593"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/avideo-stored-cross-site-scripting-via-unauthenticated-registration"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-11T13:19:05Z"
+  }
+}
