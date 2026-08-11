@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mf77-wwf7-m2ff",
-  "modified": "2026-07-24T18:31:27Z",
+  "modified": "2026-08-11T18:30:38Z",
   "published": "2026-07-24T18:31:26Z",
   "aliases": [
     "CVE-2026-64213"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (lm90) Add lock protection to lm90_alert\n\nSashiko reports:\n\nlm90_alert() executes in the smbus alert context and calls\nlm90_update_confreg() to disable the hardware alert line, without\nacquiring hwmon_lock.\n\nConcurrently, sysfs write operations (such as lm90_write_convrate) hold\nthe hwmon_lock, temporarily modify data->config, and then restore it.\n\nIf an alert interrupt occurs concurrently with a sysfs write, the sysfs\npath will overwrite the alert handler's modifications to data->config\nand the hardware register.\n\nThis unintentionally re-enables the hardware alert line while the alarm is\nstill active, causing an interrupt storm.\n\nAdd the missing lock to lm90_alert() to solve the problem.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T16:16:48Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7pc5-4w4m-mhg6",
-  "modified": "2026-07-19T18:31:52Z",
+  "modified": "2026-08-11T18:30:36Z",
   "published": "2026-07-19T18:31:51Z",
   "aliases": [
     "CVE-2026-64094"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: bla: avoid NULL-ptr deref for claim via dropped interface\n\nWithout rtnl_lock held, a hardif might be retrieved as primary interface of\na meshif, but then (while operating on this interface) getting decoupled\nfrom the mesh interface. In this case, the meshif still exists but the\npointer from the primary hardif to the meshif is set to NULL.\n\nThe mesh_iface must be checked first to be non-NULL before continuing to\nsend an ARP request using meshif.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:50Z"

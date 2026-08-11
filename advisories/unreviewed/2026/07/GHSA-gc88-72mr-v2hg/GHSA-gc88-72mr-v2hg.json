@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gc88-72mr-v2hg",
-  "modified": "2026-07-24T18:31:27Z",
+  "modified": "2026-08-11T18:30:39Z",
   "published": "2026-07-24T18:31:27Z",
   "aliases": [
     "CVE-2026-64215"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm/a6xx: Check kzalloc return in a8xx_hfi_send_perf_table\n\nCheck the return value of kzalloc() to prevent a NULL pointer\ndereference on allocation failure.\n\nPatchwork: https://patchwork.freedesktop.org/patch/721342/",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T16:16:49Z"
