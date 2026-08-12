@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hc43-m36c-8v33",
+  "modified": "2026-08-12T16:21:36Z",
+  "published": "2026-06-10T00:31:51Z",
+  "aliases": [
+    "CVE-2026-41696"
+  ],
+  "summary": "Spring Data MongoDB Has Regex Parameter Binding Injection in @Query Repository Methods",
+  "details": "Spring Data MongoDB repository query methods annotated with @Query that use regex parameter binding perform insufficient validation of the bound parameter. An attacker can supply a crafted string to break out of the intended regular expression quoting.\n\nAffected versions:\nSpring Data MongoDB 5.0.0 through 5.0.5; 4.5.0 through 4.5.11; 4.4.0 through 4.4.14; 4.3.0 through 4.3.16; 4.2.0 through 4.2.15; 4.1.0 through 4.1.14; 4.0.0 through 4.0.15; 3.4.0 through 3.4.19.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.data:spring-data-mongodb"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.0.6"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.0.5"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.data:spring-data-mongodb"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.5.0"
+            },
+            {
+              "fixed": "4.5.12"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.5.11"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.data:spring-data-mongodb"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.4.0"
+            },
+            {
+              "last_affected": "4.4.14"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.data:spring-data-mongodb"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "last_affected": "4.3.16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.data:spring-data-mongodb"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "3.4.19"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41696"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spring-projects/spring-data-mongodb/issues/5205"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spring-projects/spring-data-mongodb/commit/24d5afc0c7df223150e06fce3f64c226bcc88ca2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spring-projects/spring-data-mongodb/commit/7d2ea784d262bf4bf4ea8402505f491c8ab66fcc"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/spring-projects/spring-data-mongodb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://spring.io/security/cve-2026-41696"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-943"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-12T16:21:36Z",
+    "nvd_published_at": "2026-06-10T00:16:50Z"
+  }
+}
