@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-37c6-v768-8x6w",
+  "modified": "2026-08-12T03:31:17Z",
+  "published": "2026-08-12T03:31:17Z",
+  "aliases": [
+    "CVE-2026-66878"
+  ],
+  "details": "A flaw was found in multicloud-operators-subscription. A privileged user, specifically a namespace administrator capable of creating Channel and Subscription resources, can exploit this vulnerability. By manipulating the Channel.Spec.SecretRef.Namespace field, the user can cause the system to copy sensitive Secret contents from other namespaces into their own, leading to information disclosure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66878"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-66878"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2514226"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T02:16:37Z"
+  }
+}

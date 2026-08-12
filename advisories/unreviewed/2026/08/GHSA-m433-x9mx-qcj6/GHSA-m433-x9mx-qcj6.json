@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m433-x9mx-qcj6",
+  "modified": "2026-08-12T03:31:16Z",
+  "published": "2026-08-12T03:31:16Z",
+  "aliases": [
+    "CVE-2026-68447"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: clamp v9 CRIU control stack checkpoint copy to BO size\n\nCRIU checkpoint copies the MQD control stack using cp_hqd_cntl_stack_size\nfrom hardware without bounding it to the allocated BO region. If the HW\nfield is larger than the queue's control stack allocation, memcpy reads\npast the BO into adjacent GTT memory and can leak kernel data to userspace.\n\nStore the page-aligned control stack BO size in mqd_manager and clamp\ncheckpoint copies and reported checkpoint sizes to\nmin(cp_hqd_cntl_stack_size, mm->ctl_stack_size). Apply the same bound\nfor multi-XCC v9.4.3 checkpoint layout.\n\n(cherry picked from commit 6c2abd0ec09e86c6323010673766f76050e28aa3)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68447"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/426ffae6ecc7ec77d32bf8be065c21a1b881b084"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0d87beb2660a5098b2b0ecdc1e96810a9074ea9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T01:17:07Z"
+  }
+}
