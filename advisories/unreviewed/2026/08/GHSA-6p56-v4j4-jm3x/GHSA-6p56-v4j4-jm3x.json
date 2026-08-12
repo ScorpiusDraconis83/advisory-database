@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6p56-v4j4-jm3x",
+  "modified": "2026-08-12T12:32:54Z",
+  "published": "2026-08-12T12:32:54Z",
+  "aliases": [
+    "CVE-2026-15213"
+  ],
+  "details": "The Welcart e-Commerce WordPress plugin before 2.11.33 does not verify the authenticity of its convenience-store / bank-transfer settlement callback: an unauthenticated request can flip an order from unpaid to settled purely from an order number and a status flag, with no signature, amount, or origin check. Because these are pay-later methods, an attacker can mark their own unpaid order as settled and obtain fulfilment without paying.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/4ca89701-8abc-4ecb-9834-a648ab1c4da1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T12:17:46Z"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qfr4-ppjq-9gr3",
+  "modified": "2026-08-12T12:32:54Z",
+  "published": "2026-08-12T12:32:54Z",
+  "aliases": [
+    "CVE-2026-68868"
+  ],
+  "details": "The Google Cloud Secret Manager secrets backend in Apache Airflow's Google provider never applied the team scope when resolving Connections and Variables: the caller's `team_name` was accepted by the backend but dropped at the internal call boundary, so every lookup resolved against the team-agnostic secret name. In a deployment running multi-team mode with this backend, a task or Dag belonging to one team resolved another team's Connection or Variable, obtaining its credentials in full. No unusual configuration is required beyond enabling multi-team mode and using this backend. Users are advised to upgrade to apache-airflow-providers-google 22.3.0 or later, which builds and applies the team-scoped secret name.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68868"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/70869"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/03h5y0fmqlh0yf055zlocxh591ozx69x"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1220"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T11:17:10Z"
+  }
+}

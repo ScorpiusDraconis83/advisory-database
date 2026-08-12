@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9qrg-7832-x9w4",
+  "modified": "2026-08-12T12:32:53Z",
+  "published": "2026-08-12T12:32:53Z",
+  "aliases": [
+    "CVE-2026-18652"
+  ],
+  "details": "Velociraptor allows reading Stacked result sets from the GUI.  Velociraptor's multi-tenant design stores sub orgs within the datastore directory. The path requested by the GUI is not correctly checked against the prefix deny list, allowing result sets to read from denied prefixes.\n\nIn particular, a user with read access to the root org can access result sets from child orgs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18652"
+    },
+    {
+      "type": "WEB",
+      "url": "http://docs.velociraptor.app/announcements/advisories/cve-2026-18652"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T10:17:16Z"
+  }
+}

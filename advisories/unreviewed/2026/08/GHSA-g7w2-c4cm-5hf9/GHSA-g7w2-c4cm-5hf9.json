@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g7w2-c4cm-5hf9",
+  "modified": "2026-08-12T12:32:54Z",
+  "published": "2026-08-12T12:32:54Z",
+  "aliases": [
+    "CVE-2026-70560"
+  ],
+  "details": "Ultimate POS (Stock Management & Point of Sale) contains a stored cross-site scripting vulnerability that allows low-privileged authenticated attackers to inject arbitrary HTML and script markup by setting a malicious payload in the user first-name field during account creation. Attackers with a low-privileged role such as Cashier can submit a leave request through the HRM/Leave module, causing the unsanitized first-name markup to execute in the browser session of any higher-privileged user who views the leave-application notification pane, enabling cross-user session compromise within the admin origin.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:A/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70560"
+    },
+    {
+      "type": "WEB",
+      "url": "https://codecanyon.net/item/ultimate-pos-stock-management-point-of-sale-application/21216332"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aaronamran/CVE-Disclosures/tree/main/CVE-2026/CVE-2026-70560"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ultimate-pos-stored-xss-via-first-name-field-in-leave-notifications"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T12:19:47Z"
+  }
+}

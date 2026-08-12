@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g8f7-gp6h-9f2x",
+  "modified": "2026-08-12T12:32:54Z",
+  "published": "2026-08-12T12:32:54Z",
+  "aliases": [
+    "CVE-2026-16621"
+  ],
+  "details": "The Payment Gateway for PayPal on WooCommerce WordPress plugin before 9.2.1 does not verify that payment actually succeeded before completing an order in its PayPal return handler: it reads attacker-controlled parameters, performs no amount comparison and no order-ownership check, and completes the order even when the server-side gateway verification fails, allowing an unauthenticated attacker to mark arbitrary orders as paid without paying.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16621"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/76c4cff2-1166-45fe-9517-5eda2d24c35d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T12:17:46Z"
+  }
+}
