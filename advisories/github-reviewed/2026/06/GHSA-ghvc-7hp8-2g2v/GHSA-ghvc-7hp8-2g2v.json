@@ -1,13 +1,13 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-ghvc-7hp8-2g2v",
-  "modified": "2026-08-06T19:12:38Z",
+  "modified": "2026-08-12T18:43:59Z",
   "published": "2026-06-12T12:31:34Z",
   "aliases": [
     "CVE-2026-50645"
   ],
   "summary": "Apache cxf-core: No restriction on attachment headers per message",
-  "details": "There is no restriction on the amount of attachment headers that a message can contain when being deserialized by Apache CXF, which can lead to uncontrolled resource consumption or a denial of service attack. Users are recommended to upgrade to versions 4.2.2 or 4.1.7, which fix this issue by imposing a maximum default of 500 attachments per message.",
+  "details": "There is no restriction on the amount of attachment headers that a message can contain when being deserialized by Apache CXF, which can lead to uncontrolled resource consumption or a denial of service attack. Users are recommended to upgrade to versions 4.2.2 or 4.1.7 or 3.6.12, which fix this issue by imposing a maximum default of 500 attachments per message.",
   "severity": [
     {
       "type": "CVSS_V3",
@@ -44,10 +44,29 @@
           "type": "ECOSYSTEM",
           "events": [
             {
-              "introduced": "0"
+              "introduced": "4.0.0"
             },
             {
               "fixed": "4.1.7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.cxf:cxf-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.6.12"
             }
           ]
         }
@@ -58,6 +77,10 @@
     {
       "type": "ADVISORY",
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-50645"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cxf.apache.org/security-advisories.data/CVE-2026-50645.txt"
     },
     {
       "type": "PACKAGE",
