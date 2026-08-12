@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r937-wjx7-w2jp",
+  "modified": "2026-08-12T19:25:23Z",
+  "published": "2026-06-26T15:32:13Z",
+  "aliases": [
+    "CVE-2026-53914"
+  ],
+  "summary": "JetBrains Kotlin: Unsafe Deserialization in Kotlin Build Cache Enables Code Execution",
+  "details": "In JetBrains Kotlin before 2.4.20 code execution was possible via unsafe deserialization in the build cache metadata",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jetbrains.kotlin:kotlin-gradle-plugin"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.4.20-Beta1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53914"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/JetBrains/kotlin/commit/bf51df665b458fda7c3eaf436c4d88dc119d7ec6"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/JetBrains/kotlin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/JetBrains/kotlin/releases/tag/v2.4.20-Beta1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jetbrains.com/privacy-security/issues-fixed"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-12T19:25:23Z",
+    "nvd_published_at": "2026-06-26T14:17:05Z"
+  }
+}
