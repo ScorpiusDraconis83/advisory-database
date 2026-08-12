@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vx5q-9x62-9qqg",
-  "modified": "2026-08-03T12:32:36Z",
+  "modified": "2026-08-12T18:31:04Z",
   "published": "2026-07-25T12:31:29Z",
   "aliases": [
     "CVE-2026-64290"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommufd: Break the loop on failure in iommufd_fault_fops_read()\n\nOn a copy_to_user() failure inside the inner list_for_each_entry, only the\ninner loop breaks; the outer while re-fetches the just-restored fault group\nand retries the failing copy_to_user() forever, spinning the reader at 100%\nCPU with fault->mutex held.\n\nCheck rc after the inner loop and break the outer while as well.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-835"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:09Z"

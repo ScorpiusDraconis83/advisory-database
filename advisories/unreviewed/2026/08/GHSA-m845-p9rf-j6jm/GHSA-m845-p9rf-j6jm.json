@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m845-p9rf-j6jm",
-  "modified": "2026-08-12T06:30:50Z",
+  "modified": "2026-08-12T18:31:14Z",
   "published": "2026-08-12T06:30:50Z",
   "aliases": [
     "CVE-2026-15249"
   ],
   "details": "The Patterns Kit WordPress plugin through 1.0.3 does not escape a link attribute before its client-side script inserts it into the page, allowing users with a role as low as Contributor to store a payload that executes in the browser of a user who views the content and clicks the affected element.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-12T06:18:09Z"

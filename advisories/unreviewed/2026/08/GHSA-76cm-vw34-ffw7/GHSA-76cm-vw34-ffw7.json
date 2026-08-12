@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-76cm-vw34-ffw7",
-  "modified": "2026-08-10T09:31:22Z",
+  "modified": "2026-08-12T18:31:04Z",
   "published": "2026-08-10T09:31:22Z",
   "aliases": [
     "CVE-2026-19089"
   ],
   "details": "The Product Input Fields for WooCommerce WordPress plugin before 2.0.2 does not validate uploaded file types when its accepted-types setting is left empty, which its own documentation advertises as accepting all files, allowing unauthenticated attackers to upload arbitrary files and achieve remote code execution on servers that do not honour the directory's access rules.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T07:16:51Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-525g-3r8r-9mf7",
-  "modified": "2026-07-19T18:31:52Z",
+  "modified": "2026-08-12T18:31:02Z",
   "published": "2026-07-19T18:31:52Z",
   "aliases": [
     "CVE-2026-64105"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: vgic: Free private_irqs when init fails after allocation\n\nCompanion to commit 250f25367b58 (\"KVM: arm64: Tear down vGIC on\nfailed vCPU creation\"), which added the missing kvm_vgic_vcpu_destroy()\ncall to the kvm_share_hyp() failure path in kvm_arch_vcpu_create(). The\nkvm_vgic_vcpu_init() failure path immediately above it has the same\nshape and still needs the same cleanup.\n\nCall kvm_vgic_vcpu_destroy() when kvm_vgic_vcpu_init() fails so private\nIRQs allocated before a redistributor iodev registration failure are\nreleased before the failed vCPU is freed.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:51Z"

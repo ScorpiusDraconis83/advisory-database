@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3p6p-hf89-xh98",
-  "modified": "2026-07-24T18:31:29Z",
+  "modified": "2026-08-12T18:31:03Z",
   "published": "2026-07-24T18:31:29Z",
   "aliases": [
     "CVE-2026-64253"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nkernel/fork: clear PF_BLOCK_TS in copy_process()\n\nPF_BLOCK_TS is only set in blk_time_get_ns() when current->plug is\nnon-NULL, and blk_finish_plug() clears it via __blk_flush_plug()\nbefore NULLing the plug pointer.  copy_process() breaks the\ninvariant by inheriting PF_BLOCK_TS from the parent while resetting\nthe child's plug to NULL.\n\nClear PF_BLOCK_TS alongside that assignment so callers can rely on\n\"PF_BLOCK_TS set implies current->plug != NULL\" and dereference\ncurrent->plug unguarded.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T16:16:55Z"

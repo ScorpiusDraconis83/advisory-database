@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9629-rv6j-mh73",
-  "modified": "2026-08-12T06:30:50Z",
+  "modified": "2026-08-12T18:31:14Z",
   "published": "2026-08-12T06:30:50Z",
   "aliases": [
     "CVE-2026-16253"
   ],
   "details": "The Total Upkeep  WordPress plugin before 1.17.3 does not adequately protect the secret that authorizes its backup-restore functionality and exposes it to unauthenticated users, allowing them to disclose sensitive backup information and to force a full site restore that overwrites the live site's files and database.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-12T06:18:55Z"
