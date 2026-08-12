@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q939-rpr3-3284",
+  "modified": "2026-08-12T15:19:10Z",
+  "published": "2026-08-12T15:19:10Z",
+  "aliases": [
+    "CVE-2026-48798"
+  ],
+  "summary": "SSH.NET: ScpClient Recursive Download Allows Arbitrary File Write via Server-Controlled SCP Filenames",
+  "details": "## Summary\n\n`ScpClient.Download(string directoryName, DirectoryInfo directoryInfo)` writes files and directories using names returned by the remote SCP server during recursive downloads, with no validation that the resulting path stays inside the requested local directory. A malicious, compromised, or man-in-the-middle SCP server can return names containing `../` sequences (or absolute paths), causing the client to create directories and write/overwrite files anywhere the client process has access. This is similar to OpenSSH [CVE-2019-6111](https://github.com/advisories/GHSA-jr78-hfw4-xp7g), but with directory traversal capability.\n\n## Impact\n\nA malicious/compromised/MITM SCP server can create or write files outside the intended download directory, anywhere the client process can write. Overwriting files such as ~/.ssh/authorized_keys, shell rc files, cron entries, or application binaries/config can lead to persistence, privilege escalation, or remote code execution on the client host. Requires the victim to perform a directory download from the attacker-controlled server.\n\n## Remediation\n\nThe fixed release ensures that remotely-supplied file and directory names are valid local names such that the constructed local path is contained within the given local directory, and throws `ScpException` when an invalid name is detected.\n\n[600be0de543765995a189b5d7cd4efac5007f3ce](https://github.com/sshnet/SSH.NET/commit/600be0de543765995a189b5d7cd4efac5007f3ce)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "SSH.NET"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2026.0.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2025.1.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/sshnet/SSH.NET/security/advisories/GHSA-q939-rpr3-3284"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sshnet/SSH.NET/commit/600be0de543765995a189b5d7cd4efac5007f3ce"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/sshnet/SSH.NET"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22",
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-12T15:19:10Z",
+    "nvd_published_at": null
+  }
+}
