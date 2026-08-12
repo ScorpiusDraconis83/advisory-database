@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7f2v-x3jw-5w6g",
+  "modified": "2026-08-12T21:31:40Z",
+  "published": "2026-08-12T21:31:40Z",
+  "aliases": [
+    "CVE-2026-49466"
+  ],
+  "details": "Draft List is a WordPress plugin to manage and promote unpublished content. Versions 2.6.3 and below are vulnerable to stored Cross-Site Scripting (XSS) in the `[drafts]` shortcode and Draft List widget when the documented custom `template` option places the `{{draft}}` placeholder inside an HTML attribute. The vulnerable code inserts the raw draft `post_title` into `{{draft}}` when the current viewer cannot edit posts. Because the template is sanitized before `{{draft}}` replacement, a Contributor can store a quote-only title payload that breaks out of an attribute in a site-configured Draft List template and executes JavaScript for visitors who load the public page. Version 2.6.4 fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/dartiss/draft-list/security/advisories/GHSA-xxx9-hfqp-f83f"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49466"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dartiss/draft-list/compare/2.6.3...2.6.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dartiss/draft-list/releases/tag/2.6.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T20:17:44Z"
+  }
+}

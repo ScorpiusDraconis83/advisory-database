@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4336-pf6g-hp94",
+  "modified": "2026-08-12T21:31:44Z",
+  "published": "2026-08-12T21:31:44Z",
+  "aliases": [
+    "CVE-2026-13622"
+  ],
+  "details": "A symlink following vulnerability was found in KubeVirt's virt-handler migration proxy. During live migration, virt-handler dials Unix sockets inside the target virt-launcher pod via /proc/<pid>/root/ paths using net.Dial() without symlink protection. These socket paths reside in qemu-owned directories writable by the virt-launcher user. An attacker with namespace edit and pods/exec permissions can replace a migration proxy socket with a symlink to the host CRI-O socket. Because virt-handler runs as root in the host mount namespace, absolute symlink targets resolve against the host filesystem, and the bidirectional io.Copy proxy relays attacker-controlled bytes to the container runtime, enabling full node compromise.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13622"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-13622"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2494142"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T21:17:35Z"
+  }
+}

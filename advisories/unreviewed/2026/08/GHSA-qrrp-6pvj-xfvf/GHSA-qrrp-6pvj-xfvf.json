@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qrrp-6pvj-xfvf",
+  "modified": "2026-08-12T21:31:45Z",
+  "published": "2026-08-12T21:31:45Z",
+  "aliases": [
+    "CVE-2026-64826"
+  ],
+  "details": "rConfig before 8.2.13 contains a path traversal vulnerability that allows authenticated attackers to read arbitrary files by supplying unsanitized directory traversal sequences in the filename GET parameter of the download_export() method. Attackers can craft requests with ../ sequences to escape the exports base directory and access sensitive files readable by the web server process, including application environment files containing encryption keys, database credentials, and mail configuration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64826"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rconfig/rconfig/pull/349"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rconfig/rconfig/commit/d133a466a2df9d065177de9a8ed50f1bfe438aee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rconfig/rconfig/releases/tag/core-8.2.13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rconfig-path-traversal-file-read-via-filedownloadcontroller"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T21:17:39Z"
+  }
+}

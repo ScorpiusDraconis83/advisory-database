@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-89gj-r2fq-qc5h",
-  "modified": "2026-07-24T18:31:28Z",
+  "modified": "2026-08-12T21:31:09Z",
   "published": "2026-07-24T18:31:28Z",
   "aliases": [
     "CVE-2026-64237"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: elan_i2c - validate firmware size before use\n\nEnsure that the firmware file is large enough to contain the expected\nnumber of pages and the signature (which resides at the end of the\nfirmware blob) before accessing them to prevent potential out-of-bounds\nreads.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T16:16:52Z"

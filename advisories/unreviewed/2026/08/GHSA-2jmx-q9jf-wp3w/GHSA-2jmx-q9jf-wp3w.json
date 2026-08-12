@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2jmx-q9jf-wp3w",
+  "modified": "2026-08-12T21:31:42Z",
+  "published": "2026-08-12T21:31:42Z",
+  "aliases": [
+    "CVE-2026-72807"
+  ],
+  "details": "SiYuan versions before v3.7.4 contain a second-order SQL injection vulnerability in attribute-view template columns that expose the queryBlocks function, which executes raw SQL using string substitution instead of parameterized queries. Attackers can distribute malicious SiYuan documents or packages with crafted template columns that execute arbitrary SQL on a victim's kernel when the package is imported and rendered, enabling read and write access across notebooks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-x67c-8pwr-m8g3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72807"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/siyuan-before-sql-injection-via-queryblocks-template"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T20:17:52Z"
+  }
+}

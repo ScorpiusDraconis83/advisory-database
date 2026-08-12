@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v2j8-qhjm-8g37",
-  "modified": "2026-08-12T15:30:45Z",
+  "modified": "2026-08-12T21:31:34Z",
   "published": "2026-08-12T15:30:45Z",
   "aliases": [
     "CVE-2025-59320"
   ],
   "details": "CPSD CryptoPro Secure Disk for Bitlocker before v7.7.4 stores TPM2.0 secrets in a serialized format within unused disk sectors. An unauthenticated attacker with physical access to the system disk can recover this information and craft an environment to unseal the TPM.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-922"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-12T15:17:29Z"

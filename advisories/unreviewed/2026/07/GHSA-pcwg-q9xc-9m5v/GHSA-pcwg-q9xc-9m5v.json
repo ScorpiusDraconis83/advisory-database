@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pcwg-q9xc-9m5v",
-  "modified": "2026-07-24T18:31:28Z",
+  "modified": "2026-08-12T21:31:08Z",
   "published": "2026-07-24T18:31:28Z",
   "aliases": [
     "CVE-2026-64231"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm/dsi: don't dump registers past the mapped region\n\nOn DSI 6G platforms the IO address space is internally adjusted by\nio_offset. Later this adjusted address might be used for memory dumping.\nHowever the size that is used for memory dumping isn't adjusted to\naccount for the io_offset, leading to the potential access to the\nunmapped region. Lower ctrl_size by the io_offset value to prevent\naccess past the mapped area.\n\n msm_disp_snapshot_add_block+0x1d4/0x3c8 [msm] (P)\n msm_dsi_host_snapshot+0x4c/0x78 [msm]\n msm_dsi_snapshot+0x28/0x50 [msm]\n msm_disp_snapshot_capture_state+0x74/0x140 [msm]\n msm_disp_snapshot_state_sync+0x60/0x90 [msm]\n _msm_disp_snapshot_work+0x30/0x90 [msm]\n kthread_worker_fn+0xdc/0x460\n kthread+0x120/0x140\n\nPatchwork: https://patchwork.freedesktop.org/patch/721747/",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T16:16:52Z"

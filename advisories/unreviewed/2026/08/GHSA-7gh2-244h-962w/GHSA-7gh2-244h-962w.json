@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7gh2-244h-962w",
+  "modified": "2026-08-12T21:31:37Z",
+  "published": "2026-08-12T21:31:37Z",
+  "aliases": [
+    "CVE-2026-18675"
+  ],
+  "details": "The dataplane token validator in kuma-cp performs an unchecked Go type assertion on the JWT kid header. A token whose kid is a JSON number decodes as a float64 and triggers a runtime panic before any signature, claims, or authorization check runs.\n\n\n\nThe panic terminates the entire kuma-cp process, HTTP API, the health and readiness endpoints, and xDS. Unauthenticated access to the dataplane gRPC server can trigger the crash with a malformed token\n\n\n\nA single request is a transient interruption; sustaining an outage requires repeated requests.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/security/advisories/GHSA-5mxq-7xq4-3vx8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18675"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17465"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17467"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17468"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17469"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17470"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17471"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17472"
+    },
+    {
+      "type": "WEB",
+      "url": "https://developer.konghq.com/mesh/changelog"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-248"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T19:17:30Z"
+  }
+}

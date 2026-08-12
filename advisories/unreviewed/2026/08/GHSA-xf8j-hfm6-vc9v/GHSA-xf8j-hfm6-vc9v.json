@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xf8j-hfm6-vc9v",
+  "modified": "2026-08-12T21:31:41Z",
+  "published": "2026-08-12T21:31:41Z",
+  "aliases": [
+    "CVE-2026-72791"
+  ],
+  "details": "SiYuan v3.7.4-alpha.1 (a pre-release; the endpoint does not exist in stable v3.7.3 or earlier) contains an information disclosure vulnerability in the /api/av/getAttributeViewFieldViews endpoint. The route is registered with CheckAuth only and applies no publish-access filtering, so reader-role callers can retrieve the complete database view structure — every view's name, icon, layout type, and per-field Hidden flag — for any database whose avID is supplied, regardless of authorization. The issue was introduced by commit acfc02ee8 and fixed in v3.7.4.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-57v5-wqx3-cgj4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72791"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/siyuan-before-information-disclosure-via-getattributeviewfieldviews"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T20:17:50Z"
+  }
+}

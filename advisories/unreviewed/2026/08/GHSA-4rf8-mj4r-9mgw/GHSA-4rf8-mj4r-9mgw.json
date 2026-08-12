@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4rf8-mj4r-9mgw",
-  "modified": "2026-08-12T06:30:50Z",
+  "modified": "2026-08-12T21:31:34Z",
   "published": "2026-08-12T06:30:50Z",
   "aliases": [
     "CVE-2026-16737"
   ],
   "details": "The WP Travel Engine  WordPress plugin before 6.8.5 does not perform authorization or ownership checks when loading a caller-supplied booking identifier in one of its unauthenticated cart actions, allowing unauthenticated attackers to disclose any customer's booking order details and their stored billing information, and to overwrite that customer's booking record with their own data.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-12T06:19:10Z"
