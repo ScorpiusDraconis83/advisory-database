@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gchq-rq43-fjjm",
-  "modified": "2026-08-10T09:31:21Z",
+  "modified": "2026-08-12T15:30:30Z",
   "published": "2026-08-10T09:31:21Z",
   "aliases": [
     "CVE-2026-13170"
   ],
   "details": "The Eventin  WordPress plugin before 4.1.20 does not properly validate a template path setting before using it to include a local file, allowing users with editor-level access and above to include and execute arbitrary local PHP files.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T07:16:46Z"

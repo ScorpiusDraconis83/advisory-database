@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2q5f-pw9r-2w7m",
+  "modified": "2026-08-12T15:30:44Z",
+  "published": "2026-08-12T15:30:44Z",
+  "aliases": [
+    "CVE-2026-53996"
+  ],
+  "details": "NetBSD's hdaudio(4) driver in sys/dev/hdaudio/hdaudio.c contains a missing access control vulnerability that allows unprivileged local attackers to invoke the HDAUDIO_FGRP_SETCONFIG ioctl without elevated permissions by exploiting the absence of an access check on /dev/hdaudioN device nodes. Attackers can repeatedly issue HDAUDIO_FGRP_SETCONFIG from one thread while keeping DMA and IRQs live from a second thread to trigger a use-after-free race condition in hdafg_detach() between stream_stop() and stream_disestablish(), where a latched DMA interrupt dereferences a freed callback pointer, resulting in outcomes ranging from audio-subsystem denial of service and kernel panic to potential local kernel privilege escalation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cvsweb.NetBSD.org/bsdweb.cgi/src/sys/dev/hdaudio/hdaudio.c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/n4sm/c9683ca728ecfada6c726f2a5afb50ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gnats.netbsd.org/60492"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netbsd-hdaudio-4-driver-privilege-bypass-use-after-free-via-hdaudio-fgrp-setconfig-ioctl"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T13:17:22Z"
+  }
+}

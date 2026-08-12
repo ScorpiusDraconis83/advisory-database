@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-777r-4xhv-7pp2",
-  "modified": "2026-07-19T18:31:54Z",
+  "modified": "2026-08-12T15:30:27Z",
   "published": "2026-07-19T18:31:54Z",
   "aliases": [
     "CVE-2026-64179"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: wwan: iosm: fix potential memory leaks in ipc_imem_init()\n\nThe memory allocated in ipc_protocol_init() is not freed on the error\npaths that follow in ipc_imem_init(). Fix that by calling the\ncorresponding release function ipc_protocol_deinit() in the error path.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -44,8 +49,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:18:00Z"

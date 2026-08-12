@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-q3rf-7cjg-vf9x",
-  "modified": "2026-08-12T06:30:51Z",
+  "modified": "2026-08-12T15:30:43Z",
   "published": "2026-08-12T06:30:50Z",
   "aliases": [
     "CVE-2026-18962"
   ],
   "details": "The WP Photo Album Plus WordPress plugin before 9.2.09.002 does not check that the current user is allowed to upload into the album they target when it processes a front-end upload, allowing any authenticated user, such as a Subscriber, to upload files into albums owned by other users or by the administrator. Exploitation requires the WP Photo Album Plus WordPress plugin before 9.2.09.002's front-end user upload feature to be enabled, which is not the default.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-12T06:20:55Z"

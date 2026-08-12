@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-98wq-55q3-fr94",
-  "modified": "2026-08-12T06:30:50Z",
+  "modified": "2026-08-12T15:30:43Z",
   "published": "2026-08-12T06:30:50Z",
   "aliases": [
     "CVE-2026-19052"
   ],
   "details": "The ProSolution WP Client WordPress plugin before 2.0.9 does not perform capability checks on two administrative AJAX actions, and the nonce they rely on is published on its public frontend, allowing any authenticated user, such as a subscriber, to trigger an administrative data synchronisation and to clear the ProSolution WP Client WordPress plugin before 2.0.9's activity records.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-12T06:21:05Z"
