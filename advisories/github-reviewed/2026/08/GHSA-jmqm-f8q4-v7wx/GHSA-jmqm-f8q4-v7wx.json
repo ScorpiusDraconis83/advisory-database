@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jmqm-f8q4-v7wx",
+  "modified": "2026-08-12T15:16:22Z",
+  "published": "2026-08-12T15:16:22Z",
+  "aliases": [
+    "CVE-2026-45694"
+  ],
+  "summary": "LibreNMS: Reflected XSS via Proxmox instance/vmid GET parameters injected into document.title JavaScript assignment",
+  "details": "### Summary\n`LegacyController.php:75` writes the page title into a `document.title` JS assignment using string interpolation. `apps/proxmox.inc.php` pushes `$vars['instance']` and `$vars['vmid']` (GET params, only `strip_tags()` applied) directly into `$pagetitle`. A single quote terminates the JS string, executing arbitrary script.\n\n### Details\n```php\n// LegacyController.php:75\n$html .= \"<script>\\ndocument.title = '$title';\\n</script>\";\n\n// proxmox.inc.php:38,42\n$pagetitle[] = $instance;     // GET ?instance=\n$pagetitle[] = $vars['vmid']; // GET ?vmid=\n```\n\n### PoC\n```\nhttp://target/apps?app=proxmox&instance=%27%3Balert%28document.cookie%29%3B//\n\nConfirmed in response:\ndocument.title = 'Apps - Proxmox - ';alert(document.cookie);// - LibreNMS';\n```\n\n### Fix\n```php\n// LegacyController.php:75\n$html .= \"<script>\\ndocument.title = \" . json_encode($title) . \";\\n</script>\";\n```\nAlso wrap `$instance` and `$vars['vmid']` in `htmlspecialchars()` in proxmox.inc.php.\n\n### Prerequisite\nAny authenticated session. Victim must follow a crafted link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "librenms/librenms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "26.5.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 26.4.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/librenms/librenms/security/advisories/GHSA-jmqm-f8q4-v7wx"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/librenms/librenms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/librenms/librenms/releases/tag/26.5.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-12T15:16:22Z",
+    "nvd_published_at": null
+  }
+}
