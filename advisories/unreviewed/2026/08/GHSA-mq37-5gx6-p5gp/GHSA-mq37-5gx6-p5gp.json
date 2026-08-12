@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mq37-5gx6-p5gp",
+  "modified": "2026-08-12T00:31:12Z",
+  "published": "2026-08-12T00:31:12Z",
+  "aliases": [
+    "CVE-2026-68432"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: require CAP_NET_ADMIN in the device netns for changelink\n\nA tunnel changelink() operates on at most two netns, dev_net(dev) and\nthe sticky underlay netns vxlan->net. They differ once the device is\ncreated in or moved to a netns other than the one the request runs in.\nThe rtnl changelink path checks CAP_NET_ADMIN only against dev_net(dev),\nso a caller privileged there but not in vxlan->net can rewrite a vxlan\ndevice whose underlay lives in vxlan->net.\n\nvxlan_changelink() validates and applies the new configuration against\nvxlan->net (vxlan_config_validate(vxlan->net, ...)) and can reopen the\nunderlay socket in that netns, so the same reasoning as the tunnel\nchangelink series applies here.\n\nGate vxlan_changelink() with rtnl_dev_link_net_capable(), at the top of\nthe op before any attribute is parsed, matching ipgre_changelink() and\nthe rest of the \"require CAP_NET_ADMIN in the device netns for\nchangelink\" series.\n\nFound by 0sec automated security-research tooling (https://0sec.ai).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68432"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32d10c46bfde3e9b274e9e1bd6399d0ebea8f60f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a61bd9637f3d929aa846e4eb3d98b48c26fcb0e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/730c7e5fea7f06e0cdf21c547222ec93234fd1d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3793d7dccb192ffff29894d11824db6251acdd5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8ad0d311e225939a9a6c745d6cc384c7364ec87"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T00:17:43Z"
+  }
+}
