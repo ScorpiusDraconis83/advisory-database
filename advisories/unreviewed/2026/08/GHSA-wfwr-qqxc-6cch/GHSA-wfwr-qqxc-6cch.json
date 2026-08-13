@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wfwr-qqxc-6cch",
+  "modified": "2026-08-13T00:31:26Z",
+  "published": "2026-08-13T00:31:26Z",
+  "aliases": [
+    "CVE-2026-71846"
+  ],
+  "details": "A flaw was found in insights-client. The component's ServiceAccount is bound to a ClusterRole granting cluster-wide secrets get, list, and watch permissions, while the code only requires access to a single specific Secret. This excessive privilege means that a compromise of the insights-client pod or ServiceAccount token would grant an attacker read access to all Secrets across the hub cluster, including managed-cluster kubeconfigs and other sensitive credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71846"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-71846"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2512569"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-250"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T22:17:16Z"
+  }
+}

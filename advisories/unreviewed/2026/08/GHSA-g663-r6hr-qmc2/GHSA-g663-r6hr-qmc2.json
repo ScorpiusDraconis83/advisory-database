@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g663-r6hr-qmc2",
+  "modified": "2026-08-13T00:31:25Z",
+  "published": "2026-08-13T00:31:25Z",
+  "aliases": [
+    "CVE-2026-18727"
+  ],
+  "details": "A flaw was found in open-iscsi's iscsiuio component. This vulnerability involves an integer underflow and out-of-bounds read during Dynamic Host Configuration Protocol for IPv6 (DHCPv6) packet parsing. Specifically, crafted DHCPv6 Advertise traffic with a short User Datagram Protocol (UDP) length can cause the DHCPv6 payload length to underflow. An unauthenticated attacker on an adjacent network segment can exploit this by sending specially crafted IPv6 UDP traffic while the client is in an active DHCPv6 exchange, leading to a denial of service due to a process crash or service disruption.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18727"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-18727"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2462956"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-191"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T22:17:14Z"
+  }
+}

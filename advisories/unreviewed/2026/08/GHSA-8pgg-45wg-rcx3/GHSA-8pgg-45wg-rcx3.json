@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8pgg-45wg-rcx3",
+  "modified": "2026-08-13T00:31:25Z",
+  "published": "2026-08-13T00:31:25Z",
+  "aliases": [
+    "CVE-2026-18744"
+  ],
+  "details": "Any authenticated case participant can fetch any OTHER vendor's CaseStatement + per-vul CaseMemberStatus by supplying that member's id — test_func only checks _is_my_case, not ownership of kwargs['member']. Bypasses share_status; leaks embargoed vendor affected/not-affected + statement text cross-tenant.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18744"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CERTCC/VINCE/pull/235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/CERTCC/VINCE"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-12T22:17:14Z"
+  }
+}
