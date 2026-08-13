@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8pgg-45wg-rcx3",
-  "modified": "2026-08-13T00:31:25Z",
+  "modified": "2026-08-13T18:31:26Z",
   "published": "2026-08-13T00:31:25Z",
   "aliases": [
     "CVE-2026-18744"
   ],
   "details": "Any authenticated case participant can fetch any OTHER vendor's CaseStatement + per-vul CaseMemberStatus by supplying that member's id — test_func only checks _is_my_case, not ownership of kwargs['member']. Bypasses share_status; leaks embargoed vendor affected/not-affected + statement text cross-tenant.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-12T22:17:14Z"

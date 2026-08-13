@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6mf3-xx2m-8j4w",
-  "modified": "2026-07-24T18:31:28Z",
+  "modified": "2026-08-13T18:31:10Z",
   "published": "2026-07-24T18:31:28Z",
   "aliases": [
     "CVE-2026-64242"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: net2280: Fix double free in probe error path\n\nusb_initialize_gadget() installs gadget_release() as the release\ncallback for the embedded gadget device.  The struct net2280 instance is\ntherefore released through gadget_release() when the gadget device's last\nreference is dropped.\n\nThe probe error path calls net2280_remove(), which tears down the\npartially initialized device and drops the gadget reference with\nusb_put_gadget().  Calling kfree(dev) afterwards can free the same object\nagain.\n\nDrop the explicit kfree() and let the gadget device release callback\nhandle the final free.  This issue was found by a static analysis tool\nI am developing.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T16:16:53Z"

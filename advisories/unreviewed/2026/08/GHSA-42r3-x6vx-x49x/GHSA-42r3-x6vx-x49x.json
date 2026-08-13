@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-42r3-x6vx-x49x",
-  "modified": "2026-08-13T15:34:41Z",
+  "modified": "2026-08-13T18:31:32Z",
   "published": "2026-08-13T15:34:41Z",
   "aliases": [
     "CVE-2026-67991"
   ],
   "details": "crmne/ruby_llm at commit fa6f279847d6d7027814539d9c0dfc3bbdfd2a83 contains a polynomial-time regular expression denial-of-service condition in RubyLLM::Utils.underscore on Ruby 3.1.x. A very long crafted class, agent, or tool name can cause excessive CPU consumption and a denial of service.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-1333"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-13T14:17:11Z"

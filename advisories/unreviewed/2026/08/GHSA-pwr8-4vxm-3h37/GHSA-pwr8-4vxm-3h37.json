@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pwr8-4vxm-3h37",
-  "modified": "2026-08-13T15:34:43Z",
+  "modified": "2026-08-13T18:31:37Z",
   "published": "2026-08-13T15:34:43Z",
   "aliases": [
     "CVE-2026-66256"
   ],
   "details": "** UNSUPPORTED WHEN ASSIGNED ** Deserialization of Untrusted Data vulnerability in Apache Shindig.\n\nThis issue affects Apache Shindig: all versions.\n\nUsers with access to the Shindig REST API can send specially-crafted requests to trigger arbitrary code execution on the server.\n\nAs this project is retired, we do not plan to release a version that fixes this issue. Users are recommended to find an alternative or restrict access to the instance to trusted users.\n\nNOTE: This vulnerability only affects products that are no longer supported by the maintainer.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -17,13 +22,17 @@
     {
       "type": "WEB",
       "url": "https://lists.apache.org/thread/opgpnhk149614gx6vcy3lvyjnycw8mkh"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/08/13/7"
     }
   ],
   "database_specific": {
     "cwe_ids": [
       "CWE-502"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-13T15:19:56Z"

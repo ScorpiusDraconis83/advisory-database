@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8p6w-m6x6-m837",
-  "modified": "2026-08-12T15:30:45Z",
+  "modified": "2026-08-13T18:31:23Z",
   "published": "2026-08-12T15:30:45Z",
   "aliases": [
     "CVE-2025-59321"
   ],
   "details": "CPSD CryptoPro Secure Disk for Bitlocker before v7.7.4 contains a default TPM PCR policy that fails to consider the system boot state. This allows the TPM to be unsealed via an unintended execution path or from another hardware platform.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-1188"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-12T15:17:29Z"

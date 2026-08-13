@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7xx9-9ph7-5fr7",
-  "modified": "2026-08-12T15:30:45Z",
+  "modified": "2026-08-13T18:31:24Z",
   "published": "2026-08-12T15:30:45Z",
   "aliases": [
     "CVE-2025-59323"
   ],
   "details": "CPSD CryptoPro Secure Disk for Bitlocker before v7.7.4 fails to validate the integrity of the DataStore, a non-partitioned filesystem, responsible for storing configuration and cryptographic details. Crafted DataStore contents can impact service availability and/or allow for code execution in the context of high privilege.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-12T15:17:30Z"

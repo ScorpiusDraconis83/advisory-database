@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r3xf-cfg3-3pgx",
+  "modified": "2026-08-13T18:31:41Z",
+  "published": "2026-08-13T18:31:41Z",
+  "aliases": [
+    "CVE-2026-59109"
+  ],
+  "details": "SQL injection in the Zalktis accounting application via\ntrading-partner-controlled text fields in received electronic invoices. When\nimporting a received e-invoice (UBL/PEPPOL) or an e-commerce export, Zalktis\nconcatenates partner-controlled values directly into SQL statement text using\nstring concatenation, with neither parameterised queries nor escaping. The\napplication's own escaping helper, Dazadi.sql_txt(),\nis not invoked on these code paths, so a party that sends an invoice can break\nout of the string literal and alter the query logic.\n\n\n\n\n\n\n\n\n\nThis issue affects Zalktis: before 2026.1.586 and before 2026.2.592.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cvd.cert.lv/disclosed/vuln-all-631428755"
+    },
+    {
+      "type": "WEB",
+      "url": "https://offseq.com/en/research/zalktis-cve-2026-59109"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T17:17:29Z"
+  }
+}

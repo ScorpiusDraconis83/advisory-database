@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f444-wc3x-6c2g",
-  "modified": "2026-08-12T06:30:49Z",
+  "modified": "2026-08-13T18:31:22Z",
   "published": "2026-08-12T06:30:49Z",
   "aliases": [
     "CVE-2026-13612"
   ],
   "details": "The KiviCare  WordPress plugin before 4.5.2 does not verify that the requesting user owns the records being accessed, allowing authenticated patient-level users to read other patients' bills, invoices and appointment details.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-12T06:17:29Z"

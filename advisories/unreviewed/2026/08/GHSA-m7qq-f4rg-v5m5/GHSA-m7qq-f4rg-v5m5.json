@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m7qq-f4rg-v5m5",
+  "modified": "2026-08-13T18:31:39Z",
+  "published": "2026-08-13T18:31:39Z",
+  "aliases": [
+    "CVE-2026-24059"
+  ],
+  "details": "The GET /api/v1/user/actions/runners/registration-token endpoint (and its owner- and repository-level equivalents) creates a new runner registration token if none exists, yet the API scope middleware classifies it as read-only because it is a GET request. A holder of a leaked read:user-scoped token can therefore mint a registration token and register a malicious Actions runner that executes workflow jobs with access to repository secrets and source code.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-gitea/gitea/security/advisories/GHSA-v43r-86x9-8523"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-gitea/gitea/pull/36801"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.gitea.com/release-of-1.25.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-gitea/gitea/releases/tag/v1.25.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T17:17:21Z"
+  }
+}

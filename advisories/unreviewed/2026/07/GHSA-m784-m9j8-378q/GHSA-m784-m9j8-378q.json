@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m784-m9j8-378q",
-  "modified": "2026-07-24T18:31:28Z",
+  "modified": "2026-08-13T18:31:10Z",
   "published": "2026-07-24T18:31:28Z",
   "aliases": [
     "CVE-2026-64246"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: reset: linkstation-poweroff: fix use-after-free in the linkstation_poweroff_init()\n\nMove of_node_put(dn) after the of_match_node() call, which still needs\nthe node pointer. The node reference is correctly released after use.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -44,8 +49,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T16:16:54Z"

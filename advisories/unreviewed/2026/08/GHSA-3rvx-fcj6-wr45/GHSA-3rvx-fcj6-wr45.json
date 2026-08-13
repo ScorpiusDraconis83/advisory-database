@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3rvx-fcj6-wr45",
+  "modified": "2026-08-13T18:31:41Z",
+  "published": "2026-08-13T18:31:41Z",
+  "aliases": [
+    "CVE-2026-18428"
+  ],
+  "details": "A SQL query validation bypass in the Flint extension query handler in the OpenSearch SQL plugin allows a remote authenticated actor with async query access to execute arbitrary code on Apache Spark workers by sending a crafted SQL query to the direct query endpoint.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/opensearch-project/sql/security/advisories/GHSA-g4jr-343c-fvjm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18428"
+    },
+    {
+      "type": "WEB",
+      "url": "https://aws.amazon.com/security/security-bulletins/2026-081-aws"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://opensearch.org/artifacts/by-version/?_gl=1*d14pqp*_up*MQ..*_ga*Nzc5NTAxNzM2LjE3ODM1NTA2NDA.*_ga_BQV14XK08F*czE3ODM1NTA2NDAkbzEkZzEkdDE3ODM1NTA3MTQkajU2JGwwJGg3NTc4ODY0OTM.#release-2-19-6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://opensearch.org/artifacts/by-version/?_gl=1*d14pqp*_up*MQ..*_ga*Nzc5NTAxNzM2LjE3ODM1NTA2NDA.*_ga_BQV14XK08F*czE3ODM1NTA2NDAkbzEkZzEkdDE3ODM1NTA3MTQkajU2JGwwJGg3NTc4ODY0OTM.#release-3-7-0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-693"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T18:17:21Z"
+  }
+}

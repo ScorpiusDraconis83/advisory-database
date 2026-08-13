@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hmrv-6g38-c354",
-  "modified": "2026-07-24T18:31:29Z",
+  "modified": "2026-08-13T18:31:10Z",
   "published": "2026-07-24T18:31:29Z",
   "aliases": [
     "CVE-2026-64249"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfpga: region: fix use-after-free in child_regions_with_firmware()\n\nMove of_node_put(child_region) after the error print to avoid accessing\nfreed memory when pr_err() references child_region.\n\n[ Yilun: Fix the Fixes tag ]",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-24T16:16:54Z"
