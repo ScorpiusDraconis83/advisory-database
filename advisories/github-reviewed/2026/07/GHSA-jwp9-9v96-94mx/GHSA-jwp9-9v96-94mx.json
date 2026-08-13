@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jwp9-9v96-94mx",
-  "modified": "2026-07-10T18:32:08Z",
+  "modified": "2026-08-13T14:18:43Z",
   "published": "2026-07-10T00:31:25Z",
   "aliases": [
     "CVE-2026-39243"
   ],
+  "summary": "decompress allows arbitrary hardlink creation during archive extraction",
   "details": "decompress before 4.2.2 allows arbitrary hardlink creation during archive extraction, enabling file read disclosure and file corruption. When processing hardlink entries (type === 'link'), the x.linkname field from the archive is passed directly to fs.link() without validation (index.js line 113). An attacker can craft an archive with a hardlink entry whose linkname is an absolute path to any file on the same filesystem. This creates a hardlink inside the extraction directory that shares the same inode as the target file, enabling both reading and overwriting the original file's content. Hardlinks are limited to files on the same filesystem and cannot target directories.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "decompress"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "4.2.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -24,7 +45,7 @@
       "url": "https://github.com/kevva/decompress/issues/113"
     },
     {
-      "type": "WEB",
+      "type": "PACKAGE",
       "url": "https://github.com/kevva/decompress"
     },
     {
@@ -37,8 +58,8 @@
       "CWE-59"
     ],
     "severity": "MODERATE",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-13T14:18:43Z",
     "nvd_published_at": "2026-07-09T22:17:04Z"
   }
 }
