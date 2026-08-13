@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-w757-xvvv-vgfw",
-  "modified": "2026-07-16T21:30:38Z",
+  "modified": "2026-08-13T18:29:07Z",
   "published": "2026-07-16T21:30:38Z",
   "aliases": [
     "CVE-2026-63397"
   ],
+  "summary": "Genql: inject arbitrary JavaScript or TypeScript via a GraphQL schema",
   "details": "remorses/genql before version 6.3.4 allows an authenticated attacker with control of the GraphQL schema that is passed to genql to inject arbitrary JavaScript or TypeScript. The malicious code is injected into the generated schema.ts file and executes when the genql client is bundled and imported.",
   "severity": [
     {
@@ -14,10 +15,30 @@
     },
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@genql/cli"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.3.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -25,6 +46,14 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/remorses/genql/issues/197"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/remorses/genql/commit/2dbc80ffb767ee58e6b27d9d81d58fa1ee8bea28"
+    },
+    {
+      "type": "PACKAGE",
       "url": "https://github.com/remorses/genql"
     },
     {
@@ -45,8 +74,8 @@
       "CWE-116"
     ],
     "severity": "HIGH",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-13T18:29:06Z",
     "nvd_published_at": "2026-07-16T20:16:47Z"
   }
 }
