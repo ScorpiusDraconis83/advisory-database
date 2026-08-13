@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h75v-4jxv-ppxm",
+  "modified": "2026-08-13T12:31:11Z",
+  "published": "2026-08-13T12:31:11Z",
+  "aliases": [
+    "CVE-2026-73621"
+  ],
+  "details": "GitPython before 3.1.56 contains an argument injection vulnerability in the Commit.count() method, which forwards keyword arguments to 'git rev-list' without the check_unsafe_options guard present in the sibling iter_items method. An attacker who can control options passed to Commit.count (e.g., via an application that forwards a user-supplied options dict) can supply output=<path>, causing 'git rev-list --output=<path>' to open and truncate the target file to zero bytes before revision parsing. This allows destruction/blanking of an arbitrary file at the process's privilege level (no content control, 0-byte truncation).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitpython-developers/GitPython/security/advisories/GHSA-p538-c434-8v24"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73621"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gitpython-before-arbitrary-file-truncation-via-commit-count"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-88"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T12:17:27Z"
+  }
+}
