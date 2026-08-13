@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5mjq-6xvh-rmv2",
+  "modified": "2026-08-13T21:36:11Z",
+  "published": "2026-08-13T21:36:11Z",
+  "aliases": [
+    "CVE-2026-72685"
+  ],
+  "details": "A flaw in Elasticsearch allows a low-privileged authenticated user who can index documents to submit a single small document containing a crafted user-supplied input. Processing one such document occupies a worker thread from a bounded pool for a disproportionate amount of time, degrading the availability of indexing operations on the affected node.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-security-update-esa-2026-77/389500"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-407"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T20:17:29Z"
+  }
+}

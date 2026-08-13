@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4ppv-hgww-58v5",
+  "modified": "2026-08-13T21:36:08Z",
+  "published": "2026-08-13T21:36:08Z",
+  "aliases": [
+    "CVE-2026-72657"
+  ],
+  "details": "Authorization Bypass Through User-Controlled Key (CWE-639) in Fleet Server can lead to information disclosure via Manipulating User-Controlled Variables (CAPEC-77). The authorization decision for artifact downloads relied on a client-supplied value that was persisted without being validated against the server-side record of the requesting agent's assignment. An authenticated party in possession of a valid enrolled agent credential could therefore retrieve a policy the agent is not assigned to.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72657"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/fleet-server-8-19-20-9-4-5-9-5-1-security-update-esa-2026-112/389509"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T20:17:25Z"
+  }
+}

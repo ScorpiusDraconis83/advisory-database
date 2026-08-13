@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3fq3-9257-ppm7",
+  "modified": "2026-08-13T21:36:08Z",
+  "published": "2026-08-13T21:36:08Z",
+  "aliases": [
+    "CVE-2026-72651"
+  ],
+  "details": "Allocation of Resources Without Limits or Throttling (CWE-770) in Kibana can lead to denial of service via Excessive Allocation (CAPEC-130). An authenticated user with read-only privileges to the alerting feature could submit a specially crafted, malformed payload that causes the Kibana process to consume excessive resources. A single request is sufficient to leave Kibana unable to serve requests for all users until the process is restarted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72651"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-106/389522"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T20:17:25Z"
+  }
+}

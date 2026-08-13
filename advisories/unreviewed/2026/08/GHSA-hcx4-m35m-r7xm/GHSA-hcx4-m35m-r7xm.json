@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hcx4-m35m-r7xm",
+  "modified": "2026-08-13T21:36:08Z",
+  "published": "2026-08-13T21:36:08Z",
+  "aliases": [
+    "CVE-2026-72650"
+  ],
+  "details": "Authorization Bypass Through User-Controlled Key (CWE-639) in Kibana can lead to information disclosure via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). An authenticated user who is authorized to read alerting rules in a single Kibana space could retrieve alerting rule execution telemetry that belongs to spaces the user is not authorized to access. The disclosed telemetry includes rule identifiers, rule names, space identifiers, execution outcomes, timestamps, and execution counters.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72650"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-105/389521"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T20:17:25Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7p5f-mrpf-cqr2",
+  "modified": "2026-08-13T21:36:09Z",
+  "published": "2026-08-13T21:36:09Z",
+  "aliases": [
+    "CVE-2026-72660"
+  ],
+  "details": "Uncaught Exception (CWE-248), resulting from Improper Input Validation (CWE-20), in Kibana can lead to denial of service via Input Data Manipulation (CAPEC-153). An authenticated user holding only low-privileged access can cause an internal error condition in Kibana by supplying specially crafted data. The resulting error is raised on an execution path so it propagates as an uncaught exception and terminates the Kibana process. Kibana is unavailable to all users until the service is restarted, and the condition can be triggered repeatedly.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72660"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-20-9-3-8-and-9-4-5-security-update-esa-2026-101/389517"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-248"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T20:17:26Z"
+  }
+}

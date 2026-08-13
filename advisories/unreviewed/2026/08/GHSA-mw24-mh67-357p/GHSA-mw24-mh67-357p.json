@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mw24-mh67-357p",
+  "modified": "2026-08-13T21:36:09Z",
+  "published": "2026-08-13T21:36:09Z",
+  "aliases": [
+    "CVE-2026-72664"
+  ],
+  "details": "Missing Authorization (CWE-862) in Kibana can lead to unauthorized execution of Elastic Defend response actions on managed hosts via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). A Kibana user who holds only detection rule authoring privileges for the Elastic Security solution can associate automated endpoint response actions with a detection rule, even though the dedicated Endpoint response action privileges that govern those capabilities (host isolation, process operations, and execute operations) have not been granted to that user. When such a rule generates alerts, the associated response actions are carried out against the matching hosts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72664"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-95/389527"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T20:17:26Z"
+  }
+}

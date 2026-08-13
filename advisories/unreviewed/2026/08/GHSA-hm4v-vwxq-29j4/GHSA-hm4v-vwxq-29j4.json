@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hm4v-vwxq-29j4",
+  "modified": "2026-08-13T21:36:07Z",
+  "published": "2026-08-13T21:36:07Z",
+  "aliases": [
+    "CVE-2026-72632"
+  ],
+  "details": "Observable Discrepancy (CWE-203) in Kibana Fleet can lead to information disclosure via Excavation (CAPEC-116). Fleet removes the Elasticsearch API key value of an enrolled Elastic Agent from the responses of its agent listing capability, but that capability accepted caller-supplied filter expressions over the stored field that holds the value, and evaluated them with Kibana's own internal Elasticsearch privileges rather than the caller's. Because the number of matching agents is reported back to the caller, the difference between a matching and a non-matching filter formed a side channel from which the full API key value could be reconstructed one character at a time with a short sequence of requests.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72632"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-129/389532"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-203"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T20:17:24Z"
+  }
+}
