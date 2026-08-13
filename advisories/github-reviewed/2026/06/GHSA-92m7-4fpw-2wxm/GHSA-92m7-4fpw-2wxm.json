@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-92m7-4fpw-2wxm",
+  "modified": "2026-08-13T20:50:56Z",
+  "published": "2026-06-10T15:31:31Z",
+  "aliases": [
+    "CVE-2026-53440"
+  ],
+  "summary": "Jenkins: Open Redirect phishing attacks possible via \"from\" parameter in \"Delegate to servlet container\"",
+  "details": "Jenkins 2.567 and earlier, LTS 2.555.2 and earlier does not ensure that the \"from\" parameter in the \"Delegate to servlet container\" security realm is safe to redirect to after login, allowing attackers to perform phishing attacks by redirecting users to an attacker-controlled domain.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.main:jenkins-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.555.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.main:jenkins-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.556"
+            },
+            {
+              "fixed": "2.568"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53440"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/jenkins/commit/38071826c9a2113e1104714595262827a87b392f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/jenkins/commit/c45e93f2d77d94ea3b0545eb5aca32b808a27586"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/jenkins"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2026-06-10/#SECURITY-3721"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-13T20:50:56Z",
+    "nvd_published_at": "2026-06-10T14:16:36Z"
+  }
+}
