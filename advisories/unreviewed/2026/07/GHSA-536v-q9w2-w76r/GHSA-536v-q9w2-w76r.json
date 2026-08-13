@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-536v-q9w2-w76r",
-  "modified": "2026-07-19T18:31:53Z",
+  "modified": "2026-08-13T15:34:13Z",
   "published": "2026-07-19T18:31:53Z",
   "aliases": [
     "CVE-2026-64129"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/migrate_device: fix spinlock leak in migrate_vma_insert_huge_pmd_page\n\nWhen check_stable_address_space() fails after the PMD spinlock has\nbeen acquired via pmd_lock(), the code jumps directly to the abort\nlabel, bypassing the spin_unlock() call in unlock_abort. This causes\nthe PMD spinlock to be permanently held, leading to a deadlock.\n\nChange the goto target from abort to unlock_abort to ensure the\nspinlock is always released on this error path.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:54Z"

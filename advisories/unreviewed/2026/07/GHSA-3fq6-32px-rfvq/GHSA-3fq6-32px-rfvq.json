@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3fq6-32px-rfvq",
-  "modified": "2026-07-25T12:31:29Z",
+  "modified": "2026-08-13T15:34:19Z",
   "published": "2026-07-25T12:31:29Z",
   "aliases": [
     "CVE-2026-64288"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: nv: Avoid dereferencing NULL VNCR pseudo-TLB\n\nVNCR TLB invalidation occurs from MMU notifiers or TLBI instructions,\nand either can race against a vcpu not being onlined yet (no pseudo-TLB\nallocated). Similarly, the TLB might be invalid, and the invalidation\nshould be skipped in this case.\n\nBoth kvm_invalidate_vncr_ipa() and kvm_invalidate_vncr_va() are\nexpected to perform the same checks, except that the latter doesn't\ncheck for the allocation and blindly dereferences the pointer.\n\nSolve this by introducing a new iterator built on top of the usual\nkvm_for_each_vcpu() that checks for both of the above conditions,\nand convert the two users to it.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:09Z"

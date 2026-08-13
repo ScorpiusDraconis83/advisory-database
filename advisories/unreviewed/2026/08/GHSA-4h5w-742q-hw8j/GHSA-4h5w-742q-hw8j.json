@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4h5w-742q-hw8j",
+  "modified": "2026-08-13T15:34:43Z",
+  "published": "2026-08-13T15:34:43Z",
+  "aliases": [
+    "CVE-2026-68454"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: pci: Fix handling of AIF enable without AISB\n\nWhen a guest seeks to register IRQs without a summary bit specified,\nensure that the associated GAITE then stores 0 for the guest AISB\nlocation instead of virt_to_phys(page_address(NULL)).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68454"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/124a3769c43713a11a93a821b313e61ad5110cb8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3e3aa6da87d30a0064a17b836685cd43c90a3572"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ef3190e30601b2688bdc64169b938b8d7f42010"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d48b9b096d11e31690c0a4988f65f21b64c01b2a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df72596278b0e22dac5ef2881e9221a3a2c4ed11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f887df91826e72b570c5e9298e66dd929f09edde"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T15:19:58Z"
+  }
+}

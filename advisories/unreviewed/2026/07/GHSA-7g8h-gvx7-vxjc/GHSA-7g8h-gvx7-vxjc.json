@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7g8h-gvx7-vxjc",
-  "modified": "2026-07-19T18:31:53Z",
+  "modified": "2026-08-13T15:34:14Z",
   "published": "2026-07-19T18:31:53Z",
   "aliases": [
     "CVE-2026-64135"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (pmbus/adm1266) widen blackbox-info buffer to I2C_SMBUS_BLOCK_MAX\n\nadm1266_nvmem_read_blackbox() declares a 5-byte stack buffer and\npasses it to i2c_smbus_read_block_data() to retrieve the 4-byte\nBLACKBOX_INFO response.  i2c_smbus_read_block_data() does not honour\ncaller buffer sizes -- it memcpy()s data.block[0] bytes from the\nSMBus transaction (where data.block[0] is the length byte returned by\nthe slave device, up to I2C_SMBUS_BLOCK_MAX = 32):\n\n\tmemcpy(values, &data.block[1], data.block[0]);\n\nIf the device returns any block length above 5, the call overflows\nthe caller's 5-byte stack buffer before the post-call\n\n\tif (ret != 4)\n\t\treturn -EIO;\n\ncheck has a chance to reject the response.\n\nWiden the local buffer to I2C_SMBUS_BLOCK_MAX so the helper has room\nfor any well-formed SMBus block response, matching the convention used\nby the other i2c_smbus_read_block_data() callers in this driver.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:55Z"

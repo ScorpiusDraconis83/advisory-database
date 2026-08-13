@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5w89-7hjx-x8fr",
-  "modified": "2026-07-19T18:31:54Z",
+  "modified": "2026-08-13T15:34:16Z",
   "published": "2026-07-19T18:31:54Z",
   "aliases": [
     "CVE-2026-64168"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: sprd: fix error pointer deref after DMA setup failure\n\nThe driver falls back to PIO mode if DMA setup fails during probe.\n\nMake sure to check the dma.enabled flag before trying to release the DMA\nchannels also on late probe errors to avoid dereferencing an error\npointer (or attempting to release a channel a second time).\n\nThis issue was flagged by Sashiko when reviewing a devres allocation\nconversion patch.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:58Z"

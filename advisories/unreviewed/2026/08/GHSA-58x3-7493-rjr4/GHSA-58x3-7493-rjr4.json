@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-58x3-7493-rjr4",
+  "modified": "2026-08-13T15:34:37Z",
+  "published": "2026-08-13T15:34:37Z",
+  "aliases": [
+    "CVE-2026-73584"
+  ],
+  "details": "A flaw was found in sblim-sfcb. A local, low-privileged attacker can exploit a race condition during privileged instance migration by manipulating a temporary file in the `/tmp` directory. By repeatedly recreating a symbolic link, the attacker can redirect privileged output to an arbitrary file. This can lead to privileged file corruption or a denial of service (DoS) on the system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73584"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-73584"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2462721"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-377"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T13:19:18Z"
+  }
+}

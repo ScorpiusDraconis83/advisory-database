@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5qc2-5c25-4m38",
-  "modified": "2026-07-19T18:31:54Z",
+  "modified": "2026-08-13T15:34:17Z",
   "published": "2026-07-19T18:31:54Z",
   "aliases": [
     "CVE-2026-64171"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: tegra: fix pm_runtime leak on mutex_lock failure\n\nIf tegra_i2c_mutex_lock() fails, the function returns without calling\npm_runtime_put(), leaking the runtime PM reference acquired by the\npreceding pm_runtime_get_sync(). This prevents the device from ever\nentering runtime suspend.\n\nAdd the missing pm_runtime_put() before returning on lock failure.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-667"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:59Z"

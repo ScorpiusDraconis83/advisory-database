@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9424-vj6g-h5m7",
+  "modified": "2026-08-13T15:34:37Z",
+  "published": "2026-08-13T15:34:37Z",
+  "aliases": [
+    "CVE-2026-73585"
+  ],
+  "details": "A flaw was found in sblim-cmpi-base. Insecure temporary file creation in the provider registration scripts allows a local unprivileged user to perform a symlink attack. By creating a symlink in a world-writable directory, an attacker can redirect privileged writes to an arbitrary file during script execution in a privileged context. This can lead to the overwrite of root-owned files, potentially disrupting system services or operation. Exploitation is conditional on the script running with elevated privileges and may be mitigated by sticky-directory symlink protections.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73585"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-73585"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2462235"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-377"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T13:19:18Z"
+  }
+}

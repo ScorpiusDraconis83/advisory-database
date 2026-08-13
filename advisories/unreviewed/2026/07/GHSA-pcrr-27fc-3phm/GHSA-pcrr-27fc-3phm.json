@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pcrr-27fc-3phm",
-  "modified": "2026-07-19T18:31:54Z",
+  "modified": "2026-08-13T15:34:17Z",
   "published": "2026-07-19T18:31:54Z",
   "aliases": [
     "CVE-2026-64169"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: ep93xx: fix error pointer deref after DMA setup failure\n\nThe driver falls back to PIO mode if DMA setup fails during probe.\n\nMake sure to the clear the DMA channel pointers on setup failure to\navoid dereferencing an error pointer on later probe errors or driver\nunbind.\n\nThis issue was flagged by Sashiko when reviewing a devres allocation\nconversion patch.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:59Z"

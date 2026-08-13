@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mhjw-fw4w-ff4c",
-  "modified": "2026-08-13T06:33:50Z",
+  "modified": "2026-08-13T15:34:34Z",
   "published": "2026-08-13T06:33:50Z",
   "aliases": [
     "CVE-2026-14213"
   ],
   "details": "The Booking for Appointments and Events Calendar  WordPress plugin before 2.4.6 does not verify that an authenticated employee (provider) is assigned to the appointment being accessed, allowing any employee to read any appointment by its identifier and disclose the booked customer's personal data.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-13T06:17:38Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4j8v-vv2j-8xpv",
-  "modified": "2026-07-19T18:31:52Z",
+  "modified": "2026-08-13T15:34:13Z",
   "published": "2026-07-19T18:31:52Z",
   "aliases": [
     "CVE-2026-64120"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethtool: fix NULL pointer dereference in phy_reply_size\n\nIn phy_prepare_data(), several strings such as 'name', 'drvname',\n'upstream_sfp_name', and 'downstream_sfp_name' are allocated using\nkstrdup(). However, these allocations were not checked  for failure.\n\nIf kstrdup() fails for 'name', it returns NULL while the function\ncontinues. This leads to a kernel NULL pointer dereference and panic\nlater in phy_reply_size() when it unconditionally calls strlen() on\nthe NULL pointer.\n\nWhile other strings like 'upstream_sfp_name' might be checked before\naccess in certain code paths, failing to handle these allocations\nconsistently can lead to incomplete data reporting or hidden bugs.\n\nFix this by adding proper NULL checks for all kstrdup() calls in\nphy_prepare_data() and implement a centralized error handling path\nusing goto labels to ensure all previously allocated resources are\nfreed on failure.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:53Z"
