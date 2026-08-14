@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fpmh-vx4h-xc33",
+  "modified": "2026-08-14T19:25:57Z",
+  "published": "2026-08-14T19:25:57Z",
+  "aliases": [
+    "CVE-2026-53660"
+  ],
+  "summary": "OpenAM Insecure SSO Cookie Initialization",
+  "details": "## Summary\n\n**Description**\nAn Insecure Default Initialization of Resource (CWE-1188) issue in the OpenAM default configuration ships the `iPlanetDirectoryPro` SSO cookie with `HttpOnly=false`. Also, the `iPlanetDirectoryPro` SSO cookie is used as a CSRF token in OAuth/OIDC flows. This affects OpenAM Community Edition through version 16.0.6 and was patched in version 16.1.1.\n\n## Impact\nA single click on an attacker link may yield full SSO session theft of any authenticated console user when chained with any other same-origin XSS in the OpenAM origin. The missing `SameSite` default also widens the CSRF surface. Also, because the consent flow reuses the SSO cookie as its CSRF token, any XSS in the OpenAM origin both steals the session and completes attacker-driven OAuth consent grants in one step.\n\n## Patch\nThis has been patched in OpenAM Community Edition version 16.1.1. Users are encouraged to update to the latest release.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.openidentityplatform.openam:openam-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "16.1.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenIdentityPlatform/OpenAM/security/advisories/GHSA-fpmh-vx4h-xc33"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/OpenIdentityPlatform/OpenAM"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenIdentityPlatform/OpenAM/releases/tag/16.1.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1004",
+      "CWE-1188",
+      "CWE-1275"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-14T19:25:57Z",
+    "nvd_published_at": null
+  }
+}
