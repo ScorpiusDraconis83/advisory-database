@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vf2h-7x3w-97fr",
-  "modified": "2026-06-10T15:31:33Z",
+  "modified": "2026-08-14T19:19:27Z",
   "published": "2026-06-10T15:31:33Z",
   "aliases": [
     "CVE-2026-53474"
   ],
+  "summary": "Openshift Migration Advisor: Improper input sanitization allows specially crafted RVTools .xlsx files to include malicious SQL commands",
   "details": "A flaw was found in migration-planner. A remote authenticated attacker could exploit this vulnerability by uploading a specially crafted RVTools .xlsx file. Due to improper input sanitization, malicious SQL embedded within a spreadsheet cell is executed when cluster names are processed. This SQL Injection allows for arbitrary file reading on the system, potentially exposing sensitive information such as Kubernetes service account tokens and other credentials, which could lead to a full compromise of the SaaS environment.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/kubev2v/migration-planner"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.13.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -25,11 +46,19 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/kubev2v/migration-planner/commit/6110711b1b71bb0d15348b934a490a5932b41f83"
+    },
+    {
+      "type": "WEB",
       "url": "https://access.redhat.com/security/cve/CVE-2026-53474"
     },
     {
       "type": "WEB",
       "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2487231"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/kubev2v/migration-planner"
     }
   ],
   "database_specific": {
@@ -37,8 +66,8 @@
       "CWE-89"
     ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-14T19:19:27Z",
     "nvd_published_at": "2026-06-10T15:16:41Z"
   }
 }
