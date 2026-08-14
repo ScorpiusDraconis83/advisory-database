@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m7qq-f4rg-v5m5",
-  "modified": "2026-08-13T18:31:39Z",
+  "modified": "2026-08-14T18:31:29Z",
   "published": "2026-08-13T18:31:39Z",
   "aliases": [
     "CVE-2026-24059"
   ],
   "details": "The GET /api/v1/user/actions/runners/registration-token endpoint (and its owner- and repository-level equivalents) creates a new runner registration token if none exists, yet the API scope middleware classifies it as read-only because it is a GET request. A holder of a leaked read:user-scoped token can therefore mint a registration token and register a malicious Actions runner that executes workflow jobs with access to repository secrets and source code.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -35,7 +40,7 @@
     "cwe_ids": [
       "CWE-269"
     ],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-13T17:17:21Z"

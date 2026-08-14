@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f4p3-jh6p-w9r7",
-  "modified": "2026-08-14T06:31:05Z",
+  "modified": "2026-08-14T18:31:37Z",
   "published": "2026-08-14T06:31:05Z",
   "aliases": [
     "CVE-2026-15205"
   ],
   "details": "The Paymob for WooCommerce WordPress plugin before 4.1.9 does not properly sanitise a client-supplied identifier before using it in a SQL query within its public, unauthenticated payment callback, and performs this query before verifying the payment provider's HMAC signature. This allows unauthenticated attackers to perform SQL injection and read arbitrary data from the database — including user credentials and other secrets — through both in-band (reflected) and time-based blind extraction.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-14T06:16:59Z"
