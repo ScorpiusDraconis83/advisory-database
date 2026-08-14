@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4x9g-vw65-vvf9",
+  "modified": "2026-08-14T19:23:38Z",
+  "published": "2026-08-14T19:23:38Z",
+  "aliases": [
+    "CVE-2026-53653"
+  ],
+  "summary": "Grav: Unauthenticated denial of service via unbounded image derivative dimensions",
+  "details": "### Summary\nAn unauthenticated visitor exhausts server memory and CPU by requesting an image with oversized resize dimensions. One request drives a worker to several gigabytes of RAM and tens of seconds of CPU. A few concurrent requests take the host down.\n\n### Details\n`Grav::fallbackUrl()` (system/src/Grav/Common/Grav.php:800-804) loops over every query parameter and, when the name matches `ImageMedium::$magic_actions`, calls that method on the medium with the comma-split value as arguments:\n\n```php\nforeach ($uri->query(null, true) as $action => $params) {\n    if (in_array($action, ImageMedium::$magic_actions, true)) {\n        call_user_func_array([&$medium, $action], explode(',', $params));\n    }\n}\n```\n\n`forceResize` runs with `force=true`, so it sets the output size to the attacker's values with no clamp against the source or any ceiling. The `getgrav/image` GD adapter then calls `imagecreatetruecolor($w, $h)`. libgd allocates that buffer outside PHP's `emalloc`, so `memory_limit` does not cap it. Grav exposes no `system.images.max_width`/`max_height` setting.\n\n### PoC\nAny page that serves an image works. With a 200x150 source image:\n\n```\nGET /home/test.png?forceResize=20000,20000\n```\n\nMeasured on PHP 8.4.21 with `memory_limit=128M`:\n\n- peak worker RSS 3,109 MB\n- 21.9 s CPU\n- HTTP 200, 1.6 MB response\n\n`8000x8000` already needs ~244 MB. The cache key includes the dimensions, so varying them forces fresh work on every request.\n\n### Impact\nUnauthenticated denial of service against any Grav site that serves images. No account, plugin, or non-default config required.\n\n## Fix\nClamp the request-derived dimensions before dispatch, behind a configurable cap. The image library is the wrong layer; bound the arguments at the request boundary.\n\n```diff\n--- a/system/src/Grav/Common/Grav.php\n+++ b/system/src/Grav/Common/Grav.php\n@@ public function fallbackUrl($path)\n                 foreach ($uri->query(null, true) as $action => $params) {\n                     if (in_array($action, ImageMedium::$magic_actions, true)) {\n-                        call_user_func_array([&$medium, $action], explode(',', $params));\n+                        $args = explode(',', $params);\n+                        $max = (int) $config->get('system.images.max_dimension', 8000);\n+                        if ($max > 0\n+                            && in_array($action, ['resize', 'forceResize', 'cropResize', 'cropZoom', 'zoomCrop', 'crop'], true)) {\n+                            foreach ($args as $a) {\n+                                if (is_numeric($a) && (int) $a > $max) {\n+                                    return false; // reject oversized derivative request\n+                                }\n+                            }\n+                        }\n+                        call_user_func_array([&$medium, $action], $args);\n                     }\n                 }\n```\n\nDocument `system.images.max_dimension` (default 8000) so operators can tune it. A total-pixel ceiling (`width * height`) is a stricter alternative.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getgrav/grav"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0-beta.1"
+            },
+            {
+              "fixed": "2.0.0-rc.8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getgrav/grav"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.7.53"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-4x9g-vw65-vvf9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53653"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/d9f9f0369a07ae5c96cde700c7949e1237b29cf6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/f4c0f42eea755cedad6f626b342c88d4cba72174"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getgrav/grav"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/releases/tag/1.7.53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/releases/tag/2.0.0-rc.8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-14T19:23:38Z",
+    "nvd_published_at": "2026-07-10T17:16:57Z"
+  }
+}
