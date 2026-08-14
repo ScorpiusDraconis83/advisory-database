@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rh8q-rpf9-79v6",
+  "modified": "2026-08-14T12:31:28Z",
+  "published": "2026-08-14T12:31:28Z",
+  "aliases": [
+    "CVE-2026-73051"
+  ],
+  "details": "actix-http versions before 3.12.1 contain an HTTP request smuggling vulnerability in the HTTP/1.1 parser that accepts requests with both Content-Length and Transfer-Encoding: chunked headers. Unauthenticated remote attackers can exploit this through a front-end intermediary to desynchronize backend requests and smuggle malicious HTTP requests to the Actix service.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/actix/actix-web/security/advisories/GHSA-xhj4-vrgc-hr34"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73051"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/actix-http-before-http-request-smuggling-via-cl-te"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-444"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-14T12:16:47Z"
+  }
+}
