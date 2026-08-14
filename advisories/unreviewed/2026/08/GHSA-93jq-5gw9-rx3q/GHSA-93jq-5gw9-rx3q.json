@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-93jq-5gw9-rx3q",
+  "modified": "2026-08-14T21:31:36Z",
+  "published": "2026-08-14T21:31:36Z",
+  "aliases": [
+    "CVE-2026-73682"
+  ],
+  "details": "Semaphore versions prior to 2.18.20 contain an OS command injection (argument injection) vulnerability in the repository git_url handling that allows authenticated users holding the Manager or Owner role on any project to achieve remote code execution on the Semaphore server host. Attackers can craft a malicious git_url value using git's --upload-pack= option to inject and execute arbitrary shell commands when the server processes repository operations using the default cmd_git client.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/semaphoreui/semaphore/security/advisories/GHSA-xp7j-h7jc-4w8p"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73682"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/semaphoreui/semaphore/commit/5d87656a680600125fe78edec1f7a0d10484b52c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/semaphoreui/semaphore"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/semaphore-prior-to-version-os-command-injection-via-git-url-repository-handling"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-88"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-14T21:17:58Z"
+  }
+}

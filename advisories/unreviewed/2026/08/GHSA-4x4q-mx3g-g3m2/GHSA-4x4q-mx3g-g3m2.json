@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4x4q-mx3g-g3m2",
+  "modified": "2026-08-14T21:31:36Z",
+  "published": "2026-08-14T21:31:36Z",
+  "aliases": [
+    "CVE-2026-73680"
+  ],
+  "details": "Cockpit CMS 2.14.0 and prior contains a command injection vulnerability in the FFmpeg integration that allows authenticated users with only the assets/upload permission to execute arbitrary commands by uploading a video file with a shell metacharacter-laden filename. The unsanitized filename is interpolated into a shell command executed via Process::fromShellCommandline() before the slugify() sanitizer runs, enabling injected shell metacharacters such as backticks, $(), and semicolons to escape the FFmpeg command context and execute as the web-server user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73680"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cockpit-HQ/Cockpit/commit/28813596f57685f63d3a48f655e8e9bd2b535cab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cockpit-HQ/Cockpit"
+    },
+    {
+      "type": "WEB",
+      "url": "https://link.mateocallec.com/MFC-2026-002"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cockpit-cms-authenticated-command-injection-via-ffmpeg-filename"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-14T20:16:58Z"
+  }
+}

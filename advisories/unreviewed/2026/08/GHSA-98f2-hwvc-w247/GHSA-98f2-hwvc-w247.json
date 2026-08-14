@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-98f2-hwvc-w247",
-  "modified": "2026-08-14T18:31:37Z",
+  "modified": "2026-08-14T21:31:30Z",
   "published": "2026-08-14T18:31:37Z",
   "aliases": [
     "CVE-2026-16772"
   ],
   "details": "In Akaunting versions <= 3.1.21, low‑privileged authenticated users can modify their own account to assign themselves the admin role ID, granting full administrator privileges. This vulnerability is caused by a flaw in the `UpdateUser` job, which processes user-supplied role assignments via an unconditional `roles()->sync()` call without verifying whether the caller is authorized to manage roles. Users only require the default `update-auth-profile` permission to access the self-update path and assign themselves as admins. The API endpoints are properly permission‑gated and are not affected by this issue.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-14T16:16:50Z"

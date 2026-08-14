@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4fh-vmxm-5699",
+  "modified": "2026-08-14T21:31:34Z",
+  "published": "2026-08-14T21:31:34Z",
+  "aliases": [
+    "CVE-2026-73679"
+  ],
+  "details": "ImpressCMS contains an authenticated remote code execution vulnerability in the custom tag module that allows authenticated administrators to execute arbitrary PHP code by storing a malicious payload in a custom tag with PHP type enabled. The application decodes HTML-encoded content via undoHtmlSpecialChars() before passing it to eval() in the renderWithPhp() method, bypassing HTML Purifier sanitization, and the payload is triggered on every frontend page load through the preload event system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73679"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/DevVaibhav07/VULN-POC/blob/main/ImpressCMSRCCE.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ImpressCMS/impresscms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/impresscms-authenticated-rce-via-php-custom-tag-eval"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-14T19:18:01Z"
+  }
+}
