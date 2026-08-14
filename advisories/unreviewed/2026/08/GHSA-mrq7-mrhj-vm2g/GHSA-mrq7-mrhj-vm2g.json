@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mrq7-mrhj-vm2g",
-  "modified": "2026-08-10T15:33:40Z",
+  "modified": "2026-08-14T00:31:53Z",
   "published": "2026-08-10T15:33:40Z",
   "aliases": [
     "CVE-2026-68198"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath6kl: fix use-after-free in aggr_reset_state()\n\nThe aggr_reset_state() function uses timer_delete() (non-synchronous)\nfor the aggregation timer before proceeding to delete TID state and\nbefore the structure is freed by callers like aggr_module_destroy().\n\nIf the timer callback (aggr_timeout) is executing when aggr_reset_state()\nis called, the callback will continue to access aggr_conn fields like\nrx_tid[] and stat[] which may be freed immediately after by\nkfree(aggr_info->aggr_conn) in aggr_module_destroy().\n\nAdditionally, the timer callback can re-arm itself via mod_timer() while\naggr_reset_state() is running, creating a more complex race condition.\n\nUse timer_delete_sync() instead to ensure any running timer callback\nhas completed before returning.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:07Z"

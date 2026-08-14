@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q7c4-ghwq-63xh",
+  "modified": "2026-08-14T00:32:02Z",
+  "published": "2026-08-14T00:32:02Z",
+  "aliases": [
+    "CVE-2026-72842"
+  ],
+  "details": "luci-app-lxc contains an ACL inconsistency vulnerability that allows low-privileged authenticated LuCI users to access backend container management routes without proper authorization checks. Attackers can exploit path traversal via `/.%2E` in the `lxc_name` parameter to escape container directories and control host-side scripts executed through `lxc.hook.start-host`, achieving root code execution on the OpenWrt host.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openwrt/luci/security/advisories/GHSA-jf59-v86x-fwf2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72842"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openwrt-luci-app-lxc-acl-inconsistency-authentication-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T22:17:23Z"
+  }
+}

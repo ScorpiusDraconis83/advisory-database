@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-p69g-gmqr-g4rm",
-  "modified": "2026-08-10T15:33:49Z",
+  "modified": "2026-08-14T00:31:57Z",
   "published": "2026-08-10T15:33:49Z",
   "aliases": [
     "CVE-2026-68385"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/checksum: Fix csum_partial() without vector facility\n\nCurrently csum_partial() calls csum_copy() with copy=false and dst=NULL.\nOn machines without the vector facility, csum_copy() falls back to\ncksm(dst, ...), causing the checksum to be calculated from address zero\ninstead of the source buffer.\n\nThe VX implementation already checksums data loaded from src. Make the\nfallback do the same by passing src to cksm().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:31Z"

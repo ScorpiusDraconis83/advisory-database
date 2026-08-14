@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4q4m-8h83-fcmr",
+  "modified": "2026-08-14T00:32:02Z",
+  "published": "2026-08-14T00:32:02Z",
+  "aliases": [
+    "CVE-2026-72849"
+  ],
+  "details": "Budibase before 3.40.0 contains a cross-site request forgery vulnerability in the chat-link handoff endpoint that allows attackers to bind an external chat identity to a victim's account. Attackers can craft a phishing page that auto-submits a POST request with a leaked confirmation token to bind their chat identity to a victim user's account, enabling impersonation within agent operations and inheritance of victim permissions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:P/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Budibase/budibase/security/advisories/GHSA-pvcr-8mvp-w8qr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72849"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/budibase-before-identity-confusion-via-chat-link-handoff-csrf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T22:17:24Z"
+  }
+}

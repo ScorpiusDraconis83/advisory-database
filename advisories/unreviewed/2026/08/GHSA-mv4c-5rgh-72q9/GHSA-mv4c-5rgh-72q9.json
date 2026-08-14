@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mv4c-5rgh-72q9",
+  "modified": "2026-08-14T00:32:02Z",
+  "published": "2026-08-14T00:32:02Z",
+  "aliases": [
+    "CVE-2026-72853"
+  ],
+  "details": "Budibase before 3.40.0 contains a SQL injection vulnerability in the Oracle datasource connector's post-write row lookup that fails to escape table names in identifiers. Attackers with write permission on a table with a double-quote in its name can inject SQL that executes as the datasource's database user to read or modify arbitrary data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:H/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Budibase/budibase/security/advisories/GHSA-xj29-x47g-9w2c"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72853"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/budibase-before-sql-injection-via-oracle-connector"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T22:17:24Z"
+  }
+}

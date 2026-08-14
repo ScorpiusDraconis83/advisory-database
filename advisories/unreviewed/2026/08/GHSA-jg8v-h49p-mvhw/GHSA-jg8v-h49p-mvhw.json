@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jg8v-h49p-mvhw",
-  "modified": "2026-08-10T15:33:38Z",
+  "modified": "2026-08-14T00:31:52Z",
   "published": "2026-08-10T15:33:38Z",
   "aliases": [
     "CVE-2026-68158"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: Fix multiplication overflow in decode_new_up_state_weight()\n\nIf a message of type CEPH_MSG_OSD_MAP contains a (maliciously) corrupted\nosdmap, out-of-bounds memory accesses may occur in\ndecode_new_up_state_weight(). This happens because the bounds check for\nthe new_state part is based on calculating its length depending on a len\nvalue read from the incoming message. This calculation may overflow\nleading to an incorrect bounds check. Subsequently, out-of-bounds reads\nmay occur when decoding this part.\n\nThis patch switches the multiplication to use check_mul_overflow() to\nabort processing the osdmap if an overflow occurred. Therefore,\nosdmaps/messages containing large values for len that result in a\nmultiplication overflow are treated as invalid.\n\n[ idryomov: rename new_state_len -> new_state_item_size, formatting ]",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:02Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-35p7-3vg5-ccvp",
-  "modified": "2026-08-10T15:33:45Z",
+  "modified": "2026-08-14T00:31:55Z",
   "published": "2026-08-10T15:33:45Z",
   "aliases": [
     "CVE-2026-68316"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel: ethosu: Fix element size accounting for cmd stream validation\n\nThere are 2 issues with the element size handling in the command stream\nvalidation which result in too small of a size calculated when the\nelement size is 16/32/64 bits.\n\nFor NHWC format, the element size is simply missing from the\ncalculation.\n\nThe bitfield for the element size is different between IFM/IFM2 and\nOFM. IFM and IFM2 encode the precision in parameter bits 2:3, while OFM\nuses bits 1:2.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:21Z"

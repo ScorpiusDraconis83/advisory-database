@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4h5w-742q-hw8j",
-  "modified": "2026-08-13T15:34:43Z",
+  "modified": "2026-08-14T00:31:59Z",
   "published": "2026-08-13T15:34:43Z",
   "aliases": [
     "CVE-2026-68454"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: pci: Fix handling of AIF enable without AISB\n\nWhen a guest seeks to register IRQs without a summary bit specified,\nensure that the associated GAITE then stores 0 for the guest AISB\nlocation instead of virt_to_phys(page_address(NULL)).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-13T15:19:58Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3j44-h3h4-hxhf",
-  "modified": "2026-08-10T15:33:38Z",
+  "modified": "2026-08-14T00:31:52Z",
   "published": "2026-08-10T15:33:38Z",
   "aliases": [
     "CVE-2026-68153"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: remove debugfs files before client teardown\n\nceph_destroy_client() tears down the monitor client before removing\nthe per-client debugfs files. A concurrent read of the monmap debugfs\nfile can enter monmap_show() after ceph_monc_stop() has freed\nmonc->monmap, triggering a use-after-free.\n\nRemove the debugfs files before stopping the OSD and monitor clients.\ndebugfs_remove() drains active handlers and prevents new accesses, so\nthe debugfs callbacks can no longer race the rest of client teardown.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:01Z"

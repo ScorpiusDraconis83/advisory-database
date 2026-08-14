@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jv66-q3cr-4688",
-  "modified": "2026-08-10T15:33:47Z",
+  "modified": "2026-08-14T00:31:56Z",
   "published": "2026-08-10T15:33:47Z",
   "aliases": [
     "CVE-2026-68343"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: validate DFS referral PathConsumed\n\nparse_dfs_referrals() validates that the response contains the fixed\nreferral entry array and, on for-next, the per-referral string offsets.\nHowever, the response also contains a PathConsumed value that is later\nused for DFS path parsing.\n\nIf a malformed response provides a PathConsumed value larger than the\nsearch name, later DFS parsing can advance beyond the end of the path.\n\nValidate PathConsumed against the search name length before storing it in\nthe parsed referral.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:24Z"

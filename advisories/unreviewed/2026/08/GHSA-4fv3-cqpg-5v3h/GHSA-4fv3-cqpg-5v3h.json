@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4fv3-cqpg-5v3h",
-  "modified": "2026-08-13T15:34:43Z",
+  "modified": "2026-08-14T00:31:59Z",
   "published": "2026-08-13T15:34:43Z",
   "aliases": [
     "CVE-2026-68451"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/zcrypt: Validate length for CCA ECC private key requests\n\ncca_ecc2protkey() derives the copy length for the CPRB parameter\nblock directly from the length field in the key token. Reject the\nrequest early if the token length exceeds the available space in the\nparameter block.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-13T15:19:57Z"

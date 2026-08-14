@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g5f7-qj4q-4w5v",
-  "modified": "2026-08-10T15:33:50Z",
+  "modified": "2026-08-14T00:31:58Z",
   "published": "2026-08-10T15:33:50Z",
   "aliases": [
     "CVE-2026-68409"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: defer link RX stats percpu free to RCU\n\nsta_remove_link() frees a removed MLO link's RX stats percpu buffer right\naway, but defers only the link container to RCU:\n\n\tsta_info_free_link(&alloc->info);\n\tkfree_rcu(alloc, rcu_head);\n\nThe RX fast path reads link_sta under rcu_read_lock and writes the percpu\nstats. A reader that resolved link_sta before the removal keeps the\npointer. The container stays alive from the kfree_rcu, so the read still\nworks. But the percpu block it points to is already freed. This needs\nuses_rss. That is when pcpu_rx_stats exists.\n\nThe full STA teardown frees the deflink stats only after\nsynchronize_net(). The link removal path had no such barrier. The race is\nhard to win in practice, but the free should still wait for RCU.\n\nFree the link together with its data from a single RCU callback, so the\npercpu block is reclaimed only after readers drain.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:34Z"

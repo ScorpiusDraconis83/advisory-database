@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3chg-p6wm-r59m",
-  "modified": "2026-08-10T15:33:48Z",
+  "modified": "2026-08-14T00:31:56Z",
   "published": "2026-08-10T15:33:48Z",
   "aliases": [
     "CVE-2026-68352"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath6kl: fix OOB read from firmware IE lengths in connect event\n\nThe firmware-controlled beacon_ie_len, assoc_req_len, and assoc_resp_len\nfields in ath6kl_wmi_connect_event_rx() are not validated against the\nbuffer length. Their sum (up to 765) can exceed the actual WMI event\ndata, causing out-of-bounds reads during IE parsing and state corruption\nof wmi->is_wmm_enabled.\n\nAdd a check that the total IE length fits within the buffer.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:27Z"

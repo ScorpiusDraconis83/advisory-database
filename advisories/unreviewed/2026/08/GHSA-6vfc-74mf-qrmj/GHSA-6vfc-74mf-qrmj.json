@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6vfc-74mf-qrmj",
+  "modified": "2026-08-14T00:32:01Z",
+  "published": "2026-08-14T00:32:01Z",
+  "aliases": [
+    "CVE-2026-72840"
+  ],
+  "details": "OpenWrt LuCI contains an overly permissive ACL definition in luci-mod-system-mounts that grants write access to /etc/crontabs/root to users intended only for mount configuration. Authenticated users with only the mount-configuration ACL group can append arbitrary cron entries via ubus file.write, which the default busybox crond daemon executes as root within one minute.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openwrt/luci/security/advisories/GHSA-v5f9-62c7-cw29"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72840"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openwrt-luci-luci-mod-system-mounts-acl-root-rce-via-crontab-write"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-266"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T22:17:23Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m2gq-x88q-682f",
-  "modified": "2026-08-10T15:33:35Z",
+  "modified": "2026-08-14T00:31:51Z",
   "published": "2026-08-10T15:33:35Z",
   "aliases": [
     "CVE-2026-68097"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: validate ACE size against SID sub-authorities\n\nset_ntacl_dacl() validates sid.num_subauth before copying an ACE, but\ndoes not verify that the declared ACE size contains all sub-authorities\ndescribed by that field. An undersized ACE can therefore be copied\nand later make the POSIX ACL deduplication walk inspect data beyond\nthe copied ACE boundary.\n\nThe existing initial bound check is also too small. It only ensures\nthat the ACE size field is accessible before set_ntacl_dacl() reads\nsid.num_subauth farther into the input buffer.\n\nRequire enough input for the fixed SID header before accessing\nnum_subauth, reject ACEs smaller than that header, and skip ACEs\nwhose declared size cannot contain the complete SID. This makes the\nvalidation consistent with the other ACE walk paths.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:19:54Z"

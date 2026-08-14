@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-37mr-g2c4-w7wf",
-  "modified": "2026-08-10T15:33:36Z",
+  "modified": "2026-08-14T00:31:51Z",
   "published": "2026-08-10T15:33:36Z",
   "aliases": [
     "CVE-2026-68107"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vcn4: avoid rereading IB param length\n\nReuse the parameter length returned by\nvcn_v4_0_enc_find_ib_param() instead of rereading it from\nthe IB.\n\nThis avoids a potential TOCTOU issue if the IB contents\nchange between reads.\n\n(cherry picked from commit dbb02b4755f8c1f3773263f2d779872c1c0c073a)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:19:55Z"

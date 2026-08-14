@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-93x6-mg2w-rrg6",
-  "modified": "2026-08-10T15:33:41Z",
+  "modified": "2026-08-14T00:31:53Z",
   "published": "2026-08-10T15:33:41Z",
   "aliases": [
     "CVE-2026-68209"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: sun4i-csi: Return queued buffers on start_streaming() failure\n\nThe vb2 framework hands buffers to the driver via buf_queue() before\ncalling start_streaming().  If start_streaming() returns an error\nwithout first returning those buffers via vb2_buffer_done(),\nvb2_start_streaming() fires WARN_ON(owned_by_drv_count) and the queued\nbuffers leak.\n\nsun4i_csi_start_streaming() returned -EINVAL when no matching CSI\nformat could be found, before any setup (scratch buffer allocation,\npipeline start) had been performed.  The remaining error paths already\nconverge on the err_clear_dma_queue label, which calls\nreturn_all_buffers(..., VB2_BUF_STATE_QUEUED) under csi->qlock.  Jump\nto that label directly: the intermediate err_disable_device /\nerr_disable_pipeline / err_free_scratch_buffer labels are skipped,\nwhich is correct because nothing they would undo has happened yet.\n\nThis mirrors the uvcvideo fix in commit 4cf3b6fd54eb (\"media: uvcvideo:\nReturn queued buffers on start_streaming() failure\").",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:08Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-p635-m8r7-fc75",
-  "modified": "2026-08-10T15:33:37Z",
+  "modified": "2026-08-14T00:31:52Z",
   "published": "2026-08-10T15:33:37Z",
   "aliases": [
     "CVE-2026-68141"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/af_iucv: fix NULL deref in afiucv_hs_callback_syn()\n\nafiucv_hs_callback_syn() allocates the child socket with GFP_ATOMIC.\nIf the allocation fails, nsk is NULL.\n\nThe connection-refused path is entered when the listen state check\nfails, the accept backlog is full, or nsk is NULL. The code\nunconditionally calls iucv_sock_kill(nsk) in that path.\n\niucv_sock_kill() does not accept a NULL socket pointer and immediately\ndereferences sk via sock_flag(sk, SOCK_ZAPPED). When nsk is NULL,\ncalling iucv_sock_kill(nsk) results in a NULL pointer dereference.\n\nOnly call iucv_sock_kill() when a child socket was successfully\nallocated.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:19:59Z"

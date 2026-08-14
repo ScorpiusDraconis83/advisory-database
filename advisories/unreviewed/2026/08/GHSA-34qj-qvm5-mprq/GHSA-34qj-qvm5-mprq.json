@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-34qj-qvm5-mprq",
-  "modified": "2026-08-10T15:33:36Z",
+  "modified": "2026-08-14T00:31:51Z",
   "published": "2026-08-10T15:33:36Z",
   "aliases": [
     "CVE-2026-68108"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vce: fix integer overflow in image size\n\nFix a security vulnerability where malicious VCE command streams\nwith oversized dimensions (e.g. 65536×65536) cause 32-bit integer\noverflow, wrapping the calculated buffer size to 0. This bypasses\nvalidation and allows GPU firmware to perform out-of-bound memory\naccess.\n\nThe fix uses 64-bit arithmetic to detect overflow and rejects\ninvalid dimensions before they reach the hardware.\n\nV2: remove redundant check\nV3: modify max height value\nV4: remove size64\n\n(cherry picked from commit cbe408dba581755ad1279a487ec786d8927d778d)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:19:55Z"

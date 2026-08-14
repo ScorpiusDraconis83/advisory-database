@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5h3v-9fcc-4vc7",
-  "modified": "2026-08-10T15:33:36Z",
+  "modified": "2026-08-14T00:31:51Z",
   "published": "2026-08-10T15:33:36Z",
   "aliases": [
     "CVE-2026-68119"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: initialize standalone TCP-AO response padding\n\ntcp_v4_send_ack() and tcp_v6_send_response() construct standalone TCP\nresponses with TCP-AO options.  The option length carries the actual MAC\nlength, but the TCP header length includes the option rounded up to a\nfour-byte boundary.\n\ntcp_ao_hash_hdr() writes the MAC only.  Thus, when the MAC length is not\nfour-byte aligned, the one to three bytes after the MAC are left\nuninitialized and may be transmitted.  For the normal TCP-AO hashing\nmode, those bytes also have to be initialized before computing the MAC.\n\nInitialize only the alignment padding in the TCP-AO branches, before\nhashing the header.  Use TCPOPT_NOP, as in the normal TCP-AO output path.\nThis avoids adding work to non-AO TCP responses while preserving a valid\nauthenticated header.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:19:56Z"

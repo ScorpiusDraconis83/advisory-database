@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f5gm-g4v9-mv95",
-  "modified": "2026-08-10T15:33:50Z",
+  "modified": "2026-08-14T00:31:58Z",
   "published": "2026-08-10T15:33:50Z",
   "aliases": [
     "CVE-2026-68417"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/siw: publish QP after initialization\n\nsiw_create_qp() currently calls siw_qp_add() before the queues, CQ\npointers, state, completion, and device list entry are ready. A QPN\nlookup can therefore reach a QP that is still being constructed.\n\nMove siw_qp_add() to the end of siw_create_qp(), after QP\ninitialization and before adding the QP to the siw device list.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:35Z"

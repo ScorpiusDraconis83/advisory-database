@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hvgp-9g43-gqqw",
-  "modified": "2026-08-10T15:33:50Z",
+  "modified": "2026-08-14T00:31:58Z",
   "published": "2026-08-10T15:33:50Z",
   "aliases": [
     "CVE-2026-68401"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_ffa: Fix out-of-bound writes in ffa_setup_and_transmit()\n\nSashiko (locally) reports multiple out-of-bound issues in\nffa_setup_and_transmit:\n1) Writing ep_mem_access->reserved can write out of bounds for FFA\n   versions < 1.2 as ffa_emad_size_get() returns 16 bytes in that case\n   while reserved has an offset of 24.\n   Instead of zeroing fields, memset the struct to zero first based on\n   the FFA version.\n\n2) Make sure there is enough size to write constituents.\n\nWhile at it, convert the only sizeof() in the driver that uses a\ntype instead of variable.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:33Z"

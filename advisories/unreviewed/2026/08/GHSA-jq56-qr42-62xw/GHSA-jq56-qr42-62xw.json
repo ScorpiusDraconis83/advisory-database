@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jq56-qr42-62xw",
-  "modified": "2026-08-10T15:33:47Z",
+  "modified": "2026-08-14T00:31:55Z",
   "published": "2026-08-10T15:33:47Z",
   "aliases": [
     "CVE-2026-68340"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: occ: validate poll response sensor blocks\n\nThe OCC poll response parser walks a counted list of sensor data blocks.\nIt used the static backing-array capacity as the parse boundary, but a\ntransport response makes only data_length bytes current and valid. A\ntruncated response can therefore make the parser consume a block header or\nblock extent outside the current response.\n\nUse data_length as the parent boundary, prove the fixed poll header and\neach current block header before reading them, and prove the complete block\nbefore advancing. Keep parsed sensor metadata local until the complete\nresponse has passed validation, then publish it. Propagate\nmalformed-response errors before publishing the OCC as active.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:24Z"

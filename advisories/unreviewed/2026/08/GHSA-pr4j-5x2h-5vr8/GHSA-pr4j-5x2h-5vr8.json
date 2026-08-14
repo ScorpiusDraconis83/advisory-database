@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pr4j-5x2h-5vr8",
+  "modified": "2026-08-14T00:32:03Z",
+  "published": "2026-08-14T00:32:03Z",
+  "aliases": [
+    "CVE-2026-73039"
+  ],
+  "details": "streama contains an insecure direct object reference vulnerability in ViewingStatusController that allows authenticated users to read and delete other users' viewing status records. Attackers can enumerate all users' watch progress, delete arbitrary viewing history, and manipulate other users' Continue Watching dashboards by supplying arbitrary primary keys without ownership verification.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73039"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/streamaserver/streama/issues/1170"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/streamaserver/streama/commit/1fa79534ee09e25f2473cc4787b106996008a442"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/streamaserver/streama"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/streama-insecure-direct-object-reference-via-viewingstatuscontroller"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-13T22:17:25Z"
+  }
+}

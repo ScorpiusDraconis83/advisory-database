@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9g3f-gj9q-hqjj",
-  "modified": "2026-08-10T15:33:38Z",
+  "modified": "2026-08-14T00:31:52Z",
   "published": "2026-08-10T15:33:38Z",
   "aliases": [
     "CVE-2026-68161"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: close UDP tunnel sockets during netns teardown\n\nproc_sctp_do_udp_port() starts per-net SCTP UDP tunneling sockets when\nnet.sctp.udp_port is set, and stops/restarts them when the sysctl value\nchanges. The netns exit path does not stop these sockets, so a namespace\ncan be torn down while its SCTP UDP tunnel sockets are still installed.\n\nClose the UDP tunnel sockets from sctp_ctrlsock_exit() after unregistering\nthe per-net sysctl table. This prevents new sysctl writes from racing in\nwhile the sockets are being released, and closes the sockets before the\ncontrol socket is destroyed.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:02Z"

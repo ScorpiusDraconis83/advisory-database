@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-ghf3-w254-j47x",
-  "modified": "2026-08-10T15:33:49Z",
+  "modified": "2026-08-14T00:31:57Z",
   "published": "2026-08-10T15:33:49Z",
   "aliases": [
     "CVE-2026-68389"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_qca: Clear memdump state on invalid dump size\n\nqca_controller_memdump() allocates qca->qca_memdump before processing\nthe first dump packet. For a sequence-zero packet it then disables IBS,\nmarks memdump collection active, and reads the advertised dump size.\n\nIf the controller reports a zero dump size, the error path frees the\nlocal qca_memdump object and returns without clearing qca->qca_memdump\nor undoing the collection state. A later memdump work item initializes\nits local pointer from qca->qca_memdump and skips allocation when that\npointer is non-NULL, so it can operate on freed memory. The stale\ncollection and IBS-disabled flags can also leave waiters or later\ntransmit handling blocked behind an aborted dump.\n\nClear the saved pointer and memdump state before returning from the\ninvalid-size path, matching the cleanup used when hci_devcd_init() fails.\n\nA static analysis checker reported the stale memdump state, and manual\nsource review confirmed the invalid-size failure path.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:32Z"

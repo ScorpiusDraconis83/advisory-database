@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-prp8-g9xx-pr9j",
-  "modified": "2026-08-10T15:33:48Z",
+  "modified": "2026-08-14T00:31:56Z",
   "published": "2026-08-10T15:33:48Z",
   "aliases": [
     "CVE-2026-68371"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: musb: omap2430: Do not put borrowed of_node in probe\n\nomap2430_probe() stores pdev->dev.of_node in a local np variable. This is\na borrowed pointer and the probe function does not take a reference to\nit.\n\nThe success and error paths nevertheless call of_node_put(np). This drops\na reference that is owned by the platform device, and can leave\npdev->dev.of_node with an unbalanced reference count.\n\nDo not put the borrowed platform device node from omap2430_probe().\nReferences taken for the child MUSB device are handled by the device core,\nand the ctrl-module phandle reference is still released separately.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:29Z"

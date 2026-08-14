@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7m4h-5x7q-hf25",
-  "modified": "2026-08-10T15:33:49Z",
+  "modified": "2026-08-14T00:31:57Z",
   "published": "2026-08-10T15:33:49Z",
   "aliases": [
     "CVE-2026-68397"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/iucv: take a reference on the socket found in afiucv_hs_rcv()\n\nafiucv_hs_rcv() looks up the destination socket under iucv_sk_list.lock,\ndrops the lock, and then passes the socket to the afiucv_hs_callback_*()\nhandlers without holding a reference. AF_IUCV sockets are not\nRCU-protected and are freed synchronously by iucv_sock_kill() ->\nsock_put(), so a concurrent close can free the socket in the window\nbetween read_unlock() and the handler, which then dereferences freed\nmemory (for example sk->sk_data_ready() in afiucv_hs_callback_syn()).\n\nTake a reference with sock_hold() while the socket is still on the list\nand release it with sock_put() once the handler has run.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:33Z"

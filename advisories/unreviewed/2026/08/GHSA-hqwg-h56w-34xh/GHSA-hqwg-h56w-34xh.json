@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hqwg-h56w-34xh",
-  "modified": "2026-08-10T15:33:48Z",
+  "modified": "2026-08-14T00:31:56Z",
   "published": "2026-08-10T15:33:48Z",
   "aliases": [
     "CVE-2026-68379"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: fix TIME_WAIT socket reference leak on PSP policy failure\n\nRelease the TIME_WAIT socket reference and jump to discard_it\nupon PSP policy failure in both IPv4 and IPv6 receive paths.\nThis prevents a memory leak of tcp_tw_bucket structures.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:30Z"

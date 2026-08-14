@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9fc3-h9fc-q4xw",
-  "modified": "2026-08-10T15:33:50Z",
+  "modified": "2026-08-14T00:31:58Z",
   "published": "2026-08-10T15:33:49Z",
   "aliases": [
     "CVE-2026-68400"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_ffa: Fix Endpoint Memory Access Descriptor offset calculation\n\nUse the descriptor's `ep_mem_offset` to calculate the start of the endpoint\nmemory access array and to comply with the FF-A spec instead of defaulting\nto `sizeof(struct ffa_mem_region)`.\nThis requires moving `ffa_mem_region_additional_setup()` earlier in the setup\nflow.\nAlso, add sanity checks to ensure the calculated descriptor offsets do not\nexceed `max_fragsize`.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:33Z"

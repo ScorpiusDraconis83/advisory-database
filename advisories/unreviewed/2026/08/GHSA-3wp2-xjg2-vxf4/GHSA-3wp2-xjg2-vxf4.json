@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3wp2-xjg2-vxf4",
-  "modified": "2026-08-10T15:33:47Z",
+  "modified": "2026-08-14T00:31:56Z",
   "published": "2026-08-10T15:33:47Z",
   "aliases": [
     "CVE-2026-68348"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: tas2781: bound firmware description string parsing\n\nThe TAS2781 firmware parser reads several variable-length description\nstrings with strlen() before checking that the string terminator is\npresent inside the firmware blob. A malformed firmware image without a\nNUL terminator can therefore make the parser walk past the end of the\nfirmware buffer before the later size checks run.\n\nAdd a small bounded string-length helper and use it for all description\nfields that are parsed from the firmware buffer. Keep the existing size\nchecks for the fixed bytes that follow each string.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-10T13:20:26Z"
