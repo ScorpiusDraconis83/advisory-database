@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fgq8-mwjv-6335",
+  "modified": "2026-08-15T00:31:24Z",
+  "published": "2026-08-15T00:31:24Z",
+  "aliases": [
+    "CVE-2026-74244"
+  ],
+  "details": "A flaw was found in Red Hat Quay's Stripe billing webhook handler. This vulnerability allows an unauthenticated attacker to forge billing events by sending crafted JSON requests to the `/webhooks/stripe` endpoint without validating the Stripe-Signature header. Successful exploitation can lead to the unauthorized resetting of a namespace's build quota to its maximum and trigger unsolicited billing emails to namespace administrators.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-74244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2516143"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-347"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-14T23:16:34Z"
+  }
+}

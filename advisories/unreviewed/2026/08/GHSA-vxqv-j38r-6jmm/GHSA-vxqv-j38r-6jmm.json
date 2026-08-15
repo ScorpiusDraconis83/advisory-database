@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vxqv-j38r-6jmm",
+  "modified": "2026-08-15T00:31:24Z",
+  "published": "2026-08-15T00:31:24Z",
+  "aliases": [
+    "CVE-2026-74243"
+  ],
+  "details": "A flaw was found in Red Hat Quay. When the SECURITY_SCANNER_V4_PSK (pre-shared key) is not set, a remote unauthenticated attacker can send POST requests to the security scanner notification endpoint. This allows the attacker to flood the notification queue and inject path traversal characters into Clair API URL paths. The primary consequence is worker resource exhaustion and blind path manipulation on the configured Clair host, potentially leading to a denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74243"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-74243"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2516142"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-14T23:16:34Z"
+  }
+}
