@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h9rh-wf2h-cr4c",
+  "modified": "2026-08-15T15:30:33Z",
+  "published": "2026-08-15T15:30:33Z",
+  "aliases": [
+    "CVE-2026-74473"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: use pskb_network_may_pull() in route_shortcircuit()\n\nroute_shortcircuit() currently calls pskb_may_pull(skb, sizeof(struct iphdr))\n(or ipv6hdr), which checks if bytes are available starting from skb->data.\n\nHowever, in vxlan_xmit(), skb->data points to the MAC header, so\nskb_network_offset(skb) is ETH_HLEN (14 bytes). Using pskb_may_pull(skb, 20)\nonly checks 20 bytes from skb->data (which is 14 bytes MAC header + 6 bytes of\nIP header), leaving the rest of the IP header potentially un-pulled in non-linear\nfrags. Subsequent dereferences of ip_hdr(skb)->daddr can read beyond the pulled\nlinear buffer length.\n\nFix this by using pskb_network_may_pull(), which adds skb_network_offset(skb) to\nthe length check to ensure the full network header is present in the linear buffer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74473"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26bb2dd0a8839617e2c79ffbbe1923f8e4bab9fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42887be7c4cf283cce02cd0fb6411221167c8b6c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f3f96e771a20263635bb5e1307c112d613b4bbd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa0d31376d574ac858a40078431a77127bf04ee4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee799977d7941dbfb11049e17edd9eaf4f8820f7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:52Z"
+  }
+}

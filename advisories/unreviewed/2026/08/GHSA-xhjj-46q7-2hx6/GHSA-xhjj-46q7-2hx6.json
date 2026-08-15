@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xhjj-46q7-2hx6",
+  "modified": "2026-08-15T15:30:34Z",
+  "published": "2026-08-15T15:30:34Z",
+  "aliases": [
+    "CVE-2026-74493"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: fix socket use-after-free during link group termination\n\n__smc_lgr_terminate() drops conns_lock after finding a connection in\nlgr->conns_all, but before taking a reference on its socket. The connection\nis embedded in the socket, and its registration reference protects it only\nwhile the connection remains in the tree.\n\nA concurrent close can unregister the connection and drop that reference,\nfreeing the socket before the termination worker reaches sock_hold().\n\nThe race is reachable when close overlaps link group termination.\nLocal stress testing reproduced the use-after-free and KASAN reported:\n\n  BUG: KASAN: slab-use-after-free in __smc_lgr_terminate.part.0 [smc]\n  Write of size 4 by task kworker/3:3\n  Workqueue: events smc_lgr_terminate_work [smc]\n  __smc_lgr_terminate.part.0 [smc]\n\nThe socket was allocated by smc_create(), freed through\nslab_free_after_rcu_debug(), and was followed by:\n\n  refcount_t: addition on 0; use-after-free.\n  __smc_lgr_terminate.part.0 [smc]\n\nTake the socket reference while conns_lock still protects the tree entry.\nThe unregister path then cannot drop the last reference until termination\nhas finished using the socket.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74493"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/281c103a8eaed59001ce952f231df1b07674215a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a42f162b857019a4c10ff687dc3bcdf51831865"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0541a775d04c88e90ba448e35ce0d743512822a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f621d6ebeebb6374342571e4ddf45fdbc420f6cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f807a63d0d95680c34f677700da9148a07d7c78f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:54Z"
+  }
+}

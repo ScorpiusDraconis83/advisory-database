@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mwmj-cw5c-jg28",
+  "modified": "2026-08-15T15:30:34Z",
+  "published": "2026-08-15T15:30:34Z",
+  "aliases": [
+    "CVE-2026-74503"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: timer: Clear SNDRV_TIMER_IFLG_DEAD once the close completes\n\nsnd_timer_close_locked() marks an instance with SNDRV_TIMER_IFLG_DEAD\nand returns early when the flag is already set, but the flag is never\ncleared again.  A completed close ends in remove_slave_links(), which\nleaves timeri->timer NULL, so a second close is already harmless through\nthe timer == NULL path; the early return can only be reached by an\ninstance that was opened again in between.  For such an instance the\nclose unlinks nothing, so snd_timer_instance_free() frees an object that\nis still on timer->open_list_head, still on snd_timer_master_list if it\nwas opened with a slave key, still owns any adopted slaves, and still\nholds its timer and module references.\n\nsnd_seq_timer_open() reopens an instance exactly like that: it retries\nits fallback open on the same object after a failure that has already\nrun snd_timer_close_locked() internally.  An unprivileged user with\naccess to /dev/snd/timer and /dev/snd/seq can force that failure, since\nsnd_timer_check_master() returns -EBUSY when a pending slave matches the\nnew master's (slave_class, slave_id) key and the target timer has\nreached max_instances, and SNDRV_TIMER_IOCTL_SELECT with dev_class =\nSNDRV_TIMER_CLASS_SLAVE keeps the caller-supplied dev_sclass, so a\nsequencer queue's key can be forged.  The freed instance is afterwards\ndereferenced by any further snd_timer_open() on that timer, by\nsnd_timer_check_slave(), and by /proc/asound/timers, which faults on the\nstale ti->owner pointer.\n\nThe flag only has to be visible while the close is in progress, which is\nall its other users need.  Clear it in remove_slave_links(), under the\nsame timer->lock that sets it, once the instance is off every list.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74503"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c561fab50991df10b1e4daca25886c34a2a9c07"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a26a2e52736f9e39843ca66a2e1ce6bf1adbcd1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb016091010ec401a06e6bdace0cd944ee03d371"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2744d5f3aea474513fd2298daecb94a952ce441"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:55Z"
+  }
+}

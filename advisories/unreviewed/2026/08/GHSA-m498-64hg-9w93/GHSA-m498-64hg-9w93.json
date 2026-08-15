@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m498-64hg-9w93",
+  "modified": "2026-08-15T15:30:32Z",
+  "published": "2026-08-15T15:30:32Z",
+  "aliases": [
+    "CVE-2026-74444"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vmwgfx: validate DRAW_PRIMITIVES header size before division\n\nvmw_cmd_draw() computes\n\n\tmaxnum = (header->size - sizeof(cmd->body)) / sizeof(*decl);\n\nwhere header->size is u32 and is taken straight from the user-supplied\ncommand stream.  When header->size is less than sizeof(cmd->body) the\nunsigned subtraction wraps to nearly 4 GiB, producing a huge maxnum.\nAny user-controlled cmd->body.numVertexDecls then passes the bound and\nthe loop dereferences decl[i] far past the end of the kernel command\nbounce buffer, producing an out-of-bounds read of kernel memory.\n\nReject undersized headers up front.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74444"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2666cddf0dd218aa9bd1f99db688d1b532eac21a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85891d174707d8bddcec7a888fb4e1d17def34f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c77cf8edae2bd3a1599115301cc7c98d0c78e731"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc0be7662b7b0ce28cb5eea864737793ed7b9e70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc0c02f510e41650df3479f96e257acf87d8a20a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:48Z"
+  }
+}

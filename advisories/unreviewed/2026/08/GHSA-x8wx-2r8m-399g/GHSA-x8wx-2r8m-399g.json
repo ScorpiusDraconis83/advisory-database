@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x8wx-2r8m-399g",
+  "modified": "2026-08-15T15:30:36Z",
+  "published": "2026-08-15T15:30:36Z",
+  "aliases": [
+    "CVE-2026-74546"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (adt7470) Fix divide-by-zero TOCTOU crash in fan speed read\n\nIf the fan data becomes 0 between the FAN_DATA_VALID() check and the\nFAN_PERIOD_TO_RPM() conversion, it will result in a divide-by-zero crash\ndue to a race with a concurrent update of the cached fan value.\n\nFix a TOCTOU issue by reading fan data once.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74546"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b46fe9dc8f8de59310f37e6c5e5c0e05ded46c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/76963b04b2d1c648d69949d8dd521e1ff7f40b51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/832069bec79cf6f903441c5769d3cdba95d0af33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96ad57d31763559d376416cdf3bf5ae79bbbebec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d328175045176f85c15c369bd21dc551351e7935"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:59Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ppm8-hvcv-5jfx",
+  "modified": "2026-08-15T15:30:34Z",
+  "published": "2026-08-15T15:30:34Z",
+  "aliases": [
+    "CVE-2026-74498"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb-audio: Fix DMA buffer out-of-bounds write when fill_max is set\n\nWhen a USB audio endpoint requests full packet transfers via the fill_max\ndescriptor flag, data_ep_set_params() promotes ep->curpacksize to\nep->maxpacksize. However, maxsize is left at the original sample-rate\nderived value.\n\nSince u->buffer_size is allocated as maxsize * packets, the resulting\nDMA buffer is far too small for the requested transfer length. When the\nUSB host controller streams up to curpacksize bytes per packet, it writes\npast the end of the buffer via DMA, corrupting kernel heap memory.\n\nUpdate maxsize to curpacksize when fill_max is set so that the allocated\nDMA buffer size matches the actual transfer request size.\n\n[ changed to reassign maxsize only when ep->fill_max is set -- tiwai ]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74498"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04595233e5606d452f9f47e6989fc7ae7440fd40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3852974608f53e530e27c21d0c6c7d79c17b3f5a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd65b7191683bebd9923904f0558b9211b9129da"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0199ae1666ff9ae2d1d568d64c3430d4c47f0e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9b6c9576568169139ac151f7881474f384659fd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:54Z"
+  }
+}

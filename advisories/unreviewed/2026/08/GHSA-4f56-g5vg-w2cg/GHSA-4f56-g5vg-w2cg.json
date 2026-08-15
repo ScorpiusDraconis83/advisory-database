@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4f56-g5vg-w2cg",
+  "modified": "2026-08-15T15:30:35Z",
+  "published": "2026-08-15T15:30:35Z",
+  "aliases": [
+    "CVE-2026-74537"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: hold sk properly in iso_conn_ready\n\nsk deref in iso_conn_ready must be done either under conn->lock, or\nholding a refcount, to avoid concurrent close. conn->sk is currently\naccessed without either:\n\n    [Task 1]            [Task 2]\n                        iso_sock_release\n    iso_conn_ready\n      sk = conn->sk\n                          lock_sock(sk)\n                            conn->sk = NULL\n      lock_sock(sk)\n                          release_sock(sk)\n                          iso_sock_kill(sk)\n       UAF on sk deref\n\nFix possible UAF by holding sk refcount in iso_conn_ready().  Also\nrecheck after lock_sock that the socket is still valid.  Adjust locking\nso conn->sk is cleared only under lock_sock.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74537"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d255e63fcf3f13a570d7ac11678fa1164ac015c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1308d72903d792d10b82bc4ef08b8a4452308b04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e9b5e8669b3602a4e01b6d1e9539b72e42c84d5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:59Z"
+  }
+}

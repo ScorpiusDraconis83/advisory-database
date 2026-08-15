@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-59jj-4qq4-v9f9",
+  "modified": "2026-08-15T15:30:33Z",
+  "published": "2026-08-15T15:30:33Z",
+  "aliases": [
+    "CVE-2026-74474"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: use pskb_network_may_pull() for transmit path header pulls\n\nIn vxlan_xmit(), arp_reduce(), and vxlan_mdb_entry_skb_get(), pskb_may_pull() was\nbeing called to verify the availability of network layer headers (ARP, IPv6/ND,\nIP/IPv6 MDB keys).\n\nHowever, during transmit skb->data points to the MAC header, so skb_network_offset(skb)\nis ETH_HLEN (14 bytes). Using pskb_may_pull(skb, len) only checks len bytes from skb->data\nrather than skb_network_offset(skb) + len, which can leave part of the network header\nin non-linear frags.\n\nReplace these remaining pskb_may_pull() calls with pskb_network_may_pull() to properly\naccount for the MAC header offset.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7076a34b6e33315dc160b4612bfea1c597495585"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94dee751aad627b3645d424b5d0c736d394573e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9553558b48db54ac9273e6b98d7263ef5c1a329"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:52Z"
+  }
+}

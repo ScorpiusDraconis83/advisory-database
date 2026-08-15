@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jmvv-89q4-p2wr",
+  "modified": "2026-08-15T15:30:34Z",
+  "published": "2026-08-15T15:30:34Z",
+  "aliases": [
+    "CVE-2026-74486"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinfmt_misc: use exe_file_deny_write_access() for the interpreter clone\n\nFor MISC_FMT_OPEN_FILE entries load_misc_binary() clones the\nregistered interpreter file and denies write access to the clone via\nplain deny_write_access(). The clone is installed as\nbprm->interpreter and later released by the exec machinery through\nexe_file_allow_write_access() which skips the i_writecount increment\nfor files with FMODE_FSNOTIFY_HSM set.\n\nThe deny and allow side can therefore come to different conclusions\nwhen pre-content watches are in play: if a pre-content watch is added\nto the interpreter after registration every subsequent exec through\nthat entry takes a write denial on the clone that is never paired\nwith a write allowance, driving the interpreter inode's i_writecount\nfurther down with each exec and leaving the interpreter unwritable\neven after the entry and all its users are gone.\n\nTake the write denial via exe_file_deny_write_access() so both sides\nof the pairing base their decision on the same file mode, and\npropagate failure instead of silently ignoring it: an interpreter\nthat is concurrently open for writing now fails the exec with\nETXTBSY, exactly like an interpreter freshly opened via open_exec()\nwould.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74486"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/255a758697da87a205e072e0cfc35897b8f743b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f0edbaf487e4653a680a7abb91c1df94cb7886aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa5990ca8fd917003e526036bcc50413edb9722c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:53Z"
+  }
+}

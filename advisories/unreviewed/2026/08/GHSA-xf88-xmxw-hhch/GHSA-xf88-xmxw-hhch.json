@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xf88-xmxw-hhch",
+  "modified": "2026-08-15T15:30:35Z",
+  "published": "2026-08-15T15:30:35Z",
+  "aliases": [
+    "CVE-2026-74533"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: fix race of kfree vs kref_get_unless_zero\n\nhci_conn::iso_data is accessed and modified without lock or RCU.\nThis leads to a race\n\n    [Task hdev->workqueue]                 \t[Task 2]\n    iso_recv                                    iso_conn_put(conn)\n      conn = LOAD hcon->iso_data                  iso_conn_free(conn)\n      iso_conn_hold_unless_zero(conn)               hcon->iso_data = NULL\n                                                    kfree(conn)\n        kref_get_unless_zero(&conn->ref) /* UAF */\n\nand also to races in iso_conn_add() vs. iso_conn_free().\n\nFix by adding spinlock hci_conn::proto_lock and using it to guard\nhci_conn::iso_data.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74533"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/876a3e94c70d0859d1dad1c986112d4f0d99eba8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af24e338bf5dafb80f42baa9a0b9e9b57b1c5d9c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:58Z"
+  }
+}

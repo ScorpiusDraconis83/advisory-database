@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rw3p-g3wm-qv8p",
+  "modified": "2026-08-15T15:30:35Z",
+  "published": "2026-08-15T15:30:35Z",
+  "aliases": [
+    "CVE-2026-74514"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: pci: Fix memory accounting for pinned/unpinned pages\n\nThe account_mem() and unaccount_mem() functions call get_uid() which\nincrements the reference count of struct user_struct on every invocation.\nBut we don't decrement the count by calling free_uid(). It also\naccounted/unaccounted the pages against the current->mm. But its possible\nthe unaccount_mem() can be called from a different process context than the\none that originally pinned the pages.\n\nLet's fix this by storing the pinning process user_struct and mm_struct\nwhen accounting for pinned pages, and subsequently free these resources\nwhen the pages are unpinned.\n\n[borntraeger@linux.ibm.com: Fixed whitespace]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74514"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36f6999ecde3976731a8bfc0b8e667da6f593069"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70871b121f81d08879363cb1238a4c85c5c2800c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3f732e086e438c52c7400bd2734bb166aa4752c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:56Z"
+  }
+}

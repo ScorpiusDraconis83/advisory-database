@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fm8j-hx94-qc39",
+  "modified": "2026-08-15T15:30:33Z",
+  "published": "2026-08-15T15:30:33Z",
+  "aliases": [
+    "CVE-2026-74455"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: peak_usb: validate uCAN receive record lengths\n\npcan_usb_fd_decode_buf() walks uCAN records packed in one USB\nreceive buffer.\n\nRequire each record to contain the fixed header for its type, and verify\nCAN payload bytes before copying them into the skb.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74455"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2427ef427bdd78d862c7c76597bfd9eda88b81f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c8f08f3641a074da40acf05baa5a18ae2739260"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6067c878e38d02a3d5c43497347e143f85c9064a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93fcab2c6968446316bbb49548848df604d6346f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d9c115948c3dd5fcc2d0245cec5eb76c098503c8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:50Z"
+  }
+}

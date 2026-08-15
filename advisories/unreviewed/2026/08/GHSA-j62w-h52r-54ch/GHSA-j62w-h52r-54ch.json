@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j62w-h52r-54ch",
+  "modified": "2026-08-15T15:30:35Z",
+  "published": "2026-08-15T15:30:35Z",
+  "aliases": [
+    "CVE-2026-74540"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: L2CAP: fix UAF in l2cap_le_connect_rsp\n\nl2cap_le_connect_rsp() obtains a channel via\n__l2cap_get_chan_by_ident() but neither holds a reference nor uses\nl2cap_chan_hold_unless_zero() before locking and operating on it.\nA concurrent l2cap_chan_del() triggered by a remote disconnect can\nfree the channel between the lookup and l2cap_chan_lock(), causing\na use-after-free.\n\nThe BR/EDR counterpart l2cap_connect_rsp() and the sibling handler\nl2cap_le_command_rej() already use l2cap_chan_hold_unless_zero()\nto safely hold a reference, but l2cap_le_connect_rsp() was left\nunprotected.\n\nFix by adding l2cap_chan_hold_unless_zero() after the ident lookup\nand l2cap_chan_put() on the exit path, consistent with other L2CAP\nresponse handlers.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74540"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09f447accc2570751e7d17f0dc0788b40d3edade"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/522b730c62c53a1981604fd73524697fd347830d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58e3c5289ad230a7e24ae4b0c7b43f5ee6e32136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4740e7f23ff9a8210198d8b4703259e21b9f69d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd4c1e301bdec60a40728ea37de531cbccda501a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:59Z"
+  }
+}

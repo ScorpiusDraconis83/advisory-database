@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3wq3-vrpr-9c55",
+  "modified": "2026-08-15T15:30:34Z",
+  "published": "2026-08-15T15:30:34Z",
+  "aliases": [
+    "CVE-2026-74505"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: 6fire: Fix UAF at error handling during probe\n\nAlthough 6fire driver had a few fixes for dealing with the early error\nhandling during the probe phase, it forgot a pending URB before\nfreeing the resources, which may lead to a UAF.\n\nThis patch addresses it by doing the almost same cleanup procedure\nlike the normal disconnect phase at the error path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74505"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11e2953d9f4c7c3d2af94a889c2d805c537d633f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2de734dcbb210bd59983e13d36988acbcc122194"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/49bc7741cd2761c703a292dc69245041ae8a67bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/630c8d6a93cbd9b2a207f1a67ef1fd21af098b0c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a54bf16965f896415c3337bc4fbb40fb11941d99"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:55Z"
+  }
+}

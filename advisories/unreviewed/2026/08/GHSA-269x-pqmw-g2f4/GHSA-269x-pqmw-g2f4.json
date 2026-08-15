@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-269x-pqmw-g2f4",
+  "modified": "2026-08-15T15:30:35Z",
+  "published": "2026-08-15T15:30:35Z",
+  "aliases": [
+    "CVE-2026-74515"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: pci: Reject adapter interrupt forwarding if already enabled\n\nThe MPCIFC instruction doesn't allow registering adapter interrupts without\nfirst unregistering. So reject any request to enable interrupt forwarding\nif its already enabled for the zPCI device. This also fixes overwriting and\nthus leaking resources when the ioctl is called multiple times for the same\ndevice.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74515"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/591952b63a9f976da7d49f719f36ec826ee2a575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6837f0ae85fd54cf64c8a0c7c530bba2fae0a207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6be1ff49ba81f96a6fa55915e6d920be43ac57cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78d9648e7e960546d5b72504a0b0358cd8bb1e9d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8fa01be5a6149404adb82c0979a78f6347edd3ef"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:56Z"
+  }
+}

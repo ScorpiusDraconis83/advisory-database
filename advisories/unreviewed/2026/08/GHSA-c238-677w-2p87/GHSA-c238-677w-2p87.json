@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c238-677w-2p87",
+  "modified": "2026-08-15T15:30:33Z",
+  "published": "2026-08-15T15:30:32Z",
+  "aliases": [
+    "CVE-2026-74454"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vc4: Supply the overflow slot size in BPOS, not the whole bin BO size\n\nvc4_overflow_mem_work() points BPOA at a 512KB slot inside the 16MB\nbinner BO, but writes the size of the whole BO to BPOS. On every binner\nout-of-memory event the PTB is therefore authorized to write tile lists\nacross all the other slots (which may hold the tile state, tile alloc and\noverflow memory of in-flight jobs) and, for any slot but the first, past\nthe end of the binner BO into unrelated CMA memory.\n\nSince CMA pages are recycled into page cache and user allocations, this\nis arbitrary memory corruption by GPU DMA. In practice it shows up as GPU\nhangs with corrupted control list pointers, userspace heap corruption, a\nGPU that stays permanently wedged after the first hang, and occasional\nfull system crashes, whenever a job overflows the initial binner slot.\n\nThe bug dates back to the conversion from a dedicated overflow BO (where\nwriting the full BO size was correct) to the slotted binner BO.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74454"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0badb30871004d34df87be33e853536f0b69885f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1e33ca7f44be64beed2735bb76b86eb65ba8c05b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f2291a119e9a8b696ae8bb36e86b75d272ceaea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6395789e4739aa5177bbec0fa0f07ccc38d249b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cd5acf6f87c073622bd61e38fe99c47365cda9c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:50Z"
+  }
+}

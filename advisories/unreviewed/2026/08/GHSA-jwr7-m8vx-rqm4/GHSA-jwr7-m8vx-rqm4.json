@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jwr7-m8vx-rqm4",
+  "modified": "2026-08-15T15:30:35Z",
+  "published": "2026-08-15T15:30:35Z",
+  "aliases": [
+    "CVE-2026-74541"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: clear iso_data always when detaching conn from hcon\n\nWhen setting conn->hcon = NULL, also conn->hcon->iso_data = NULL is\nnecessary, otherwise later iso_conn_free() will UAF.\n\nFix clearing of iso_data in iso_sock_disconn()\n\nFixes KASAN: slab-use-after-free in iso_conn_hold_unless_zero on\niso_sock_release() followed by hci_abort_conn_sync().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74541"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63c0f396a18b767eb28e895eb95bbdce6c172c59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69a4a7b162b3db6ac337e3094cdee38f24d42ff7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b51a9c25e9698b64df9f2218f10eecf7dc7e2d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc1d39946d62bc568551dfb81149724de1e91338"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d57e506f6a1e3929611340fae87c1e4823f4d85c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:59Z"
+  }
+}

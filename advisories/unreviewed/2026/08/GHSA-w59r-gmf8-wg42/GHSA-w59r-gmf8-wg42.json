@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w59r-gmf8-wg42",
+  "modified": "2026-08-15T15:30:34Z",
+  "published": "2026-08-15T15:30:34Z",
+  "aliases": [
+    "CVE-2026-74511"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: mgmt: fix pending command UAF in EIR updates\n\nMGMT_OP_SET_LOCAL_NAME is handled asynchronously on powered controllers\nand can run set_name_sync().  When the controller is BR/EDR capable,\nset_name_sync() updates the local name and then rebuilds EIR data through\neir_create().  The EIR builder walks hdev->uuids, but the UUID list can\nbe changed and entries can be freed by MGMT_OP_ADD_UUID and\nMGMT_OP_REMOVE_UUID.\n\npending_eir_or_class() is meant to serialize management commands that\ncan change EIR or the class of device, but it did not include\nMGMT_OP_SET_LOCAL_NAME.  In addition, it walked hdev->mgmt_pending\nwithout hdev->mgmt_pending_lock even though pending commands are added\nand removed under that mutex.  A racing command completion can therefore\nremove and free a pending command while pending_eir_or_class() is still\ninspecting it, leading to a use-after-free in the pending-command list or\nallowing a local name update to rebuild EIR while UUID entries are being\nremoved.\n\nTake hdev->mgmt_pending_lock while scanning hdev->mgmt_pending and treat\nMGMT_OP_SET_LOCAL_NAME as an EIR/class-affecting pending command on the\npowered asynchronous path.  Check for a conflicting pending command before\ncopying the new short name so a rejected SET_LOCAL_NAME request does not\nmodify hdev->short_name.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74511"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/35464ff818165131464bd524c259db1ac8044ae3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/814f82f432dc6ee4d15f94756554ff94e6e3ef05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f2f62855a41d1730fb9e8122912bd2c8d6bed5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9e7c2609b0cb3fb4b4ba9f66dd8727d33205967"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eacfcb6b735d0e16b4d2ecfde4b9141225ee934e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:56Z"
+  }
+}

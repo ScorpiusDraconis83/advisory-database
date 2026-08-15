@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r5jm-2247-f5r8",
+  "modified": "2026-08-15T15:30:35Z",
+  "published": "2026-08-15T15:30:35Z",
+  "aliases": [
+    "CVE-2026-74522"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix use-after-free in __close_file_table_ids()\n\nA ksmbd_file can remain alive after logical close while another session\nholds a temporary reference obtained through ksmbd_lookup_fd_inode().\nksmbd_close_fd() currently marks the file closed and drops the idr-owned\nreference, but leaves the pointer published in the closing session's idr\nuntil the final reference is dropped.\n\nIf the foreign holder performs the final ksmbd_fd_put(), __put_fd_final()\nsupplies the foreign session's file table to __ksmbd_close_fd(). The object\nis then freed without being removed from its owner's idr, and the owner\nsession later dereferences the stale pointer during file-table teardown.\n\nRemove the volatile id from the owner's idr while ksmbd_close_fd() still\nholds that table's lock, and clear volatile_id before dropping\nthe idr-owned reference. A later foreign final put then only performs\nphysical destruction and cannot remove the object from the wrong table.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74522"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c3918c2cee62ec6c9de8d5c73ebfe6f833961ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67aaec2a1fdce3e1dde46c45b5d1ef8cf22f65cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9be4a66f019ea90bd9deca70511f4f9ffebf5c6f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cffbdc86393b0235383a20c8c59bc32f16036459"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7188199eff46a636f3436356f0aae039be6dd66"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:57Z"
+  }
+}

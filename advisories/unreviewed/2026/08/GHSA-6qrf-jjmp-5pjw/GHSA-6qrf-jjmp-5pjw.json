@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6qrf-jjmp-5pjw",
+  "modified": "2026-08-15T15:30:36Z",
+  "published": "2026-08-15T15:30:36Z",
+  "aliases": [
+    "CVE-2026-74542"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfs: Fix folio_queue ENOMEM in writeback by adding a mempool\n\nFix the handling of folio_queue allocation failure in writeback by adding a\nmempool and passing in gfp_t flags to the rolling buffer functions that\nallocate memory, using the mempool if gfp != GFP_KERNEL.\n\nThis is then extended upwards and the gfp to be used for a request is stored\nin the netfs_io_request struct and is then used for both requests and\nsubrequests, eliminating the sleeping loops there.\n\nThe failure caused:\n\n    folio != NULL\n    WARNING: fs/netfs/write_issue.c:603 at netfs_writepages+0x883/0xa10 fs/netfs/write_issue.c:603, CPU#3: syz.0.17/5919",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74542"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d78d56c43ef3768183e8370e7367b162700e049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f6d7f8a5416d852648d15a05e895f1195ee8a85"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:59Z"
+  }
+}

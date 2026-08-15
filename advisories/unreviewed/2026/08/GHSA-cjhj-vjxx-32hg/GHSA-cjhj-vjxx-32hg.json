@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cjhj-vjxx-32hg",
+  "modified": "2026-08-15T15:30:35Z",
+  "published": "2026-08-15T15:30:35Z",
+  "aliases": [
+    "CVE-2026-74528"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: hold conn in hci_past_sync() callback\n\nAvoids giving freed pointers to hci_conn_valid(), which kmalloc may have\nreused.\n\nHold refcount to avoid that.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74528"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/abf9753edf3f88282c44a605f3945d8d4f8dd86c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6792adef614b389141b142e30ee549e4a47dd7d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:58Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hm75-jr86-gwf9",
+  "modified": "2026-08-15T15:30:32Z",
+  "published": "2026-08-15T15:30:32Z",
+  "aliases": [
+    "CVE-2026-74451"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: validate firmware interface structure sizes\n\niface_fw_to_cpu_addr() only checks that the firmware-provided MCU virtual\naddress points inside the shared section. The returned pointer is later\nused as a full firmware interface structure, so accepting an address near\nthe end of the shared section can still lead to out-of-bounds accesses.\n\nPass the expected object size to iface_fw_to_cpu_addr() and reject ranges\nthat do not fit entirely in the shared section.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74451"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21c77486f5a60bb9c0433c21de62a5f25d5091f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b921b8613790a3f9e78ab64017fa7149ef0b750c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c835f2b0b7167584832b516c9b0a26e9180d1d0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca41d9f3a21586bf29df53eec05152ecf2b2f94f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T13:17:49Z"
+  }
+}
