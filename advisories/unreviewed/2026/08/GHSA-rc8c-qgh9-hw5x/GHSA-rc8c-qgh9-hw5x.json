@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rc8c-qgh9-hw5x",
+  "modified": "2026-08-15T06:32:16Z",
+  "published": "2026-08-15T06:32:16Z",
+  "aliases": [
+    "CVE-2026-72230"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: frag: free unfragmentable packet\n\nThe caller of batadv_frag_send_packet() assume that the skb provided to the\nfunction are always consumed. But the pre-check for an empty payload or the\nzero fragment size returned an error without any further actions.\n\nA failed pre-check must use the same error handling code as the rest of the\nfunction.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72230"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04ccbed8179e7d4d0906d00939300ddc5b48ce7e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08047838817561cef33ada9774a2a4663d499ecb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59e1da1ab354d1f2b7bab8d44f846262f990ad9d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/601dff01a03ecced59938cdd69eeb2c66e4158f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b628425aed49a1c7a4ffc997583840fc582d32b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/740542f11bf8c86411c429fbd7f84fc6bee80e76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f54162e07d3eea1e4ff21464cf2a815d79b6510"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a5155aeeae8ead3c6081f7f197608033e4dcfe75"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:49Z"
+  }
+}

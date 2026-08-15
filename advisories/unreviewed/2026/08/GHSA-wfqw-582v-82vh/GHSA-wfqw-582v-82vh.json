@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wfqw-582v-82vh",
+  "modified": "2026-08-15T06:32:28Z",
+  "published": "2026-08-15T06:32:28Z",
+  "aliases": [
+    "CVE-2026-74290"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: cls_flow: Dont expose folded kernel pointers\n\nThe flow classifier falls back to addr_fold() for fields that are missing\nfrom packet headers. In map mode, userspace controls mask, xor, rshift,\naddend and divisor, and can observe the resulting classid through class\nstatistics. This allows a tc classifier in a user/network namespace to\nrecover the 32-bit folded value of skb->sk, skb_dst() or skb_nfct().\n\nAlign with standard kernel practices for pointer hashing and replace the\nXOR folding with a keyed siphash (which is cryptographically secure)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74290"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a8b5b74f0e6b6b9ce453bcfa4baa502c4c7577a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/19f2ecf8ea564562c7e7a919cf38068dd9aa1c96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d054001860270748405a3f9270c5fa0bf7ffc19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6151159618198675e01c391676e579738286c135"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f294fc71c4a0fa4964f6428a1b4e7929c1d83125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb31fbe51c233f3bf47021121f63d2e42cac2d08"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:28Z"
+  }
+}

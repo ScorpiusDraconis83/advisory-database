@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fr6v-fcwq-3cgm",
+  "modified": "2026-08-15T06:32:23Z",
+  "published": "2026-08-15T06:32:23Z",
+  "aliases": [
+    "CVE-2026-72403"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: FCP: Fix NULL pointer dereference in interface lookup\n\nA malformed USB device can provide a vendor-specific interface without\nany endpoint descriptors. fcp_find_fc_interface() currently selects the\nfirst vendor-specific interface and reads endpoint 0 from it, without\nchecking whether the interface actually has any endpoints.\n\nWhen bNumEndpoints is zero, no endpoint array is allocated for the parsed\nalternate setting, so get_endpoint(..., 0) yields an invalid endpoint\ndescriptor pointer. Dereferencing it through usb_endpoint_num() then\ntriggers a NULL pointer dereference.\n\nSkip vendor-specific interfaces that do not have any endpoints.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72403"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ab06151ffcb8c3aeb8f78508658b6c0f05be932"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e1e31e0ec8a609e17fd2e86b77bc00d9cbb24d7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f28d7b5f1578a7501ab17b10643ed1e4f729187e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:13Z"
+  }
+}

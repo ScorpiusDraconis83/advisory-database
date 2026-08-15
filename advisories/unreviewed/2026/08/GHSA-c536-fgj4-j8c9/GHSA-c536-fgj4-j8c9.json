@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c536-fgj4-j8c9",
+  "modified": "2026-08-15T06:32:10Z",
+  "published": "2026-08-15T06:32:10Z",
+  "aliases": [
+    "CVE-2026-72038"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: liquidio: fix BAR resource leak on PF number failure\n\nIf cn23xx_get_pf_num() fails, the function returns without\nunmapping either BAR. Unmap both BARs before returning from\nthe error path.\n\nFound by manual code review.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72038"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/020e52aee732bb08e6b89dd02bbf88895a50fffd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4140c516473a0e116ab3a73f9320c2aa5800210b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a45884566bab4122bbeb8fff7d2d6b5fdbded24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/715cce38424fb2488ef2c5e6e6ffbfe1b74a9e67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75b924759de9427761115301308c137904aa3f99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a22103618ee5b6ee884c374351f65fcdff7248f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b74f293e5f38052cfa14710abfacd6b6561cc2d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c63ee62a3c4ac1a1542f4c1a4b87e2f41df5a496"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:12Z"
+  }
+}

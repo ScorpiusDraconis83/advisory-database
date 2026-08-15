@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v6qx-54rp-64xq",
+  "modified": "2026-08-15T06:32:30Z",
+  "published": "2026-08-15T06:32:30Z",
+  "aliases": [
+    "CVE-2026-74353"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: always resume_all after suspend_all\n\nNeed to restore any good queues even if the suspend_all\nfailed for some.  Always run remove_queue as that will\nschedule a GPU reset is removing the queue fails.\n\nv2: move resume_all after remove",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74353"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/56ae73c92e200e630c2bdf1e98c88b86c8483b37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a030fcb4b192a508113787ef28fb97e27dcf6f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5fc19c898e08deb40b671329d99d85d2d575f0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e29da2a4d9a3b1837dec3ce0892835d506c2a85e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:36Z"
+  }
+}

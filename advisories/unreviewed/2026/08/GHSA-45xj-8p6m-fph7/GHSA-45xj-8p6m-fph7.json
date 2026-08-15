@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-45xj-8p6m-fph7",
+  "modified": "2026-08-15T06:32:22Z",
+  "published": "2026-08-15T06:32:22Z",
+  "aliases": [
+    "CVE-2026-72387"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: Fix potential invalid pointer deref in group_process_tiler_oom()\n\nIf heaps is an ERR_PTR(), panthor_heap_pool_put() will deref an invalid\npointer. Make sure we set it to NULL in that case.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72387"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/053522ba615888e874adc04e675d9ed2e13f35af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b39436d0ba1571dbcda69d20ec567344b3eecfc7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bfc5b91ab3ddddf636d8c1c050455bf4e14c912b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd0b2976b7c0f4ea806855ed19ffad967d36610e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:12Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-34gf-qwwx-pv6w",
+  "modified": "2026-08-15T06:32:29Z",
+  "published": "2026-08-15T06:32:29Z",
+  "aliases": [
+    "CVE-2026-74323"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: Fix possible token leak in mt7996_tx_prepare_skb()\n\nIf link_conf or link_sta lookup fails in mt7996_tx_prepare_skb routine,\nmt7996 driver leaks an already allocated tx token. Fix the issue\nreleasing the token in case of error.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74323"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06e65d6cf80490bc0457d339595d1ed5a89e8899"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/831074096d0450308357271fc0ffd3f600a2487e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa0e9aa92a7bc97fc42014c5efaaf1278fa92723"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:32Z"
+  }
+}

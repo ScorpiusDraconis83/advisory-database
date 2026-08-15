@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6w8x-qp9f-74pq",
+  "modified": "2026-08-15T06:32:07Z",
+  "published": "2026-08-15T06:32:07Z",
+  "aliases": [
+    "CVE-2026-68465"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmmc: sdhci-esdhc-imx: fix esdhc_change_pinstate() to allow default state restore\n\nesdhc_change_pinstate() checks for pins_100mhz and pins_200mhz at the\ntop of the function and returns -EINVAL if either is not defined. This\nprevents the default case from ever being reached, which means devices\nwith a sleep pinctrl state but without high-speed pin states (100mhz/\n200mhz) can never restore their default pin configuration.\n\nMove the IS_ERR checks for pins_100mhz and pins_200mhz into their\nrespective switch cases.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68465"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5adc14cd4b905629d5b9163b3a416dcab24c7ce2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa276aa6cbfbc5622bf974cf9be1d579ce4a5fab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb72b2398c05fd0a4ebf13f49c7d599d7023d484"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:19:34Z"
+  }
+}

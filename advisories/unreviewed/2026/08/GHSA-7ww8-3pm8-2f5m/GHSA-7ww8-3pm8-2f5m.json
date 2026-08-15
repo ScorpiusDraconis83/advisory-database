@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7ww8-3pm8-2f5m",
+  "modified": "2026-08-15T06:32:30Z",
+  "published": "2026-08-15T06:32:30Z",
+  "aliases": [
+    "CVE-2026-74326"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7921: fix resource leak in probe error path\n\nWhen pcim_iomap_region() or devm_kmemdup() fail, the code returns\ndirectly without cleaning up previously allocated resources:\n  - mt76_device allocated by mt76_alloc_device()\n  - pci irq vectors allocated by pci_alloc_irq_vectors()\nFix this by jumping to the existing error cleanup path instead of\nreturning directly.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74326"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/346dac35b1384af9338b34b6835e82e634ea4d2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79a307b2730e4b4e060cf3e19a6c21b87116ee78"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:33Z"
+  }
+}

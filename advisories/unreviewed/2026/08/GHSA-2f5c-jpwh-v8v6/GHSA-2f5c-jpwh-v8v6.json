@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2f5c-jpwh-v8v6",
+  "modified": "2026-08-15T06:32:11Z",
+  "published": "2026-08-15T06:32:11Z",
+  "aliases": [
+    "CVE-2026-72078"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: ims-pcu - validate control endpoint type\n\nThe driver currently assumes that the first endpoint of the control\ninterface is an interrupt IN endpoint without verifying it. A malicious\ndevice could provide a different endpoint type, which would then be\npassed to usb_fill_int_urb(), potentially leading to kernel warnings\nor undefined behavior.\n\nVerify that the control endpoint is an interrupt IN endpoint.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72078"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b96b4da96313dd799a3a40dcfd598d2e2c19217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5de5075a1f26166f172b6687cb66810a9b61e3eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7960d99332e03705ec622d92f31e0c77de8baac6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a630508a09b0c05f14bc0843ed409221a93751aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa1885f87e60c80e59e50ffd5fb096bf02c83e05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/baf56975806534268e24acf9a8abb1c447ce11e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c8d3d83f2eaaf7659de76e8d44e8fc88ee346042"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cbfa059dfb48b9aa322e34fd44a093d9ca29ad7e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:17Z"
+  }
+}

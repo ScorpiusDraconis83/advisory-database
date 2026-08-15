@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5288-9525-rfgm",
+  "modified": "2026-08-15T06:32:21Z",
+  "published": "2026-08-15T06:32:21Z",
+  "aliases": [
+    "CVE-2026-72349"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: xt_rateest: fix u64 truncation in xt_rateest_mt()\n\nOn links faster than ~34 Gbps, where byte rate may exceed 2^32-1\n(~ 4.3 GBps), the comparison result becomes incorrect because the\ntruncated value no longer reflects the actual estimator rate.\n\nFix by changing the local variables to u64.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72349"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/444853cd438201007da5359821adcc2995655ab1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5da915fc159c6b4091669447588e520183969cca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77e9ba358d63fe2eb03c90d29ea85651d95cf2e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/905a927b2e6fec7b174e9e5644d271047b61378f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3ba938f45cb00f6bf49d3aa3647df9b017f5f08"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bab305dd769d78074adca73505cc2509e1206bf2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5cc4c12a4b90bf099199c3c49ecda7e694f2a2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e702f6dd5d21e331f55fd9168c0210542008546d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:08Z"
+  }
+}

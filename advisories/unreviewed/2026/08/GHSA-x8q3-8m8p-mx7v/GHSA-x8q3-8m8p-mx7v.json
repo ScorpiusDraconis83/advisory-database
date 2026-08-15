@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x8q3-8m8p-mx7v",
+  "modified": "2026-08-15T06:32:08Z",
+  "published": "2026-08-15T06:32:08Z",
+  "aliases": [
+    "CVE-2026-72006"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5: free mlx5_st_idx_data on final dealloc\n\nWorkloads that repeatedly allocate and release mkeys carrying TPH\nsteering-tag hints (e.g. churning RDMA MRs) leak one\nstruct mlx5_st_idx_data per cycle; kmemleak flags it as unreferenced\nand the kmalloc slab grows over time.\n\nWhen the last reference to an ST table entry is dropped,\nmlx5_st_dealloc_index() removed the entry from idx_xa but the backing\nmlx5_st_idx_data allocation was never freed.\n\nFree idx_data after the xa_erase() so the lifetime of the bookkeeping\nstruct matches the lifetime of the ST entry it tracks.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72006"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/262da8b6ea03d01ee7ed01ad309e4c89941f6b14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6eb4cf2fa8997f62c11e0006dc010a1fd89c5a75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df6134b527a88b3e65ba6ae5073664af091d5fd2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:20:59Z"
+  }
+}

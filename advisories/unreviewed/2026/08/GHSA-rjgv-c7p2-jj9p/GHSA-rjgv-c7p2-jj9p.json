@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rjgv-c7p2-jj9p",
+  "modified": "2026-08-15T06:32:31Z",
+  "published": "2026-08-15T06:32:31Z",
+  "aliases": [
+    "CVE-2026-74370"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nliveupdate: fix TOCTOU race in luo_session_retrieve()\n\nExtend the scope of the rwsem_read lock in luo_session_retrieve() to\noverlap with the acquisition of the session mutex. This prevents a\nconcurrent thread from releasing and freeing the session between the\nlookup and the mutex lock.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74370"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3ae9e7fddb4036f50003d7fa1ef52801fdb961b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d944170607b872a1f93713c555ad3f0efde3a9b8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:38Z"
+  }
+}

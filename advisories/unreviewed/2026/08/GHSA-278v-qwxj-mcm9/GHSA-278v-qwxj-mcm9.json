@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-278v-qwxj-mcm9",
+  "modified": "2026-08-15T06:32:26Z",
+  "published": "2026-08-15T06:32:26Z",
+  "aliases": [
+    "CVE-2026-72481"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: magnetometer: ak8975: fix potential kernel stack memory leak\n\nCurrently in the AK8975 driver there are four instances where potential\nuninitialized kernel stack memory leaks can occur. If\ni2c_smbus_read_i2c_block_data_or_emulated() returns a value less than\nthe size of the buffer, uninitialized bytes are retained in the buffer\nand later the buffer is passed on to IIO buffers, potentially leaking\nmemory to userspace.\n\nFix this by adding checks whether the return value of the function is\nequal to the size of the buffer and subsequently if the value is\nlesser than zero to distinguish from a returned error code.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72481"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12848f4ded022963944c063e09a192549a4dad1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d57672119525c59ed73ea21accb001ccbcd6cfd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8cf346074533356d67a6a6a43a192328ad341f11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f920550abacedc7fc3163dea65ac2a7d0b0765d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9a00d727b7bbc5e913a919530a9dd468935bf95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9cf46054f81972f8c0f1dc2a79d2a141999dbce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b974566803bceb72f0b9b5f1d7270b79ba963766"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb27ebf81136e796c7b719303ef6fd7e1ae5d488"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:22Z"
+  }
+}

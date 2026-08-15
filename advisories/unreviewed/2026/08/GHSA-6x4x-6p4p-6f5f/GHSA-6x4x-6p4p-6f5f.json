@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6x4x-6p4p-6f5f",
+  "modified": "2026-08-15T06:32:24Z",
+  "published": "2026-08-15T06:32:24Z",
+  "aliases": [
+    "CVE-2026-72436"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ipset: Don't use test_bit() in lockless RCU readers in hash types\n\nSashiko pointed out that there are a few lockless RCU readers\nusing test_bit() which is a relaxed atomic operation and\nprovides no memory barrier guarantees. Use test_bit_acquire()\ninstead where the operation may run parallel with add/del/gc,\ni.e. is not one from the next cases\n\n- protected by region lock\n- in a set destroy phase\n- in a new/temporary set creation phase",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72436"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3219d74e4536658c937fd878a327257b86ce80dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6329d3a9afe715fddda0460cfa46b496d61c2fe0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7445fe965b7d8756070a40e80f8b73348ccda1d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c107233d2ff4fd7cef5d02f9124b99194957a710"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4d257734e91bfcdc71d41843392dd6400b5bb1b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e4b4984e28c16406ecb318444dea4a8bf47def3e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:17Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-759v-33rj-5hjh",
+  "modified": "2026-08-15T06:32:23Z",
+  "published": "2026-08-15T06:32:22Z",
+  "aliases": [
+    "CVE-2026-72402"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Mask pseudo pointer values in verifier logs\n\nprint_bpf_insn() masks ldimm64 immediates for pointer-bearing pseudo\nsources when pointer leaks are not allowed, but the mask only covers\nBPF_PSEUDO_MAP_FD and BPF_PSEUDO_MAP_VALUE.\n\nBPF_PSEUDO_MAP_IDX, BPF_PSEUDO_MAP_IDX_VALUE, and BPF_PSEUDO_BTF_ID can\nalso be resolved to kernel pointer values before the verifier log prints\nthe instruction. Include them in the existing pointer classification so\nthe log prints 0x0 instead of the rewritten address.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72402"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c53d16b174dd9e02243fc0e85089e2aa6a0d21a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72a85e9464a5332fb2cd7efd26d9295275ceda2d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:13Z"
+  }
+}

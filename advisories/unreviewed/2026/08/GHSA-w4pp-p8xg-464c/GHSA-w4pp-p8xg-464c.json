@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w4pp-p8xg-464c",
+  "modified": "2026-08-15T06:32:21Z",
+  "published": "2026-08-15T06:32:21Z",
+  "aliases": [
+    "CVE-2026-72361"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/hw_engine: Fix double-free of managed BO in error path\n\nThe error path in hw_engine_init() explicitly frees a BO allocated\nwith xe_managed_bo_create_pin_map() via xe_bo_unpin_map_no_vm().\nSince the managed BO already has a devm cleanup action registered,\nthis causes a double-free when devm unwinds during probe failure.\n\nRemove the explicit free and let devm handle it, consistent with\nall other xe_managed_bo_create_pin_map() callers.\n\n(cherry picked from commit e459a3bdeb117be496d7f229e2ea1f6c9fe4080b)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72361"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f6b44d555ecce61e249220f2ca4d75cdb90caf6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23ee91355e31947595b86ebb9ef4664f20fd926d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ac3cae7a251d28e9079de07a991bd4eb2bb7fd8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0a56b4480a0dc921a42cd70e9fc081a12ab8359"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:09Z"
+  }
+}

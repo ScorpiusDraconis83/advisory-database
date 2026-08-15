@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-437g-9c5w-262m",
+  "modified": "2026-08-15T06:32:25Z",
+  "published": "2026-08-15T06:32:25Z",
+  "aliases": [
+    "CVE-2026-72461"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\napparmor: fix refcount leak when updating the sk_ctx\n\nCurrently update_sk_ctx() transfers the plabel reference, unfortunately\nit is also unconditionally put in the caller. Ideally we would make\nthe caller conditionally put the reference based on whether it was\ntransferred but for now just fix the bug by getting a reference.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72461"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/045dbe89ac31709abd73390d0805d52fece7ef39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d25e7b47616cb2db43351210929c8f19dc305a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8642f1478982a97ca2eb59f70f631a9de42ae11"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:20Z"
+  }
+}

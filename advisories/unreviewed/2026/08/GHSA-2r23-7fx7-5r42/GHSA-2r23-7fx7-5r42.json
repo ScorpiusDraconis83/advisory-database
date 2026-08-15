@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2r23-7fx7-5r42",
+  "modified": "2026-08-15T06:32:18Z",
+  "published": "2026-08-15T06:32:18Z",
+  "aliases": [
+    "CVE-2026-72281"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: account pKVM reclaim against the VM mm\n\nProtected guest faults charge long term pins to the VM's mm. Teardown\ncan run later from file release, where current->mm may be unrelated.\n\nDrop the charge from kvm->mm instead.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34d8d7242c52c174add6b413d56420aa60f8054c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d098bb75d14fde2f12155f1a95ec0168160867ce"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:58Z"
+  }
+}

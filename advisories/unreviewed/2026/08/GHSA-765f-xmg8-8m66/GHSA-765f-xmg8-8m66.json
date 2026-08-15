@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-765f-xmg8-8m66",
+  "modified": "2026-08-15T06:32:14Z",
+  "published": "2026-08-15T06:32:14Z",
+  "aliases": [
+    "CVE-2026-72158"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfpga: dfl: add bounds check in dfh_get_param_size()\n\ndfh_get_param_size() can return a parameter size larger than the feature\nregion because the loop bounds check is evaluated before incrementing\nsize. If the EOP (End of Parameters) bit is set in the same iteration,\nthe inflated size is returned without re-validation against max.\n\nThis can cause create_feature_instance() to call memcpy_fromio() with a\nsize exceeding the ioremap'd region when a malicious FPGA device provides\ncrafted DFHv1 parameter headers.\n\nAdd a bounds check after the size increment to ensure the accumulated\nsize never exceeds the feature boundary.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72158"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/012683accbb7d2bcf1264f2a0ecd6aa1dcea4d68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b622aa447cf26104f96a8be39539367863bc6b6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e8bc49f91f3f81d957c4f1c1f09fe94e2f88f6a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2f6220e929b2a43605331d0139e65dc1640c05c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f3df5386e3bb54626c117bd85e0158d45fb4aea9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:33Z"
+  }
+}

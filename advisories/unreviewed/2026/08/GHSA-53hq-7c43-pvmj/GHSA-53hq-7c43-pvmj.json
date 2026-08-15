@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-53hq-7c43-pvmj",
+  "modified": "2026-08-15T06:32:14Z",
+  "published": "2026-08-15T06:32:14Z",
+  "aliases": [
+    "CVE-2026-72151"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntpm: tpm2-sessions: wait for async KPP completion in tpm_buf_append_salt\n\ntpm_buf_append_salt() in drivers/char/tpm/tpm2-sessions.c calls\ncrypto_kpp_generate_public_key() and crypto_kpp_compute_shared_secret()\nwithout installing a completion callback, discards both return values,\nand immediately frees the kpp_request via kpp_request_free(). When the\nresolved ecdh-nist-p256 KPP backend is asynchronous (atmel-ecc, HPRE,\nkeembay-ocs), either operation returns -EINPROGRESS and the deferred\ncompletion worker dereferences the freed request.\n\nThe path fires automatically from the hwrng_fillfn kernel thread via\ntpm_get_random -> tpm2_get_random -> tpm2_start_auth_session ->\ntpm_buf_append_salt on every entropy poll, without any userland action.\n\nInstall crypto_req_done as the completion callback, wrap both KPP\noperations in crypto_wait_req(), and propagate errors to the caller.\nThe wait is a no-op for synchronous backends.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72151"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/111e520efbe82b324bc42b1999b723c0619eea6d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/493333f167926c7adab8e7563e21ad71d8af84fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73851a7c43dfa52d2ed9415889b33daf85da0ed9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/934d1cd40e2893bf7a041b54f6afd1c008d7a21c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:32Z"
+  }
+}

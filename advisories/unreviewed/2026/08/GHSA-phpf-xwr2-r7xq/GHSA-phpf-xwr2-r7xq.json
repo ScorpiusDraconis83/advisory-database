@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-phpf-xwr2-r7xq",
+  "modified": "2026-08-15T06:32:11Z",
+  "published": "2026-08-15T06:32:11Z",
+  "aliases": [
+    "CVE-2026-72092"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/amdxdna: reject command submission on devices without a submit op\n\namdxdna_cmd_submit() calls xdna->dev_info->ops->cmd_submit()\nunconditionally, but only aie2_dev_ops defines that callback.\naie4_vf_ops (the AIE4 SR-IOV virtual function) does not, so a user\nAMDXDNA_EXEC_CMD ioctl on an AIE4 device reaches a NULL function-pointer\ncall and oopses the kernel. AIE4 submits work through a mapped user queue\nand doorbell, not this ioctl path.\n\nReject the submission early with -EOPNOTSUPP when the device provides no\ncmd_submit op, so the shared EXEC ioctl is a clean no-op on such devices.\n\nFound by 0sec automated security-research tooling (https://0sec.ai).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72092"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38953513d7313992676d4136cd425cdb70c6278e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af7a4c2caa7a191d6e7ed33903b69f9901874cd0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7d08603c87bae19ca3e424da5ab6d0aee81886e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:23Z"
+  }
+}

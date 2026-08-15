@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-58q4-579w-9x9r",
+  "modified": "2026-08-15T06:32:11Z",
+  "published": "2026-08-15T06:32:11Z",
+  "aliases": [
+    "CVE-2026-72066"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncpu: hotplug: Bound hotplug states sysfs output\n\nstates_show() adds CPU hotplug state names into a single sysfs buffer\nusing sprintf(). With enough registered states, this can write past the\nend of the PAGE_SIZE buffer.\n\nUse sysfs_emit_at() so output is bounded.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72066"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2408be459c70ef4250da1a9e50f5478e6b250d61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61a73a123ac7a7fbc57382531f8cb7092d569aba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/631d53102da9f469c96b882b770336bec095b833"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cb15b81ff545840048fb0e1a6e827d560dbf367"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86f436567f2516a0083b210bedc933544826a2c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/998f66e9ce320f3433f60b948e3698b744754a46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de4d3d8ae17dc8b4cf8c59436c4b7e2dc2491635"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:16Z"
+  }
+}

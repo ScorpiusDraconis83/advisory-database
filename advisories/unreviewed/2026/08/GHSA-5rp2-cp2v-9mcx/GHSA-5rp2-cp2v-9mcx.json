@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5rp2-cp2v-9mcx",
+  "modified": "2026-08-15T06:32:30Z",
+  "published": "2026-08-15T06:32:30Z",
+  "aliases": [
+    "CVE-2026-74339"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: seq: Clear variable event pointer on read\n\nsnd_seq_read() copies a queued variable-length event header to userspace\nbefore expanding the payload. Queued variable-length events use\nSNDRV_SEQ_EXT_CHAINED internally, and data.ext.ptr points at the first\nextension cell.\n\nThe read side strips SNDRV_SEQ_EXT_* bits from data.ext.len before the\ncopy, but it leaves data.ext.ptr untouched. A userspace sequencer client\ncan therefore write a direct variable event to itself and read back the\nextension-cell kernel address from the returned header.\n\nClear the temporary header pointer before copy_to_user(). The original\nqueued event remains unchanged and is still passed to\nsnd_seq_expand_var_event(), so payload expansion keeps using the\ninternal chain.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/14fe4f75fd5309d6b75f8e840ada88912b374207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b52211eba213c461f68922708a99d8190c1fcd5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/705dd6dcbc0ea87351c660c1a6443f85f1001c76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74ac1ce1f4afdb3b80b6742fa28fb86c8c51d31b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2ac9287e89916da684c2a548798351e63eb59ee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0c3edd86414534cfd179fefe45b38c29c01ae7a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f29243c211928114f8b906e0a3fee77c236f14c8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:34Z"
+  }
+}

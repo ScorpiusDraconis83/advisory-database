@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9fwg-3fvg-fm8h",
+  "modified": "2026-08-15T06:32:30Z",
+  "published": "2026-08-15T06:32:30Z",
+  "aliases": [
+    "CVE-2026-74340"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: wcn36xx: fix OOB read from firmware count in PRINT_REG_INFO indication\n\nThe firmware-controlled rsp->count field is used as the loop bound for\nindexing into the flexible rsp->regs[] array without validation against\nthe message length. A count exceeding the actual data causes out-of-\nbounds reads from the heap-allocated message buffer.\n\nAdd a check that count fits within the received message.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74340"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0907c06dccae9e3c8d5a68eb9014beec73a36e79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22b0b8572a64362531dd0ed499b75e16282aeb2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23d210877968657bd07e1a517e0b516db20a1d80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cf92b44c4fb88a5e8de8733a4494c0956606bca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/64228dfc4247aca178c01e5a37af7d8dcc7a6089"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df2187acfca6c6cca372c5d35f42394d9c270b09"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f03782f7f41f2afee5076a1ef08ced5649218771"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f987efff29a5fe45320ea5991c9d5cb98b676953"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:34Z"
+  }
+}

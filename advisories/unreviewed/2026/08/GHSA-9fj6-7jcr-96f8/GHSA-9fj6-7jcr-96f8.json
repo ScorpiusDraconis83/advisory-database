@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9fj6-7jcr-96f8",
+  "modified": "2026-08-15T06:32:25Z",
+  "published": "2026-08-15T06:32:25Z",
+  "aliases": [
+    "CVE-2026-72456"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\napparmor: release exe file resources on path failure\n\nget_current_exe_path() takes both an exe_file reference and a path\nreference before resolving the path name. If aa_path_name() failed, it\nreturned immediately and leaked both references.\n\nRoute the failure through the common cleanup path so fput() and path_put()\nalways run after the references are acquired.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72456"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/393809a05cfb60309ad63ee09138db8296d6b97e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7306c41672487a6c28430714be063bc6942c28f2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:19Z"
+  }
+}

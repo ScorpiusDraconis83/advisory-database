@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-96mx-hwj9-j649",
+  "modified": "2026-08-15T06:32:09Z",
+  "published": "2026-08-15T06:32:09Z",
+  "aliases": [
+    "CVE-2026-72018"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndibs: loopback: validate offset and size in move_data()\n\nThe loopback move_data() performs a memcpy into the registered DMB\nwithout checking whether offset + size exceeds the DMB length.  Unlike\nreal ISM hardware, which enforces memory region bounds natively, the\nsoftware loopback has no such protection.\n\nA peer-supplied out-of-bounds offset or oversized write would result in\nan OOB write past the allocated kernel buffer.  Add an explicit bounds\ncheck before the memcpy to reject such requests with -EINVAL.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72018"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78237e3c0720fcc6eb9b87e90fd70f63eeca886f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94fe0ab01b480b52bd8f977edbd845ef375d69fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2f426a9a22886071966432ede8fceafffe12b8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee188a6b264b71315a67f1b9470faad308b730d2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:00Z"
+  }
+}

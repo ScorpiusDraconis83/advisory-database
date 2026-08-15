@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4w7v-gf5r-fhph",
+  "modified": "2026-08-15T06:32:31Z",
+  "published": "2026-08-15T06:32:31Z",
+  "aliases": [
+    "CVE-2026-74376"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/raid10: reset read_slot when reusing r10bio for discard\n\nput_all_bios() always drops devs[i].bio, but it only drops\ndevs[i].repl_bio when r10_bio->read_slot < 0. If discard reuses an\nr10bio that was previously used for a read, read_slot can still be\nnon-negative, and discard cleanup can skip bio_put() on repl_bio.\n\nReset read_slot to -1 when preparing an r10bio for discard so the\nreplacement bio is always released correctly.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74376"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cb2a606ce4902eceabe68338df0653312f861f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/561c9711e4f545d6464a023168bdee03b00fa945"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b8a26af065ddc93de2aa5c9f0df98dce9723442"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/742e4afd247d9c972695227716b03d432a7e1d26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7313f23ea5a79b199a007bfad64a866cc2c22e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce3030e92f14362880055de5fe3c258971118853"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb04e3e9c14ed15914f5fd2eae8b6435f54f095f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:39Z"
+  }
+}

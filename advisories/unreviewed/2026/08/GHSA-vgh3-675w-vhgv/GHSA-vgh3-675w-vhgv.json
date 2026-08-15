@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vgh3-675w-vhgv",
+  "modified": "2026-08-15T06:32:32Z",
+  "published": "2026-08-15T06:32:32Z",
+  "aliases": [
+    "CVE-2026-74399"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nevm: terminate and bound the evm_xattrs read buffer\n\nevm_read_xattrs() allocates size + 1 bytes, fills them from the list of\nenabled xattrs, and then passes strlen(temp) to\nsimple_read_from_buffer(). When no configured xattrs are enabled, the\nfill loop stores nothing and temp[0] remains uninitialized, so strlen()\nreads beyond initialized memory.\n\nExplicitly terminate the buffer after allocation, use snprintf() for\neach formatted line, and pass the accumulated length, without risk of\ntruncation, to simple_read_from_buffer().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74399"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b9f8282b40af4a99d6243d2cb939d14ff36b049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11143a19f5b8dc8f414deab87571134f9f447313"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12ad52dc45a0c8c9d25e85b4a84201de4c5420ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38b7d63b23aa9d2ddde7688040e9426d32be4065"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8df81954d22a653a8b01d46692cd56f71137269b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0f64cf8bfcb39e533d9e27aeb763a8d81b7f39d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a36cbfb85f26e6c6fb6529b1a364331b94dc88f3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:41Z"
+  }
+}

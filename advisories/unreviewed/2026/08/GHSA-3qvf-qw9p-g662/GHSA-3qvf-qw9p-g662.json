@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3qvf-qw9p-g662",
+  "modified": "2026-08-15T06:32:28Z",
+  "published": "2026-08-15T06:32:28Z",
+  "aliases": [
+    "CVE-2026-74304"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_qca: fix NULL pointer dereference in qca_setup() for non-serdev device\n\nhu->serdev is NULL for hci_uart attached via non-serdev paths, but\nqca_setup() unconditionally calls serdev_device_get_drvdata(hu->serdev)\nand dereferences the result, causing a NULL pointer dereference.\n\nFix by guarding the dereference with a NULL check, consistent with the\nrest of qca_setup().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0704c04769ccc1a0939682db35d816dfa5fe75dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ec629fee178d429f01ae843e4ea888de93012bf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:30Z"
+  }
+}

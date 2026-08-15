@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pj7h-9r7j-559q",
+  "modified": "2026-08-15T06:32:16Z",
+  "published": "2026-08-15T06:32:16Z",
+  "aliases": [
+    "CVE-2026-72223"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvdimm/btt: Free arena sub-allocations on discover_arenas() error path\n\nMemory allocated by btt_freelist_init(), btt_rtt_init(), and\nbtt_maplocks_init() is not freed on some discover_arenas() error\npaths. This leaks memory when arena discovery fails.\n\nAdd the missing kfree() calls to release the allocations before\nreturning an error.\n\n[ as: commit message and log edits ]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72223"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b0d9404951aacc9717aa61e77af4a6e9e8f8249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13fe4cd9ddd0aacb7777812328be525a11ea3fea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d0364937550a7b3e2592629c2a68753ac020b28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30d490bb2c4cd220e7dedf862ab6a09eb5dcbad5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7563f69caa9143a491d5f26e563255c734751545"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/873ced7f345e99f7ee16f9ff226515580332ecc4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba59b96d8d21dc8729fca44a022ca5919c1848c9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eeb95774bc79268e2b78ebf01d8781560b5bd671"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:41Z"
+  }
+}

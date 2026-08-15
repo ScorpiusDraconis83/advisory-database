@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-22xx-mmhm-wq6h",
+  "modified": "2026-08-15T06:32:30Z",
+  "published": "2026-08-15T06:32:30Z",
+  "aliases": [
+    "CVE-2026-74324"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7925: validate skb length in testmode query\n\nIn mt7925_tm_query(), the response skb from mt76_mcu_send_and_get_msg()\nis used in a memcpy without validating its length:\n\n  memcpy(evt_resp, skb->data + 8, MT7925_EVT_RSP_LEN);\n\nwhere MT7925_EVT_RSP_LEN is 512. If the firmware returns a response\nshorter than 520 bytes (8 + 512), this reads beyond the skb data\nbuffer. The over-read data is then returned to userspace via nla_put()\nin mt7925_testmode_dump().\n\nAdd a length check before the memcpy to ensure the skb contains\nsufficient data.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c386e90a7ce8ddec9f038e9437661a2821b0ce89"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7369a00860a0704461d440e7c3bf9b49bfdbaee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8b214b6d6e1902025452db0a0af73dc9693e4ba"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:33Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xgc7-5q39-hq26",
+  "modified": "2026-08-15T06:32:18Z",
+  "published": "2026-08-15T06:32:18Z",
+  "aliases": [
+    "CVE-2026-72273"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: efifb: fix memory leak in efifb_probe()\n\nSince commit 73ce73c30ba9 (\"fbdev: Transfer video= option strings to\ncaller; clarify ownership\") the string returned from fb_get_options()\nis expected to be freed by the caller, but the string is not freed in\nefifb_probe(). Fix that by freeing the option string after setup.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72273"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/475383daf5f855f5b2c3a9aa801f69b69a81799e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5276e3f75ddb51f980a8903f4b39e73cf42415e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b6eaf101656958397a6012bf43f6e2e42c9e5cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fafb2e08741b20027cee77918816de29a32d6fd6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/febb5b4f67ace78d6b6862cc3c853b64710afb6c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:56Z"
+  }
+}

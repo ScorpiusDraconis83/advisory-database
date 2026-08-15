@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2hj8-22xr-w775",
+  "modified": "2026-08-15T06:32:34Z",
+  "published": "2026-08-15T06:32:34Z",
+  "aliases": [
+    "CVE-2026-74427"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nafs: Fix netns teardown to cancel the preallocation charger\n\nFix the teardown of an afs network namespace to make sure it cancels the\nwork item that keeps the preallocated rxrpc call/conn/peer queue charged\nbefore incoming calls are disabled (i.e. listen 0).\n\nAlso, if net->live is false because the afs netns is being deleted, make\nafs_charge_preallocation() skip charging and make afs_rx_new_call() avoid\nrequeuing the charger.\n\n(This was found by AI review).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74427"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47694fbc9d24ab6bf210f91e8efe06a10a478064"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59e8b7652f6cbfb62d377ead0ad553c1b4e39a7a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63ccaf1bdf8be2330f47f9b5b233dd3fd04acbd9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85d5fb80fe4f0cc836b6df83f26de204fe102ff7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a33975ff2b6ea47b8f29956403374b1cdd057539"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b83ecf80e28afb7b6595ba79932e77ca68a5a83d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eec89c5f8e1adc1de4824042ef75f62aed804153"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f5096e18b6b7fbd1c2a1942e275a51bcfdfb2ad1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:44Z"
+  }
+}

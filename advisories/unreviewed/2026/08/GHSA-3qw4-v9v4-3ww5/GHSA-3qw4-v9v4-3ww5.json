@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3qw4-v9v4-3ww5",
+  "modified": "2026-08-15T06:32:27Z",
+  "published": "2026-08-15T06:32:27Z",
+  "aliases": [
+    "CVE-2026-74265"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mana: initialize gdma queue id to INVALID_QUEUE_ID\n\nmana_gd_create_mana_wq_cq() leaves queue->id as 0 (from kzalloc_obj())\nuntil mana_create_wq_obj() assigns the firmware-returned id. If creation\nfails before that, cleanup calls mana_gd_destroy_cq() with id 0, NULLing\ngc->cq_table[0] and silently breaking whichever real CQ owns that slot.\n\nInitialize queue->id to INVALID_QUEUE_ID right after allocation, matching\nmana_gd_create_eq(). The existing (id >= max_num_cqs) guard then\nshort-circuits cleanly.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74265"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/150590d9ab0dbeb0087193058363819d4c82a00f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/372e7318af379eee29ab6e60848ce7d7db76c85a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5985474e1cb4034680fac2145497a94b0860be50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62ce489acb428a936bdf243e7b92b3eb341447cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e52a247d9aa979d43eb9ff1e445b9b3bf229d4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a493cbb6b11acd4adc93397a4b12bd460d47620d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c6662f3ad1c7c3549a1c39545651833220b0de89"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:25Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3cmq-754m-66f5",
+  "modified": "2026-08-15T06:32:26Z",
+  "published": "2026-08-15T06:32:26Z",
+  "aliases": [
+    "CVE-2026-72495"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/bnxt_re: Avoid repeated requests to allocate WC pages\n\nApplications can request multiple WC pages for the same ucontext.\nAs of now, only 1 WC page per ucontext is supported. Add a lock to\navoid concurrent access and a check to fail repeated requests.\nAlso, if the mmap entry insert fails for the WC, free the Doorbell\npage index mapped for the WC page.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72495"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/441baa79043431807115fd030d7d0bb14ed441a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/478c4d24193fe3e6aa2accd4874ae43000e4a217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da406b8b49c1dfe661a497483940d7ee781430db"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:23Z"
+  }
+}

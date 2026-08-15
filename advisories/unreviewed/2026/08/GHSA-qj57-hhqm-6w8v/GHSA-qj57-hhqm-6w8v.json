@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qj57-hhqm-6w8v",
+  "modified": "2026-08-15T06:32:31Z",
+  "published": "2026-08-15T06:32:31Z",
+  "aliases": [
+    "CVE-2026-74360"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Reject exclusive maps for bpf_map_elem iterators\n\nExclusive maps (aka excl_prog_hash) are meant to be reachable only\nfrom the single program whose hash matches. This is enforced by\ncheck_map_prog_compatibility() when the map is referenced from a\nprogram such as signed BPF loaders.\n\nA bpf_map_elem iterator, however, binds its target map at attach\ntime in bpf_iter_attach_map() instead of referencing it from the\nprogram, so the exclusivity check is never reached. On top of that,\nthe iterator exposes the map value as a writable buffer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74360"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c56ee343f9412d81918635c3e25e22a5dd6d87e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5cf2c85b1231218a3e3e9f188afb4fe2e17903d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3da741d5b2119c61c4498bc936f0fc1dbc3c79b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:37Z"
+  }
+}

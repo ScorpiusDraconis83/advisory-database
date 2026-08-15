@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-phw4-wh3r-2wj6",
+  "modified": "2026-08-15T06:32:17Z",
+  "published": "2026-08-15T06:32:17Z",
+  "aliases": [
+    "CVE-2026-72238"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/boot: Validate console=uart8250 baud rate to fix early boot hang\n\nWhen the baud rate is empty, 0, invalid, or overflows to 0 when stored\nas an int, the system will hang during early boot because of a division\nby zero in early_serial_init().\n\nFall back to DEFAULT_BAUD when the resulting baud rate is 0 to prevent\nan early system hang.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24fbed0a2a45f5f379ef2b53bd2abe58be1142ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4dad7e870c7e5178f71b5e1e4f67934b9e8cc207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a77a7639dfdc3eca417cd37620ce64da79c80c4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b4d05032e9af7137eab8f3af2855073f896ca843"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1a276a731d02cbb728d0530f327a68728f2d8b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/efa96a22613b86e05cd81229ce0be411c1a4a79a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7c67c97b37c11f2a95c204092fb8159f2779e8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ffa0aa5b625fe0bed7463ac613f8b06676ff4542"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:50Z"
+  }
+}

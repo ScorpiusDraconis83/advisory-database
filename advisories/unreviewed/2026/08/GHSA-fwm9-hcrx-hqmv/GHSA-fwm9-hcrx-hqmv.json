@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fwm9-hcrx-hqmv",
+  "modified": "2026-08-15T06:32:18Z",
+  "published": "2026-08-15T06:32:18Z",
+  "aliases": [
+    "CVE-2026-72275"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: broadsheetfb: fix potential memory leak in broadsheetfb_probe()\n\nThe memory allocated for pagerefs in fb_deferred_io_init() is not freed\non the error path. Fix it by calling fb_deferred_io_cleanup().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72275"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07d2f9cb667c2f6331a483227c62d0a4a91ef42f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ce94f9e3bfb37866638e4b81e2c3d8f7470a12c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/54a4cd11702d5e8bcefc3b514e338955813993a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9d18a4e4234fd3ee0d0eed8ccbbb50cb76b2232c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e818c397548cde68d64c6abf8be0a5f3e3eef7d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8c9aae8c950869f65af8b9dd2f71f861ea6e433"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/edc5a845108337d0c167ab850fe9adfaea442975"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:57Z"
+  }
+}

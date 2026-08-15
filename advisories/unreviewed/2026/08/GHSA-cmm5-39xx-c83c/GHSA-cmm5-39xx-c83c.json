@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cmm5-39xx-c83c",
+  "modified": "2026-08-15T06:32:12Z",
+  "published": "2026-08-15T06:32:12Z",
+  "aliases": [
+    "CVE-2026-72106"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-ioctl: fix a possible overflow in list_version_get_info\n\nsizeof(tt->version) is 12 bytes, but the code writes 16 bytes into the\noutput buffer - info->vers->version[0], info->vers->version[1],\ninfo->vers->version[2] and info->vers->next. This can cause buffer\noverflow.\n\nFix this buffer overflow by replacing \"sizeof(tt->version)\" with\n\"sizeof(struct dm_target_versions)\".",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/29536a9ff146d9bbd618959857ed2e691cda1d21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/76c6f845dc0c614304a6e6ee619b552f97cf24b3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d61c12573ed9768690fdcb2bc38846a1bcb01358"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df50c24c6447c18886ed126d3d81cc7e155ea8b6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0f5842c4e2a7dbefb52a2dc6711789bc6963e55"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:24Z"
+  }
+}

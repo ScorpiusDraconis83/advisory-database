@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-466f-hmcc-89x2",
+  "modified": "2026-08-15T06:32:17Z",
+  "published": "2026-08-15T06:32:17Z",
+  "aliases": [
+    "CVE-2026-72246"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: flowtable: use correct direction to set up tunnel route\n\nThe layer 2 encapsulation and layer 3 tunnel information in the xmit\npath is taken from the other tuple, because the tunnel information that\nis included in the tuple for hashtable lookups is also used to perform\nthe egress encapsulation in the transmit path.\n\nThis patch uses the correct direction when setting up the tunnel, the\noriginal proposed patch to address this fix uses the reversed direction.\n\nWhile at it, remove the redundant check to call dst_release() to drop\nthe reference on the dst that was obtained from the forward path, which\nis not useful in the direct xmit path unless tunneling is performed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72246"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/392d033fd372268015bc5a54ba7c593ba44940d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/90941d9c925d66a482c9121919ec3546a6988c16"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:51Z"
+  }
+}

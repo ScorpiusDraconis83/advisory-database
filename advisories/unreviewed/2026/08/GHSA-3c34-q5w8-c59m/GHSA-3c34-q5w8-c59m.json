@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3c34-q5w8-c59m",
+  "modified": "2026-08-15T06:32:19Z",
+  "published": "2026-08-15T06:32:19Z",
+  "aliases": [
+    "CVE-2026-72298"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: qrtr: fix 32-bit integer overflow in qrtr_endpoint_post()\n\nqrtr_endpoint_post() validates an incoming packet with\n\n\tif (!size || len != ALIGN(size, 4) + hdrlen)\n\t\tgoto err;\n\nwhere size comes from the wire. On 32-bit, size_t is 32 bits and\nALIGN(size, 4) wraps to 0 for size >= 0xfffffffd, so the check\npasses and skb_put_data(skb, data + hdrlen, size) writes past the\nhdrlen-sized skb and oopses the kernel. 64-bit is unaffected.\n\nThis is the 32-bit residual of ad9d24c9429e2 (\"net: qrtr: fix OOB\nRead in qrtr_endpoint_post\"), which fixed only the 64-bit case.\n\nReject any size that cannot fit the buffer before the ALIGN.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72298"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/20054869770c7df060c5ecee3e8bbf9029c47191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22100a8f73d4ae4f17697dae93d4e2e1d283a6ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/242408b5b763c01288adf3113cbce84378a76e1a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3665e644ea081c4624a1637023b0de3b29f4ae04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/689b7267f8632b4661879dc323e26ebb60978afb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f72c285f6d3bf63968a0344beee8ab1b370198b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b609f7f46916c6b05585ca82455077198a23770f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0597074e99731fdad5593e4f6d056a3866f2cab"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:02Z"
+  }
+}

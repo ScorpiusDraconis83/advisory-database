@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ccmv-h994-rmq2",
+  "modified": "2026-08-15T06:32:13Z",
+  "published": "2026-08-15T06:32:13Z",
+  "aliases": [
+    "CVE-2026-72131"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-apple: Prevent shared tags across queues on Apple A11\n\nOn Apple A11, tags of pending commands must be unique across the admin\nand IO queues, else the firmware crashes with\n\"duplicate tag error for tag N\", with N being the tag.\n\nApply the existing workaround for M1 of reserving two tags for the admin\nqueue to A11.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72131"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59cef6abc924a84824b0c3f563a7fe74cd5fc7a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6fe0687245e8406bf26143bd45eb16441bbe5280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7d9aaedf024bb6c0bb6a205848861d888eb1afa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:30Z"
+  }
+}

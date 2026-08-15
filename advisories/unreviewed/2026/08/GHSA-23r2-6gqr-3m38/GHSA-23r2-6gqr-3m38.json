@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-23r2-6gqr-3m38",
+  "modified": "2026-08-15T06:32:25Z",
+  "published": "2026-08-15T06:32:25Z",
+  "aliases": [
+    "CVE-2026-72463"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: Fix dev use-after-free in xfrm async resumption\n\nxfrm async resumption hold skb->dev refcnt until after transport_finish.\nHowever, xfrm_rcv_cb may modify skb->dev to tunnel dev without taking\ndevice reference, such as vti_rcv_cb. The subsequent async resumption\nwill decrement the tunnel device's reference count, which lead to uaf\nof tunnel dev and refcnt leak of orig dev as below:\n\nunregister_netdevice: waiting for vti1 to become free. Usage count = -2\n\nStash the original skb->dev to fix refcnt imbalance. The new skb->dev set\nby xfrm_rcv_cb can race with device teardown. Extend rcu protection over\nxfrm_rcv_cb and transport_finish to prevent races.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72463"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63a30015199912bd5055bead8001b1ae68a67cdb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8045c0df98d4f14c54e5cb875f1c9c0ce89fe4ff"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:20Z"
+  }
+}

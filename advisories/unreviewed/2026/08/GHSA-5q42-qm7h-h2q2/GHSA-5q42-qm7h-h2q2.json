@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5q42-qm7h-h2q2",
+  "modified": "2026-08-15T06:32:29Z",
+  "published": "2026-08-15T06:32:28Z",
+  "aliases": [
+    "CVE-2026-74306"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvfio/qat: fix f_pos race in qat_vf_resume_write()\n\nqat_vf_resume_write() checks filp->f_pos before taking migf->lock, but\ncopies into the migration-state buffer after taking the lock and\nre-reading the shared file position.\n\nTwo concurrent writers could therefore pass the bounds check with the\nold offset, then have the second writer copy after the first advanced\nf_pos, writing past the end of the migration-state buffer.\n\nTake migf->lock before doing the boundary checks.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74306"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ec5e932e636896e97e4c6a8205b0ac76d52421a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6465af0004dc1b067129a26ef44f19cdf13bbce6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b6fd7a40a66485c8aa8156d8fcf50b95cb8ba281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d416dcefdbac90d96b22485fd93f28229ad9984b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:30Z"
+  }
+}

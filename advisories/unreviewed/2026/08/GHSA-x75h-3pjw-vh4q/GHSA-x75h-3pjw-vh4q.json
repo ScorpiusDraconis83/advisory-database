@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x75h-3pjw-vh4q",
+  "modified": "2026-08-15T06:32:32Z",
+  "published": "2026-08-15T06:32:32Z",
+  "aliases": [
+    "CVE-2026-74395"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/mlx5: Fix devx subscribe-event unwind NULL dereference\n\nMLX5_IB_METHOD_DEVX_SUBSCRIBE_EVENT() links event_sub into sub_list\nbefore initializing the fields used by the shared error path.\n\nIf eventfd_ctx_fdget() then fails, the unwind path dereferences\nevent_sub->ev_file in uverbs_uobject_put() and calls\nsubscribe_event_xa_dealloc() with an unset xa_key_level1.\n\nsubscribe_event_xa_alloc() creates the XA entry exactly once for a given\nkey_level1, on the first occurrence of that key. The unwind path must\ntherefore call subscribe_event_xa_dealloc() exactly once for it as well.\n\nEnforce that by adding devx_key_in_sub_list() and calling\nsubscribe_event_xa_dealloc() only when the last matching pending entry is\nbeing cleaned up.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74395"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1025dc2f7ba29b04b8687790fa91f9cd1a53141e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/43f8f7946814c8e5f464518246fdbc69b6e32326"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5100febf8e9d6c8c5ba8dc6534c6a5e3376e5989"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e15b770461eeaa0ff73934922cb670a6a9db04e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78b9589fda266c71f0f9d0c858d4fa7381a890a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7921821fc2b19c01588311f6e7468ae5b68b1f61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9be9aca28424228586fe9211c373ebdb826ebb6c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f345e744b6b087188cde2377da5cbe9713b61353"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:41Z"
+  }
+}

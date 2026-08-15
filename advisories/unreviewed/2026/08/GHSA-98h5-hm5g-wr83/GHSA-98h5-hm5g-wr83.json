@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-98h5-hm5g-wr83",
+  "modified": "2026-08-15T06:32:31Z",
+  "published": "2026-08-15T06:32:31Z",
+  "aliases": [
+    "CVE-2026-74369"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nliveupdate: fix u-a-f in luo_file_unpreserve_files() and luo_file_finish()\n\nIn luo_file_unpreserve_files() and luo_file_finish(), reorder\nmodule_put() and xa_erase() to ensure the file handler module remains\npinned while its operations are being accessed.\n\nSpecifically, luo_get_id() dereferences fh->ops->get_id, so the module\nreference must be held until after xa_erase() (which calls luo_get_id)\ncompletes.\n\nFor luo_file_finish(), this requires moving the module_put() call out of\nthe luo_file_finish_one() helper and into the main loop of\nluo_file_finish() itself.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74369"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/291dcd37c8c8f8f8e1bccc92228f44bf371762a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7fca3db635022429382cf26e5b08b33558e375d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:38Z"
+  }
+}

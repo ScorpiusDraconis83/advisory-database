@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-29m7-j59q-hvh8",
+  "modified": "2026-08-15T06:32:09Z",
+  "published": "2026-08-15T06:32:09Z",
+  "aliases": [
+    "CVE-2026-72026"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nirqchip/irq-riscv-imsic-early: Fix fwnode leak on state setup failure\n\nimsic_early_acpi_init() allocates a firmware node before setting up the\nIMSIC state. If imsic_setup_state() fails, the function returns without\nfreeing the allocated fwnode.\n\nFree the fwnode and clear the global pointer on this error path, matching\nthe cleanup already done when imsic_early_probe() fails.\n\n[ tglx: Use a common cleanup path instead of copying code around ]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72026"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1358126fbed104e5657955d3ba029b283687ba02"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a27f17bad38c5fea3c73281517869af0089a0451"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a5a367756926de1c21a013ea5ed7fc2219f4cb4f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b321a046d7717225c07ba3f4b7b0a4758c2f9d58"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:01Z"
+  }
+}

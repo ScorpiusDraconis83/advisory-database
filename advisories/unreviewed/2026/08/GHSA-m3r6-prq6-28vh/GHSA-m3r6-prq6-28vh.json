@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m3r6-prq6-28vh",
+  "modified": "2026-08-15T06:32:10Z",
+  "published": "2026-08-15T06:32:10Z",
+  "aliases": [
+    "CVE-2026-72056"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ena: clean up XDP TX queues when regular TX setup fails\n\ncreate_queues_with_size_backoff() creates XDP TX queues before setting\nup the regular TX path. If the subsequent allocation or creation of\nregular TX queues fails, the error handling paths omit the teardown of the\nXDP TX queues, leading to a resource leak.\n\nFix this by explicitly destroying the XDP TX queue subset at the two\nmissing failure points.\n\nThe bug was first flagged by an experimental analysis tool we are\ndeveloping for kernel memory-management bugs while analyzing\nv6.13-rc1. The tool is still under development and is not yet publicly\navailable. Manual inspection confirms that the bug is still\npresent in v7.1-rc7.\n\nAn x86_64 allyesconfig build showed no new warnings. As we do not have\nan ENA device to test with, no runtime testing was able to be performed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72056"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11f68ebc6891d11de5f32b7dee918c5dc18b8de1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1bd6676254b4ab6acd44b662b5e92822c036463a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/523caef03124ecc08ce62a78c617759c2d28cf1c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5daa63404b708fc74e94da8398affbb148d09044"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6596baf8041100a9d1647beb5ea8ea4496ce058f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6773d6d82bdabddab2b31605d6d7029c91dbd217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df65d9fea8437235e740552e542fb309765507db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2ff634d95f8a6c885b9ce71a64067e255bcc34a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:15Z"
+  }
+}

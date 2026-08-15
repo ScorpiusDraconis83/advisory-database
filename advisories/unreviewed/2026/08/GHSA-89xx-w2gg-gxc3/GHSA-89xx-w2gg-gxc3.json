@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-89xx-w2gg-gxc3",
+  "modified": "2026-08-15T06:32:10Z",
+  "published": "2026-08-15T06:32:10Z",
+  "aliases": [
+    "CVE-2026-72059"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: wwan: t7xx: destroy DMA pool on CLDMA late init failure\n\nt7xx_cldma_late_init() creates md_ctrl->gpd_dmapool before\ninitializing the TX and RX rings. If any ring initialization\nfails, the error path frees the already initialized rings but\nleaves the DMA pool allocated.\n\nDestroy md_ctrl->gpd_dmapool on the late-init failure path\nto avoid leaking the DMA pool.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c0a8c7821485f32bdb4923fb22f2dd501a27d8a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2bd6f26d4ce1e87de4d736b1e8896daf3acf1c0e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cef50f9f9045ff5e6a9d62c5110522df98fca645"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e89b8829693e65217d587dceeaad4826c96c731b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ebd84cb129fac7f7933628c40fccdfa8a62805de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd01247bde1add970fae7f0003af085333a256e6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:15Z"
+  }
+}

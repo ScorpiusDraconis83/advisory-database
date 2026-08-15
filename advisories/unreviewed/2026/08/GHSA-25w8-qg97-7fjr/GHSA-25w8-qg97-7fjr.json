@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-25w8-qg97-7fjr",
+  "modified": "2026-08-15T06:32:09Z",
+  "published": "2026-08-15T06:32:09Z",
+  "aliases": [
+    "CVE-2026-72024"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmac802154: remove interfaces with RCU list deletion\n\nQueue wake, stop, and disable paths walk local->interfaces under RCU.\nThe bulk hardware teardown path removes entries with list_del(), so an\nasynchronous transmit completion can follow a poisoned list node in\nieee802154_wake_queue().\n\nUse list_del_rcu() as in the single-interface removal path. The following\nunregister_netdevice() waits for in-flight RCU readers before freeing the\nnetdevice, so no separate grace-period wait is needed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72024"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2039f27b1a0c997137a5de7f8a3cee0e80fbf952"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4bf231f459b542414629b64f63d5cad6701bd07c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/539dfcf69105d8d3d4d677b71de6e5ede2e6dfa0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72ac5af9ad09662bd0ea91cb8845d490c8ef9c01"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77caf2d6eba7cb94a7ecd7b369a5974fd7d7c054"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b91e5248dd7af09b500879a46d22a36b60db3a57"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7c031b75218b3ba3014a0f6b9849888994528d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8b5b66388a51febe4b8505b0ecd9da15b4ba639"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:01Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5g8r-698f-fmm9",
+  "modified": "2026-08-15T06:32:17Z",
+  "published": "2026-08-15T06:32:17Z",
+  "aliases": [
+    "CVE-2026-72259"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: mediatek: mt8192: Release reserved memory on cleanup\n\nThe MT8192 AFE probe calls of_reserved_mem_device_init() and falls\nback to preallocated buffers when no reserved memory region is\navailable. When the reserved memory assignment succeeds, however, the\ndriver never releases it.\n\nRegister a devm cleanup action after a successful reserved-memory\nassignment so the assignment is released on probe failure and driver\nunbind.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72259"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c9df23e121f1095f02cc7e1531ce3a6d74ff697"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51c367230e30ed80b49d5330831c1f2c59405b02"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/756cfc0039fe9dc1388ea231821508a78a087afe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/965e17ae6751c5d3302430c8ebd650e72d45a85f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/989cbe8cc86f4639f4e1fbe84ea0339759e92f1f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:53Z"
+  }
+}

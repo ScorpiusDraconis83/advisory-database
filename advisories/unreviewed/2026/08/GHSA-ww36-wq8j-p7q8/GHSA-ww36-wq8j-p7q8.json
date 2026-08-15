@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ww36-wq8j-p7q8",
+  "modified": "2026-08-15T06:32:33Z",
+  "published": "2026-08-15T06:32:33Z",
+  "aliases": [
+    "CVE-2026-74414"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhfsplus: Remove the duplicate attr inode dirty marking action\n\nSyzbot reported a null-ptr-deref in [1].\nIf the attributes file is not loaded during system mount, a trigger\noccurs [1] when setxattr is executed in userspace.\n\nRemove the first mark attr inode dirty operation.\n\n[1]\nKASAN: null-ptr-deref in range [0x0000000000000008-0x000000000000000f]\nCall Trace:\n hfsplus_setxattr+0x124/0x340 fs/hfsplus/xattr.c:555\n hfsplus_trusted_setxattr+0x40/0x60 fs/hfsplus/xattr_trusted.c:30\n __vfs_setxattr+0x43c/0x480 fs/xattr.c:218\n __vfs_setxattr_noperm+0x12d/0x660 fs/xattr.c:252\n vfs_setxattr+0x163/0x360 fs/xattr.c:339\n do_setxattr fs/xattr.c:654 [inline]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74414"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a41fd2b32e5908f19a68732008d581c167279dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3c7ccb1a93cbb5a9a13196abf608ffa2516817e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:43Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xmxv-96vw-vwqc",
+  "modified": "2026-08-15T06:32:21Z",
+  "published": "2026-08-15T06:32:21Z",
+  "aliases": [
+    "CVE-2026-72346"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: bitland-mifs-wmi: Fix NULL pointer dereference during suspend/resume\n\nThe driver registers two distinct WMI devices: a control device\n(BITLAND_WMI_CONTROL) and an event device (BITLAND_WMI_EVENT). During\nthe probe phase, the event device handling path returns early before\ninitializing the platform profile device (data->pp_dev), leaving it\nNULL.\n\nHowever, the PM sleep operations are registered globally for the WMI\ndriver and are triggered for both devices. When entering suspend, the\nevent device invokes bitland_mifs_wmi_suspend(), which passes the\nuninitialized data->pp_dev (NULL) into laptop_profile_get(). This leads\nto a NULL pointer dereference inside dev_get_drvdata(), causing a\nkernel Oops and halting the suspend sequence.\n\nFix this by adding a validity check for data->pp_dev in both the suspend\nand resume callbacks, safely skipping profile operations for the event\ndevice.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72346"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f2cb20d8e286218d51754f06ee219d8ce754b18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3666875c75eb1bc8090343fa0d6fc8fb7924356"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:07Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j69g-mrr3-p2qh",
+  "modified": "2026-08-15T06:32:28Z",
+  "published": "2026-08-15T06:32:28Z",
+  "aliases": [
+    "CVE-2026-74299"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/core: Fix FRMR aging push to queue error flow\n\nAging pools with pinned handles requires moving handles from the\nactive queue to a non-empty inactive queue that might fail on new page\nallocation, we are currently not handling the fault and leaking any mkey\nthat fails the push.\n\nFix by Introducing push_queue_to_queue_locked() that fills the\ndestination's partial tail page from the source and then splices the\nremaining source pages onto the destination, performing no allocation.\n\nReplace the per-handle move loop in age_pinned_pool() and the\nopen-coded splice in pool_aging_work() with calls to the helper.\nAs the helper cannot fail under memory pressure, removing a class of\nGFP_ATOMIC allocations under the pool lock and simplifying the error\nflow.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74299"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c6936506ed556ce3ccad36ab999baf2764dd7d25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/edf133d28fc43f7f8b0da43a8d5b93fdf8073d35"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:29Z"
+  }
+}

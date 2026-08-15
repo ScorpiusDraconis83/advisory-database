@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8wmf-545f-95hv",
+  "modified": "2026-08-15T06:32:08Z",
+  "published": "2026-08-15T06:32:08Z",
+  "aliases": [
+    "CVE-2026-68475"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nreset: sunxi: fix memory region leak on ioremap failure\n\nIn sunxi_reset_init(), when ioremap() fails, the memory region obtained\nvia request_mem_region() is not released, leading to a resource leak.\n\nAdd an err_mem_region label to properly release the memory region before\nfreeing the data structure.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68475"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01e43f4e7d12dae6fa82ae1b2e91c9ce07e06cd8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a8c89f8c112c75e84ff9a140f969e372aed0c9a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23af4ea217800a20c405d72e82b11e24e27721f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6dc0c8cd9c8a84808c6df760024d2604bc6d31fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82753ac86cb3d641b8634a61335fd0f04a61cc1a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b4d7333849839ff42e1bc802d5b5f63d71c65add"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d826d3e04c5bd9d284ba29f330246a317a8a7023"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec836995c00a1968e403ef6beb53a73a9b0f318c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:20:35Z"
+  }
+}

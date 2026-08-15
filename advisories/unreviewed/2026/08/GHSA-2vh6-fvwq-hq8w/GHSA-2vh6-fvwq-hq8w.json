@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2vh6-fvwq-hq8w",
+  "modified": "2026-08-15T06:32:22Z",
+  "published": "2026-08-15T06:32:22Z",
+  "aliases": [
+    "CVE-2026-72388"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: Always use the IRQ-safe variant when acquiring the fence lock\n\nSince dma_fence objects can be shared with other subsystems, they may be\naccessed from hardirq context in those drivers, and we have to take\nthat into account by also using the IRQ-safe variant when acquiring\nthe lock.\n\nWhile at it, switch to the guard model.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72388"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2946aa6c97ac0e0d777baef8c0e6d944da8724a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/778c57d624974e64535ef1c9d9b4d8e5066153f4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:12Z"
+  }
+}

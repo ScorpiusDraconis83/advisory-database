@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4pv3-vvp3-4j57",
+  "modified": "2026-08-15T06:32:13Z",
+  "published": "2026-08-15T06:32:13Z",
+  "aliases": [
+    "CVE-2026-72140"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: mlxbf: Fix use-after-free in mlxbf_i2c_init_resource()\n\nIf devm_platform_get_and_ioremap_resource() returns an error,\nmlxbf_i2c_init_resource() frees tmp_res before reading tmp_res->io to\nget the error code. This results in a use-after-free.\n\nSave the error code before freeing tmp_res.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5290a52533e09c38374963f4bb0b35121fe555c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a108c9f5a81bb7b29dbb1398be0089655b6bfd2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71356737a7a55c76fee847563e3d33f8e6dc6b6d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b398cbbbb9dd76210682a8c9aabd34c5168800b9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4d9b6a0c9645366d9e4af8a6ac8347bd4c841aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce960a1b2caa4ad08291f28d8bcf17ad5a864e54"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6a395a71f4652261d09b572a03c96052662a056"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb267770bf822064f510c9b46743f533d8fa8a5f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:31Z"
+  }
+}

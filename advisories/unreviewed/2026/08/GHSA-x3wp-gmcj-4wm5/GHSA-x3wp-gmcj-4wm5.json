@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x3wp-gmcj-4wm5",
+  "modified": "2026-08-15T06:32:26Z",
+  "published": "2026-08-15T06:32:25Z",
+  "aliases": [
+    "CVE-2026-72474"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: dma-axi-dmac: use DMA pool to manange DMA descriptor\n\nFor architectures like Microblaze or arm64 (where this IP is used),\nDMA_DIRECT_REMAP is set which means that dma_alloc_coherent() might\nremap (and hence vmalloc()) some memory. This became visible in a design\nwhere dma_direct_use_pool() is not possible.\n\nWith the above, when calling dma_free_coherent(), vunmap() would be\ncalled from softirq context and thus leading to a BUG().\n\nTo fix it, use a dma pool that is allocated in\n.device_alloc_chan_resources() and allocate blocks from it. The key\npoint is that now dma_pool_free() is used in axi_dmac_free_desc() to\nfree the blocks and that just frees the blocks from the pool in the\nsense they can be used again. In other words, no actual call to\ndma_free_coherent() happens. That only happens when destroying the pool\nin axi_dmac_free_chan_resources() which does not happen in any interrupt\ncontext.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65e82fa24965b2eb6ad9412f6c530ed9a50a625f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e942c8579130e62734c14338e9f451780669164"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4f41ceecfe68e117bae9c76c5ebc5e2b353fa56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0e6bb2b0408fcac6382158ee2bd9fdc45eceee9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:21Z"
+  }
+}

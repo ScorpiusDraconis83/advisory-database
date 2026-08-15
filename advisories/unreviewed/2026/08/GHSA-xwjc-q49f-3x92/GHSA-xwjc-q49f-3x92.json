@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xwjc-q49f-3x92",
+  "modified": "2026-08-15T06:32:14Z",
+  "published": "2026-08-15T06:32:14Z",
+  "aliases": [
+    "CVE-2026-72161"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nocfs2: add journal NULL check in ocfs2_checkpoint_inode()\n\nDuring unmount, ocfs2_journal_shutdown() frees the journal and sets\nosb->journal to NULL. Later, when VFS evicts remaining cached inodes,\nocfs2_evict_inode() -> ocfs2_clear_inode() -> ocfs2_checkpoint_inode()\n-> ocfs2_ci_fully_checkpointed() dereferences osb->journal, causing a\nNULL pointer dereference.\n\nFix this by adding a NULL check for osb->journal in\nocfs2_checkpoint_inode(). If the journal is NULL, it has already been\nfully flushed and destroyed during shutdown, so there is nothing to\ncheckpoint.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72161"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24daf13422e8328fd588c34a017bdef1949910e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/499714de42ab4d2e778cbb10186684142a1222eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63921f790234b221e4b15c56c72888b13250f81d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7da7e4ac21895fe34cceffcfc99497cc2750da99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a291c77c034b7a81849ce9b71cc9ecda9e587d89"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb6a13834c23e291f1170cb1b489ec255edfa5a3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:33Z"
+  }
+}

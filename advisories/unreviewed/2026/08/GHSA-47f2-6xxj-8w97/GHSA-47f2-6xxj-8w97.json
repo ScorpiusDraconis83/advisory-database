@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-47f2-6xxj-8w97",
+  "modified": "2026-08-15T06:32:14Z",
+  "published": "2026-08-15T06:32:14Z",
+  "aliases": [
+    "CVE-2026-72147"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: dw-edma-pcie: Reject devices without driver data\n\ndw_edma_pcie_probe() treats the PCI device ID driver_data as the\ntemplate for the controller layout and copies it unconditionally. A\ndevice bound dynamically via sysfs can match the driver without that\ndata, which leads to a NULL pointer dereference.\n\nReject such matches before enabling the device.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72147"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/043acb00e4edd4b9ffb9dd0e357482dcd9086486"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/044f7b3252d4fb2143d4999eec2800c08f1001ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11d7cfe0c119691b2dafbb699bbca90258c678aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2733b5dcb5a4ba4446f7bac954b97e4501dcaa64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1042599fa8f9e313be176eb1ea1ae199f983419"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:32Z"
+  }
+}

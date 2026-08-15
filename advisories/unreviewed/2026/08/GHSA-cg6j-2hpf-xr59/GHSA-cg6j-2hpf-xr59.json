@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cg6j-2hpf-xr59",
+  "modified": "2026-08-15T06:32:24Z",
+  "published": "2026-08-15T06:32:24Z",
+  "aliases": [
+    "CVE-2026-72424"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtc: msc313: fix NULL deref in shared IRQ handler at probe\n\nmsc313_rtc_probe() calls devm_request_irq() with IRQF_SHARED and\n&pdev->dev as the cookie, but platform_set_drvdata() is only called\nlater after the clock setup. With a shared IRQ line, another device\non the same line can trigger the handler in that window. The\nhandler does dev_get_drvdata() on the cookie, gets NULL, and\ndereferences priv->rtc_base in interrupt context.\n\nPass priv as the cookie directly so the handler reads it from\ndev_id without the lookup, removing the dependency on probe order.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72424"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f6a4aec0d36647eb2f67cd69db22bd28cabe2cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52c73b6992b46ed476590ed526faa033d4fbfc5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a369f48be8de426a7d2bca18dbd46c2ad1138803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb3e624808c981fe881cb79037be63e680ed7d38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc1f61a9b97d65de21c2681bcf0b5b1392c58486"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ece7b9ffde23e2ccd7567761ac27463ded43932c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:16Z"
+  }
+}

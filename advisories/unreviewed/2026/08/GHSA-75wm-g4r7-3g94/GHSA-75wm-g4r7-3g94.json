@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-75wm-g4r7-3g94",
+  "modified": "2026-08-15T06:32:27Z",
+  "published": "2026-08-15T06:32:27Z",
+  "aliases": [
+    "CVE-2026-72500"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/bnxt_re: Free SRQ toggle page after firmware teardown\n\nFree the toggle page only after firmware teardown completes so that\nan NQ interrupt arriving during bnxt_qplib_destroy_srq() won't write\nthe toggle values to an already-freed page. Move free_page() after\nbnxt_qplib_destroy_srq().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72500"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0adcd67f3d6f84835be682da0153f57f5c2f8036"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/104a7ff382a58a83cae018925e3574c784e8274c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/131e2918b9b0529687e67e2e58047304027f095a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:24Z"
+  }
+}

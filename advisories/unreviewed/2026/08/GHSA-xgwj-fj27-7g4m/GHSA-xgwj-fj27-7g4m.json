@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xgwj-fj27-7g4m",
+  "modified": "2026-08-15T06:32:23Z",
+  "published": "2026-08-15T06:32:23Z",
+  "aliases": [
+    "CVE-2026-72396"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: adm1275: Prevent reading uninitialized stack\n\nWhile adding support for the ROHM BD127X0 hot-swap controllers, sashiko\nreported an error in device-name comparison, which can lead to reading\nuninitialized stack memory.\n\nQuoting Sashiko:\n\nThis is a pre-existing issue, but I noticed that just before this block in\nadm1275_probe(), there might be an out-of-bounds stack read:\n\n    ret = i2c_smbus_read_block_data(client, PMBUS_MFR_MODEL, block_buffer);\n    if (ret < 0) { ... }\n    for (mid = adm1275_id; mid->name[0]; mid++) {\n            if (!strncasecmp(mid->name, block_buffer, strlen(mid->name)))\n                    break;\n    }\n\nSince i2c_smbus_read_block_data() reads up to 32 bytes into the\nuninitialized stack array block_buffer without appending a null\nterminator, strncasecmp() could read past the valid bytes returned in ret.\n\nFor example, if the device returns a shorter string like \"adm12\", checking\nit against \"adm1275\" up to the length of \"adm1275\" will continue reading\ninto uninitialized stack bounds.\n\nPrevent reading uninitialized memory by zeroing the stack array.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72396"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36554592e2f5cac16ff8bf73720d38a6d9ef4a20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39a581bd64a0e91112ec8017a2dd4e70c1336e99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/553f9517813912a5ab661af5504485d96824a61c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57d583f069fa9d3d0c0831e34b967d1f61edae94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82e4ab03a6ab9b87667410f5143bc484d7a62bdc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93b96e723bdcba6172a5814262be875abcc5d269"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa35cee30686e6be3c890bf741429c5025d55abe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9e04a52663bc6651c06c2427df088b751062bd6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:13Z"
+  }
+}

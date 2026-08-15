@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8wjg-7mhv-9g56",
+  "modified": "2026-08-15T06:32:14Z",
+  "published": "2026-08-15T06:32:14Z",
+  "aliases": [
+    "CVE-2026-72169"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nkho: make sure scratch size is always aligned by CMA_MIN_ALIGNMENT_BYTES\n\nWhen using scratch_scale, the scratch sizes are rounded up to\nCMA_MIN_ALIGNMENT_BYTES since they will be released as MIGRATE_CMA. This\nis not done when using fixed scratch sizes via command line. This can\nresult in user specifying a size which is not aligned, and thus kernel\nreleasing a pageblock that is only partially scratch.\n\nDo the rounding up for both cases in scratch_size_update().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72169"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e39380a7316122e1b00012b3f3cd3e318b3e7d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9fefab759f59bf891bef7be15aee4bc7caec7ec3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8271be34bce151597da5b5179e0648c281322a4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:34Z"
+  }
+}

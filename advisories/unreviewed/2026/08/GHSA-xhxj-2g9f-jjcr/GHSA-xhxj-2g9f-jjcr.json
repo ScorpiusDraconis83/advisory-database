@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xhxj-2g9f-jjcr",
+  "modified": "2026-08-15T06:32:24Z",
+  "published": "2026-08-15T06:32:24Z",
+  "aliases": [
+    "CVE-2026-72445"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb-audio: qcom: clear opened when stream enable fails\n\nOn enable, subs->opened is set before the service_interval is validated;\nan invalid interval jumps to the response label without clearing it, so\nthe substream is wedged at -EBUSY until a disable or disconnect.\n\nClear subs->opened on the enable error path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72445"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c7af07943b2718087ae791cad450af5cf646d90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53c23d56b46b1ae51574d92110895086aead7ad7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec6fb1ecada8ddfc3d0e1728e4792d16ae55dcdb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:18Z"
+  }
+}

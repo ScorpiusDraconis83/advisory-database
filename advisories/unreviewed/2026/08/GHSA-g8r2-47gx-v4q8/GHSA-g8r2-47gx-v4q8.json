@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g8r2-47gx-v4q8",
+  "modified": "2026-08-15T06:32:20Z",
+  "published": "2026-08-15T06:32:20Z",
+  "aliases": [
+    "CVE-2026-72332"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/amdxdna: Prevent PM resume deadlock in hwctx_sync_debug_bo()\n\namdxdna_hwctx_sync_debug_bo() invokes the hardware hwctx_sync_debug_bo()\ncallback while holding xdna->dev_lock.\n\nThe callback may call amdxdna_cmd_submit(), which in turn calls\namdxdna_pm_resume_get(). If the device is suspended,\namdxdna_pm_resume_get() may synchronously execute amdxdna_pm_resume(),\nwhich also acquires xdna->dev_lock, resulting in a deadlock.\n\nAvoid the deadlock by calling amdxdna_pm_resume_get() before holding\nxdna->dev_lock in both amdxdna_hwctx_sync_debug_bo() and\namdxdna_drm_config_hwctx_ioctl()",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72332"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d8eeb0578ae3aadf112fd3e1997e58178f75979"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e35c9cf5512814fb04f369f2eada64f0a7164609"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:06Z"
+  }
+}

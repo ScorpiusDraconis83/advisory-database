@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c62v-fhpj-c23c",
+  "modified": "2026-08-15T06:32:29Z",
+  "published": "2026-08-15T06:32:29Z",
+  "aliases": [
+    "CVE-2026-74303"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_qca: fix NULL pointer dereference in qca_dmp_hdr() for non-serdev device\n\nhu->serdev is NULL for hci_uart attached via non-serdev paths, but\nqca_dmp_hdr() unconditionally dereferences hu->serdev->dev.driver->name,\ncausing a NULL pointer dereference.\n\nFix by guarding the dereference with a NULL check and falling back to\n\"hci_ldisc_qca\" for the non-serdev case.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b8cbcf08de0db62254d1981f83db0f94681ccd9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/809230cc25dde1d6bb00de2a1eeb5f3199402fbe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a209744230f9ce3d7a7e9a0839944f5cb5fa02a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d54a5fb7d821b88c7c5569d450af59dafccaf414"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e284bb94ad4512ec0bcd9b91bda99e67c507f7f8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:29Z"
+  }
+}

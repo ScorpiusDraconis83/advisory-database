@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8rrh-94xj-vxx2",
+  "modified": "2026-08-15T06:32:18Z",
+  "published": "2026-08-15T06:32:18Z",
+  "aliases": [
+    "CVE-2026-72278"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: nv: Re-translate VNCR before injecting abort\n\nKVM faults in the VNCR page with FOLL_WRITE whenever the guest aborts\nfor a write, similar to how a regular stage-2 mapping is handled. It is\nentirely possible that the guest reads from the VNCR before writing to\nit, in which case the PFN could only be read-only.\n\nInvalidate the VNCR TLB and re-fetch the translation upon taking a VNCR\nabort, allowing the host mapping to be faulted in for write the second\ntime around. Interestingly enough, this also satisfies the ordering\nrequirements of FEAT_ETS2/3 between descriptor updates and MMU faults.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72278"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a5dd8cf4d58ea28da132c2097cd1c525302ac48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb645aa0a4caeaf7f9cd32e9a948594d434c1a8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea7a76d7d614b5f82b4d0785f9af3550e860a71a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:57Z"
+  }
+}

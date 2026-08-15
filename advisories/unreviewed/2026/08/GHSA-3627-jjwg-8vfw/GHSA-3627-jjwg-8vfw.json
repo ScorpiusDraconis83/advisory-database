@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3627-jjwg-8vfw",
+  "modified": "2026-08-15T06:32:18Z",
+  "published": "2026-08-15T06:32:18Z",
+  "aliases": [
+    "CVE-2026-72279"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: nv: Respect read-only PFN when mapping L1 VNCR\n\nKVM currently maps the L1 VNCR into the host stage-1 by relying entirely\non the permissions of the guest stage-1. At the same time, it is\nentirely possible that the backing PFN is read-only (e.g. RO memslot),\nmeaning that the L1 VNCR should use at most a read-only mapping.\n\nCache the writability of the PFN in the VNCR TLB and use it to constrain\nthe resulting fixmap permissions. Promote VNCR permission faults to an\nSEA in the case where the guest attempts to write to a read-only\nendpoint. Conveniently, this also plugs a page leak found by Sashiko [*]\nresulting from the early return for a read-only PFN.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2684e02bac41c5220f6c1ab2bdcc957b71812977"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c50db5bcbb9073cb2fd97be51b962de92f429e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d35defbdfcb15296ebe28968ad7452c1a8c11cea"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:58Z"
+  }
+}

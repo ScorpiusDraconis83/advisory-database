@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2234-wg35-953c",
+  "modified": "2026-08-15T06:32:19Z",
+  "published": "2026-08-15T06:32:19Z",
+  "aliases": [
+    "CVE-2026-72297"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: atm: reject out-of-range traffic classes in QoS validation\n\nReject ATM traffic classes above ATM_ANYCLASS in check_tp().\nSO_ATMQOS stores the supplied QoS after check_qos() succeeds, so\naccepting larger values leaves invalid traffic_class values in\nvcc->qos.\n\nThat bad state later reaches pvc_info(), which indexes class_name[]\nwith vcc->qos.{rx,tp}.traffic_class. Values above ATM_ANYCLASS cause\nan out-of-bounds read when /proc/net/atm/pvc is read.\n\nTighten the existing QoS validation so invalid traffic_class values\nare rejected at the point where user supplied QoS is accepted.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72297"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15444b57fdc6fc3f3e22a87f791ae5be81e6ecf5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a6dda72455b399ce9c1a12695471dc4d5c61add"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b3e241729e87afed13ac0f666472d5d6ca42e87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/367acd288bc6255e247cb1a1efbf5c6567cab423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/513f820b3f0cf4462e17d84c39ed3948d061a6ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/806b7b6edc8446e8b94b706807a7090a14d47b5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cdf19f380e46192e7084be559638aab1f6ed86a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e62adb157c2eaad9ad4867ec6cd9af5b9a51b1c7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:02Z"
+  }
+}

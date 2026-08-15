@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qp72-j2rc-w8mc",
+  "modified": "2026-08-15T06:32:24Z",
+  "published": "2026-08-15T06:32:24Z",
+  "aliases": [
+    "CVE-2026-72432"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntpm_crb: Check ACPI_COMPANION() against NULL during probe\n\nEvery platform driver can be forced to match a device that doesn't match\nits list of device IDs because of device_match_driver_override(), so\nplatform drivers that rely on the existence of a device's ACPI companion\nobject need to verify its presence.\n\nAccordingly, add a requisite ACPI_COMPANION() check against NULL to the\ntpm_crb driver.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72432"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c041d2be785feb9b5e36331921eadaefbe65349d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ddd33806b8911fa2ef849e8bbbab1e3fcb26adc0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:17Z"
+  }
+}

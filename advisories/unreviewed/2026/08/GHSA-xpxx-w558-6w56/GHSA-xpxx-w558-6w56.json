@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xpxx-w558-6w56",
+  "modified": "2026-08-15T06:32:30Z",
+  "published": "2026-08-15T06:32:29Z",
+  "aliases": [
+    "CVE-2026-74322"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: Fix possible NULL pointer dereference in mt7996_mac_write_txwi_80211()\n\nFor injected frames (e.g. via radiotap), mac80211 can pass\ninfo->control.vif = NULL, as explicitly noted in struct ieee80211_tx_info.\nCheck vif pointer before executing ieee80211_vif_is_mld() in\nmt7996_mac_write_txwi_80211 routine in order to avoid a possible NULL\npointer dereference.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61370e6674b5253de5686813ceeceebc35a7d3e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63e6151b9791b31877a88ff62806e7c407683955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dfb27e5dd9e4d34fbb74fa834c644dcef0be2be9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:32Z"
+  }
+}

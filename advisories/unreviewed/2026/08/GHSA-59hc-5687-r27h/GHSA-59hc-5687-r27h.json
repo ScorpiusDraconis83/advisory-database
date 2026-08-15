@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-59hc-5687-r27h",
+  "modified": "2026-08-15T06:32:23Z",
+  "published": "2026-08-15T06:32:22Z",
+  "aliases": [
+    "CVE-2026-72398"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: add INIT verification after cookie unpacking\n\nIn SCTP handshake, the INIT chunk is initially processed by the server\nand embedded into the cookie carried in INIT-ACK. The client then\nreturns this cookie via COOKIE-ECHO, where the server unpacks it and\nreconstructs the original INIT chunk.\n\nWhen cookie authentication is enabled, the cookie contents are protected\nagainst tampering, so reusing the unpacked INIT without re-verification\nis safe.\n\nHowever, when cookie authentication is disabled, the reconstructed INIT\ncan no longer be trusted. In this case, the INIT must be explicitly\nvalidated after unpacking to avoid processing potentially tampered data.\n\nAdd sctp_verify_init() checks after cookie unpacking in COOKIE-ECHO\nprocessing paths (sctp_sf_do_5_1D_ce() and sctp_sf_do_5_2_4_dupcook())\nwhen cookie_auth_enable is disabled. On failure, the new association is\nfreed and the packet is discarded.\n\nAlso tighten cookie validation in sctp_unpack_cookie() by verifying the\nembedded chunk type is SCTP_CID_INIT before treating it as an INIT\nchunk.\n\nFinally, update sctp_verify_init() to validate parameter bounds using\nthe actual embedded INIT length instead of chunk->chunk_end, since the\nINIT stored in COOKIE-ECHO may not span the entire chunk buffer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72398"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/062bcbf8d1f1051fdeb20b94920031b0e2cb95a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/414c5447fe6a200613dd46d7fdc8454622076cb1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bca3100f550281c2f2418652338bced3b35af0e6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:13Z"
+  }
+}

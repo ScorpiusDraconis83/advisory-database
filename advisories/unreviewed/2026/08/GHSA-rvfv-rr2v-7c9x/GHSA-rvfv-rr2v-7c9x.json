@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rvfv-rr2v-7c9x",
+  "modified": "2026-08-15T06:32:18Z",
+  "published": "2026-08-15T06:32:18Z",
+  "aliases": [
+    "CVE-2026-72272"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: radeon: fix potential memory leak in radeonfb_pci_register()\n\nThe function radeonfb_pci_register() allocates memory for modelist\n(by calling radeon_check_modes() which calls fb_add_videomode()).\nThe memory is appended to info->modelist, but is not freed in subsequent\nerror paths. Fix this by calling fb_destroy_modelist().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72272"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b1b43342fbf11eaf2a8926b9ed4805579d772ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c5387451176db5def499db809d718765f359a37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30a2ff955b66b16d4c98dc61f4fe8b3a57c6f7bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a94a4a0ec2684454934ba104988d6222836a572f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2c795a320e7ef9aa69c7f4bd2c9ac07064eff9a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c622a3eed6ad26879b6c0bc208fd6e3ffc4b7de3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/df8c1101c9a08859da612b5d0a08d55d475522c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f4dacbfd885f34222e67145294de9b8479aa021d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:56Z"
+  }
+}

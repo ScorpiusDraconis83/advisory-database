@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hh4g-5q85-w496",
+  "modified": "2026-08-15T06:32:17Z",
+  "published": "2026-08-15T06:32:17Z",
+  "aliases": [
+    "CVE-2026-72256"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: xt_cluster: reject template conntracks in hash match\n\nxt_cluster_mt() treats any non-NULL nf_ct_get() result as a fully\ninitialized conntrack and passes it to xt_cluster_hash().\n\nThis causes a state confusion bug when the raw table CT target attaches\na template conntrack to skb->_nfct before normal conntrack processing.\nTemplates carry IPS_TEMPLATE status but do not have a valid tuple for\nhashing yet, so xt_cluster_hash() can hit its WARN_ON() path on the\nzeroed l3num field.\n\nReject template conntracks before hashing them. This matches existing\nnetfilter handling for template objects and avoids hashing incomplete\nconntrack state.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07f9ddbf5e799c24a3a52ec9bd7b729a6f6d69d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13ea4f86cf738c74be2146886ac261988a631e62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4558bd7b47c7be82dffd837f27be8ea3ecee557d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4cb8b5f586e41c187942291cc0938006077fa79e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b2d4f0010018a7aa3495aa1dbf1b7a34011e7aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5feba91006ec92da57acc1cc2e34df623b98541e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5f9d050b0b267227c1f02f11021872c7768a9cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fac2fdac3baad9ffd12b3b0bba4374d4b3585d54"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:21:53Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8hrf-wfxr-vw68",
+  "modified": "2026-08-15T06:32:19Z",
+  "published": "2026-08-15T06:32:19Z",
+  "aliases": [
+    "CVE-2026-72309"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing/remotes: Fix leak in trace_remote_alloc_buffer() error path\n\nIf page allocation fails in trace_remote_alloc_buffer(), desc->nr_cpus\nis not yet incremented for the current CPU. As a consequence, on error,\nhalf-allocated rb_desc will not be freed in trace_remote_free_buffer().\n\nIncrement desc->nr_cpus as soon as the first allocation for the current\nCPU has succeeded.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72309"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81a7b7ddb07efdd8cf30eac6def18b9289b8de1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec082d0b978b5fb4c11205ccce63587ac94c74e1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:03Z"
+  }
+}

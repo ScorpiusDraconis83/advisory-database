@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6pxh-c54r-cxc3",
+  "modified": "2026-08-15T06:32:24Z",
+  "published": "2026-08-15T06:32:24Z",
+  "aliases": [
+    "CVE-2026-72427"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix effective prog array index with BPF_F_PREORDER\n\nreplace_effective_prog() and purge_effective_progs() located the slot in\nthe effective array by walking the program hlist and counting entries\nlinearly. That count does not match the array layout: compute_effective_\nprogs() places BPF_F_PREORDER programs at the front (ancestor cgroup\nfirst, attach order within a cgroup) and the rest after them (descendant\ncgroup first). So when a preorder program is present, the linear hlist\nposition no longer equals the program's index in the effective array.\n\nFor replace_effective_prog() (bpf_link_update()) this overwrote the\nwrong slot, corrupting the effective order. For purge_effective_progs(),\nit could dummy out a slot belonging to a different program and leave the\ndetached program in the array while bpf_prog_put() drops its reference,\ni.e. a use-after-free.\n\nFix both by replaying compute_effective_progs()'s placement (including\nthe per-cgroup preorder reversal) in a shared effective_prog_pos()\nhelper. Identify the entry by its struct bpf_prog_list pointer rather\nthan by (prog, link) value, so the lookup resolves to exactly the\nattachment the syscall selected even when the same bpf_prog is attached\nto several cgroups in the hierarchy.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72427"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41b4320b84fdafe1ab586b06453d30d50415db59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/525e408c27ae714e538b8c608c3a974df3ab6c92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9697db03e010391c55ae75192cbdf30c5a72c114"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b584f107ab90222bd825dcb4c5977326ff684109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f08aaee3152d0dfc578b3f2586932d82062701dd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:16Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9679-5mjr-46x9",
+  "modified": "2026-08-15T06:32:26Z",
+  "published": "2026-08-15T06:32:26Z",
+  "aliases": [
+    "CVE-2026-72477"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: call _ntfs_bad_inode() when failing to rename\n\nIt is safe to call _ntfs_bad_inode on live inodes since:\n  commit 519b078998ce (\"fs/ntfs3: Exclude call make_bad_inode for live nodes.\")\n\nThe WARN_ON was added when it wasn't safe by:\n  commit d99208b91933 (\"fs/ntfs3: cancle set bad inode after removing name fails\")\n\nReplace the WARN_ON with a call to _ntfs_bad_inode() to prevent further\noperations on the inconsistent inode.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72477"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8ed78f40eecd0176fda71d673f6957c98e7ffbe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff825bf0521f6da2f30878cbad18ab7b341bc31b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:21Z"
+  }
+}

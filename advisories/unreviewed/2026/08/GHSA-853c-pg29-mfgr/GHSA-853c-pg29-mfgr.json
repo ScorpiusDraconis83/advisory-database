@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-853c-pg29-mfgr",
+  "modified": "2026-08-15T06:32:32Z",
+  "published": "2026-08-15T06:32:32Z",
+  "aliases": [
+    "CVE-2026-74391"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Bound synthetic-field strings with seq_buf\n\nThe synthetic field helpers build a prefixed synthetic variable name and\na generated hist command in fixed MAX_FILTER_STR_VAL buffers. The\ncurrent code appends those strings with raw strcat(), so long key lists,\nfield names, or saved filters can run past the end of the staging\nbuffers.\n\nBuild both strings with seq_buf and propagate -E2BIG if either the\nsynthetic variable name or the generated command exceeds\nMAX_FILTER_STR_VAL. This keeps the existing tracing-side limit while\nusing the helper intended for bounded command construction.\n\n[ sdr: Moved struct seq_buf *s for upside-down x-mas tree formatting ]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c584c27f6649a93ec12061cc779a4bd8f7c1434"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88b901fdc1662b131ff908cbd017333b61e7acc8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/baa333b2700a7fa3529d504529c8c10060fd687c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf334620036ad2250e008c7e7bb6646a3938b7b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f07883450eb14d1cf020b55d9f3a7ec5683bcd26"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:41Z"
+  }
+}

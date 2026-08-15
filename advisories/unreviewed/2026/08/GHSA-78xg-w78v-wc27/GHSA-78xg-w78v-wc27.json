@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-78xg-w78v-wc27",
+  "modified": "2026-08-15T06:32:29Z",
+  "published": "2026-08-15T06:32:29Z",
+  "aliases": [
+    "CVE-2026-74302"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_core: Fix UAF in hci_unregister_dev()\n\nhci_unregister_dev() does not disable cmd_timer and ncmd_timer\nbefore the hci_dev structure is freed. If a timeout fires\nduring device teardown, the callback dereferences freed memory\n(including the hdev->reset function pointer), leading to a\nuse-after-free.\n\nAdd disable_delayed_work_sync() calls alongside the existing\ndisable_work_sync() calls to ensure both timers are fully\nquiesced before teardown proceeds.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74302"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48c7ad6afcc58c2cda11fed39791708103b6a644"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5edcc018fa6e80b2c478454a4a8229c23d67c181"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/672d52d9412252e61b8de8d773ccdf5a277cf540"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a0fd1086a57b982f8c24ae4ab165c2af39fe1735"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:29Z"
+  }
+}

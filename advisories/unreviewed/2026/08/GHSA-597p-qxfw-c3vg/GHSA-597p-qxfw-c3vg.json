@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-597p-qxfw-c3vg",
+  "modified": "2026-08-15T06:32:31Z",
+  "published": "2026-08-15T06:32:31Z",
+  "aliases": [
+    "CVE-2026-74361"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme: fix FDP fdpcidx bounds check\n\nThe fdpcidx bounds check sets n = NUMFDPC + 1 but used > instead of >=,\nincorrectly accepting fdp_idx when it equals n (i.e. NUMFDPC + 1).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74361"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0967074f6830718fd2597404ef119bddd0dbfd00"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d0e7d2af884b91329235abb16652ae4eead8079"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5e406928404d67a8da8aa3ae21732e1ea1a04118"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:37Z"
+  }
+}

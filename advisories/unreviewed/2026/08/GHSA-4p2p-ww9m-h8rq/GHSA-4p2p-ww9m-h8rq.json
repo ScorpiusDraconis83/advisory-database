@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4p2p-ww9m-h8rq",
+  "modified": "2026-08-15T06:32:28Z",
+  "published": "2026-08-15T06:32:27Z",
+  "aliases": [
+    "CVE-2026-74279"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: cavium/cpt - fix DMA cleanup using wrong loop index\n\nThe sg_cleanup error path used list[i] instead of list[j] when unmapping\nDMA buffers, leaking successfully mapped entries and repeatedly unmapping\nthe failed one.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23c6174e48f66fc10b998b0acdb406cb0caf5c80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23d3a7e896a1fe2d7a6bcb42f093948b79f8a198"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/28141f95ae93b18f9bfde953cb787fcb151fb9da"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b8a1e1f4e4071a62b20374028744e8cc8310d48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8afd1007ef79898a6e010eaade97097e49405fce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9dbf173bd32d5f81b005008b682bfb50aa093455"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d319b83b97b3585550d9ae592dfa78c755b6129e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb4d57b83356d4bd411b45ede3024e0ff42c9b5e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T06:22:27Z"
+  }
+}
