@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p8hv-x2cr-398f",
+  "modified": "2026-08-16T15:30:24Z",
+  "published": "2026-08-16T15:30:24Z",
+  "aliases": [
+    "CVE-2024-58375"
+  ],
+  "details": "OpenTofu versions 1.8.0 through 1.8.2 do not properly restrict sensitive variables and locals when users have opted into static evaluation of module sources, versions, and backend configurations. As a result, values marked as sensitive may be exposed through these configuration elements instead of producing an error. This is fixed in OpenTofu 1.8.3, which adds explicit errors to prevent the use of sensitive values in these contexts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/opentofu/opentofu/security/advisories/GHSA-wpr2-j6gr-pjw9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58375"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/opentofu-before-secret-variable-leaking-via-static-evaluation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-497"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-16T14:16:53Z"
+  }
+}
