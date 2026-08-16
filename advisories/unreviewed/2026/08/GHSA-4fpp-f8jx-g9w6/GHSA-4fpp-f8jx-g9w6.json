@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4fpp-f8jx-g9w6",
+  "modified": "2026-08-16T00:31:26Z",
+  "published": "2026-08-16T00:31:26Z",
+  "aliases": [
+    "CVE-2026-73043"
+  ],
+  "details": "SiYuan versions before v3.7.4 contain a remote code execution vulnerability in the Template calculation operator, which renders user-authored Go templates and stores output verbatim without sanitization. Attackers can inject malicious HTML and JavaScript into template calculations that execute in the desktop client renderer with Node integration enabled, allowing arbitrary code execution when the database is opened.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-rwh7-gm74-67h6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73043"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/siyuan-before-remote-code-execution-via-template-calculation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-15T22:16:54Z"
+  }
+}
