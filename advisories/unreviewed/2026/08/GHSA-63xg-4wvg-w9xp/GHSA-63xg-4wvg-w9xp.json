@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-63xg-4wvg-w9xp",
+  "modified": "2026-08-17T03:30:22Z",
+  "published": "2026-08-17T03:30:22Z",
+  "aliases": [
+    "CVE-2026-50602"
+  ],
+  "details": "A security vulnerability has been identified in Planet9 due to incorrect file permissions assigned to an application executable used by the Planet9 background service. The service runs with SYSTEM privileges, while the affected executable grants excessive permissions to non-administrative users. As a result, an authenticated local user could potentially modify or replace the executable and execute arbitrary code with SYSTEM privileges when the service starts or the system is restarted.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-50602"
+    },
+    {
+      "type": "WEB",
+      "url": "https://community.acer.com/en/kb/articles/19870"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-732"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-17T03:16:50Z"
+  }
+}
