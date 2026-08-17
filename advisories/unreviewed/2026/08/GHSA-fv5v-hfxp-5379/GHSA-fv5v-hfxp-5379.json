@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fv5v-hfxp-5379",
+  "modified": "2026-08-17T21:31:26Z",
+  "published": "2026-08-17T21:31:26Z",
+  "aliases": [
+    "CVE-2026-75104"
+  ],
+  "details": "Hugging Face Transformers fails to validate shard filenames in checkpoint index files, allowing attackers to read arbitrary files outside the model directory. Attackers can supply malicious index files with parent-directory references or absolute paths that are joined without validation, enabling file disclosure and filesystem reconnaissance.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/transformers/issues/47176"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/transformers/issues/47177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/transformers"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/huggingface/transformers/blob/main/src/transformers/utils/hub.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hugging-face-transformers-path-traversal-via-checkpoint-index"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-17T21:16:49Z"
+  }
+}

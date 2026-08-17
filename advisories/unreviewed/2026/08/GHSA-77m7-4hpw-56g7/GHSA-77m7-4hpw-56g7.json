@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77m7-4hpw-56g7",
+  "modified": "2026-08-17T21:31:24Z",
+  "published": "2026-08-17T21:31:24Z",
+  "aliases": [
+    "CVE-2026-74238"
+  ],
+  "details": "TIER IV Nebula through 1.2.0 contains an out-of-bounds read vulnerability in the Vlp32Decoder::unpack() function that allows unauthenticated remote attackers to cause the decoder to read past the end of a received UDP buffer into adjacent heap memory by sending a short UDP datagram. Attackers can send a malformed datagram to the Velodyne UDP sensor port, which lacks sender-address restrictions present in other drivers, causing fabricated points derived from heap memory contents to be silently published into downstream PointCloud2 messages consumed by Autoware nodes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tier4/nebula/issues/488"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/tier-iv-nebula-heap-out-of-bounds-read-via-vlp32-udp-decoder"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-17T19:16:42Z"
+  }
+}

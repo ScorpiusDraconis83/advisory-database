@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q7g5-25j5-rf23",
+  "modified": "2026-08-17T21:31:24Z",
+  "published": "2026-08-17T21:31:24Z",
+  "aliases": [
+    "CVE-2026-70495"
+  ],
+  "details": "A flaw was found in search-v2-operator. This component's `search-serviceaccount` has overly broad permissions, allowing it to impersonate users and groups across the entire cluster. If an attacker gains access to any of the pods running under this service account, they could exploit this to achieve `system:masters` access, granting them full control over the cluster.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70495"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-70495"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2511031"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-17T20:16:45Z"
+  }
+}

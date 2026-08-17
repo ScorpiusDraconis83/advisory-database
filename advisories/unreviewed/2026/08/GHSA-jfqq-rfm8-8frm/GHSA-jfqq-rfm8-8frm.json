@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jfqq-rfm8-8frm",
+  "modified": "2026-08-17T21:31:26Z",
+  "published": "2026-08-17T21:31:26Z",
+  "aliases": [
+    "CVE-2026-68765"
+  ],
+  "details": "hashcat master branch builds after v7.1.2 contain a heap buffer overflow vulnerability in the KeePass AESKDF/KDBX v4 module (module 34301) that allows attackers to corrupt adjacent heap memory by supplying an oversized ninth hash field token. The module accepts up to 600 hex characters for the ninth token field but decodes it into a fixed 256-byte buffer with no length check, allowing a maximal input to write up to 44 bytes past the buffer boundary into adjacent esalt fields and heap chunk metadata, potentially enabling heap corruption or memory access violations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:H/UI:A/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68765"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hashcat/hashcat/pull/4755"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hashcat/hashcat/commit/6f374c4ff7d5dc951530fbbbcf6b45e3c169b100"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hashcat/hashcat"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hashcat-keepass-kdbx-v4-module-heap-buffer-overflow-via-token-field"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-17T21:16:48Z"
+  }
+}

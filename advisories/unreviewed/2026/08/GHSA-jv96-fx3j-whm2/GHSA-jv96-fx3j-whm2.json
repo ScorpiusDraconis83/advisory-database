@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jv96-fx3j-whm2",
-  "modified": "2026-08-16T06:30:25Z",
+  "modified": "2026-08-17T21:31:18Z",
   "published": "2026-08-16T06:30:25Z",
   "aliases": [
     "CVE-2026-15384"
   ],
   "details": "The Manual Image Crop WordPress plugin before 1.15 does not perform any capability check or nonce verification on the authenticated AJAX action that crops attachment images; its only guard passes for any logged-in user. A subscriber-level user can therefore supply an arbitrary attachment ID and overwrite that attachment's generated intermediate-size image (for example its thumbnail) and mutate its stored metadata, regardless of who owns the media. This is a cross-user integrity/defacement issue over the Media Library. The action also has no nonce, so it is additionally susceptible to CSRF.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-16T06:16:50Z"

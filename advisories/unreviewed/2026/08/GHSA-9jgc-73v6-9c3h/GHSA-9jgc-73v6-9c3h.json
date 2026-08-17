@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9jgc-73v6-9c3h",
-  "modified": "2026-08-16T06:30:25Z",
+  "modified": "2026-08-17T21:31:18Z",
   "published": "2026-08-16T06:30:25Z",
   "aliases": [
     "CVE-2026-13712"
   ],
   "details": "The Divi WordPress theme before 5.9.0 does not properly escape some of its Social Media Follow module settings before outputting them in link attributes, allowing users with a role as low as contributor to store JavaScript which will run when a higher privileged user, such as an administrator, views the post.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-16T06:16:50Z"

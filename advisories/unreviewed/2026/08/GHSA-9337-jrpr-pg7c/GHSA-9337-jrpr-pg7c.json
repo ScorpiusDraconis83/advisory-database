@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9337-jrpr-pg7c",
-  "modified": "2026-08-15T06:32:06Z",
+  "modified": "2026-08-17T21:31:18Z",
   "published": "2026-08-15T06:32:06Z",
   "aliases": [
     "CVE-2026-16541"
   ],
   "details": "The Simply Schedule Appointments WordPress plugin before 1.6.12.17 does not restrict the user records returned by some of its REST endpoints to those the requester is entitled to see, allowing users with a low-privileged staff role to disclose the names and email addresses of arbitrary registered users.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:17:08Z"

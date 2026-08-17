@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qgjj-8h65-3vcm",
-  "modified": "2026-08-16T06:30:25Z",
+  "modified": "2026-08-17T21:31:18Z",
   "published": "2026-08-16T06:30:25Z",
   "aliases": [
     "CVE-2026-17533"
   ],
   "details": "The All-in-One WP Migration and Backup WordPress plugin before 7.108 does not restrict its migration import functionality to network administrators on multisite installations, allowing an administrator of a single subsite to execute arbitrary PHP code across the entire network.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-16T06:16:51Z"
