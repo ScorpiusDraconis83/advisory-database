@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jrcc-j37m-v8fg",
-  "modified": "2026-06-04T00:30:25Z",
+  "modified": "2026-08-17T21:52:48Z",
   "published": "2026-06-04T00:30:25Z",
   "aliases": [
     "CVE-2026-10775"
   ],
+  "summary": "SGLang is Vulnerable to DoS via the data_hash Function",
   "details": "A vulnerability was determined in sgl-project SGLang up to 0.5.11. Affected by this vulnerability is the function data_hash of the component Cache Handler. This manipulation causes denial of service. The attack is restricted to local execution. A high degree of complexity is needed for the attack. The exploitation appears to be difficult. The exploit has been publicly disclosed and may be utilized. The pull request to fix this issue awaits acceptance.",
   "severity": [
     {
@@ -14,10 +15,30 @@
     },
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:L/AC:H/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:L/AC:H/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:P"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "sglang"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.5.11"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -32,7 +53,7 @@
       "url": "https://github.com/sgl-project/sglang/pull/22033"
     },
     {
-      "type": "WEB",
+      "type": "PACKAGE",
       "url": "https://github.com/sgl-project/sglang"
     },
     {
@@ -57,8 +78,8 @@
       "CWE-404"
     ],
     "severity": "LOW",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-17T21:52:47Z",
     "nvd_published_at": "2026-06-03T23:16:17Z"
   }
 }
