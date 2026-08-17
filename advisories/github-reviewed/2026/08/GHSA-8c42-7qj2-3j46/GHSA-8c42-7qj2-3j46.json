@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8c42-7qj2-3j46",
+  "modified": "2026-08-17T18:24:26Z",
+  "published": "2026-08-17T18:24:26Z",
+  "aliases": [
+    "CVE-2026-59903"
+  ],
+  "summary": "Netty Vulnerable to Cache Poisoning and Information Disclosure via CORS Vary Header Overwrite",
+  "details": "### Summary\nNetty's `CorsHandler` silently overwrites existing `Vary` headers, enabling cache poisoning and sensitive information disclosure.\n\n### Details\n`io.netty.handler.codec.http.cors.CorsHandler#setVaryHeader` overwrites any existing Vary headers set by backend applications. \n\n```java\n    private static void setVaryHeader(final HttpResponse response) {\n        response.headers().set(HttpHeaderNames.VARY, HttpHeaderNames.ORIGIN);\n    }\n```\n\nBecause `set()` replaces all existing values for the header, if a backend application sets a `Vary` header (such as `Vary: Authorization` or `Vary: Cookie`) to ensure that intermediate caches (like CDNs) cache responses separately per user, the `CorsHandler` will overwrite it with `Vary: origin`. This causes the caching proxy to ignore the authorization context and cache the response based solely on the URL and Origin, allowing an attacker to retrieve another user's cached sensitive data.\n\n### Impact\nThis is a Cache Poisoning vulnerability that leads to Information Disclosure. It impacts any Netty-based web application that uses the CorsHandler, sets its own Vary headers to manage caching of authenticated or user-specific responses (e.g., Vary: Authorization), and is deployed behind a caching proxy or CDN. The end-users of these applications are impacted, as their sensitive data may be leaked to unauthorized actors.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec-http"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.2.0.Final"
+            },
+            {
+              "fixed": "4.2.17.Final"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.2.16.Final"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.netty:netty-codec-http"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.1.137.Final"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.1.136.Final"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/security/advisories/GHSA-8c42-7qj2-3j46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/pull/17213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/pull/17217"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/netty/netty"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/releases/tag/netty-4.1.137.Final"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/releases/tag/netty-4.2.17.Final"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-524"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-17T18:24:26Z",
+    "nvd_published_at": null
+  }
+}
