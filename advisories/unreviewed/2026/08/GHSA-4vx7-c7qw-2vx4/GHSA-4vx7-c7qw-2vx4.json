@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4vx7-c7qw-2vx4",
-  "modified": "2026-08-16T18:30:18Z",
+  "modified": "2026-08-17T18:31:12Z",
   "published": "2026-08-16T15:30:24Z",
   "aliases": [
     "CVE-2026-19349"
   ],
   "details": "Lemonldap::NG::Portal versions from 2.0.0 before 2.16.9, from 2.17.0 before 2.21.5, from 2.22.0 before 2.23.3 for Perl allow authentication bypass via an OAuth2 state parameter stored as an SSO session in the GitHub and LinkedIn backends.\n\nBefore redirecting to the identity provider, extractFormInfo() creates the state session with the positional call `getApacheSession( undef, 1, 0, 'GitHubState' )`. getApacheSession() takes a session id followed by a named argument hash, so the trailing arguments become that hash, `kind` defaults to SSO, and the state is written to the global session storage as a regular SSO session. Its identifier is handed to the unauthenticated visitor as the state parameter of the redirection URL.\n\nAny visitor who reaches the GitHub or LinkedIn endpoint can replay that identifier as a session cookie and obtain a valid SSO session without authenticating. The session holds neither _user nor authenticationLevel, which the shipped bootstrap configuration accepts because it grants virtual hosts a \"default => accept\" access rule; deployments whose rules test the user or require an authentication level are less exposed. Only configurations with the GitHub or LinkedIn authentication module enabled are affected.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -35,7 +40,7 @@
     "cwe_ids": [
       "CWE-305"
     ],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-16T14:16:54Z"
