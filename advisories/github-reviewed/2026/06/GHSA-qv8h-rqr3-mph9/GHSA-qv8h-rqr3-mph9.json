@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qv8h-rqr3-mph9",
-  "modified": "2026-06-10T18:31:46Z",
+  "modified": "2026-08-17T21:54:54Z",
   "published": "2026-06-10T18:31:46Z",
   "aliases": [
     "CVE-2026-53698"
   ],
+  "summary": "Silverpeas mishandles the \"Personal space\" feature that is selected when no componentId is set",
   "details": "Silverpeas through 6.4.6 mishandles the \"Personal space\" feature that is selected when no componentId is set.",
   "severity": [
     {
@@ -13,7 +14,46 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.silverpeas.core:silverpeas-core-war"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "6.4-feature13197"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.silverpeas.core:silverpeas-core"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "6.4-feature13197"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -22,6 +62,10 @@
     {
       "type": "WEB",
       "url": "https://github.com/Silverpeas/Silverpeas-Core/commit/caa6e6d1ac967ebd29b39e11c2ef5e7fd0047eec"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Silverpeas/Silverpeas-Core"
     },
     {
       "type": "WEB",
@@ -33,6 +77,10 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/Silverpeas/Silverpeas-Core/releases/tag/6.4.7"
+    },
+    {
+      "type": "WEB",
       "url": "https://tracker.silverpeas.org/issues/15229"
     }
   ],
@@ -41,8 +89,8 @@
       "CWE-36"
     ],
     "severity": "MODERATE",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-17T21:54:54Z",
     "nvd_published_at": "2026-06-10T16:17:17Z"
   }
 }
