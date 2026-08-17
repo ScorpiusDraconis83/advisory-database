@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3wch-675q-fgx7",
-  "modified": "2026-08-15T06:32:26Z",
+  "modified": "2026-08-17T06:33:32Z",
   "published": "2026-08-15T06:32:26Z",
   "aliases": [
     "CVE-2026-72476"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: Fix possible use after free\n\nIn dma_release_channel(), check chan->device->privatecnt after call\ndma_chan_put(). However, dma_chan_put() call dma_device_put() which could\nrelease the last reference of the device if the DMA provider is already\ngone and hence free it.\n\nFixes it by moving dma_chan_put() after the check.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:21Z"

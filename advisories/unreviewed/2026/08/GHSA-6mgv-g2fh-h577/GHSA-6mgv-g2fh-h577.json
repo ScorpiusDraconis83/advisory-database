@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6mgv-g2fh-h577",
-  "modified": "2026-08-15T06:32:23Z",
+  "modified": "2026-08-17T06:33:28Z",
   "published": "2026-08-15T06:32:23Z",
   "aliases": [
     "CVE-2026-72416"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nft_compat: ebtables emulation must reject non-bridge targets\n\nxtables targets return netfilter verdicts: NF_ACCEPT, NF_DROP, and so\non.  ebtables targets return incompatible verdicts: EBT_ACCEPT,\nEBT_DROP, ...   We cannot allow fallback to NFPROTO_UNSPEC.\n\nebtables doesn't permit this since\n11ff7288beb2 (\"netfilter: ebtables: reject non-bridge targets\")\nbut that commit missed the nft_compat layer.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:15Z"

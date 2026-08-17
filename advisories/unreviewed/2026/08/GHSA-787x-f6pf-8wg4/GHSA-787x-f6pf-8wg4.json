@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-787x-f6pf-8wg4",
-  "modified": "2026-08-15T06:32:25Z",
+  "modified": "2026-08-17T06:33:31Z",
   "published": "2026-08-15T06:32:25Z",
   "aliases": [
     "CVE-2026-72459"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\napparmor: aa_label_alloc use aa_label_free on alloc failure\n\naa_label_alloc() allocates a secid before allocating or taking the label\nproxy. If the later proxy step fails, the error path only freed the label\nmemory, leaking any resources initialized by aa_label_init().\n\nUse aa_label_free() on the failure path so partially initialized labels\nrelease their secid and other label resources before the backing memory is\nfreed.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:19Z"

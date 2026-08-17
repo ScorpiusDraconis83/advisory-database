@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-66j4-c66h-jm7x",
-  "modified": "2026-08-15T06:32:23Z",
+  "modified": "2026-08-17T06:33:29Z",
   "published": "2026-08-15T06:32:23Z",
   "aliases": [
     "CVE-2026-72421"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: fib: Don't ignore error route in local/main tables.\n\nWhen CONFIG_IP_MULTIPLE_TABLES is enabled but no rule is added,\nfib_lookup() performs route lookup directly on two tables.\n\nSince the first lookup does not properly bail out, the result\nof an error route in the merged local/main table could be\noverwritten by another route in the default table:\n\n  # unshare -n\n  # ip link set lo up\n  # ip route add 192.168.0.0/24 dev lo table 253\n  # ip route add unreachable 192.168.0.0/24\n  # ip route get 192.168.0.1\n  192.168.0.1 dev lo table default uid 0\n      cache <local>\n\nOnce a random rule is added, the error route is respected:\n\n  # ip rule add table 0\n  # ip rule del table 0\n  # ip route get 192.168.0.1\n  RTNETLINK answers: No route to host\n\nLet's fix the inconsistent behaviour.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:15Z"

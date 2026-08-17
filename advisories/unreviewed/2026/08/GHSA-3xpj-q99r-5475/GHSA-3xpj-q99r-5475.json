@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3xpj-q99r-5475",
-  "modified": "2026-08-15T06:32:17Z",
+  "modified": "2026-08-17T06:33:18Z",
   "published": "2026-08-15T06:32:17Z",
   "aliases": [
     "CVE-2026-72249"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: flowtable: use dst in this direction when pushing IPIP header\n\nWhen pushing the IPIP header, the route of the other direction is used\nto calculate the headroom, use the route in this direction. Accessing\nthe other tuple to set the IP source and destination is fine because\nthis tuple does not provide such information to avoid storing redundant\ninformation. However, this tuple already provides the dst for this\ndirection, this went unnoticed because this bug affects headroom and\niph->frag_off only at this stage.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:52Z"

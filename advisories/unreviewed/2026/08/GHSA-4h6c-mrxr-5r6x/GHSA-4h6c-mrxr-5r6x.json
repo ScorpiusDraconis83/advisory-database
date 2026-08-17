@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4h6c-mrxr-5r6x",
-  "modified": "2026-08-15T06:32:22Z",
+  "modified": "2026-08-17T06:33:26Z",
   "published": "2026-08-15T06:32:22Z",
   "aliases": [
     "CVE-2026-72373"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nafs: Fix missing NULL pointer check in afs_break_some_callbacks()\n\nFix afs_break_some_callbacks() to check to see if afs_lookup_volume_rcu()\nreturned NULL (e.g. the specified volume is unknown).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:10Z"

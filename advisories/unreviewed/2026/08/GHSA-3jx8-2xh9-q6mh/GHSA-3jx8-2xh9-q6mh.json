@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3jx8-2xh9-q6mh",
-  "modified": "2026-08-15T15:30:32Z",
+  "modified": "2026-08-17T06:33:46Z",
   "published": "2026-08-15T15:30:32Z",
   "aliases": [
     "CVE-2026-74452"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/panthor: reject firmware sections with oversized data\n\nIn panthor_fw_load_section_entry(), the data size to copy is calculated\nwithout validating it against the allocated section_size:\n\n    section->data.size = hdr.data.end - hdr.data.start;\n\nIf a crafted firmware sets data.size larger than the allocated memory,\nthis could cause a heap buffer overflow in panthor_fw_init_section_mem()\n\n    memcpy(section->mem->kmap, section->data.buf, section->data.size);\n\nAdditionally, if the section->data.size exceeds the BO size, could this\nmemset underflow the size calculation, leading to a massive out-of-bounds\nzeroing of kernel memory?\n\n    memset(section->mem->kmap + section->data.size, 0,\n           panthor_kernel_bo_size(section->mem) - section->data.size);\n\nReject section entries whose initial data is larger than the section size.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T13:17:49Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5g45-v3m4-8hc5",
-  "modified": "2026-08-15T06:32:10Z",
+  "modified": "2026-08-17T06:33:06Z",
   "published": "2026-08-15T06:32:10Z",
   "aliases": [
     "CVE-2026-72045"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-af: cn10k: restrict VF LMTLINE sharing to its own PF\n\nrvu_mbox_handler_lmtst_tbl_setup() uses req->base_pcifunc as a direct\nindex into the LMT map table to read another function's LMTLINE\nphysical base address and copy it into the caller's own LMT map table\nentry. The mailbox dispatcher authenticates req->hdr.pcifunc from the\nIRQ source, but req->base_pcifunc is a separate payload field and is\nnot sanitized.\n\nReject the request with -EPERM when a VF caller's base_pcifunc is not a\nvalid function under its own PF. is_pf_func_valid() bounds the FUNC field\nto the PF's configured VF count, keeping the computed index inside the\ncaller's own slot block.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:13Z"

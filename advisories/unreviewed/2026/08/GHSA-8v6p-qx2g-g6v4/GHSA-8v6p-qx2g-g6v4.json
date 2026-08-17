@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8v6p-qx2g-g6v4",
-  "modified": "2026-08-15T06:32:23Z",
+  "modified": "2026-08-17T06:33:28Z",
   "published": "2026-08-15T06:32:23Z",
   "aliases": [
     "CVE-2026-72410"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-af: Validate NIX maximum LFs correctly\n\nNIX maximum number of LFs can be set via devlink command\nbut that can be done before assigning any LFs to a PF/VF.\nThe condition used to check whether any LFs are assigned is\nincorrect. This patch fixes that condition.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:14Z"

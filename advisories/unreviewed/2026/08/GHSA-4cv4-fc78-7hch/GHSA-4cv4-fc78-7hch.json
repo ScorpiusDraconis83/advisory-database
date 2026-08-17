@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4cv4-fc78-7hch",
-  "modified": "2026-08-15T06:32:20Z",
+  "modified": "2026-08-17T06:33:23Z",
   "published": "2026-08-15T06:32:20Z",
   "aliases": [
     "CVE-2026-72318"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: validate DFS referral string offsets\n\nparse_dfs_referrals() validates that the response header and referral\narray fit in the received buffer, but each referral also contains string\noffsets supplied by the server.\n\nThose offsets are used to compute the DfsPath and NetworkAddress string\npointers without checking whether they still point inside the response\nbuffer. A malformed referral can therefore make the computed pointer\nexceed the end of the buffer. The resulting negative max_len is then\npassed to cifs_strndup_from_utf16(), and the non-Unicode path forwards it\nto kstrndup() as a size_t, allowing strnlen() to read out of bounds.\n\nValidate each string offset before deriving the string pointer.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:04Z"

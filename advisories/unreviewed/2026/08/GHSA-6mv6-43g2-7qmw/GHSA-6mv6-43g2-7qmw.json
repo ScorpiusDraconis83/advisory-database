@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6mv6-43g2-7qmw",
-  "modified": "2026-08-15T06:32:10Z",
+  "modified": "2026-08-17T06:33:06Z",
   "published": "2026-08-15T06:32:09Z",
   "aliases": [
     "CVE-2026-72036"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: sch_multiq: Replace direct dequeue call with peek and qdisc_dequeue_peeked\n\nmultiq_dequeue() takes a packet from a band's child with a direct\n->dequeue() call after multiq_peek() peeked it. When the child is\nnon-work-conserving the peek stashes the skb in the child's gso_skb, so\nthe direct dequeue returns a different skb and orphans the stash,\ndesyncing the child's qlen/backlog. With a qfq child reached through a\npeeking parent (e.g. tbf) this re-enters the child on an emptied list and\ndereferences NULL, panicking the kernel from softirq on ordinary egress.\n\nTake the packet through qdisc_dequeue_peeked(), as sch_prio already does\nand as sch_red and sch_sfb were just fixed to do. The helper is a no-op\nwhen the child has no stash, so a work-conserving child is unaffected.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:12Z"

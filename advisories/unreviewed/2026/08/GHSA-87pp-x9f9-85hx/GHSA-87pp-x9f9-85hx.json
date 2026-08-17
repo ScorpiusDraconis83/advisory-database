@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-87pp-x9f9-85hx",
-  "modified": "2026-08-15T06:32:13Z",
+  "modified": "2026-08-17T06:33:12Z",
   "published": "2026-08-15T06:32:13Z",
   "aliases": [
     "CVE-2026-72136"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: xfrm_interface: require CAP_NET_ADMIN in the device netns for changelink\n\nxfrmi_changelink() operates on at most two netns, dev_net(dev) and the\ninterface link netns xi->net. They differ once the device is created in\nor moved to a netns other than the one the request runs in. The rtnl\nchangelink path checks CAP_NET_ADMIN only against dev_net(dev), so a\ncaller privileged there but not in xi->net can rewrite an interface that\nlives in xi->net.\n\nGate xfrmi_changelink() on rtnl_dev_link_net_capable() at its top,\nbefore any attribute is parsed.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:31Z"

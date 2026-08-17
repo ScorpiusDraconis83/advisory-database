@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2mq4-hj52-9fc6",
-  "modified": "2026-08-15T06:32:29Z",
+  "modified": "2026-08-17T06:33:37Z",
   "published": "2026-08-15T06:32:29Z",
   "aliases": [
     "CVE-2026-74316"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Handle layout stid in nfsd4_drop_revoked_stid()\n\nnfsd4_drop_revoked_stid() has no SC_TYPE_LAYOUT case, so when a\nclient sends FREE_STATEID for an admin-revoked layout stid, the\ndefault branch releases cl_lock and returns without unhashing or\nreleasing the stid.  The stid remains in the IDR and on the\nper-client list until the client is destroyed.\n\nRemove the layout stid from the per-client list and call\nnfs4_put_stid() to drop the creation reference.  When the\nrefcount reaches zero, nfsd4_free_layout_stateid() handles the\nremaining cleanup: cancelling the fence worker, removing from\nthe per-file list, and freeing the slab object.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:31Z"

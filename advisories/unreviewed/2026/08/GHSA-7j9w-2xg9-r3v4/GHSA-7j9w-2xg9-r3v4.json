@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7j9w-2xg9-r3v4",
-  "modified": "2026-08-15T06:32:17Z",
+  "modified": "2026-08-17T06:33:19Z",
   "published": "2026-08-15T06:32:17Z",
   "aliases": [
     "CVE-2026-72253"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_conntrack_sip: validate skb_dst() before accessing it\n\ntc ingress and openvswitch do not guarantee routing information to be\navailable. These subsystems use the conntrack helper infrastructure, and\nthe SIP helper relies on the skb_dst() to be present if\nsip_external_media is set to 1 (which is disabled by default as a module\nparameter).\n\nThis effectively disables the sip_external_media toggle for these\nsubsystems without resulting in a crash.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:52Z"

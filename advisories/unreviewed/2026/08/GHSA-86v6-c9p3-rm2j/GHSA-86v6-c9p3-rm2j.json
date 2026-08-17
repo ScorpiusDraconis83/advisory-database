@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-86v6-c9p3-rm2j",
-  "modified": "2026-08-15T06:32:28Z",
+  "modified": "2026-08-17T06:33:36Z",
   "published": "2026-08-15T06:32:28Z",
   "aliases": [
     "CVE-2026-74292"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: tegra: tegra210_ahub: Validate written enum value\n\ntegra_ahub_put_value_enum() reads e->values[item[0]] before\nchecking whether item[0] is within the enum item range. The existing\ncheck therefore happens too late to prevent an out-of-range read of the\nvalues array.\n\nMove the check before the array access.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:28Z"

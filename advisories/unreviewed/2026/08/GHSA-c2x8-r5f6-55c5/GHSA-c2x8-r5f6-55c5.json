@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c2x8-r5f6-55c5",
-  "modified": "2026-08-15T06:32:33Z",
+  "modified": "2026-08-17T06:33:45Z",
   "published": "2026-08-15T06:32:33Z",
   "aliases": [
     "CVE-2026-74434"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrxrpc: Don't move a peeked OOB message onto the pending queue\n\nrxrpc_recvmsg_oob() takes a received oob message off recvmsg_oobq and,\nif a response is needed, moves it onto the pending_oobq tree. However,\nonly the unlink from recvmsg_oobq is guarded by MSG_PEEK; the move onto\npending_oobq always runs.\n\nAs a result, reading a challenge with MSG_PEEK leaves the skb on\nrecvmsg_oobq while also adding it to pending_oobq. Since struct\nsk_buff's rbnode shares storage with its next and prev pointers,\nrb_insert_color() overwrites the list linkage, and the skb, which holds\na single reference, becomes reachable from both queues at once.\n\nWhen the socket is closed both queues are drained in turn. While\ndraining recvmsg_oobq, __skb_unlink() follows the next and prev\npointers that rbnode has overwritten and writes to a bad address. Also,\nas the skb holds a single reference but is freed from each queue, both\nthe skb and the connection reference it holds are released twice. This\nleads to memory corruption and to a use-after-free caused by the\nconnection refcount underflow.\n\nMSG_PEEK does not consume the message from the queue, so only unlink it\nfrom recvmsg_oobq and then move it onto pending_oobq or free it when\nthe message is actually consumed.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:45Z"

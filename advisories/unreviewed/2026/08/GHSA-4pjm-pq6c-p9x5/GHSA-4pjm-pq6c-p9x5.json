@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4pjm-pq6c-p9x5",
-  "modified": "2026-08-15T06:32:18Z",
+  "modified": "2026-08-17T06:33:21Z",
   "published": "2026-08-15T06:32:18Z",
   "aliases": [
     "CVE-2026-72282"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: Move kvm_io_bus_get_dev() locking responsibilities to callers\n\nkvm_io_bus_get_dev() returns a device that is only matched by the\naddress, and nothing else. This can cause a lifetime issue if\nthe matched device is not the expected type, as by the time\nthe caller can introspect the object, it might be gone (the srcu\nlock having been dropped).\n\nGiven that there is only a single user of this helper, the simplest\noption is to move the locking responsibility to the caller, which\ncan keep the srcu lock held for as long as it wants.\n\nNote that this aligns with other kvm_io_bus*() helpers, which\nalready require the srcu lock to be held by the callers.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:58Z"

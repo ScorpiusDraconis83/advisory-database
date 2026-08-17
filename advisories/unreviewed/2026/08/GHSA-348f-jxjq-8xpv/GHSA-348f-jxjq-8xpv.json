@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-348f-jxjq-8xpv",
-  "modified": "2026-08-15T06:32:16Z",
+  "modified": "2026-08-17T06:33:18Z",
   "published": "2026-08-15T06:32:16Z",
   "aliases": [
     "CVE-2026-72232"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: ensure minimal ethernet header on TX\n\nAs documented in commit 8bd67ebb50c0 (\"net: bridge: xmit: make sure we have\nat least eth header len bytes\"), it is possible by for a local user with\neBPF TC hook access to attach a tc filter which truncates the packet and\nredirects to an batadv interface. But the code assumes that at least\nETH_HLEN bytes are available and thus might read outside of the available\nbuffer.\n\nThe batadv_interface_tx() must therefore always check itself if enough data\nis available for the ethernet header and don't rely on min_header_len.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:50Z"

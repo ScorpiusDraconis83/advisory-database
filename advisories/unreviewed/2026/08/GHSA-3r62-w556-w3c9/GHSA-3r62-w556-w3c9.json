@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3r62-w556-w3c9",
-  "modified": "2026-08-15T06:32:12Z",
+  "modified": "2026-08-17T06:33:09Z",
   "published": "2026-08-15T06:32:12Z",
   "aliases": [
     "CVE-2026-72100"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-integrity: fix a bug if the bio is out of limits\n\nIf dm_integrity_check_limits fails, the code would exit with\nDM_MAPIO_KILL. However, the range would be already locked at this point,\nand it wouldn't be unlocked, resulting in a deadlock. Let's move the\nlimit check up, so that when it exits, no resources are leaked.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:24Z"

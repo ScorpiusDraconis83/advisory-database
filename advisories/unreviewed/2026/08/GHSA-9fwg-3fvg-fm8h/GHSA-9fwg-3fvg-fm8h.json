@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9fwg-3fvg-fm8h",
-  "modified": "2026-08-15T06:32:30Z",
+  "modified": "2026-08-17T06:33:39Z",
   "published": "2026-08-15T06:32:30Z",
   "aliases": [
     "CVE-2026-74340"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: wcn36xx: fix OOB read from firmware count in PRINT_REG_INFO indication\n\nThe firmware-controlled rsp->count field is used as the loop bound for\nindexing into the flexible rsp->regs[] array without validation against\nthe message length. A count exceeding the actual data causes out-of-\nbounds reads from the heap-allocated message buffer.\n\nAdd a check that count fits within the received message.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:34Z"

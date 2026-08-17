@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-67vj-f5vq-78c5",
-  "modified": "2026-08-15T06:32:20Z",
+  "modified": "2026-08-17T06:33:23Z",
   "published": "2026-08-15T06:32:20Z",
   "aliases": [
     "CVE-2026-72319"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipvs: ensure inner headers in ICMP errors are in headroom\n\nSashiko points out that after stripping the outer headers\nwith pskb_pull() we should ensure the inner IP headers\nin ICMP errors from tunnels are present in the skb headroom\nfor functions like ipv4_update_pmtu(), icmp_send() and\nIP_VS_DBG().\n\nAlso, add more checks for the length of the inner headers.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:04Z"

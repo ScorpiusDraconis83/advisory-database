@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2cj4-xv36-4974",
-  "modified": "2026-08-15T06:32:21Z",
+  "modified": "2026-08-17T06:33:24Z",
   "published": "2026-08-15T06:32:21Z",
   "aliases": [
     "CVE-2026-72345"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5: LAG, Fix off-by-one in single-FDB error rollback\n\nOn failure at index i, the reverse cleanup loop in\nmlx5_lag_create_single_fdb() starts from i, so the failed index\nitself is rolled back. That can operate on uninitialized state or\ndouble-tear-down a rule the add_one path already self-rolled-back.\n\nStart the rollback from i - 1 so only successfully-installed entries\nare undone.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:07Z"

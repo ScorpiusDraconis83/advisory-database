@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7mhj-6hx6-xpjh",
-  "modified": "2026-08-15T15:30:32Z",
+  "modified": "2026-08-17T06:33:45Z",
   "published": "2026-08-15T15:30:32Z",
   "aliases": [
     "CVE-2026-74440"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe: Wait on external BO kernel fences in exec IOCTL\n\nBefore arming a user job, xe_exec_ioctl() only added the VM's\ndma-resv KERNEL slot as a dependency. That slot covers rebinds and\nthe kernel operations of the VM's private BOs, but not external BOs\n(bo->vm == NULL), which carry their kernel operations (evictions,\nmoves, ...) in their own dma-resv KERNEL slot.\n\nThe DMA_RESV_USAGE_KERNEL slot is the cross-driver contract for\nmemory management operations that must complete before the BO or its\nbacking store may be used: any accessor is required to wait on the\nKERNEL fences before touching the resv. By skipping the external BOs'\nKERNEL slots, the exec path violated that contract and could schedule\na user job while a kernel operation on an external BO mapped by the VM\nwas still in flight, racing against it and potentially reading or\nwriting memory that was being moved.\n\nReplace the VM-only dependency with an iteration over every object\nlocked by the exec, adding each object's KERNEL slot as a job\ndependency. This covers the VM resv (rebinds and private BOs) as well\nas every external BO, mirroring the drm_gpuvm_resv_add_fence() call\nthat later publishes the job fence to the same set of objects.\nLong-running mode continues to skip this, as before.\n\n(cherry picked from commit a6b842acf3ddd1efc53a56de9260cfa718fb35e7)",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T13:17:48Z"

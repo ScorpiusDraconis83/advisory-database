@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7p9j-gmgx-g4fv",
-  "modified": "2026-08-15T06:32:29Z",
+  "modified": "2026-08-17T06:33:37Z",
   "published": "2026-08-15T06:32:29Z",
   "aliases": [
     "CVE-2026-74305"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Tighten cgroup storage cookie checks for prog arrays\n\nThe fix in commit abad3d0bad72 (\"bpf: Fix oob access in cgroup local\nstorage\") is still incomplete. The prog-array compatibility check\ntreats a program with no cgroup storage as compatible with any stored\nstorage cookie. This allows a storage-less program to bridge a tail\ncall chain between an entry program and a storage-using callee even\nthough cgroup local storage at runtime still follows the caller's\ncontext, that is, A -> B(no storage) -> C(storage) path.\n\nRequiring exact cookie equality would break the legitimate case of a\nstorage-less leaf program being tail called from a storage-using one.\nInstead, only accept a zero storage cookie if the program cannot\nperform tail calls itself. This keeps A -> B(no storage) working\nwhile rejecting the A -> B(no storage) -> C(storage) bridge.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:30Z"

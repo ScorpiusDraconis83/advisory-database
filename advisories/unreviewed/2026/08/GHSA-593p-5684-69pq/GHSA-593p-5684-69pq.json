@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-593p-5684-69pq",
-  "modified": "2026-08-15T06:32:09Z",
+  "modified": "2026-08-17T06:33:04Z",
   "published": "2026-08-15T06:32:09Z",
   "aliases": [
     "CVE-2026-72019"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmacsec: don't read an unset MAC header in macsec_encrypt()\n\nmacsec_encrypt() reads the Ethernet header via eth_hdr(skb)\n(skb->head + skb->mac_header) to memmove() the 12 source/destination MAC\nbytes forward and make room for the SecTAG.\n\nOn the AF_PACKET SOCK_RAW + PACKET_QDISC_BYPASS transmit path the skb\nreaches the macsec ndo_start_xmit() with the MAC header unset, so\neth_hdr(skb) resolves to skb->head + (u16)~0 and the read is out of\nbounds: a 12-byte heap over-read that is also emitted on the wire as the\nframe's outer source/destination MAC. KASAN reports a slab-out-of-bounds\nread in macsec_start_xmit() on 6.0; on current mainline a CONFIG_DEBUG_NET\nbuild flags it as an unset mac header in skb_mac_header().\n\nOn the TX path the L2 header is at skb->data, so use skb_eth_hdr(), added\nby commit 96cc4b69581d (\"macvlan: do not assume mac_header is set in\nmacvlan_broadcast()\") for exactly this purpose.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:00Z"

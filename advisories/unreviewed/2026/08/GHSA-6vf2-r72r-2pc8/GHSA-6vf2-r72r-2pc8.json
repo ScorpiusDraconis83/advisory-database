@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6vf2-r72r-2pc8",
-  "modified": "2026-08-15T15:30:37Z",
+  "modified": "2026-08-17T06:33:54Z",
   "published": "2026-08-15T15:30:36Z",
   "aliases": [
     "CVE-2026-74574"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: idxd: fix fdev setup failure cleanup in idxd_cdev_open()\n\nThe failed_dev_add and failed_dev_name paths drop the file-device\nreference while wq->wq_lock is still held. If put_device(fdev) drops the\nlast reference, idxd_file_dev_release() runs synchronously and tries to\ntake wq->wq_lock again, deadlocking.\n\nThose paths also fall through into the later ctx cleanup labels even\nthough idxd_file_dev_release() owns that cleanup and frees ctx. This can\nmake idxd_xa_pasid_remove(ctx) and kfree(ctx) operate on a freed context.\n\nMove idxd_wq_get() before file-device setup can fail, since the release\ncallback always calls idxd_wq_put(). Then unlock wq->wq_lock before\nput_device(fdev) and return directly from the file-device setup failure\npath, leaving ctx cleanup to the release callback.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T13:18:03Z"

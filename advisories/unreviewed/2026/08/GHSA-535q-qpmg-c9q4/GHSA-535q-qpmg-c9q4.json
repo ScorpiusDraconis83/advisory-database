@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-535q-qpmg-c9q4",
-  "modified": "2026-08-15T06:32:14Z",
+  "modified": "2026-08-17T06:33:14Z",
   "published": "2026-08-15T06:32:14Z",
   "aliases": [
     "CVE-2026-72172"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/mm_init: fix uninitialized struct pages for ZONE_DEVICE\n\nIf DAX memory is hotplugged into an unoccupied subsection of an early\nsection, section_activate() reuses the unoptimized boot memmap.  However,\ncompound_nr_pages() still assumes that vmemmap optimization is in effect\nand initializes only the reduced number of struct pages.  As a result, the\nremaining tail struct pages are left uninitialized, which can later lead\nto unexpected behavior or crashes.\n\nFix this by treating early sections as unoptimized when calculating how\nmany struct pages to initialize.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:35Z"

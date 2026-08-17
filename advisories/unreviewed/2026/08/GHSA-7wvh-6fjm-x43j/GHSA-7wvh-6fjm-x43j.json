@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7wvh-6fjm-x43j",
-  "modified": "2026-08-15T06:32:09Z",
+  "modified": "2026-08-17T06:33:04Z",
   "published": "2026-08-15T06:32:09Z",
   "aliases": [
     "CVE-2026-72009"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npmdomain: imx93-blk-ctrl: Extract PHY as shared domain for DSI/CSI\n\nThe MIPI DSI and CSI domains share control bits for clock and reset, which\ncan lead to incorrect behavior if one domain disables the shared resource\nwhile the other is still active.\n\nTo fix the issue, introduce a shared MIPI PHY power domain to own the\ncommon resources and make DSI and CSI its subdomains. This ensures the\nshared bits are properly managed and not disabled while still in use.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:20:59Z"

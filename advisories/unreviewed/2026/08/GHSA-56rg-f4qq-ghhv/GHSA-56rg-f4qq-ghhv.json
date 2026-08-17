@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-56rg-f4qq-ghhv",
-  "modified": "2026-08-15T15:30:34Z",
+  "modified": "2026-08-17T06:33:50Z",
   "published": "2026-08-15T15:30:34Z",
   "aliases": [
     "CVE-2026-74497"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb-audio: Clamp frame size in implicit-feedback mode\n\nsnd_usb_handle_sync_urb() scales received sync packet sizes by the sender's\nstride and stores the result directly in out_packet->packet_size[i]. If a\nconnected USB device sends an oversized sync packet, this frame count can\nexceed ep->maxframesize.\n\nThe un-clamped frame count then propagates to the playback endpoint queue,\npotentially driving packet transfers beyond the endpoint's hardware frame\nlimits.\n\nCap the calculated frame count against ep->maxframesize in\nsnd_usb_handle_sync_urb() to prevent oversized packets from entering the\nplayback queue.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T13:17:54Z"

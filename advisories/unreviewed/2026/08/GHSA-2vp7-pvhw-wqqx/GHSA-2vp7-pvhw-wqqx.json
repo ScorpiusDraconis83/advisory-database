@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2vp7-pvhw-wqqx",
-  "modified": "2026-08-15T06:32:15Z",
+  "modified": "2026-08-17T06:33:16Z",
   "published": "2026-08-15T06:32:15Z",
   "aliases": [
     "CVE-2026-72204"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: centalize $INDEX_ROOT header validation\n\nAdd a dedicated helper to perform stricter validation of $INDEX_ROOT and\nuse it for both directory inodes and named index inodes. This keeps the\nroot size and header geometry checks consistent across both read paths.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:39Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6x4x-6p4p-6f5f",
-  "modified": "2026-08-15T06:32:24Z",
+  "modified": "2026-08-17T06:33:29Z",
   "published": "2026-08-15T06:32:24Z",
   "aliases": [
     "CVE-2026-72436"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ipset: Don't use test_bit() in lockless RCU readers in hash types\n\nSashiko pointed out that there are a few lockless RCU readers\nusing test_bit() which is a relaxed atomic operation and\nprovides no memory barrier guarantees. Use test_bit_acquire()\ninstead where the operation may run parallel with add/del/gc,\ni.e. is not one from the next cases\n\n- protected by region lock\n- in a set destroy phase\n- in a new/temporary set creation phase",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:17Z"

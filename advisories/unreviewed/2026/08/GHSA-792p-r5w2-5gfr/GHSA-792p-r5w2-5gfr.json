@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-792p-r5w2-5gfr",
-  "modified": "2026-08-15T06:32:15Z",
+  "modified": "2026-08-17T06:33:14Z",
   "published": "2026-08-15T06:32:15Z",
   "aliases": [
     "CVE-2026-72181"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmips: sched: Fix CPUMASK_OFFSTACK memory corruption\n\nThis patch addresses a critical memory management flaw. When\nCONFIG_CPUMASK_OFFSTACK is enabled, cpumask_var_t is a pointer.\nConsequently, sizeof(new_mask) evaluates to the pointer size, causing\ncopy_from_user() to clobber the mask pointer. Furthermore, the old\nlogic performed copy_from_user() before allocating the mask.\n\nFix this by allocating new_mask first. To handle variable-sized user\nmasks correctly, use cpumask_size() to truncate overly large user masks\nor pad undersized masks with zeros before copying the data directly into\nthe allocated buffer.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:36Z"

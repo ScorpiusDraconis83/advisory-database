@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-24h9-gmhv-mhpq",
-  "modified": "2026-08-15T06:32:13Z",
+  "modified": "2026-08-17T06:33:12Z",
   "published": "2026-08-15T06:32:13Z",
   "aliases": [
     "CVE-2026-72133"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: uniphier: Fix completion initialization order before devm_request_irq()\n\nThe driver calls devm_request_irq() before initializing the completion\nused by the interrupt handler. Because the interrupt may occur immediately\nafter devm_request_irq(), the handler may execute before init_completion().\n\nThis may result in calling complete() on an uninitialized completion,\ncausing undefined behavior. This has been observed with KASAN.\n\nFix this by initializing the completion before registering the IRQ.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:30Z"

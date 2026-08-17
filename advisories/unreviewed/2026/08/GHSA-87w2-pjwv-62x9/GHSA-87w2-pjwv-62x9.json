@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-87w2-pjwv-62x9",
-  "modified": "2026-08-15T06:32:20Z",
+  "modified": "2026-08-17T06:33:23Z",
   "published": "2026-08-15T06:32:20Z",
   "aliases": [
     "CVE-2026-72312"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-af: fix VF bringup affecting PF promiscuous state\n\nMbox handling of nix_set_rx_mode for a VF with promiscuous and\nall_multi flags set to false causes deletion of the PF's promiscuous\nand allmulti MCAM rules. This occurs because the APIs that\nenable/disable these rules operate only on the PF, even when the\nmbox request is made via a VF interface.\n\nGuard both rvu_npc_enable_allmulti_entry() and\nrvu_npc_enable_promisc_entry() disable paths with an is_vf() check so\nthat a VF bringing up or tearing down its interface cannot inadvertently\nclear the PF's MCAM rules.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:04Z"

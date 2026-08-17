@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-37g9-2p78-fr5w",
-  "modified": "2026-08-15T06:32:22Z",
+  "modified": "2026-08-17T06:33:25Z",
   "published": "2026-08-15T06:32:21Z",
   "aliases": [
     "CVE-2026-72369"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nminix: avoid overflow in bitmap block count calculation\n\nminix_check_superblock() uses minix_blocks_needed() to verify that the\non-disk imap and zmap block counts are large enough for the advertised\ninode and zone counts.\n\nThe helper currently performs DIV_ROUND_UP() in unsigned int arithmetic.\nA Minix v3 image can set s_ninodes or s_zones near UINT_MAX so the\naddition inside DIV_ROUND_UP() wraps to zero. That makes a zero imap/zmap\nblock count look valid, after which minix_fill_super() can dereference\ns_imap[0] or s_zmap[0] even though no bitmap buffers were allocated.\n\nImpact: mounting a crafted Minix v3 image whose s_ninodes or s_zones is\nnear UINT_MAX makes minix_check_superblock() accept a zero bitmap-block\ncount and minix_fill_super() dereference s_imap[0]/s_zmap[0], panicking\nthe kernel.\n\nThe divisor is the bitmap capacity in bits, blocksize * 8, which is\nalways a power of two: minix_fill_super() obtains the block size through\nsb_set_blocksize(), and blk_validate_block_size() rejects any size that\nis not a power of two. Use DIV_ROUND_UP_POW2(), which divides before\nadding the round-up term and so cannot overflow for a power-of-two\ndivisor.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:10Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-58q4-579w-9x9r",
-  "modified": "2026-08-15T06:32:11Z",
+  "modified": "2026-08-17T06:33:07Z",
   "published": "2026-08-15T06:32:11Z",
   "aliases": [
     "CVE-2026-72066"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncpu: hotplug: Bound hotplug states sysfs output\n\nstates_show() adds CPU hotplug state names into a single sysfs buffer\nusing sprintf(). With enough registered states, this can write past the\nend of the PAGE_SIZE buffer.\n\nUse sysfs_emit_at() so output is bounded.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:21:16Z"

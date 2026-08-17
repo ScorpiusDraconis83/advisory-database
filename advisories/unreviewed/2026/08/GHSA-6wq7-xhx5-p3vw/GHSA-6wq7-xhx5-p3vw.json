@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6wq7-xhx5-p3vw",
-  "modified": "2026-08-15T06:32:32Z",
+  "modified": "2026-08-17T06:33:43Z",
   "published": "2026-08-15T06:32:32Z",
   "aliases": [
     "CVE-2026-74403"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: ccp - Check for page allocation failure correctly in TIO\n\nSashiko notes:\n\n> if __snp_alloc_firmware_pages() returns NULL under memory pressure, is it\n> safe to pass it directly to page_address()?\n>\n> On architectures without HASHED_PAGE_VIRTUAL, page_address(NULL) might\n> compute a deterministic but invalid, non-zero virtual address. The\n> subsequent if (tio_status) check would then evaluate to true, and\n> sev_tsm_init_locked() would dereference the invalid pointer.\n\nIndeed, page_address(NULL) will return non-NULL garbage here. Fix this by\nchecking the page allocation itself for NULL, not the resulting virtual\naddress.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:42Z"

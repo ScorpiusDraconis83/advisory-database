@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-66r3-8x6w-f98f",
-  "modified": "2026-08-15T06:32:26Z",
+  "modified": "2026-08-17T06:33:34Z",
   "published": "2026-08-15T06:32:26Z",
   "aliases": [
     "CVE-2026-72497"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/bnxt_re: Add a max slot check for SQ\n\nThe variable WQE mode must be validated against\nthe maximum slots supported by HW. The max supported\nvalue is 64K. Adding a max and min check and fail if user\nsupplied value is more than the max supported and zero.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:24Z"

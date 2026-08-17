@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3c34-q5w8-c59m",
-  "modified": "2026-08-15T06:32:19Z",
+  "modified": "2026-08-17T06:33:22Z",
   "published": "2026-08-15T06:32:19Z",
   "aliases": [
     "CVE-2026-72298"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: qrtr: fix 32-bit integer overflow in qrtr_endpoint_post()\n\nqrtr_endpoint_post() validates an incoming packet with\n\n\tif (!size || len != ALIGN(size, 4) + hdrlen)\n\t\tgoto err;\n\nwhere size comes from the wire. On 32-bit, size_t is 32 bits and\nALIGN(size, 4) wraps to 0 for size >= 0xfffffffd, so the check\npasses and skb_put_data(skb, data + hdrlen, size) writes past the\nhdrlen-sized skb and oopses the kernel. 64-bit is unaffected.\n\nThis is the 32-bit residual of ad9d24c9429e2 (\"net: qrtr: fix OOB\nRead in qrtr_endpoint_post\"), which fixed only the 64-bit case.\n\nReject any size that cannot fit the buffer before the ALIGN.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:02Z"

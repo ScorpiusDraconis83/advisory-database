@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8q74-796q-49pm",
-  "modified": "2026-08-15T06:32:30Z",
+  "modified": "2026-08-17T06:33:40Z",
   "published": "2026-08-15T06:32:30Z",
   "aliases": [
     "CVE-2026-74341"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: wcn36xx: fix heap overflow from oversized firmware HAL response\n\nThe firmware response dispatcher copies all synchronous HAL responses\ninto the 4096-byte hal_buf without validating the response length. A\nresponse exceeding WCN36XX_HAL_BUF_SIZE causes a heap buffer overflow\nwith firmware-controlled content.\n\nAdd a bounds check on the response length.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:35Z"

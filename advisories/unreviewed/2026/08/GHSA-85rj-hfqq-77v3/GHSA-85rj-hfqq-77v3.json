@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-85rj-hfqq-77v3",
-  "modified": "2026-08-15T06:32:32Z",
+  "modified": "2026-08-17T06:33:42Z",
   "published": "2026-08-15T06:32:32Z",
   "aliases": [
     "CVE-2026-74397"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nIB/mlx5: Fix transport-domain rollback and initialize lb mutex earlier\n\nmlx5_ib_alloc_transport_domain() allocates a transport domain and then\nmay fail in mlx5_ib_enable_lb(). In that case, the allocated TD is leaked.\n\nFix this by deallocating the TD when mlx5_ib_enable_lb() returns an\nerror. Also return 0 explicitly in the no-loopback-capability success\nbranch, and move dev->lb.mutex initialization to mlx5_ib_stage_init_init().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-15T06:22:41Z"
