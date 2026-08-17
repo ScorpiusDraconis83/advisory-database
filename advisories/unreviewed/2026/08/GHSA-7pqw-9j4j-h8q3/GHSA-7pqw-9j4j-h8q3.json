@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7pqw-9j4j-h8q3",
+  "modified": "2026-08-17T15:30:40Z",
+  "published": "2026-08-17T15:30:40Z",
+  "aliases": [
+    "CVE-2026-19693"
+  ],
+  "details": "extract-zip through 2.0.1 containment-checks only the parent directory of each archive entry and never the entry's own final path component, so an archive containing two entries with identical names - a symlink whose target is outside the destination, followed by a regular file - writes through the planted symlink and yields an arbitrary file write outside the destination directory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/max-mapper/extract-zip"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.npmjs.com/package/extract-zip"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-17T14:20:20Z"
+  }
+}

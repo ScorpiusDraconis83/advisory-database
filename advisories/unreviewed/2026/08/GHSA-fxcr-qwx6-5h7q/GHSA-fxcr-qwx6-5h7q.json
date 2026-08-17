@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fxcr-qwx6-5h7q",
+  "modified": "2026-08-17T15:30:38Z",
+  "published": "2026-08-17T15:30:38Z",
+  "aliases": [
+    "CVE-2026-18674"
+  ],
+  "details": "On a Kong Mesh global control plane, resources received over the zone-to-global KDS sync are attributed using the in-band, sender-controlled ControlPlane.Identifier rather than the authenticated zone identity derived from the connection. Authenticated zones can have the global control plane store and re-distribute those resources as belonging to another zone.\n\n\n\nThe result is a cross-zone isolation bypass: the holder of a single enrolled zone's credential can inject, attribute, and overwrite resources in another zone's namespace mesh-wide.\n\n\n\n\nThe root cause lives in Kuma's open-source KDS sync code, which Kong Mesh's control plane is built on.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:H/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/security/advisories/GHSA-m58j-fjmc-h3g4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18674"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17456"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17458"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17459"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17460"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17461"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/kumahq/kuma/pull/17463"
+    },
+    {
+      "type": "WEB",
+      "url": "https://developer.konghq.com/mesh/changelog"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-17T13:16:51Z"
+  }
+}
