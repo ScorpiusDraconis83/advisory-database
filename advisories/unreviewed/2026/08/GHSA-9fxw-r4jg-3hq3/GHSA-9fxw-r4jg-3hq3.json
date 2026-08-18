@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9fxw-r4jg-3hq3",
+  "modified": "2026-08-18T21:31:51Z",
+  "published": "2026-08-18T21:31:51Z",
+  "aliases": [
+    "CVE-2026-73529"
+  ],
+  "details": "Plainpad through 1.1.1, fixed in commit d3823fc, contains a missing rate limiting vulnerability that allows unauthenticated attackers to send unbounded login requests to the POST /v1/sessions endpoint due to dead code in App\\Http\\Kernel.php that is never instantiated under the Laravel 11+ skeleton, leaving the API throttle configuration unattached to any route. Attackers can exploit this by sending unlimited credential attempts with no lockout or CAPTCHA enforcement, and additionally trigger CPU exhaustion by forcing repeated bcrypt comparisons on each request.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73529"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/alextselegidis/plainpad/commit/d3823fc595b5d8f842a6fd7dfe49b7852a10fdac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/plainpad-missing-rate-limiting-via-post-v1-sessions"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-307"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T20:17:28Z"
+  }
+}

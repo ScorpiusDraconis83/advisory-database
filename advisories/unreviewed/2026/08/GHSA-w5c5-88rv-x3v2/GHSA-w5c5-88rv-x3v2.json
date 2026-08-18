@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w5c5-88rv-x3v2",
+  "modified": "2026-08-18T21:31:53Z",
+  "published": "2026-08-18T21:31:53Z",
+  "aliases": [
+    "CVE-2026-41921"
+  ],
+  "details": "Koha before 26.05.02, 25.11.07, and 25.05.13 contains a stored cross-site scripting vulnerability in the purchase suggestion handler that allows authenticated staff users to inject malicious scripts by submitting unsanitized input through the suggestion save operation. Attackers can supply crafted HTML or script content in fields such as title, author, isbn, publishercode, place, collectiontitle, itemtype, and note, which are stored without sanitization and later rendered in the suggestion list template, causing injected scripts to execute in the browser of any staff user who views the suggestions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41921"
+    },
+    {
+      "type": "WEB",
+      "url": "https://koha-community.org/koha-25-05-13-released"
+    },
+    {
+      "type": "WEB",
+      "url": "https://koha-community.org/koha-25-11-07-released"
+    },
+    {
+      "type": "WEB",
+      "url": "https://koha-community.org/koha-26-05-02-released"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/koha-stored-xss-via-purchase-suggestion-handler"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T21:16:34Z"
+  }
+}
