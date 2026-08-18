@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x5pq-m9p8-f4vx",
+  "modified": "2026-08-18T15:02:01Z",
+  "published": "2026-08-18T15:02:01Z",
+  "aliases": [
+    "CVE-2026-70657"
+  ],
+  "summary": "Copyparty vulnerable to file/dirkey confusion",
+  "details": "A valid filekey could potentially be converted into a dirkey, granting read-access to the containing folder.\n\nThis issue only affected volumes which simultaneously enable both filekeys and dirkeys, with volflag `dk` or `dks` combined with `fk` or `fka`.\n\nBoth required features are default-disabled, and must be explicitly enabled in the volflags (the \"flags\" section of a volume).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "copyparty"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.20.17"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/9001/copyparty/security/advisories/GHSA-x5pq-m9p8-f4vx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/9001/copyparty/commit/e40755331ba9449993ff482456e6bdd2c6deb950"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/9001/copyparty"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/9001/copyparty/releases/tag/v1.20.17"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-18T15:02:01Z",
+    "nvd_published_at": null
+  }
+}
