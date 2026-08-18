@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v5p2-j769-79j6",
+  "modified": "2026-08-18T12:31:23Z",
+  "published": "2026-08-18T12:31:23Z",
+  "aliases": [
+    "CVE-2026-75846"
+  ],
+  "details": "ArcadeDB before 26.8.1 (affected versions <= 26.7.3) contains a missing authorization vulnerability in the DELETE FUNCTION SQL statement. DeleteFunctionStatement.executeSimple unregisters and persists deletion of a server-side function without any checkPermissionsOnDatabase (UPDATE_SCHEMA) check. Any user with database access can execute DELETE FUNCTION via the command API (POST /api/v1/command/{db}) to permanently remove any registered server-side function, including security-relevant logic, impacting integrity and availability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-vv82-qvpf-rjwv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75846"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/arcadedb-before-unauthorized-function-deletion-via-delete-function"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T12:19:35Z"
+  }
+}

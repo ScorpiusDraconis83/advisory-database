@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rm42-2qwv-9xcq",
+  "modified": "2026-08-18T12:31:20Z",
+  "published": "2026-08-18T12:31:20Z",
+  "aliases": [
+    "CVE-2026-74903"
+  ],
+  "details": "SiYuan before v3.7.4 contains an insufficient access control vulnerability in the /api/lute/spinBlockDOM endpoint, which is guarded only by CheckAuth middleware instead of CheckAdminRole like its sibling endpoint. Authenticated users with RoleEditor or RoleReader roles can invoke the endpoint to transform arbitrary DOM input, and large payloads cause endpoint starvation through per-path mutex serialization.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-3j8q-5c8c-grwm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74903"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/siyuan-before-insufficient-access-control-via-spinblockdom"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T12:19:30Z"
+  }
+}

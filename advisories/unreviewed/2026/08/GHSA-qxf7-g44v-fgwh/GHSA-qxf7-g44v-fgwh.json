@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qxf7-g44v-fgwh",
+  "modified": "2026-08-18T12:31:20Z",
+  "published": "2026-08-18T12:31:20Z",
+  "aliases": [
+    "CVE-2026-19608"
+  ],
+  "details": "A flaw was found in the group policy provider of Keycloak authorization services, which is used to manage fine-grained access control to resources. The issue occurs when the system evaluates group-based policies using tokens that only contain group names rather than full paths. If two groups in different parts of the organization share the same name, a user in the unauthorized group can be mistaken for a member of the authorized group. This can allow a user to gain unauthorized access to protected resources they should not be able to reach.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19608"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-19608"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2514530"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T11:16:50Z"
+  }
+}

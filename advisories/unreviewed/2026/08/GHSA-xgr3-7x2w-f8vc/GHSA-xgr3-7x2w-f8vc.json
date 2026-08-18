@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xgr3-7x2w-f8vc",
+  "modified": "2026-08-18T12:31:22Z",
+  "published": "2026-08-18T12:31:22Z",
+  "aliases": [
+    "CVE-2026-75832"
+  ],
+  "details": "The Grav API plugin (getgrav/grav-plugin-api, bundled with Grav 2.0) before version 1.0.14 (fixed in 1.0.15) contains a missing authorization vulnerability in BlueprintPathResolver::resolveUserScope(). The method gates the users/<name> scope on the account's raw super-admin ACL flag (access.api.super) instead of validating the presented API key's actual scope. An attacker holding an API key scoped only to api.media.write minted on a super-admin account can bypass the authorization check and, via POST /blueprint-upload or GET /blueprint-files, write a file into another user's scope (in the shared user/accounts/ directory, constrained to image extensions by assertSafeExtension()) and browse that scope's file listing, despite the key not being granted api.users.write.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-435x-66r2-jwv2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75832"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-api-plugin-before-authorization-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T12:19:33Z"
+  }
+}

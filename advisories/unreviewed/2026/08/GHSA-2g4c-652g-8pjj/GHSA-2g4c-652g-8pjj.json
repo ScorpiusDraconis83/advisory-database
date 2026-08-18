@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2g4c-652g-8pjj",
+  "modified": "2026-08-18T12:31:23Z",
+  "published": "2026-08-18T12:31:23Z",
+  "aliases": [
+    "CVE-2026-75844"
+  ],
+  "details": "ArcadeDB versions before 26.8.1 contain a server-side request forgery vulnerability in the IMPORT DATABASE command where the security validator resolves and checks hostnames but the subsequent connection re-resolves the raw URL and follows redirects. Authenticated attackers can bypass the validator using DNS rebinding or HTTP redirects to access cloud metadata endpoints, internal services, or read arbitrary local files on default installations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-4w2m-77c8-83mw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75844"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/arcadedb-before-ssrf-via-import-database-validator-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T12:19:34Z"
+  }
+}

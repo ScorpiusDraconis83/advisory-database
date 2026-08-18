@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-748c-f84h-hp2v",
+  "modified": "2026-08-18T12:31:22Z",
+  "published": "2026-08-18T12:31:22Z",
+  "aliases": [
+    "CVE-2026-75838"
+  ],
+  "details": "DOMPurify before 3.4.13 contains a cross-site scripting vulnerability in IN_PLACE sanitization where element-removal hooks fail to neutralize detached subtrees. Attackers can supply HTML with event handlers on descendant elements that execute after sanitization completes, even though the returned root appears clean.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/cure53/DOMPurify/security/advisories/GHSA-55q2-fjhq-7xh7"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75838"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dompurify-before-cross-site-scripting-via-in-place-hook"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T12:19:34Z"
+  }
+}
