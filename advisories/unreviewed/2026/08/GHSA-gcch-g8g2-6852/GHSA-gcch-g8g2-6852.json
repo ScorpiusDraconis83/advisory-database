@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gcch-g8g2-6852",
+  "modified": "2026-08-18T18:32:01Z",
+  "published": "2026-08-18T18:32:01Z",
+  "aliases": [
+    "CVE-2026-66781"
+  ],
+  "details": "A flaw was found in the Submariner operator. The Submariner Custom Resource (CR), used for configuring network connectivity, stores the IPsec pre-shared key (PSK) in an unencrypted format. This key, which is critical for securing communication between Kubernetes clusters, can be accessed by unauthorized parties. Such access enables an attacker to passively decrypt network traffic flowing between any two clusters in the mesh, resulting in sensitive information disclosure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66781"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-66781"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2507526"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-312"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T17:17:00Z"
+  }
+}

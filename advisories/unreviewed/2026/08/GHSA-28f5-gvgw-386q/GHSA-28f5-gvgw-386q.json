@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-28f5-gvgw-386q",
+  "modified": "2026-08-18T18:31:59Z",
+  "published": "2026-08-18T18:31:59Z",
+  "aliases": [
+    "CVE-2026-75485"
+  ],
+  "details": "A flaw was found in the must-gather component of Red Hat Advanced Cluster Management for Kubernetes. The cluster Proxy object is dumped in raw form, bypassing the oc inspect redaction that would normally sanitize sensitive fields. This exposes proxy basic-auth credentials in the must-gather archive, potentially disclosing sensitive authentication information to anyone with access to the archive.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75485"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-75485"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2517905"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T16:18:20Z"
+  }
+}

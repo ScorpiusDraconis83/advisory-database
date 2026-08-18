@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vm7q-56m8-9hgr",
-  "modified": "2026-08-17T21:31:25Z",
+  "modified": "2026-08-18T18:31:49Z",
   "published": "2026-08-17T21:31:25Z",
   "aliases": [
     "CVE-2026-67917"
   ],
   "details": "zuraCast versions up to and including 0.23.7 contain a SQL injection vulnerability in the backup restore functionality. The `azuracast:restore` command executes the `db.sql` file extracted from a backup archive without any content validation or sanitization. This allows a remote attacker to escalate privileges",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-17T21:16:47Z"

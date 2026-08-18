@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9h7q-h45w-4hxq",
+  "modified": "2026-08-18T18:32:01Z",
+  "published": "2026-08-18T18:32:01Z",
+  "aliases": [
+    "CVE-2026-75924"
+  ],
+  "details": "A flaw was found in managed-serviceaccount. A compromised addon-manager pod, due to its ClusterRole granting excessive permissions, can read any secret across all namespaces. Additionally, it can approve arbitrary Certificate Signing Requests (CSRs), which could lead to information disclosure and privilege escalation within the cluster.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75924"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-75924"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2515720"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T17:17:03Z"
+  }
+}
