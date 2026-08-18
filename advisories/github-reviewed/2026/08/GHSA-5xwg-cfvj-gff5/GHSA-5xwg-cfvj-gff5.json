@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5xwg-cfvj-gff5",
+  "modified": "2026-08-18T16:36:29Z",
+  "published": "2026-08-18T16:36:29Z",
+  "aliases": [
+    "CVE-2026-61634"
+  ],
+  "summary": "RabbitMQ Java client accepts broker frames larger than the negotiated AMQP frame_max",
+  "details": "## Summary\nThe max body size was enforced to patch CVE-2023-46120, but even though that limit still works, the frame size itself still exceeds the given max size. \n\n## Root cause\nThe Java client records the AMQP 0-9-1 `frame_max` negotiated during connection tuning, but the socket inbound frame reader continues to validate broker-controlled payload lengths against the much larger `maxInboundMessageBodySize` limit. A broker peer can therefore send a method frame whose payload is larger than the negotiated `frame_max`, have it allocated and decoded, and complete the connection handshake instead of being rejected as a protocol violation.\n\n*Reported by Team Atlanta.*",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.rabbitmq:amqp-client"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.33.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/security/advisories/GHSA-5xwg-cfvj-gff5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/pull/1994"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/pull/1995"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/commit/08790f09686173eb17b48d08a25edcb32e71a591"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/commit/b491075f42e89967610c40beded68d3680cfd472"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/releases/tag/v5.33.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-18T16:36:29Z",
+    "nvd_published_at": null
+  }
+}
