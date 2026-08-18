@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7wfr-vqp9-gqc3",
+  "modified": "2026-08-18T15:31:49Z",
+  "published": "2026-08-18T15:31:49Z",
+  "aliases": [
+    "CVE-2026-75032"
+  ],
+  "details": "A flaw was found in BlueZ. Insufficient validation of packet length fields in GetFolderItems responses within the Audio/Video Remote Control Profile (AVRCP) implementation allows a malicious Bluetooth device within range to cause an out-of-bounds memory read. This vulnerability, affecting the parse_media_element() and parse_media_folder() functions, can lead to a crash of the bluetoothd daemon, resulting in a Denial of Service (DoS). It could also potentially expose sensitive heap memory contents. Exploitation requires user interaction to pair with the malicious device.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75032"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-75032"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2517490"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T15:17:12Z"
+  }
+}

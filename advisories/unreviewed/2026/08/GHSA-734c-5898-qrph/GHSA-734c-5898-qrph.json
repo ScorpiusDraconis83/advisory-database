@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-734c-5898-qrph",
+  "modified": "2026-08-18T15:31:37Z",
+  "published": "2026-08-18T15:31:37Z",
+  "aliases": [
+    "CVE-2026-59781"
+  ],
+  "details": "When Zabbix Agent was installed on Windows into a custom installation directory, the installer did not verify whether the selected directory had secure access permissions. If the target directory allowed unauthorized users to modify its contents, an attacker could place a malicious DLL that could later be loaded by the application, resulting in DLL sideloading. The installer has been hardened to detect potentially unsafe installation directories and now requires explicit user confirmation before proceeding with installation in such locations. This reduces the risk of accidental installation into directories with inappropriate permissions while preserving compatibility with existing deployment scenarios.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59781"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.zabbix.com/browse/ZBX-28077"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-427"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T13:17:25Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9m4v-54qq-67fw",
+  "modified": "2026-08-18T15:31:50Z",
+  "published": "2026-08-18T15:31:50Z",
+  "aliases": [
+    "CVE-2026-75898"
+  ],
+  "details": "RAGFlow before 0.26.3 contains a server-side request forgery vulnerability in the agent workflow \"Invoke\" component (agent/component/invoke.py). The component builds an outbound request URL from canvas configuration and runtime template variables and passes it to requests.get, requests.post, or requests.put without calling the shared assert_url_is_safe validator or pinning the resolved address, unlike the crawler, SearXNG, file-upload, and RSS fetch paths. A user who can create or trigger an agent can direct the server to fetch loopback, link-local, and RFC 1918 destinations, including cloud instance metadata endpoints and services co-located on the deployment network, and the response body is returned as the component output. Where an agent is configured to interpolate the chat query into the Invoke URL, the destination is chosen by whoever can send that query.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:H/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75898"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/infiniflow/ragflow/issues/15425"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/infiniflow/ragflow/issues/18280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/infiniflow/ragflow/commit/c4fe68eaa0bf1d6442d2cd6ac2e35bc9ccbed34f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/infiniflow/ragflow/commit/e16d1a0150e1ca069beb538ae3dcd03f59edc5fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/infiniflow/ragflow/blob/v0.26.2/agent/component/invoke.py#L168-L172"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/infiniflow/ragflow/releases/tag/v0.26.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ragflow-server-side-request-forgery-via-agent-invoke-component"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-18T15:17:15Z"
+  }
+}
