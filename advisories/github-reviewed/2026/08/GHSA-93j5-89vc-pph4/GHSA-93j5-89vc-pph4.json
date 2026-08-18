@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-93j5-89vc-pph4",
+  "modified": "2026-08-18T16:32:12Z",
+  "published": "2026-08-18T16:32:12Z",
+  "aliases": [
+    "CVE-2026-69220"
+  ],
+  "summary": "RabbitMQ Java client ValueReader: Unbounded recursive table/array nesting causes StackOverflowError DoS",
+  "details": "## Summary\n\n`ValueReader.readTable()` and `readArray()` recursively call `readFieldValue()` with no depth limit. A malicious AMQP peer can crash the client JVM by sending a deeply nested table structure.\n\n## Vulnerable Code\n\n`src/main/java/com/rabbitmq/client/impl/ValueReader.java` lines 139-155 and 237-249:\n\n```java\nprivate static Map<String, Object> readTable(DataInputStream in) throws IOException {\n    long tableLength = unsignedExtend(in.readInt());\n    // ...\n    while(tableIn.available() > 0) {\n        String name = readShortstr(tableIn);\n        Object value = readFieldValue(tableIn);  // recursive call\n    }\n}\n\nstatic Object readFieldValue(DataInputStream in) throws IOException {\n    switch(in.readUnsignedByte()) {\n      case 'F': value = readTable(in);  // mutual recursion\n      case 'A': value = readArray(in);  // mutual recursion\n    }\n}\n```\n\n## Attack Scenario\n\nA malicious AMQP server (or MitM) sends a `connection.start` frame with ~580 levels of nested tables. Each level costs ~7 bytes (4-byte length + 1-byte key length + 1-byte key + 1-byte type tag), totaling ~4060 bytes within the 131,072 byte max frame size. With the default JVM stack (~512KB, ~864 bytes/frame), this triggers `StackOverflowError`, killing the I/O thread.\n\nExploitable pre-authentication since `connection.start` is the very first server frame.\n\n## Impact\n\nDenial of service. `StackOverflowError` kills the client I/O thread.\n\n## CWE\n\nCWE-674: Uncontrolled Recursion\n\n## Remediation\n\nAdd a depth counter to `readTable`/`readArray`/`readFieldValue` and throw `MalformedFrameException` when exceeding a threshold (e.g., 32).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.rabbitmq:amqp-client"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.33.1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.33.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/security/advisories/GHSA-93j5-89vc-pph4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/pull/2007"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/pull/2008"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/commit/09af76fce136f3136931654a0a1d43095c80e2f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/commit/db89e34809fbc6ba4e946615f297f3684ccd0acc"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/releases/tag/v5.33.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-18T16:32:12Z",
+    "nvd_published_at": null
+  }
+}

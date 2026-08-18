@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qx7j-jv8m-fppr",
+  "modified": "2026-08-18T16:32:43Z",
+  "published": "2026-08-18T16:32:42Z",
+  "aliases": [
+    "CVE-2026-63335"
+  ],
+  "summary": "RabbitMQ Java client malformed body frame triggers raw command assembler exception",
+  "details": "### Summary\nRabbitMQ Java Client's inbound AMQP command assembly accepts a content header declaring a small body and then processes a larger body frame by throwing a raw `UnsupportedOperationException` from `CommandAssembler`. A broker peer that the client has connected to can use this malformed frame sequence to fail frame processing and tear down the client connection instead of receiving a clean protocol-level malformed-frame error. \n\nThis was discovered based on an existing vulnerability CVE-2017-15699.\n\n### Details\nInbound frames enter the client through `SocketFrameHandler.readFrame`, which returns frames parsed from the peer-controlled input stream (`src/main/java/com/rabbitmq/client/impl/SocketFrameHandler.java:197`). `AMQConnection.MainLoop` reads each frame (`src/main/java/com/rabbitmq/client/impl/AMQConnection.java:692`) and dispatches non-zero-channel frames to the channel while the connection is open (`src/main/java/com/rabbitmq/client/impl/AMQConnection.java:748` and `src/main/java/com/rabbitmq/client/impl/AMQConnection.java:766`). The channel then passes the frame to the current command assembler through `AMQChannel.handleFrame` and `AMQCommand.handleFrame` (`src/main/java/com/rabbitmq/client/impl/AMQChannel.java:121`, `src/main/java/com/rabbitmq/client/impl/AMQCommand.java:114`). When a content-bearing method is followed by a content header, `CommandAssembler.consumeHeaderFrame` records the header's declared body size in `remainingBodyBytes` after only checking it against the configured maximum (`src/main/java/com/rabbitmq/client/impl/CommandAssembler.java:126` through `src/main/java/com/rabbitmq/client/impl/CommandAssembler.java:139`). The body-frame path subtracts the received payload length from that remaining count before validating that the payload fits (`src/main/java/com/rabbitmq/client/impl/CommandAssembler.java:145` through `src/main/java/com/rabbitmq/client/impl/CommandAssembler.java:149`), so a body frame larger than the declared size drives the count negative and reaches the raw `UnsupportedOperationException` at `src/main/java/com/rabbitmq/client/impl/CommandAssembler.java:150` and `src/main/java/com/rabbitmq/client/impl/CommandAssembler.java:151`. `AMQConnection` catches the resulting throwable in frame processing and performs connection failure handling and final shutdown (`src/main/java/com/rabbitmq/client/impl/AMQConnection.java:695` through `src/main/java/com/rabbitmq/client/impl/AMQConnection.java:705`).\n\n### PoC\n[poc.zip](https://github.com/user-attachments/files/28182717/poc.zip)\n\n```bash\nbash ./poc/run.sh\n```\n\n```text\nException in thread \"main\" java.lang.UnsupportedOperationException: %%%%%% FIXME unimplemented\n```\n\nThe `UnsupportedOperationException: %%%%%% FIXME unimplemented` fingerprint is the raw exception thrown at the negative `remainingBodyBytes` check in `CommandAssembler.consumeBodyFrame`. This line shows the malformed declared-size/body-size sequence reached the vulnerable assembler path.\n\n### Impact\nThe attacker model is a remote AMQP broker peer that the RabbitMQ Java Client application has accepted, including a malicious broker endpoint, a compromised broker, or routing that sends the client to an attacker-controlled peer. The peer needs a non-zero open channel that can receive a content-bearing server-to-client method such as `basic.deliver`, then sends the method frame, a content header declaring a body below the configured maximum, and a body frame whose payload exceeds that declared size. Under those conditions, the peer can force frame processing to fail with `UnsupportedOperationException` and close the AMQP connection, producing a client-side denial of service for work depending on that connection; the finding does not indicate memory corruption, data disclosure, or code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:N/SC:N/SI:N/SA:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.rabbitmq:amqp-client"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.31.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 5.30.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/security/advisories/GHSA-qx7j-jv8m-fppr"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/pull/1959"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/pull/1960"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/commit/31735344d9f9dfc53740b67f06e560e8846b9322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/commit/abd6d60d4e2bfc1a327dc90ab246b2e8aca1f33b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rabbitmq/rabbitmq-java-client/releases/tag/v5.31.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-18T16:32:42Z",
+    "nvd_published_at": null
+  }
+}
