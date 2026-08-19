@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cpph-75q5-7vr9",
-  "modified": "2026-08-19T06:31:17Z",
+  "modified": "2026-08-19T15:32:20Z",
   "published": "2026-08-19T06:31:17Z",
   "aliases": [
     "CVE-2026-14825"
   ],
   "details": "The Quiz and Survey Master (QSM)  WordPress plugin before 11.2.4 does not perform a per-object ownership check before saving a quiz's front-end text settings, allowing users with contributor-level access and above to modify the text settings of quizzes created by other users.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-19T06:17:33Z"

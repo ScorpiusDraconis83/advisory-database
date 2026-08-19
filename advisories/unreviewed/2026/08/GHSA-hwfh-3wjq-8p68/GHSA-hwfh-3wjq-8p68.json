@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hwfh-3wjq-8p68",
+  "modified": "2026-08-19T15:32:25Z",
+  "published": "2026-08-19T15:32:25Z",
+  "aliases": [
+    "CVE-2026-76235"
+  ],
+  "details": "A memory leak flaw was found in cockpit-ws. The login page handler leaks a heap allocation on every unauthenticated request that carries a CockpitLang cookie, allowing a remote unauthenticated attacker to exhaust memory on the host and cause a denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-76235"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2519497"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T13:18:11Z"
+  }
+}

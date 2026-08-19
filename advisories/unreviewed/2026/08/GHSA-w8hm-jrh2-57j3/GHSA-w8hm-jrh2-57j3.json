@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w8hm-jrh2-57j3",
+  "modified": "2026-08-19T15:32:25Z",
+  "published": "2026-08-19T15:32:25Z",
+  "aliases": [
+    "CVE-2020-37267"
+  ],
+  "details": "Renovate versions >=19.180.0 and <23.25.1, when used with Azure DevOps, may expose the bot's authorization token in server or pipeline logs because the git http.extraheader=AUTHORIZATION parameter is logged without redaction. Anyone with access to saved logs could obtain the bot credentials. Fixed in 23.25.1; Azure DevOps users should revoke and regenerate credentials if logs may have been exposed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/renovatebot/renovate/security/advisories/GHSA-36rh-ggpr-j3gj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-37267"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/renovate-before-token-leakage-via-logs"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T14:17:16Z"
+  }
+}

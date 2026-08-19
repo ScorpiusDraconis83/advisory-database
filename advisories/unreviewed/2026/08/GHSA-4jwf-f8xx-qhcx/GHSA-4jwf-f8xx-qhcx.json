@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4jwf-f8xx-qhcx",
-  "modified": "2026-08-19T06:31:17Z",
+  "modified": "2026-08-19T15:32:19Z",
   "published": "2026-08-19T06:31:17Z",
   "aliases": [
     "CVE-2026-11565"
   ],
   "details": "The Advanced File Manager  WordPress plugin before 5.4.13 does not perform capability checks in several of its file management AJAX actions, allowing users with any role to which an administrator has granted file-manager access (as low as Subscriber) to read arbitrary files on the server — including sensitive configuration files — and to overwrite existing non-PHP files, which can be leveraged to compromise administrator accounts and the whole site.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -21,7 +26,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-19T06:17:27Z"

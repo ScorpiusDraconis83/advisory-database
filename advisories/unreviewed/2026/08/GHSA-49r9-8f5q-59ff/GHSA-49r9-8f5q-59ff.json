@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-49r9-8f5q-59ff",
-  "modified": "2026-08-19T06:31:17Z",
+  "modified": "2026-08-19T15:32:20Z",
   "published": "2026-08-19T06:31:17Z",
   "aliases": [
     "CVE-2026-13174"
   ],
   "details": "The Eventin  WordPress plugin before 4.1.21 does not verify ownership or capability before deleting user accounts, allowing users with contributor-level access and above to permanently delete other users' accounts.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-19T06:17:32Z"

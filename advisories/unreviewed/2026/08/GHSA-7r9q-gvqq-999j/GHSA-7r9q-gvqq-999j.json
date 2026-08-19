@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7r9q-gvqq-999j",
+  "modified": "2026-08-19T15:32:33Z",
+  "published": "2026-08-19T15:32:33Z",
+  "aliases": [
+    "CVE-2026-76211"
+  ],
+  "details": "phpMyFAQ before 4.1.7 fails to properly enforce CONFIGURATION_EDIT permission on admin API read endpoints for LDAP, Elasticsearch, OpenSearch, and dashboard configuration, allowing any authenticated user to access sensitive administrative data. Attackers can retrieve LDAP server topology, bind account names, search bases, index statistics, and site analytics by calling these endpoints with a valid session.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thorsten/phpMyFAQ/security/advisories/GHSA-7gh7-qh7c-9r8m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76211"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/phpmyfaq-before-information-disclosure-via-admin-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T14:17:46Z"
+  }
+}

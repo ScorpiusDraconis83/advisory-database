@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xgjh-9vcx-v63q",
+  "modified": "2026-08-19T15:32:33Z",
+  "published": "2026-08-19T15:32:33Z",
+  "aliases": [
+    "CVE-2026-76213"
+  ],
+  "details": "phpMyFAQ before 4.1.7 contains a brute-force vulnerability in the two-factor authentication step where the failure counter is session-scoped and reset on each successful password re-authentication. Attackers with a valid password can bypass the five-attempt limit by obtaining a fresh session cookie and repeatedly re-authenticating to reset the counter, enabling unbounded TOTP code guessing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thorsten/phpMyFAQ/security/advisories/GHSA-f98m-hcjv-7rp9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/phpmyfaq-before-2fa-brute-force-via-session-scoped-throttle"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-307"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T14:17:47Z"
+  }
+}

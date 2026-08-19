@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3vrx-526r-64rm",
+  "modified": "2026-08-19T15:32:34Z",
+  "published": "2026-08-19T15:32:33Z",
+  "aliases": [
+    "CVE-2026-76222"
+  ],
+  "details": "GitPython before 3.1.58 fails to validate submodule names from .gitmodules files, allowing attackers to create Git repositories at arbitrary filesystem paths outside the intended clone directory. Attackers can craft malicious repositories with traversal sequences in submodule names that GitPython processes during submodule initialization, creating attacker-controlled Git repositories at escaped filesystem locations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:L/SC:N/SI:H/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitpython-developers/GitPython/security/advisories/GHSA-hmq2-w58f-27jc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76222"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gitpython-before-path-traversal-via-gitmodules-submodule-name"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T14:17:48Z"
+  }
+}

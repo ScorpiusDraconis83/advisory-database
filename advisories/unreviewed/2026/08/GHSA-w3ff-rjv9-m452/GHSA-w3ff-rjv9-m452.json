@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w3ff-rjv9-m452",
+  "modified": "2026-08-19T15:32:36Z",
+  "published": "2026-08-19T15:32:36Z",
+  "aliases": [
+    "CVE-2026-76238"
+  ],
+  "details": "stigmem versions before 0.9.0a12 contain a broken object level authorization vulnerability in the decay sweep endpoint that allows authenticated attackers with write credentials for one tenant to execute decay operations affecting all tenants. Attackers can submit POST requests to the decay sweep endpoint with ttl_seconds=0 to expire facts across all tenants, or use dry_run to obtain cross-tenant fact counts and existence information.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/eidetic-labs/stigmem/security/advisories/GHSA-6gqw-jqv7-v88m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/stigmem-before-0a12-cross-tenant-bola-via-decay-sweep"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T14:17:56Z"
+  }
+}

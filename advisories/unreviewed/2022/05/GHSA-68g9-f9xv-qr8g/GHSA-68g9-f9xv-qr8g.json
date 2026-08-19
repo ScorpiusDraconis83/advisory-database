@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-68g9-f9xv-qr8g",
-  "modified": "2022-05-24T17:22:38Z",
+  "modified": "2026-08-19T15:31:50Z",
   "published": "2022-05-24T17:22:38Z",
   "aliases": [
     "CVE-2020-12414"
   ],
   "details": "IndexedDB should be cleared when leaving private browsing mode and it is not, the API for WKWebViewConfiguration was being used incorrectly and requires the private instance of this object be deleted when leaving private mode. This vulnerability affects Firefox for iOS < 27.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,7 +29,9 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
+    "cwe_ids": [
+      "CWE-459"
+    ],
     "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,

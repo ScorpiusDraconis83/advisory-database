@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-78pq-g4m8-fx2c",
+  "modified": "2026-08-19T15:32:33Z",
+  "published": "2026-08-19T15:32:33Z",
+  "aliases": [
+    "CVE-2026-76221"
+  ],
+  "details": "GitPython before 3.1.58 contains a config-name injection vulnerability in the option-name validator that allows attackers to forge arbitrary git-config directives by injecting equals signs, hash symbols, and whitespace into option names. Attackers can inject malicious option names like 'sshCommand = touch /tmp/RCE #' to execute arbitrary commands via core.sshCommand or core.hooksPath on the next git operation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/gitpython-developers/GitPython/security/advisories/GHSA-jm78-9fvv-mhgr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76221"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gitpython-before-config-injection-via-option-name"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-74"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T14:17:48Z"
+  }
+}

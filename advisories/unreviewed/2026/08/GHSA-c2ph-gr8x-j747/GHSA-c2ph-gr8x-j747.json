@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c2ph-gr8x-j747",
+  "modified": "2026-08-19T15:32:38Z",
+  "published": "2026-08-19T15:32:38Z",
+  "aliases": [
+    "CVE-2026-40509"
+  ],
+  "details": "OpenEMR before 8.3.0 contains a cross-site request forgery vulnerability in the DICOM viewer. The web_path GET parameter in the DICOM viewer page is embedded unsanitized as a URL without validation against expected path formats. An attacker can craft a URL that causes an authenticated user with Patients - Documents permissions to make authenticated requests to arbitrary OpenEMR endpoints, enabling forced logout and other state-changing actions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openemr/openemr/security/advisories/GHSA-wffp-pj5h-xqwp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40509"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openemr/openemr/commit/f760adc7bddaf9d118e1a0d40590e686783ed21b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openemr/openemr/releases/tag/v8_3_0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openemr-csrf-via-dicom-viewer-web-path-parameter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T15:17:01Z"
+  }
+}

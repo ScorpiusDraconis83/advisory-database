@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qvfr-x6x6-r99q",
-  "modified": "2026-08-19T06:31:17Z",
+  "modified": "2026-08-19T15:32:21Z",
   "published": "2026-08-19T06:31:17Z",
   "aliases": [
     "CVE-2026-16570"
   ],
   "details": "The NextScripts: Social Networks Auto-Poster WordPress plugin before 4.4.8 does not escape some of the query-string parameters it reflects back on one of its admin pages, allowing attackers to perform Reflected Cross-Site Scripting attacks against logged-in users such as administrators who are tricked into opening a crafted link.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-19T06:17:34Z"

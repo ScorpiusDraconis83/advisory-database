@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m4fm-3x35-xqfq",
+  "modified": "2026-08-19T15:32:24Z",
+  "published": "2026-08-19T15:32:24Z",
+  "aliases": [
+    "CVE-2026-67364"
+  ],
+  "details": "Joomla Extension - balbooa.com - Pre-auth PHP Code Injection in Balbooa Forms < 2.4.3.2 - CWE-94 / CWE-95 | CVSS 3.1: 9.8 Critical (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)\nThe form's optional custom-PHP post-submission handler is executed via eval(). The [URL parameter = X] shortcode is substituted with the raw, unescaped value of a query parameter, letting an unauthenticated attacker inject arbitrary PHP that executes server-side. The CSRF token needed to reach the endpoint is itself disclosed anonymously via a separate task, so it provides no real protection. Exploitability requires the form to have a custom-PHP handler configured (a documented builder feature) referencing that shortcode, and no reCAPTCHA on the submit button.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67364"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.balbooa.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T13:17:50Z"
+  }
+}

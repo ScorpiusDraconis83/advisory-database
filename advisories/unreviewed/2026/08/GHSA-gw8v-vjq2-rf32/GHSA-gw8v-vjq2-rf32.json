@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gw8v-vjq2-rf32",
-  "modified": "2026-08-19T06:31:17Z",
+  "modified": "2026-08-19T15:32:21Z",
   "published": "2026-08-19T06:31:17Z",
   "aliases": [
     "CVE-2026-16058"
   ],
   "details": "The YayCurrency  WordPress plugin before 3.3.5 does not perform any capability or ownership check on several of its multi-vendor integration handlers that are reachable by unauthenticated users, allowing anyone to read the store's order totals and its vendors' earnings, balance ledgers, and withdrawal histories by iterating identifiers.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-19T06:17:34Z"

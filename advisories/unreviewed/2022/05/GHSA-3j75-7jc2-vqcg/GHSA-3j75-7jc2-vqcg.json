@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3j75-7jc2-vqcg",
-  "modified": "2022-05-24T17:18:42Z",
+  "modified": "2026-08-19T15:31:49Z",
   "published": "2022-05-24T17:18:42Z",
   "aliases": [
     "CVE-2020-6830"
   ],
   "details": "For native-to-JS bridging, the app requires a unique token to be passed that ensures non-app code can't call the bridging functions. That token was being used for JS-to-native also, but it isn't needed in this case, and its usage was also leaking this token. This vulnerability affects Firefox for iOS < 25.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,7 +29,9 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
+    "cwe_ids": [
+      "CWE-200"
+    ],
     "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,

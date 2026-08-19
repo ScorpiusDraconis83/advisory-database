@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rh24-296r-8rj6",
+  "modified": "2026-08-19T15:32:36Z",
+  "published": "2026-08-19T15:32:36Z",
+  "aliases": [
+    "CVE-2026-76245"
+  ],
+  "details": "stigmem (pip package stigmem-node) version 0.9.0a1 contains a timestamp-handling mismatch in federation peer-token validation that can cause valid peer tokens to be incorrectly treated as expired. This affects the availability and reliability of authenticated federation flows on nodes using federation peer authentication paths. The issue is fixed in 0.9.0a2, which uses the canonical millisecond-based validation path.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/eidetic-labs/stigmem/security/advisories/GHSA-xh5j-xjfq-qvvx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76245"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/stigmem-federation-peer-token-timestamp-validation-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T14:17:56Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5jw8-m77m-3jjm",
-  "modified": "2022-05-24T17:29:54Z",
+  "modified": "2026-08-19T15:31:50Z",
   "published": "2022-05-24T17:29:54Z",
   "aliases": [
     "CVE-2020-15666"
   ],
   "details": "When trying to load a non-video in an audio/video context the exact status code (200, 302, 404, 500, 412, 403, etc.) was disclosed via the MediaError Message. This level of information leakage is inconsistent with the standardized onerror/onsuccess disclosure and can lead to inferring login status to services or device discovery on a local network among other attacks. This vulnerability affects Firefox < 80 and Firefox for Android < 80.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,8 @@
   ],
   "database_specific": {
     "cwe_ids": [
-      "CWE-200"
+      "CWE-200",
+      "CWE-209"
     ],
     "severity": "MODERATE",
     "github_reviewed": false,
