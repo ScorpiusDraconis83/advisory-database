@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j94h-9p69-vhvm",
-  "modified": "2026-08-19T09:31:23Z",
+  "modified": "2026-08-19T12:32:22Z",
   "published": "2026-08-19T09:31:23Z",
   "aliases": [
     "CVE-2026-58083"
   ],
   "details": "While the kernel was copying knotes during fork, a knote with a timer-based filter could fire and be enqueued on the kqueue's active list before the copy was complete.  The copy routine did not account for this and could enqueue the new knote a second time, corrupting the active list.  In addition, the copy routine did not hold the appropriate locks while reading knote state, allowing further races.\n\nAn unprivileged local user can trigger a use-after-free in the kernel, potentially leading to privilege escalation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-416"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-19T08:17:12Z"

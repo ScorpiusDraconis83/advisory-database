@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v78v-rxq5-6w38",
-  "modified": "2026-08-19T09:31:24Z",
+  "modified": "2026-08-19T12:32:22Z",
   "published": "2026-08-19T09:31:24Z",
   "aliases": [
     "CVE-2026-58087"
   ],
   "details": "The GETALL and SETALL commands in semctl(2) recorded the number of semaphores in the target set, dropped the lock protecting the set, allocated a buffer sized for that count, and reacquired the lock.  A sequence-number check was used to verify that the set had not been replaced in the interim, but the sequence number wraps after 0x8000 create/destroy cycles.  By rapidly destroying and recreating semaphore sets at the same index, another process can cause the sequence number to wrap, allowing a set with a different number of semaphores to pass validation.  The subsequent copy then reads or writes past the end of the allocated buffer.\n\nAn unprivileged local user can trigger out-of-bounds reads and writes on kernel heap memory, potentially leading to privilege escalation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-125"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-19T08:17:12Z"
