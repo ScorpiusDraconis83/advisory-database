@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3hgv-jr5j-cg9x",
+  "modified": "2026-08-19T19:32:18Z",
+  "published": "2026-08-19T19:32:18Z",
+  "aliases": [
+    "CVE-2026-55694"
+  ],
+  "summary": "Snipe-IT: Chained Information Disclosure and IDOR Leads to Full EULA File Takeover",
+  "details": "### Impact\nAn attacker can completely bypass file-name randomization security and without authorization download confidential, signed EULA files belonging to any other user across the application.\n\n### Steps to Reproduce:\n1. Log in as a restricted user.\n2. Send a GET request to /api/v1/users/{target_id}/eulas (where target_id belongs to a restricted/denied user).\n3. Observe the response leaks the secret EULA filename (e.g., eula-xxx.pdf).\n4. Attempt to access this file via the main route: GET /stored-eula-file/{filename} (This will correctly return 403 Forbidden).\n5. Now, access the file via the vulnerable profile route: GET /account/stored-eula-file/{filename}.\n6. Observe that the server returns a 200 OK and successfully downloads the target user's secret EULA file.\n\n### Patches\nFixed in https://github.com/grokability/snipe-it/commit/f15d78621b003be30ac114ba68626683894935ef",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-3hgv-jr5j-cg9x"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/f15d78621b003be30ac114ba68626683894935ef"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-19T19:32:18Z",
+    "nvd_published_at": null
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c8qc-wf67-342w",
+  "modified": "2026-08-19T19:32:32Z",
+  "published": "2026-08-19T19:32:32Z",
+  "aliases": [
+    "CVE-2026-61807"
+  ],
+  "summary": "Snipe-IT: Stored DOM XSS via table selected-count IDs",
+  "details": "### Impact\nThe table component derives data-selected-count-id from the component $name value. On manufacturer and supplier detail pages, stored manufacturer or supplier names are passed into affected table components as that name value. The client-side JavaScript later reads the browser-decoded data-selected-count-id, uses it as a selector, and concatenates countId.substring(1) directly into an HTML string passed to jQuery .after().\n\nAffected commit:\n\n`b224cc636c6780386e3f73f03d1171f52ab4c37a`\n\nExample payload for a manufacturer or supplier name:\n`x[foo=\"><svg/onload=alert(1)>\"]>`\n\nThe issue appears to involve the following flow:\n\nStored supplier/manufacturer name\n-> table component data-selected-count-id\n-> browser decodes the attribute\n-> JavaScript reads countId\n-> countId is used as a selector\n-> countId.substring(1) is concatenated into HTML\n-> jQuery .after() inserts attacker-controlled markup\n-> JavaScript executes in the victim's browser\n\nPotential impact includes arbitrary JavaScript execution in the browser of an authenticated Snipe-IT user who views the affected supplier or manufacturer detail page. If the victim has elevated privileges, this may allow access to data or actions available to that user's session.\n\n### Patches\nPatched in https://github.com/grokability/snipe-it/commit/d12ad3d53869443b96b663ba3ce2673ef343da71",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:H/SI:H/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-c8qc-wf67-342w"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/d12ad3d53869443b96b663ba3ce2673ef343da71"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-19T19:32:32Z",
+    "nvd_published_at": null
+  }
+}

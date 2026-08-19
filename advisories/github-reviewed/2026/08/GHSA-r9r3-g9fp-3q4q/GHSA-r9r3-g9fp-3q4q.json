@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r9r3-g9fp-3q4q",
+  "modified": "2026-08-19T19:32:25Z",
+  "published": "2026-08-19T19:32:25Z",
+  "aliases": [
+    "CVE-2026-55703"
+  ],
+  "summary": "Snipe-IT: Maintenance Record Disclosure via Missing Authorization on GET",
+  "details": "### Impact\nAny activated account in a company can read every maintenance record for that company (asset tag, supplier, purchase cost, free-text notes, dates) without holding any asset or maintenance permission.\n\n## Summary\n\n`MaintenancesController::show()` renders a maintenance record without any authorization check. Every other action in the controller authorizes against the asset; `show()` does not. Any user in the asset's company can read maintenance detail (asset tag, supplier, purchase cost, notes, dates) by visiting `/maintenances/{id}`, regardless of permissions.\n\n## Details\n\n```php\npublic function show(Maintenance $maintenance): View|RedirectResponse\n{\n    return view('maintenances.view')->with('maintenance', $maintenance);\n}\n```\n\nNo `authorize()` call. The sibling actions all gate on the asset: `index()` calls `authorize('view', Asset::class)` (line 33), and `edit()`/`update()`/`destroy()` call `authorize('update', $maintenance->asset)` (lines 139, 166, 286). The route is registered with only the auth guard:\n\n```php\nRoute::resource('maintenances', MaintenancesController::class, ['middleware' => ['auth']]);\n```\n\n(`routes/web/hardware.php:185`). Route-model binding still applies the company scope, so the read is bounded to the caller's company; the absent permission gate is the defect. Maintenance IDs are sequential and visible in the record URL.\n\n## Proof of concept\n\n1. As an administrator, create an asset in a company (here, `CompanyA`). Open the asset, choose Maintenances > Create, and add a record: name `MntA2`, supplier `SupA`, a purchase cost, and notes. The saved record opens at `/maintenances/{id}`.\n2. As the administrator, create a test user assigned to CompanyA, with **every permission left unchecked**. Activate the account.\n3. In a separate browser session, log in as the test user. Confirm it is unprivileged: the Assets and Maintenances navigation items are absent, and browsing to `/hardware` returns 403.\n4. In the address bar, browse to `http://<host>/maintenances/{id}`.\n\nObserved: the maintenance view renders in full for the unprivileged account.\n\n```\nGET /maintenances/5      ->  HTTP 200 OK\nRenders the \"Maintenance\" detail page for MntA2:\n  Asset: AssetA   Supplier: SupA   Cost: <value>   Notes: <text>   Dates: <...>\n\nGET /hardware            ->  HTTP 403  (same account, asset list is gated)\nGET /maintenances        ->  HTTP 403  (same account, maintenance list is gated)\nGET /maintenances/2      ->  HTTP 302  (record in CompanyB; company scope still hides it)\n```\n\n- The `test` account holds zero permissions and still reads the record.\n- Only the unguarded `show` route leaks: the list view and the asset pages return 403 for the same account.\n- A maintenance in a different company (CompanyB) redirects away, confirming the FMCS company scope still holds.\n\n### Patches\nPatched in https://github.com/grokability/snipe-it/commit/69c50aa2aee25f837626556b4f4f3d05ec7ace96",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.3"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-r9r3-g9fp-3q4q"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/69c50aa2aee25f837626556b4f4f3d05ec7ace96"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-19T19:32:25Z",
+    "nvd_published_at": null
+  }
+}
