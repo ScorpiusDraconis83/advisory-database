@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gx22-rr34-hq5j",
+  "modified": "2026-08-19T06:31:18Z",
+  "published": "2026-08-19T06:31:18Z",
+  "aliases": [
+    "CVE-2026-49430"
+  ],
+  "details": "The ZFS_IOC_RECV_NEW ioctl, in the heal receive path, similarly truncated a 64-bit payload size to a 32-bit integer for allocation, then used the original 64-bit size as the length for a byteswap operation.\n\nA local user with the \"receive\" delegated ZFS permission can trigger kernel memory corruption via ZFS_IOC_RECV_NEW by sending a crafted receive stream in heal mode.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49430"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-26:40.zfs.asc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T06:17:42Z"
+  }
+}

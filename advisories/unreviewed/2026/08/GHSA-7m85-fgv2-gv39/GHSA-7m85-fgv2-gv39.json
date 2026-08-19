@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7m85-fgv2-gv39",
+  "modified": "2026-08-19T06:31:18Z",
+  "published": "2026-08-19T06:31:18Z",
+  "aliases": [
+    "CVE-2026-49428"
+  ],
+  "details": "Certain system calls, such open(2) with the O_TRUNC flag set, and fspacectl(2), could incorrectly free memory in largepage objects.  These operations are not permitted on largepage objects, but the implementation did not verify this.\n\nAn unprivileged local user can abuse the bug to access freed kernel memory.  This can be exploited to escalate privileges.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49428"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-26:44.posixshm.asc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-915"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T06:17:42Z"
+  }
+}

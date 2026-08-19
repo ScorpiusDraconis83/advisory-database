@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hrxx-hfqm-f933",
+  "modified": "2026-08-19T06:31:18Z",
+  "published": "2026-08-19T06:31:18Z",
+  "aliases": [
+    "CVE-2026-49431"
+  ],
+  "details": "The ZFS_IOC_SET_PROP ioctl, used by zfs-set(8), incorrectly validated the calling user such that an unprivileged user is able to set metadata on a dataset indicating that the dataset has received properties from a zfs-recv(8) stream.\n\nAny local user can set the internal ZFS metadata flag \"$hasrecvd\" on datasets via ZFS_IOC_SET_PROP.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49431"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-26:40.zfs.asc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T06:17:43Z"
+  }
+}
