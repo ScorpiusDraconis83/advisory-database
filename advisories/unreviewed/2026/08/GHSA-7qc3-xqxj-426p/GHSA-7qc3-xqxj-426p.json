@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7qc3-xqxj-426p",
+  "modified": "2026-08-19T18:32:51Z",
+  "published": "2026-08-19T18:32:51Z",
+  "aliases": [
+    "CVE-2026-75143"
+  ],
+  "details": "FFmpeg before commit 1c10bcc contains a heap buffer overflow in the RIST protocol reader (libavformat/librist.c). librist_read() ignored its size argument and copied the full received payload length into the caller-provided destination buffer, overflowing it when the payload exceeds the destination size. This is reachable via the async:rist:// URL scheme, where the async wrapper supplies a smaller buffer than the received payload. A remote RIST sender can trigger the overflow by sending a packet whose payload exceeds the caller buffer size.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/1c10bcc2e17255dacb717a25ab3db142ce390602"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/24089"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ffmpeg-heap-buffer-overflow-via-rist-protocol-reader"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T17:21:12Z"
+  }
+}

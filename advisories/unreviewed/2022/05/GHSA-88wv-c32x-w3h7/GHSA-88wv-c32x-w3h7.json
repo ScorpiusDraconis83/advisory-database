@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-88wv-c32x-w3h7",
-  "modified": "2022-05-24T17:18:27Z",
+  "modified": "2026-08-19T18:31:20Z",
   "published": "2022-05-24T17:18:27Z",
   "aliases": [
     "CVE-2020-1103"
   ],
   "details": "An information disclosure vulnerability exists where certain modes of the search function in Microsoft SharePoint Server are vulnerable to cross-site search attacks (a variant of cross-site request forgery, CSRF).When users are simultaneously logged in to Microsoft SharePoint Server and visit a malicious web page, the attacker can, through standard browser functionality, induce the browser to invoke search queries as the logged in user, aka 'Microsoft SharePoint Information Disclosure Vulnerability'.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -16,12 +21,17 @@
     },
     {
       "type": "WEB",
+      "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-1103"
+    },
+    {
+      "type": "WEB",
       "url": "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-1103"
     }
   ],
   "database_specific": {
     "cwe_ids": [
-      "CWE-200"
+      "CWE-200",
+      "CWE-352"
     ],
     "severity": "MODERATE",
     "github_reviewed": false,
