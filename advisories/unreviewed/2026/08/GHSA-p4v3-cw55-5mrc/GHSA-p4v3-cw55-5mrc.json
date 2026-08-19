@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p4v3-cw55-5mrc",
+  "modified": "2026-08-19T09:31:23Z",
+  "published": "2026-08-19T09:31:23Z",
+  "aliases": [
+    "CVE-2026-58084"
+  ],
+  "details": "To retrieve the previous timer value, the kernel calls realtimer_gettime(), which obtains the current time for the timer's clock.  For a timer using CLOCK_TAI this can fail when no TAI offset has been configured, but the error return was not checked, so the uninitialized output buffer was copied to userspace.\n\nAn unprivileged local user can obtain uninitialized kernel stack memory by creating a POSIX timer with CLOCK_TAI and calling timer_settime(2), potentially disclosing sensitive kernel data.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58084"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-26:51.ktimer.asc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T08:17:12Z"
+  }
+}

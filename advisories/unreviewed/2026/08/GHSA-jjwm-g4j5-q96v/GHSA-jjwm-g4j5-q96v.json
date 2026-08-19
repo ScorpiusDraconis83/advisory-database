@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jjwm-g4j5-q96v",
+  "modified": "2026-08-19T09:31:23Z",
+  "published": "2026-08-19T09:31:23Z",
+  "aliases": [
+    "CVE-2026-49425"
+  ],
+  "details": "The compat32 kevent() handler translates a 64-bit kevent struct into a stack- declared 32-bit struct.  It did not first zero the stack struct.\n\nAn unprivileged user may observe a small amount of uninitialized kernel stack data, which may contain sensitive information.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49425"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-26:48.compat32.asc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-908"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T08:17:12Z"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5q67-rff6-c784",
+  "modified": "2026-08-19T09:31:23Z",
+  "published": "2026-08-19T09:31:23Z",
+  "aliases": [
+    "CVE-2026-58086"
+  ],
+  "details": "As an inadvertent side effect of an unrelated code change, PRIV_KTRACE was always denied to a jailed root user.  Tracing configured by a jailed root user was therefore not flagged as privileged.\n\nAn unprivileged user in a jail that has permission to debug the target process can modify the jailed root user's ktrace(2) flags, or disable tracing outright.  A jailed root user therefore cannot reliably trace unprivileged processes.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58086"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.freebsd.org/advisories/FreeBSD-SA-26:53.ktrace.asc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-273"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T08:17:12Z"
+  }
+}
