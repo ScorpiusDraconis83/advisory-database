@@ -1,13 +1,17 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cwvv-9488-x4h5",
-  "modified": "2026-08-05T18:31:37Z",
+  "modified": "2026-08-19T21:30:27Z",
   "published": "2026-08-05T18:31:37Z",
   "aliases": [
     "CVE-2026-14587"
   ],
   "details": "Neo4j's Bolt modern handshake decoder treats an overlong capability bit mask the same way it treats a truncated bit mask. When an unauthenticated client sends a selected protocol version followed by 32 continuation bytes in the capability mask, the decoder resets the reader index and waits for more bytes instead of rejecting the protocol message and closing the channel.\n\n\n\nBecause the same unread bytes remain at the front of the decoder buffer, appending a terminating byte later does not recover the connection. The decoder re-reads the same first 32 continuation bytes, returns without producing a handshake-finalization message, and leaves the channel open.\n\n\n\nThis can be triggered before authentication by any client that can reach the Bolt connector.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"

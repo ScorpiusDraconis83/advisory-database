@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4vrw-8fx2-pj82",
+  "modified": "2026-08-19T21:30:38Z",
+  "published": "2026-08-19T21:30:38Z",
+  "aliases": [
+    "CVE-2026-76827"
+  ],
+  "details": "A flaw was found in search-indexer. This vulnerability allows a registered and authenticated managed cluster to tamper with or delete another cluster's indexed search data. This is possible because the delta-sync write paths in search-indexer do not properly restrict UPDATE/DELETE operations to data owned by the calling cluster. An attacker could exploit this by crafting specific user identifiers (UIDs) with a different cluster's prefix.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76827"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-76827"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2519896"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-693"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T21:17:39Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rcv3-hw8m-43fg",
+  "modified": "2026-08-19T21:30:35Z",
+  "published": "2026-08-19T21:30:35Z",
+  "aliases": [
+    "CVE-2026-17042"
+  ],
+  "details": "IBM Power Systems Firmware FW950.00 through FW950.H2, OP940.00 through OP940.a1 (Power9), and OP940.00 - OP940.81 (Power HMC) is affected by a vulnerability in host firmware NVRAM parsing. An attacker with root access to a guest partition on an OpenPOWER system can write a specially crafted NVRAM image, causing the host firmware boot stage to crash with possible memory corruption. This condition persists until operator intervention — clearing NVRAM via the service processor — to restore normal operation. This vulnerability only affects OpenPOWER systems; systems running PowerVM are not affected. Successful exploitation results in an integrity and availability impact to the managed system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:N/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17042"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ibm.com/support/pages/node/7283240"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T20:17:12Z"
+  }
+}

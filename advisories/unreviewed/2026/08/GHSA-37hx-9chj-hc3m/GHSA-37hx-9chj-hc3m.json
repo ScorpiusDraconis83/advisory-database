@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-37hx-9chj-hc3m",
+  "modified": "2026-08-19T21:30:38Z",
+  "published": "2026-08-19T21:30:38Z",
+  "aliases": [
+    "CVE-2026-76139"
+  ],
+  "details": "A flaw was found in acm-operator-bundle. The build process for this component downloads and runs a script from a remote source without verifying its authenticity or integrity. This script gains access to sensitive credentials, such as GitHub access tokens and registry passwords, used in the build environment. A remote attacker could exploit this vulnerability to inject malicious code, leading to unauthorized access to build resources and potential compromise of the resulting operator bundle.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-76139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2519852"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-829"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T21:17:38Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3c3p-64wc-c8w7",
+  "modified": "2026-08-19T21:30:36Z",
+  "published": "2026-08-19T21:30:36Z",
+  "aliases": [
+    "CVE-2026-18821"
+  ],
+  "details": "IBM PowerVM Hypervisor FW1120.00, FW1110.00 through FW1110.30, FW1060.00 through FW1060.80, and FW950.00 through FW950.H2 Power Systems Firmware is affected by a vulnerability in partition firmware during network boot. An unauthenticated attacker on the same network as a partition undergoing network boot can send a malformed packet, allowing arbitrary code to be executed in the partition firmware and compromising everything subsequently loaded by that partition. Other partitions and the managed system are not affected. Only partitions actively performing a network boot are affected, resulting in a confidentiality, integrity, and availability impact.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ibm.com/support/pages/node/7283232"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T20:17:13Z"
+  }
+}

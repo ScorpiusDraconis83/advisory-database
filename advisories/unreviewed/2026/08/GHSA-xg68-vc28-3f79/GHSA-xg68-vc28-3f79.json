@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xg68-vc28-3f79",
+  "modified": "2026-08-19T21:30:33Z",
+  "published": "2026-08-19T21:30:33Z",
+  "aliases": [
+    "CVE-2026-70496"
+  ],
+  "details": "A flaw was found in search-v2-operator. The operator's ClusterRole has permissions equivalent to a cluster administrator, allowing it to impersonate other entities, write Role-Based Access Control (RBAC) configurations, approve Certificate Signing Requests (CSRs), and manage ManifestWork. This grants excessive privileges beyond what is necessary for the operator's intended function, potentially leading to privilege escalation within the cluster.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70496"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-70496"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2511032"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-250"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T19:17:23Z"
+  }
+}
