@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v6g5-xxrx-m495",
+  "modified": "2026-08-20T03:32:54Z",
+  "published": "2026-08-20T03:32:54Z",
+  "aliases": [
+    "CVE-2026-75628"
+  ],
+  "details": "Punk::OAuth2 versions before 0.03 for Perl allow an attacker-chosen off-site redirect after login because same_origin_path accepts a backslash or tab in the return parameter.\n\noauth2_login reads the return parameter from the initiation request, runs same_origin_path over it, and stores the survivor in the session flow record as the post-login redirect target. That check rejects a value that does not begin with a slash, one with a slash as its second byte, and one containing CR or LF. A backslash and a tab pass. The URL Standard treats a backslash as equivalent to a slash for special schemes, so `/\\evil.example` parses with the authority `evil.example`. It also strips ASCII tab before parsing, so a tab between two leading slashes leaves `//evil.example`.\n\nA crafted link to the application's own login route lands the victim on the attacker's site after a genuine authentication. The redirect carries no authorization code or access token.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75628"
+    },
+    {
+      "type": "WEB",
+      "url": "https://datatracker.ietf.org/doc/html/rfc9700#section-4.11.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/LNATION/Punk-OAuth2-0.02/source/include/pox/pox_util.h#L94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/LNATION/Punk-OAuth2-0.03/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://url.spec.whatwg.org/#concept-basic-url-parser"
+    },
+    {
+      "type": "WEB",
+      "url": "https://url.spec.whatwg.org/#relative-slash-state"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/08/20/1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-20T01:16:53Z"
+  }
+}
