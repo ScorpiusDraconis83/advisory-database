@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h54r-xq46-qwqm",
+  "modified": "2026-08-20T18:40:09Z",
+  "published": "2026-08-20T18:40:09Z",
+  "aliases": [
+    "CVE-2026-54259"
+  ],
+  "summary": "Wagtail: Improper restriction handling on Documents and Images chosen endpoints",
+  "details": "### Impact\nThe Documents and Images chooser's chosen endpoint incorrectly listed items for which the user has not been granted choose permission. A user with access to the Wagtail admin could see the filename and name and URLs of documents and images in those collections.\n\nThe vulnerability is not exploitable by an ordinary site visitor without access to the Wagtail admin.\n\n### Patches\nPatched versions have been released as Wagtail 7.0.8, 7.3.3, 7.4.2.\n\n### Workarounds\nN/A\n\n### Acknowledgements\nMany thanks to @harshakshit for reporting this issue.\n\n\n### For more information\nIf you have any questions or comments about this advisory:\n\n* Visit Wagtail's [support channels](https://docs.wagtail.org/en/stable/support.html)\n* Email us at [security@wagtail.org](mailto:security@wagtail.org) (view our [security policy](https://github.com/wagtail/wagtail/security/policy) for more information).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "wagtail"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "7.0.8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "wagtail"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.1"
+            },
+            {
+              "fixed": "7.3.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "wagtail"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.4"
+            },
+            {
+              "fixed": "7.4.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/wagtail/wagtail/security/advisories/GHSA-h54r-xq46-qwqm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54259"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/wagtail/PYSEC-2026-612.yaml"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/wagtail/wagtail"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-280"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-20T18:40:09Z",
+    "nvd_published_at": "2026-07-01T22:16:49Z"
+  }
+}
