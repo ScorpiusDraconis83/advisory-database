@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-89j5-7cmj-5px4",
-  "modified": "2026-08-18T18:32:02Z",
+  "modified": "2026-08-20T15:33:36Z",
   "published": "2026-08-18T18:32:02Z",
   "aliases": [
     "CVE-2026-52608"
   ],
   "details": "An incorrect access control vulnerability in reportico-web <= 8.1.0 allows an unauthenticated attacker to inject arbitrary php code into the PreExecuteCode attribute of any report regardless of the safe_mode setting leading to remote code execution.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-18T18:18:20Z"

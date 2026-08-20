@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-37xp-6wh3-v2hh",
-  "modified": "2026-08-18T18:32:02Z",
+  "modified": "2026-08-20T15:33:36Z",
   "published": "2026-08-18T18:32:02Z",
   "aliases": [
     "CVE-2026-52607"
   ],
   "details": "A directory traversal vulnerability in reportico-web <= 8.1.0 allows remote attackers to expose or execute arbitrary php files on the web server by specifying the filename in the target_format parameter in conjunction with the execute_mode=EXECUTE parameter of the run.php endpoint.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-18T18:18:19Z"

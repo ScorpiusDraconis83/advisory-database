@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fqg3-vq72-r4q2",
+  "modified": "2026-08-20T15:34:18Z",
+  "published": "2026-08-20T15:34:18Z",
+  "aliases": [
+    "CVE-2026-76833"
+  ],
+  "details": "@cgauge/yaml npm package contains an arbitrary code execution vulnerability that allows attackers to execute arbitrary JavaScript by embedding a custom !js YAML tag whose construct callback unconditionally calls eval() on attacker-supplied string values during document parsing. Any application parsing untrusted YAML input with this library exposes full Node.js runtime authority, including environment variable access, filesystem read/write, network access, and subprocess execution, with no safe-mode alternative or opt-out mechanism available.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76833"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/arjunjaincs/35da3a80b4b16f324f194acec18489ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cgauge/packages"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cgauge-yaml-npm-package-arbitrary-code-execution-via-eval-yaml-tag"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-95"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-20T14:18:00Z"
+  }
+}

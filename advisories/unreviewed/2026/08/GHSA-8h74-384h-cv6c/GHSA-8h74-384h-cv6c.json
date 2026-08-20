@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8h74-384h-cv6c",
+  "modified": "2026-08-20T15:34:20Z",
+  "published": "2026-08-20T15:34:20Z",
+  "aliases": [
+    "CVE-2026-61897"
+  ],
+  "details": "An Ubuntu-specific patch to AccountsService before 23.13.9-8ubuntu7 only partially drops privileges before launching language helper scripts. It changes the effective UID/GID to the target user but leaves the real UID as 0 (root). A shell spawned by a helper script inherits ruid=0 and may reset its effective UID to root, enabling local privilege escalation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61897"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.launchpad.net/ubuntu/+source/accountsservice/+bug/2157985"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ubuntu.com/security/CVE-2026-61897"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-273"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-20T15:17:38Z"
+  }
+}
