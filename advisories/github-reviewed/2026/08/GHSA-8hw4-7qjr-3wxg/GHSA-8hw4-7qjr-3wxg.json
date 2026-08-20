@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8hw4-7qjr-3wxg",
+  "modified": "2026-08-20T18:38:43Z",
+  "published": "2026-08-20T18:38:43Z",
+  "aliases": [
+    "CVE-2026-54179"
+  ],
+  "summary": "Laravel Backpack CRUD: SingleBase64Image accepts any base64 payload behind a `data:image` prefix — SVG-with-script lands on the public disk",
+  "details": "### Summary\n\n`SingleBase64Image::uploadFiles` — the uploader bound to `image`-typed fields via `withFiles()` — only verifies that the submitted value starts with the string `data:image`. The MIME subtype and the base64-decoded bytes are never inspected or validated. A related bug in `FileNameGenerator` causes the stored file to receive an extensionless filename, because `mime_content_type()` returns `false` when given a data URI instead of a filesystem path.\n\nThe combination allows an authenticated admin to store a file of arbitrary type on the configured disk under a name without a recognizable extension.\n\n### Details\n\n```php\n// src/app/Library/Uploaders/SingleBase64Image.php\nif (Str::startsWith($value, 'data:image')) {\n    // MIME subtype and decoded bytes are not validated\n    $base64Image = Str::after($value, ';base64,');\n    $finalPath   = $this->getPath() . $this->getFileName($value);\n    Storage::disk($this->getDisk())->put($finalPath, base64_decode($base64Image));\n    return $finalPath;\n}\n\n// src/app/Library/Uploaders/Support/FileNameGenerator.php\nprivate function getExtensionFromFile(string|UploadedFile $file): string\n{\n    return is_a($file, UploadedFile::class, true)\n        ? $file->extension()\n        : Str::after(mime_content_type($file), '/'); // returns false on data URIs → empty string\n}\n```\n\nThe stored filename ends with a trailing dot and no extension.\n\n### Impact\n\nAn authenticated admin submitting a malicious payload to a Backpack `image` field stored with `withFiles()` can write arbitrary file content to the configured storage disk. Depending on server configuration and how stored files are served, this may lead to stored XSS or other unintended behavior when the file is later accessed.\n\n### Fix\n\nThe fix validates the declared MIME subtype against an allowlist, decodes the base64 payload, and verifies the actual file bytes with `finfo` before storing. The extension is derived from the detected MIME type rather than the data URI string. Applied in `SingleBase64Image::uploadFiles` and `uploadRepeatableFiles`; `FileNameGenerator::getExtensionFromFile` now rejects inputs that produce an empty extension.\n\nSetting `X-Content-Type-Options: nosniff` on admin responses is a useful defense-in-depth complement.\n\n### Affected versions\n\n- `>= 6.0.0, < 6.8.14`\n- `>= 7.0.0, < 7.0.38`\n\n### Patched versions\n\n- `6.8.14`\n- `7.0.38`",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.8.14"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0"
+            },
+            {
+              "fixed": "7.0.38"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/security/advisories/GHSA-8hw4-7qjr-3wxg"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Laravel-Backpack/CRUD"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/6.8.14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/7.0.38"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434",
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-20T18:38:43Z",
+    "nvd_published_at": null
+  }
+}

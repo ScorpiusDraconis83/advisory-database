@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mmg4-322v-6jvc",
+  "modified": "2026-08-20T18:38:50Z",
+  "published": "2026-08-20T18:38:50Z",
+  "aliases": [
+    "CVE-2026-54181"
+  ],
+  "summary": "Laravel Backpack CRUD: Stored XSS in the color column — the `@if($column['escaped'])` branches are inverted",
+  "details": "## Summary\n\nThe Blade template for the `color` column type (`src/resources/views/crud/columns/color.blade.php`) has its escaped/unescaped rendering branches inverted relative to every other column template in the library. Because `$column['escaped']` defaults to `true`, values stored in color columns are rendered **unescaped by default**, enabling Stored XSS if column values are not validated before storage.\n\n## Details\n\nAll other column templates in `src/resources/views/crud/columns/` follow the convention:\n- `$column['escaped'] == true` → `{{ $column['text'] }}` (HTML-escaped)\n- `$column['escaped'] == false` → `{!! $column['text'] !!}` (raw)\n\nThe `color` template has these branches swapped. An attacker who can write an arbitrary string to a `color`-typed column can inject JavaScript that executes in the browser of any user who views the list — including administrators — with access to their session cookies and CSRF tokens.\n\n## Impact\n\nStored XSS with scope change (attacker context runs in victim's browser). Highest-risk target is an administrator viewing the list view. Exploitability requires the ability to write an unsanitized value into a `color`-typed column.\n\n## Patches\n\nFixed in **6.8.14** and **7.0.38** by correcting the branch order in `color.blade.php`. See PR #5992.\n\n## Workarounds\n\nValidate stored color values against a strict CSS color grammar (e.g. `/^#[0-9a-fA-F]{3,6}$/`) at the model layer before data reaches the view.\n\n## Credits\n\nReported by Vishal Shukla ([@shukla304](https://github.com/shukla304)) via sechub.dev.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.8.14"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0"
+            },
+            {
+              "fixed": "7.0.38"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/security/advisories/GHSA-mmg4-322v-6jvc"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Laravel-Backpack/CRUD"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/6.8.14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/7.0.38"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1023",
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-20T18:38:50Z",
+    "nvd_published_at": null
+  }
+}

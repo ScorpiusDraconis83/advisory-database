@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9fw9-8c49-qch8",
+  "modified": "2026-08-20T18:38:30Z",
+  "published": "2026-08-20T18:38:30Z",
+  "aliases": [
+    "CVE-2026-54176"
+  ],
+  "summary": "Laravel Backpack CRUD: MyAccountController allows changing the login email without a current-password check",
+  "details": "## Summary\n\n`MyAccountController::postAccountInfoForm` allows an authenticated user to update\nthe authentication column (default: `email`) without verifying their current password.\nBecause email is the account-recovery anchor, this enables account takeover after\nthe attacker's session ends: the new email address can be used to request a password\nreset from outside the system.\n\nThe password-change endpoint in the same controller correctly requires `old_password`\nverification, so the gap is asymmetric.\n\n## Details\n\nThe `postAccountInfoForm` action passes `$request->validated()` directly to\n`$user->update()`. The `AccountInfoRequest` whitelists the authentication column\n(`email` by default) with no ownership challenge. Contrast this with\n`ChangePasswordRequest`, which uses `Hash::check` against the stored password before\nallowing any change.\n\nScenarios where this is exploitable include:\n- A brief unauthorized session (e.g. unattended workstation, XSS in the admin panel)\n- An insider/offboarding case where a departing admin sets a personal email address\n  before access is revoked, then resets the password after leaving\n\n## Patch\n\nFixed in [#5990](https://github.com/Laravel-Backpack/CRUD/pull/5990) — the\nauthentication column is now protected by a `current_password` check (mirroring\n`ChangePasswordRequest`) whenever its value changes.\n\nA stronger mitigation — sending a verification link to the new address before\npersisting the change — can be layered on top using Laravel's `MustVerifyEmail` flow.\n\n## Affected versions\n\nAll versions prior to 6.8.14 / 7.0.38.\n\n## Fixed versions\n\n- 6.x: 6.8.14\n- 7.x: 7.0.38",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.8.14"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0"
+            },
+            {
+              "fixed": "7.0.38"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/security/advisories/GHSA-9fw9-8c49-qch8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/pull/5990"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Laravel-Backpack/CRUD"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/6.8.14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/7.0.38"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287",
+      "CWE-620"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-20T18:38:30Z",
+    "nvd_published_at": null
+  }
+}

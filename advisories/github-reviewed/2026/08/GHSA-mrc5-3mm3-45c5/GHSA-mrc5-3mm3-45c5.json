@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrc5-3mm3-45c5",
+  "modified": "2026-08-20T18:38:55Z",
+  "published": "2026-08-20T18:38:55Z",
+  "aliases": [
+    "CVE-2026-54182"
+  ],
+  "summary": "Laravel Backpack CRUD: OS command injection in Stats::makeCurlRequest via attacker-controlled Host header (pre-auth)",
+  "details": "## Summary\n\n`Backpack\\CRUD\\Stats::makeCurlRequest` builds a shell command using unescaped input that originates from the HTTP `Host` header, then passes it to `exec()`. A specially crafted Host header can break out of the shell argument and cause the server to execute arbitrary OS commands as the web user.\n\nThe vulnerable code path is reached from `BackpackServiceProvider::boot()` on every HTTP request in production when `exec()` and `curl` are available. A 1-in-100 random gate is the only guard — an attacker can reliably trigger it by retrying.\n\n## Severity\n\n**High — CVSS 8.1**  \n`CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H`\n\nAttack Complexity is rated **High** because default nginx and Apache configurations typically strip or reject malformed Host headers before they reach PHP, and `exec()` is often disabled for web processes in hardened environments. Both mitigations must be absent for exploitation.\n\n## Impact\n\nA successful exploit yields OS command execution as the web server user (`www-data`, `nginx`, etc.), giving an unauthenticated attacker access to environment secrets (APP_KEY, database credentials, API keys in `.env`), the filesystem, and any service the server can reach.\n\n## Fix\n\n`makeCurlRequest` was replaced with the Guzzle-based path already present in the codebase, eliminating the shell-command construction entirely. **Upgrade to a patched release immediately.**\n\n## Affected versions\n\n| Branch | Vulnerable range | First safe version |\n|--------|-----------------|-------------------|\n| 4.1.x  | `< 4.1.70`      | 4.1.70            |\n| 5.x    | `< 5.6.2`       | 5.6.2             |\n| 6.x    | `< 6.8.13`      | 6.8.13            |\n| 7.x    | `< 7.0.36`      | 7.0.36            |\n\n## Credits\n\nReported by Vishal Shukla ([@shukla304](https://github.com/shukla304)) via sechub.dev AI Agent.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.1.0"
+            },
+            {
+              "fixed": "4.1.72"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.6.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.8.13"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0"
+            },
+            {
+              "fixed": "7.0.36"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/security/advisories/GHSA-mrc5-3mm3-45c5"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Laravel-Backpack/CRUD"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/4.1.72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/5.6.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/6.8.13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/7.0.36"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-116",
+      "CWE-20",
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-20T18:38:55Z",
+    "nvd_published_at": null
+  }
+}

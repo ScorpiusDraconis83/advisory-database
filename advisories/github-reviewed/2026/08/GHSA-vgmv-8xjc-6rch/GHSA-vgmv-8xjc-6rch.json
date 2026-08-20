@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vgmv-8xjc-6rch",
+  "modified": "2026-08-20T18:38:46Z",
+  "published": "2026-08-20T18:38:46Z",
+  "aliases": [
+    "CVE-2026-54180"
+  ],
+  "summary": "Laravel Backpack CRUD: CRUD panel query scopes are not enforced on Update, Delete, and Reorder (cross-tenant IDOR)",
+  "details": "## Summary\n\nBackpack CRUD's list and read operations correctly apply any query scopes\nregistered via `addClause()` / `addBaseClause()` (e.g. tenant isolation, user\nownership). However, the **Update**, **Delete**, and **Reorder** operations\nbypassed these scopes, fetching records directly from the unscoped model query.\n\nAn authenticated user who knows or can guess a record's primary key could\ntherefore update, delete, or reorder records that should be invisible to them —\na classic IDOR on write paths.\n\nApplications that rely on `addBaseClause` for row-level access control\n(multi-tenancy, per-user data isolation) are affected.\n\n## Impact\n\nAny Backpack CRUD panel that uses `addBaseClause` or `addClause` to restrict\nwhich rows a user may access is affected on its write operations.\nAn authenticated low-privilege user can modify or delete records belonging to\nother tenants / users.\n\n## Patches\n\nApply the fixed release for your major version:\n\n- **v6**: upgrade to **6.8.14** or later\n- **v7**: upgrade to **7.0.38** or later\n\nThe fix ensures Update, Delete, and Reorder all resolve records through the same\nscoped query used by the read side.\n\n## Workarounds\n\nIf you cannot upgrade immediately, add explicit `Gate` / `Policy` checks in your\n`CrudController`'s `update()`, `destroy()`, and `reorder()` methods to verify\nthe authenticated user is permitted to act on the resolved record.\n\n## Credits\n\nReported by Vishal Shukla ([@shukla304](https://github.com/shukla304)).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.8.14"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0"
+            },
+            {
+              "fixed": "7.0.38"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/security/advisories/GHSA-vgmv-8xjc-6rch"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Laravel-Backpack/CRUD"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/6.8.14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/7.0.38"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639",
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-20T18:38:46Z",
+    "nvd_published_at": null
+  }
+}

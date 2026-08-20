@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8xjm-wqrp-2f25",
+  "modified": "2026-08-20T18:38:39Z",
+  "published": "2026-08-20T18:38:39Z",
+  "aliases": [
+    "CVE-2026-54178"
+  ],
+  "summary": "Laravel Backpack CRUD: Arbitrary file deletion via attacker-controlled clear_<attr>[] in HasUploadFields::uploadMultipleFilesToDisk",
+  "details": "## Summary\n\n`HasUploadFields::uploadMultipleFilesToDisk` (in `src/app/Models/Traits/HasUploadFields.php`) reads file paths from the `clear_<attribute>[]` request input and deletes them from the configured storage disk **without verifying that the paths belong to the current model record**.\n\nAn authenticated user with Update access on any CRUD that wires `uploadMultipleFilesToDisk` as a model mutator (the pattern documented in the v5.x `upload_multiple` field guide) can supply arbitrary disk-relative paths in `clear_<attr>[]` to delete files that were never associated with the record they are editing.\n\nThe safe pattern already exists in the codebase: `src/app/Library/Uploaders/MultipleFiles.php` intersects the requested deletions against the files currently stored in the database column before calling `Storage::disk()->delete()`. The trait method lacks that intersection.\n\n## Affected code\n\n- `src/app/Models/Traits/HasUploadFields.php` — `uploadMultipleFilesToDisk` (primary sink)\n- `src/app/Models/Traits/CrudTrait.php` — mixes `HasUploadFields` into all Backpack-managed models\n\nThe vulnerability is present in all 5.x, 6.x < 6.8.12, and 7.x < 7.0.35 releases.\n\n## Impact\n\nAn attacker with low-privilege Backpack admin access (e.g. a content editor) can delete any file under the configured disk root: other records' attachments, shared assets, or files placed on the same disk for operational purposes. No confidentiality impact (files cannot be read, only deleted).\n\n**CWE-285** (Authorization Bypass) / **CWE-639** (IDOR on file deletion)  \nCVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H = **8.1 High**\n\n## Fix\n\nIntersect `$files_to_clear` against the filenames currently persisted on the model before calling `delete()`, mirroring the logic already present in `MultipleFiles::uploadFiles`. Fixed in **6.8.12** and **7.0.35**.\n\nDeployments still using the `uploadMultipleFilesToDisk` mutator pattern from the v5.x docs should migrate to the Uploader API (`MultipleFiles::class` via `config/backpack/crud.php`), which applies the safe intersection automatically.\n\n## Credits\n\nReported by Vishal Shukla ([@shukla304](https://github.com/shukla304)).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 6.0.0"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0"
+            },
+            {
+              "fixed": "6.8.12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0"
+            },
+            {
+              "fixed": "7.0.35"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/security/advisories/GHSA-8xjm-wqrp-2f25"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Laravel-Backpack/CRUD"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/6.8.12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/7.0.35"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22",
+      "CWE-285",
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-20T18:38:39Z",
+    "nvd_published_at": null
+  }
+}

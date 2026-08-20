@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xpv2-hrfc-hw62",
+  "modified": "2026-08-20T18:38:26Z",
+  "published": "2026-08-20T18:38:26Z",
+  "aliases": [
+    "CVE-2026-54175"
+  ],
+  "summary": "Laravel Backpack CRUD: Unverified password change in MyAccountController via mass assignment",
+  "details": "## Summary\n\nThe `MyAccountController::postAccountInfoForm` action bound to `POST /admin/edit-account-info` calls `$this->guard()->user()->update($request->except(['_token']))`. Because the controller uses `except(['_token'])` rather than `$request->validated()` or the restricted keys defined in `AccountInfoRequest::validationData()`, **any column present in the user model's `$fillable` array is mass-assigned from the request**, including `password`. Backpack ships a separate `POST /admin/change-password` route (`postChangePasswordForm`) that requires `old_password` verification via `ChangePasswordRequest::withValidator`. The `edit-account-info` endpoint silently bypasses that security control.\n\nFor the default Laravel 11 `App\\Models\\User` model — which Backpack's installer and documentation use as the canonical admin user model — `$fillable` is `['name','email','password']`. The `password` cast is `hashed`, so a plaintext `password=…` form field is automatically hashed and persisted. Any attacker holding an authenticated Backpack session (session theft, stolen cookies, XSS, public-terminal residual session) can permanently take over the account by issuing one POST that includes `password=<attacker_value>`, with no knowledge of the victim's current password. This converts time-limited, session-bound access into persistent account takeover.\n\n## Vulnerable code\n\n`src/app/Http/Controllers/MyAccountController.php:38`\n\n```php\npublic function postAccountInfoForm(AccountInfoRequest $request)\n{\n    $result = $this->guard()->user()->update($request->except(['_token']));\n    ...\n}\n```\n\n`src/app/Http/Requests/AccountInfoRequest.php` `validationData()` only narrows what gets validated (`name`, email column) — it does NOT narrow what is later saved.\n\n## Impact\n\n1. **Persistent account takeover after session theft.** An adversary holding any authenticated Backpack session cookie (XSS, malware, stolen device, shared workstation) can rewrite the victim's password and retain access indefinitely, even after the original session expires or the victim logs out. Without this bypass the equivalent action requires `old_password`, which the adversary does not have.\n2. **Email pivot for full takeover.** The same handler permits unverified change of the authentication column (`email` by default). A hijacked session can change the email to one the attacker controls and then use Backpack's password-reset flow as a backup channel.\n3. **Mass-assignment of any other `$fillable` attribute.** In real deployments where the admin user model carries fields such as `role_id`, `is_admin`, `team_id`, `email_verified_at`, `two_factor_secret`, etc., the same request mass-assigns those fields. This expands the impact to privilege escalation and 2FA disablement on apps that follow standard Laravel patterns of adding such columns to `$fillable`.\n\n## Fix recommendation\n\nReplace `$request->except(['_token'])` with an explicit allowlist that mirrors `AccountInfoRequest::validationData()`:\n\n```php\npublic function postAccountInfoForm(AccountInfoRequest $request)\n{\n    $data = $request->only([backpack_authentication_column(), 'name']);\n    $result = $this->guard()->user()->update($data);\n    ...\n}\n```\n\nThis preserves `change-password` as the sole path for password mutation (which already enforces `old_password`).\n\n## Coordinates\n\n- Repository: https://github.com/Laravel-Backpack/CRUD\n- Vulnerable file & line: `src/app/Http/Controllers/MyAccountController.php:38` (release 6.8.10; master `e7201c5`)\n- Route: `POST /admin/edit-account-info` (default admin prefix; `setup_my_account_routes=true`)\n- Verified against: `backpack/crud 6.8.10`, `laravel/framework 11.x`, PHP 8.4.7\n\n— therawdev (responsible disclosure)\n\nReported by AI Agent sechub.dev and Vishal Shukla (@shukla304)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.8.11"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "backpack/crud"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0-alpha.1"
+            },
+            {
+              "fixed": "7.0.34"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/security/advisories/GHSA-xpv2-hrfc-hw62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/pull/5980"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/pull/5981"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Laravel-Backpack/CRUD"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/6.8.11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Laravel-Backpack/CRUD/releases/tag/7.0.34"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-620"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-20T18:38:26Z",
+    "nvd_published_at": null
+  }
+}
