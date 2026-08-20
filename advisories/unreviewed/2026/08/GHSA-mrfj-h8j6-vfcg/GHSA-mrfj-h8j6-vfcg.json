@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrfj-h8j6-vfcg",
+  "modified": "2026-08-20T00:35:03Z",
+  "published": "2026-08-20T00:35:03Z",
+  "aliases": [
+    "CVE-2026-76370"
+  ],
+  "details": "In Splunk SOAR versions below 8.6.0, an authenticated user with restricted tenant access could use the Representational State Transfer (REST) API to view the names and identifiers of tenants that fall outside the role scope for that user. The vulnerability is possible because Splunk SOAR does not enforce role-based tenant restrictions when it returns tenant information through the REST API in deployments with multi-tenancy turned on. For more information see REST Roles and Permissions (https://help.splunk.com/en/splunk-soar/soar-cloud/rest-api-reference/role-management-endpoints/rest-roles-and-permissions) and Configure multiple tenants on your Splunk SOAR (On-premises) instance (https://help.splunk.com/en/splunk-soar/soar-on-premises/administer-soar-on-premises/7.1.0/configure-product-settings-for-your-splunk-soar-on-premises-instance/configure-multiple-tenants-on-your-splunk-soar-on-premises-instance) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76370"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0804"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:22Z"
+  }
+}

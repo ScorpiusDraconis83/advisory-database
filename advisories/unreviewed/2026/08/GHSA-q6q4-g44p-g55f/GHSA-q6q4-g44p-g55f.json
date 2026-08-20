@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q6q4-g44p-g55f",
+  "modified": "2026-08-20T00:35:00Z",
+  "published": "2026-08-20T00:35:00Z",
+  "aliases": [
+    "CVE-2026-76347"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.2, 10.2.6, 10.0.9, and 9.4.14, and Splunk Secure Gateway versions below 3.10.9, 3.9.23, and 3.8.70, a user who does not hold the \"admin\" or \"power\" Splunk roles could use Server-Side Request Forgery (SSRF) in report notifications to send system-authenticated requests to internal Splunk services, which could allow for changes to Search Head Cluster state and a denial of service. The vulnerability is possible because Splunk Secure Gateway does not validate report notification path values before it sends internal requests.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76347"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0801"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:19Z"
+  }
+}

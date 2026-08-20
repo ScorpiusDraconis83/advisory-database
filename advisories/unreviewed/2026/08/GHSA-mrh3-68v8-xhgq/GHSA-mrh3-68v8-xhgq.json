@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrh3-68v8-xhgq",
+  "modified": "2026-08-20T00:35:07Z",
+  "published": "2026-08-20T00:35:07Z",
+  "aliases": [
+    "CVE-2026-76402"
+  ],
+  "details": "In Splunk Connect for Kafka versions below 2.2.7, an unauthenticated user who can reach the Kafka Connect Representational State Transfer (REST) API could configure a non-secure Hypertext Transfer Protocol (HTTP) Event Collector endpoint in Splunk Enterprise that causes the connector to send authentication credentials to an attacker-controlled server, allowing for exposure of credentials that compromise all relevant data sent through the connector and limited alteration of event delivery. The vulnerability is possible because HTTP Event Collector endpoint validation does not require secure transport by default. For more information see Install Splunk Connect for Kafka (https://help.splunk.com/en/data-management/integrate-data-with-add-ons/splunk-connect-for-kafka/2.2/install/install-splunk-connect-for-kafka), Data ingestion parameters for Splunk Connect for Kafka (https://help.splunk.com/en/data-management/integrate-data-with-add-ons/splunk-connect-for-kafka/2.2/overview/data-ingestion-parameters-for-splunk-connect-for-kafka), and Set up and use HTTP Event Collector with configuration files (https://help.splunk.com/en/splunk-enterprise/get-data-in/get-started-with-getting-data-in/9.4/get-data-with-http-event-collector/set-up-and-use-http-event-collector-with-configuration-files) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76402"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0808"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:26Z"
+  }
+}

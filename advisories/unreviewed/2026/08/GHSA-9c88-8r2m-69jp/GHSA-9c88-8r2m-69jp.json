@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9c88-8r2m-69jp",
+  "modified": "2026-08-20T00:34:57Z",
+  "published": "2026-08-20T00:34:57Z",
+  "aliases": [
+    "CVE-2026-76321"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.2, 10.2.6, 10.0.9, and 9.4.14, an unauthenticated user could inject arbitrary Search Processing Language (SPL) into requests that search for events near a selected event. This could allow for unauthorized search execution. The vulnerability is possible because Splunk Web does not consistently escape caller-supplied values when it builds SPL for nearby-event searches, and embedded report access accepts those requests without the expected authorization check. For more information see Use time to find nearby events (https://help.splunk.com/en/splunk-enterprise/search/search-manual/10.2/specify-time-ranges/use-time-to-find-nearby-events) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76321"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0801"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:16Z"
+  }
+}

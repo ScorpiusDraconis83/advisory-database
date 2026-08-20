@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qmgh-4c8v-57cv",
+  "modified": "2026-08-20T00:34:55Z",
+  "published": "2026-08-20T00:34:55Z",
+  "aliases": [
+    "CVE-2026-76260"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.2, 10.2.6, 10.0.9, and 9.4.14, a user that holds a role with the rest_properties_get capability could read encrypted stored credentials through the Representational State Transfer (REST) API. Successful exploitation can expose relevant data protected by the stored credentials. The incorrect permission assignment is possible because the properties REST endpoint requires the rest_properties_get capability instead of the list_storage_passwords capability to read stored credentials. For more information see Define roles on the Splunk platform with capabilities (https://help.splunk.com/en/splunk-enterprise/administer/manage-users-and-security/10.4/manage-splunk-platform-users-and-roles/define-roles-on-the-splunk-platform-with-capabilities) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76260"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0801"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-732"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:14Z"
+  }
+}

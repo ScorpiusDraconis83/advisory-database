@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w7fq-wgjx-63h9",
+  "modified": "2026-08-20T00:35:03Z",
+  "published": "2026-08-20T00:35:02Z",
+  "aliases": [
+    "CVE-2026-76367"
+  ],
+  "details": "In Splunk SOAR versions below 8.6.0, a user who holds the \"Incident Commander\" Splunk SOAR role could store JavaScript in a note and run it in the browser of another user when that user opens the note. The stored Cross-Site Scripting (XSS) vulnerability is possible because Splunk SOAR can treat existing note content as Hypertext Markup Language (HTML) without sanitizing that content when the note format changes. The vulnerability requires the attacker to phish the affected user by tricking them into initiating a request within their browser. The user who holds the \"Incident Commander\" Splunk SOAR role should not be able to exploit the vulnerability at will. For more information see Manage roles and permissions in Splunk SOAR (Cloud) (https://help.splunk.com/en/splunk-soar/soar-cloud/administer-soar-cloud/manage-your-splunk-soar-cloud-users-and-accounts/manage-roles-and-permissions-in-splunk-soar-cloud) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76367"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0804"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:22Z"
+  }
+}

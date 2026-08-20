@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qh4m-xcwc-wcgw",
+  "modified": "2026-08-20T00:35:06Z",
+  "published": "2026-08-20T00:35:06Z",
+  "aliases": [
+    "CVE-2026-76393"
+  ],
+  "details": "In Splunk AI Toolkit versions below 6.0.0, a user who can upload models could overwrite a model being uploaded by another user by sending a concurrent upload request for the same model name, causing the resulting model lookup entry to reference attacker-controlled content. The race condition is possible because Splunk AI Toolkit does not verify that the uploaded content belongs to the request that creates the model lookup entry. For more information see Troubleshoot the Splunk Machine Learning Toolkit (https://help.splunk.com/en/splunk-cloud-platform/apply-machine-learning/machine-learning-toolkit-user-guide/5.5.0/troubleshooting-mltk/troubleshoot-the-splunk-machine-learning-toolkit) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76393"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0808"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:25Z"
+  }
+}

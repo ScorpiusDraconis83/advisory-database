@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5rxf-5c27-g6hp",
+  "modified": "2026-08-20T00:34:56Z",
+  "published": "2026-08-20T00:34:56Z",
+  "aliases": [
+    "CVE-2026-76316"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.1, 10.2.5, 10.0.9, and 9.4.14, an unauthenticated user who can reach the Splunk management port could store a Search Processing Language (SPL) pipeline that runs when an administrator opens the Add Data forwarder workflow. The SPL pipeline could access all relevant data, affect system integrity, and affect availability of the Splunk platform instance. The SPL injection is possible because Deployment Server client identifiers are placed into dispatched searches without neutralizing special characters. Successful exploitation requires an administrator to open the affected Add Data forwarder workflow after the unauthenticated user registers a crafted Deployment Server client identity. For more information see Forward data (https://help.splunk.com/en/splunk-enterprise/get-started/get-data-in/10.2/how-to-get-data-into-your-splunk-deployment/forward-data) and About agent management (https://help.splunk.com/en/splunk-enterprise/administer/update-your-deployment/10.4/agent-management/about-agent-management) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76316"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0801"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-943"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:15Z"
+  }
+}

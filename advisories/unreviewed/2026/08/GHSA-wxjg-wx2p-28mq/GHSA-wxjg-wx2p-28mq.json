@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wxjg-wx2p-28mq",
+  "modified": "2026-08-20T00:35:02Z",
+  "published": "2026-08-20T00:35:02Z",
+  "aliases": [
+    "CVE-2026-76365"
+  ],
+  "details": "In Splunk SOAR versions below 8.6.0, a user who holds the \"Automation Engineer\" Splunk SOAR role could run arbitrary Structured Query Language (SQL) statements against the Splunk SOAR database through custom list retrieval in a playbook, allowing for create, read, update, and delete operations on all relevant data stored in the Splunk SOAR database. The SQL injection is possible because Splunk SOAR builds the custom list database lookup with the supplied list name instead of a bound SQL value. For more information see Manage roles and permissions in Splunk SOAR (https://help.splunk.com/en/splunk-soar/soar-cloud/administer-soar-cloud/manage-your-splunk-soar-cloud-users-and-accounts/manage-roles-and-permissions-in-splunk-soar-cloud) and Create custom lists for use in Splunk SOAR playbook comparisons (https://help.splunk.com/en/splunk-soar/soar-cloud/build-playbooks/manage-playbooks-and-playbook-settings/create-custom-lists-for-use-in-splunk-soar-cloud-playbook-comparisons) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76365"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0804"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-74"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:21Z"
+  }
+}

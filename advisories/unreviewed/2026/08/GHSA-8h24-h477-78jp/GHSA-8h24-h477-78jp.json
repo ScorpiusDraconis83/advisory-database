@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8h24-h477-78jp",
+  "modified": "2026-08-20T00:34:58Z",
+  "published": "2026-08-20T00:34:58Z",
+  "aliases": [
+    "CVE-2026-76334"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.2, 10.2.6, 10.0.9, and 9.4.14, a user who holds the \"power\" Splunk role could store a Dashboard Studio workflow action containing attacker-controlled Search Processing Language (SPL). When another authenticated user selects the action from Event Actions and selects Continue, Splunk Enterprise runs the injected SPL using the permissions of that user. The injected SPL could access or modify data available to that user. The vulnerability is possible because Dashboard Studio does not sufficiently validate workflow-action URLs before submitting requests. The vulnerability requires the attacker to phish the affected user by tricking them into initiating a request within their browser. The user who holds the \"power\" Splunk role should not be able to exploit the vulnerability at will.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76334"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0801"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:17Z"
+  }
+}

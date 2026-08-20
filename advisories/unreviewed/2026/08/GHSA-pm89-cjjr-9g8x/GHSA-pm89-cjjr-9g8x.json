@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pm89-cjjr-9g8x",
+  "modified": "2026-08-20T00:34:57Z",
+  "published": "2026-08-20T00:34:57Z",
+  "aliases": [
+    "CVE-2026-76322"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.2, 10.2.6, 10.0.9, and 9.4.14, a user who holds the \"user\" Splunk role could craft a Dashboard Studio dashboard that runs attacker-controlled Search Processing Language (SPL) for another authenticated user. The attacker-controlled SPL could access all relevant data and affect system integrity and availability. The vulnerability is possible because Dashboard Studio does not consistently enforce the expected app-visibility authorization boundary before dashboard search query options reach search dispatch. The vulnerability requires the attacker to phish the affected user by tricking them into initiating a request within their browser. The user who holds the \"user\" Splunk role should not be able to exploit the vulnerability at will. For more information see Create search-based visualizations with ds.search (https://help.splunk.com/en/splunk-enterprise/create-dashboards-and-reports/dashboard-studio/10.4/use-data-sources/create-search-based-visualizations-with-ds.search) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0801"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:16Z"
+  }
+}

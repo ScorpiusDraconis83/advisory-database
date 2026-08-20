@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2mg7-2hgc-pq9p",
+  "modified": "2026-08-20T00:35:05Z",
+  "published": "2026-08-20T00:35:05Z",
+  "aliases": [
+    "CVE-2026-76386"
+  ],
+  "details": "In versions below 3.2.2 of the Zoom app for Splunk SOAR, a user who holds a role with permission to run actions could expose meeting and personal meeting ID passwords by invoking one of the create meeting, update meeting, or update user settings actions, because the affected password and pmi_password parameters are not masked and are shown in cleartext in the user interface. The information disclosure is possible because the app does not mark the affected action parameters as passwords. For more information see Run an action in Splunk SOAR (https://help.splunk.com/en/splunk-soar/soar-on-premises/use-splunk-soar-on-premises/8.6.0/use-the-command-line-interface-to-perform-tasks-in-splunk-soar-on-premises/run-an-action-in-splunk-soar-on-premises).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76386"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0806"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-312"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:24Z"
+  }
+}

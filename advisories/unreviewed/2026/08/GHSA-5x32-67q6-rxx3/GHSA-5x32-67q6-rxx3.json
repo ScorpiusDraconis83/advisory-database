@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5x32-67q6-rxx3",
+  "modified": "2026-08-20T00:35:03Z",
+  "published": "2026-08-20T00:35:03Z",
+  "aliases": [
+    "CVE-2026-76372"
+  ],
+  "details": "In Nmap Scanner versions below 3.0.15, a user who holds a role that can edit, create, or run playbooks in Splunk SOAR could run the scan network action in a Safe Mode playbook while that action is listed as read-only, which could allow for command execution or other changes on a target system through Nmap Scripting Engine scripts. The vulnerability is possible because the Nmap Scanner connector action manifest classifies the scan network action as read-only even though the action accepts script parameters that can perform write operations. For more information see Manage settings for a playbook in Splunk SOAR (https://help.splunk.com/en/splunk-soar/soar-cloud/build-playbooks/manage-playbooks-and-playbook-settings/manage-settings-for-a-playbook-in-splunk-soar-cloud) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76372"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0806"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-732"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:23Z"
+  }
+}

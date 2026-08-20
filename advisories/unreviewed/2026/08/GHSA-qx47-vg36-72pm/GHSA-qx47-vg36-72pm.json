@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qx47-vg36-72pm",
+  "modified": "2026-08-20T00:35:02Z",
+  "published": "2026-08-20T00:35:02Z",
+  "aliases": [
+    "CVE-2026-76360"
+  ],
+  "details": "In Splunk SOAR versions below 8.6.0, an authenticated user with no role assigned could use the /rest/health endpoint to gather system and cluster telemetry that should be restricted to administrative or support users. The vulnerability is a missing authorization check, where the endpoint does not verify that the caller holds a role permitted to view system health and cluster state. For more information see Manage roles and permissions in Splunk SOAR (On-premises) (https://help.splunk.com/en/splunk-soar/soar-on-premises/administer-soar-on-premises/8.5.0/manage-your-splunk-soar-on-premises-users-and-accounts/manage-roles-and-permissions-in-splunk-soar-on-premises) and Monitor the health of your Splunk SOAR (On-premises) system (https://help.splunk.com/en/splunk-soar/soar-on-premises/administer-soar-on-premises/8.5.0/manage-your-splunk-soar-on-premises-system-health-and-performance/monitor-the-health-of-your-splunk-soar-on-premises-system) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76360"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0804"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:21Z"
+  }
+}

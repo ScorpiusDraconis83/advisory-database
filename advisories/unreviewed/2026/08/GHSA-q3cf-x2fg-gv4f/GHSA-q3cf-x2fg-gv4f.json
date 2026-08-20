@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q3cf-x2fg-gv4f",
+  "modified": "2026-08-20T00:35:07Z",
+  "published": "2026-08-20T00:35:07Z",
+  "aliases": [
+    "CVE-2026-76397"
+  ],
+  "details": "In Splunk AI Toolkit versions below 6.0.0, a user who holds the \"power\" Splunk role could access and delete all relevant data in experiment history, including data associated with other users. The vulnerability is possible because Splunk AI Toolkit does not preserve the trusted experiment scope when it processes caller-controlled query values before accessing restricted history data. For more information see Experiment Assistants (https://help.splunk.com/en/splunk-cloud-platform/apply-machine-learning/use-ai-toolkit/5.6.4/experiment-assistants) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76397"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0808"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:26Z"
+  }
+}

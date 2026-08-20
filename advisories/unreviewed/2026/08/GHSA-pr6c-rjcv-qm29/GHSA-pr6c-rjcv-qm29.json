@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pr6c-rjcv-qm29",
+  "modified": "2026-08-20T00:34:58Z",
+  "published": "2026-08-20T00:34:58Z",
+  "aliases": [
+    "CVE-2026-76328"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.1, 10.2.6, 10.0.9, and 9.4.14, a user who holds the \"power\" Splunk role could store attacker-controlled Search Processing Language (SPL) in a dashboard. When another authenticated user exports the dashboard as a Portable Document Format (PDF) file, Splunk Enterprise runs the injected SPL using the permissions of that user. The injected SPL could access or modify data available to that user. The vulnerability is possible because Splunk Web does not sufficiently validate dashboard content before processing PDF exports. The vulnerability requires the attacker to phish the affected user by tricking them into initiating a request within their browser. The user who holds the \"power\" Splunk role should not be able to exploit the vulnerability at will. For more information see Generate PDFs of your reports and dashboards (https://help.splunk.com/en/splunk-enterprise/create-dashboards-and-reports/reporting-manual/9.4/report-management/generate-pdfs-of-your-reports-and-dashboards) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76328"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0801"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:17Z"
+  }
+}

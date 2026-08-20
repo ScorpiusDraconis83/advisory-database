@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fjjw-8v57-f2fq",
+  "modified": "2026-08-20T00:35:02Z",
+  "published": "2026-08-20T00:35:02Z",
+  "aliases": [
+    "CVE-2026-76361"
+  ],
+  "details": "In Splunk SOAR versions below 8.6.0, a user with the \"Administrator\" role could use the /rest/support/connectivity/.../check_connectivity endpoint to make Splunk SOAR initiate outbound network connections to arbitrary destinations and determine whether internal hosts and ports are reachable. The Server-Side Request Forgery (SSRF) is possible because the connectivity check REST API does not sufficiently validate the destination before Splunk SOAR connects to it. For more information see Manage roles and permissions in Splunk SOAR (On-premises) (https://help.splunk.com/en/splunk-soar/soar-on-premises/administer-soar-on-premises/8.5.0/manage-your-splunk-soar-on-premises-users-and-accounts/manage-roles-and-permissions-in-splunk-soar-on-premises) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76361"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0804"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:21Z"
+  }
+}

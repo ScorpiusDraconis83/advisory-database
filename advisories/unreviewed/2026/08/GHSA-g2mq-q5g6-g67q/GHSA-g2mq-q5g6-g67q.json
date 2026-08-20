@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g2mq-q5g6-g67q",
+  "modified": "2026-08-20T00:35:06Z",
+  "published": "2026-08-20T00:35:06Z",
+  "aliases": [
+    "CVE-2026-76391"
+  ],
+  "details": "In Splunk AI Toolkit versions below 6.0.0, a user who does not hold the \"admin\" or \"power\" Splunk roles could run searches with system-level privileges, access all relevant data, affect system integrity, and read or delete search jobs belonging to other users through Agent Run History. The improper privilege management is possible because the Agent Run History handler replaces the calling user session key with a system authentication token before it performs search operations. For more information see AI Toolkit Agent Launchpad (https://help.splunk.com/en/splunk-enterprise/apply-machine-learning/use-ai-toolkit/6.0.0/ai-toolkit-connections-containers-and-agents/ai-toolkit-agent-launchpad) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0808"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:25Z"
+  }
+}

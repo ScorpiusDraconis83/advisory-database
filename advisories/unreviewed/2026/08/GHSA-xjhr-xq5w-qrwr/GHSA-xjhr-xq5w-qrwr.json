@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xjhr-xq5w-qrwr",
+  "modified": "2026-08-20T00:35:01Z",
+  "published": "2026-08-20T00:35:01Z",
+  "aliases": [
+    "CVE-2026-76350"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.2, 10.2.6, 10.0.9, and 9.4.14, a user that holds a role with the schedule_search capability could configure Portable Document Format (PDF) attachments in the email alert action workflow. When the email alert action runs, it could execute arbitrary Search Processing Language (SPL) commands with system-level privileges, expose all relevant data, and affect system integrity and availability on the search head. The vulnerability is possible because the search scheduler passes a system-level authentication context rather than the action owner context to the email alert action when it renders PDF attachments. For more information see alert_actions.conf (https://help.splunk.com/en/splunk-enterprise/administer/admin-manual/10.4/configuration-file-reference/10.4.0-configuration-file-reference/alert_actions.conf) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76350"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0801"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:19Z"
+  }
+}

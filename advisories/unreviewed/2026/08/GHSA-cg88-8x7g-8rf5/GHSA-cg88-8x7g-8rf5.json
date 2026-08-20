@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cg88-8x7g-8rf5",
+  "modified": "2026-08-20T00:35:00Z",
+  "published": "2026-08-20T00:35:00Z",
+  "aliases": [
+    "CVE-2026-76336"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.2 and 10.2.6, a user who does not hold the \"admin\" or \"power\" Splunk roles could delete all Search Processing Language 2 (SPL2) modules across all apps and users on the instance through the SPL2 module management Representational State Transfer (REST) API. This could delete exported datasets and functions, affect system integrity, and cause partial service disruption. The vulnerability does not affect Splunk Enterprise versions below 10.2. The vulnerability is possible because the SPL2 module management REST API does not sufficiently authorize and validate module deletion requests. For more information see Manage SPL2 modules (https://help.splunk.com/en/splunk-enterprise/search/spl2-search-manual/multiple-searches-in-an-spl2-module/manage-spl2-modules) and Module permissions (https://help.splunk.com/en/splunk-enterprise/search/spl2-search-manual/modules-statements-and-views/module-permissions) in the Splunk documentation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76336"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0801"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:18Z"
+  }
+}

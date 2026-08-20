@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g3qr-fw24-fxhm",
+  "modified": "2026-08-20T00:34:58Z",
+  "published": "2026-08-20T00:34:58Z",
+  "aliases": [
+    "CVE-2026-76330"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.2, 10.2.6, 10.0.9, and 9.4.14, an unauthenticated user could trick an authenticated user into opening a crafted link to Monitoring Console. When the authenticated user opens the link, Splunk Enterprise runs attacker-controlled Search Processing Language (SPL) using the permissions of that user. The injected SPL could access data and perform actions available to that user. The vulnerability is possible because Monitoring Console does not sufficiently validate data used to build forwarder dashboard searches. The vulnerability requires the attacker to phish the user by tricking them into opening the crafted link. The unauthenticated user should not be able to exploit the vulnerability at will.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76330"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0801"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:17Z"
+  }
+}

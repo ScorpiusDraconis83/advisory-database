@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ccfh-cjv7-wqqx",
+  "modified": "2026-08-20T00:35:00Z",
+  "published": "2026-08-20T00:35:00Z",
+  "aliases": [
+    "CVE-2026-76348"
+  ],
+  "details": "In Splunk Enterprise versions below 10.4.2, 10.2.6, 10.0.9, and 9.4.14, a user who holds a Splunk role that contains the high-privilege list_search_head_clustering capability could send a read request to Search Head Cluster member control endpoints and change cluster state, which could allow for a denial of service. The vulnerability is possible because the Search Head Cluster member control endpoints do not require a state-changing Hypertext Transfer Protocol (HTTP) request type before they apply read-only authorization.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://advisory.splunk.com/advisories/SVD-2026-0801"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-19T22:17:19Z"
+  }
+}
