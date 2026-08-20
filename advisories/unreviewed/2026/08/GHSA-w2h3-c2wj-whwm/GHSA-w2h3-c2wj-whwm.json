@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-w2h3-c2wj-whwm",
-  "modified": "2026-08-19T06:31:17Z",
+  "modified": "2026-08-20T21:31:22Z",
   "published": "2026-08-19T06:31:17Z",
   "aliases": [
     "CVE-2026-49419"
   ],
   "details": "When the JAIL_AT_DESC flag is specified, kern_jail_set() and kern_jail_get() released the reference to the caller's current prison before looking up the jail descriptor.  If the descriptor lookup failed, error-handling paths released the same reference a second time.\n\nAn unprivileged local user can trigger a prison reference count underflow, which may cause the prison structure to be freed while still in use.  When this is done on the jail host, the bug will generally result in an immediate panic.  However, if the user is running in a jail, then it may be possible to exploit the bug to elevate privileges.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-911"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-19T05:17:04Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c9vm-fv4g-fr7v",
-  "modified": "2026-08-19T06:31:17Z",
+  "modified": "2026-08-20T21:31:22Z",
   "published": "2026-08-19T06:31:17Z",
   "aliases": [
     "CVE-2026-49415"
   ],
   "details": "During execve(2) of a SUID binary, the new virtual address space is installed before the process credentials are updated.  During this window, a process running as the same user can access the target process's memory via procfs or linprocfs, because the kernel's debugging permission check still saw the original credentials.\n\nAn unprivileged local user can exploit this race to modify the address space of a SUID binary before its credentials are elevated, potentially gaining full control of the affected system.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-367"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-19T05:17:03Z"

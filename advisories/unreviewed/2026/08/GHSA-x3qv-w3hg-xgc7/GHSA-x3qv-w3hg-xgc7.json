@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-x3qv-w3hg-xgc7",
-  "modified": "2026-08-19T06:31:17Z",
+  "modified": "2026-08-20T21:31:22Z",
   "published": "2026-08-19T06:31:17Z",
   "aliases": [
     "CVE-2026-49418"
   ],
   "details": "When msync(MS_INVALIDATE) is called on a mapping of an unmanaged device object, the physical pages in the mapping range are marked invalid but remain in the pager's page list.  A subsequent page fault will cause the fault handler to re-insert the page into the object's list.  This corrupts the list, and on object destruction the page is freed twice.\n\nAn unprivileged local user with access to a device that provides memory-mapped I/O can trigger a use-after-free in the kernel, though this is limited to a pool of objects (\"fictitious pages\") that are never recycled for a different purpose.  It may be possible to exploit this to escalate privileges.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-416"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-19T05:17:03Z"

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j5c4-cwjr-6vv5",
+  "modified": "2026-08-20T21:31:30Z",
+  "published": "2026-08-20T21:31:30Z",
+  "aliases": [
+    "CVE-2026-77584"
+  ],
+  "details": "Tor before 0.4.9.10 did not reject a CONFLUX_LINK cell that arrives on a circuit which already has attached streams. A malicious client could send a RELAY_COMMAND_BEGIN before the CONFLUX_LINK on the same circuit, attaching an exit stream that would later end up orphan leaving a dangling circuit back-pointer and a use-after-free (UAF) when the circuit is freed. This is TROVE-2026-025.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77584"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.torproject.org/tpo/core/tor/-/raw/tor-0.4.9.10/ChangeLog"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-821"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-20T21:17:10Z"
+  }
+}
