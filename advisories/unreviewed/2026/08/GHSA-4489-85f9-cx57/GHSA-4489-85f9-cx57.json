@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4489-85f9-cx57",
-  "modified": "2026-08-18T18:32:02Z",
+  "modified": "2026-08-20T18:30:35Z",
   "published": "2026-08-18T18:32:02Z",
   "aliases": [
     "CVE-2026-52610"
   ],
   "details": "An arbitrary file write/directory traversal vulnerability in reportico-web <= 8.1.0 allows remote attackers to create or overwrite files anywhere on the filesystem subject to the permissions of the web user by specifying a filename in the \"saveTemplate\" parameter in conjuction with \"execute_mode=PREPARE\" parameter in the \"run.php\" endpoint.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-18T18:18:20Z"

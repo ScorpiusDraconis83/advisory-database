@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8v8c-hvqj-mqw8",
+  "modified": "2026-08-20T18:31:00Z",
+  "published": "2026-08-20T18:31:00Z",
+  "aliases": [
+    "CVE-2026-72847"
+  ],
+  "details": "broot renders each file and directory name in its interactive tree view exactly as read from the filesystem. Names are converted with a plain to_string_lossy() call in src/tree_build/builder.rs and in TreeLine::unprune in src/tree/tree_line.rs, and no control-character filtering exists anywhere in the code, even though the doc comment on the TreeLine name field states that some characters may have been stripped. Any local user who can create a file can therefore place an escape sequence in its name and have it written unmodified to the terminal of anyone who browses that directory, between broot's own styling codes. A reported proof of concept used an OSC 52 clipboard-write sequence and captured the raw bytes broot wrote to its pty, confirming the sequence reaches the terminal unstripped. What an injected OSC or CSI sequence can then do depends on the terminal emulator in use. Browsing a directory is broot's primary function and carries no expectation that the content is trusted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72847"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Canop/broot/issues/1188"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Canop/broot/commit/0717a94b3c0efa19c7bbcfe0fb49a2374752a168"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Canop/broot/commit/4ba40f7d47af78457c7656f15eba71d63d97fce5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Canop/broot"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Canop/broot/blob/v1.58.0/src/tree/tree_line.rs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Canop/broot/blob/v1.58.0/src/tree_build/builder.rs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/broot-terminal-escape-sequence-injection-via-unsanitized-file-and-directory-names-in-the-tree-view"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-150"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-20T18:16:45Z"
+  }
+}
