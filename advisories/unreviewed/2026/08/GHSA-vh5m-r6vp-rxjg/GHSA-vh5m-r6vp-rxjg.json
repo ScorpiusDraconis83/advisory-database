@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vh5m-r6vp-rxjg",
+  "modified": "2026-08-21T18:34:56Z",
+  "published": "2026-08-21T18:34:56Z",
+  "aliases": [
+    "CVE-2026-22681"
+  ],
+  "details": "OpenViking before 0.3.4 contains a server-side request forgery vulnerability that allows authenticated low-privilege attackers to access internal network services by submitting arbitrary URLs to the resources API endpoint. Attackers can POST a crafted URL to /api/v1/resources, causing the server to issue outbound HEAD and GET requests with redirects enabled to loopback, RFC 1918, link-local, or cloud metadata addresses, then read back responses through normal content APIs to enumerate and interact with internal services.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22681"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/volcengine/OpenViking/pull/1133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/volcengine/OpenViking/pull/1133https://github.com/volcengine/OpenViking/pull/1133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/volcengine/OpenViking/commit/41e345896d247e43ab78bbcb38b4a5b1b38ef62c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/volcengine/OpenViking/releases/tag/v0.3.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openviking-ssrf-via-api-v1-resources"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-21T16:17:16Z"
+  }
+}
