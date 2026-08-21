@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5g4x-qgj2-956v",
+  "modified": "2026-08-21T03:31:22Z",
+  "published": "2026-08-21T03:31:22Z",
+  "aliases": [
+    "CVE-2026-77649"
+  ],
+  "details": "The internment crate 0.8.7 for Rust can trigger execution of malicious code when compiling a project that uses the crate, because it has a rogue dependency that registers with a command-and-control server to offer arbitrary code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77649"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustsec/advisory-db/issues/3161"
+    },
+    {
+      "type": "WEB",
+      "url": "https://blog.rust-lang.org/2026/08/20/supply-chain-attack-on-arrayref"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rustsec.org/advisories/RUSTSEC-2026-0266.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://safedep.io/arrayref-proc-macro1-rust-build-time-malware"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.stepsecurity.io/blog/arrayref-rust-crate-supply-chain-attack"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-506"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-21T01:17:01Z"
+  }
+}
