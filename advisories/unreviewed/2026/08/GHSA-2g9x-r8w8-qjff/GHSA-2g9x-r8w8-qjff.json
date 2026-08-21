@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2g9x-r8w8-qjff",
+  "modified": "2026-08-21T12:30:33Z",
+  "published": "2026-08-21T12:30:33Z",
+  "aliases": [
+    "CVE-2026-59279"
+  ],
+  "details": "The MCP Streamable HTTP server transport (WebFlux and WebMvc variants) does not place any limit on the number of sessions it retains, and by default does not require clients to be authenticated. As a result, a remote attacker can cause the server to accumulate an unbounded number of sessions over time, gradually exhausting available memory and ultimately causing a Denial of Service that affects all legitimate clients.\nAffected versions:\nSpring AI: 2.0.0",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://spring.io/security/cve-2026-59279"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-21T12:16:30Z"
+  }
+}

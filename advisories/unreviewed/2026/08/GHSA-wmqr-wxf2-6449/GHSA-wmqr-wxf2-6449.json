@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wmqr-wxf2-6449",
+  "modified": "2026-08-21T12:30:34Z",
+  "published": "2026-08-21T12:30:34Z",
+  "aliases": [
+    "CVE-2026-59318"
+  ],
+  "details": "In Spring AI's tool calling support, the per-request tool list is advertised to the model as a boundary but is not fully enforced when a tool call is dispatched. Under certain conditions, a tool that was not made available to the current request could be invoked, potentially leading to privilege escalation.\nAffected versions:\nSpring AI: 2.0.0\nSpring AI: 1.1.0 through 1.1.8\nSpring AI: 1.0.0 through 1.0.9",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59318"
+    },
+    {
+      "type": "WEB",
+      "url": "https://spring.io/security/cve-2026-59318"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-21T12:16:30Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrm7-hxjw-vff5",
+  "modified": "2026-08-21T12:30:33Z",
+  "published": "2026-08-21T12:30:33Z",
+  "aliases": [
+    "CVE-2026-77769"
+  ],
+  "details": "The report.list procedure in packages/trpc/src/routers/report.ts accepted a projectId and a dashboardId and returned getReportsByDashboardId(dashboardId). The enforceAccess middleware in packages/trpc/src/trpc.ts verified membership for the supplied projectId, but nothing verified that the supplied dashboardId belonged to that project, and getReportsByDashboardId in packages/db/src/services/reports.service.ts selects reports by dashboardId alone with no project scoping. An authenticated user could therefore pair a projectId from their own organization, which satisfies the middleware, with a dashboardId belonging to another organization and receive every report in that dashboard. A correctly scoped helper, listReportsCore, already existed in the same service file and resolves the dashboard through getDashboardById(dashboardId, projectId) before returning reports, but the router did not use it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Openpanel-dev/openpanel/security/advisories/GHSA-3q95-vc6f-vc9v"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77769"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Openpanel-dev/openpanel/commit/0a51b6805eed0b3da8376175acd5fa3d26819cb6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Openpanel-dev/openpanel"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Openpanel-dev/openpanel/blob/e8a0602cda5a4d4b463f11d298a1b078c446bf33/packages/trpc/src/routers/report.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openpanel-report-list-queries-reports-by-an-unverified-dashboardid-crossing-organization-boundaries"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-21T11:17:07Z"
+  }
+}

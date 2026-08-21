@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5r22-jfv5-3cpg",
+  "modified": "2026-08-21T12:30:33Z",
+  "published": "2026-08-21T12:30:33Z",
+  "aliases": [
+    "CVE-2026-77767"
+  ],
+  "details": "Reconmap's API applies a fallback authorization policy in apps/api/app/Program.cs that requires an authenticated user holding the administrator role, so controllers without their own attribute reject anonymous callers. The report preview action in apps/api/app/Controllers/ReportsController.cs carries [AllowAnonymous] and therefore opts out of that policy. PreviewReport loads the Project row named by the id path segment, loads the linked Organisation through the project's ClientId, and renders both into default-report-template.html, which prints the project name and description together with the client organisation's name, address and URL. No authentication, project membership or role check is performed. Because the id is the auto-increment primary key of the project table, an unauthenticated remote caller can walk sequential ids to retrieve the engagement details and client organisation of every project on the instance, and the 404 returned for a missing id reveals which project ids exist. Reconmap stores penetration-testing engagements, so the disclosed descriptions and client records are sensitive by nature.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/reconmap/reconmap/security/advisories/GHSA-mhrh-jfmr-8mmw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77767"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/reconmap/reconmap/commit/2b2eb0cf0aa95726b4edd0045f86d2dcdb8de34d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/reconmap/reconmap"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/reconmap/reconmap/blob/56ca3748343a50c98185d53827172d8f13a6ad0f/apps/api/app/Controllers/ReportsController.cs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/reconmap/reconmap/blob/56ca3748343a50c98185d53827172d8f13a6ad0f/apps/api/app/Program.cs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/reconmap-report-preview-endpoint-is-marked-allowanonymous-exposing-every-project-and-client-organisation-without-authentication"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-21T11:17:07Z"
+  }
+}

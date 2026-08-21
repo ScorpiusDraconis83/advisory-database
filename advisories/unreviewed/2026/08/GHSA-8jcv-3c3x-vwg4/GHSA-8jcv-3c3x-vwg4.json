@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8jcv-3c3x-vwg4",
+  "modified": "2026-08-21T12:30:32Z",
+  "published": "2026-08-21T12:30:32Z",
+  "aliases": [
+    "CVE-2026-59296"
+  ],
+  "details": "Using untrusted, non-normalized input as-is for metrics data (such as metric names, tag keys, or tag values) is a dangerous antipattern that general-purpose instrumentation should never perform. When such unsafe instrumentation is used, the application becomes vulnerable to injection and spoofing attacks because micrometer-registry-statsd and micrometer-core do not sanitize newline characters (\\n, \\r) by default prior to this fix.\n\n  *  For the StatsD registry in micrometer-registry-statsd (when using the Datadog or Etsy flavor), because the StatsD protocol is newline-delimited, this allows for line-protocol injection (cross-metric spoofing).\n  *  For LoggingMeterRegistry in micrometer-core, because metric output is printed line-by-line to log files, this allows for both metric spoofing (if downstream log-metrics scrapers or parsers ingest the log lines as separate metrics) and general log spoofing.\n\n\n\n\nSpecifically, an application is vulnerable when all the following are true:\n\n  *  The application uses a vulnerable version of io.micrometer:micrometer-registry-statsd or io.micrometer:micrometer-core.\n  *  The application uses the Datadog or Etsy flavor of the StatsD registry, or uses LoggingMeterRegistry.\n  *  The application instruments meters using user-controlled, unvalidated input for metric names, tag keys, or tag values.\n\n\n\n\nWhen vulnerable, an attacker can break out of the current metric or log line by injecting line terminators. This allows them to spoof arbitrary metrics (e.g., system load, standard JVM metrics, or other business metrics) across the metrics registry namespace (either directly via StatsD protocol or via downstream log-metric scrapers/parsers), as well as inject arbitrary log entries to spoof general log records.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://spring.io/security/cve-2026-59296"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-21T11:17:05Z"
+  }
+}
