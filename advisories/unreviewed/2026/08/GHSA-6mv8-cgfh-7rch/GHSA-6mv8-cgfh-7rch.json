@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6mv8-cgfh-7rch",
+  "modified": "2026-08-21T06:31:35Z",
+  "published": "2026-08-21T06:31:35Z",
+  "aliases": [
+    "CVE-2026-18409"
+  ],
+  "details": "The WPForms Pro plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Single Line Text and Paragraph Text Field Values in all versions up to, and including, 2.0.0.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The exploit relies on the plugin's own wp_kses_allowed_html filter widening the 'post' allowlist to permit iframe elements with a data-src attribute, which is not on WordPress's URI-attribute sanitization list, allowing a javascript: URI stored in data-src to survive kses processing and subsequently be promoted to a live src attribute by the bundled admin script view-entry.min.js.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18409"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpforms.com/docs/how-to-view-recent-changes-to-the-wpforms-plugin-changelog/#Changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/f26cbc41-8ed9-4dc6-a8bc-9986ecab5e6e?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-21T04:18:01Z"
+  }
+}

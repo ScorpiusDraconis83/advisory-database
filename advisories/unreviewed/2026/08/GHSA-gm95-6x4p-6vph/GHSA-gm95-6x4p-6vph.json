@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gm95-6x4p-6vph",
+  "modified": "2026-08-21T06:31:36Z",
+  "published": "2026-08-21T06:31:36Z",
+  "aliases": [
+    "CVE-2026-45201"
+  ],
+  "details": "Software installed and run as a non-privileged user may conduct improper GPU system calls to pass invalid log2 page size when allocating physical pages leading to OOB read and/or write due to improper validation of the said value.\n\n\n\nSuch crafted log2 page size could lead to 4K pages being treated as higher order pages and allowing read and/or write access to the memory beyond 4K threshold.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45201"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.imaginationtech.com/gpu-driver-vulnerabilities"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1284"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-21T04:18:02Z"
+  }
+}
