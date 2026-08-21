@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5v96-p23j-5mwq",
+  "modified": "2026-08-21T15:32:12Z",
+  "published": "2026-08-21T15:32:12Z",
+  "aliases": [
+    "CVE-2026-77780"
+  ],
+  "details": "Authorization Bypass Through User-Controlled Key in the transaction save endpoint in Roskus\nProspero Flow CRM 4.9.1 through 5.14.0 allows a user with transaction and accounting\ncreation permissions to disclose another company's bank account name, bank name and card\nlast four digits via a bank_account_id or bank_card_id belonging to that company in POST\n/transaction/save, which is persisted and rendered without any company ownership check.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77780"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/pull/261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/commit/5fd1fe862bbdcbacf5d7e05c1c123981d8809674"
+    },
+    {
+      "type": "WEB",
+      "url": "https://secur0.com/en/cna/cve-list/cve-2026-77780-idor-unvalidated-bank-foreign-keys-prospero-transaction-save"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-21T13:18:20Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5v22-2f7p-c962",
-  "modified": "2026-08-21T09:32:02Z",
+  "modified": "2026-08-21T15:32:11Z",
   "published": "2026-08-21T09:32:02Z",
   "aliases": [
     "CVE-2025-15671"
   ],
   "details": "The Welcart e-Commerce WordPress plugin before 2.12.1 does not regenerate the session identifier on authentication and sets the session identifier from a user-supplied request parameter, allowing an unauthenticated attacker to fixate a shop member's session and take over their customer account after the victim logs in through an attacker-crafted request.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-21T07:16:22Z"
