@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jc7r-r7p4-f656",
-  "modified": "2026-08-21T09:32:05Z",
+  "modified": "2026-08-21T21:31:48Z",
   "published": "2026-08-21T09:32:05Z",
   "aliases": [
     "CVE-2026-63046"
   ],
   "details": "Improper Neutralization of Argument Delimiters in a Command ('Argument Injection') vulnerability in Apache InLong. Agent Installer's ModuleManager executes arbitrary shell\ncommands via ExcuteLinux.exeCmd() with no filtering or whitelist\nvalidation. \n\nThis issue affects Apache InLong: from 2.0.0 before 2.4.0.\n\n\n\nUsers are advised to upgrade to Apache InLong's  2.4.0 or cherry-pick [1]/[2] to solve it.\n\n[1]  https://github.com/apache/inlong/pull/12151 .\n\n[2]  https://github.com/apache/inlong/pull/12155 .",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-88"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-21T09:16:40Z"
