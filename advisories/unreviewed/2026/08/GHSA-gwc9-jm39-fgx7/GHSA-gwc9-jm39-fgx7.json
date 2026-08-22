@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gwc9-jm39-fgx7",
+  "modified": "2026-08-22T15:31:03Z",
+  "published": "2026-08-22T15:31:03Z",
+  "aliases": [
+    "CVE-2026-5093"
+  ],
+  "details": "The GreenShift – Animation and Page Builder Blocks plugin for WordPress is vulnerable to unauthorized modification of data in versions up to, and including, 12.8.9. This is due to a missing capability check on the 'gspb_update_global_wp_settings' function that only verifies the 'edit_posts' capability instead of requiring administrative privileges. This makes it possible for authenticated attackers, with contributor-level access and above, to modify global WordPress theme color settings site-wide, leading to site defacement.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5093"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/greenshift-animation-and-page-builder-blocks/tags/10.8/init.php#L2686"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/greenshift-animation-and-page-builder-blocks/tags/10.8/init.php#L3092"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/greenshift-animation-and-page-builder-blocks/tags/10.8/init.php#L3143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/greenshift-animation-and-page-builder-blocks/trunk/init.php#L2686"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/greenshift-animation-and-page-builder-blocks/trunk/init.php#L3092"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/greenshift-animation-and-page-builder-blocks/trunk/init.php#L3143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3494855"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/69911634-1281-487c-87f1-37f6e4b016c9?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T14:16:33Z"
+  }
+}

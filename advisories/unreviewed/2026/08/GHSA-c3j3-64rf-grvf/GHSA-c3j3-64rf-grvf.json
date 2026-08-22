@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c3j3-64rf-grvf",
+  "modified": "2026-08-22T15:31:02Z",
+  "published": "2026-08-22T15:31:02Z",
+  "aliases": [
+    "CVE-2026-62243"
+  ],
+  "details": "Netty (io.netty:netty-handler) versions from 4.2.0.Final through 4.2.16.Final and versions through 4.1.136.Final disable TLS hostname verification on the SslProvider.OPENSSL client path when a plain (non-extended) X509TrustManager is used and Unsafe-based trust-manager wrapping is unavailable (Java 25+). In this configuration the OpenSSL client does not perform hostname verification, allowing a man-in-the-middle attacker to present a certificate issued for a different hostname that is accepted without validation. Fixed in 4.2.17.Final and 4.1.137.Final.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/security/advisories/GHSA-p85m-gvr3-788c"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62243"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netty-through-tls-hostname-verification-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-297"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T13:16:39Z"
+  }
+}

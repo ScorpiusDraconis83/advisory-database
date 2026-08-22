@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4vhq-hx4h-m998",
+  "modified": "2026-08-22T15:31:01Z",
+  "published": "2026-08-22T15:31:01Z",
+  "aliases": [
+    "CVE-2026-4244"
+  ],
+  "details": "The Post Duplicator plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the `duplicate_post()` function in all versions up to, and including, 3.0.11. This is due to the function not verifying that the user has `edit_others_posts` capability before accepting a `selectedAuthorId` parameter via the `duplicate-post` REST endpoint. This makes it possible for authenticated attackers, with Contributor-level access and above, to create duplicated posts attributed to any user, including administrators.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/post-duplicator/trunk/includes/api.php#L520"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/post-duplicator/trunk/includes/api.php#L550"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/post-duplicator/trunk/includes/api.php#L728"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3485579"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/64553742-ff2b-40e9-92c3-3458a9f988a2?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T13:16:37Z"
+  }
+}

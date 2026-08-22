@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j6vr-r53f-g3jf",
+  "modified": "2026-08-22T15:31:04Z",
+  "published": "2026-08-22T15:31:04Z",
+  "aliases": [
+    "CVE-2026-74584"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/bnxt_re: zero shared page before exposing to userspace\n\nbnxt_re_alloc_ucontext() allocates uctx->shpg via\n__get_free_page(GFP_KERNEL). The buddy allocator does not zero pages\nwithout __GFP_ZERO, so the page contains stale kernel data from\nwhatever object most recently freed it.\n\nThe page is then mapped into userspace via vm_insert_page() under\nBNXT_RE_MMAP_SH_PAGE in bnxt_re_mmap(). The driver only ever writes\n4 bytes (a u32 AVID) at offset BNXT_RE_AVID_OFFT (0x10) inside\nbnxt_re_create_ah(); the remaining 4092 bytes of the page are exposed\nto userspace unsanitised, leaking kernel memory contents.\n\nAny user with access to /dev/infiniband/uverbsX on a host with a\nbnxt_re device (typically rdma group membership) can read this data\nvia a single mmap() at pgoff 0 after IB_USER_VERBS_CMD_GET_CONTEXT.\n\nOther shared pages in the same file already use get_zeroed_page()\ncorrectly:\n\n  drivers/infiniband/hw/bnxt_re/ib_verbs.c\n      srq->uctx_srq_page = (void *)get_zeroed_page(GFP_KERNEL);\n      cq->uctx_cq_page  = (void *)get_zeroed_page(GFP_KERNEL);\n\nuctx->shpg is the only outlier. Bring it in line with the existing\nconvention by switching to get_zeroed_page().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74584"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53c97e9882f4e747b4ac31b211317c2eba541af9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9128c2411b83a64c0a69d2ff059c741bde25a9cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9896bdfd21d918e9f26a52bc6109cc77970ee0b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3ed2daab02b2a706e882ad31b5c3c4f33cb5bb1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c19b360fa10c521c0b681875cdaa51545d45a491"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c75f8ce4baa29ae57fe615c6a2c5101f59b8b89a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2b143df29003d2704b51f62e9297006953dbacb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6b079629becfa977f9c51fe53ad2e6dcc55ef44"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T15:16:21Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vgv2-whp7-2895",
+  "modified": "2026-08-22T15:31:04Z",
+  "published": "2026-08-22T15:31:04Z",
+  "aliases": [
+    "CVE-2026-68767"
+  ],
+  "details": "hashcat's fgetl() function in src/filehandling.c writes a null terminator one byte past the caller's buffer when an input line is exactly the buffer length. Attackers can trigger this out-of-bounds heap write by providing a hash file, potfile, or wordlist containing a line of exactly HCBUFSIZ_LARGE bytes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68767"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hashcat/hashcat/issues/4739"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hashcat/hashcat/commit/93b55d37d3b2340013d4036f10181ddc67d44249"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hashcat/hashcat"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hashcat/hashcat/blob/v7.1.2/src/filehandling.c#L1032-L1060"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hashcat-through-off-by-one-out-of-bounds-heap-write-in-fgetl"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-193"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T15:16:20Z"
+  }
+}
