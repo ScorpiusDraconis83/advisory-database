@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qfq9-8c5m-346x",
+  "modified": "2026-08-22T18:30:26Z",
+  "published": "2026-08-22T18:30:26Z",
+  "aliases": [
+    "CVE-2026-74606"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\neventfs: Fix use-after-free in eventfs_remove_rec()\n\neventfs_remove_rec() recursively removes the child at the current loop\nposition. After the recursive call returns, list_for_each_entry() advances\nby reading list.next from the removed child.\n\nIf free_ei() drops the final reference, release_ei() reuses the list/rcu\nunion to queue an SRCU callback. The child may be freed before that read.\nThe eventfs_mutex serializes list updates, but it does not keep the removed\nchild alive or prevent the SRCU callback from running.\n\nUse list_for_each_entry_safe() to save the next sibling before recursively\nremoving the current child.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74606"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5635211b44969f4816e29ec4d5f8665fb39535d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74bb1eaf72d185a78c879eb2678ea500f82f46a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b77581b25e213e83b79ce11eb30024e55ceeb3e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f161d7861a0bfdf10af6b738b3b57636204661fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd73b691702170d37d66f4b0278530cea8ed419a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:33Z"
+  }
+}

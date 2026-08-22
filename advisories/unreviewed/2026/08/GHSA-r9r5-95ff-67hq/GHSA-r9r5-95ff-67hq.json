@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r9r5-95ff-67hq",
+  "modified": "2026-08-22T18:30:29Z",
+  "published": "2026-08-22T18:30:29Z",
+  "aliases": [
+    "CVE-2026-74692"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: fix TOCTOU race between smc_listen_out() and listener close\n\nsmc_listen_out() reads lsmc->sk.sk_state without the listener lock,\nthen acquires lock_sock_nested() only after the check passes. This\nopens a window where smc_close_active() can transition the listener\nto SMC_CLOSED, call smc_close_cleanup_listen() to drain the accept\nqueue, and release the lock, all between the lockless read and the\ndelayed lock acquisition:\n\n  smc_listen_work (smc_hs_wq)          smc_close_active()\n  -------------------------------      -------------------------\n  release_sock(child)\n  if (sk_state == SMC_LISTEN) TRUE\n                                        lock_sock(listener)\n                                        sk_state = SMC_CLOSED\n                                        smc_close_cleanup_listen()\n                                        release_sock(listener)\n                                        flush_work(tcp_listen_work)\n  lock_sock_nested(listener)\n  smc_accept_enqueue(listener, child) /* child enqueued on dead listener */\n\nsmc_close_active() flushes only tcp_listen_work. Work items already\ndispatched onto smc_hs_wq for the CLC handshake continue running\nunguarded. smc_accept_enqueue() takes a sock_hold() on the child that\nis never released, so the child smc_sock, its clcsock, and the\nreference all leak. A remote peer that opens TCP connections while the\nserver calls close() can exhaust kernel memory.\n\nMove lock_sock_nested() to before the sk_state check so that the test\nand the enqueue are atomic under the listener lock.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/00f89433777236ced4771211047fb5d4cd581cea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01865e1ddb126b25ac9eba5cdd7ec49e11183a64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/185a4caeecabc150106deda1da170b09f2ad803f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53c7938d8bcfde3296ec1a347ba2a9393c1fdcfa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78e5ebcd1c10ed7c8bda0a99e0abd5b62da86d67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/feb71634bb1abab3e8fb5cde874b27001cc1282e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff5bcd804b5bc5c64736b7d318c20e12ea9506b8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:43Z"
+  }
+}

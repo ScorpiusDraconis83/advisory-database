@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gwfv-775p-2rj5",
+  "modified": "2026-08-22T18:30:29Z",
+  "published": "2026-08-22T18:30:29Z",
+  "aliases": [
+    "CVE-2026-74689"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/atm: fix slab-out-of-bounds read in vcc_setsockopt()\n\nvcc_setsockopt() contained an ineffective optlen check:\n  if (__SO_LEVEL_MATCH(optname, level) && optlen != __SO_SIZE(optname))\n      return -EINVAL;\n\nIf __SO_LEVEL_MATCH(optname, level) evaluated to false (e.g. if the caller\npassed a mismatched level), the length check optlen != __SO_SIZE(optname)\nwas short-circuited and bypassed. Execution then fell through to switch(optname),\ncalling copy_from_sockptr() assuming optval contained sufficient space.\n\nFurthermore, even if level matched, a cgroup BPF setsockopt filter could shrink\noptlen after entry. Because copy_from_sockptr() on kernel pointers uses memcpy(),\nthis leads to a KASAN slab-out-of-bounds read when optlen is smaller than the\nexpected structure size.\n\nFix this by using copy_safe_from_sockptr(), which unconditionally validates\nthat optlen is at least the expected size before copying. Also change the local\n'value' variable type from 'unsigned long' to 'int' so that SO_SETCLP matches\nits sizeof(int) ABI encoding on 64-bit systems.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74689"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c5988c7349c0b64a7e0441bfc6e1dca54f7116a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/35f258fee9ed358c6d0f57f91c30bf029c3724af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6eb6af88710977eb529b558a07294874d8c40c4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f77c1ab382188f5b51982fab6d913443b6dc59f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3bcd5d65ac03c15787b2a5b36c718e26a689336"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0c80dbb970439bd2eeb0e5effff8c16a5f4e1e3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:43Z"
+  }
+}

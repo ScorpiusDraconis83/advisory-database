@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j5v6-9qh5-x594",
+  "modified": "2026-08-22T18:30:28Z",
+  "published": "2026-08-22T18:30:28Z",
+  "aliases": [
+    "CVE-2026-74659"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bridge: mrp: fix uninitialised bytes on the wire\n\nbr_mrp_alloc_test_skb() builds MRP test frames on an skb from\ndev_alloc_skb(), which does not clear the linear data area.  On the MRA\nring-role branch the sub-option TLV header is appended with\n\n\tsub_tlv = skb_put(skb, sizeof(*sub_tlv));\n\tsub_tlv->type = BR_MRP_SUB_TLV_HEADER_TEST_AUTO_MGR;\n\nso sub_tlv->length is never written, and the two trailing alignment bytes\nare appended with a bare skb_put() that does not clear them either.  The\nneighbouring oui and sub_opt regions are explicitly zeroed, so three\nuninitialised bytes are left in every MRA MRP_Test frame that goes out.\n\nPut the sub-option TLV header and the alignment padding in a single\nskb_put_zero(), which clears both.  The AUTO_MGR sub-TLV carries no\npayload, so the zeroed length field is already the value it should have.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74659"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/014c062d23c63ec77ef2cf17a0d9363c7441cc94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06d58b8d2f053ced82e01efaeb6e7c82891eed58"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5912cf1822fbe53ae275c147868740eb384a5d3e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63488dba65ef91373ef616575b32eb0eb21459f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ebc23ff03668042e0b0e4034bb1518d36198d9e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a5e385eeb2d6dbbbdebfa050e67c34734ae12693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e08665218040f8e312abe40f74543186f3c2c941"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:39Z"
+  }
+}

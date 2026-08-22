@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qcch-2r2r-xcw2",
+  "modified": "2026-08-22T18:30:30Z",
+  "published": "2026-08-22T18:30:30Z",
+  "aliases": [
+    "CVE-2026-74724"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipvs: avoid out-of-bounds write in ip_vs_nat_icmp\n\nSashiko warns that local attacker can modify the packet\nwhile it is processed by IPVS. Some places read the\nIP ihl field multiple times which can cause out-of-bounds\naccess. One such place is ip_vs_nat_icmp where we\ncan write after the validated area.\n\nFix it by providing ciph argument just like it is done for\nIPv6 and use ciph->len as offset to the embedded transport\nheader.\n\nModify some IPv4 header checks by reading the ihl field\nonly once.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74724"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/243d0187ec4c3837b9b0004f18d1068e46115760"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b8f79af0e98f27b932b0b416e9c52b692d31ff9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c779b258c9c3c3567af68d4f45c2f751f35bd0e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/646922a0379496154e8c8faca4f8e2fd9100cacc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a69a4b3fff5814d079beff9a1e9d369994b2ed47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be65fa324640c7a95e30b146159a2be5cc73f22e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:47Z"
+  }
+}

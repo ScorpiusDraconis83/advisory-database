@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f8mj-87c7-35x8",
+  "modified": "2026-08-22T18:30:26Z",
+  "published": "2026-08-22T18:30:26Z",
+  "aliases": [
+    "CVE-2026-74602"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nring-buffer: Initialise reader page order in rb_allocate_cpu_buffer()\n\nIn rb_allocate_cpu_buffer(), bpage->order was omitted, leaving it as 0.\nThis is an issue for a ring-buffer with subbufs bigger than PAGE_SIZE if\nwhen freed: free_buffer_page() relies on this value. Align the value\nwith the actual allocation size (buffer::subbuf_order).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74602"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e37f2bf111429fbfa4d985b12df3ba496ca70aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b3e0a6ee5bb3ac000f135beef26b2b7ed1a771a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d014e44b68ddd43f71288d2a4dbb1a259869149"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:32Z"
+  }
+}

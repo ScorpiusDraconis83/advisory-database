@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6hg3-qqfj-f5ww",
+  "modified": "2026-08-22T18:30:30Z",
+  "published": "2026-08-22T18:30:30Z",
+  "aliases": [
+    "CVE-2026-74720"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Preserve pointer state for commuted arithmetic\n\nWhen scalar += pointer is handled in adjust_ptr_min_max_vals(), the\ndestination register inherits the pointer state from the source pointer.\nCopying only selected fields is fragile because pointer provenance is\ntracked by several bpf_reg_state fields.\n\nUse the caller's temporary offset register to preserve the scalar operand\nwhile replacing the destination with the full pointer state. This preserves\nthe frame number for PTR_TO_STACK registers and keeps parent identity\nfields consistent.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74720"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/29c239f8dbec5ab33a61796724d189bddee6cd4b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8109c25e0c41f5f19a1c2380bb49c991a877494e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86b203aadc2930e0a4f9c6277b5b80ff3664c472"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8cb23101a3fcc7432b451ea3d0f14a90711f4acf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a4c6f804b44c5c790269b25e0e61cf4e9f117c86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1959028190a7649b926f5867a58de5fe221b23c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/db6382ed3361bdd8129572a3423956cba1dae829"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eaffa1495e4fe6330aeff9f323ea3d48b01f118a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:46Z"
+  }
+}

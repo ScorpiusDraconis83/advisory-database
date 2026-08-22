@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8jrf-fhpg-2ggp",
+  "modified": "2026-08-22T18:30:27Z",
+  "published": "2026-08-22T18:30:27Z",
+  "aliases": [
+    "CVE-2026-74629"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/dibs: Correct freeing of dmb_clientid_arr\n\nA dibs device interrupt handler can be active after dibs_dev_del() and\nmay still access dmb_clientid_arr. (UAF)\n\nIn case of a failure in dibs_dev_add() being called by dibs_lo_dev_probe()\ndmb_clientid_arr is freed twice (double free).\n\nFree dmb_clientid_arr in dibs_dev_release() after last reference is gone.\nNote that allocating in dibs_dev_add() instead of dibs_dev_alloc() is ok\nfor now, because no dmbs can be registered before dibs_dev_add().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74629"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a1df20a8d2cc89e3a442b6e0b43b1cacde8d403"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e6869be49064915edb6c8776b27c376cfdb0df5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ece6426b61241e9bfb41aa131f235168f55229b1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:35Z"
+  }
+}

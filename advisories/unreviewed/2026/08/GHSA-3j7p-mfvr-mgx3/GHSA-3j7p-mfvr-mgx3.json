@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3j7p-mfvr-mgx3",
+  "modified": "2026-08-22T18:30:28Z",
+  "published": "2026-08-22T18:30:28Z",
+  "aliases": [
+    "CVE-2026-74649"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8723bs: fix missing shared-key auth challenge length check\n\nThe WEP shared-key authentication handler uses the challenge-text\nelement's attacker-controlled length without checking it against the\nfixed 128-byte chg_txt buffer.\n\nIn OnAuthClient() the length from rtw_get_ie() - up to 255 - is used\nto perform memcpy() into the 128-byte pmlmeinfo->chg_txt, so a\nmalicious AP sending a malformed WLAN_EID_CHALLENGE element can\noverflow/underfill chg_txt by up to 127 bytes. It is reachable over the\nair, before association, during shared-key authentication. In the case\nof an overflow, the driver can write out of bounds. In the case of an\nunderfill, the driver can echo stale buffer memory.\n\nThe challenge text is defined to be exactly 128 octets, which is\nalready provided as the WLAN_AUTH_CHALLENGE_LEN define; require the\nelement to be exactly that length before use.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74649"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c56ef658ac8c6bca36bc5574715e8f717207c6c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39ae1033071001af9bb4573ebdbb43bbbe88f749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ba402fd47009d20e51dbfc934abb562098ea35b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d018e7d7d908bdfcb5ecfa922b1d5cb9ddb3722"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6235b5156b48ed5d1ce3410d8f0b2fd67d30d944"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87c2f073d2aaea041d531b8e579c47570b54b3b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a28a4b0592e4a37ea471bc0d308513a93133ce7e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:38Z"
+  }
+}

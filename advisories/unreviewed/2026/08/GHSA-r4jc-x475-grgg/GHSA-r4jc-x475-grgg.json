@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r4jc-x475-grgg",
+  "modified": "2026-08-22T18:30:27Z",
+  "published": "2026-08-22T18:30:27Z",
+  "aliases": [
+    "CVE-2026-74642"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: usb: Fix UAF at delayed release of MIDI2 EPs\n\nThe recent fix for UAF in ump_to_endpoint() caused another UAF because\nit tries to dereference the UMP endpoint object, but this might be\nexecuted at a delayed context where the endpoint has been already\nreleased.\n\nAdd private_free to clear the associated data for avoiding the further\ndereference for delayed releases.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74642"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/422d8a02de5ce6a29d616d55e5ead5dec69ac1d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d217d723c5e43881b952cdb978477f7f2dc0b6d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d431941825d357be7d9ab0cb7505e3a1963bd89e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8a80cfb68613fb7e6452b66447dbc63f435d140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9d492a39ebeb1a56f13ec6dd165a18a48dec812"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:37Z"
+  }
+}

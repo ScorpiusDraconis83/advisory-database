@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9gv9-cg8w-rc25",
+  "modified": "2026-08-22T18:30:28Z",
+  "published": "2026-08-22T18:30:28Z",
+  "aliases": [
+    "CVE-2026-74657"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: Fix fib_nlmsg_size() for RTA_VIA nexthops\n\nfib_nlmsg_size() still estimates nexthop space as if every gateway is\nencoded as an IPv4 RTA_GATEWAY attribute. IPv4 routes can also carry an\nIPv6 gateway, which fib_nexthop_info() dumps as RTA_VIA.\n\nAs a result, route notifications can allocate an skb that is too small.\nfib_dump_info() then fails with -EMSGSIZE and rtmsg_fib() hits the\nWARN_ON() that marks such failures as a fib_nlmsg_size() bug. With\npanic_on_warn set, this becomes a kernel panic.\n\nMirror the actual nexthop dump layout in fib_nlmsg_size(): account for\nIPv6 nexthop gateways dumped as RTA_VIA, for the no-header rtnexthop\nlayout used inside RTA_MULTIPATH, and for RTA_FLOW only when it is\nactually present.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74657"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f0ca602941d0a81ae9514943ca06c55159c6385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a5dfbae5179f6574695012a980476254df2d295"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ff9548d84945d2cbf9e4c207288063a200ea397"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5307a53599fa762c06e475ee4a375252074fd324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f80ad373ce4a7af5367ff273cea0f16e91387f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b22f13524fa0de0d963bbd3002df6c28bae3395"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a59edda6eda1252340354322d8ab318b2e9052fb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:39Z"
+  }
+}

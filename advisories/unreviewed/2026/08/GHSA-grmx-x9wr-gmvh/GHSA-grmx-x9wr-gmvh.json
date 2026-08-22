@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-grmx-x9wr-gmvh",
+  "modified": "2026-08-22T18:30:30Z",
+  "published": "2026-08-22T18:30:30Z",
+  "aliases": [
+    "CVE-2026-74721"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/amxdna: Fix page-insertion errors in amdxdna_insert_pages()\n\nTwo error paths in amdxdna_insert_pages() called vma->vm_ops->close(vma)\nbefore returning an error code to the caller.  This is incorrect:\namdxdna_gem_obj_mmap() registers an HMM interval notifier before calling\namdxdna_insert_pages(), and on a hard error it jumps to hmm_unreg to undo\nthat registration.  Calling vm_ops->close() manually — which drops the\nshmem pages_pin_count and the GEM object reference that backs the VMA —\nbefore the mmap syscall has even returned causes those resources to be\nreleased while the VMA is still alive.  The kernel VMA teardown will call\nvm_ops->close() a second time when the process later unmaps the range,\nproducing a reference count underflow.\n\nReplace both hard-error returns with a deferred-fault approach that keeps\nthe VMA alive and retries page insertion through the HMM range-fault path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74721"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1501e4d07c6fee0d50531a0d1cb2be01a63e6e75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d51e0fd3e698919d2adeff71936377f0c0d4aa0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:47Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j5cf-5xp4-r57f",
+  "modified": "2026-08-22T18:30:28Z",
+  "published": "2026-08-22T18:30:28Z",
+  "aliases": [
+    "CVE-2026-74668"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npacket: use consistent hard_header_len in TX_RING send path\n\ntpacket_snd() reads dev->hard_header_len independently for skb\nallocation and header construction in tpacket_fill_skb(). Concurrent\nnetdevice reconfiguration can therefore make the reserved headroom\nsmaller than the amount later pushed, or make copylen - hard_header_len\nnegative.\n\nSnapshot hard_header_len once before processing ring frames and use it\nfor the frame limit, headroom allocation, copy length, and skb\nconstruction. Pass the snapshot to tpacket_fill_skb().\n\nThe separate SOCK_DGRAM consistency problem between hard_header_len and\nheader_ops->create is not addressed here.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74668"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/016763e829cac37b3234eace86fd0a4c560de4a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/21b5953e7494c16a42e6cd8cf110e18d13ae4a6b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27e068d1b35dbec10a3cf268887c94407be4badc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d48ea5c9c4c34dc0df621f0e39ed3a16b644621a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d85d2fd54e901637c81d847811e03c662aee13cd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:40Z"
+  }
+}

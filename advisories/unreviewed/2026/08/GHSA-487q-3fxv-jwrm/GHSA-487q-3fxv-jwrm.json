@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-487q-3fxv-jwrm",
+  "modified": "2026-08-22T18:30:27Z",
+  "published": "2026-08-22T18:30:27Z",
+  "aliases": [
+    "CVE-2026-74646"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: fastrpc: take fl->lock when moving mmaps on interrupted invoke\n\nWhen an invoke is interrupted by a signal,\nwait_for_completion_interruptible() returns -ERESTARTSYS and\nfastrpc_internal_invoke() moves every buffer from fl->mmaps onto\ncctx->invoke_interrupted_mmaps. This list_del()/list_add_tail() walk\nruns without holding fl->lock, the lock that serialises fl->mmaps in\nfastrpc_req_mmap() and fastrpc_req_munmap() everywhere else.\n\nTake fl->lock around the move, matching every other fl->mmaps accessor.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74646"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f265e405e5ef85030c3777262e18bb556bc8724"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a902fe1f80f58a2335b6be1131866f827ec44d1a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af6345159abcbaa550518f31990d2a9558c2d369"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b85a0e91d7d6cd06a53c881a46f749cfcef416a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/efd02f8d1a7449f15809bc18d3cd41aafea75d7e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T16:16:37Z"
+  }
+}
