@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h947-63j8-5cc4",
+  "modified": "2026-08-22T06:31:27Z",
+  "published": "2026-08-22T06:31:27Z",
+  "aliases": [
+    "CVE-2026-76057"
+  ],
+  "details": "The AutomatorWP – Automator plugin for no-code automations, webhooks & custom integrations in WordPress plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 5.8.4. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to retrieve all ConvertKit form data configured by the site's manager account, exposing integration details intended to be restricted to plugin managers. The required nonce is localized on every admin page load, making it accessible to any authenticated user who can reach /wp-admin.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76057"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/automatorwp/tags/5.8.4/includes/scripts.php#L161"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/automatorwp/tags/5.8.4/integrations/convertkit/includes/ajax-functions.php#L16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/automatorwp/tags/5.8.4/integrations/convertkit/includes/ajax-functions.php#L66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/automatorwp/tags/5.8.4/integrations/convertkit/includes/ajax-functions.php#L96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3656285%40automatorwp&new=3656285%40automatorwp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b0fd8e7b-1985-4265-8e15-5b3988bb0225?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T04:18:17Z"
+  }
+}
