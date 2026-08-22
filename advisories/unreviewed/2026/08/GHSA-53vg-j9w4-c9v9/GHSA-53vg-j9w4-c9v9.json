@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-53vg-j9w4-c9v9",
+  "modified": "2026-08-22T12:30:25Z",
+  "published": "2026-08-22T12:30:25Z",
+  "aliases": [
+    "CVE-2026-4245"
+  ],
+  "details": "The Post Duplicator plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 3.0.11. This is due to the `duplicate_post_permissions()` permission callback only verifying the `duplicate_posts` capability without checking whether the requesting user holds `publish_posts` or other status-gated capabilities. This makes it possible for authenticated attackers, with Contributor-level access and above, to create duplicate posts with `future` (scheduled, auto-publishes) or `private` status, bypassing editorial review. Additionally, the REST endpoint does not enforce administrator-configured post-type duplication restrictions, allowing duplication of post types that have been explicitly disabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4245"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/post-duplicator/trunk/includes/api.php#L520"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/post-duplicator/trunk/includes/api.php#L624"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/post-duplicator/trunk/includes/api.php#L635"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/post-duplicator/trunk/includes/api.php#L740"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3485579"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/bb671c8f-9e14-4f79-adfa-72f48ec02449?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T12:16:25Z"
+  }
+}
