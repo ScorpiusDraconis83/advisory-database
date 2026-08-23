@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cq93-frxj-593v",
+  "modified": "2026-08-23T00:30:22Z",
+  "published": "2026-08-23T00:30:22Z",
+  "aliases": [
+    "CVE-2026-78049"
+  ],
+  "details": "A vulnerability has been found in Systerel S2OPC up to 1.7.3. Impacted is the function SOPC_NodeMgtHelperInternal_AddVariableNodeAttributes of the file src/ClientServer/address_space/internal/sopc_node_mgt_helper_internal.c of the component AddNodes Service. The manipulation of the argument UserAccessLevel leads to out-of-bounds read. It is possible to initiate the attack remotely. A high degree of complexity is needed for the attack. The exploitability is considered difficult. The exploit has been disclosed to the public and may be used. The identifier of the patch is aafbd37d381b618312ebdf5ddf57027f62c14fdd. It is suggested to install a patch to address this issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/user-attachments/files/29702766/PoC.zip"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/systerel/S2OPC/-/commit/aafbd37d381b618312ebdf5ddf57027f62c14fdd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/systerel/S2OPC/-/merge_requests/1826"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.com/systerel/S2OPC/-/work_items/1787"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-78049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/881262"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/394290"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/394290/cti"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-119"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-22T23:16:22Z"
+  }
+}

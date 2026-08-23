@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7r74-667v-4q77",
+  "modified": "2026-08-23T00:30:22Z",
+  "published": "2026-08-23T00:30:22Z",
+  "aliases": [
+    "CVE-2026-18027"
+  ],
+  "details": "The WebToffee WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping Labels plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 4.9.8 via the get_image_src_in_base64 function. This makes it possible for authenticated attackers, with subscriber-level access and above, to read the contents of arbitrary files on the server, which can contain sensitive information. The base64-encoded file contents are embedded into the cached invoice HTML and served directly to the attacker via the plugin's own Print/Download invoice endpoints, which require only a valid nonce and access key.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18027"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/print-invoices-packing-slip-labels-for-woocommerce/tags/4.9.8/admin/modules/customizer/classes/class-customizer.php#L1453"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/print-invoices-packing-slip-labels-for-woocommerce/tags/4.9.8/admin/modules/customizer/customizer.php#L1561"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/print-invoices-packing-slip-labels-for-woocommerce/tags/4.9.8/admin/modules/customizer/customizer.php#L1607"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/print-invoices-packing-slip-labels-for-woocommerce/tags/4.9.8/public/modules/invoice/invoice.php#L1934"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3646629/print-invoices-packing-slip-labels-for-woocommerce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a46f270f-d9cb-4bc1-8e10-3fc6646e1d78?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-23T00:16:50Z"
+  }
+}
