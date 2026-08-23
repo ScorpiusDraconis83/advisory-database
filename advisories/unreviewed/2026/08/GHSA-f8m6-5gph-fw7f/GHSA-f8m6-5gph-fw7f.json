@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f8m6-5gph-fw7f",
+  "modified": "2026-08-23T15:33:04Z",
+  "published": "2026-08-23T15:33:04Z",
+  "aliases": [
+    "CVE-2026-6827"
+  ],
+  "details": "justhtml before 1.17.0 contains multiple security issues in sanitization, serialization, and programmatic DOM handling. When custom policies preserve foreign namespaces (SVG/MathML), dangerous content such as HTML integration points (SVG <foreignObject>, MathML <annotation-xml encoding=\"text/html\">) and mutation-XSS parser-differential payloads could survive sanitization and become active HTML after reparse; SVG filter=\"url(...)\" and preserved <style> could leave resource-loading CSS (@import, background-image:url()). Programmatic script/style/Comment nodes could serialize into active markup. Additional hardening fixes address sanitize-pipeline cache mutation and DOM parent/child cycles that could cause infinite loops. Most issues affect advanced or custom configurations rather than the default JustHTML(..., sanitize=True) safe path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/EmilStenstrom/justhtml/security/advisories/GHSA-vrx2-77f2-ww34"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6827"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/justhtml-before-multiple-cross-site-scripting-vulnerabilities"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-23T14:16:53Z"
+  }
+}

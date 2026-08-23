@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3227-3f97-9f2q",
+  "modified": "2026-08-23T15:33:04Z",
+  "published": "2026-08-23T15:33:04Z",
+  "aliases": [
+    "CVE-2026-5751"
+  ],
+  "details": "justhtml versions 1.13.0 and earlier contain a parser-differential / mutation cross-site scripting (mXSS) vulnerability when using a custom SanitizationPolicy that preserves foreign namespaces (e.g., drop_foreign_namespaces=False with allowlisted SVG/MathML elements or raw-text containers such as <style>). Specially crafted input can sanitize into markup that appears safe but becomes unsafe when re-parsed by a browser or another HTML parser, allowing markup injection. The default safe configuration (sanitize=True) is not affected. Fixed in 1.14.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/EmilStenstrom/justhtml/security/advisories/GHSA-r758-8hxw-4845"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5751"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/justhtml-before-mutation-xss-via-custom-sanitization-policies"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-23T14:16:53Z"
+  }
+}

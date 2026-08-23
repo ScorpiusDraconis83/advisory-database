@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3r4x-v5v7-fm2r",
+  "modified": "2026-08-23T15:33:05Z",
+  "published": "2026-08-23T15:33:05Z",
+  "aliases": [
+    "CVE-2026-77088"
+  ],
+  "details": "justhtml versions 0.9.0 through 1.21.0 contain a cross-site scripting vulnerability in to_markdown() where inline code spans fail to account for blank lines as block boundaries. Attackers can inject blank lines into code or pre element text to break the inline span, causing sanitized HTML to be emitted unescaped and re-parsed as live Markdown by compliant renderers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/EmilStenstrom/justhtml/security/advisories/GHSA-jf6w-2mvx-633j"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77088"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/justhtml-through-cross-site-scripting-via-code-span"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-23T14:16:54Z"
+  }
+}
