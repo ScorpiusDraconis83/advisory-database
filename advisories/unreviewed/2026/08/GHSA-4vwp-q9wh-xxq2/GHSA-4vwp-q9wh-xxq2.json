@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4vwp-q9wh-xxq2",
-  "modified": "2026-08-22T06:31:27Z",
+  "modified": "2026-08-23T18:31:44Z",
   "published": "2026-08-22T06:31:27Z",
   "aliases": [
     "CVE-2026-16738"
   ],
   "details": "The Conekta Payment Gateway WordPress plugin before 6.2.2 does not verify the authenticity of incoming payment gateway webhook notifications, nor bind the confirmed payment to the targeted order or verify its amount, allowing unauthenticated attackers to mark arbitrary orders as paid without payment.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T06:16:15Z"

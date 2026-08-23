@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6c7v-vhfc-h7pv",
-  "modified": "2026-08-22T06:31:27Z",
+  "modified": "2026-08-23T18:31:44Z",
   "published": "2026-08-22T06:31:27Z",
   "aliases": [
     "CVE-2026-14187"
   ],
   "details": "The Tutor LMS  WordPress plugin before 4.0.6 does not enforce per-object ownership checks on its course content type, allowing any user with the instructor role to read the content of private courses belonging to other instructors.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T06:16:11Z"

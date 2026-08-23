@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jfpw-hmq2-3xwx",
-  "modified": "2026-08-23T06:30:22Z",
+  "modified": "2026-08-23T18:31:44Z",
   "published": "2026-08-23T06:30:22Z",
   "aliases": [
     "CVE-2026-14853"
   ],
   "details": "The WooCommerce Bookings WordPress plugin before 3.9.0 does not perform a capability check on one of its AJAX actions, and its nonce check can be bypassed by omitting the token, allowing users with Subscriber-level access and above to create draft bookable products.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-23T06:17:16Z"
