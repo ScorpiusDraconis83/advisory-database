@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-95m4-f2x3-273j",
+  "modified": "2026-08-24T15:31:54Z",
+  "published": "2026-08-24T15:31:54Z",
+  "aliases": [
+    "CVE-2026-76054"
+  ],
+  "details": "Invocation of Process Using Visible Sensitive Information in Black Duck blackduck-c-cpp 1.0.17 through 3.0.6 allows an actor able to execute code within the scanned project's build to obtain the Black Duck API token via the ambient process environment, which is inherited by subprocesses launched during build capture and signature scanning. This applies only where the token is supplied through the BLACKDUCK_API_TOKEN or BD_HUB_TOKEN environment variable.\n\n\n\nUpgrading does not remediate prior disclosure; any token supplied to an affected version through an environment variable should be rotated.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:H/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76054"
+    },
+    {
+      "type": "WEB",
+      "url": "https://community.blackduck.com/s/article/Black-Duck-Product-Security-Advisory-CVE-2026-76054-CVE-2026-76055"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/blackduck-c-cpp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-214"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-24T15:16:46Z"
+  }
+}

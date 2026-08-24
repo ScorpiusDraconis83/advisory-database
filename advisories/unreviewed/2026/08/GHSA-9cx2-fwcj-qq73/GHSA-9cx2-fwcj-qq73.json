@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9cx2-fwcj-qq73",
+  "modified": "2026-08-24T15:31:51Z",
+  "published": "2026-08-24T15:31:51Z",
+  "aliases": [
+    "CVE-2026-76841"
+  ],
+  "details": "Xinference loads models with Hugging Face remote code execution unconditionally enabled, and before version 2.12.0 exposes no setting to disable it. Six loader call sites pass trust_remote_code=True as a literal or as an unconditional default: RerankModel._get_tokenizer in xinference/model/rerank/core.py, SentenceTransformerRerankModel.load in xinference/model/rerank/sentence_transformers/core.py, SentenceTransformerEmbeddingModel.load in xinference/model/embedding/sentence_transformers/core.py, FlagEmbeddingModel.load in xinference/model/embedding/flag/core.py, and two sites in xinference/model/llm/transformers/core.py where PytorchModel._sanitize_model_config and PytorchModel._get_components default the value to True. Because a caller with model launch access can register a model whose type is unknown and supply an arbitrary model path, the server reaches _auto_detect_type and then AutoTokenizer.from_pretrained, which imports and executes Python declared by the model directory's own tokenizer_config.json auto_map, running attacker-supplied code with the privileges of the worker process. Version 2.12.0 gates every site behind allow_trust_remote_code and the XINFERENCE_TRUST_REMOTE_CODE setting, permitting remote code only for bundled built-in models.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76841"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xorbitsai/inference/issues/5023"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xorbitsai/inference/pull/5027"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xorbitsai/inference"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xorbitsai/inference/blob/v2.11.0/xinference/model/rerank/core.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/xinference-through-remote-code-execution-via-hardcoded-trust-remote-code-in-model-loaders"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-24T14:17:01Z"
+  }
+}

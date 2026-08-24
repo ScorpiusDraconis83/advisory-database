@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-58g9-h5rx-pf95",
+  "modified": "2026-08-24T15:31:51Z",
+  "published": "2026-08-24T15:31:51Z",
+  "aliases": [
+    "CVE-2026-76843"
+  ],
+  "details": "The official Flair wheels for 0.15.0 and 0.15.1 still contain flair/models/clustering.py, whose ClusteringModel.load static method returns pickle.loads(joblib.load(str(model_file))) and so executes arbitrary Python while loading a model file. Loading a model supplied by an attacker therefore runs that attacker's code with the privileges of the loading process. This is the same sink and the same file as CVE-2024-10073, which records 0.15.0 as the fixed version on the basis that clustering support was dropped in that release; the module was removed from the documented API but remains present in the distributed artifact and reachable by importing flair.models.clustering directly, so the earlier record's fixed version does not hold for the shipped package.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76843"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flairNLP/flair"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flairNLP/flair/blob/v0.15.1/flair/models/clustering.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://pypi.org/project/flair/0.15.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flair-and-deserialization-of-untrusted-data-via-clusteringmodel-load"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-24T14:17:02Z"
+  }
+}
