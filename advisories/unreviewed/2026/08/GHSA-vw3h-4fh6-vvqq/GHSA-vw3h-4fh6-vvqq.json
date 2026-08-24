@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vw3h-4fh6-vvqq",
+  "modified": "2026-08-24T03:31:06Z",
+  "published": "2026-08-24T03:31:06Z",
+  "aliases": [
+    "CVE-2026-78208"
+  ],
+  "details": "exceljs-hardened before 5.0.0 contains a path traversal vulnerability in the Workbook.addImage() function that fails to validate file paths. Attackers can supply arbitrary file paths to read any file accessible to the Node.js process and embed it in the generated workbook.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mateocallec/exceljs-hardened/security/advisories/GHSA-m8mg-8574-gm3m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/exceljs/exceljs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/exceljs/exceljs/blob/v4.4.0/lib/doc/workbook.js#L142-L147"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/exceljs/exceljs/blob/v4.4.0/lib/xlsx/xlsx.js#L421-L429"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/exceljs-through-path-traversal-via-unvalidated-addimage-filename"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-24T01:16:58Z"
+  }
+}
