@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vq46-xr65-w8q7",
+  "modified": "2026-08-24T09:33:47Z",
+  "published": "2026-08-24T09:33:46Z",
+  "aliases": [
+    "CVE-2026-78306"
+  ],
+  "details": "DJI drones expose an unauthenticated DUML command interface over Bluetooth that allows an attacker within Bluetooth range to modify Wi-Fi configuration parameters, including the SSID, PSK, MAC address, regulatory country code, and wireless channel. An attacker can overwrite the Wi-Fi PSK with a known value and connect to the drone's internal Wi-Fi network, potentially gaining access to the flight control interface and issuing flight commands. Crafted DUML commands can also disable or restart the Wi-Fi and Bluetooth interfaces, disconnect Wi-Fi clients, or reset wireless configuration, resulting in a denial-of-service condition that can disrupt the operator's wireless control, video, and telemetry connections during flight.\n\nAffected models are DJI Neo until 01.00.0400, DJI Neo 2 until 01.00.0500, DJI Flip until 01.00.1200, DJI Air 3 until 01.00.1600, DJI Air 3S until 01.00.1400, DJI Avata 2 until 01.00.0400, DJI Avata 360 until 01.00.0300, DJI Mavic 3 until 01.00.1400, DJI Mavic 3 Classic until 01.00.0800, DJI Mavic 3 Pro until 01.01.0700, DJI Mavic 4 Pro until 01.00.0500, DJI Mini 2 until 01.07.0200, DJI Mini 3 until 01.00.0500, DJI Mini 3 Pro until 01.00.0900, DJI Mini 4 Pro until 01.00.1100, and DJI Mini 5 Pro until 01.00.0600.\n\n\nRemediation requires a firmware update from the vendor.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:H/SC:N/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78306"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.dji.com/help/content?customId=en-us03400011149&amp;spaceId=34&amp;re=US&amp;lang=en"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-24T09:16:47Z"
+  }
+}
