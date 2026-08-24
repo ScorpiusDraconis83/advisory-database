@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-48fj-hw7g-w9rw",
-  "modified": "2022-05-24T16:52:57Z",
+  "modified": "2026-08-24T18:31:25Z",
   "published": "2022-05-24T16:52:57Z",
   "aliases": [
     "CVE-2019-1961"
   ],
   "details": "A vulnerability in Cisco Enterprise NFV Infrastructure Software (NFVIS) could allow an authenticated, remote attacker to read arbitrary files on the underlying operating system (OS) of an affected device. The vulnerability is due to the improper input validation of tar packages uploaded through the Web Portal to the Image Repository. An attacker could exploit this vulnerability by uploading a crafted tar package and viewing the log entries that are generated. A successful exploit could allow the attacker to read arbitrary files on the underlying OS.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -21,7 +26,8 @@
   ],
   "database_specific": {
     "cwe_ids": [
-      "CWE-20"
+      "CWE-20",
+      "CWE-532"
     ],
     "severity": "MODERATE",
     "github_reviewed": false,

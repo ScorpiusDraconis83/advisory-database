@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w7r2-cxjq-9w33",
+  "modified": "2026-08-24T18:31:51Z",
+  "published": "2026-08-24T18:31:51Z",
+  "aliases": [
+    "CVE-2026-15469"
+  ],
+  "details": "The use of\nhard-coded cryptographic key vulnerability has been identified in the mesh\nfunctionality of Deco XE75 v3, XE5300 v3.6 and WE10800 v3.6. \nA shared RSA-512 mesh group private key is present in the affected\nfirmware and is used by the mesh protocol for node authentication.  An attacker who obtains the firmware image\nand has local network access may be able to authenticate as a mesh node without\npossessing a device-specific credential.\n\n\n\n\n\nSuccessful\nexploitation may allow an unauthenticated adjacent attacker to impersonate a\ntrusted mesh node and bypass mesh node authentication, which may permit unauthorized\nchanges to device or mesh configuration, affecting confidentiality, integrity\nand availability.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15469"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tp-link.com/en/support/download/deco-xe75/v3.60/#Firmware"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tp-link.com/us/support/download/deco-we10800/#Firmware"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tp-link.com/us/support/download/deco-xe5300/#Firmware"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tp-link.com/us/support/download/deco-xe75/v3.60/#Firmware"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tp-link.com/us/support/faq/5263"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-321"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-24T17:17:21Z"
+  }
+}

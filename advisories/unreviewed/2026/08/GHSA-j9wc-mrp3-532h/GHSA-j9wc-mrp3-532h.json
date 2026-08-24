@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j9wc-mrp3-532h",
+  "modified": "2026-08-24T18:31:58Z",
+  "published": "2026-08-24T18:31:58Z",
+  "aliases": [
+    "CVE-2026-76838"
+  ],
+  "details": "Hi.Events validates a webhook destination only when it is registered, never when it is used. NoInternalUrlRule in backend/app/Validators/Rules/NoInternalUrlRule.php resolves the hostname with gethostbyname() and rejects private and reserved ranges, which any public hostname passes. At dispatch, WebhookDispatchService takes the stored URL and calls it through spatie/laravel-webhook-server without repeating the check, and backend/config/webhook-server.php sets no Guzzle options, so redirect following remains enabled by default. A destination that answers with a redirect to a loopback, private or cloud metadata address therefore causes the server to issue that request, and changing the hostname's DNS record after registration reaches the same result because no resolution is repeated. The response is not discarded: WebhookResponseHandlerService stores the body on the webhook log and WebhookLogResource returns it from the webhook logs endpoint, so the requester reads what the internal service replied rather than inferring it. Both event and organizer webhooks share the rule and the dispatch path. Version 1.11.1-beta revalidates at dispatch, pins the validated address, checks every redirect hop, and decodes IPv6 transition addresses that previously bypassed the filter.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:H/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76838"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HiEventsDev/Hi.Events/pull/1311"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HiEventsDev/Hi.Events/commit/cfbf468bb5b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HiEventsDev/Hi.Events"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HiEventsDev/Hi.Events/blob/v.1.11.0-beta/backend/app/Validators/Rules/NoInternalUrlRule.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hi-events-before-beta-server-side-request-forgery-via-unvalidated-webhook-redirects"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-24T18:17:22Z"
+  }
+}

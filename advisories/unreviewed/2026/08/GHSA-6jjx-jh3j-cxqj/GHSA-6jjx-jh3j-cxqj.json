@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jjx-jh3j-cxqj",
+  "modified": "2026-08-24T18:31:58Z",
+  "published": "2026-08-24T18:31:58Z",
+  "aliases": [
+    "CVE-2026-76837"
+  ],
+  "details": "Baserow interpolates a user's display name into the rich-text mention markup without HTML encoding. PATCH /api/user/account/ stores the first_name value verbatim, and the mention renderer in web-frontend/modules/core/editor/mention.js builds its element with a template literal that places the name into a data-label attribute and the element body unescaped. A name containing a double quote closes that attribute and the opening tag, so following markup lands in the element content. The result is rendered through v-html by the rich-text field components, so any rich-text cell mentioning the account executes the stored script for every workspace member who views the table, without a click. Any workspace member, at the lowest permission level, can set the name and reach every other member of the workspace, and the payload persists until the name is changed or the mentioning row is removed. Version 2.3.0 escapes the value before interpolation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76837"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/baserow/baserow/pull/5618"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/baserow/baserow/commit/a870dc0d38c9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/baserow/baserow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/baserow/baserow/blob/2.2.2/web-frontend/modules/core/editor/mention.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/baserow-before-stored-cross-site-scripting-via-rich-text-mention-display-name"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-24T18:17:21Z"
+  }
+}
