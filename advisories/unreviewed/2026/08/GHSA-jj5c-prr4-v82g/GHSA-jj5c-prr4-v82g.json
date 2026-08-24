@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jj5c-prr4-v82g",
+  "modified": "2026-08-24T06:30:28Z",
+  "published": "2026-08-24T06:30:28Z",
+  "aliases": [
+    "CVE-2026-19200"
+  ],
+  "details": "The Velociraptor verify() VQL function allows a user to verify an artifact for syntatic and other issues. Due to an implementation fault in this VQL function, the global artifact repository is used which allows callers to overwrite existing artifacts without the required permissions.  The attacker need only have the NOTEBOOK_EDIT permission (e.g. an analyst role) to be able to call this function.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19200"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Velocidex/velociraptor/pull/4962"
+    },
+    {
+      "type": "WEB",
+      "url": "http://docs.velociraptor.app/announcements/advisories/cve-2026-19200"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-24T04:16:46Z"
+  }
+}
