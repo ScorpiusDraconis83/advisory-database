@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4ph6-mjv7-3fq6",
+  "modified": "2026-08-24T20:43:08Z",
+  "published": "2026-08-24T20:43:08Z",
+  "aliases": [],
+  "summary": "netfoil vulnerable to improper handling of untrusted DoH response data",
+  "details": "### Summary\nHTTPS RR data returned from the DoH server was not properly handled. Unverified APLN data (which could contain arbitrary byte sequences) was written directly to the log. It could also cause unnecessary memory usage. The single-byte response code was also written directly to the log.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:U"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/tinfoil-factory/netfoil"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.5.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinfoil-factory/netfoil/security/advisories/GHSA-4ph6-mjv7-3fq6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinfoil-factory/netfoil/commit/58cfb0cb16b824e02bf53c2d67707e5e4bd9f59b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinfoil-factory/netfoil/commit/817f664c61aa64cbe0dbfcdfc05c16602b422e5b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/tinfoil-factory/netfoil"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tinfoil-factory/netfoil/releases/tag/v0.5.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-117"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-24T20:43:08Z",
+    "nvd_published_at": null
+  }
+}
