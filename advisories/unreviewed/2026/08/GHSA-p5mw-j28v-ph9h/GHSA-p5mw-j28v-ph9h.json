@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p5mw-j28v-ph9h",
+  "modified": "2026-08-25T21:31:30Z",
+  "published": "2026-08-25T21:31:30Z",
+  "aliases": [
+    "CVE-2026-80049"
+  ],
+  "details": "Airbyte Platform resolves the workspace used for its authorization decision from a field the caller supplies. AuthorizationServerHandler copies recognised identifiers out of the raw JSON request body into X-Airbyte-* headers, and AuthenticationHeaderResolver.resolveWorkspace consults X-Airbyte-Workspace-Id ahead of every resource-derived header, including those for connection, source and destination identifiers. Endpoints whose declared request bodies carry only a resource identifier are nonetheless reached with an added workspaceId field, because the extractor reads the body rather than the endpoint's schema, so the permission check is performed against the workspace the caller nominated while the handler acts on the resource identifier the caller supplied. Nothing afterwards compares the resource's owning workspace with the one that was authorized. A member of any workspace can therefore read source and destination configuration, trigger and cancel syncs, and delete connections, sources and destinations that belong to workspaces they have no access to, at whatever privilege level their own workspace membership grants them.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/airbytehq/airbyte-platform"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/airbytehq/airbyte-platform/blob/v2.0.0/airbyte-commons-server/src/main/kotlin/io/airbyte/commons/server/support/AuthenticationHeaderResolver.kt"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/geo-chen/oss/blob/main/airbyte-platform.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/airbyte-platform-through-2.0.0-cross-workspace-authorization-bypass-via-caller-supplied-workspaceid"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T19:16:55Z"
+  }
+}
