@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rpqg-75pv-92c9",
+  "modified": "2026-08-25T18:31:49Z",
+  "published": "2026-08-25T18:31:49Z",
+  "aliases": [
+    "CVE-2024-58377"
+  ],
+  "details": "Nokogiri versions before 1.16.5 bundle libxml2 2.12.6, which is affected by CVE-2024-34459 in libxml2's xmllint tool. Nokogiri 1.16.5 upgrades the bundled libxml2 to 2.12.7 to address this. Per the maintainers, there is no impact to Nokogiri users because Nokogiri does not provide or expose the xmllint tool where the issue occurs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-r95h-9x8f-r3f7"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58377"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sparklemotion/nokogiri/commit/2876ac53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nokogiri-before-libxml2-dependency-update"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-427"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T16:16:45Z"
+  }
+}

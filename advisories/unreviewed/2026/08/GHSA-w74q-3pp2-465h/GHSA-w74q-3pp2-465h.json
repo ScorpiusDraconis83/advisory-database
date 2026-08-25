@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w74q-3pp2-465h",
+  "modified": "2026-08-25T18:32:01Z",
+  "published": "2026-08-25T18:32:01Z",
+  "aliases": [
+    "CVE-2026-80051"
+  ],
+  "details": "github.com/graphql-go/graphql (GraphQL for Go) through 0.8.1 does not validate that a scalar variable value matches its declared type. The built-in coerceString and coerceBool functions (scalars.go) accept input whose type does not match the declared String, ID, or Boolean scalar instead of raising the request error that the GraphQL specification mandates. In some cases (but not any typical case of JSON sent to a website), a deeply nested value leads to an unrecoverable \"fatal error: stack overflow\" condition.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80051"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/graphql-go/graphql/blob/v0.8.1/scalars.go#L307-L315"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.openwall.com/lists/oss-security/2026/08/25/2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T18:18:07Z"
+  }
+}

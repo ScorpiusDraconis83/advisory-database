@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wf4q-gp79-7pv3",
+  "modified": "2026-08-25T18:31:49Z",
+  "published": "2026-08-25T18:31:49Z",
+  "aliases": [
+    "CVE-2022-50999"
+  ],
+  "details": "Nokogiri versions before 1.13.5 contain an integer overflow vulnerability in packaged libxml2 buffer handling functions that allows attackers to cause out-of-bounds memory writes. Attackers can exploit this by crafting multi-gigabyte XML files to trigger buffer overflows resulting in information disclosure, data modification, or denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-cgx6-hpwq-fhv5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50999"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sparklemotion/nokogiri/commit/2554a24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nokogiri-before-integer-overflow-via-libxml2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-119"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T16:16:44Z"
+  }
+}

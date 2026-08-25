@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-849j-3m7w-q32f",
+  "modified": "2026-08-25T18:31:49Z",
+  "published": "2026-08-25T18:31:49Z",
+  "aliases": [
+    "CVE-2022-50998"
+  ],
+  "details": "Nokogiri before 1.13.9 (CRuby implementation using packaged libraries) bundles libxml2 v2.9.14, which is affected by CVE-2022-40304 (data corruption / double-free from an entity reference cycle when entity content is allocated from a dict) and CVE-2022-40303 (integer overflows when parsing with XML_PARSE_HUGE). Nokogiri 1.13.9 upgrades the packaged libxml2 to v2.10.3 to address these issues. Processing crafted XML input may lead to denial of service or memory corruption. (The advisory also references CVE-2022-2309, a NULL pointer dereference via iterwalk/canonicalize, which maintainers determined does not affect Nokogiri users.)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/sparklemotion/nokogiri/security/advisories/GHSA-2qc6-mcvw-92cw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-50998"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sparklemotion/nokogiri/commit/644a89e080bced793295f61f18aac8cfad6bece2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sparklemotion/nokogiri/commit/c846986356fc149915a74972bf198abc266bc2c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nokogiri-before-multiple-vulnerabilities-via-libxml2-2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T16:16:44Z"
+  }
+}

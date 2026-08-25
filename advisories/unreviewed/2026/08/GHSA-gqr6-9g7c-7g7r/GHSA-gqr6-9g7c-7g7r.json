@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gqr6-9g7c-7g7r",
+  "modified": "2026-08-25T18:31:53Z",
+  "published": "2026-08-25T18:31:53Z",
+  "aliases": [
+    "CVE-2026-79773"
+  ],
+  "details": "Winter CMS before 1.2.13 contains a local file inclusion vulnerability in the JavascriptImporter filter that allows authenticated users with cms.manage_assets permission to disclose arbitrary server-readable files by placing =include or =require directives in theme JavaScript assets. Attackers can reference files like .env outside the theme directory, and the combined output served through the combine route becomes readable by unauthenticated visitors, exposing application keys and database credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/wintercms/winter/security/advisories/GHSA-2223-f22x-24cq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79773"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wintercms/winter/commit/e09c8d3526f3583cb6c3476a021b885088ecd4bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wintercms/winter/commit/fd673f4f32140c97c68b1ed705764b819747fbdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/winter-cms-before-local-file-inclusion-via-javascript"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T16:17:28Z"
+  }
+}
