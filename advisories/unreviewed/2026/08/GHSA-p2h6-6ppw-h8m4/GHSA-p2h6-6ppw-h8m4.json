@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p2h6-6ppw-h8m4",
+  "modified": "2026-08-25T12:31:24Z",
+  "published": "2026-08-25T12:31:24Z",
+  "aliases": [
+    "CVE-2026-75971"
+  ],
+  "details": "The ShopEngine Elementor WooCommerce Builder Addon – All in One WooCommerce Solution plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 4.9.4. This is due to the `rum_importer()` function being registered on the WordPress core `import_start` action hook with no plugin-owned capability check and no allowlist filtering, causing arbitrary `<wp_option>` name/value pairs parsed from an attacker-supplied WXR import file to be passed directly to `update_option()`. This makes it possible for authenticated attackers, with Shop Manager-level access and above, to write arbitrary WordPress options — most critically setting `users_can_register` to `1` and `default_role` to `administrator` — enabling open self-registration of Administrator accounts and full site takeover. This is exploitable by Shop Manager-level users because WooCommerce grants that role the `import` capability, allowing it to reach the WordPress Importer flow that fires the `import_start` hook on which `rum_importer()` is registered, contrary to the assumption that the hook is restricted to Administrators.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75971"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/shopengine/tags/4.9.4/core/builders/base.php#L57"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/shopengine/tags/4.9.4/core/export-import/import.php#L19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/shopengine/tags/4.9.4/core/export-import/import.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4045d49f-fd12-4906-9e60-97fdb082fe84?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T12:16:25Z"
+  }
+}
