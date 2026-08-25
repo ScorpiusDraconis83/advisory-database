@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pv3w-35gf-cp37",
-  "modified": "2026-08-22T18:30:29Z",
+  "modified": "2026-08-25T06:31:27Z",
   "published": "2026-08-22T18:30:29Z",
   "aliases": [
     "CVE-2026-74675"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvt: stabilize tty reference in kbd_keycode with tty_port_tty_get\n\nkbd_keycode() reads vc->port.tty without acquiring a tty reference,\nracing against con_shutdown() which clears port.tty under a different\nlock. Use tty_port_tty_get()/tty_kref_put() to hold a proper reference\nfor the duration the tty pointer is needed.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:41Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qhg8-3wmw-3xjv",
-  "modified": "2026-08-22T18:30:26Z",
+  "modified": "2026-08-25T06:31:22Z",
   "published": "2026-08-22T18:30:26Z",
   "aliases": [
     "CVE-2026-74604"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRevert \"thermal/drivers/hwmon: Cleanup coding style a bit\"\n\nRevert commit 030a48b0f6ce (\"thermal/drivers/hwmon: Cleanup coding style\na bit\") that introduced a use-after-free into the error path of\nthermal_add_hwmon_sysfs() by removing a valid check from it.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:32Z"

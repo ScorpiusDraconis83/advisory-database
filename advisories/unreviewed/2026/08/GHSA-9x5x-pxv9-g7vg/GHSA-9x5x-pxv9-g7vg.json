@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9x5x-pxv9-g7vg",
-  "modified": "2026-08-22T18:30:28Z",
+  "modified": "2026-08-25T06:31:25Z",
   "published": "2026-08-22T18:30:28Z",
   "aliases": [
     "CVE-2026-74652"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: amba-pl011: cancel RS485 hrtimers after freeing IRQ\n\nThe RS485 trigger hrtimers are embedded in the devm-managed port and can\nfire after it is freed. The IRQ handler can arm a timer, so free the IRQ\nfirst and then cancel both timers.\n\nComplete the RS485 stop without arming a timer, and cancel the timers\nin remove() for the suspend-then-unbind path, where shutdown is not\ncalled.\n\nThis issue was found by an in-house static analysis tool.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:38Z"

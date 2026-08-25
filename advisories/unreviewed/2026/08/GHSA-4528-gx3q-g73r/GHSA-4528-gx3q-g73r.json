@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4528-gx3q-g73r",
+  "modified": "2026-08-25T06:31:32Z",
+  "published": "2026-08-25T06:31:32Z",
+  "aliases": [
+    "CVE-2026-19892"
+  ],
+  "details": "The InfusedWoo Pro plugin for WordPress is vulnerable to Privilege Escalation via Account Takeover in all versions up to, and including, 5.1.17. This is due to a missing capability check in the `ajax_iwar_preview_email()` function, which uses `is_admin()` as its only authorization check and allows low-privilege users to render email preview merge fields for an arbitrary email address. This makes it possible for authenticated attackers, with subscriber-level access and above, to generate and retrieve a valid password reset link for any WordPress user, including administrators, enabling account takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://downloads.infusedwoo.com/updater/iw5.php?changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/207fc33b-ccf6-4c39-976d-41e6a89ad1ec?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T04:18:10Z"
+  }
+}

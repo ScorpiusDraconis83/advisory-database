@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4jph-32qw-h3gw",
-  "modified": "2026-08-22T18:30:27Z",
+  "modified": "2026-08-25T06:31:25Z",
   "published": "2026-08-22T18:30:27Z",
   "aliases": [
     "CVE-2026-74647"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: fastrpc: Remove buffer from list prior to unmap operation\n\nfastrpc_req_munmap_impl() is called to unmap any buffer. The buffer is\ngetting removed from the list after it is unmapped from DSP. This can\ncreate potential race conditions if multiple threads invoke unmap\nconcurrently, where one thread may remove the entry from the list while\nanother thread's unmap operation is still ongoing.\n\nFix this by removing the buffer entry from the list before calling the\nunmap operation. If the unmap fails, the entry is re-added to the list\nso that userspace can retry the unmap, or alternatively, the buffer\nwill be cleaned up during device release when the DSP process is torn\ndown and all DSP-side mappings are freed along with remaining buffers\nin the list.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:38Z"

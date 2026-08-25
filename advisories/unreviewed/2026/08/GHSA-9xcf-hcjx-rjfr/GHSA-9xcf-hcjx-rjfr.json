@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9xcf-hcjx-rjfr",
-  "modified": "2026-08-22T18:30:26Z",
+  "modified": "2026-08-25T06:31:21Z",
   "published": "2026-08-22T18:30:26Z",
   "aliases": [
     "CVE-2026-74603"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nptp: ocp: Fix board ID over-read\n\nThe EEPROM board ID is a fixed 13-byte field and is not guaranteed to\ncontain a NUL terminator. Passing it directly to\ndevlink_info_version_fixed_put() treats it as a C string and may read\nbeyond the field.\n\nFormat at most OCP_BOARD_ID_LEN bytes into the existing local buffer\nbefore reporting the ID. Use a precision limit because the snprintf()\noutput size alone does not bound the source string scan.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:32Z"

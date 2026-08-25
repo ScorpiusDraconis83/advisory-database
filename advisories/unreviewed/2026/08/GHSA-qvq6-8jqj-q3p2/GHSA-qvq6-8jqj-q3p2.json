@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qvq6-8jqj-q3p2",
-  "modified": "2026-08-22T18:30:29Z",
+  "modified": "2026-08-25T06:31:29Z",
   "published": "2026-08-22T18:30:29Z",
   "aliases": [
     "CVE-2026-74708"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxsk: validate launch-time metadata size\n\nLaunch-time metadata extends beyond the first 16 bytes of struct\nxsk_tx_metadata. Reject the request when the registered metadata area does\nnot contain the complete field.\n\nSnapshot the validated flags for the generic transmit path and use that\nsnapshot for request and completion processing, avoiding inconsistent\ndecisions if user space changes the flags concurrently.\n\nNote that only xsk_skb_metadata is properly using the flags,\n__xsk_buff_get_metadata ignores them. Next commits address that.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:45Z"

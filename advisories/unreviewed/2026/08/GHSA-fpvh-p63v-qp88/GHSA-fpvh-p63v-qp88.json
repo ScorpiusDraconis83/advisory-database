@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fpvh-p63v-qp88",
-  "modified": "2026-08-22T18:30:28Z",
+  "modified": "2026-08-25T06:31:25Z",
   "published": "2026-08-22T18:30:28Z",
   "aliases": [
     "CVE-2026-74655"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: qcom-geni: fix TX DMA buffer flush\n\nWhen transmit flushing a qcom-geni UART during an ongoing TX DMA, the\nUART gets stuck infinitely repeating corrupted TX DMA frames.\n\nThe DMA-mode uart_ops does not provide a flush_buffer callback, so an\nin-flight transfer can complete after serial core has reset the transmit\nkfifo, underflowing its length and resubmitting page-sized transfers\nindefinitely. Add one that stops the transfer and clears tx_remaining\nand tx_queued.\n\nThe stop path was also broken: it unmapped the buffer while the serial\nengine could still read it, and never reset the TX DMA state machine.\nCancel the main sequencer command first, then reset the state machine\nand wait for it before unmapping. Drop the early return so a pending\nmapping is also cleaned up when the main command is inactive.\n\nThe bug can be triggered from userspace with a large write immediately\nfollowed by TCOFLUSH. A following tcdrain will hang forever. The bug was\nreproduced and this fix was validated on Arduino Uno Q (QRB2210)\nusing /dev/ttyHS1.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:39Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5prv-rfcq-7r84",
-  "modified": "2026-08-22T18:30:29Z",
+  "modified": "2026-08-25T06:31:27Z",
   "published": "2026-08-22T18:30:28Z",
   "aliases": [
     "CVE-2026-74678"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: usb: ax88179_178a: fix skb leak in ax88179_tx_fixup()\n\nWhen the interface has NETIF_F_SG enabled and skb_linearize() fails in\nax88179_tx_fixup(), the function returns NULL without freeing the skb.\n\nusbnet_start_xmit() treats a NULL return from tx_fixup() as a drop\n(info->flags does not set FLAG_MULTI_PACKET for this driver), jumping\nto the \"drop\" label where it does `if (skb) dev_kfree_skb_any(skb)`.\nBecause tx_fixup() returned NULL, the local skb variable in\nusbnet_start_xmit() is NULL, so the original skb is never freed — a\nmemory leak on every TX frame whose linearization fails (i.e. under\nmemory pressure).\n\nFree the skb before returning, matching the error handling already used\nfor the pskb_expand_head() failure path in the same function.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:41Z"

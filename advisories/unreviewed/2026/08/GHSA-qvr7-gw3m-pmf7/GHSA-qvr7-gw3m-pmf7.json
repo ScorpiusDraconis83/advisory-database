@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qvr7-gw3m-pmf7",
-  "modified": "2026-08-22T18:30:29Z",
+  "modified": "2026-08-25T06:31:29Z",
   "published": "2026-08-22T18:30:29Z",
   "aliases": [
     "CVE-2026-74707"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxsk: validate metadata when processing requests\n\nThe zero-copy path validates TX metadata while obtaining the descriptor\ncontext, then reads it again later when preparing the hardware request.\nUser space can change the metadata between those operations and bypass the\noriginal validation.\n\nValidate the metadata in xsk_tx_metadata_request() and use the resulting\nflags snapshot for every feature check. Read request fields once so all\nzero-copy drivers process only values observed after successful\nvalidation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:45Z"

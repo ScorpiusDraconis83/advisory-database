@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7ph7-58w3-w755",
-  "modified": "2026-08-21T18:34:58Z",
+  "modified": "2026-08-25T06:31:21Z",
   "published": "2026-08-21T18:34:58Z",
   "aliases": [
     "CVE-2026-74581"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ipv6: clear suppressed fib6 rule result\n\nfib6_rule_suppress() drops a suppressed route with ip6_rt_put_flags(),\nbut leaves res->rt6 pointing at the released rt6_info.\n\nIf no later rule supplies a replacement, fib6_rule_lookup() still sees\nres.rt6 and returns that stale dst to its caller. A suppressing rule can\ntherefore leak a released route back to rt6_lookup(), and the next put\nhits rcuref_put_slowpath() from dst_release().\n\nClear res->rt6 when suppressing the route so suppressed lookups fall\nthrough to the null dst instead of reusing the released one.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-21T17:16:44Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vp9r-6w4f-8wmq",
-  "modified": "2026-08-22T18:30:29Z",
+  "modified": "2026-08-25T06:31:28Z",
   "published": "2026-08-22T18:30:29Z",
   "aliases": [
     "CVE-2026-74696"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: fix TFO max_qlen accounting across reuseport migration\n\nA listener's TCP_FASTOPEN max_qlen stops being accurate and lets through\nfar more pending Fast Open requests than it was configured for.\n\nThis only shows up with SO_REUSEPORT listener migration, where closing a\nlistener hands its still-pending TFO children over to a surviving one.\n\nfastopenq.qlen is charged in tcp_fastopen_create_child() when the child\nis created and uncharged in reqsk_fastopen_remove() when the handshake\ncompletes.  The uncharge follows rsk_listener of the request the child\npoints at, and inet_reqsk_clone() has repointed the child at a new\nrequest owned by the new listener, so the ++ and the -- land on two\ndifferent sockets.  The new listener's qlen drifts negative and its\nlimit no longer binds.\n\nCharge the new listener during migration, like reqsk_queue_migrated()\nalready does for queue->young and queue->qlen.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:44Z"

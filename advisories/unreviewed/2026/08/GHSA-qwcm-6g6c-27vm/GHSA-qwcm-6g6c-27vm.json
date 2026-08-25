@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qwcm-6g6c-27vm",
-  "modified": "2026-08-22T18:30:28Z",
+  "modified": "2026-08-25T06:31:26Z",
   "published": "2026-08-22T18:30:28Z",
   "aliases": [
     "CVE-2026-74663"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: reject overly deep qdisc hierarchies\n\nDeep qdisc hierarchies can lead to excessive recursion in qdisc tree\nwalkers and exhaust the kernel stack. The existing loop check does not\ncover the create-and-graft path, so a hierarchy can still be extended by\ncreating a new child qdisc below an already deep parent.\n\nStore the hierarchy depth in struct Qdisc and update it when qdiscs are\ngrafted. Reject new child qdiscs once the parent is already at the maximum\nallowed depth.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:40Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j6vr-r53f-g3jf",
-  "modified": "2026-08-22T15:31:04Z",
+  "modified": "2026-08-25T06:31:21Z",
   "published": "2026-08-22T15:31:04Z",
   "aliases": [
     "CVE-2026-74584"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/bnxt_re: zero shared page before exposing to userspace\n\nbnxt_re_alloc_ucontext() allocates uctx->shpg via\n__get_free_page(GFP_KERNEL). The buddy allocator does not zero pages\nwithout __GFP_ZERO, so the page contains stale kernel data from\nwhatever object most recently freed it.\n\nThe page is then mapped into userspace via vm_insert_page() under\nBNXT_RE_MMAP_SH_PAGE in bnxt_re_mmap(). The driver only ever writes\n4 bytes (a u32 AVID) at offset BNXT_RE_AVID_OFFT (0x10) inside\nbnxt_re_create_ah(); the remaining 4092 bytes of the page are exposed\nto userspace unsanitised, leaking kernel memory contents.\n\nAny user with access to /dev/infiniband/uverbsX on a host with a\nbnxt_re device (typically rdma group membership) can read this data\nvia a single mmap() at pgoff 0 after IB_USER_VERBS_CMD_GET_CONTEXT.\n\nOther shared pages in the same file already use get_zeroed_page()\ncorrectly:\n\n  drivers/infiniband/hw/bnxt_re/ib_verbs.c\n      srq->uctx_srq_page = (void *)get_zeroed_page(GFP_KERNEL);\n      cq->uctx_cq_page  = (void *)get_zeroed_page(GFP_KERNEL);\n\nuctx->shpg is the only outlier. Bring it in line with the existing\nconvention by switching to get_zeroed_page().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T15:16:21Z"

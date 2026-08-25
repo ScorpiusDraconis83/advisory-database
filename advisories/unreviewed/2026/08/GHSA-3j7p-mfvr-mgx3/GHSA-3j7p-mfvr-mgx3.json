@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3j7p-mfvr-mgx3",
-  "modified": "2026-08-22T18:30:28Z",
+  "modified": "2026-08-25T06:31:25Z",
   "published": "2026-08-22T18:30:28Z",
   "aliases": [
     "CVE-2026-74649"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8723bs: fix missing shared-key auth challenge length check\n\nThe WEP shared-key authentication handler uses the challenge-text\nelement's attacker-controlled length without checking it against the\nfixed 128-byte chg_txt buffer.\n\nIn OnAuthClient() the length from rtw_get_ie() - up to 255 - is used\nto perform memcpy() into the 128-byte pmlmeinfo->chg_txt, so a\nmalicious AP sending a malformed WLAN_EID_CHALLENGE element can\noverflow/underfill chg_txt by up to 127 bytes. It is reachable over the\nair, before association, during shared-key authentication. In the case\nof an overflow, the driver can write out of bounds. In the case of an\nunderfill, the driver can echo stale buffer memory.\n\nThe challenge text is defined to be exactly 128 octets, which is\nalready provided as the WLAN_AUTH_CHALLENGE_LEN define; require the\nelement to be exactly that length before use.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:38Z"

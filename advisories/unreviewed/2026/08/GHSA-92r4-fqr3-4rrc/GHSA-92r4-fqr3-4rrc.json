@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-92r4-fqr3-4rrc",
-  "modified": "2026-08-22T18:30:28Z",
+  "modified": "2026-08-25T06:31:26Z",
   "published": "2026-08-22T18:30:28Z",
   "aliases": [
     "CVE-2026-74662"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ninet: frags: publish queues before arming timer\n\ninet_frag_create() arms the fragment queue timer before inserting the\nqueue into the fqdir rhashtable. If the namespace fragment timeout is\nzero or negative, the timer can run before the queue is published.\n\nThe timer callback then marks the queue complete, tries to remove a node\nthat is not in the hash table yet, and drops the anticipated hash\nreference. Creation can subsequently publish the completed queue without\nrestoring that reference, leaving a stale hash node after the caller drops\nthe remaining reference.\n\nPublish the queue first and arm the timer while holding the queue lock.\nThis makes timer expiry wait until the queue is visible in the hash table,\nso inet_frag_kill() can remove the node and balance the hash reference.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:39Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2vc2-fj43-9qhc",
-  "modified": "2026-08-23T15:33:03Z",
+  "modified": "2026-08-25T06:31:23Z",
   "published": "2026-08-22T18:30:27Z",
   "aliases": [
     "CVE-2026-74626"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNTB: ntb_netdev: Preserve RX queue depth on allocation failure\n\nntb_netdev_rx_handler() hands the received skb to the network stack\nbefore allocating its replacement. If the allocation fails, nothing is\nreposted. Every failure therefore takes one buffer out of the RX queue\nwhile the interface remains up, and enough failures eventually stall\nreception.\n\nA retry path could refill the queue later, but ntb_netdev has none.\nAllocate the replacement first instead. If that fails, drop the packet\nand repost the same skb. This keeps the queue full and lets packet\ndelivery resume as soon as memory is available again.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:35Z"

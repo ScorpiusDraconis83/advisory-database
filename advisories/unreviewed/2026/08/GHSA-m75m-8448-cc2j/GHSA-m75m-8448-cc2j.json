@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m75m-8448-cc2j",
-  "modified": "2026-08-22T18:30:27Z",
+  "modified": "2026-08-25T06:31:22Z",
   "published": "2026-08-22T18:30:26Z",
   "aliases": [
     "CVE-2026-74614"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/virtio: read virtqueues under worker locks\n\nCommit bd50c5dc182b (\"vsock/virtio: add support for device\nsuspend/resume\") made the *_run flags transition from false to true when\nrestore installs replacement virtqueues.  The RX, TX and event workers\nread their virtqueue before locking and checking the corresponding flag,\nso a worker delayed across freeze and restore can observe the replacement\nqueue's running state while retaining a pointer to the deleted queue.\n\nRead each virtqueue under its mutex after checking the run flag, keeping\nthe pointer and state in the same queue generation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:34Z"

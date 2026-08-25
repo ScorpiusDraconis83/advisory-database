@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f2p8-hwvr-fwmq",
-  "modified": "2026-08-22T18:30:29Z",
+  "modified": "2026-08-25T06:31:28Z",
   "published": "2026-08-22T18:30:29Z",
   "aliases": [
     "CVE-2026-74690"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/ism: Fix UAF of sba and ieq during ism_dev_exit()\n\nA ism interrupt handler can be active in parallel with ism_dev_exit(),\naccessing freed data structures.\n\nNo new interrupts will be generated after unregister_ieq(). Drain ongoing\ninterrupt handlers by free_irq(), before freeing ism data structures.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-22T16:16:43Z"
