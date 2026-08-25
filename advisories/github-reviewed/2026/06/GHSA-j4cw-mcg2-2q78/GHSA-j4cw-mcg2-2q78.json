@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4cw-mcg2-2q78",
+  "modified": "2026-08-25T16:34:55Z",
+  "published": "2026-06-14T06:30:24Z",
+  "aliases": [
+    "CVE-2026-54421"
+  ],
+  "summary": "OpenStack Ironic can return unredacted sensitive information when applying a PATCH to update fields in volume properties",
+  "details": "In OpenStack Ironic through 35.0.1, when applying a PATCH to update fields in volume properties the user is authorized for, Ironic can return unredacted sensitive information (such as iSCSI credentials). The PATCH outcome is a security issue; the POST outcome is not a security issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "ironic"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "17.0.0"
+            },
+            {
+              "fixed": "29.0.6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "ironic"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "30.0.0"
+            },
+            {
+              "fixed": "32.0.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "ironic"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "33.0.0"
+            },
+            {
+              "fixed": "35.0.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "ironic"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "36.0.0"
+            },
+            {
+              "fixed": "37.0.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54421"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openstack/ironic/commit/dd2df520fe0ae019cb247a8295542abc2d4b46dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.launchpad.net/ironic/+bug/2155049"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/openstack/ironic"
+    },
+    {
+      "type": "WEB",
+      "url": "https://review.opendev.org/c/openstack/ironic/+/990430"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.openstack.org/ossa/OSSA-2026-023.html"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/06/16/10"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-212"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-25T16:34:55Z",
+    "nvd_published_at": "2026-06-14T04:16:30Z"
+  }
+}
