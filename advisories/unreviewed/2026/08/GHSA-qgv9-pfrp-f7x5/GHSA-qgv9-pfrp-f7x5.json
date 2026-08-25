@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qgv9-pfrp-f7x5",
+  "modified": "2026-08-25T09:30:38Z",
+  "published": "2026-08-25T09:30:38Z",
+  "aliases": [
+    "CVE-2026-78322"
+  ],
+  "details": "A flaw was found in file-roller. When opening or extracting a malicious 7z or RAR archive containing a file entry with an excessively long path, file-roller's progress-line parsing copies the path into a fixed-size stack buffer using an unbounded string copy. This can trigger a stack buffer overflow and cause file-roller to terminate, resulting in a denial of service. To exploit this flaw, a victim must open or extract the crafted archive using file-roller.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-78322"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2521767"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.gnome.org/GNOME/file-roller/-/commit/ffb76dc866342cef6a4914873faaa880d14d5aa4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.gnome.org/GNOME/file-roller/-/issues/327"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T08:18:10Z"
+  }
+}
