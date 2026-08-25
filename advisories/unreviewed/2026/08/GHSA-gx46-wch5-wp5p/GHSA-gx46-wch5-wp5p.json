@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gx46-wch5-wp5p",
+  "modified": "2026-08-25T03:32:08Z",
+  "published": "2026-08-25T03:32:08Z",
+  "aliases": [
+    "CVE-2026-56704"
+  ],
+  "details": "Adminer before 5.4.3 inserts unsanitized database server version strings into script tags with valid CSP nonces without proper validation. Attackers controlling a rogue MySQL server can return crafted version strings that break out of the JavaScript context and execute arbitrary code, bypassing Content Security Policy protections.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/vrana/adminer/security/advisories/GHSA-h6jr-7pr6-grgj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56704"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/adminer-before-cross-site-scripting-via-mysql-version-string"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T02:16:42Z"
+  }
+}

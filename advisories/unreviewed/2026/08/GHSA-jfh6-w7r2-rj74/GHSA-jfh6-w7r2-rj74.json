@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jfh6-w7r2-rj74",
+  "modified": "2026-08-25T03:32:10Z",
+  "published": "2026-08-25T03:32:10Z",
+  "aliases": [
+    "CVE-2026-75575"
+  ],
+  "details": "Rocket.Chat exposes the sendForgotPasswordEmail Meteor method without a DDP rate limit, so an unauthenticated caller may invoke it as often as it likes. The method is reachable over DDP and over the HTTP route POST /api/v1/method.callAnon/sendForgotPasswordEmail, and it triggers a password reset message for any address that matches an account. With no DDPRateLimiter rule registered for it, a caller can drive an unbounded volume of reset mail at a chosen address from the deployment's own mail sender, and can probe addresses at scale: the method answers true for an address with no account and for a successful send, but false when the address belongs to an account that authenticates through an external provider and Accounts_AllowPasswordChangeForOAuthUsers is off, so repeated calls distinguish that class of account. Later versions register a rule permitting ten calls per minute per client address.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/RocketChat/Rocket.Chat/security/advisories/GHSA-7c6v-m68v-v73r"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RocketChat/Rocket.Chat/commit/3a61c3afe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RocketChat/Rocket.Chat"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rocket-chat-missing-ddp-rate-limit-on-the-sendforgotpasswordemail-meteor-method"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-204"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T02:16:51Z"
+  }
+}

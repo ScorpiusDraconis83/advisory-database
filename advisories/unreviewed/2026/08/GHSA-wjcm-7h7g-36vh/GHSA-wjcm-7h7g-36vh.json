@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wjcm-7h7g-36vh",
+  "modified": "2026-08-25T03:32:08Z",
+  "published": "2026-08-25T03:32:08Z",
+  "aliases": [
+    "CVE-2026-56706"
+  ],
+  "details": "Adminer before 5.4.3 uses a CSRF token scheme that transmits both the XOR mask and the masked value in every token (format (rand XOR secret):rand), allowing anyone who observes a single CSRF token (e.g., via network sniffing, log files, Referrer header, or XSS) to recover the session secret with a single XOR operation and forge unlimited valid tokens. The implementation is further weakened by a low-entropy session token (rand(1,1e6), ~20 bits) that permits blind brute-force, and by use of loose comparison (==) in token verification, enabling PHP type juggling. Exploitation enables cross-site request forgery against authenticated sessions, including execution of arbitrary SQL queries.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/vrana/adminer/security/advisories/GHSA-33j4-hc95-pggg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56706"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/adminer-before-csrf-token-secret-recovery-via-xor-masking"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-330"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T02:16:42Z"
+  }
+}

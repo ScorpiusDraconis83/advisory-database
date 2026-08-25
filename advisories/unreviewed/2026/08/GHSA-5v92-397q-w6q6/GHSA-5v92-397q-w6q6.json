@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5v92-397q-w6q6",
+  "modified": "2026-08-25T03:32:08Z",
+  "published": "2026-08-25T03:32:08Z",
+  "aliases": [
+    "CVE-2026-34964"
+  ],
+  "details": "Adminer before 5.5.0 contains a server-side request forgery vulnerability in the login form's server field validator, which only inspects leading integers for privileged ports and fails to reject non-numeric port values. Attackers can inject PDO DSN keys like host= and port= into the server parameter to bypass the privileged-port restriction and establish TCP connections to arbitrary internal hosts and ports before authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/vrana/adminer/security/advisories/GHSA-58cq-mgw2-38m5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/adminer-before-ssrf-via-pdo-dsn-injection"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T02:16:40Z"
+  }
+}

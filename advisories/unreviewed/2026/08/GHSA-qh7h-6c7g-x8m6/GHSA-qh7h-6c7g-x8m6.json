@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qh7h-6c7g-x8m6",
+  "modified": "2026-08-25T03:32:09Z",
+  "published": "2026-08-25T03:32:09Z",
+  "aliases": [
+    "CVE-2026-72702"
+  ],
+  "details": "Grav CMS before 2.0.16 contains an origin validation bypass in the Uri::referrer() and Pages::referrerRoute() methods, which validate the Referer header using an unanchored string prefix match (str_starts_with($referrer, $base)) with no trailing delimiter. An attacker who controls a domain that begins with the victim site's origin (e.g. https://example.com.attacker.tld) can send a request with such a Referer to be treated as same-origin, bypassing the Referer-based origin check.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-9ccq-2jfg-qw33"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72702"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-cms-before-origin-validation-bypass-via-referer"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-346"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T02:16:46Z"
+  }
+}
