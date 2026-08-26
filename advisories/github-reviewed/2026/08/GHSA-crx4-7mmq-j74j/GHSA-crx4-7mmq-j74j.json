@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-crx4-7mmq-j74j",
+  "modified": "2026-08-26T18:12:25Z",
+  "published": "2026-08-26T18:12:25Z",
+  "aliases": [
+    "CVE-2026-44701"
+  ],
+  "summary": "OpenSTAManager has HTML Injection in modules/utenti/edit.php",
+  "details": "### Summary\nAn HTML Injection vulnerability exists in the user group creation functionality that allows an attacker to inject arbitrary HTML content into the application interface.\nThe vulnerability occurs when user-supplied input in the group name field is not properly sanitized before being rendered, allowing an attacker to inject HTML elements such as anchor tags. This may enable phishing attacks or unintended redirection when other users interact with the injected content.\n\n### Details\nThe vulnerable code responsible for rendering this content is located in: `modules/utenti/edit.php`\n\n```php\n<i class=\"fa fa-users mr-2\"></i>'.tr('Utenti del gruppo: _GROUP_', [\n    '_GROUP_' => '<span class=\"text-primary\">'.$group->getTranslation('title').'</span>\n```\n\n### PoC\nA malicious user can inject HTML content into the Name field when creating a new user group.\n\n<img width=\"1233\" height=\"293\" alt=\"image\" src=\"https://github.com/user-attachments/assets/cc09d0d5-ec77-4e94-94f7-35a277c49130\" />\n\nAfter selecting the group, the application renders the injected HTML without proper sanitization. As a result, the anchor tag is displayed as an active link in the interface.\n\n<img width=\"583\" height=\"356\" alt=\"image\" src=\"https://github.com/user-attachments/assets/ac9006fb-2a5c-4a84-946e-9c54b7ac5500\" />\n\nThe injected anchor tag is also visible when the group is assigned to a user.\n\n<img width=\"1262\" height=\"503\" alt=\"image\" src=\"https://github.com/user-attachments/assets/68b2d45f-d0b8-4304-90fa-cb56f55ce3aa\" />\n\nWhen a user clicks the injected link, the browser redirects them to the attacker-controlled URL.\n\n### Impact\nThis vulnerability is an HTML Injection caused by improper sanitization of user-supplied input before rendering it in the application interface. Any user who views the interface where the injected content is rendered may be impacted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "devcode-it/openstamanager"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.11-beta"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2.10.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/devcode-it/openstamanager/security/advisories/GHSA-crx4-7mmq-j74j"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/devcode-it/openstamanager/commit/0b88ad1963871abfa5e134004ca0c74c496d8d2f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/devcode-it/openstamanager/commit/7c9eafe9ffefcfd61357c81165157090e790c213"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/devcode-it/openstamanager"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/devcode-it/openstamanager/releases/tag/v2.11-beta"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-26T18:12:25Z",
+    "nvd_published_at": null
+  }
+}
