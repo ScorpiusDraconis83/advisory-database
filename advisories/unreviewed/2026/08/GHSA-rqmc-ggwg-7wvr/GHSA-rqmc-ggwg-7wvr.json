@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rqmc-ggwg-7wvr",
+  "modified": "2026-08-26T21:31:44Z",
+  "published": "2026-08-26T21:31:44Z",
+  "aliases": [
+    "CVE-2026-68000"
+  ],
+  "details": "The front-end interface /cms/category/list of MCMS <=6.2.0 is vulnerable to SQL injection. The size parameter is directly concatenated into the LIMIT clause of SQL through FreeMarker ${size} without being parameterized and bound. The built-in SqlInjectionUtil employs regular expression blacklist filtering, yet keywords like CREATE/TABLE/SET/PREPARE/EXECUTE are not included in the list, allowing for bypassing. Attackers can execute stacked SQL statements without logging in.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68000"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/fangtang7/CVE/blob/main/MCMS/MCMS6.2.0-SQLinjection.md"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T20:17:57Z"
+  }
+}
