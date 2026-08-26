@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f9g8-296p-xr94",
+  "modified": "2026-08-26T00:30:51Z",
+  "published": "2026-08-26T00:30:51Z",
+  "aliases": [
+    "CVE-2026-38466"
+  ],
+  "details": "A Stored XSS vulnerability in the torrent remaster custom title feature in GazellePW (GazellePosterWall) commit 86c4bedf727691b5a97af42a4864869d18446449 allows remote authenticated users to inject arbitrary JavaScript via the remaster_custom_title parameter, which is stored during torrent upload or edit and later rendered in torrent title output.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-38466"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Mosasauroidea/GazellePW/blob/86c4bedf727691b5a97af42a4864869d18446449/app/Upload.php#L231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Mosasauroidea/GazellePW/blob/86c4bedf727691b5a97af42a4864869d18446449/app/Upload.php#L556"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Mosasauroidea/GazellePW/blob/86c4bedf727691b5a97af42a4864869d18446449/classes/torrents.class.php#L1283"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Mosasauroidea/GazellePW/blob/86c4bedf727691b5a97af42a4864869d18446449/sections/torrents/takeedit.php#L212"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Mosasauroidea/GazellePW/blob/86c4bedf727691b5a97af42a4864869d18446449/sections/torrents/takeedit.php#L81"
+    },
+    {
+      "type": "WEB",
+      "url": "https://snaacky.com/1-click-exploit-chain-for-complete-gazellepw-database-compromise"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-25T22:17:03Z"
+  }
+}
