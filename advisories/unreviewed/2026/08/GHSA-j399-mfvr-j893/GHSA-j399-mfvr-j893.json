@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j399-mfvr-j893",
+  "modified": "2026-08-26T18:31:56Z",
+  "published": "2026-08-26T18:31:56Z",
+  "aliases": [
+    "CVE-2026-81029"
+  ],
+  "details": "OpenMetadata accepts a caller-supplied post-authentication redirect target and appends the issued token to it. SamlLoginServlet reads the callback request parameter and stores it in the HTTP session without comparing it against any configured or registered destination, and the assertion consumer servlet later formats that stored value into a URL carrying the freshly issued JWT together with the account's email and name before sending the redirect. The OIDC and OAuth2 handler follows the same pattern with its own redirect parameter and the issued identity token. A request naming a destination the attacker controls therefore causes the server to deliver a valid token for whoever completes the login to that destination. Because the token authenticates API calls as that account, a user who follows such a link and authenticates hands over control of their account. Version 2.0.0 removes the caller-supplied callback parameter; no 1.x release validates it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81029"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-metadata/OpenMetadata/issues/29662"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-metadata/OpenMetadata"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/open-metadata/OpenMetadata/blob/1.12.1/openmetadata-service/src/main/java/org/openmetadata/service/security/saml/SamlLoginServlet.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openmetadata-before-2.0.0-jwt-disclosure-via-unvalidated-saml-and-oidc-redirect-uri"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T16:16:45Z"
+  }
+}

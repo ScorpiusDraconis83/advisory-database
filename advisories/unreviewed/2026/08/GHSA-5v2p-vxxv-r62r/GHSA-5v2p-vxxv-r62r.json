@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5v2p-vxxv-r62r",
+  "modified": "2026-08-26T18:31:54Z",
+  "published": "2026-08-26T18:31:54Z",
+  "aliases": [
+    "CVE-2026-79619"
+  ],
+  "details": "On Linux, several OpenZFS ioctl authorization checks accept a capability held only within a user-created, unprivileged namespace as equivalent to real host privilege, allowing an unprivileged local user to perform operations that should require root. Affected operations include pool-administrative operations (eg create, import, destroy), pool event log access (zpool events) and fault injection (zinject). Exploiting the problem requires only that the local user is permitted to open /dev/zfs (governed by local device permissions) and that the kernel permits unprivileged user namespace creation. No prior access to the target pool or its underlying devices is needed.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79619"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openzfs/zfs/pull/18959"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://github.com/advisories/GHSA-mhf5-q8gw-qg9v"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openzfs/zfs/releases/tag/zfs-2.2.11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openzfs/zfs/releases/tag/zfs-2.3.9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openzfs/zfs/releases/tag/zfs-2.4.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T13:19:24Z"
+  }
+}

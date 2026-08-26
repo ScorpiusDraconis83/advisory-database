@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jjwm-g4j5-q96v",
-  "modified": "2026-08-19T09:31:23Z",
+  "modified": "2026-08-26T18:31:14Z",
   "published": "2026-08-19T09:31:23Z",
   "aliases": [
     "CVE-2026-49425"
   ],
   "details": "The compat32 kevent() handler translates a 64-bit kevent struct into a stack- declared 32-bit struct.  It did not first zero the stack struct.\n\nAn unprivileged user may observe a small amount of uninitialized kernel stack data, which may contain sensitive information.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-908"
     ],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-19T08:17:12Z"

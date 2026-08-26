@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p996-89cm-88c6",
+  "modified": "2026-08-26T18:31:56Z",
+  "published": "2026-08-26T18:31:56Z",
+  "aliases": [
+    "CVE-2026-81033"
+  ],
+  "details": "Automatisch reveals whether an address is registered through the response to its forgot-password request. The controller at packages/backend/src/controllers/internal/api/v1/users/forgot-password.js looks the address up and chains a not-found throw onto the query, so an address with no account raises an error that the global handler renders as a not-found status, while a registered address proceeds to send the reset message and returns no-content. The route is mounted without authentication. Submitting candidate addresses and comparing the two status codes therefore establishes which addresses hold accounts, with no credential and no rate limiting in the path.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81033"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/automatisch/automatisch/issues/2713"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/automatisch/automatisch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/automatisch/automatisch/blob/v0.15.0/packages/backend/src/controllers/internal/api/v1/users/forgot-password.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/automatisch-through-0.15.0-user-enumeration-via-forgot-password-response-discrepancy"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-204"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T16:16:46Z"
+  }
+}

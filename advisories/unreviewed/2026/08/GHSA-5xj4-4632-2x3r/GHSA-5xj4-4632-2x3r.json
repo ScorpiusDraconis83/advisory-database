@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5xj4-4632-2x3r",
+  "modified": "2026-08-26T18:31:55Z",
+  "published": "2026-08-26T18:31:55Z",
+  "aliases": [
+    "CVE-2026-48548"
+  ],
+  "details": "Nagios Core before 4.5.12 contains a cross-site request forgery vulnerability in cmd.cgi where the CSRF protection mechanism passes validation when the NagFormId cookie is absent. Attackers can craft a malicious cross-site POST request to execute arbitrary Nagios commands as a currently authenticated user without their knowledge or consent.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48548"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NagiosEnterprises/nagioscore/blob/master/Changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nagios.com/security-disclosures/nagios-core"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nagios-core-csrf-via-cmd-cgi"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T16:16:26Z"
+  }
+}
