@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-68mc-h6h8-79wj",
-  "modified": "2026-06-16T15:33:47Z",
+  "modified": "2026-08-26T15:04:18Z",
   "published": "2026-06-15T21:30:41Z",
   "aliases": [
     "CVE-2026-50880"
   ],
+  "summary": "YouTransfer has an issue in the sendmail transport integration that allows arbitrary code execution",
   "details": "An issue in the sendmail transport integration component of YouTransfer v1.0.6 allows attackers to execute arbitrary code via supplying a crafted request.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "youtransfer"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "1.0.6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -22,6 +43,10 @@
     {
       "type": "WEB",
       "url": "https://gist.github.com/pyuysig/4013f4f10f74b3fded7ddf41b6d36ae5"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/YouTransfer/YouTransfer"
     }
   ],
   "database_specific": {
@@ -29,8 +54,8 @@
       "CWE-94"
     ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-26T15:04:18Z",
     "nvd_published_at": "2026-06-15T20:16:30Z"
   }
 }

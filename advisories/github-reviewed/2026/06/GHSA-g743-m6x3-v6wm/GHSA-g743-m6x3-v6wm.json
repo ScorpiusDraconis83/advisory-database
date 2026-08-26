@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g743-m6x3-v6wm",
-  "modified": "2026-06-16T15:33:47Z",
+  "modified": "2026-08-26T15:03:07Z",
   "published": "2026-06-15T21:30:41Z",
   "aliases": [
     "CVE-2026-50879"
   ],
+  "summary": "linx-server has an issue in the uploadPostHandler component that allows attackers to cause a Denial of Service (DoS) via a crafted POST request",
   "details": "An issue in the uploadPostHandler component of Andrei Marcu linx-server v2.3.8 allows attackers to cause a Denial of Service (DoS) via a crafted POST request.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/andreimarcu/linx-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "2.3.8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -22,6 +43,10 @@
     {
       "type": "WEB",
       "url": "https://gist.github.com/pyuysig/807d92e6d8e7648d140d004f3b54b08b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/andreimarcu/linx-server"
     }
   ],
   "database_specific": {
@@ -29,8 +54,8 @@
       "CWE-400"
     ],
     "severity": "HIGH",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-26T15:03:07Z",
     "nvd_published_at": "2026-06-15T20:16:30Z"
   }
 }

@@ -1,0 +1,190 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cmwh-w62w-r2mf",
+  "modified": "2026-08-26T15:01:17Z",
+  "published": "2026-06-15T21:30:39Z",
+  "aliases": [
+    "CVE-2026-47835"
+  ],
+  "summary": "Spring AI vector store metadata filtering to handle special characters in Elasticsearch, OpenSearch, and GemFire Vector Stores",
+  "details": "In Spring AI Vector Stores, special characters could be used to force the execution of arbitrary queries in Elasticsearch, OpenSearch, and GemFire VectorDB. Affected components: spring-ai-elasticsearch-store, spring-ai-opensearch-store, spring-ai-gemfire-store.\n\nAffected versions:\nSpring AI 1.0.0 through 1.0.x (fix 1.0.9).\nSpring AI 1.1.0 through 1.1.x (fix 1.1.8).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.ai:spring-ai-opensearch-store"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            },
+            {
+              "fixed": "1.0.9"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.0.8"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.ai:spring-ai-opensearch-store"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.1.0"
+            },
+            {
+              "fixed": "1.1.8"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.1.7"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.ai:spring-ai-elasticsearch-store"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            },
+            {
+              "fixed": "1.0.9"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.0.8"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.ai:spring-ai-elasticsearch-store"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.1.0"
+            },
+            {
+              "fixed": "1.1.8"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.1.7"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.ai:spring-ai-gemfire-store"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            },
+            {
+              "fixed": "1.0.9"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.0.8"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.springframework.ai:spring-ai-gemfire-store"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.1.0"
+            },
+            {
+              "fixed": "1.1.8"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.1.7"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47835"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spring-projects/spring-ai/commit/2b20cfc8f478444f942d4be7a867d254441ff991"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spring-projects/spring-ai/commit/9787991aa1ed92c511131ddf4e142bd94051e6e7"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/spring-projects/spring-ai"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spring-projects/spring-ai/releases/tag/v1.0.9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spring-projects/spring-ai/releases/tag/v1.1.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://spring.io/security/cve-2026-47835"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-943"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-26T15:01:16Z",
+    "nvd_published_at": "2026-06-15T20:16:28Z"
+  }
+}
