@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p46m-g734-vpc4",
+  "modified": "2026-08-26T15:31:01Z",
+  "published": "2026-08-26T15:31:01Z",
+  "aliases": [
+    "CVE-2026-54614"
+  ],
+  "summary": "cakephp/debug_kit: MailPreview contains unsafe reflection",
+  "details": "### Impact\n\nThe `MailPreview` feature of debugkit is vulnerable to arbitrary constructor execution. For an application to be vulnerable the following conditions must be true:\n\n1. `debug` mode must be enabled.\n2. The hostname must match a 'local' domain or be in an allowlist.\n\n### Patches\n5.2.4 and 4.10.3 contain patches for this issue.\n\n### Workarounds\nEnsure that debugkit is only part of your development dependencies, and that debug mode is disabled in production environments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "cakephp/debug_kit"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.10.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "cakephp/debug_kit"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.2.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/cakephp/debug_kit/security/advisories/GHSA-p46m-g734-vpc4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cakephp/debug_kit/pull/1078"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cakephp/debug_kit/commit/7c4d85e984c2334b0f50cd02578a927ff9649e13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cakephp/debug_kit/commit/c8a2a9e07d56a5e212d95f6947f370f3b5e6eed6"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/cakephp/debug_kit"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cakephp/debug_kit/releases/tag/4.10.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/cakephp/debug_kit/releases/tag/5.2.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-470"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-26T15:31:01Z",
+    "nvd_published_at": null
+  }
+}
