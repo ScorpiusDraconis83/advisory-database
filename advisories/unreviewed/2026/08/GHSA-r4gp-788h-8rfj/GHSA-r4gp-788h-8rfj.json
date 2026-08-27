@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-r4gp-788h-8rfj",
-  "modified": "2026-08-21T06:31:37Z",
+  "modified": "2026-08-27T21:31:20Z",
   "published": "2026-08-21T06:31:37Z",
   "aliases": [
     "CVE-2026-45202"
   ],
   "details": "Software installed and run as a non-privileged user may conduct GPU system calls which cause GPU memory leaks and possible kernel heap corruption.\n\n\n\nScenario caused by memory free paths not maintaining state data of upgraded higher order allocations. This could cause memory leak or double free event.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-415"
     ],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-21T04:18:03Z"

@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2mrf-pjhv-x8h2",
+  "modified": "2026-08-27T21:31:43Z",
+  "published": "2026-08-27T21:31:43Z",
+  "aliases": [
+    "CVE-2026-59294"
+  ],
+  "details": "ResourceCacheService.getCacheName() builds the on-disk filename by appending the URI fragment verbatim, without stripping path separators or .. sequences, and passes the result to new File(resourceParentFolder, newFileName) before writing the downloaded bytes there.\nSpring AI 2.0.0\nSpring AI 1.1.0 - 1.1.8\nSpring AI 1.0.9 and earlier",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59294"
+    },
+    {
+      "type": "WEB",
+      "url": "https://spring.io/security/cve-2026-59294"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T20:17:55Z"
+  }
+}

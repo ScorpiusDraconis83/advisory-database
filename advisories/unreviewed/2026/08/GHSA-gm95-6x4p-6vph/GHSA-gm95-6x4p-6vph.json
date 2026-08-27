@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gm95-6x4p-6vph",
-  "modified": "2026-08-21T06:31:36Z",
+  "modified": "2026-08-27T21:31:20Z",
   "published": "2026-08-21T06:31:36Z",
   "aliases": [
     "CVE-2026-45201"
   ],
   "details": "Software installed and run as a non-privileged user may conduct improper GPU system calls to pass invalid log2 page size when allocating physical pages leading to OOB read and/or write due to improper validation of the said value.\n\n\n\nSuch crafted log2 page size could lead to 4K pages being treated as higher order pages and allowing read and/or write access to the memory beyond 4K threshold.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-1284"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-21T04:18:02Z"

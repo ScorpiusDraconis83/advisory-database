@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-22jf-r33c-m8rf",
-  "modified": "2026-08-26T21:31:42Z",
+  "modified": "2026-08-27T21:31:25Z",
   "published": "2026-08-26T21:31:42Z",
   "aliases": [
     "CVE-2026-26446"
   ],
   "details": "Stomper 5e2741e is vulnerable to Denial of Service. When a broker sends data to a client whose TCP connection was already closed by the peer, the server process receives SIGPIPE and immediately terminates, resulting in a denial of service. Any unauthenticated client can trigger the crash by closing the socket at specific points.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-703"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-26T20:17:11Z"

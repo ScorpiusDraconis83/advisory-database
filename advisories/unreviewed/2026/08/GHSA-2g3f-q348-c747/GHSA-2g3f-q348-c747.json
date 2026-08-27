@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2g3f-q348-c747",
+  "modified": "2026-08-27T21:31:54Z",
+  "published": "2026-08-27T21:31:54Z",
+  "aliases": [
+    "CVE-2026-81931"
+  ],
+  "details": "Unrestricted Upload of File with Dangerous Type in the product photo upload in Roskus Prospero Flow CRM before 5.16.0 allows an authenticated user holding the create product permission (routine Seller role) to execute arbitrary JavaScript in the application origin. The photo validation rule classifies the file only by its content (magic bytes) and rejects only a fixed list of PHP extensions, while ProductSaveController::save() names the stored file using the client-supplied extension and copies it into the public web root. A file that begins with an image header and carries an HTML extension passes validation, is stored under public/asset/upload/product/, and is served with a text/html content type, turning the upload into first-party stored script execution.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:A/VC:N/VI:L/VA:N/SC:N/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81931"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Roskus/prospero-flow-crm/commit/71b20e1a37f4381d1b8b0a6933a942324e1cc19f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://secur0.com/en/cna/cve-list/cve-2026-81931-unrestricted-upload-product-photo-extension-confusion-xss"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T20:18:57Z"
+  }
+}

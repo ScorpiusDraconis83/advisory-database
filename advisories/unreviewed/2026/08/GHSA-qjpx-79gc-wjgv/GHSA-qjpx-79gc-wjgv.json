@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qjpx-79gc-wjgv",
+  "modified": "2026-08-27T21:31:52Z",
+  "published": "2026-08-27T21:31:52Z",
+  "aliases": [
+    "CVE-2026-65931"
+  ],
+  "details": "LimeSurvey Community Edition 7.0.5 contains an authenticated improper authorization vulnerability in the survey menu entry creation endpoint.\n\n\n\nAn authenticated user with only the global settings:read permission can directly invoke POST /index.php/admin/menuentries/sa/create and create new survey menu entries without the expected settings:update privilege. The endpoint also allows the attacker to submit menu IDs that the normal interface and intended update workflow restrict for non-superadministrators, enabling unauthorized changes to administrative navigation records.\n\n\n\nThis issue affects LimeSurvey: 7.0.5.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65931"
+    },
+    {
+      "type": "WEB",
+      "url": "https://fluidattacks.com/advisories/coda"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LimeSurvey/LimeSurvey"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T20:18:27Z"
+  }
+}

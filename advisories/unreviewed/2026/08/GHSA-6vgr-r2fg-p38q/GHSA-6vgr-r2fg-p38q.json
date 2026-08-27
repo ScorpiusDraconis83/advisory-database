@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6vgr-r2fg-p38q",
+  "modified": "2026-08-27T21:31:52Z",
+  "published": "2026-08-27T21:31:52Z",
+  "aliases": [
+    "CVE-2026-75889"
+  ],
+  "details": "Grafana Alloy’s prometheus.operator.servicemonitors component allows a user who can create or modify ServiceMonitor resources in a watched namespace to specify an arbitrary local file through bearerTokenFile. Alloy reads the file and sends its contents as a bearer token to an attacker-controlled scrape endpoint. This may disclose files accessible to the Alloy process, including its projected Kubernetes service account token, potentially granting the attacker Alloy’s Kubernetes permissions. Exploitation requires ServiceMonitor write access and lower privileges than Alloy’s service account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75889"
+    },
+    {
+      "type": "WEB",
+      "url": "https://grafana.com/security/security-advisories/cve-2026-75889"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T20:18:37Z"
+  }
+}

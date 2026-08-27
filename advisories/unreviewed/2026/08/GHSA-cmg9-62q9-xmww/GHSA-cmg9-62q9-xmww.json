@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cmg9-62q9-xmww",
-  "modified": "2026-08-20T21:31:26Z",
+  "modified": "2026-08-27T21:31:19Z",
   "published": "2026-08-20T15:34:16Z",
   "aliases": [
     "CVE-2026-18482"
   ],
   "details": "Neo.mjs contains a command injection vulnerability within the FileSystemService.mjs component of the ai/mcp/server/file-system MCP server, where the checkSyntax() and runPlaywrightTest() functions unsafely interpolate caller-controlled absolutePath values into shell commands, enabling arbitrary OS command execution when an AI agent is induced to invoke these tools. Commit 88c77fc fixes these vulnerabilities.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-20T13:16:58Z"

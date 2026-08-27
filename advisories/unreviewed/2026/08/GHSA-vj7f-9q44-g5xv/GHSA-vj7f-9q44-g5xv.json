@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vj7f-9q44-g5xv",
+  "modified": "2026-08-27T21:31:37Z",
+  "published": "2026-08-27T21:31:37Z",
+  "aliases": [
+    "CVE-2026-59276"
+  ],
+  "details": "Several components in Spring Security compare security-sensitive values using standard string equality (String.equals()) rather than a constant-time comparison. Because String.equals() returns as soon as it finds a differing character, the time taken to reject an incorrect value is proportional to the number of leading characters that match the expected value.\nSpring Security 7.1.0\nSpring Security 7.0.0 - 7.0.6\nSpring Security 6.5.0 - 6.5.11\nSpring Security 6.4.0 - 6.4.18\nSpring Security 5.8.0 - 5.8.27\nSpring Security 5.7.0 - 5.7.25",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59276"
+    },
+    {
+      "type": "WEB",
+      "url": "https://spring.io/security/cve-2026-59276"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T20:17:53Z"
+  }
+}
