@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g8wr-r2v2-vqc6",
+  "modified": "2026-08-27T16:53:18Z",
+  "published": "2026-08-27T16:53:17Z",
+  "aliases": [
+    "CVE-2026-54721"
+  ],
+  "summary": "silverstripe/userforms vulnerable to remote code execution via userforms email subject",
+  "details": "### Impact\nThe userform email subject field in the CMS is vulnerable to a specially crafted payload being used to run arbitrary code on the server.\n\n### Reported by\nJack Wallace from Bastion Security",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "silverstripe/userforms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.4.9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "silverstripe/userforms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.0.0"
+            },
+            {
+              "fixed": "7.0.7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "silverstripe/userforms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.1.0"
+            },
+            {
+              "fixed": "7.1.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/silverstripe/silverstripe-userforms/security/advisories/GHSA-g8wr-r2v2-vqc6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/silverstripe/silverstripe-userforms/pull/1441"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/silverstripe/silverstripe-userforms/pull/1442"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/silverstripe/silverstripe-userforms/commit/23c069866900c19b499bfa997d1e251e97491702"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/silverstripe/silverstripe-userforms/commit/c55494ad7c717b199a3c1663b43a54db5d95604c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FriendsOfPHP/security-advisories/blob/master/silverstripe/userforms/CVE-2026-54721.yaml"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/silverstripe/silverstripe-userforms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/silverstripe/silverstripe-userforms/releases/tag/6.4.9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/silverstripe/silverstripe-userforms/releases/tag/7.0.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/silverstripe/silverstripe-userforms/releases/tag/7.1.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.silverstripe.org/download/security-releases/cve-2026-54721"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20",
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-27T16:53:17Z",
+    "nvd_published_at": null
+  }
+}
