@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-p85r-x2wj-mxqj",
-  "modified": "2026-06-16T15:33:47Z",
+  "modified": "2026-08-27T16:42:21Z",
   "published": "2026-06-15T21:30:41Z",
   "aliases": [
     "CVE-2026-50887"
   ],
+  "summary": "shlink has a Server-Side Request Forgery issue",
   "details": "A Server-Side Request Forgery (SSRF) in the automatic short URL title resolution component of shlink v5.0.1 allows attackers to scan internal resources via supplying a crafted longUrl.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "shlinkio/shlink"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "5.0.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -22,6 +43,10 @@
     {
       "type": "WEB",
       "url": "https://gist.github.com/pyuysig/9de95fb39eb089a4346570d791af99a6"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/shlinkio/shlink"
     }
   ],
   "database_specific": {
@@ -29,8 +54,8 @@
       "CWE-918"
     ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-27T16:42:21Z",
     "nvd_published_at": "2026-06-15T20:16:31Z"
   }
 }
