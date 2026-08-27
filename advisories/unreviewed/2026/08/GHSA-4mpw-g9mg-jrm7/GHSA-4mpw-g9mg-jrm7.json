@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4mpw-g9mg-jrm7",
+  "modified": "2026-08-27T06:31:31Z",
+  "published": "2026-08-27T06:31:31Z",
+  "aliases": [
+    "CVE-2026-74753"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: Reject exited events as group leaders\n\nperf_event_remove_on_exec() sets remove-on-exec events to the EXIT state\nand detaches their group relationships.  The event's file descriptor can\nremain open, however, and perf_event_open() currently accepts that event\nas a group leader because its early validation rejects only REVOKED and\nDEAD events.\n\nA new sibling can consequently be linked to the detached leader.  When\nthe leader is closed, perf_group_detach() observes that its\nPERF_ATTACH_GROUP bit is already clear and skips the new sibling.  The\nsibling then retains a group_leader pointer to the freed event.\n\nReject group leaders in the EXIT state.  Perform the check while holding\nthe shared context mutex so that an exec in the target task cannot detach\nthe leader between validation and group attachment.\n\n[peterz: make the earlier test fully consistent]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74753"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a03413f31c196ab3894f988cdce0bb47b4fec42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ce010275c531475f9d6e7efb11b9e522c74ed2e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa091f46c3833fb22384f10eade2b4e1e1d0b278"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T15:16:54Z"
+  }
+}

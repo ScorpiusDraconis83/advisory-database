@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-28cj-v8rj-mq63",
+  "modified": "2026-08-27T06:31:33Z",
+  "published": "2026-08-27T06:31:33Z",
+  "aliases": [
+    "CVE-2026-80580"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: bound mode sysfs output to the sysfs buffer\n\nmode_string() uses snprintf() which can return a value larger than the\nremaining buffer space. show_modes() accumulates the return value into i\nwithout checking whether i has reached PAGE_SIZE, causing the offset to\nadvance past the sysfs buffer if the modelist is long enough.\n\nAdd a size parameter to mode_string() and use scnprintf() to return\nonly the bytes actually written. Add an early return when offset\nalready exceeds the buffer. In show_modes(), stop accumulating once\nthe buffer is full.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80580"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/873a1aa15c313263f2e18b38cf525623cc4fabf6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d15d51fb26e830af58f3f21964f1c09c239077ea"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T15:17:14Z"
+  }
+}

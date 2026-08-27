@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-582m-3r7c-4438",
+  "modified": "2026-08-27T06:31:30Z",
+  "published": "2026-08-27T06:31:30Z",
+  "aliases": [
+    "CVE-2026-74737"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethernet: ti: am65-cpsw-nuss: Fix port_id extraction from SRC TAG\n\nOn the packet reception path, the ID of the MAC Port on which the packet\nwas received, is embedded in the RX DMA Descriptor's metadata. The ID is\nextracted using the helper function cppi5_desc_get_tags_ids() which fills\nin the 16-bit Source Tag into the 'port_id' variable. However, it is only\nthe lower 8-bits of the 16-bit Source Tag that represent the MAC Port ID,\nwhile the upper 8-bits are Hardware-Reserved and carry an arbitrary value.\nWith the existing logic, sporadic kernel crash is observed due to the\nsubsequent driver code accessing out-of-bound memory because of an invalid\nport_id.\n\nHence, fix the port_id extraction logic to use only the lower 8-bits of the\nSource Tag as the MAC Port ID.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74737"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/14fc40bf28390e0ebee6a072457c36b82c614100"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c0e35ce761131f82062222779d8574849790892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36a05d2820077bb3955acb8111e1041d39148037"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46a8e084a159e638ac2728e96980b65d752d65fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/551688b410d3fb0dae7739724422f268cd9446d6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/72e4e3d7efc3b7d85f86abbe8b94f8e45074abe3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/914e0100df3435bd14d09f397238e891cf9b7dce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a220225efd6f58350bbb53fe70bdec08519267f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T15:16:52Z"
+  }
+}

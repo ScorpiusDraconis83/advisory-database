@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rq35-rvjv-r5cq",
+  "modified": "2026-08-27T06:31:32Z",
+  "published": "2026-08-27T06:31:32Z",
+  "aliases": [
+    "CVE-2026-80553"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/vfio_ccw: Cancel existing workqueues\n\nThe initialization of the io_work and crw_work workqueues begs the\nquestion of whether they should be un-initialized. Add the corresponding\ncleanup tags in _release_dev to ensure work isn't dispatched after\nthe private struct is free'd.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80553"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77f5e888d2e607a0b3141fb95091ad6ef1cca9a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79c60b2c61105368dcc8444eb45847e21734f7c4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7ae0f7993867d009a4b554fc1d6d451c10580a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc47a98abe6714577a25224534dbd356051097a3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e868ea8be0bc88c6982f48ecf3259d98afd884ae"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T15:17:09Z"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f6gf-8w3m-3498",
+  "modified": "2026-08-27T06:31:35Z",
+  "published": "2026-08-27T06:31:35Z",
+  "aliases": [
+    "CVE-2026-59278"
+  ],
+  "details": "JsonKafkaHeaderMapper and DefaultKafkaHeaderMapper include java.net in their default trusted packages list. When these mappers are used — which is the default configuration for all @KafkaListener consumers — an external Kafka producer can inject a java.net.InetAddress type via the spring_json_header_types message header.\nSpring for Apache Kafka 4.1.0\nSpring for Apache Kafka 4.0.0 - 4.0.6\nSpring for Apache Kafka 3.0.0 - 3.3.16\nSpring for Apache Kafka 2.9.0 - 2.9.14\nSpring for Apache Kafka 2.8.12 and earlier",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59278"
+    },
+    {
+      "type": "WEB",
+      "url": "https://spring.io/security/cve-2026-59278"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T06:17:22Z"
+  }
+}

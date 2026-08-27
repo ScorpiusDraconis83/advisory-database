@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9vqh-hxm7-9fwm",
+  "modified": "2026-08-27T06:31:31Z",
+  "published": "2026-08-27T06:31:31Z",
+  "aliases": [
+    "CVE-2026-80547"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/vfio_ccw: Implement a crw lock\n\nUnlike the channel_program struct, which covers synchronous I/O\nsubmissions and asynchronous interrupts, the CRW region relies\nexclusively on asynchronous events coming from hardware.\n\nImplement a lock to manage the list of those payloads, to ensure\nthey are read cohesively.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80547"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16b0798024c0e9117e395829ddbbe70981c79d9c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/49fa26b0df009dc1f420980bd71780e70615b83b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7902be374cbfc11c3435e1e87bf22195bf06a558"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c76c4ee72bfc3824f4f491f18ed0323bf2e2daf9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T15:17:09Z"
+  }
+}

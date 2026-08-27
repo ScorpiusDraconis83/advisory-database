@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5h39-f843-4g5v",
+  "modified": "2026-08-27T06:31:31Z",
+  "published": "2026-08-27T06:31:31Z",
+  "aliases": [
+    "CVE-2026-80545"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/zcrypt: Improve EP11 CPRB length and overflow checks\n\nThe xcrb_msg_to_type6_ep11cprb_msgx() function lacks proper input\nvalidation, creating security vulnerabilities:\n1. Missing minimum size validation: The ep11_cprb structure and\n   subsequent payload fields (pld_tag, pld_lenfmt) are copied from\n   userspace without verifying sufficient buffer length.\n2. Arithmetic overflow in length calculations: CEIL4 alignment could\n   overflow, bypassing size checks and enabling buffer overflows.\n3. The payload is asn1 encoded but the function just uses a simple c\n   struct overlay to access some fields of the payload.\n\nFix by using size_t for length calculations, adding U32_MAX boundary\nchecks after alignment, and validating minimum request size and\nminimum reply size before copying from userspace. Do a very simple\nasn1 parsing of the payload up to the function value field.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80545"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17ac0bc866fc624cd05f022dcd8b730c0af11bb1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2976b9d2e716c7e5487ca7c29a7bd076cf9adf08"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T15:17:08Z"
+  }
+}

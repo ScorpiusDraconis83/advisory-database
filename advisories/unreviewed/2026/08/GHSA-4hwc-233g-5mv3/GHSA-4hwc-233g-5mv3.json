@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4hwc-233g-5mv3",
+  "modified": "2026-08-27T06:31:30Z",
+  "published": "2026-08-27T06:31:30Z",
+  "aliases": [
+    "CVE-2026-74746"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: flowtable: publish GC-visible tuple last\n\nnf_flow_table_iterate() only treats original-direction tuple nodes as\nowning entries. Publishing the original node first lets GC observe and\nfree a flow while flow_offload_add() is still inserting the reply node.\nPublish the reply node first and the original node last so GC never\nsees a partially installed flow.\n\nKASAN can trigger slab-use-after-free read and write reports in the\nflowtable/rhashtable path (rht_deferred_worker, jhash, flow_offload_del,\nflow_offload_lookup, etc.).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74746"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a00254585827f1695aa2700114af622ea754cfa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2014ac62df9d45bb9a004a043e85df7be09ed780"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/211ee5d998d92a7d548811939c65942d06c146e4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/972fdf7c4f5c282a239c88fea614b056c33dc025"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be345dcbddb4643a54252b954af974b16eda8f91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d16b71231e65cb05daea2b45701fcf09cef041e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d37917e7bebe078f3c17e47fd6fc1c9f6e8497b2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d9d3050a70efe217e73a0751e55fdae6a7092620"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T15:16:53Z"
+  }
+}

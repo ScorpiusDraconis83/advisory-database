@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ccx7-24wp-j32x",
+  "modified": "2026-08-27T06:31:31Z",
+  "published": "2026-08-27T06:31:31Z",
+  "aliases": [
+    "CVE-2026-80548"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/vfio_ccw: Selectively expand io_mutex\n\nThe io_mutex was defined to serialize the io_regions, but then has\nalso sort of been associated with the I/O themselves because of\nthe close relationship they share.\n\nWith the handful of races that are possible, the choices are either to:\n A) expand the scope of io_mutex to close these remaining windows, or\n B) reduce the scope of io_mutex to just io_region, and introduce a new\n    lock mechanism for the remaining I/O resources\n\nThis patch implements A, since B brings with it a lot more interactions\nthat would need to be tracked and kept in a correct hierarchy. It also\ntakes advantage of the workqueue element for cp_free() that now gets\ncalled out of fsm_notoper(), which could be invoked out of an interrupt\ncontext and thus cannot acquire a mutex itself.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80548"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a5ac0c0f1f7da33929211a2e41911bf72ee35d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ba9efdf9ebedc4e54df4b56aa3b43a65f7967cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34f4feff3e90bd09308fad0974e97113b23b812a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b6aecea4b2b246f9fbd98a5712daa1193a60818e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f72a51810d49411bd8cad0c2df8592320a2fe5cc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T15:17:09Z"
+  }
+}

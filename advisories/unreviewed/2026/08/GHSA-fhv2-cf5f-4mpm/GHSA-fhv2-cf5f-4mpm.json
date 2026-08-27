@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fhv2-cf5f-4mpm",
+  "modified": "2026-08-27T06:31:31Z",
+  "published": "2026-08-27T06:31:31Z",
+  "aliases": [
+    "CVE-2026-80522"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: tegra - fix rctx->cryptlen calculation in tegra_gcm_do_one_req()\n\nPerform rctx->cryptlen calculation in tegra_gcm_do_one_req() the same way\nit is done in tegra_ccm_crypt_init(). The current formulae may lead to a\ncrash if a caller does not call tegra_gcm_setauthsize() and so ctx->authsize\nremains zero. Then a decrypt operation with incorrect rctx->cryptlen will\nlead to a write beyound rctx->dst_sg buffer.\n\nAs a follow-up cleanup delete struct tegra_aead_ctx->authsize field since\nit appears to be completely unused. Also simplify tegra_ccm_setauthsize()\nand tegra_gcm_setauthsize() functions respectively.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80522"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/360f2974fcea49c61f6d6f81554741a9eeee7168"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/99a18e1d979e0fad3aaf9c65ae6696897c1d9869"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c6237834d9994de209cb90c7a2c461247bce8e90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd6991001bf0681ed0bcf21f9cc3d261d749b2bb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T15:17:05Z"
+  }
+}

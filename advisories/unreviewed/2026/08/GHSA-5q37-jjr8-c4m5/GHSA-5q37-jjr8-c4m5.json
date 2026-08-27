@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5q37-jjr8-c4m5",
+  "modified": "2026-08-27T06:31:31Z",
+  "published": "2026-08-27T06:31:31Z",
+  "aliases": [
+    "CVE-2026-80538"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: propagate errors from xfs_rtginode_load\n\nxfs_rtginode_ensure() treats every xfs_rtginode_load() error other than\n-ENOENT as success.  This can leave the realtime group inode unset after an\nI/O, allocation, or corruption error.  Growfs then continues as though the\ninode had been loaded.\n\nOnly -ENOENT means that the inode needs to be created.  Return all other\nerrors to the growfs caller.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80538"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61c5165f02deb2eed9b6b539bb279e6629fee652"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7e53968cb8882c2d276429ea8550848a4940874"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ec19cea4ef1ce9d6e2e3f7e9e7bf88ede31176e7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T15:17:08Z"
+  }
+}
