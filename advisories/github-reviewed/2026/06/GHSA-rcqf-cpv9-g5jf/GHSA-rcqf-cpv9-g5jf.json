@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rcqf-cpv9-g5jf",
-  "modified": "2026-06-16T21:31:54Z",
+  "modified": "2026-08-27T16:48:27Z",
   "published": "2026-06-15T21:30:42Z",
   "aliases": [
     "CVE-2026-50891"
   ],
+  "summary": "Filestash allows attackers to escalate privileges via sending a crafted request",
   "details": "Incorrect access control in the /admin/api/config component of Filestash v0.4.0 allows attackers to escalate privileges via sending a crafted request.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "github.com/mickael-kerjean/filestash"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "0.2.2-0.20260827111952-cbcd1e96ebc7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -22,6 +43,10 @@
     {
       "type": "WEB",
       "url": "https://gist.github.com/pyuysig/50dc365f54f95396bb67532f02b34bb0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mickael-kerjean/filestash"
     }
   ],
   "database_specific": {
@@ -29,8 +54,8 @@
       "CWE-284"
     ],
     "severity": "HIGH",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-27T16:48:27Z",
     "nvd_published_at": "2026-06-15T20:16:32Z"
   }
 }
