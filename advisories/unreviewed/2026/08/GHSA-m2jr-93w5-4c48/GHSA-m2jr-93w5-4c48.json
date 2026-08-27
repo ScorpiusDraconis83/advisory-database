@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m2jr-93w5-4c48",
+  "modified": "2026-08-27T18:32:30Z",
+  "published": "2026-08-27T18:32:30Z",
+  "aliases": [
+    "CVE-2026-81826"
+  ],
+  "details": "Affected versions of Flowintel do not revoke existing authenticated sessions when a user’s password is changed.\n\n\nThis means that if an attacker already possesses a valid session—for example, from prior access or a stolen session token—the victim changing their password does not terminate that attacker’s access. The session remains usable until it expires naturally. The upstream commit describes this directly as:\n\n\n“session keeps working until it expires.”\n\nThe fix detects password changes and explicitly invokes _invalidate_user_sessions(user.id) after the database update. This is applied in both edit_user_core() and admin_edit_user_core().\n\nVersion impacted >=3.3.0",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81826"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flowintel/flowintel/commit/e46e075b8f28212800fc57ead0a7f9a2921bfff0.patch"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-384"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T17:21:05Z"
+  }
+}

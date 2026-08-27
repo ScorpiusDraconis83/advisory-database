@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4pgr-wr6g-rxf6",
+  "modified": "2026-08-27T18:32:21Z",
+  "published": "2026-08-27T18:32:21Z",
+  "aliases": [
+    "CVE-2026-19854"
+  ],
+  "details": "When the ClickHouse plugin uses Native protocol (the default) with PDC or secure SOCKS, it asks for TLS but the connection library ignores that and talks to ClickHouse in the clear. Username, password, queries, and results can be read on the hop after the proxy. The server certificate is never checked, and a configured client certificate is not sent.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19854"
+    },
+    {
+      "type": "WEB",
+      "url": "https://grafana.com/security/security-advisories/cve-2026-19854"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-319"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T17:17:43Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cv7j-9q69-fxh4",
+  "modified": "2026-08-27T18:32:30Z",
+  "published": "2026-08-27T18:32:30Z",
+  "aliases": [
+    "CVE-2026-81820"
+  ],
+  "details": "Affected versions of Flowintel construct timeline HTML using attacker-controllable MISP object fields such as:\n\n\n\n  *  \nobject UUID;\n\n\n  *  \nobject name;\n\n\n  *  \nattribute value;\n\n\n  *  \nattribute type;\n\n\n  *  \ncomment;\n\n\n  *  \nfirst/last seen values;\n\n\n  *  \nIDS flag.\n\n\n\n\n\nThose values were concatenated directly into HTML strings before rendering. The upstream commit explicitly states that DOMPurify removed XSS vectors but still allowed other HTML elements, such as forms, through.\n\nThe fix replaces direct string interpolation with DOM construction via document.createElement() and assigns all attacker-controlled values using textContent. The headline is similarly converted to escaped HTML through a temporary element.\n\nVersion impacted =>3.3.0",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81820"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flowintel/flowintel/commit/11f71e747d95ed062667e2df0ce259c5fa64d531.patch"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T17:21:05Z"
+  }
+}

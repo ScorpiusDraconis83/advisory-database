@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gwq3-cphc-pwmg",
+  "modified": "2026-08-27T18:32:26Z",
+  "published": "2026-08-27T18:32:26Z",
+  "aliases": [
+    "CVE-2026-81664"
+  ],
+  "details": "The OpenFaaS gateway registers GET /system/telemetry in gateway/main.go and, when basic_auth is enabled, wraps each administrative /system/* handler in auth.DecorateWithBasicAuth. TelemetryHandler was left out of that wrap block from 0.27.11, which introduced the route, until 0.27.14, which added it. On an affected gateway the route therefore reaches the forwarding proxy with no credential check and returns whatever the configured provider serves for /system/telemetry, so any client that can reach the gateway port can read the provider's telemetry regardless of the basic_auth setting. The exposed content depends on the provider, and covers resource and invocation metrics for faasd and pod or cluster state for faas-netes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81664"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openfaas/faas/commit/8d803bf9e2655aec6a60fd0e25b392839f96af95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/geo-chen/oss/blob/main/faas.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openfaas/faas"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openfaas/faas/blob/0.27.13/gateway/main.go#L216"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openfaas-gateway-0.27.11-through-0.27.13-missing-authentication-on-the-system-telemetry-route"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T17:20:55Z"
+  }
+}

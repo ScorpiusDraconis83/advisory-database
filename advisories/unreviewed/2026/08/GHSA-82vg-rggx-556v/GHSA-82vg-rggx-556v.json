@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-82vg-rggx-556v",
+  "modified": "2026-08-27T18:32:27Z",
+  "published": "2026-08-27T18:32:27Z",
+  "aliases": [
+    "CVE-2026-81684"
+  ],
+  "details": "In openssl_encrypt (pip package openssl-encrypt) versions <= 1.4.8, the desktop GUI passes the steganography password to the CLI child process on the command line via the --stego-password argument (on both encrypt and decrypt paths) instead of via an environment variable as done for the main password. Any local user can read the steganography password from /proc/<pid>/cmdline for the lifetime of the subprocess. Fixed in 1.4.9.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-rx2c-m92f-qv6p"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81684"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openssl-encrypt-before-1.4.9-information-disclosure-via-command-line"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-214"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T17:20:57Z"
+  }
+}

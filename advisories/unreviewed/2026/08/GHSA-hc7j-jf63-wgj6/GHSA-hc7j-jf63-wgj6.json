@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hc7j-jf63-wgj6",
+  "modified": "2026-08-27T18:32:25Z",
+  "published": "2026-08-27T18:32:25Z",
+  "aliases": [
+    "CVE-2026-80211"
+  ],
+  "details": "FrontAccounting through 2.4.20 stores and verifies user passwords as unsalted MD5 digests. admin/users.php passes md5($_POST['password']) to add_user() and update_user_password(), admin/change_current_user_password.php does the same when a user changes their own password, the forgotten-password path in includes/current_user.inc hashes the newly generated password the same way, and authentication calls get_user_auth($loginname, md5($password)). The codebase applies no per-password salt and contains no call to password_hash(), password_verify() or any other adaptive hash, so identical passwords yield identical digests and an attacker who obtains the user table can recover plaintext passwords with precomputed lookup tables or high-rate GPU cracking.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80211"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FrontAccountingERP/FA"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FrontAccountingERP/FA/blob/9464a3ffef03c139d9396e697bce9a0a9f131a72/includes/current_user.inc#L79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/geo-chen/oss/blob/main/FA.md#finding-2-unsalted-md5-password-hashing-in-frontaccounting"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/frontaccounting-through-2.4.20-use-of-unsalted-md5-for-password-storage"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-916"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T17:20:50Z"
+  }
+}

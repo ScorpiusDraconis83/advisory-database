@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6cxp-7f85-p38r",
-  "modified": "2026-08-27T06:31:34Z",
+  "modified": "2026-08-27T18:32:08Z",
   "published": "2026-08-27T06:31:34Z",
   "aliases": [
     "CVE-2026-16569"
   ],
   "details": "The Mobile App for WooCommerce: ShopApper Mobile App Builder Service for WooCommerce WordPress plugin through 0.4.62 does not check the user's capabilities before allowing a stock-update operation through one of its REST endpoints, allowing any authenticated user, such as a customer or subscriber, to change the stock quantity of arbitrary products.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-27T06:16:56Z"

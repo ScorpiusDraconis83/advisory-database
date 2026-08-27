@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-727p-q944-q4q7",
+  "modified": "2026-08-27T18:32:26Z",
+  "published": "2026-08-27T18:32:26Z",
+  "aliases": [
+    "CVE-2026-81334"
+  ],
+  "details": "darknet subscripts its layer array with an index taken from a configuration file without checking it against the array's length. The array is allocated in src-lib/darknet_network.cpp as xcalloc(net.n, sizeof(Darknet::Layer)), sized to exactly the number of layer sections the file declares. The shortcut, scale_channels and sam sections supply that index through their from field and the route section through its layers field, and parse_shortcut_section in src-lib/darknet_cfg.cpp reads net.layers[index].outputs with no bounds check, which reads past the allocation. The dispatch loop in create_network then reuses the same index to assign net.layers[l.index].use_bin_output and net.layers[l.index].keep_delta_gpu, writing past the allocation at an offset the file controls, with a fixed one-byte value. Parsing a crafted configuration file is sufficient: the parse runs before any weights file is opened and needs no non-default option, so the result is a reliable crash and a write whose location, though not its value, is chosen by whoever supplied the file.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81334"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hank-ai/darknet"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hank-ai/darknet/blob/v6.0/src-lib/darknet_cfg.cpp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hank-ai/darknet/blob/v6.0/src-lib/darknet_network.cpp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/darknet-through-6.0-out-of-bounds-read-and-write-via-unchecked-layer-index-in-cfg-parser"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T17:20:53Z"
+  }
+}
