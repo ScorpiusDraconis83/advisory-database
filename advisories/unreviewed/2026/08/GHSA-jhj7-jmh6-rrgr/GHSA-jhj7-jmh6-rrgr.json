@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jhj7-jmh6-rrgr",
+  "modified": "2026-08-27T15:31:37Z",
+  "published": "2026-08-27T15:31:37Z",
+  "aliases": [
+    "CVE-2026-81743"
+  ],
+  "details": "Affected versions of Flowintel allow the LOG_FILE configuration value to be modified through system settings without restricting it to a filename inside the intended log directory.\n\n\nBecause the application constructs the log destination from this configurable value, an administrator could set LOG_FILE to an arbitrary filesystem path. Since attackers can influence logged content, this enables controlled data to be written into unintended files. The upstream commit specifically describes an exploitation chain in which an attacker injects a template into a chosen file and subsequently abuses application rendering behavior to execute code.\n\nThe patch removes LOG_FILE from the web-editable settings, introduces validate_log_file_name() to reject absolute paths, traversal, Windows paths, null bytes, and directory components, and centralizes log path construction through resolve_log_file_path().\n\nVersion impacted: >=3.3.0",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81743"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flowintel/flowintel/commit/13785ee5d70a54d0ac97ba89dd31a478a86fc161"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T13:18:43Z"
+  }
+}

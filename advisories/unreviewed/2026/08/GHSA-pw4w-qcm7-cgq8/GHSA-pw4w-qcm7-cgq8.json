@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pw4w-qcm7-cgq8",
+  "modified": "2026-08-27T15:31:37Z",
+  "published": "2026-08-27T15:31:37Z",
+  "aliases": [
+    "CVE-2026-81814"
+  ],
+  "details": "Affected versions of Flowintel render calendar event titles using innerHTML. Because those titles are derived from case titles, a user able to create or modify a case title could store HTML or script-capable content that is later interpreted by the browser when another user views the calendar.\n\n\nThe fix changes:\n\n\ntitleEl.innerHTML = arg.event.title\n\n\nto:\n\n\ntitleEl.textContent = arg.event.title || ''\n\nand similarly stops using innerHTML for the static download icon.\n\nVersion impacted =>3.3.0",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81814"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flowintel/flowintel/commit/f224438eb495e6b0d4e465eb7f40ab771bbfdb76.patch"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T13:18:43Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5w9h-62pq-pj3g",
+  "modified": "2026-08-27T15:31:37Z",
+  "published": "2026-08-27T15:31:36Z",
+  "aliases": [
+    "CVE-2026-81674"
+  ],
+  "details": "The endpoint ‘/ws/apiprensa/getVideoNextPrev’ is vulnerable to SQL injection via the id_ambito parameter. Unsanitized input is directly incorporated into a MariaDB query, allowing attackers to inject SQL syntax that interrupts the query's execution. The vulnerability results in detailed database error messages and exposes the internal structure of the queries, which could facilitate further exploitation.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81674"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.incibe.es/en/incibe-cert/notices/aviso/multiple-vulnerabilities-toools-isquad"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T13:18:42Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4xww-rqhr-67w2",
+  "modified": "2026-08-27T15:31:37Z",
+  "published": "2026-08-27T15:31:37Z",
+  "aliases": [
+    "CVE-2026-81753"
+  ],
+  "details": "Affected versions of Flowintel render Mermaid blocks contained in stored case notes without sufficiently neutralizing attacker-controlled markup. Because Mermaid note content is persisted and later rendered for other users, an attacker with permission to create or edit a note could store a crafted Mermaid payload that results in JavaScript execution when another user views the affected case note.\n\nThe patch adds explicit Mermaid detection and HTML escaping around the token content before the generated Mermaid wrapper is returned. It also moves the wrapping logic earlier in page initialization so Markdown instances are protected consistently.\n\nVersion impacted >= 3.3.0",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81753"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flowintel/flowintel/commit/61c97e67f5d04030f26e7900c470b52f9f37da06"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T13:18:43Z"
+  }
+}
