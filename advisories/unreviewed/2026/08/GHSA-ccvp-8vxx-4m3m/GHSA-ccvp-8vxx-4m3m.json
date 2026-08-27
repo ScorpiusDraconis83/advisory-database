@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ccvp-8vxx-4m3m",
+  "modified": "2026-08-27T12:30:26Z",
+  "published": "2026-08-27T12:30:26Z",
+  "aliases": [
+    "CVE-2026-81575"
+  ],
+  "details": "If configured as a server, CodeMeter Runtime before versions 8.41a and 9.10 accepts requests with opcode 0x5e, which contain the data length and\nthe data itself. Missing bounds checking on the data length value can lead to out of bounds reads, causing a\nsegmentation fault that ultimately crashes the CodeMeter Runtime.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cdn.wibu.com/fileadmin/wibu_downloads/security_advisories/AdvisoryWIBU-103401.pdf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-130"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T10:16:40Z"
+  }
+}

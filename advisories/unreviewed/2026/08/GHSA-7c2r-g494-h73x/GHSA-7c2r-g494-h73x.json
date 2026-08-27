@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7c2r-g494-h73x",
+  "modified": "2026-08-27T12:30:26Z",
+  "published": "2026-08-27T12:30:26Z",
+  "aliases": [
+    "CVE-2026-81574"
+  ],
+  "details": "In CodeMeter Runtime before versions 8.41a and 9.10, the logger does not sanitize input strings in certain cases, allowing an attacker to inject printf-style format\nspecifiers. This can be used to reliably crash CodeMeter and disclose sensitive information such as process memory\nand stack canaries. The attack works locally, for example by using cmu --set-proxy to set the proxy value, and\nremotely when combined with CVE-2026-81573 by setting General.ProxyServer and then triggering this\nvulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81574"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cdn.wibu.com/fileadmin/wibu_downloads/security_advisories/AdvisoryWIBU-103401.pdf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-134"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-27T10:16:40Z"
+  }
+}
