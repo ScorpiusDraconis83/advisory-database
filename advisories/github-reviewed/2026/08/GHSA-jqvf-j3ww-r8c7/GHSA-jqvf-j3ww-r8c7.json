@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jqvf-j3ww-r8c7",
+  "modified": "2026-08-28T18:37:28Z",
+  "published": "2026-08-28T18:37:28Z",
+  "aliases": [
+    "CVE-2026-55673"
+  ],
+  "summary": "PowSyBl Core has Command Injection in LocalCommandExecutor-s",
+  "details": "### Impact\n\n#### Description\nBoth `AbstractLocalCommandExecutor` OS-dependent implementations are subject to **CWE-78** (OS Command Injection), with a secondary **CWE-88** (Argument Injection) concern via environment variables.\n\nThe local command executor build command strings via concatenation and executes them (through `bash -c` for Unix, or `cmd /c` for Windows). Any string argument or environment variable value reaching this executor can break out of the intended command and execute arbitrary shell code as the JVM user.\n\nThe sink is reachable through public APIs that accept `List<String>` arguments without any documented indication that elements undergo shell interpretation.\n\nAny caller — CLI, library integration, or embedding service — that forwards data from a less-trusted source into these APIs inherits the vulnerability.\n\n#### Vulnerable elements\nThe vulnerable elements are:\n- Public methods:\n  - `UnixLocalCommandExecutor.execute(...)`\n  - `WindowsLocalCommandExecutor.execute(...)`\n  - `LocalComputationManager.execute(...)`\n  - `ParallelLoadFlowActionSimulator.run(...)`\n  - `ActionSimulatorTool.run(...)`\n  - `AmplModelRunner.run(...)`\n  - `AmplModelRunner.runAsync(...)`\n- **itools** commands:\n  - `action-simulator`, when the `task-count` option is defined\n  - `security-analysis`, when the `external` option is defined\n  -  `dynamic-security-analysis`\n\n\n#### Characteristics\n\nThe vulnerability characteristics are the following:\n- It allows **arbitrary shell command execution** as the JVM user (read, write, execute any file; spawn processes; exfiltrate data; etc.)\n- There are **multiple independent injection vectors** within a single vulnerable call:\n  - `args` elements (weakly escaped — bypassable via `$(...)`, backticks, escaped quotes)\n  - Environment variable values (unescaped — bypassable via `;`, `\\n`, or shell metacharacters)\n- It is **silent** from the caller's perspective: the `List<String>` API gives no indication that shell interpretation occurs.\n- It exposes **downstream projects:** any service embedding `powsybl-core` (REST front-ends, pypowsybl tooling, multi-tenant grid analysis platforms) that exposes contingency IDs or computation parameters to external input is exploitable without needing to touch powsybl's code directly.\n\n\n#### Am I impacted?\n\nYou are vulnerable if you make direct calls to one of the vulnerable end-user methods or itools commands listed in the \"Vulnerable elements\" section, with user-provided parameters, without controlling them.\n\n\n### Patches\n\n`com.powsybl:powsybl-computation-local:7.2.2` and higher\n\n\n### Workarounds\n\nIf you cannot update your `powsybl-computation-local` version, you can check the content of the user-provided arguments when calling the vulnerable methods, by forbidding (if possible) the following characters:\n- On Unix/Linux systems:\n  - `\\`, `!`, `#`, `$`, `^`, `&`, `*`, `(`, `)`, `{`, `}`, `|`, `[`, `]`, `\\`, `;`, `\\`, `\"`, `,`, `<`, `>`, `?`, ` `\n- On Windows:\n  - `%`, `!`, `\"`, `\\n`, `\\r`, `^`",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "com.powsybl:powsybl-computation-local"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "7.2.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 7.2.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/powsybl/powsybl-core/security/advisories/GHSA-jqvf-j3ww-r8c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/powsybl/powsybl-core/pull/3973"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/powsybl/powsybl-core/commit/17461264d1d18f9bba43bb7855f251e9fa55a4db"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/powsybl/powsybl-core/commit/7aa28d8c2492bbcd061585cb498acce72d5ed79a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/powsybl/powsybl-core"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/powsybl/powsybl-core/releases/tag/v7.2.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78",
+      "CWE-88"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T18:37:28Z",
+    "nvd_published_at": null
+  }
+}
