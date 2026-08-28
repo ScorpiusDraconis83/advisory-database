@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fwxc-gf6v-5f32",
+  "modified": "2026-08-28T00:32:04Z",
+  "published": "2026-08-28T00:32:04Z",
+  "aliases": [
+    "CVE-2026-75417"
+  ],
+  "details": "A SQL injection vulnerability was found in YzmCMS 7.5. The issue occurs in the get_arrchildid() function within application/admin/controller/category.class.php, where the user-controlled parentid parameter is concatenated directly into a FIND_IN_SET() SQL clause without proper sanitization. This allows an authenticated administrator to execute arbitrary SQL queries via boolean-based blind injection, potentially leading to full database compromise.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75417"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TKar0/TKar0-CvePoc/tree/main/2026-CVE-POC/CVE-2026-75417"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yzmcms/yzmcms"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T00:18:12Z"
+  }
+}
