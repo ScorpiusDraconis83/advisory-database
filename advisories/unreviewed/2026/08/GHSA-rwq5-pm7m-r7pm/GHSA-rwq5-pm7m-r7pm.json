@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rwq5-pm7m-r7pm",
+  "modified": "2026-08-28T18:31:30Z",
+  "published": "2026-08-28T18:31:29Z",
+  "aliases": [
+    "CVE-2026-5096"
+  ],
+  "details": "The Everest Forms plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 3.4.4. This is due to the `load_previous_field_value()` method in `class-evf-form-task.php` accepting arbitrary URL values from `$_POST` data for upload fields without domain restriction, which are then passed to `wp_remote_head()` in the `get_local_file_size()` method of `class-evf-form-fields-upload.php`. This makes it possible for unauthenticated attackers to force the WordPress server to make outbound HTTP HEAD requests to arbitrary URLs by submitting a form with an upload field containing a malicious URL while leaving a required field empty to trigger form re-rendering.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5096"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/everest-forms/trunk/includes/abstracts/class-evf-form-fields-upload.php#L1196"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/everest-forms/trunk/includes/class-evf-form-task.php#L1448"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3507814"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c5bbf7ed-c154-4153-adbf-59f0f7aa3a18?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T16:18:18Z"
+  }
+}

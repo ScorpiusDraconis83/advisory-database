@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rj2v-3ccg-83gv",
+  "modified": "2026-08-28T18:31:29Z",
+  "published": "2026-08-28T18:31:29Z",
+  "aliases": [
+    "CVE-2026-3423"
+  ],
+  "details": "The Envira Gallery plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the gallery 'description' configuration field in all versions up to, and including, 1.12.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses a page displaying the gallery with a description enabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/envira-gallery-lite/trunk/includes/global/rest.php#L192"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/envira-gallery-lite/trunk/includes/global/rest.php#L239"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/envira-gallery-lite/trunk/includes/global/shortcode.php#L807"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3514026/envira-gallery-lite/trunk/includes/global/shortcode.php?old=3465371&old_path=envira-gallery-lite%2Ftrunk%2Fincludes%2Fglobal%2Fshortcode.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/17de5b96-7a61-4f37-a921-6a023cc40812?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T16:17:56Z"
+  }
+}

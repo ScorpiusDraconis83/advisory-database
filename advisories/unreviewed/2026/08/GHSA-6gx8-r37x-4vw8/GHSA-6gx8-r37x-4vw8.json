@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6gx8-r37x-4vw8",
+  "modified": "2026-08-28T18:31:28Z",
+  "published": "2026-08-28T18:31:28Z",
+  "aliases": [
+    "CVE-2026-37236"
+  ],
+  "details": "grpc-gateway v2.28.0 is vulnerable to Incorrect Access Control. The application processes the X-HTTP-Method-Override header in ServeMux.ServeHTTP without restricting allowed methods. When a POST request with Content-Type application/x-www-form-urlencoded includes this header, the request method is rewritten to an arbitrary attacker-supplied value before routing. This allows bypassing method-based access controls enforced by upstream proxies or WAFs.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-37236"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grpc-ecosystem/grpc-gateway/commit/72123cd4f32545f6e1376873f412dcdcbcf29acc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grpc-ecosystem/grpc-gateway"
+    },
+    {
+      "type": "WEB",
+      "url": "https://s00me00ne.com/cve/cve-2026-37236"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T16:17:46Z"
+  }
+}
