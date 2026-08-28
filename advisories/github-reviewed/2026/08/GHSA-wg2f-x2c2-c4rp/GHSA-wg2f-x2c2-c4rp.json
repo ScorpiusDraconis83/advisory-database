@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wg2f-x2c2-c4rp",
+  "modified": "2026-08-28T17:57:04Z",
+  "published": "2026-08-28T17:57:04Z",
+  "aliases": [
+    "CVE-2026-55461"
+  ],
+  "summary": "Snipe-IT has an Open Redirect After User Edit",
+  "details": "### Impact\nThe user edit flow stores `url()->previous()` into Laravel's intended URL session value and later redirects with `redirect()->intended(...)` when `redirect_option=back` is submitted. Because the previous URL is derived from the attacker-controlled `Referer` header, an authenticated user performing a normal user-edit action can be redirected to an external attacker-controlled site.\n\nAn attacker who can cause a logged-in user with permission to edit a user record to open the edit page with an attacker-controlled `Referer` value.\n\nThe application can be used as a trusted redirector after a legitimate user edit action. This can support phishing or trust-boundary attacks against Snipe-IT users and matches a historical open redirect class where session-stored navigation context influences redirect destinations.\n\n\n### Patches\nPatched in  f4cac96358",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 8.6.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-wg2f-x2c2-c4rp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55461"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/f4cac9635868c020174361ad7a80b2545a4e7623"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T17:57:04Z",
+    "nvd_published_at": "2026-07-10T20:16:46Z"
+  }
+}

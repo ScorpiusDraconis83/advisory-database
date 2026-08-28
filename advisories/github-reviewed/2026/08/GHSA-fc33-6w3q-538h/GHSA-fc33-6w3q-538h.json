@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fc33-6w3q-538h",
+  "modified": "2026-08-28T17:57:40Z",
+  "published": "2026-08-28T17:57:40Z",
+  "aliases": [
+    "CVE-2026-55462"
+  ],
+  "summary": "Snipe-IT has an authorization bypass on print inventory page",
+  "details": "### Impact\nAn authenticated user with only `users.view` can open another user's detail page and see assigned license, accessory, and consumable data even though the same account is denied direct access to the Licenses, Accessories, and Consumables modules. The leaked data includes software license names, purchase order/order values, accessory and consumable names, assignment notes, and purchase costs.\n\n### Attacker Model\n\nAuthenticated user with only:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ json\n{\"users.view\":\"1\"}\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nThe attacker does not have:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ json\n{\n  \"licenses.view\": \"1\",\n  \"accessories.view\": \"1\",\n  \"consumables.view\": \"1\",\n  \"assets.view\": \"1\"\n}\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n### Affected Component\n\n-   `app/Http/Controllers/Users/UsersController.php`\n\n-   `resources/views/users/view.blade.php`\n\n-   `resources/views/users/print.blade.php`\n\n-   Endpoints:\n\n    -   `GET /users/{user}`\n\n    -   `GET /users/{user}/print`\n\n### Root Cause\n\n`UsersController::show()` authorizes only viewing the user, then loads inventory relationships:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ php\n$this->authorize('view', $user);\n\n$user = User::with([\n    'consumables',\n    'accessories',\n    'licenses',\n    'userloc',\n    'groups',\n])\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n`resources/views/users/view.blade.php` renders those relationships without checking the corresponding module permissions. The license table renders name, purchase cost, purchase order, and order number. The accessory and consumable tables render item names, notes, and unit costs.\n\n`UsersController::printInventory()` similarly authorizes only `view` on `User::class` and the target user, then renders `resources/views/users/print.blade.php`, which outputs assigned inventory names.\n\n### Proof of Concept\n\n1.  Create a user with only `users.view`.\n\n2.  Create a target user with assigned license/accessory/consumable records containing recognizable test values.\n\n3.  Log in as the `users.view`-only user.\n\n4.  Confirm direct module access is denied:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ http\nGET /licenses\nGET /accessories\nGET /consumables\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nObserved for each:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ http\nHTTP/1.1 403 Forbidden\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n1.  Request the target user's page:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ http\nGET /users/<target-user-id> HTTP/1.1\nHost: <snipe-it-host>\nCookie: snipeit_session=<attacker-session>\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nObserved:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ http\nHTTP/1.1 200 OK\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nThe response contained assigned inventory data from modules the attacker could not directly access, including license name, purchase order/order values, accessory name/note/cost, and consumable name/note/cost.\n\n1.  Request the print view:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ http\nGET /users/<target-user-id>/print HTTP/1.1\nHost: <snipe-it-host>\nCookie: snipeit_session=<attacker-session>\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nObserved:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ http\nHTTP/1.1 200 OK\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nThe response contained assigned inventory names.\n\n### Evidence\n\nThe `users.view`-only test account was confirmed to lack direct inventory permissions:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ json\n{\n  \"has_users_view\": true,\n  \"has_licenses_view\": false,\n  \"has_accessories_view\": false,\n  \"has_consumables_view\": false,\n  \"has_assets_view\": false\n}\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nDirect access to `/licenses`, `/accessories`, and `/consumables` returned `403 Forbidden`.\n\nThe same account received `200 OK` from `/users/<target-user-id>` and the response included assigned inventory data that should have been protected by the corresponding inventory module permissions.\n\n### Negative Controls\n\nDenied direct module responses did not include the test inventory strings. The same data was only disclosed through the user detail and user print views.\n\n### Impact\n\nOrganizations may use separate permissions to allow HR/helpdesk-style users to view people records without exposing license, accessory, or consumable inventories and cost/order metadata. This issue bypasses those module-specific permissions and leaks assigned inventory information through the user view.\n\n\n### Patches\nPatched in 374f426f0c",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 8.6.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-fc33-6w3q-538h"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/374f426f0c6bb7a4f129f7b85051cc1da753a0f5"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T17:57:40Z",
+    "nvd_published_at": "2026-07-10T20:16:46Z"
+  }
+}
