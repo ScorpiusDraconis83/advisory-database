@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jhph-5q74-pmfx",
+  "modified": "2026-08-28T17:59:54Z",
+  "published": "2026-08-28T17:59:54Z",
+  "aliases": [
+    "CVE-2026-55466"
+  ],
+  "summary": "Snipe-IT vulnerable to stored XSS via inline-served attachment",
+  "details": "### Impact\nA low-privilege user can store an active-content payload as an asset attachment and have it served inline, same-origin, with an active Content-Type, achieving stored XSS. The application sanitizes uploads only when PHP finfo detects image/svg+xml. By submitting an XHTML document whose finfo MIME is text/xml (an allowed extension), the svg-sanitize branch is skipped, the <script> is stored raw, and the inline-serve path returns it as text/xml; charset=utf-8 with Content-Disposition: inline — which the browser renders as a live XHTML document and executes. The dedicated StorageHelper::allowSafeInline() whitelist that should have constrained inline-renderable types is never wired into the serve path.\n\n### Details\nVulnerable code — sanitizer keyed on finfo MIME `app/Http/Requests/UploadFileRequest.php:46-53`\n\n```php\n$extension = $file->getClientOriginalExtension();\n$file_name = $name_prefix.'-'.str_random(8).'-'.str_slug(...).'.'.$file->guessExtension();\n...\nif ($file->getMimeType() === 'image/svg+xml') {\n    $uploaded_file = $this->handleSVG($file);   // svg-sanitize fires\n} else {\n    $uploaded_file = file_get_contents($file);   // stored RAW — no sanitization\n}\n```\n\nVulnerable code — inline serve, no `allowSafeInline()` `app/Http/Controllers/UploadedFilesController.php:103`\n\n```php\nif (request('inline') == 'true') {\n    $headers = ['Content-Disposition' => 'inline'];\n    return Storage::download($path.$log->filename, $log->filename, $headers);\n}\n```\n\n`StorageHelper::allowSafeInline()` (`app/Helpers/StorageHelper.php:88`) exists to whitelist inline-renderable types but is not called here. The validation rule (`UploadFileRequest::rules()`) is `mimes`: over `config('filesystems.allowed_upload_extensions_for_validator')`, which includes svg, xml, and txt — so a text/xml file passes validation and bypasses the SVG sanitizer simultaneously.\n\nPOC\n1. From a fresh install, as a user with only `assets.view` + `assets.files` targeting any existing asset created by admin\n2. click on the asset created by admin and upload files.\n3. create a XML file with the following payload and upload it.\n\n```xml\n<?xml version=\"1.0\"?>\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head><script>alert(document.cookie)</script></head>\n<body>hi</body>\n</html>\n```\n\n\n4. Noticed that it did not receive any error and the file was uploaded.\n5. Now, can just get the URL and view it. (need to add the `inline=true`).\nimage.png\n\nNotice that the XSS was able to request `document.cookie`. This means that it is possible for low privilege user to perform XSS and perform privilege escalation to admin.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:A/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 8.6.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-jhph-5q74-pmfx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55466"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/000cea0a622d586366cf60d2240c7c2a4b17c955"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T17:59:54Z",
+    "nvd_published_at": "2026-07-10T20:16:46Z"
+  }
+}

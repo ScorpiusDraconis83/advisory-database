@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8w8c-8mx9-52cw",
+  "modified": "2026-08-28T18:01:06Z",
+  "published": "2026-08-28T18:01:06Z",
+  "aliases": [
+    "CVE-2026-55472"
+  ],
+  "summary": "Snipe-IT's API Location Creation Bypasses FMCS Parent-Child Company Boundary Validation",
+  "details": "### Impact\nWhen Full Multiple Companies Support and scope_locations_fmcs are both enabled, the API endpoint for creating locations can still create a child location under a parent location from a different company. The code detects the invalid parent/child company mismatch, but it appears not to return immediately, so the request continues and the record is still saved. The equivalent Web flow correctly rejects the same relationship.\n\nThis breaks the expected company-boundary enforcement for location hierarchies under FMCS. It allows cross-company parent/child relationships to be inserted into the location tree, which can affect hierarchy integrity, downstream business logic, and the consistency of company isolation between the Web and API interfaces.\n\n### Patches\nPatched in https://github.com/grokability/snipe-it/commit/9a8cbd6e00613a726b639a97a1da71b3c54f9489",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 8.6.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-8w8c-8mx9-52cw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55472"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/9a8cbd6e00613a726b639a97a1da71b3c54f9489"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T18:01:06Z",
+    "nvd_published_at": "2026-07-10T19:17:24Z"
+  }
+}
