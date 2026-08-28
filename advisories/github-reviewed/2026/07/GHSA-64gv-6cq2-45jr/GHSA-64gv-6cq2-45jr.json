@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-64gv-6cq2-45jr",
-  "modified": "2026-07-06T21:30:36Z",
+  "modified": "2026-08-28T19:33:21Z",
   "published": "2026-07-06T09:30:30Z",
   "aliases": [
     "CVE-2026-48206"
   ],
+  "summary": "Apache Camel-JIRA: A set of non-Camel-prefixed Exchange header constants bypass the HTTP header filter",
   "details": "Improper Input Validation, Authorization Bypass Through User-Controlled Key vulnerability in Apache Camel JIRA component.\n\nThe camel-jira producers read their operation parameters - the issue key, project key, transition id, summary, type, assignee, components, watchers, link type, work-log minutes and others - from Exchange message headers. The header constants defined in JiraConstants (for example ISSUE_KEY = IssueKey, ISSUE_PROJECT_KEY = ProjectKey, ISSUE_TRANSITION_ID = IssueTransitionId, LINK_TYPE = linkType) used plain, non-Camel-prefixed values. Because these names do not start with the Camel / camel prefix, HttpHeaderFilterStrategy - which blocks only the Camel header namespace on the HTTP boundary - let them pass from an inbound HTTP request straight into the Exchange. In a route that bridges an HTTP consumer (for example platform-http) into a jira: producer, any HTTP client could therefore supply these headers and override the values the route intended, driving JIRA operations against the configured JIRA instance with the endpoint's configured service-account credentials - for example deleting or transitioning an arbitrary issue (via IssueKey / IssueTransitionId), creating an issue in a different project (via ProjectKey), modifying issue fields, adding or removing watchers, or logging work. The operations are bounded by what the configured service account is permitted to do. No credentials are required from the attacker when the bridging consumer is unauthenticated.\nThis issue affects Apache Camel: from 4.0.0 before 4.14.8, from 4.15.0 before 4.18.3, from 4.19.0 before 4.21.0.\n\nUsers are recommended to upgrade to version 4.21.0, which fixes the issue. If users are on the 4.14.x LTS releases stream, then they are suggested to upgrade to 4.14.8. If users are on the 4.18.x releases stream, then they are suggested to upgrade to 4.18.3. After upgrading, routes that drive JIRA operations via the raw header names must use the CamelJira* names (for example CamelJiraIssueKey) instead of the old values. For deployments that cannot upgrade immediately, strip the camel-jira control headers from any untrusted ingress before the jira: producer (for example removing the IssueKey, ProjectKey, IssueTransitionId and related headers at the start of the route), and set the required JIRA operation parameters from a trusted source.",
   "severity": [
     {
@@ -13,7 +14,65 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.camel:camel-jira"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.14.8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.camel:camel-jira"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.15.0"
+            },
+            {
+              "fixed": "4.18.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.camel:camel-jira"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.19.0"
+            },
+            {
+              "fixed": "4.21.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -21,7 +80,51 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/23417"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/23460"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/23472"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/024704f95f16d1260304054088fa0b34acb57ebf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/3240a174a3707ba2b1d893c4ac0880829e0c9233"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/6863ea624605ab3fa8827c43a4c5df333f767dc4"
+    },
+    {
+      "type": "WEB",
       "url": "https://camel.apache.org/security/CVE-2026-48206.html"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/camel"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/releases/tag/camel-4.14.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/releases/tag/camel-4.18.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/releases/tag/camel-4.21.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issues.apache.org/jira/browse/CAMEL-23576"
     },
     {
       "type": "WEB",
@@ -30,11 +133,12 @@
   ],
   "database_specific": {
     "cwe_ids": [
-      "CWE-20"
+      "CWE-20",
+      "CWE-639"
     ],
     "severity": "MODERATE",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T19:33:21Z",
     "nvd_published_at": "2026-07-06T09:16:38Z"
   }
 }

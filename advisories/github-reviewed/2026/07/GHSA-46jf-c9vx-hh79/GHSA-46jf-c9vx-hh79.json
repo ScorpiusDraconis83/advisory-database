@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-46jf-c9vx-hh79",
+  "modified": "2026-08-28T19:34:04Z",
+  "published": "2026-07-06T12:31:30Z",
+  "aliases": [
+    "CVE-2026-46587"
+  ],
+  "summary": "Apache Camel-Couchbase: Non-Camel-prefixed Exchange headers bypass HeaderFilterStrategy allowing operation override from untrusted input",
+  "details": "Improper Input Validation vulnerability in Apache Camel.\n\nThis issue affects Apache Camel: through 4.14.7, from 4.15.0 through 4.18.2, from 4.19.0 through 4.20.0.\n\nUsers are recommended to upgrade to version 4.14.8, 4.18.3, 4.21.0, which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.camel:camel-couchbase"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.14.8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.camel:camel-couchbase"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.15.0"
+            },
+            {
+              "fixed": "4.18.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.camel:camel-couchbase"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.19.0"
+            },
+            {
+              "fixed": "4.21.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46587"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/23228"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/23230"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/23231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/8d74cdca9befc74b49d9c52ac6a145be1d413e7d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/c16f7ef39849ae8819f50c959b538350b8f839e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/d0dfa4e0ebd062acaf4a86ca476bb4305db9bfd4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://camel.apache.org/security/CVE-2026-46587.html"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/camel"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/releases/tag/camel-4.14.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/releases/tag/camel-4.18.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/releases/tag/camel-4.21.0"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/06/15"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T19:34:04Z",
+    "nvd_published_at": "2026-07-06T11:16:28Z"
+  }
+}
