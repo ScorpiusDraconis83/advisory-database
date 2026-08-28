@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cv4q-6x73-xc63",
+  "modified": "2026-08-28T06:31:05Z",
+  "published": "2026-08-28T06:31:04Z",
+  "aliases": [
+    "CVE-2026-76053"
+  ],
+  "details": "The TranslatePress – Translate Multilingual sites with AI Translation plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Comment Noise-Key Injection into HTML Parser in all versions up to, and including, 3.3.3 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation is possible because WordPress's comment KSES allowlist permits the payload structure — an anchor tag with href and title attributes alongside a code tag — causing the malicious comment to be stored verbatim in the database, where it is later processed by the vulnerable parser during page translation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76053"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/translatepress-multilingual/tags/3.3.1/assets/lib/simplehtmldom/simple_html_dom.php#L1549"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/translatepress-multilingual/tags/3.3.1/assets/lib/simplehtmldom/simple_html_dom.php#L2125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/translatepress-multilingual/tags/3.3.1/assets/lib/simplehtmldom/simple_html_dom.php#L2220"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/translatepress-multilingual/tags/3.3.1/assets/lib/simplehtmldom/simple_html_dom.php#L497"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/translatepress-multilingual/tags/3.3.1/includes/class-translation-render.php#L1226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/translatepress-multilingual/tags/3.3.1/includes/class-translation-render.php#L664"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/translatepress-multilingual/tags/3.3.2/assets/lib/simplehtmldom/simple_html_dom.php#L1549"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/translatepress-multilingual/tags/3.3.2/assets/lib/simplehtmldom/simple_html_dom.php#L2125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/translatepress-multilingual/tags/3.3.2/assets/lib/simplehtmldom/simple_html_dom.php#L2220"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/translatepress-multilingual/tags/3.3.2/assets/lib/simplehtmldom/simple_html_dom.php#L497"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/translatepress-multilingual/tags/3.3.2/includes/class-translation-render.php#L1226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/translatepress-multilingual/tags/3.3.2/includes/class-translation-render.php#L664"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3665013/translatepress-multilingual/trunk/assets/lib/simplehtmldom/simple_html_dom.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?old_path=%2Ftranslatepress-multilingual/tags/3.3.3&new_path=%2Ftranslatepress-multilingual/tags/3.3.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/990e04ed-ff17-4e10-9224-64a674a40416?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T05:16:46Z"
+  }
+}
