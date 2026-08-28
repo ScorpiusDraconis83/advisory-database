@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mqr3-w6qc-2c4f",
+  "modified": "2026-08-28T12:30:26Z",
+  "published": "2026-08-28T12:30:26Z",
+  "aliases": [
+    "CVE-2026-81733"
+  ],
+  "details": "WWBN AVideo through 30.0 (and master up to commit 4cb576e) contains a cross-site request forgery vulnerability in plugin/Live/myLiveControls.save.json.php. The endpoint only checks that a user is logged in and processes customUrl, customMessage, and autoRedirect parameters from $_REQUEST via a GET request without enforcing a CSRF token or origin check. An attacker who lures a logged-in streamer to a malicious page can silently change the live-channel viewer-redirect settings (persisted in users.externalOptions), causing viewers to be redirected to a phishing site or shown a spoofed message.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/security/advisories/GHSA-wpr3-456q-6vgc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81733"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wwbn-avideo-through-30.0-csrf-via-mylivecontrols-save-json-php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T12:16:32Z"
+  }
+}

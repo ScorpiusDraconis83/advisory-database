@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8j7v-pg7g-633j",
+  "modified": "2026-08-28T12:30:27Z",
+  "published": "2026-08-28T12:30:27Z",
+  "aliases": [
+    "CVE-2026-82244"
+  ],
+  "details": "Budibase versions before 3.41.3 contain a remote code execution vulnerability in plugin handling that allows authenticated admin users to execute arbitrary code by uploading a malicious plugin tarball. The server calls eval() on plugin JavaScript files without sandboxing in the main Node.js process, enabling attackers to exfiltrate environment variables and credentials with root privileges in default deployments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Budibase/budibase/security/advisories/GHSA-gwr2-pgg3-p7xp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/budibase-before-3.41.3-remote-code-execution-via-plugin-eval"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T12:16:34Z"
+  }
+}

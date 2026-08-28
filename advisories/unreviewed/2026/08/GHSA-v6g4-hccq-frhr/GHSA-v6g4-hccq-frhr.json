@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v6g4-hccq-frhr",
+  "modified": "2026-08-28T12:30:26Z",
+  "published": "2026-08-28T12:30:26Z",
+  "aliases": [
+    "CVE-2026-82237"
+  ],
+  "details": "filebrowser through 2.63.23 does not remove share records when a shared file is renamed (only deletion triggers share cleanup). The share record is keyed by path, so it survives the rename and remains dormant (returning 404 while the path is empty). When any new, unrelated file later appears at the original shared path — via re-upload, another user with create permission, or a hook — the stale public share link serves that new file under the original link's password and expiry settings, unexpectedly exposing it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/filebrowser/filebrowser/security/advisories/GHSA-m8v4-4w34-rrvf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82237"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/filebrowser-through-2.63.23-stale-share-link-via-file-rename"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-459"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T12:16:33Z"
+  }
+}

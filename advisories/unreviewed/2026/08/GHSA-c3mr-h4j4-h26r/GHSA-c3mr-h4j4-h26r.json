@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c3mr-h4j4-h26r",
+  "modified": "2026-08-28T12:30:25Z",
+  "published": "2026-08-28T12:30:25Z",
+  "aliases": [
+    "CVE-2026-40019"
+  ],
+  "details": "An unauthenticated attacker can send a truncated quoted argument to the ManageSieve login process, which makes it spin in an infinite loop consuming CPU. This can cause degradation or denial of service for Sieve script management, and repeated connections can consume all available CPU on the server. Monitor system for abnormal CPU usage and kill the offending process. Restrict network access to the ManageSieve service to trusted clients. Update to non-vulnerable version. No publicly available exploits are known.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40019"
+    },
+    {
+      "type": "WEB",
+      "url": "https://documentation.open-xchange.com/dovecot/security/advisories/csaf/2026/oxdc-adv-2026-0003.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T12:16:28Z"
+  }
+}
