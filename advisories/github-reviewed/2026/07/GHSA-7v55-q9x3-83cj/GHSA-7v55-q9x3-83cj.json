@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7v55-q9x3-83cj",
-  "modified": "2026-07-06T21:30:36Z",
+  "modified": "2026-08-28T19:26:21Z",
   "published": "2026-07-06T09:30:28Z",
   "aliases": [
     "CVE-2026-46457"
   ],
+  "summary": "Apache Camel-NATS: Inbound NATS message headers are mapped into the Exchange without a configured HeaderFilterStrategy, allowing a client that can publish to the subject to inject Camel control headers",
   "details": "Improper Input Validation vulnerability in Apache Camel NATS component.\n\nThe camel-nats component maps inbound NATS message headers into the Camel Exchange but defaulted its headerFilterStrategy to a bare new DefaultHeaderFilterStrategy() with no inbound rules configured (NatsConfiguration). With no inFilter, inFilterPattern or inFilterStartsWith set, DefaultHeaderFilterStrategy.applyFilterToExternalHeaders returns not filtered for every header name, so NatsConsumer copies every NATS message header - including Camel-internal control headers such as CamelHttpUri, CamelFileName or CamelSqlQuery - unmodified onto the Camel message. A client able to publish to the consumed NATS subject can therefore inject arbitrary Camel control headers that influence the behaviour of downstream producers in the route (for example redirecting an HTTP producer, changing a file name, or overriding a query); the injected headers also persist across internal direct, seda and vm hops. The concrete downstream impact depends on which producers the route uses. NATS message headers require NATS 2.2 or later, and the issue is reachable without credentials when the NATS server is configured without authentication (the NATS server default).\nThis issue affects Apache Camel: from 4.0.0 before 4.14.8, from 4.15.0 before 4.18.3, from 4.19.0 before 4.21.0.\n\nUsers are recommended to upgrade to version 4.21.0, which fixes the issue. If users are on the 4.14.x LTS releases stream, then they are suggested to upgrade to 4.14.8. If users are on the 4.18.x releases stream, then they are suggested to upgrade to 4.18.3. The fix makes camel-nats default to a dedicated NatsHeaderFilterStrategy that filters the Camel header namespace case-insensitively on inbound mapping, so client-supplied Camel* / camel* headers are no longer copied into the Exchange. For deployments that cannot upgrade immediately, strip the Camel control headers from inbound NATS messages before they reach any downstream producer (for example removeHeaders('Camel*') and removeHeaders('camel*') at the start of the route), and enable authentication on the NATS server so that only trusted clients can publish to the consumed subject.",
   "severity": [
     {
@@ -13,7 +14,65 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.camel:camel-nats"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0"
+            },
+            {
+              "fixed": "4.14.8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.camel:camel-nats"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.15.0"
+            },
+            {
+              "fixed": "4.18.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.camel:camel-nats"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.19.0"
+            },
+            {
+              "fixed": "4.21.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -21,7 +80,51 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/23233"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/23250"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/pull/23255"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/67f7ea7465a1bf637339975c69a82327890e22f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/be8aad96fa04f81d2b58884e27ba6755c9ad2718"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/commit/f7022926ca9c1c94866bf32596c9869f424a3b2c"
+    },
+    {
+      "type": "WEB",
       "url": "https://camel.apache.org/security/CVE-2026-46457.html"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/camel"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/releases/tag/camel-4.14.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/releases/tag/camel-4.18.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/camel/releases/tag/camel-4.21.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://issues.apache.org/jira/browse/CAMEL-23515"
     },
     {
       "type": "WEB",
@@ -33,8 +136,8 @@
       "CWE-20"
     ],
     "severity": "HIGH",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T19:26:21Z",
     "nvd_published_at": "2026-07-06T09:16:36Z"
   }
 }
