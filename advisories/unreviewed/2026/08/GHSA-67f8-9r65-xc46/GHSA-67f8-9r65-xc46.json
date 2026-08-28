@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-67f8-9r65-xc46",
+  "modified": "2026-08-28T21:31:17Z",
+  "published": "2026-08-28T21:31:17Z",
+  "aliases": [
+    "CVE-2026-77184"
+  ],
+  "details": "In MongoDB Connector for BI, the description text of a collection's JSON schema validator is incorporated into the comment text of the DDL returned by SHOW CREATE statements without complete escaping of backslash characters. A user with permission to modify a collection's schema validator, in deployments configured to build their SQL schema from those validators, can cause additional SQL text to be embedded in that generated output. If an operator or automated tool later replays that generated statement against a SQL server, the additional text is executed with the privileges of that session.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:A/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77184"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.mongodb.com/docs/bi-connector/current/release-notes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:19:55Z"
+  }
+}

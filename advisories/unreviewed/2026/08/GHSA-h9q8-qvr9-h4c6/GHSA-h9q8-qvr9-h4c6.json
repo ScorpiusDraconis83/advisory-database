@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h9q8-qvr9-h4c6",
+  "modified": "2026-08-28T21:31:24Z",
+  "published": "2026-08-28T21:31:24Z",
+  "aliases": [
+    "CVE-2026-82268"
+  ],
+  "details": "Qwen-Agent through 0.0.34 contains a server-side request forgery vulnerability in the document parsing path that treats caller-supplied paths as URLs without scheme restriction or host validation. Attackers can reach the unauthenticated Gradio interface to make the server issue HTTP requests to arbitrary internal addresses including metadata services and read retrieved content through parsed document output.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82268"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/QwenLM/Qwen-Agent/issues/913"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/QwenLM/Qwen-Agent"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/QwenLM/Qwen-Agent/blob/31a4d36d123688581a9e9744427272b33ce940e0/qwen_agent/tools/simple_doc_parser.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/qwen-agent-server-side-request-forgery-via-caller-supplied-document-url"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:20:17Z"
+  }
+}

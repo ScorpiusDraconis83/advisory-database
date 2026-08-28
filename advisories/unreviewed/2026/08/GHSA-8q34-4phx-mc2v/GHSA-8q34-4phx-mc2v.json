@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8q34-4phx-mc2v",
+  "modified": "2026-08-28T21:31:21Z",
+  "published": "2026-08-28T21:31:21Z",
+  "aliases": [
+    "CVE-2026-82264"
+  ],
+  "details": "Duplicacy through 3.2.5 contains a path traversal vulnerability in the restore function that fails to validate entry paths deserialized from snapshot files. Attackers can craft malicious snapshot entries with directory traversal sequences to write files outside the restore directory to arbitrary locations accessible by the restoring user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82264"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gilbertchen/duplicacy/issues/692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gilbertchen/duplicacy"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gilbertchen/duplicacy/blob/54f97522bff9df8be6797873203310ccbf5a5b00/src/duplicacy_backupmanager.go"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gilbertchen/duplicacy/blob/54f97522bff9df8be6797873203310ccbf5a5b00/src/duplicacy_utils_others.go"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/duplicacy-path-traversal-during-restore-via-unsanitized-snapshot-paths"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:20:16Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q48c-g8g8-2xq8",
+  "modified": "2026-08-28T21:31:25Z",
+  "published": "2026-08-28T21:31:25Z",
+  "aliases": [
+    "CVE-2026-82273"
+  ],
+  "details": "Mastra through 1.63.0 contains an authentication bypass vulnerability in the memory API thread ownership validation when mapUserToResourceId callback is omitted from configuration. Authenticated attackers can enumerate all threads via GET /api/memory/threads and read conversation history and metadata of other resource owners.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82273"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mastra-ai/mastra/issues/18911"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mastra-ai/mastra"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mastra-ai/mastra/blob/b7e66f0c478a227985e0062794ef058c3714fabf/packages/server/src/server/handlers/utils.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mastra-memory-api-thread-ownership-check-is-a-no-op-when-mapusertoresourceid-is-unset"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:20:18Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cx66-mrcp-c95r",
+  "modified": "2026-08-28T21:31:25Z",
+  "published": "2026-08-28T21:31:25Z",
+  "aliases": [
+    "CVE-2026-82274"
+  ],
+  "details": "Twenty through 2.35.0 contains an open redirect vulnerability in the OAuthPropagatorController.propagateOAuthCallback endpoint that treats the state query parameter as a redirect URL. Attackers can craft malicious requests to redirect users to arbitrary hosts while forwarding OAuth authorization codes, bypassing domain validation when IS_MULTIWORKSPACE_ENABLED is disabled.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82274"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/twentyhq/twenty/issues/22109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/twentyhq/twenty"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/twentyhq/twenty/blob/5851753d0cad4678af94382899d371203d651acb/packages/twenty-server/src/engine/core-modules/auth/controllers/oauth-propagator.controller.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/twenty-open-redirect-via-oauth-propagator-callback"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:20:18Z"
+  }
+}

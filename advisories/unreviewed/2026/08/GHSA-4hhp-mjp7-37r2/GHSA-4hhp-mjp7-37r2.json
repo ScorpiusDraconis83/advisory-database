@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4hhp-mjp7-37r2",
+  "modified": "2026-08-28T21:31:28Z",
+  "published": "2026-08-28T21:31:28Z",
+  "aliases": [
+    "CVE-2026-82290"
+  ],
+  "details": "Chainlit through 2.12.0 fails to validate ownership of feedback records in PUT and DELETE endpoints. Authenticated attackers can delete or modify other users' feedback by supplying arbitrary feedback identifiers, corrupting human-rating data used for model evaluation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82290"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Chainlit/chainlit/issues/2975"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Chainlit/chainlit"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Chainlit/chainlit/blob/190ea74239d9e84b26e7c91bc2882dd038942564/backend/chainlit/server.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/chainlit-feedback-endpoints-missing-ownership-validation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:20:20Z"
+  }
+}

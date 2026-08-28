@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rrm3-x23q-98qc",
+  "modified": "2026-08-28T21:31:18Z",
+  "published": "2026-08-28T21:31:18Z",
+  "aliases": [
+    "CVE-2026-82020"
+  ],
+  "details": "Hermes Agent 0.16.0 prior to 0.17.0 contains an improper path restriction vulnerability that allows attackers who can influence ingested message content to overwrite the credential store by bypassing sensitive-path guards that excluded the auth.json file. Attackers can craft malicious messages directing the agent's file-write tooling to overwrite the credential store without triggering any path-based protection, enabling credential tampering or unauthorized access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82020"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NousResearch/hermes-agent/pull/45821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/2b67e96aec2aa2abd5e94b544cda8e564c75f9f5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/da28d5d113956dcf803d5cff552a120740a96a59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v2026.6.19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hermes-agent-credential-store-overwrite-via-file-write-tool"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-552"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:20:14Z"
+  }
+}

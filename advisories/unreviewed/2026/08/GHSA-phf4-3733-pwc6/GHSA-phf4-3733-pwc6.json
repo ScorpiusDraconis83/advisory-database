@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-phf4-3733-pwc6",
+  "modified": "2026-08-28T21:31:27Z",
+  "published": "2026-08-28T21:31:27Z",
+  "aliases": [
+    "CVE-2026-82287"
+  ],
+  "details": "Rybbit before 2.7.0 contains a CORS misconfiguration vulnerability that allows attackers to bypass origin restrictions by reflecting any request origin in Access-Control-Allow-Origin responses while credentials are enabled. Attackers can issue credentialed cross-origin requests from any website to read analytics data, account information, and perform authenticated state-changing operations as the victim user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82287"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rybbit-io/rybbit/issues/1038"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rybbit-io/rybbit/commit/6f1039bdd3328a84d6700031bc0ce4714020e2f9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rybbit-io/rybbit"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rybbit-io/rybbit/blob/v2.6.0/server/src/index.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rybbit-reflects-any-origin-in-cors-responses-while-allowing-credentials"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-942"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:20:20Z"
+  }
+}

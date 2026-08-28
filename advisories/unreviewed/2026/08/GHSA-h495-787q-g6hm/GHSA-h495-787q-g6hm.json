@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h495-787q-g6hm",
+  "modified": "2026-08-28T21:31:26Z",
+  "published": "2026-08-28T21:31:26Z",
+  "aliases": [
+    "CVE-2026-82276"
+  ],
+  "details": "StarRocks through 4.0.13 contains an authentication bypass vulnerability in five REST handler classes that override execute() directly instead of implementing executeWithoutPassword(). Attackers can access six unauthenticated endpoints on the frontend HTTP port to disclose cluster topology, database metadata, JVM statistics, and version information without credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82276"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/StarRocks/starrocks/issues/75747"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/StarRocks/starrocks"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/StarRocks/starrocks/blob/4.0.13/fe/fe-core/src/main/java/com/starrocks/http/rest/RestBaseAction.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/StarRocks/starrocks/blob/4.0.13/fe/fe-core/src/main/java/com/starrocks/http/rest/ShowMetaInfoAction.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/starrocks-frontend-rest-handlers-bypass-the-base-class-authentication-gate"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:20:18Z"
+  }
+}

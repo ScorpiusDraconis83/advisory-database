@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-98j5-x6wm-v8hp",
+  "modified": "2026-08-28T21:31:27Z",
+  "published": "2026-08-28T21:31:27Z",
+  "aliases": [
+    "CVE-2026-82286"
+  ],
+  "details": "gpt-crawler through 1.5.1 fails to validate the outputFileName parameter in the POST /crawl endpoint, allowing unauthenticated attackers to write arbitrary files to any filesystem path. Attackers can supply absolute paths or parent-directory segments to overwrite existing files with content sourced from attacker-controlled URLs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82286"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BuilderIO/gpt-crawler/issues/418"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BuilderIO/gpt-crawler"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BuilderIO/gpt-crawler/blob/d2245d66a5ad60bf227a55c849135394cbecc9b5/src/config.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BuilderIO/gpt-crawler/blob/d2245d66a5ad60bf227a55c849135394cbecc9b5/src/core.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gpt-crawler-arbitrary-file-write-via-outputfilename-parameter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:20:20Z"
+  }
+}

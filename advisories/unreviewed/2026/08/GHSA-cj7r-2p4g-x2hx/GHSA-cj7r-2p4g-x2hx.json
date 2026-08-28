@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cj7r-2p4g-x2hx",
+  "modified": "2026-08-28T21:31:28Z",
+  "published": "2026-08-28T21:31:28Z",
+  "aliases": [
+    "CVE-2026-82343"
+  ],
+  "details": "A flaw was found in the file-psd plugin in GIMP. When processing a specially crafted PSD image file, the plugin does not properly validate the channel-count parameter. This incorrect validation leads to improper memory bounds checking, resulting in both a heap out-of-bounds read and a stack out-of-bounds access. This issue can result in an application crash, leading to a denial of service or a limited information disclosure of memory contents.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82343"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-82343"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2525644"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.gnome.org/GNOME/gimp/-/work_items/16587"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:20:21Z"
+  }
+}

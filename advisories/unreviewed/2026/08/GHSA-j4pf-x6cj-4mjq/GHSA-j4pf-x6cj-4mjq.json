@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4pf-x6cj-4mjq",
+  "modified": "2026-08-28T21:31:28Z",
+  "published": "2026-08-28T21:31:28Z",
+  "aliases": [
+    "CVE-2026-82306"
+  ],
+  "details": "StarRocks through 4.0.13 contains an information disclosure vulnerability in the query_detail endpoint that returns unfiltered query history for all users. Authenticated attackers with low privileges can access full SQL text, execution plans, and profiling data from every query executed by other users, including statements containing credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82306"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/StarRocks/starrocks/issues/75747"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/StarRocks/starrocks"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/StarRocks/starrocks/blob/4.0.13/fe/fe-core/src/main/java/com/starrocks/http/rest/QueryDetailAction.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/starrocks-query-detail-endpoint-returns-every-user-s-query-history"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:20:20Z"
+  }
+}

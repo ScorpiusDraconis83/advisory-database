@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-45xr-rwjr-28jc",
+  "modified": "2026-08-28T21:31:00Z",
+  "published": "2026-08-28T21:31:00Z",
+  "aliases": [
+    "CVE-2026-12587"
+  ],
+  "details": "The vulnerability allows the unauthorised generation of physical access QR codes due to the use of hard-coded credentials within the application. The generation mechanism uses the 'badge_number' parameter as the HMAC private key, the value of which remains static and is accessible via the API using the endpoint '/club/_id_club_/member/_id_member_/resamania_qr_info'. An attacker with access to this value and to the application’s cryptographic logic, which can be extracted by reverse engineering the APK as there is no code obfuscation, could generate valid QR codes indefinitely, even after the user has changed their password or logged out.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12587"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.incibe.es/en/incibe-cert/notices/aviso/embedded-credentials-virtuagym"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-798"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T13:17:45Z"
+  }
+}

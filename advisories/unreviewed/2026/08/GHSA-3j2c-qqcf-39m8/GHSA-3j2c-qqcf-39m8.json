@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3j2c-qqcf-39m8",
+  "modified": "2026-08-28T21:31:27Z",
+  "published": "2026-08-28T21:31:27Z",
+  "aliases": [
+    "CVE-2026-82284"
+  ],
+  "details": "Quivr versions through 0.0.322 fail to validate chat ownership in the GET /chat/{chat_id}/history, DELETE /chat/{chat_id}, and POST /chat/{chat_id}/question/answer endpoints. Authenticated attackers can read other users' conversation histories including private knowledge base content, delete arbitrary chats, and inject fabricated messages into other users' conversations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82284"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/QuivrHQ/quivr/issues/3697"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/QuivrHQ/quivr"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/QuivrHQ/quivr/blob/v0.0.322/backend/api/quivr_api/modules/chat/controller/chat_routes.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/quivr-chat-endpoints-missing-ownership-validation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:20:19Z"
+  }
+}

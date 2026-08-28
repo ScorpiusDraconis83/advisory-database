@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9gw-vgmg-q67h",
+  "modified": "2026-08-28T21:31:18Z",
+  "published": "2026-08-28T21:31:18Z",
+  "aliases": [
+    "CVE-2026-82021"
+  ],
+  "details": "Hermes Agent 0.18.2 prior to 0.19.0 contains a supply chain vulnerability in its bundled MCP catalog that allows a remote attacker to execute arbitrary code by compromising a third-party upstream repository referenced via a mutable branch rather than a pinned commit SHA. An attacker who compromises the upstream repository can propagate malicious code to every host that installs the affected catalog entry, with no further action required by the operator.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82021"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NousResearch/hermes-agent/pull/64463"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NousResearch/hermes-agent/commit/9df5f879b4a5925c0f8f947e7e16ed8e845932c3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v2026.7.20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hermes-agent-mcp-catalog-supply-chain-rce-via-mutable-branch-reference"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-494"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T20:20:14Z"
+  }
+}
