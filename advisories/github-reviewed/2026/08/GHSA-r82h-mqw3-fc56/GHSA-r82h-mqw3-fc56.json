@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r82h-mqw3-fc56",
+  "modified": "2026-08-28T18:59:42Z",
+  "published": "2026-08-28T18:59:42Z",
+  "aliases": [
+    "CVE-2026-55247"
+  ],
+  "summary": "plone.app.event vulnerable to denial of service via iCalendar import",
+  "details": "### Impact\nBy abusing the iCalendar import functionality, a logged-in editor could take the whole site offline, make the server reach into the internal network and read calendar files off disk (SSRF), and store XSS.\n\n### Patches\nThe problem has been patched in `plone.app.event`.\n\n* For Plone 6.2: upgrade to `plone.app.event` 6.0.1\n* For Plone 6.1: upgrade to `plone.app.event` 5.2.4\n* For Plone 6.0: upgrade to `plone.app.event` 5.2.4\n\n### Workarounds\nIn the site root, go to the Security tab of the Zope Management Interface (`manage_access`), look for the \"plone.app.event: Import Ical\" permission, and grant this only to the Manager role.  Then only users with the Manager role can use the ical import form.\n\nThere is no workaround for the stored XSS in the URL field of events.\n\nThe vulnerabilities were discovered by Timothy Dudley and responsibly reported to the [Plone Security Team](mailto:security@plone.org). Thank you!",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "plone.app.event"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "5.2.4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "plone.app.event"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "6.0.0a1"
+            },
+            {
+              "fixed": "6.0.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/plone/plone.app.event/security/advisories/GHSA-r82h-mqw3-fc56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/plone/plone.app.event/commit/1e3c83c15a24d1a789cdb012593505bc5620e28e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/plone/plone.app.event/commit/4de5eb3ea9e4f7f1781622e6d64fc086629d1437"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/plone/plone.app.event"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/plone/plone.app.event/releases/tag/5.2.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/plone/plone.app.event/releases/tag/6.0.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T18:59:42Z",
+    "nvd_published_at": null
+  }
+}
