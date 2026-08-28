@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fmq3-pjfg-pm48",
+  "modified": "2026-08-28T09:31:48Z",
+  "published": "2026-08-28T09:31:48Z",
+  "aliases": [
+    "CVE-2026-80645"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrapidio/tsi721: prevent a bad dereference in tsi721_db_dpc()\n\nWith a list_for_each() loop, if we don't find the item we are looking for\nin the list, then the loop exits with the iterator, which is \"dbell\" in\nthis loop, pointing to invalid memory.\n\nThis code uses the \"found\" variable to determine if we have found the\ndoorbell we are looking for or not.  However, the problem that the \"found\"\nvariable needs to be set to false at the start of each iteration,\notherwise after the first correct doorbell, then everything is marked as\nfound.\n\nReset the \"found\" to false at the start of the iteration and move the\nvariable inside the loop.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80645"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/070f356ea4f419e4e85e4089381f4477f41d969e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13092966ba5d8fb214a4efeddc87f9ed0fd2f945"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b5c66e922aa6a3331915a14520848a5b3beccc7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81c06ef66c3ab6eeaa72eb790c90ae043cdb3d43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e775c3199903d7c09a52530042b1198eab705bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/acd54f42abbbd806464468838dbc04efd203d2be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc28a14f3e4546b2b06098d24177942540581a5f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc15e3a30ddd950f009c76765331783b9af94a87"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:49Z"
+  }
+}

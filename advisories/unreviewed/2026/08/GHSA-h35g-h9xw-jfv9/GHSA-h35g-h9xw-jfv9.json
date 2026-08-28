@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h35g-h9xw-jfv9",
+  "modified": "2026-08-28T09:31:47Z",
+  "published": "2026-08-28T09:31:47Z",
+  "aliases": [
+    "CVE-2026-80637"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: synproxy: fix unaligned memory access in timestamp adjustment\n\nUse get_unaligned_be32() and put_unaligned_be32() to safely read and\nwrite the timestamp fields. This prevents performance degradation due to\nunaligned memory access or even a crash on strict alignment\narchitectures.\n\nThis follows the implementation of timestamp parsing in the networking\nstack at tcp_parse_options() and synproxy_parse_options().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80637"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b8e7aaa38002d8ee2f48d87b1f392eadd8e98c4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c9c67cf7a3d16051dfb90e98836f530964dfb8e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/992c20bc8a4aba220c8b95b467d049289778dad6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea3d2caa5bfacf5db5c1cad521ca5d9144edd9a7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:48Z"
+  }
+}

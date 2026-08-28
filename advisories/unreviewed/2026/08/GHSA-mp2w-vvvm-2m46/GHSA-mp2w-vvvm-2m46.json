@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mp2w-vvvm-2m46",
+  "modified": "2026-08-28T09:31:49Z",
+  "published": "2026-08-28T09:31:49Z",
+  "aliases": [
+    "CVE-2026-80691"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: target: iblock: Fix wrong PR ops NULL check for PREEMPT/RELEASE\n\nIn the iblock_execute_pr_out() function, PRO_PREEMPT,\nPRO_PREEMPT_AND_ABORT, and PRO_RELEASE all perform callback capability\nchecks through ops->pr_clear. The error check allows unimplemented hooks\nto pass through the gate, resulting dereferencing a NULL function\npointer.\n\nCheck whether the hooks that need to be called are supported.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80691"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c60a8b4037dc35e365658fcbcb349a5d742ff49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c33222bd387312874fbe36ca8002e5c945b9653"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a326b19cfb7775378b50acaa8d836ba44e29b4c2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bdd8a1297ef101bb5ac57e53b4fbe5e364afd8b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f15bcf9a99b1b2683fcfa005b9b3680b5600581f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:54Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6v36-jxjj-2vq8",
+  "modified": "2026-08-28T09:31:47Z",
+  "published": "2026-08-28T09:31:47Z",
+  "aliases": [
+    "CVE-2026-80623"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncoresight: ete: Always save state on power down\n\nSystem register ETMs and ETE are unlikely to be preserved on CPU power\ndown. The ETE DT binding also never documented\n\"arm,coresight-loses-context-with-cpu\" so nobody would have legitimately\nbeen able to use that binding to fix it and ACPI has no such binding at\nall.\n\nFix it by hard coding the setting for sysreg ETMs (ETE is always sysreg)\nor ACPI boots. Use a local variable when setting up save_state so that\nit's immune to concurrent probing when devices have different\nconfigurations which is an issue with modifying the global.\n\nThis fixes the following error when using Coresight with ACPI on the FVP\nwhich supports CPU PM:\n\n  coresight ete0: External agent took claim tag\n  WARNING: drivers/hwtracing/coresight/coresight-core.c:248 at coresight_disclaim_device_unlocked+0xe0/0xe8, CPU#0: perf/117",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80623"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/293dacd5b6a9f1275d92ca6c4fd874e54b2c8319"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ab4645fe4206c142a5f1491e191c906279686cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65d87f28daec31903fc39fee0744f7a0059c19f2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:46Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g772-xp6h-pv6q",
+  "modified": "2026-08-28T09:31:49Z",
+  "published": "2026-08-28T09:31:49Z",
+  "aliases": [
+    "CVE-2026-80695"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (sht3x) Fix unaligned accesses\n\nSashiko reports:\n\nIn sht3x_update_client(), the 16-bit temperature and humidity values are\nextracted from a stack-allocated byte array using be16_to_cpup(). The\npointers passed to this function are calculated as buf and buf + 3. Since\nthe difference between the two pointers is an odd number of bytes, at\nleast one of them is guaranteed to be at an unaligned offset.\n\nThis will trigger an alignment fault on strict-alignment architectures\nsuch as ARMv5 or SPARC, resulting in a kernel panic.\n\nFix the problem by using get_unaligned_be16() instead of be16_to_cpup(),\nand put_unaligned_be16() instead of cpu_to_be16().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80695"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fb41650bc3e14d2a5ddb4bb25e96811e5afe881"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81529add4a2e3cca9240e0e2342973d62f88f02e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c498adfd4c3e85306ccdc19b76e639bfc215f0e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f46d5ab43a572b84773015a76966f5da56fc1748"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:54Z"
+  }
+}

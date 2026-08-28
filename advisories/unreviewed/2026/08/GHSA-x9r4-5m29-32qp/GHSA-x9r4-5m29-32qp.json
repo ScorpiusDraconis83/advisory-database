@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x9r4-5m29-32qp",
+  "modified": "2026-08-28T09:31:46Z",
+  "published": "2026-08-28T09:31:46Z",
+  "aliases": [
+    "CVE-2026-80607"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing/probes: Remove WARN_ON_ONCE from parse_btf_arg\n\nSashiko found that user can cause this WARN_ON_ONCE() easily\nwith adding a kprobe event based on a raw address with BTF\nparameter.\n\nSince this is not an unexpected condition, remove the\nWARN_ON_ONCE().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80607"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/251a8fe1b9aedccd298b77bc28426d564c5a923f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a662d8c05e2cf16f7a047c81bc1eb5d3b29bacd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f148f86c65b8f9ef2466ad8506e721749e4957fb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:44Z"
+  }
+}

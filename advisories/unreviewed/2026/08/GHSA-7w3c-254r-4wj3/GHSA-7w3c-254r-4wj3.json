@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7w3c-254r-4wj3",
+  "modified": "2026-08-28T09:31:48Z",
+  "published": "2026-08-28T09:31:48Z",
+  "aliases": [
+    "CVE-2026-80658"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/rockchip: dw_dp: Fix null-ptr-deref in dw_dp_remove()\n\nAttempting to access driver data in the platform driver ->remove()\ncallback may lead to a null pointer dereference since there is no\nguaranty that the component ->bind() callback invoking\nplatform_set_drvdata() was executed.\n\nA common scenario is when Rockchip DRM driver didn't manage to run\ncomponent_bind_all() because of an (unrelated) error causing early\nreturn from rockchip_drm_bind().\n\nDrop the unnecessary call to platform_get_drvdata() and, instead,\nreference the target device structure via platform_device.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80658"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/33bc9fba3ae05863fabe3436ddca2ca4f4939c5e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9456381d8b60bb7dd42f2f04afe5ee4ce6e0bc12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3ec263a719e0d499bd95d20012d90d7e8641655"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:50Z"
+  }
+}

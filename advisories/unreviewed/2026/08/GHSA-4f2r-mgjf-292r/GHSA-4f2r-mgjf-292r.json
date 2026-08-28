@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4f2r-mgjf-292r",
+  "modified": "2026-08-28T09:31:49Z",
+  "published": "2026-08-28T09:31:49Z",
+  "aliases": [
+    "CVE-2026-80699"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: vgic: Avoid double-deactivate of IRQs in the nested context\n\nIn the nested state, the physical interrupt has already been\ndeactivated through the HW bit in the LR. The extra deactivation\nwould be harmless but can hit an errata case on AmpereOne, so\navoid it here.\n\nOn AmpereOne, deactivating a physical interrupt through\nICC_DIR_EL1 or ICC_EOIR1_EL1 (depending on EOImode) which is not\nactive, but is the highest priority pending interrupt causes the\ncpu to lose the interrupt pending state and also prevents the\ndelivery of future interrupts.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80699"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a570b19b4b16a8a3b5ffa2b332bd5613110b2d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f78f08b38a7f121c7d6b3e41002d9de7fd3c9189"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:55Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hwpp-gg7q-6q46",
+  "modified": "2026-08-28T09:31:48Z",
+  "published": "2026-08-28T09:31:48Z",
+  "aliases": [
+    "CVE-2026-80657"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/amdxdna: Guard management mailbox channel cleanup against NULL pointer\n\nThe management mailbox channel cleanup helpers can be called from\nerror handling paths when mgmt_chann has already been destroyed.\n\nAdd NULL checks to xdna_mailbox_free_channel() and\nxdna_mailbox_stop_channel() so the cleanup path safely returns instead\nof dereferencing a NULL mailbox channel pointer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80657"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/506255d46bdb93a281cf39e72abbca124f5c7a1b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83d6d375f357ed2702b28d739511aad56d485de7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:50Z"
+  }
+}

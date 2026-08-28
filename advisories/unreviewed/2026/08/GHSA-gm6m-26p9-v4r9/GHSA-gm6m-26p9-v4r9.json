@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gm6m-26p9-v4r9",
+  "modified": "2026-08-28T09:31:47Z",
+  "published": "2026-08-28T09:31:47Z",
+  "aliases": [
+    "CVE-2026-80639"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncxl/test: Fix __fortify_panic\n\nFix a runtime assertion in setup_xor_mapping(). Fortify complains that it\nis potentially overflowing the xormaps array per __counted_by(nr_maps).\nQuiet the false positive by initializing @nr_maps earlier.\n\n memcpy: detected buffer overflow: 32 byte write of buffer size 0\n WARNING: lib/string_helpers.c:1036 at __fortify_report+0x4d/0xa0, CPU#8: modprobe/2728\n Call Trace:\n  __fortify_panic+0xd/0xf\n  setup_xor_mapping+0x6c/0xa0 [cxl_translate]\n\n[ dj: Fixed up @nr_entries to @nr_maps in commit log. ]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80639"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08326b92c7a414a73b5b308d1daf0e91e0134dfc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c4f27a7f364eab514d2fa55c11f39d505122f1b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:48Z"
+  }
+}

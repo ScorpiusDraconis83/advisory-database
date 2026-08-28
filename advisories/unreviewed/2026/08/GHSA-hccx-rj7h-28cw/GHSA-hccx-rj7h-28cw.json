@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hccx-rj7h-28cw",
+  "modified": "2026-08-28T09:31:47Z",
+  "published": "2026-08-28T09:31:46Z",
+  "aliases": [
+    "CVE-2026-80616"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nieee802154: Avoid calling WARN_ON() on -ENOMEM in cfg802154_switch_netns()\n\nIt's pointless to call WARN_ON() in case of an allocation failure in\ndev_change_net_namespace() and device_rename(), since it only leads to\nuseless splats caused by deliberate fault injections, so avoid it.\n\nFound by Linux Verification Center (linuxtesting.org) with Syzkaller.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80616"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0569f67ed6a7af838e2141da93c68e6b6013f483"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6fcba77571c53f656a2f109259601a7570d4c74a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f4860dd988b1041d70595f2ed84de80f90cb7ebc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:45Z"
+  }
+}

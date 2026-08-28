@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-38hv-9295-2cxw",
+  "modified": "2026-08-28T09:31:46Z",
+  "published": "2026-08-28T09:31:45Z",
+  "aliases": [
+    "CVE-2026-80593"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (asus_atk0110) Check package count before accessing element\n\natk_ec_present() walks the management group package returned by the GGRP\nACPI method and, for each sub-package, reads its first element:\n\n\tid = &obj->package.elements[0];\n\tif (id->type != ACPI_TYPE_INTEGER)\n\nwithout checking that the sub-package is non-empty.  ACPICA allocates the\nelement array with exactly package.count entries, so for a sub-package\nwith a zero count this reads past the allocation.\n\nThe sibling function atk_debugfs_ggrp_open() performs the same access but\nskips empty packages with a package.count check first.  Add the same\ncheck to atk_ec_present() so a malformed firmware package cannot trigger\nan out-of-bounds read.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80593"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a137124664aad1e36d8d74e8e2207365a04737f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/459b0a0439ea65b2b612aa572eb62a2e26d05618"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/76392d35c8df471b288cfc6536bd092b3c8ee2cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/768f20e7bb48d723b82cb142120263d0806fbeb8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/981a8a2e3773dc7e704943388a1fb97970b23275"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b770fcfcdced569bcf7c6982aeea8c3d11a21c2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8d4fa0c4f818e30b6f6737bdd989b7e2b511cae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2735b39f044bad7bf2017aef248935525bc0b97"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:42Z"
+  }
+}

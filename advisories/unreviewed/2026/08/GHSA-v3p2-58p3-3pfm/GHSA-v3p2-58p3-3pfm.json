@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v3p2-58p3-3pfm",
+  "modified": "2026-08-28T09:31:47Z",
+  "published": "2026-08-28T09:31:47Z",
+  "aliases": [
+    "CVE-2026-80632"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: Fix NULL pointer dereference in mt7996_init_tx_queues()\n\nWhen MT76_NPU and CONFIG_NET_MEDIATEK_SOC_WED are enabled and\nmt76 detects properly the Airoha NPU SoC, mt7996_init_tx_queues() will\ndereference a NULL WED pointer.\nFix the issue by always passing the WED pointer from mt7996_dma_init().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80632"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6794edb55b5f5ef834e03b0b241b1a8b725f82c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93f3f9a9e955569ab7c3f02f0486d3aaf2314a56"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:48Z"
+  }
+}

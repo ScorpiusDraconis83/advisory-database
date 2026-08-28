@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jm3q-xwgv-hgh8",
+  "modified": "2026-08-28T09:31:47Z",
+  "published": "2026-08-28T09:31:47Z",
+  "aliases": [
+    "CVE-2026-80634"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: flowtable: avoid num_encaps underflow on bridge VLAN untag\n\nThe DEV_PATH_BR_VLAN_UNTAG case post-decrements info->num_encaps\ninside WARN_ON_ONCE(). num_encaps is u8, so if it's already 0 the\ndecrement still happens and wraps it to 255. The break only leaves\nthe inner switch -- a later path entry can set info->indev back to\na real device, and we end up returning with num_encaps == 255.\n\nnft_dev_forward_path() then walks info.encap[] (size 2) up to\nnum_encaps, which means an OOB stack read and a bogus count copied\ninto the route descriptor.\n\nShould only happen on a malformed bridge path stack, hence the WARN,\nbut worth handling sanely. Move the decrement out of the WARN.\n\n[ While at this, remove the WARN_ON_ONCE since this can only happen\n  with a buggy bridge path stack --pablo ].",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80634"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f55fa28011c97d6495d5787808db10a8c2d690d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e052f920773b73be49eb4d8702a9f85de7464363"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:48Z"
+  }
+}

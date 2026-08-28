@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q7c4-mw3p-rvrq",
+  "modified": "2026-08-28T09:31:47Z",
+  "published": "2026-08-28T09:31:47Z",
+  "aliases": [
+    "CVE-2026-80625"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/hns: Fix memory leak of bonding resources\n\nIn a corner case of concurrent driver removal and driver reset,\nbonding resource is first released in hns_roce_hw_v2_exit() during\ndriver removal, and then is allocated again in hns_roce_register_device()\nduring driver reset. This leads to memory leak because the release\ntiming has already passed. This may also lead to a kernel panic\nas below because of the leaked notifier callback:\n\nCall trace:\n  0xffffa20fccc04978 (P)\n  raw_notifier_call_chain+0x20/0x38\n  call_netdevice_notifiers_info+0x60/0xb8\n  netdev_lower_state_changed+0x4c/0xb8\n\nAs Sashiko suggested, the teardown order of bonding resources should\nbe inverted to make sure the resources are released when the driver\nis removed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80625"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc4caea7a82bbcf94a34eff7094e7f9b501680ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0bd03b850d81a8914168d87ddf7f6ffa58875ef"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:46Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qpmv-4rfj-75x9",
+  "modified": "2026-08-28T09:31:48Z",
+  "published": "2026-08-28T09:31:48Z",
+  "aliases": [
+    "CVE-2026-80665"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: nv: Inject SEA if kvm_translate_vncr() can't resolve PFN\n\nkvm_handle_vncr_abort() assumes that s1_walk_result conveys an abort\nwhen kvm_translate_vncr() returns -EFAULT. This is not always the case\nas it's possible to encounter 'late' failures on the output of S1\ntranslation, e.g. a GFN outside of the memslots.\n\nFix it by preparing an external abort before returning from\nkvm_translate_vncr(). Get rid of the BUG_ON() in the fault injection\npath while at it.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80665"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ead4def04659739c399bfcb063f8a906194c79f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/53804b6839573c9c6fff5f4cf075d6746267345e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f3e83345a56280efffe235c65593c7e544c0fcc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:51Z"
+  }
+}

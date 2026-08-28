@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5gcp-mjqf-m8mf",
+  "modified": "2026-08-28T09:31:47Z",
+  "published": "2026-08-28T09:31:47Z",
+  "aliases": [
+    "CVE-2026-80635"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: wcn36xx: fix OOB read from short trigger BA firmware response\n\nThe firmware response length is only checked against sizeof(*rsp) (20\nbytes), but when candidate_cnt >= 1, a 22-byte candidate struct is read\nat buf + 20 without verifying the response contains it. This causes an\nout-of-bounds read of stale heap data, corrupting the BA session state.\n\nAdd validation that the response includes the candidate data.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80635"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04aba50212f9f274e1a726fb3873b5ce8da2d821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af8f0ea1f0a3a5fb5ed2b8fed3f1501d644597ee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5e6f21923ca89d90256e7346301056f6502691e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c07aa0534d50361183833e3803204044cf1d0476"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0b57bcd0dac6e2c9a3e474ec280e7db0b3edf35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0cafe6ed8d1f6d0097eda31d85f5760d4f359c2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:48Z"
+  }
+}

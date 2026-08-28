@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m9fp-2x7c-5r66",
+  "modified": "2026-08-28T09:31:49Z",
+  "published": "2026-08-28T09:31:49Z",
+  "aliases": [
+    "CVE-2026-80686"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: migrate_device: fix pte_pfn/pte_dirty called on non-present PTE\n\npte_pfn() and pte_dirty() have undefined behaviour when called on a\nnon-present PTE. In migrate_vma_collect_pmd(), these functions may be\ninvoked on non-present entries (e.g., device-private entries), leading\nto potential crashes from pte_pfn() or incorrect dirty folio accounting\nfrom pte_dirty(). Fix both by guarding with pte_present() checks.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80686"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26f9ca8ed42cba25d2c75daff13561cce6019395"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2be94d6b20789b8865b1864dae5fe458ca85e019"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42f30fa5481a1f90571ccdfbb20d2e25e47ae76e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b948706f11a950bc73c5304630d0a7eafc40daf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/63867c82d0c0c2d182016a32b1cc0103116b0ea5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86d55447de3738620b9a8272ff167ce97e7f7203"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:54Z"
+  }
+}

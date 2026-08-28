@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-52jh-gf9j-c2mq",
+  "modified": "2026-08-28T09:31:47Z",
+  "published": "2026-08-28T09:31:47Z",
+  "aliases": [
+    "CVE-2026-80627"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nMIPS: mm: Fix out-of-bounds write in maar_res_walk()\n\nmaar_res_walk() uses wi->num_cfg as the index into the fixed-size\nwi->cfg array, but checks whether the array is full only after it has\nfilled the selected entry. If walk_system_ram_range() reports more than\n16 memory ranges, the overflow call writes one struct maar_config past\nthe end of the array before WARN_ON() prevents num_cfg from advancing.\n\nMove the full-array check before taking the array slot and return non-zero\nwhen the scratch array is full, so walk_system_ram_range() terminates the\nwalk instead of invoking the callback for further ranges.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80627"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/038f068cced8e9c49e8c419f3112d909ad366a3a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b001b16bc88f3f7817e228acfd91ee01bdcfcce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/431812eb88c200bc3ec33b88782c8cc415842074"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44c1d902cf0798b60762a7a98be992b9f5ded7dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b3e0c1c63015deaf084286899f5b2d0526715de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92f38fe85198ace9b211bc7712b7951acfb94560"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a594100e147a6a67eb29189170f1df3645cda12b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ac7385af1dca86a5ea704c80ca4dc822083ff9e2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:46Z"
+  }
+}

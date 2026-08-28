@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w33j-vhfx-hgqc",
+  "modified": "2026-08-28T09:31:50Z",
+  "published": "2026-08-28T09:31:50Z",
+  "aliases": [
+    "CVE-2026-80709"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/zcrypt: Fix wrong domain value verification with EP11 CPRBs\n\nThere is a wrong upper limit check for the domain value when an EP11\nCPRB is processed for sending to a crypto card. This check is only\nactive on custom device nodes but may lead to access heap memory\nbehind perms->adm when an administrative CPRB is sent.\nAdd correct limit (AP_DOMAINS = 256) checking to fix this.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1223477ca88e2396eca440919d0ca8754df79bd5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13e53d6ae1c3b2ff1be75b9ef09be26f4ec3ce15"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4589f742718d0256ea6dd1f5a78be6e689bdb8aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/672b12940e3f1336dfed5287412a71500adf2a76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/983279d7f86ade73db86f886e09172dd567031b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b505dcc8307d64468b463dfad45a03bf865c637e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:56Z"
+  }
+}

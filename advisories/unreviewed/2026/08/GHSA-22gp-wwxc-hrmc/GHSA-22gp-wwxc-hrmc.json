@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-22gp-wwxc-hrmc",
+  "modified": "2026-08-28T09:31:48Z",
+  "published": "2026-08-28T09:31:48Z",
+  "aliases": [
+    "CVE-2026-80667"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5: LAG, MPESW, Fix missing complete() on devcom error\n\nmlx5_mpesw_work() returned without calling complete() when\nmlx5_lag_get_devcom_comp() returned NULL. A caller that queued the\nwork and waited on mpesww->comp would block indefinitely.\n\nFunnel the early-return path through a new \"complete\" label so the\nwaiter is always woken.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80667"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d720c6c60e1852253b68aeee3044ebed5243adb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/68cdbe498da8475cfd49591954e3db8fc6582eda"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a802de97a8bf8d5f1e4a048c67de9a8c2d2f9eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4b85f9a668b9c44216bb78daf4ec1a915cc92d1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:51Z"
+  }
+}

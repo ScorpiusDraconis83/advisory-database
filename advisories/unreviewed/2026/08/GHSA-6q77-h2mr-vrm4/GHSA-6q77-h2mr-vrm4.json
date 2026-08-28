@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6q77-h2mr-vrm4",
+  "modified": "2026-08-28T09:31:49Z",
+  "published": "2026-08-28T09:31:49Z",
+  "aliases": [
+    "CVE-2026-80689"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing/mmiotrace: Add NULL check for mmio_trace_array in logging functions\n\nmmio_trace_rw() and mmio_trace_mapping() retrieve mmio_trace_array into\ntr and pass it to __trace_mmiotrace_rw() and __trace_mmiotrace_map().\nIf these functions are invoked while mmio_trace_array is NULL (e.g. before\ninitialization or after disabled), accessing tr->array_buffer.buffer will\nresult in a NULL pointer dereference crash.\n\nFix this by adding an explicit NULL check for tr at the beginning of\n__trace_mmiotrace_rw() and __trace_mmiotrace_map().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80689"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12b80cdbc54cf615b4717a4e8180063408091ea2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60234845142fddb27db89ebc00a65178421fb3a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/876014b4eeb927146430e7591cf959a7ceb8d64a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a20a0010eb6485f60cd64e15ebc85a4bd388642e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:54Z"
+  }
+}

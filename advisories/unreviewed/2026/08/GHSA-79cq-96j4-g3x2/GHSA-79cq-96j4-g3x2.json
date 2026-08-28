@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-79cq-96j4-g3x2",
+  "modified": "2026-08-28T09:31:48Z",
+  "published": "2026-08-28T09:31:48Z",
+  "aliases": [
+    "CVE-2026-80654"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoc: xilinx: Shutdown and free rx mailbox channel\n\nA mbox rx channel is requested using mbox_request_channel_byname() in\nprobe. In remove callback, the rx mailbox channel is cleaned up when the\nrx_chan is NULL due to incorrect condition check. The mailbox channel is\nnot shutdown and it can receive messages even after the device removal.\nThis leads to use after free. Also the channel resources are not freed.\nFix this by checking the rx_chan correctly.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80654"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a83e77d1e52c01c50096e6e97c57d34e0590d628"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b0f748c563921a7918c78e6a599cefd54de7d688"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5d2240c2c7bc8370e7ba54a2e1fe3919f55aee5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fdee7c66c0d7b6869c36b9f9a915abf29ab5b550"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:50Z"
+  }
+}

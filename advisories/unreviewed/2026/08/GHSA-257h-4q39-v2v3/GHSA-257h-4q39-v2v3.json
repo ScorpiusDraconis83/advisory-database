@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-257h-4q39-v2v3",
+  "modified": "2026-08-28T09:31:47Z",
+  "published": "2026-08-28T09:31:47Z",
+  "aliases": [
+    "CVE-2026-80621"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: dwc: Avoid dwc_pcie_rasdes_debugfs_deinit() NULL dereference when no RAS DES capability\n\ndwc_pcie_rasdes_debugfs_init() returns success when the controller has no\nRAS DES capability, leaving pci->debugfs->rasdes_info unset. The common\ndebugfs teardown path still calls dwc_pcie_rasdes_debugfs_deinit(), which\ndereferences rasdes_info unconditionally.\n\nReturn early when no RAS DES state was allocated. In that case no RAS DES\nmutex was initialized, so there is nothing to destroy.\n\n[mani: reworded subject]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80621"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26b67fa10ef84ea667942491b50e6261a45f098d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/514b84b1bf30f75f32c2fa66734dc1a177abb73e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/855870e8c59b97fd424e8fa3543c9e289bb48fac"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:46Z"
+  }
+}

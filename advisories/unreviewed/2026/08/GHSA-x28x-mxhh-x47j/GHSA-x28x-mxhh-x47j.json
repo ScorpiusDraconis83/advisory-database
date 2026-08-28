@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x28x-mxhh-x47j",
+  "modified": "2026-08-28T09:31:48Z",
+  "published": "2026-08-28T09:31:48Z",
+  "aliases": [
+    "CVE-2026-80655"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsoc: xilinx: Fix race condition in event registration\n\nThe zynqmp_power driver registers handlers for suspend and subsystem\nrestart events using register_event(). However, the work structures\n(zynqmp_pm_init_suspend_work and zynqmp_pm_init_restart_work) used by\nthese handlers were allocated and initialized after the registration\ncall.\n\nThis created a race window where, if the firmware triggered an event\nimmediately after registration but before allocation, the callback\n(suspend_event_callback or subsystem_restart_event_callback) would\ndereference a NULL pointer in work_pending(), leading to a crash.\n\nFix this by allocating and initializing the work structures before\nregistering the events.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80655"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d349aa118ff5e4cab88424ce1b16e08edd70f8bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb445935338405110baca8f541a2df3b4cb8d712"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:50Z"
+  }
+}

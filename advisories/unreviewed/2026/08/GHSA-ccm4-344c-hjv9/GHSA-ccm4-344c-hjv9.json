@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ccm4-344c-hjv9",
+  "modified": "2026-08-28T09:31:49Z",
+  "published": "2026-08-28T09:31:49Z",
+  "aliases": [
+    "CVE-2026-80685"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/util: don't read __page_2 for order-1 folios in snapshot_page()\n\nsnapshot_page() currently reads __page_2 after checking nr_pages > 1, but\nit should only do so when nr_pages > 2.\n\nIf an order-1 folio is allocated at the end of a vmemmap section,\n__page_2 will not exist and reading it will cause a fault.\n\nDuring DLPAR memory remove on a 22 TB ppc64le LPAR, snapshot_page() oopsed\non the page isolation path while reading an order-1 folio's __page_2 from\nan adjacent absent section (unmapped vmemmap).\n\nFix this to avoid reading memmap that doesn't exist (e.g., a vmemmap\nhole).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7441d6348c70738e9ed307510db171c7a9b3f4bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9668ffe0e2a5e2399dce281620198a2e415871fc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c649324571206a30949765320b91ccdb4c1722dc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:53Z"
+  }
+}

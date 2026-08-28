@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jh6f-w2gp-43jq",
+  "modified": "2026-08-28T09:31:50Z",
+  "published": "2026-08-28T09:31:50Z",
+  "aliases": [
+    "CVE-2026-80713"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: preserve task restrictions across exec\n\nPer-task restrictions apply to all rings created by a task. Once\ninstalled, they should not be dropped across exec.\n\nFor a task that has used io_uring, the exec cancellation path calls\n__io_uring_free(). This frees both the task context and the per-task\nrestriction, so a ring created after exec is unrestricted.\n\nSplit task context cleanup into io_uring_free_tctx(), and use it from\nthe exec cancellation path. Keep __io_uring_free() for final task\ncleanup, where both the context and restriction are released.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80713"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc0e8faf90e776a2f1f3967a04e8091e6bdb4977"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fcef9325afeecced693a7438e975e4a3f8e2716f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:56Z"
+  }
+}

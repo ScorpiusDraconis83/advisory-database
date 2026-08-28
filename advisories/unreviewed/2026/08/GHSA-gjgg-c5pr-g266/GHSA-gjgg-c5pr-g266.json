@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gjgg-c5pr-g266",
+  "modified": "2026-08-28T09:31:49Z",
+  "published": "2026-08-28T09:31:49Z",
+  "aliases": [
+    "CVE-2026-80678"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: imx: Fix slave registration race and error handling\n\nIn i2c_imx_reg_slave(), the slave pointer was assigned before\npm_runtime_resume_and_get().  If pm_runtime_resume_and_get() failed,\nthe error path returned without clearing i2c_imx->slave, leaving it\nnon-NULL and causing all subsequent registration attempts to fail\nwith -EBUSY.\n\nAdditionally, because this driver uses a shared IRQ, the interrupt\nhandler i2c_imx_isr() can execute concurrently and, after acquiring\nslave_lock, dereference i2c_imx->slave.  The previous fix attempt\nadded a lockless i2c_imx->slave = NULL on the error path, but that\ncould race with the ISR under the lock and still cause a NULL pointer\ndereference.\n\nFix both issues by deferring the assignment of i2c_imx->slave and\ni2c_imx->last_slave_event to after a successful resume, and by\nperforming the assignment inside the slave_lock critical section.\nThis guarantees that the slave pointer is never left stale on the\nerror path and is always valid when observed by the interrupt handler.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80678"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12a4f0950a158d98552cbaeacc35edccd8d975fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/614ca6594e301ff682999797c2216e9685558a2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/754bc62f72fd64b202462367134ac8ce95b005de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9f6f4883b9ac86654e75899d0dbf8a7a96ad5d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cfdf6e13518589f911b7eace6ccb788e4ed87397"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d64ec362c369bbc33833f7936d5f3a706b0d5c45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d6748f6802f3eebafaa16a5e5dcfbfb9b3bc173f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:53Z"
+  }
+}

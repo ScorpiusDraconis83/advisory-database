@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-88hh-78xv-cjqw",
+  "modified": "2026-08-28T09:31:47Z",
+  "published": "2026-08-28T09:31:47Z",
+  "aliases": [
+    "CVE-2026-80640"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncxl/fwctl: Fix __fortify_panic\n\nFix a runtime assertion in cxlctl_get_supported_features(). Fortify\ncomplains that it is potentially overflowing the entries array per\n__counted_by_le(num_entries). Quiet the false positive by initializing\n@num_entries earlier.\n\n memcpy: detected buffer overflow: 48 byte write of buffer size 0\n WARNING: lib/string_helpers.c:1036 at __fortify_report+0x4d/0xa0, CPU#7: fwctl/1398\n RIP: 0010:__fortify_report+0x50/0xa0\n Call Trace:\n  __fortify_panic+0xd/0xf\n  cxlctl_get_supported_features.cold+0x23/0x35 [cxl_core]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80640"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/18c67ecc5dafe14055edcea53f36f4e31df1816b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c9d2e87df40d606f1c85143e9acb1ecff463d5e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8d15e85596ad8993d42e0703a9741961a2f03eb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:48Z"
+  }
+}

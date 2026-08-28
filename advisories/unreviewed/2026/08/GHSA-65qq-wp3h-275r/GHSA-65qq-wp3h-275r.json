@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-65qq-wp3h-275r",
+  "modified": "2026-08-28T09:31:50Z",
+  "published": "2026-08-28T09:31:50Z",
+  "aliases": [
+    "CVE-2026-80711"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: max17040: handle missing status supplier\n\nMAX17040 does not report charger state itself, so the driver forwards\nPOWER_SUPPLY_PROP_STATUS to a supplier power supply. If no supplier is\nregistered, power_supply_get_property_from_supplier() returns -ENODEV and\nleaves the output value untouched.\n\nmax17040_get_property() currently ignores that error and returns success,\nso userspace can read an uninitialized status value from the battery power\nsupply. This happens on systems that use the fuel gauge without a charger\nsupplier relationship in firmware.\n\nReturn POWER_SUPPLY_STATUS_UNKNOWN when no supplier provides STATUS, and\npropagate other supplier lookup errors.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80711"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/725668c6b6aa3971fe850659102c250d0d676e18"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91ac995a6f4ddf4f92b231b080544abf23a9b871"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b039f13e095d28a64ca6b21d0ee5440d8b048f37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee2ea0c452edc0930e7395b080dccd5a1cb965e1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:56Z"
+  }
+}

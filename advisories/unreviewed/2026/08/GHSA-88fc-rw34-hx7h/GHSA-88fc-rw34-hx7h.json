@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-88fc-rw34-hx7h",
+  "modified": "2026-08-28T09:31:50Z",
+  "published": "2026-08-28T09:31:50Z",
+  "aliases": [
+    "CVE-2026-80720"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niomap: add a separate bio_set for iomap_split_ioend\n\niomap_split_ioend can split bios that already come from\niomap_ioend_bioset and thus deadlock when the bioset is exhausted.\n\nAdd a separate bio_set to avoid this deadlock.\n\nChristian Brauner <brauner@kernel.org> says:\nMark iomap_ioend_split_bioset static as it is only used in ioend.c,\nfixing the sparse warning reported by the kernel test robot.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80720"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4a869be56e9f6ce7462abcf324ebdefc5de051be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c679ce3be6cb63763d68ab9b5d9d73ddc0a40762"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cfc686a1174aa904dcad9b9a7c5e46b484d27e4e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:57Z"
+  }
+}

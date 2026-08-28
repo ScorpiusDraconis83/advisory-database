@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-28qm-9qmh-h457",
+  "modified": "2026-08-28T09:31:50Z",
+  "published": "2026-08-28T09:31:50Z",
+  "aliases": [
+    "CVE-2026-80721"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: ensure no dangling hcon references in iso_conn\n\nAfter iso_conn_del(), ISO sockets should not dereference the hcon any\nmore.  Currently, clearing iso_conn::hcon relies on iso_conn_del()\nreleasing the last reference to the iso_conn.\n\nSimplify this by explicitly clearing conn->hcon in iso_conn_del(), to\navoid more complex reasoning on races about who holds the last\nreference.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80721"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa9f7cb2bd3a2be998ceb739fc9a2f986eba43eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cdce8af9291d8a1f8916c271de029bf558d9e8ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e941799c31f68e67ce0976efb38a79101f921b64"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-28T08:16:57Z"
+  }
+}
