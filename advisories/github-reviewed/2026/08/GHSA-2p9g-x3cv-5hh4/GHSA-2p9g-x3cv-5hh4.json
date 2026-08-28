@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2p9g-x3cv-5hh4",
+  "modified": "2026-08-28T18:46:54Z",
+  "published": "2026-08-28T18:46:54Z",
+  "aliases": [
+    "CVE-2026-55227"
+  ],
+  "summary": "Private Weblate projects vulnerable to observable object existence disclosure via globally scoped object lookups",
+  "details": "### Impact\nThe several endpoints could leak object existence information to users who had no access to it by HTTP status code 403 instead of 404.\n\n### Patches\n* https://github.com/WeblateOrg/weblate/pull/19971\n\n### References\nThanks to Yaohui Wang for reporting this via GitHub.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "weblate"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2026.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/security/advisories/GHSA-2p9g-x3cv-5hh4"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55227"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/pull/19971"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/commit/836bc082803d49d02f2831ec8339268eb66bcdae"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/WeblateOrg/weblate"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/weblate/releases/tag/weblate-2026.7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-203"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T18:46:54Z",
+    "nvd_published_at": "2026-08-26T21:16:38Z"
+  }
+}
