@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-575r-357h-fhch",
+  "modified": "2026-08-28T18:06:05Z",
+  "published": "2026-08-28T18:06:05Z",
+  "aliases": [
+    "CVE-2026-55516"
+  ],
+  "summary": "Snipe-IT vulnerable to cross-company asset maintenance re-parenting via API update",
+  "details": "### Impact\nThe API endpoint for updating asset maintenance records allows an authorized user to change the asset_id of an existing maintenance record to an asset outside their company scope.\n\nIn a Full Multiple Company Support / multi-company deployment, this allows a user from Company A to attach or move a maintenance record onto an asset belonging to Company B. The endpoint appears to authorize access to the existing maintenance record’s asset, but does not re-authorize the newly supplied asset_id before saving the update.\n\n###  Affected endpoint\n`PATCH /api/v1/maintenances/{maintenance_id}`\n\nAlso likely affected:\n\n`PUT /api/v1/maintenances/{maintenance_id}`\n\n### Preconditions\nThe attacker needs:\n- A valid authenticated API token.\n- Permission to update asset maintenance records.\n- Access to a maintenance record currently attached to an asset in their own company.\n\nThe attacker does not need access to the target asset’s company.\n\n### Root cause\nIn the API maintenance update flow, the application checks access to the current maintenance record / current asset, then accepts attacker-controlled fields including `asset_id`.\n\nThe vulnerable behavior is that the new asset_id is not checked against the current user’s company scope before being saved.\n\n### Relevant code path:\n`app/Http/Controllers/Api/MaintenancesController.php`\n\nThe update method loads the maintenance, checks access to the existing $maintenance->asset, then calls:\n```php\n$maintenance->fill($request->all());\n$maintenance->save();\n```\n\nSince `asset_id` is fillable on the maintenance model, the attacker can re-parent the record to another company’s asset.\n\n### Workarounds\n_Is there a way for users to fix or remediate the vulnerability without upgrading?_\n\n### Security impact\nThis breaks tenant/company isolation in multi-company deployments. A scoped user can write maintenance records against assets outside their authorized company boundary.\n\nPotential impact includes:\n- Cross-company asset history pollution.\n- Unauthorized modification of another company’s asset maintenance timeline.\n- Incorrect maintenance, cost, audit, and warranty records on victim-company assets.\n- Loss of integrity in asset lifecycle records.\n\nThis is not intended functionality because the application’s company-scoping model should prevent users from writing records onto inaccessible assets.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 8.6.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-575r-357h-fhch"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55516"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/905d498ecdb0ee5591231c97bf48435e92044368"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T18:06:05Z",
+    "nvd_published_at": "2026-07-10T19:17:25Z"
+  }
+}
