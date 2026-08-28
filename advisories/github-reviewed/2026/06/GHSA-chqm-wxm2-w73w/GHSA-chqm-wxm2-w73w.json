@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-chqm-wxm2-w73w",
+  "modified": "2026-08-28T15:53:21Z",
+  "published": "2026-06-13T00:34:33Z",
+  "withdrawn": "2026-08-28T15:53:21Z",
+  "aliases": [],
+  "summary": "Duplicate Advisory: OpenClaw: Mattermost handlers could fall open when channel type was missing",
+  "details": "### Duplicate Advisory\nThis advisory has been withdrawn because it is a duplicate of GHSA-gp79-m99v-gjmh. This link is maintained to preserve external references.\n\n### Original Description\nOpenClaw before 2026.5.6 contains an improper access control vulnerability in Mattermost event handlers that fails to validate channel type metadata. Attackers can bypass intended DM policy decisions by sending crafted Mattermost events missing channel type information to process restricted content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "openclaw"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2026.5.6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-gp79-m99v-gjmh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53837"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/openclaw/openclaw"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-missing-channel-type-validation-in-mattermost-event-handlers"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-636"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T15:53:21Z",
+    "nvd_published_at": "2026-06-12T22:16:55Z"
+  }
+}
