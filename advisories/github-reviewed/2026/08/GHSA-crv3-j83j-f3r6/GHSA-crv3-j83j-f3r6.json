@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-crv3-j83j-f3r6",
+  "modified": "2026-08-28T18:04:02Z",
+  "published": "2026-08-28T18:02:31Z",
+  "aliases": [
+    "CVE-2026-55478"
+  ],
+  "summary": "Snipe-IT has missing object-level authorization in Kits API",
+  "details": "### Impact\nThe API endpoint for adding a license to a predefined kit (`POST /api/v1/kits/{kit_id}/licenses`) only checks whether the caller can edit kits, but does not perform object-level authorization on the referenced license itself. Because of this, a low-privilege user with only predefined-kit permissions can still bind a license that they should not be allowed to access or manage into a kit.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 8.6.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-crv3-j83j-f3r6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55478"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/0d870d540d27107634f3134e0e7f106b3faa6992"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T18:02:31Z",
+    "nvd_published_at": "2026-07-10T19:17:25Z"
+  }
+}

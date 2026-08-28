@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c6f4-wj38-m3g3",
+  "modified": "2026-08-28T18:03:15Z",
+  "published": "2026-08-28T18:01:32Z",
+  "aliases": [
+    "CVE-2026-55474"
+  ],
+  "summary": "Snipe-IT vulnerable to directory traversal in displaySig",
+  "details": "### Impact\nThe `displaySig` action in `ActionlogController` serves signature image files from a private upload directory. The filename parameter from the HTTP route is concatenated directly into a filesystem path with no sanitization, allowing an authenticated attacker to traverse outside the intended directory and read arbitrary files accessible to the web server process.\n\n\nReported by https://github.com/securin-public",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.5.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-c6f4-wj38-m3g3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/pull/18927"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/cd69a7ea53e030e6e05f08be18daac672c8c4121"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.5.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-23"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T18:01:32Z",
+    "nvd_published_at": "2026-07-10T19:17:25Z"
+  }
+}

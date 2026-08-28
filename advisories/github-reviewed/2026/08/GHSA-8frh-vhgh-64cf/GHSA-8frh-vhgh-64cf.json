@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8frh-vhgh-64cf",
+  "modified": "2026-08-28T18:02:55Z",
+  "published": "2026-08-28T18:02:55Z",
+  "aliases": [
+    "CVE-2026-55479"
+  ],
+  "summary": "Snipe-IT has incorrect permission for legacy license checkin API ",
+  "details": "### Impact\nThe legacy single-seat license checkin flow authorizes the action with the `checkout` permission instead of the `checkin` permission. Because of this, a user who is allowed to assign licenses but not unassign them can still directly access the old checkin endpoint and reclaim a license seat that is currently assigned to another user or asset.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 8.6.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-8frh-vhgh-64cf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55479"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/80c8aa41dc813b0815db00bb44eb0fff9f89a227"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T18:02:55Z",
+    "nvd_published_at": "2026-07-10T20:16:47Z"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-53jc-27pc-x8r8",
+  "modified": "2026-08-28T18:03:45Z",
+  "published": "2026-08-28T18:02:16Z",
+  "aliases": [
+    "CVE-2026-55476"
+  ],
+  "summary": "Snipe-IT Vulnerable to Unauthorized Asset Request Cancellation via Unguarded cancel_by_admin Parameter",
+  "details": "### Impact\nThe route POST `/account/request/{itemType}/{itemId}/{cancel_by_admin?}/{requestingUser?}` accepts `cancel_by_admin` as a plain URL path segment with no authorization check. Any authenticated user regardless of permissions can set this parameter to a truthy value and supply a victim's user ID to silently cancel that user's pending asset requests. The attacker only needs an active session; no elevated privilege is required.\n\n### Patches\nPatched in 8.6.1",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-53jc-27pc-x8r8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55476"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/3c1b18919afbba12d419a9795929493b0391c91a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/ac2162113d9e25e4c61b61916ce67fb2a1050553"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T18:02:16Z",
+    "nvd_published_at": "2026-07-10T19:17:25Z"
+  }
+}

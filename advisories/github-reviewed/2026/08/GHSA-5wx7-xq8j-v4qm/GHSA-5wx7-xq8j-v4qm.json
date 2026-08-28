@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5wx7-xq8j-v4qm",
+  "modified": "2026-08-28T18:01:56Z",
+  "published": "2026-08-28T18:01:56Z",
+  "aliases": [
+    "CVE-2026-55475"
+  ],
+  "summary": "Snipe-IT's import created_by can be overwritten",
+  "details": "### Impact\nThe `created_by` of an import file can be arbitrarily overwritten via the Importer API endpoint by a user with CSV import capabilities who also has a valid API key.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "snipe/snipe-it"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.6.1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 8.6.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-5wx7-xq8j-v4qm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55475"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/pull/19072"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/39fbe983132feca2ef15c1c0200fcc77c23a1434"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-08-28T18:01:56Z",
+    "nvd_published_at": "2026-07-10T20:16:47Z"
+  }
+}
