@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qpg9-jg2w-m84x",
+  "modified": "2026-08-29T15:30:21Z",
+  "published": "2026-08-29T15:30:21Z",
+  "aliases": [
+    "CVE-2026-82457"
+  ],
+  "details": "su-exec through 0.3 fails to validate numeric user and group identifiers parsed with strtol before assigning to uid_t and gid_t, allowing truncation of out-of-range values to zero. Attackers can supply large numeric identifiers that truncate to root's identifier, causing su-exec to execute target programs with root privileges instead of intended unprivileged accounts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82457"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/thesmartshadow/ed96e2a88643c34a247c9b7cf9e311be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ncopa/su-exec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ncopa/su-exec/blob/89c016e6e08749d583efdeda04b9f73e1218e253/su-exec.c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/su-exec-through-0.3-privilege-escalation-via-numeric-user-id"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-681"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-29T14:16:38Z"
+  }
+}

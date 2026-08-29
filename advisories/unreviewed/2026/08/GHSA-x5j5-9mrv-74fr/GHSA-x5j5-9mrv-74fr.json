@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x5j5-9mrv-74fr",
+  "modified": "2026-08-29T15:30:19Z",
+  "published": "2026-08-29T15:30:19Z",
+  "aliases": [
+    "CVE-2026-82449"
+  ],
+  "details": "Cockpit CMS before 2.14.1 contains an account enumeration vulnerability in the auth check endpoint due to timing discrepancies in password verification. Attackers can measure response times across multiple requests to determine which accounts exist by observing that existing accounts trigger bcrypt verification while non-existent accounts return immediately.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82449"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cockpit-HQ/Cockpit/commit/5d65ae7b63a261a63e8809e5fba857ef3eadb2ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cockpit-HQ/Cockpit"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cockpit-HQ/Cockpit/blob/2.14.0/modules/App/Controller/Auth.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://link.mateocallec.com/MFC-2026-001"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cockpit-cms-before-2.14.1-account-enumeration-via-auth-timing"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-208"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-29T13:16:39Z"
+  }
+}

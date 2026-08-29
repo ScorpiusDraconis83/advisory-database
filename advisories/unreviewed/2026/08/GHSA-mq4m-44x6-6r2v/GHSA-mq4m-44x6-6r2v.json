@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mq4m-44x6-6r2v",
+  "modified": "2026-08-29T15:30:20Z",
+  "published": "2026-08-29T15:30:20Z",
+  "aliases": [
+    "CVE-2026-82455"
+  ],
+  "details": "RubyGems fails to re-validate path containment after filesystem symlink resolution during gem extraction. When a pre-existing symlink inside the destination directory points outside the extraction root, extracted files that appear to be written under the destination directory can instead be written outside of it, breaking the extraction safety boundary. The fix resolves the real path of the parent directory before writing and raises Gem::Package::PathError if it escapes the destination directory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82455"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ruby/rubygems/pull/9493"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ruby/rubygems/commit/103ca4230deacb31b9fcd813de109e83b5fc71ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ruby/rubygems"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rubygems-before-4.0.13-path-traversal-via-symlink-resolution"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-29T14:16:38Z"
+  }
+}

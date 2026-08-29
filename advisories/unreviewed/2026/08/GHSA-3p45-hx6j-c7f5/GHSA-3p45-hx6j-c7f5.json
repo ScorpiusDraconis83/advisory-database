@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3p45-hx6j-c7f5",
+  "modified": "2026-08-29T15:30:20Z",
+  "published": "2026-08-29T15:30:20Z",
+  "aliases": [
+    "CVE-2026-82451"
+  ],
+  "details": "Formwork through 2.3.14 contains a stored cross-site scripting vulnerability in visit tracking that records the Referer header host unescaped. Unauthenticated attackers can craft malicious Referer headers to inject markup that executes in administrator browsers when viewing the Statistics panel.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getformwork/formwork/security/advisories/GHSA-hpgc-57cm-66pc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82451"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getformwork/formwork"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getformwork/formwork/blob/89d1908572e55809d6ee1771f59a816494c29573/panel/views/statistics/index.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/formwork-through-2.3.14-stored-xss-via-referer-header"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-29T14:16:38Z"
+  }
+}
