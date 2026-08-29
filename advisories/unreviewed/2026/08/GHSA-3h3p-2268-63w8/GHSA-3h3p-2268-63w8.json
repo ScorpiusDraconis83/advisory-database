@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3h3p-2268-63w8",
-  "modified": "2026-08-28T09:31:46Z",
+  "modified": "2026-08-29T09:30:25Z",
   "published": "2026-08-28T09:31:46Z",
   "aliases": [
     "CVE-2026-80598"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs3: fix out-of-bounds read in decompress_lznt\n\ndecompress_lznt() does not validate array index bounds before accessing\nthe decompression table. A corrupted NTFS3 image with invalid compressed\ndata can trigger an out-of-bounds read.\n\nAdd index bounds checking to prevent the OOB access.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-28T08:16:43Z"

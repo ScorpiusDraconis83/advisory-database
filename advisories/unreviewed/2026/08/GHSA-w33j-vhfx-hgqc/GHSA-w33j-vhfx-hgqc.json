@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-w33j-vhfx-hgqc",
-  "modified": "2026-08-28T09:31:50Z",
+  "modified": "2026-08-29T09:30:29Z",
   "published": "2026-08-28T09:31:50Z",
   "aliases": [
     "CVE-2026-80709"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/zcrypt: Fix wrong domain value verification with EP11 CPRBs\n\nThere is a wrong upper limit check for the domain value when an EP11\nCPRB is processed for sending to a crypto card. This check is only\nactive on custom device nodes but may lead to access heap memory\nbehind perms->adm when an administrative CPRB is sent.\nAdd correct limit (AP_DOMAINS = 256) checking to fix this.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-28T08:16:56Z"

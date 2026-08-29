@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4j75-ggwr-gg59",
-  "modified": "2026-08-28T09:31:50Z",
+  "modified": "2026-08-29T09:30:29Z",
   "published": "2026-08-28T09:31:50Z",
   "aliases": [
     "CVE-2026-80710"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/dasd: Fix undersized format-check buffer\n\nfmt_buffer_size in dasd_eckd_check_device_format() is declared as\nint, even though one of the multiplicands, sizeof(struct eckd_count),\nis a size_t. The expression\n\n    trkcount * rpt_max * sizeof(struct eckd_count)\n\nis therefore correctly evaluated at 64-bit width, but the result is\nsilently truncated when it is stored back into the 32-bit\nfmt_buffer_size variable. For a sufficiently large track range\n(start_unit/stop_unit are caller-controlled) this truncation\nyields a buffer size far smaller than the number of tracks actually\nrequested. kzalloc() then succeeds with an undersized allocation,\nwhile the subsequent channel program build still operates on the\nuntruncated track count and writes past the end of that buffer.\n\nCompute the buffer size with check_mul_overflow() and keep it in a\nsize_t, so that a value that no longer fits results in -EINVAL\ninstead of a silently truncated allocation size.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-28T08:16:56Z"

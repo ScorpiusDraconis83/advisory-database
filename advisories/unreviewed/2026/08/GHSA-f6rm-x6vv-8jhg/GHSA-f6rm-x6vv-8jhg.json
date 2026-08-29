@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f6rm-x6vv-8jhg",
-  "modified": "2026-08-28T09:31:50Z",
+  "modified": "2026-08-29T09:30:29Z",
   "published": "2026-08-28T09:31:50Z",
   "aliases": [
     "CVE-2026-80714"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipvs: do not propagate one-packet flag to synced conns\n\nSynced connections can be created before their destination exists. When\nthe destination is later added, ip_vs_bind_dest() copies connection flags\nfrom the destination into cp->flags.\n\nIP_VS_CONN_F_ONE_PACKET connections are not synced. If a synced\nconnection inherits IP_VS_CONN_F_ONE_PACKET while it is already hashed,\nexpiry can treat it as a one-packet connection and skip unlinking the\nexisting conn_tab node, leaving stale hash nodes pointing at a freed\nstruct ip_vs_conn.\n\nDrop IP_VS_CONN_F_ONE_PACKET from destination flags when binding synced\nconnections.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-28T08:16:57Z"

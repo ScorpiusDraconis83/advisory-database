@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3m25-qfr7-c9r2",
-  "modified": "2026-08-28T09:31:48Z",
+  "modified": "2026-08-29T09:30:27Z",
   "published": "2026-08-28T09:31:48Z",
   "aliases": [
     "CVE-2026-80663"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntools/power/x86/intel-speed-select: Harden daemon pidfile open\n\nAvoid symlink-based pidfile clobbering by opening the pidfile with\nO_NOFOLLOW and validating it with fstat() before locking/writing.\n\nThe daemon currently uses a fixed pidfile path under /tmp. A local\nunprivileged user can pre-create a symlink at that path and cause a\nroot-run daemon instance to write into an attacker-chosen file.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-28T08:16:51Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fg5w-g6pm-xp23",
-  "modified": "2026-08-28T09:31:49Z",
+  "modified": "2026-08-29T09:30:28Z",
   "published": "2026-08-28T09:31:49Z",
   "aliases": [
     "CVE-2026-80692"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: hold conn in hci_connect_acl/le_sync() callbacks\n\nThere is theoretical UAF if the conn is freed while the hci_sync task\nis running.\n\nHold refcount to avoid that.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-28T08:16:54Z"

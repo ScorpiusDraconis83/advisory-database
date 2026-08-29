@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-r237-xgfx-686p",
-  "modified": "2026-08-28T09:31:48Z",
+  "modified": "2026-08-29T09:30:26Z",
   "published": "2026-08-28T09:31:48Z",
   "aliases": [
     "CVE-2026-80649"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scmi: Fix OOB in scmi_power_name_get()\n\nscmi_power_name_get() does not validate the domain number passed by the\nexternal caller, which may lead to an out-of-bounds access.\n\nFix this by returning \"unknown\" for invalid domains, like\nscmi_reset_name_get() does.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -45,7 +50,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-28T08:16:49Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fq3m-cvqw-wrvh",
-  "modified": "2026-08-28T09:31:50Z",
+  "modified": "2026-08-29T09:30:29Z",
   "published": "2026-08-28T09:31:50Z",
   "aliases": [
     "CVE-2026-80717"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: validate Adaptation Indication parameter length\n\nThe Adaptation Layer Indication parameter contains a fixed 32-bit\nAdaptation Code Point after its parameter header. However,\nsctp_verify_param() accepts a header-only parameter because the generic\nparameter walker only requires the header to be present.\n\nsctp_process_param() then reads adaptation_ind beyond the declared\nparameter. When the malformed parameter is last in an INIT, the read\nstarts at the receive skb tail, and the value is copied into the state\ncookie returned in the INIT ACK. This may disclose four receive-buffer\ntail bytes.\n\nRequire the declared parameter length to match the fixed structure size\nand abort the association through the existing invalid parameter length\npath otherwise.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-28T08:16:57Z"
