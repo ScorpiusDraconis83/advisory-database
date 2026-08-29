@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r76c-m8xx-m685",
+  "modified": "2026-08-29T18:31:31Z",
+  "published": "2026-08-29T18:31:31Z",
+  "aliases": [
+    "CVE-2026-82465"
+  ],
+  "details": "pac4j-saml before 6.5.6 does not require signature validation of SAML LogoutRequest messages in SAML2LogoutValidator.validateLogoutRequest(). When an IdP sends no SessionIndex, a session can be destroyed based solely on the NameID, allowing an unauthenticated attacker to submit an unsigned LogoutRequest with a guessed identifier (e.g., an email address used as NameID) to terminate a victim's SAML session.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82465"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pac4j/pac4j/commit/2270c3ff70e93cc43831e75702acd5135531237e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pac4j/pac4j"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pac4j/pac4j/blob/pac4j-parent-6.5.5/pac4j-saml/src/main/java/org/pac4j/saml/logout/impl/SAML2LogoutValidator.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.pac4j.org/blog/security-advisory-pac4j-core-oidc-saml.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pac4j-saml-before-6.5.6-session-destruction-via-unsigned-logoutrequest"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-29T17:17:58Z"
+  }
+}

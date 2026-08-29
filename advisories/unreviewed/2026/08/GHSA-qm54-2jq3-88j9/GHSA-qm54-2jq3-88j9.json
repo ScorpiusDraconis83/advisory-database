@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qm54-2jq3-88j9",
+  "modified": "2026-08-29T18:31:32Z",
+  "published": "2026-08-29T18:31:31Z",
+  "aliases": [
+    "CVE-2026-82472"
+  ],
+  "details": "Documenso before 2.13.0 accepts PDF file uploads on the /api/files/upload-pdf endpoint without requiring authentication, session tokens, or API credentials. Unauthenticated attackers can upload arbitrary PDF files indefinitely to exhaust storage resources or fill the database with unlinked document records.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82472"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/documenso/documenso/commit/4f346d3c2d5264f221e4d787e162f16051e44114"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/documenso/documenso"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/documenso/documenso/blob/v2.12.0/apps/remix/server/api/files/files.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/documenso-before-2.13.0-unauthenticated-file-upload-via-api-files-upload-pdf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-29T17:17:59Z"
+  }
+}

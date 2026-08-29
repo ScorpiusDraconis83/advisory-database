@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-87v8-76rg-m5w6",
+  "modified": "2026-08-29T18:31:32Z",
+  "published": "2026-08-29T18:31:32Z",
+  "aliases": [
+    "CVE-2026-82475"
+  ],
+  "details": "iFlytek astron-agent through 1.1.1 contains an authorization bypass vulnerability in the copyFlow endpoint that fails to validate workflow ownership. Authenticated attackers can enumerate workflow identifiers and overwrite other tenants' workflows or copy private workflows to read their definitions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82475"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/iflytek/astron-agent/issues/1590"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/iflytek/astron-agent"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/iflytek/astron-agent/blob/v1.1.1/console/backend/toolkit/src/main/java/com/iflytek/astron/console/toolkit/service/workflow/WorkflowService.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/iflytek-astron-agent-through-1.1.1-workflow-hijacking-via-missing-ownership-check"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-29T17:18:00Z"
+  }
+}
