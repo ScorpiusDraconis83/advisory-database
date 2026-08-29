@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qfp6-8rww-vh6v",
+  "modified": "2026-08-29T00:30:56Z",
+  "published": "2026-08-29T00:30:56Z",
+  "aliases": [
+    "CVE-2026-73108"
+  ],
+  "details": "RustDesk versions before 1.4.7 contain an uncontrolled speculative memory allocation vulnerability in BytesCodec. Before authentication, the decoder trusts the payload length encoded in a four-byte frame header and reserves that amount before receiving the payload. A crafted header can request up to 1,073,741,823 bytes of capacity, allowing unauthenticated attackers to use concurrent TCP connections to cause memory exhaustion and denial of service. The fix caps header-triggered speculative preallocation at 256 KiB.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73108"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustdesk/hbb_common/commit/547da54b4ee58eed47163fbd47edb4639e3d88de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustdesk/rustdesk/commit/518296f2570d107ad416f29ade5fcce3177f4115"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustdesk/rustdesk/releases/tag/1.4.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rustdesk-uncontrolled-memory-allocation-dos-via-bytescodec"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-26T14:17:12Z"
+  }
+}
