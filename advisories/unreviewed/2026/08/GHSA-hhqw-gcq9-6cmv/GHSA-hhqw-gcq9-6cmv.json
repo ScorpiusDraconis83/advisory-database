@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hhqw-gcq9-6cmv",
+  "modified": "2026-08-30T15:30:26Z",
+  "published": "2026-08-30T15:30:26Z",
+  "aliases": [
+    "CVE-2026-82637"
+  ],
+  "details": "browser-use web-ui versions 2.0.0 through 3.0.0 fail to validate browser settings paths in run_agent_task, allowing attackers to create directories at arbitrary locations by supplying absolute paths to save_recording_path, save_trace_path, save_agent_history_path, or save_download_path parameters. Attackers can exploit this via the unauthenticated Gradio interface to create directories anywhere the root-running container has write access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82637"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/browser-use/web-ui/issues/737"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/browser-use/web-ui"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/browser-use/web-ui/blob/v3.0.0/src/webui/components/browser_use_agent_tab.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/browser-use-web-ui-2.0.0-through-3.0.0-arbitrary-directory-creation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-30T14:17:03Z"
+  }
+}

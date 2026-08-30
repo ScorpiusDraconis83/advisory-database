@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mfxx-qcw7-5q5r",
+  "modified": "2026-08-30T15:30:26Z",
+  "published": "2026-08-30T15:30:26Z",
+  "aliases": [
+    "CVE-2026-82633"
+  ],
+  "details": "Dolibarr versions 10.0.0 before 24.0.0 fail to perform per-object authorization checks in the Users::getGroups REST API endpoint, allowing authenticated users to retrieve group memberships of other users. Attackers can call GET /users/{id}/groups with arbitrary user identifiers to access group names, entity associations, and private notes across tenant boundaries.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dolibarr/dolibarr/commit/fd478850f823e27c672300acb4b02baeef79aef1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dolibarr/dolibarr"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dolibarr/dolibarr/blob/23.0.4/htdocs/user/class/api_users.class.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Dolibarr/dolibarr/releases/tag/24.0.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dolibarr-10.0.0-before-24.0.0-missing-authorization-on-rest-users-groups-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-30T13:16:56Z"
+  }
+}
