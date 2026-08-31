@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vhf9-px93-5p48",
+  "modified": "2026-08-31T09:30:33Z",
+  "published": "2026-08-31T09:30:33Z",
+  "aliases": [
+    "CVE-2026-82875"
+  ],
+  "details": "ToolJet before v3.16.208 contains an authorization bypass vulnerability in TooljetDB controller endpoints that accept organizationId from URL path without verifying it matches the authenticated user's workspace. Authenticated users can enumerate, create, rename, and delete TooljetDB tables in any other workspace by manipulating the organizationId parameter in requests.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ToolJet/ToolJet/security/advisories/GHSA-cx42-x23w-vhvf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82875"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/tooljet-before-3.16.208-authorization-bypass-via-organizationid"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-31T09:17:08Z"
+  }
+}
