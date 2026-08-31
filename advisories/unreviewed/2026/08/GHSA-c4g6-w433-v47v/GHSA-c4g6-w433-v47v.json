@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c4g6-w433-v47v",
-  "modified": "2026-08-30T09:30:24Z",
+  "modified": "2026-08-31T15:34:39Z",
   "published": "2026-08-30T09:30:24Z",
   "aliases": [
     "CVE-2026-81660"
   ],
   "details": "The Groundhogg — CRM, Newsletters, and Marketing Automation WordPress plugin before 4.5.13 does not validate or escape values submitted to some optional web form fields before storing them and outputting them back in an administrative area, allowing unauthenticated users to perform Stored Cross-Site Scripting attacks against high privilege users.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-30T07:17:21Z"

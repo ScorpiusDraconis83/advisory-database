@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-45wp-4v6m-9hfj",
-  "modified": "2026-08-31T09:30:27Z",
+  "modified": "2026-08-31T15:34:40Z",
   "published": "2026-08-31T09:30:27Z",
   "aliases": [
     "CVE-2026-77013"
   ],
   "details": "The 爱采集数据采集和发布插件 WordPress plugin through 1.0.0 does not restrict which of its handler methods a request may invoke, and performs no capability or nonce check on them, allowing unauthenticated users to create WordPress user accounts and taxonomy terms.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-31T07:17:45Z"

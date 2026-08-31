@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-723j-f577-m6gp",
-  "modified": "2026-08-26T00:30:51Z",
+  "modified": "2026-08-31T15:34:38Z",
   "published": "2026-08-26T00:30:51Z",
   "aliases": [
     "CVE-2026-38472"
   ],
   "details": "A Stored XSS vulnerability in forum reward comments in GazellePW (GazellePosterWall) commit 86c4bedf727691b5a97af42a4864869d18446449 allows remote attackers to inject arbitrary JavaScript via the c parameter in /forums.php?action=ajax_get_jf which is later rendered in the data-tooltip attribute in /forums.php?action=viewthread and interpreted as HTML by the Tooltipster configuration.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-25T22:17:03Z"

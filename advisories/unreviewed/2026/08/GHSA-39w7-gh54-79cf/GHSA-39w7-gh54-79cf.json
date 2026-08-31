@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-39w7-gh54-79cf",
+  "modified": "2026-08-31T15:34:45Z",
+  "published": "2026-08-31T15:34:45Z",
+  "aliases": [
+    "CVE-2026-78075"
+  ],
+  "details": "Joomla Extension - joomshaper.com - Broken Object-Level Authorization in Blog Image Deletion in Helix Ultimate < 2.2.10 - `Blog::remove_image()` checked whether the user was authorized to edit the article ID passed in the request, but did not verify whether the specified image path (src) belonged to that article. On Joomla 3 builds where physical file deletion was triggered, an author could supply their own article ID alongside an arbitrary file path under the `/images/` directory to delete arbitrary files.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78075"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.joomshaper.com/joomla-templates/helixultimate"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-31T14:17:23Z"
+  }
+}

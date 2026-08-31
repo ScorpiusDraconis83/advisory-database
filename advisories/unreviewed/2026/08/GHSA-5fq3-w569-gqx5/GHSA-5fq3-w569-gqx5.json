@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5fq3-w569-gqx5",
-  "modified": "2026-08-30T09:30:23Z",
+  "modified": "2026-08-31T15:34:39Z",
   "published": "2026-08-30T09:30:23Z",
   "aliases": [
     "CVE-2026-76585"
   ],
   "details": "The Customer Reviews for WooCommerce WordPress plugin before 5.118.0 does not sanitise and escape the content of customer reviews received via one of its endpoints, which could allow unauthenticated users to perform Stored Cross-Site Scripting attacks.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-30T07:17:20Z"
