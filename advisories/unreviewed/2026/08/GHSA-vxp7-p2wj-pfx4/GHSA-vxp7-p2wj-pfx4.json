@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vxp7-p2wj-pfx4",
+  "modified": "2026-08-31T21:32:10Z",
+  "published": "2026-08-31T21:32:10Z",
+  "aliases": [
+    "CVE-2026-82821"
+  ],
+  "details": "A vulnerability was determined in FLVMeta up to 1.2.2. Affected by this vulnerability is the function amf_object_get of the file src/amf.c of the component AMF Object Parsing. This manipulation causes null pointer dereference. The attack may be initiated remotely. The exploit has been publicly disclosed and may be utilized. Patch name: 52642f7dfb76ec7334016622dde60b1ae963d79b. To fix this issue, it is recommended to deploy a patch. The project maintainer doubts the security impact: \"While I acknowledged the bugs and provided fixes, I have yet to see any way to exploit these alleged vulnerabilities.\"",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/noirotm/flvmeta/issues/28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/noirotm/flvmeta/commit/52642f7dfb76ec7334016622dde60b1ae963d79b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/raind20001020/Poc/blob/main/flvmeta_SEGV"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-82821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/876597"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/397244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/397244/cti"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-404"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-31T19:17:23Z"
+  }
+}

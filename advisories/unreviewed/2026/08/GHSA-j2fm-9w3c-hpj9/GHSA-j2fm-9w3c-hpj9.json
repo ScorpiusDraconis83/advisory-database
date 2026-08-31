@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j2fm-9w3c-hpj9",
+  "modified": "2026-08-31T21:32:10Z",
+  "published": "2026-08-31T21:32:10Z",
+  "aliases": [
+    "CVE-2026-13732"
+  ],
+  "details": "A flaw was found in GDB's STABS debug format parser. The\nread_member_functions() function in gdb/stabsread.c contains a linked\nlist removal bug in the code that separates destructor and non-destructor\nmember functions of C++ classes. The bug causes the destructor entries to\nremain in the main function list while the list length counter is\ndecremented, resulting in an out-of-bounds write when the function list\nis copied to its final allocated array. An attacker can craft an ELF\nbinary with malicious .stab and .stabstr sections that triggers this\nout-of-bounds write when a user opens the file in GDB and performs any\nsymbol-inspection operation such as setting a breakpoint. The inferior\nprocess does not need to be executed. Under controlled conditions, this\nwas demonstrated to achieve execution of arbitrary commands within the\nGDB process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13732"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-13732"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2494416"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-31T20:17:02Z"
+  }
+}

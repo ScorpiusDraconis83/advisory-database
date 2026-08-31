@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qrmm-v4pr-7cm8",
-  "modified": "2026-08-31T15:34:45Z",
+  "modified": "2026-08-31T21:32:08Z",
   "published": "2026-08-31T15:34:45Z",
   "aliases": [
     "CVE-2026-51680"
   ],
   "details": "Incorrect access control in the setLedCfg function of TOTOLINK T6 4.1.5cu.748_B20211015 allows unauthenticated attackers to modify LED behavior via sending a crafted POST request to /cgi-bin/cstecgi.cgi.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-31T14:17:16Z"
