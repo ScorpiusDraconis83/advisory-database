@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cgg6-cpqj-xc4m",
+  "modified": "2026-08-31T18:31:28Z",
+  "published": "2026-08-31T18:31:28Z",
+  "aliases": [
+    "CVE-2026-51152"
+  ],
+  "details": "Server-side request forgery (SSRF) in the /har/test endpoint in QD 20220208 through 20250803. Fetcher.build_request() in libs/fetcher.py constructs an httpclient.HTTPRequest from user-supplied JSON without validating URL scheme, host, or IP range. The /har/test handler does not require authentication, enabling unauthenticated remote attackers to force the QD server to send arbitrary HTTP requests to internal network resources and cloud metadata endpoints. validate_cert is set to False, disabling TLS verification.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/kurokoleung/98e950e3e05205fc57d2029ad68a702e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://qd-today.github.io/qd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-31T16:18:34Z"
+  }
+}

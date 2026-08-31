@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-59pv-qgfv-jx2f",
-  "modified": "2026-08-27T18:32:21Z",
+  "modified": "2026-08-31T18:31:19Z",
   "published": "2026-08-27T18:32:21Z",
   "aliases": [
     "CVE-2026-26456"
   ],
   "details": "A null pointer dereference vulnerability exists in the server-side session management logic of ccoap 77f55c4b466e99327c24ace8a2913d3ba7e2ccd5. The issue is caused by a race condition between the request dispatch thread and the session cleanup thread when accessing shared session list nodes without proper synchronization.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-27T17:17:48Z"
