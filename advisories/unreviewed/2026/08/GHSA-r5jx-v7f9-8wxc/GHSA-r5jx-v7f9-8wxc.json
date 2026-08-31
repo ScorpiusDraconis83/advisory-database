@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r5jx-v7f9-8wxc",
+  "modified": "2026-08-31T12:30:24Z",
+  "published": "2026-08-31T12:30:24Z",
+  "aliases": [
+    "CVE-2026-82876"
+  ],
+  "details": "Phison PS3111-S11 controller firmware verifies RSA signatures using a public modulus embedded within the firmware image itself rather than anchored in immutable storage. Attackers can generate arbitrary RSA key pairs, sign modified firmware with the private key, embed the matching modulus in the signature segment, and the controller accepts the tampered firmware as valid.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82876"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/trulycrisp/psychite"
+    },
+    {
+      "type": "WEB",
+      "url": "https://trulycrisp.github.io/drivefirmware/phison_s11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/phison-ps3111-s11-controller-firmware-signature-verification-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-347"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-08-31T11:16:41Z"
+  }
+}
