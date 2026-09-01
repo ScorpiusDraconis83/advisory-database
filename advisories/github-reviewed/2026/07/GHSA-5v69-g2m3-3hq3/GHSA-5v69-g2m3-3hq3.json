@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5v69-g2m3-3hq3",
-  "modified": "2026-07-07T18:30:34Z",
+  "modified": "2026-09-01T17:23:13Z",
   "published": "2026-07-03T21:31:37Z",
   "aliases": [
     "CVE-2026-26232"
   ],
+  "summary": "Gitea OAuth2 authorization codes can be reused after expiry",
   "details": "Gitea versions before 1.25.5 do not consistently enforce OAuth2 authorization code expiry and single-use behavior during token exchange.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "code.gitea.io/gitea"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.25.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -29,7 +50,19 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/go-gitea/gitea/commit/413074b1e1dc5718b4865b9493d8cc97e1e128de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-gitea/gitea/commit/f3bdcc58aff60b66eba7bd5e9b23457441733dfe"
+    },
+    {
+      "type": "WEB",
       "url": "https://blog.gitea.com/release-of-1.25.5"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/go-gitea/gitea"
     },
     {
       "type": "WEB",
@@ -41,8 +74,8 @@
       "CWE-294"
     ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T17:23:13Z",
     "nvd_published_at": "2026-07-03T21:16:58Z"
   }
 }

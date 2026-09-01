@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-37w2-86g3-h4qh",
-  "modified": "2026-07-07T18:30:34Z",
+  "modified": "2026-09-01T17:22:06Z",
   "published": "2026-07-03T21:31:37Z",
   "aliases": [
     "CVE-2026-25712"
   ],
+  "summary": "Gitea organization permission APIs expose hidden membership and private organization data",
   "details": "Gitea versions before 1.25.5 have insufficient visibility checks in organization permission APIs for hidden members and private organizations.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "code.gitea.io/gitea"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.25.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -29,7 +50,19 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/go-gitea/gitea/commit/57b5ed3f252753797e790c060c42fbbe8219b9c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-gitea/gitea/commit/96515c0f200d37228dc84a599c6177297a230c94"
+    },
+    {
+      "type": "WEB",
       "url": "https://blog.gitea.com/release-of-1.25.5"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/go-gitea/gitea"
     },
     {
       "type": "WEB",
@@ -41,8 +74,8 @@
       "CWE-284"
     ],
     "severity": "HIGH",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T17:22:06Z",
     "nvd_published_at": "2026-07-03T21:16:57Z"
   }
 }
