@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rf2p-vh74-7vvh",
+  "modified": "2026-09-01T16:37:47Z",
+  "published": "2026-09-01T16:37:47Z",
+  "aliases": [
+    "CVE-2026-69127"
+  ],
+  "summary": "Kirby: System path exposure from error messages in the REST API",
+  "details": "### TL;DR\n\nThis vulnerability affects all Kirby sites that have not disabled the REST API with the `'api' => false` option.\n\nIt was possible to trigger a PHP error in the API backend that would expose the full filesystem path of the Kirby installation on the server. This could be used to guess the default `content.salt` or prepare specialized attacks.\n\n----\n\n### Introduction\n\nAn information exposure occurs when system data or debugging information leaves the program through an output stream or logging function that makes it accessible to unauthorized parties. Using other weaknesses, an attacker could cause errors to occur; the response to these errors can reveal detailed system information, along with other impacts. An attacker can use messages that reveal technologies, operating systems, and product versions to tune the attack against known vulnerabilities in these technologies. A product may use diagnostic methods that provide significant implementation details such as stack traces as part of its error handling mechanism.\n\n### Affected components\n\nKirby's REST API at `/api` returns JSON data for each request. If an error occurs during processing of the request, a special error handler converts this error to JSON data that API frontends can handle.\n\nThe returned data for errors depends on the debugging mode. If the `debug` option is enabled, the JSON data contains fields for the path and line of the affected file, the internal exception class and the API route that caused the error. This data is omitted from error responses in production (when the `debug` option is disabled).\n\n### Impact\n\nSome internal errors may contain sensitive information in the error message itself. This is often the case with PHP errors.\n\nIn affected releases, the REST API error handler did not sanitize error messages for sensitive information.\n\nThis exposed system information like the full source path to external API users, including users without authentication. This could be used to guess the default `content.salt` or prepare specialized attacks.\n\n### Patches\n\nThe problem has been patched in [Kirby 4.9.5](https://github.com/getkirby/kirby/releases/tag/4.9.5) and [Kirby 5.5.2](https://github.com/getkirby/kirby/releases/tag/5.5.2). Please update to one of these or a [later version](https://github.com/getkirby/kirby/releases) to fix the vulnerability.\n\nIn all of the mentioned releases, Kirby has hardened the API error handler to only expose full error messages for exceptions in the `Kirby\\Exception` namespace. All other errors are only exposed in debug mode (with disguised paths, keeping only the paths relative to the Kirby installation). Outside of debug mode, general exceptions and PHP errors are replaced with a generic error message.\n\n### Credits\n\nThanks to Peter Levashov (@petersevera) for responsibly reporting the identified issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getkirby/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.9.5"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.9.4"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getkirby/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.5.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getkirby/kirby/security/advisories/GHSA-rf2p-vh74-7vvh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getkirby/kirby/commit/469c5a1a2973811591d996bc967eead3565df1f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getkirby/kirby/commit/58f819988436b31969078bc4655452dd48546451"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getkirby/kirby"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-497"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T16:37:47Z",
+    "nvd_published_at": "2026-08-07T19:18:53Z"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cq55-c7wv-pxmq",
+  "modified": "2026-09-01T16:38:23Z",
+  "published": "2026-09-01T16:38:22Z",
+  "aliases": [
+    "CVE-2026-62993"
+  ],
+  "summary": "Smarty: SSRF via redirect bypass of trusted_uri using {fetch}",
+  "details": "When a Security policy is active, {fetch} validates the requested remote URL against the trusted_uri allowlist via Security::isTrustedUri(). For non-http:// schemes (e.g. https://) the resource was then read with file_get_contents(), which follows HTTP redirects by default. Because isTrustedUri() only validates the initial URL, an open redirect on an otherwise-trusted host could be used to redirect the request to a non-trusted, internal target — bypassing the trusted_uri policy.\n\n## Impact\n\nAn attacker who can supply a fetch target (or influence one) and who has an open redirect available on a trusted host can cause the server to issue requests to attacker-chosen internal endpoints, defeating the trusted_uri allowlist (server-side request forgery).\n\n## Patches\n\nFixed in 5.8.2. When a security policy is active, {fetch} now passes a stream context that disables redirect following (follow_location => 0, max_redirects => 1) to file_get_contents() for remote resources. Behavior is unchanged when no security policy is set, since there is no trusted_uri to bypass.\n\n## Workarounds\n\nAvoid fetching remote resources from within templates under untrusted control; ensure hosts listed in trusted_uri do not expose open redirects.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "smarty/smarty"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0"
+            },
+            {
+              "fixed": "5.8.2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "smarty/smarty"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.5.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/smarty-php/smarty/security/advisories/GHSA-cq55-c7wv-pxmq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62993"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/smarty-php/smarty/pull/1194"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/smarty-php/smarty/commit/31e06fc087a8b5a9b236c1e5dacc1c2850a2c115"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/smarty-php/smarty/commit/a1ccdb0518021a559b4066c37b76a42c86bbce90"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/smarty-php/smarty"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/smarty-php/smarty/releases/tag/v4.5.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/smarty-php/smarty/releases/tag/v5.8.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T16:38:22Z",
+    "nvd_published_at": "2026-08-31T21:17:33Z"
+  }
+}
