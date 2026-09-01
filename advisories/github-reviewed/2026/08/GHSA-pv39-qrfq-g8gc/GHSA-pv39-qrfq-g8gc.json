@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pv39-qrfq-g8gc",
+  "modified": "2026-09-01T20:30:34Z",
+  "published": "2026-08-03T09:32:37Z",
+  "withdrawn": "2026-09-01T20:30:34Z",
+  "aliases": [],
+  "summary": "Duplicate Advisory: NLTK: Missing Post-Download Integrity Verification Allows Malicious Package Injection",
+  "details": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-5wp5-5229-5g6q. This link is maintained to preserve external references.\n\n## Original Description\nIn nltk version 3.9.4, the `nltk.downloader.Downloader._download_package()` function writes downloaded package bytes to disk and may extract them before enforcing SHA-256 or MD5 checksum validation. This allows an attacker to tamper with the package response body for `info.url` through a compromised mirror, malicious proxy, or other source-substitution condition, leading to the installation of attacker-controlled package bytes. The vulnerability can result in malicious corpus or model content being trusted by downstream users or applications.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "nltk"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "3.9.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12259"
+    },
+    {
+      "type": "WEB",
+      "url": "https://huntr.com/bounties/659ccf6d-12d4-4d4a-84c0-078633c35a5d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-494"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T20:30:34Z",
+    "nvd_published_at": "2026-08-03T08:17:17Z"
+  }
+}
