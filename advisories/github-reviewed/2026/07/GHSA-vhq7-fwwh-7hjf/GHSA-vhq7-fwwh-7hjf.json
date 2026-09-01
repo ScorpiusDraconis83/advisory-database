@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vhq7-fwwh-7hjf",
-  "modified": "2026-07-06T18:30:57Z",
+  "modified": "2026-09-01T18:55:25Z",
   "published": "2026-07-03T21:31:38Z",
   "aliases": [
     "CVE-2026-27780"
   ],
+  "summary": "Gitea pre-receive hook scanner errors allow branch-protection bypass",
   "details": "Gitea versions before 1.26.0 do not fail closed on bufio.Scanner errors while processing pre-receive hook input, allowing oversized input to bypass branch-protection checks.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "code.gitea.io/gitea"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.26.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -25,7 +46,15 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/go-gitea/gitea/commit/c453d09c36fad094405314dba2f370434b200711"
+    },
+    {
+      "type": "WEB",
       "url": "https://blog.gitea.com/release-of-1.26.0"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/go-gitea/gitea"
     },
     {
       "type": "WEB",
@@ -37,8 +66,8 @@
       "CWE-863"
     ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T18:55:25Z",
     "nvd_published_at": "2026-07-03T21:16:59Z"
   }
 }
