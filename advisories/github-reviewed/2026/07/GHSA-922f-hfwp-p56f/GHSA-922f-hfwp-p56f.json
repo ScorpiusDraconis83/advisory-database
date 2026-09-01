@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-922f-hfwp-p56f",
-  "modified": "2026-07-07T18:30:34Z",
+  "modified": "2026-09-01T17:19:09Z",
   "published": "2026-07-03T21:31:37Z",
   "aliases": [
     "CVE-2026-22547"
   ],
+  "summary": "Gitea repository creation accepts insufficiently validated fields",
   "details": "Gitea versions before 1.25.5 lack validation constraints for repository creation fields, including length-limited template fields and trust model or object format values.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Go",
+        "name": "code.gitea.io/gitea"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.25.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -29,7 +50,19 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/go-gitea/gitea/commit/569c49debe06f30a2bbb50b3812e705c556b8adf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-gitea/gitea/commit/b3bc79262d106f4259f82a26609e4738b618152b"
+    },
+    {
+      "type": "WEB",
       "url": "https://blog.gitea.com/release-of-1.25.5"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/go-gitea/gitea"
     },
     {
       "type": "WEB",
@@ -41,8 +74,8 @@
       "CWE-20"
     ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T17:19:09Z",
     "nvd_published_at": "2026-07-03T21:16:56Z"
   }
 }
