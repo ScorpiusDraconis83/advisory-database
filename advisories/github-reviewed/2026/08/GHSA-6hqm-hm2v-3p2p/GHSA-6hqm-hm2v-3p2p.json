@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6hqm-hm2v-3p2p",
+  "modified": "2026-09-01T18:38:42Z",
+  "published": "2026-08-01T15:30:27Z",
+  "withdrawn": "2026-09-01T18:38:42Z",
+  "aliases": [],
+  "summary": "Duplicate Advisory: Axios: NO_PROXY bypass for 0.0.0.0 local addresses in axios",
+  "details": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-f4gw-2p7v-4548. This link is maintained to preserve external references.\n\n## Original Description\naxios versions 1.15.0 before 1.18.0 fail to recognize 0.0.0.0 as a loopback address in shouldBypassProxy.js, allowing requests to 0.0.0.0 to bypass NO_PROXY rules. Attackers can supply 0.0.0.0 URLs to route requests through configured proxies, potentially exposing local services when the proxy can reach the destination.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "axios"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 1.18.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/axios/axios/security/advisories/GHSA-f4gw-2p7v-4548"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67315"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/axios-before-no-proxy-bypass-via"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-183"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T18:38:42Z",
+    "nvd_published_at": "2026-08-01T13:17:01Z"
+  }
+}
