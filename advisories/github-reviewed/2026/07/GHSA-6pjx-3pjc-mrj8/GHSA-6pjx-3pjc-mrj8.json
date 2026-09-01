@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6pjx-3pjc-mrj8",
-  "modified": "2026-07-27T21:31:21Z",
+  "modified": "2026-09-01T17:03:24Z",
   "published": "2026-07-27T12:31:16Z",
   "aliases": [
     "CVE-2026-41608"
   ],
+  "summary": "Apache Thrift Python bindings have an Improper Handling of Highly Compressed Data (Data Amplification) vulnerability",
   "details": "Improper Handling of Highly Compressed Data (Data Amplification) vulnerability in Apache Thrift Python bindings.\n\nThis issue affects Apache Thrift: before 0.24.0.\n\nUsers are recommended to upgrade to version 0.24.0, which fixes the issue.",
   "severity": [
     {
@@ -13,11 +14,35 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "thrift"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.24.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41608"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/thrift"
     },
     {
       "type": "WEB",
@@ -37,8 +62,8 @@
       "CWE-409"
     ],
     "severity": "HIGH",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T17:03:24Z",
     "nvd_published_at": "2026-07-27T12:16:44Z"
   }
 }
