@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g5v5-hvmc-hhx2",
+  "modified": "2026-09-01T21:31:47Z",
+  "published": "2026-09-01T21:31:47Z",
+  "aliases": [
+    "CVE-2026-72654"
+  ],
+  "details": "Execution with Unnecessary Privileges (CWE-250) in the Kibana machine learning feature can lead to information disclosure via Privilege Abuse (CAPEC-122). An operation available to users holding only read access to the machine learning feature was performed with an internal service identity rather than the identity of the requesting user. Such a user could therefore receive data from Elasticsearch indices they are not authorized to read. No Elasticsearch cluster or index privileges are required.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72654"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-21-9-4-6-9-5-2-security-update-esa-2026-135/390091"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-250"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-01T20:17:17Z"
+  }
+}

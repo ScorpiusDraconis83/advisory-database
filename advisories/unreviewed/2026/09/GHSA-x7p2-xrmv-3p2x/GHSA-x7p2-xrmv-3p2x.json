@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x7p2-xrmv-3p2x",
+  "modified": "2026-09-01T21:31:47Z",
+  "published": "2026-09-01T21:31:47Z",
+  "aliases": [
+    "CVE-2026-72628"
+  ],
+  "details": "Improper Handling of Highly Compressed Data (CWE-409) in Kibana can lead to a denial of service via Excessive Allocation (CAPEC-130). An authenticated user holding Streams management privileges could supply specially crafted content that expands to a far larger volume of data during processing, exhausting the memory available to Kibana. The Kibana process is terminated by the host and remains unavailable to all users until the service is restarted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72628"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-8-19-21-9-4-6-9-5-2-security-update-esa-2026-125/390090"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-409"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-01T20:17:16Z"
+  }
+}

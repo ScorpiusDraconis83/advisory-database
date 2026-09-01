@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cmf6-2rf8-75m6",
-  "modified": "2026-08-27T18:32:21Z",
+  "modified": "2026-09-01T21:31:26Z",
   "published": "2026-08-27T18:32:21Z",
   "aliases": [
     "CVE-2026-26453"
   ],
   "details": "ccoap 77f55c4b466e99327c24ace8a2913d3ba7e2ccd5 contains a null pointer dereference vulnerability in the coap_server_handle_session() function when processing COAP messages containing URI_PATH options with NULL data pointers. When the server searches for a URI_PATH option matching the string \"separate\", it directly calls strncmp() on option_list[i].data without checking if the pointer is NULL. This causes a segmentation fault when the option's data field is NULL.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-27T17:17:48Z"

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g4vc-97c4-mfhw",
+  "modified": "2026-09-01T21:31:47Z",
+  "published": "2026-09-01T21:31:47Z",
+  "aliases": [
+    "CVE-2026-72633"
+  ],
+  "details": "Incorrect Authorization (CWE-863) in Kibana Entity Analytics can lead to a loss of security monitoring via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). An authenticated user holding only read-level Security feature access, and no Elasticsearch privileges, could stop the recurring Privilege Monitoring engine task for a Kibana space. Privileged user monitoring then stops producing data for that space while the engine continues to report a healthy state to operators.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72633"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-9-4-6-9-5-2-security-update-esa-2026-130/390059"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-01T20:17:16Z"
+  }
+}

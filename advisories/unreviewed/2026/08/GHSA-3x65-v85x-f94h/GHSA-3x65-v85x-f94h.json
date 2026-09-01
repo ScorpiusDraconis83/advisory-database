@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3x65-v85x-f94h",
-  "modified": "2026-08-27T21:31:30Z",
+  "modified": "2026-09-01T21:31:26Z",
   "published": "2026-08-27T21:31:30Z",
   "aliases": [
     "CVE-2026-36102"
   ],
   "details": "An issue in the inviteController.js component in Bluewave Labs Checkmate <=3.3.0 allows remote authenticated administrators to escalate privileges to superadmin via the role parameter to the /api/v1/invite endpoint.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-27T20:17:40Z"

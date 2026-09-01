@@ -1,13 +1,17 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-49q9-j3mm-wgh5",
-  "modified": "2026-08-20T12:31:25Z",
+  "modified": "2026-09-01T21:31:20Z",
   "published": "2026-08-20T12:31:25Z",
   "aliases": [
     "CVE-2026-77079"
   ],
   "details": "n8n before 2.34.1 and 2.33.4 contains an authorization bypass in the custom project role deletion (reassignment) path. When deleting a custom project role with a reassignment target, the code validated only that the target role existed and was project-scoped, performing no project-level authorization check. A user holding only the narrow role:manageProject global scope could delete any custom project role in use on the instance and reassign its holders (including themselves) to the built-in project:admin role, gaining full administrative control of projects they had no legitimate access to.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:L/VA:L/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
