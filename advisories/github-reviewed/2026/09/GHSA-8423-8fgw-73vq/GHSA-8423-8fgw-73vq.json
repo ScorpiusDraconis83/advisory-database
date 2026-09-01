@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8423-8fgw-73vq",
+  "modified": "2026-09-01T20:17:38Z",
+  "published": "2026-09-01T20:17:38Z",
+  "aliases": [],
+  "summary": "tornado: multipart split() creates huge temp list before max_parts check -> memory amplification DoS (httputil.py:34)",
+  "details": "## Description\n\n### Summary\n\n`parse_multipart_form_data` (httputil.py:34) calls\n`data.split(b\"--\"+boundary+b\"\\r\\n\")` **before** the `max_parts` check (:35).\nA 600KB body with 100k parts creates a 100k-element transient list first,\nthen rejects   transient memory amplification (each split element is a copy).\nPre-auth HTTP DoS.\n\n### Root cause\n\n```python\nparts = data[:final_boundary_index].split(b\"--\" + boundary + b\"\\r\\n\")  # :34  huge list first\nif len(parts) > config.max_parts:                                       # :35  check after\n    raise HTTPInputError(\"multipart/form-data has too many parts\")\n```\n\n### PoC\n\ngist: https://gist.github.com/afldl/649861f25d39b53b7edbe0298e171617\n`poc.py` + `output.txt` (100k parts from 600KB   transient list).\n\n### Fix\n\nCount separators without materializing the list (e.g. `data.count(b\"--\"+boundary)` first).\n\n### Credit\n\nReported by afldl, 2026-07.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "tornado"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.5.8"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 6.5.7"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/tornadoweb/tornado/security/advisories/GHSA-8423-8fgw-73vq"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tornadoweb/tornado/pull/3704"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tornadoweb/tornado/commit/de85b3f87446e323e881bbaa3d5a74f4b76e5f05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/afldl/649861f25d39b53b7edbe0298e171617"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/tornadoweb/tornado"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tornadoweb/tornado/releases/tag/v6.5.8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T20:17:38Z",
+    "nvd_published_at": null
+  }
+}
