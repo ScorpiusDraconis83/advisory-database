@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8m85-wqg7-c529",
-  "modified": "2026-07-14T03:31:35Z",
+  "modified": "2026-09-01T21:20:31Z",
   "published": "2026-07-14T03:31:35Z",
   "aliases": [
     "CVE-2026-27690"
   ],
+  "summary": "SAP Approuter Vulnerable to HTTP Request Smuggling",
   "details": "Due to an HTTP Request Smuggling vulnerability in SAP Approuter, an unauthenticated attacker could send a specially crafted HTTP request that leads to request-response desynchronization. This could result in the exposure of user responses and cause the system to become unavailable. This leads to a high impact on confidentiality and availability.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@sap/approuter"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "20.10.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -33,8 +54,8 @@
       "CWE-444"
     ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T21:20:31Z",
     "nvd_published_at": "2026-07-14T01:16:17Z"
   }
 }

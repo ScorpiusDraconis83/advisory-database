@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vhh6-v828-x62f",
-  "modified": "2026-08-11T03:31:56Z",
+  "modified": "2026-09-01T21:20:40Z",
   "published": "2026-08-11T03:31:56Z",
   "aliases": [
     "CVE-2026-58230"
   ],
+  "summary": "SAP Approuter has an Information Disclosure vulnerability",
   "details": "SAP Approuter does not sufficiently validate certain token content under specific configurations. An unauthenticated attacker could send a specially crafted token to cause sensitive credential material to be sent to an attacker-controlled destination. The attack complexity is high due to non-default preconditions required in the target environment. This results in a high impact on confidentiality and a low impact on integrity and availability.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:L"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@sap/approuter"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "23.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -33,8 +54,8 @@
       "CWE-601"
     ],
     "severity": "HIGH",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T21:20:40Z",
     "nvd_published_at": "2026-08-11T01:17:21Z"
   }
 }
