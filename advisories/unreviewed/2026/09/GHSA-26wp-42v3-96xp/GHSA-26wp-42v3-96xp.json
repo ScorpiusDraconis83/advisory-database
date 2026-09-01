@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-26wp-42v3-96xp",
+  "modified": "2026-09-01T18:30:45Z",
+  "published": "2026-09-01T18:30:45Z",
+  "aliases": [
+    "CVE-2026-19592"
+  ],
+  "details": "OpenAI Codex CLI for Windows, macOS, and Linux and Codex Desktop for Windows and macOS automatically collected Git repository metadata without disabling the repository-local core.fsmonitor setting. If a user opens or uses an attacker-prepared repository whose preserved .git/config sets core.fsmonitor to an attacker-controlled filesystem-monitor helper, Git can execute that helper while Codex collects repository metadata. The helper runs outside Codex's command sandbox and without a user-approval prompt, allowing attacker-controlled code to run with the user's privileges. The code can read, change, or delete the user's files and access other resources available to the user's account. An ordinary Git clone does not preserve the source repository's local .git/config; exploitation requires a repository delivered or copied with that configuration intact.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19592"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openai/codex/pull/22652"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-15"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-01T18:17:40Z"
+  }
+}

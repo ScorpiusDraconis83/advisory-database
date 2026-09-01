@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rh2h-qvw2-pj57",
+  "modified": "2026-09-01T18:30:40Z",
+  "published": "2026-09-01T18:30:40Z",
+  "aliases": [
+    "CVE-2026-10195"
+  ],
+  "details": "The FS-Poster plugin for WordPress is vulnerable to Remote Code Execution in versions up to and including 8.0.1. This is due to insufficient input sanitization of the FFmpeg path parameter before passing it to the exec() function, combined with missing authorization checks on the REST API endpoints. This makes it possible for authenticated attackers, with subscriber-level access and above, to execute arbitrary commands on the underlying server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10195"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.fs-poster.com/documentation/updates-changelogs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/3130d987-6a54-4208-8591-0bb9626858ae?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-77"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-01T16:16:47Z"
+  }
+}

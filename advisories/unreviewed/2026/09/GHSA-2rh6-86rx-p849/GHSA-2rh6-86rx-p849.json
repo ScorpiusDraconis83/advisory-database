@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2rh6-86rx-p849",
+  "modified": "2026-09-01T18:30:45Z",
+  "published": "2026-09-01T18:30:45Z",
+  "aliases": [
+    "CVE-2026-84270"
+  ],
+  "details": "A flaw was found in the MTP backend in gvfs. When reading a file from a mounted MTP device, do_read() in gvfsbackendmtp.c trusts the data length returned by the device without limiting it to the original size requested by the client. If a malicious MTP device responds with more bytes than requested, this unrestricted length is passed directly to memcpy(). This causes the operation to read memory outside the intended boundaries. This allows an attacker who plugs in a malicious MTP device to cause a segmentation fault when a file is read and crash the gvfsd-mtp process, resulting in a denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-84270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2526794"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.gnome.org/GNOME/gvfs/-/issues/864"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-01T16:17:37Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4m2-645j-49qh",
+  "modified": "2026-09-01T18:30:43Z",
+  "published": "2026-09-01T18:30:43Z",
+  "aliases": [
+    "CVE-2026-84201"
+  ],
+  "details": "appium-mcp-server through 0.1.61 fails to validate or normalize file paths in the write_file and write_files_batch tools, allowing attackers to write files outside the intended PROJECT_ROOT directory. Attackers can supply absolute paths or relative paths with parent directory segments to overwrite arbitrary files with the server user's privileges, including shell profiles and configuration files in the home directory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84201"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/argneshu/appium-mcp-server/blob/92b5c2b325e7bdd124f1f41a6049028b2a44e89c/src/mcp_server.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/argneshu/appium-mcp-server/blob/92b5c2b325e7bdd124f1f41a6049028b2a44e89c/src/tools/write_files_batch.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.npmjs.com/package/appium-mcp-server"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/appium-mcp-server-through-0.1.61-path-traversal-in-write-file-and-write-files-batch"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-01T16:17:34Z"
+  }
+}
