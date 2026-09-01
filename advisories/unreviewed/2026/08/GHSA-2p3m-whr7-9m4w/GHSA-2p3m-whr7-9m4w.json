@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2p3m-whr7-9m4w",
-  "modified": "2026-08-31T21:32:12Z",
+  "modified": "2026-09-01T15:31:01Z",
   "published": "2026-08-31T21:32:12Z",
   "aliases": [
     "CVE-2026-79407"
   ],
   "details": "A path traversal vulnerability in the SPO extension of MetaGPT 0.8.1 allows an attacker to read arbitrary files via the FILE_NAME value used by set_file_name() and load_meta_data() in metagpt/ext/spo/utils/load.py. The vulnerable code joins the attacker-controlled FILE_NAME value with the settings directory and opens the resulting path without validating that the resolved path remains within the intended directory.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-31T21:17:48Z"
