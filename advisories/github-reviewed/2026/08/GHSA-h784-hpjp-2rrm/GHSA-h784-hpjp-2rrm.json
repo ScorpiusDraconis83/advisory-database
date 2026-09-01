@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h784-hpjp-2rrm",
+  "modified": "2026-09-01T21:04:05Z",
+  "published": "2026-08-11T15:32:39Z",
+  "withdrawn": "2026-09-01T21:04:05Z",
+  "aliases": [],
+  "summary": "Duplicate Advisory: Craft CMS: Authenticated RCE through Twig sandbox escape",
+  "details": "## Duplicate Advisory\n\nThis advisory has been withdrawn because it is a duplicate of GHSA-f5wm-88jv-g5hx. This link is maintained to preserve external references.\n\n## Original Description\nCraft CMS versions >= 5.0.0-RC1 before 5.10.7 and >= 4.0.0-RC1 before 4.18.3 contain a remote code execution vulnerability in the Twig sandbox mechanism. Because Craft marks the ElementInterface as safe (via the AllowedInSandbox attribute) and the sandbox allowlisting extends to the entire class hierarchy (craft\\base\\Component up to yii\\base\\Component), an authenticated attacker with permission to access the control panel can render a malicious Twig template that abuses the yii\\base\\Component arbitrary function-call gadget to execute arbitrary code, even when the Twig sandbox is enabled via enableTwigSandbox().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "craftcms/cms"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0-RC1"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 4.18.3"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-f5wm-88jv-g5hx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72781"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/craft-cms-rc1-before-remote-code-execution-via-twig-sandbox-escape"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-693"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T21:04:05Z",
+    "nvd_published_at": "2026-08-11T13:19:08Z"
+  }
+}
