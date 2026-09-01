@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pg5x-hjq6-v5p3",
+  "modified": "2026-09-01T03:31:03Z",
+  "published": "2026-09-01T03:31:03Z",
+  "aliases": [
+    "CVE-2026-67395"
+  ],
+  "details": "A path traversal vulnerability exists in Sage Employee Self Service’s custom logo functionality due to improper validation of file path parameters. By leveraging directory traversal sequences and their encoded variants, an attacker may bypass directory restrictions and access files outside the application's intended file system scope. Successful exploitation would require knowledge of valid file names and paths.\n\nDepending on the privileges of the affected component, exploitation could result in the disclosure of sensitive information, including configuration files, environment settings, application assets, and log data.\n\nThe vulnerability has been remediated through enhanced path validation and secure path resolution controls that prevent access to unauthorised locations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67395"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.sage.com/docs/en/customer/hrms/current/open/SageHRMS_PU_Q22026_RN.pdf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-01T03:16:51Z"
+  }
+}
