@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-23w6-3w8w-8484",
+  "modified": "2026-09-01T21:28:38Z",
+  "published": "2026-09-01T21:28:37Z",
+  "aliases": [
+    "CVE-2026-84310"
+  ],
+  "summary": "pypdf: Possible long runtimes/large memory usage when retrieving outlines",
+  "details": "### Impact\n\nAn attacker who uses this vulnerability can craft a PDF which leads to long runtimes and large memory consumption. This requires accessing the outlines of a document with either lots of entries or nested outlines with long re-used nesting paths.\n\n### Patches\n\nThis has been fixed in [pypdf==6.16.1](https://github.com/py-pdf/pypdf/releases/tag/6.16.1).\n\n### Workarounds\n\nIf you cannot upgrade yet, consider applying the changes from PR [#3966](https://github.com/py-pdf/pypdf/pull/3966).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pypdf"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.16.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/security/advisories/GHSA-23w6-3w8w-8484"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/pull/3966"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/commit/d91ab705fd81ed1a9cec175c6958600dea1a4942"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/py-pdf/pypdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/releases/tag/6.16.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-405",
+      "CWE-834"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-01T21:28:37Z",
+    "nvd_published_at": null
+  }
+}
