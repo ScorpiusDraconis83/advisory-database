@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hwrj-9rr4-24xh",
-  "modified": "2026-07-27T12:31:17Z",
+  "modified": "2026-09-02T14:31:34Z",
   "published": "2026-07-27T12:31:17Z",
   "aliases": [
     "CVE-2026-66053"
   ],
+  "summary": "Apache Thrift Python bindings have a Improper Validation of Certificate with Host Mismatch vulnerabilit",
   "details": "Improper Validation of Certificate with Host Mismatch vulnerability in Apache Thrift Python bindings.\n\nThis issue affects Apache Thrift: before 0.24.0.\n\nUsers are recommended to upgrade to version 0.24.0, which fixes the issue.\n\nThis replaces CVE-2026-41603",
   "severity": [
     {
@@ -13,11 +14,35 @@
       "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "thrift"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.24.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66053"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/thrift"
     },
     {
       "type": "WEB",
@@ -33,8 +58,8 @@
       "CWE-297"
     ],
     "severity": "MODERATE",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-02T14:31:34Z",
     "nvd_published_at": "2026-07-27T12:16:55Z"
   }
 }
