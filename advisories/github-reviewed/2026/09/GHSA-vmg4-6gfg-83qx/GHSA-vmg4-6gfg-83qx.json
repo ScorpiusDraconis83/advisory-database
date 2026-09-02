@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vmg4-6gfg-83qx",
+  "modified": "2026-09-02T15:12:42Z",
+  "published": "2026-09-02T15:12:41Z",
+  "aliases": [
+    "CVE-2026-71553"
+  ],
+  "summary": "ApostropheCMS: 2nd-order prototype pollution via PATCH leading to single-request persistent DoS",
+  "details": "The vulnerability is a single-request persistent DoS by submitting e.g.\n\"PATCH /api/v1/article/<id>\" with a valid editor session and body of\n{\"toString.call\":\"x\"}, overwriting the global toString function with\nvalue x.\n\nFabian",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "apostrophe"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "4.32.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/apostrophecms/apostrophe/security/advisories/GHSA-vmg4-6gfg-83qx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71553"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apostrophecms/apostrophe/commit/5a3746aaed49761e171c2cbfe793267c959829fd"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apostrophecms/apostrophe"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1321"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-02T15:12:41Z",
+    "nvd_published_at": "2026-08-17T20:16:46Z"
+  }
+}
