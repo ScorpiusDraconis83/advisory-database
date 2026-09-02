@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mc5q-6hpj-rp7j",
+  "modified": "2026-09-02T21:41:13Z",
+  "published": "2026-09-02T21:41:12Z",
+  "aliases": [
+    "CVE-2026-61842"
+  ],
+  "summary": "Grav: Twig sandbox config exfiltration via grav.offsetGet + dump filter (CVE-2026-44738 bypass)",
+  "details": "### Summary\n\nThe Twig content sandbox replaces `config` with the redacted `SandboxConfig` facade and strips `Config::get`/`toArray` from the method allowlist (GHSA-j274-39qw-32c9), so editor content can't read config secrets via `config`. That's bypassable: `grav` is the raw container, `offsetget` is allow-listed on it, so `grav.offsetGet('config')` returns the real `Config`. The allow-listed filters `json_encode`/`print_r`/`yaml_encode` then serialize it at the PHP level, never hitting the sandbox method gate, dumping the whole config tree including every `plugins.*` secret (SMTP creds, API keys, plugin DB creds). Incomplete fix for GHSA-j274-39qw-32c9. `security.salt` does not leak (it lives outside config).\n\n### Details\n\nThe documented path is blocked: `config` is the `SandboxConfig` facade (`Twig.php:660`) and the raw `Config`/`Data` method entries are stripped when `config_access` is false, so `{{ config.get(...) }}` returns the default and `{{ grav.offsetGet('config').get(...) }}` raises `SecurityNotAllowedMethodError`.\n\nThe bypass uses two allow-listed primitives the redaction doesn't cover:\n\n1. `grav.offsetGet('config')` returns the raw `Config`. The `SandboxConfig` facade replaces only the `config` variable, not `grav['config']`; `offsetget` is allow-listed on `Grav\\Common\\Grav` in `system/config/security.yaml`.\n2. `json_encode`/`print_r`/`yaml_encode` serialize the object inside the filter and never call `GravSecurityPolicy::checkMethodAllowed` (`GravSecurityPolicy.php:65`), so the stripped methods don't matter.\n\nBug class: object-dumping filters bypass the sandbox member gate. The same dump reaches `page`/`pages`/`uri`/`user` via their allow-listed accessors; `config` is the secret-bearing target.\n\nReachable below the publisher-Twig opt-in: a `_`-prefixed slug is modular (`Page.php:228`), and `Page::content()` sets `$process_twig = $scan_twig_xss || $this->modularTwig()` (`Page.php:816`), so a modular child's body Twig is sandboxed-rendered even with `twig_content.process_enabled` false (the default), while `$scan_twig_xss` stays false so the render-time XSS scan (GHSA-2c4f-86xc-cr74) is skipped. Any `admin.pages` author (or filesystem write to `user/pages`) exfiltrates config on a stock install. On a regular `process.twig` page the whole-tree dump trips the XSS scan and is blanked, but a targeted `split`/`slice` extraction of one subtree is XSS-clean and survives.\n\n### PoC\n\nSandboxed render, `config_access` default false. First two lines show the gate holding, third is the bypass:\n\n```twig\n{{ config.get('plugins.email.mailer.smtp.password', 'DENIED') }}\n{# => DENIED #}\n{{ grav.offsetGet('config').get('plugins.email.mailer.smtp.password') }}\n{# => SecurityNotAllowedMethodError 'get' #}\n{{ grav.offsetGet('config')|json_encode }}\n{# => {...,\"plugins\":{\"email\":{\"mailer\":{\"smtp\":{\"password\":\"CANARY...\"}}}},...} #}\n```\n\nStock-install reproduction (no `user/config/security.yaml`):\n\n```yaml\n# user/config/plugins/email.yaml  -- decoy secret\nmailer: { smtp: { password: CANARY_SMTP_PW_8b3f1 } }\n```\n\n```\n# user/pages/70.parent/default.md\n---\ntitle: Parent\ncontent: { items: '@self.modular' }\ntemplate: modular\n---\n```\n\n```twig\n{# user/pages/70.parent/_secret/default.md #}\n---\ntitle: Secret\ntemplate: modular/text\n---\n{{ grav.offsetGet('config')|json_encode }}\n```\n\n```bash\ncurl -s http://localhost/parent   # body contains CANARY_SMTP_PW_8b3f1\n```\n\n`logs/security.log` shows no sandbox block and no XSS scan for the route. Verified on Grav 2.0.1 (6f619f0ae), PHP 8.4.22, Twig 3.26.1-DEV.\n\n### Impact\n\nA page author (`admin.pages`, no admin/super) reads the entire config tree: plugin SMTP credentials, API keys, plugin DB credentials. Read-only. Default install; the modular path needs no Twig opt-in.\n\n### Fix\n\n`system/config/security.yaml`: drop `offsetget` (and `__get`) from `twig_sandbox.allowed_methods` for `Grav\\Common\\Grav` -- the legit uses are `theme`/`getversion`; `offsetget` is the raw-container reach. Closes the demonstrated path.\n\nSandbox-wide: make `json_encode`/`print_r`/`yaml_encode`/`string` refuse non-allow-listed objects when `$env->isSandboxed()` (mirror the Closure-only guard Twig applies to `map`/`filter`/`reduce`). Closes the class for `page`/`pages`/`uri`/`user` too.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getgrav/grav"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-mc5q-6hpj-rp7j"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61842"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/7efe70574e4cf01a251318478c13673029e93eb6"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getgrav/grav"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/releases/tag/2.0.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-02T21:41:12Z",
+    "nvd_published_at": "2026-08-19T16:18:17Z"
+  }
+}
