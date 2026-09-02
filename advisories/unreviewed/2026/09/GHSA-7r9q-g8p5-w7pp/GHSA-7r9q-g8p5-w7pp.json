@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7r9q-g8p5-w7pp",
+  "modified": "2026-09-02T18:32:29Z",
+  "published": "2026-09-02T18:32:29Z",
+  "aliases": [
+    "CVE-2026-84811"
+  ],
+  "details": "agentverus-scanner fails to analyze compiled Python bytecode files in companion code directories, allowing attackers to bypass security scanning by shipping malicious __pycache__ entries alongside benign source files. Attackers can execute arbitrary Python bytecode on import while the scanner reports a CERTIFIED verdict with high trust scores in both static and semantic analysis modes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84811"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agentverus/agentverus-scanner/issues/27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agentverus/agentverus-scanner"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agentverus/agentverus-scanner/blob/v0.8.1/src/scanner/analyzers/semantic.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agentverus/agentverus-scanner/blob/v0.8.1/src/scanner/companion-code.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/agentverus-scanner-companion-code-analysis-bypass-via-excluded-python-bytecode"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-693"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T17:18:05Z"
+  }
+}

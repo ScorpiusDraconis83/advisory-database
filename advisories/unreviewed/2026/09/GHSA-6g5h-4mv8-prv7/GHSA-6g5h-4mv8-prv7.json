@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6g5h-4mv8-prv7",
+  "modified": "2026-09-02T18:32:25Z",
+  "published": "2026-09-02T18:32:25Z",
+  "aliases": [
+    "CVE-2026-20212"
+  ],
+  "details": "A vulnerability in the Silicon One integration for Cisco Nexus 9000 Series Switches could allow an unauthenticated, remote attacker to execute code with&nbsp;root privileges.\n\nThis vulnerability exists because TCP ports 43210 and 43211 are accessible in the default Layer 3 (L3) virtual routing and forwarding (VRF). A successful exploit could allow the attacker to connect to an affected device and send crafted input that could be executed as code with&nbsp;root privileges. The exploitation of this vulnerability could also cause the S1HAL process to crash, which could cause the device to reload.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-20212"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-n9k-s1-rce-EH8dEtr"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1327"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T17:17:31Z"
+  }
+}

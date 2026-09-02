@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4j88-2p5m-hm62",
-  "modified": "2026-09-01T15:31:12Z",
+  "modified": "2026-09-02T18:32:01Z",
   "published": "2026-09-01T15:31:12Z",
   "aliases": [
     "CVE-2026-51760"
   ],
   "details": "Incorrect access control in the informSyncUpgfw function of TOTOLINK T6 4.1.5cu.748_B20211015 allows unauthenticated attackers to mass-trigger firmware update activity across mesh slaves via sending a crafted MQTT message to the cs_broker component.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-01T14:17:36Z"

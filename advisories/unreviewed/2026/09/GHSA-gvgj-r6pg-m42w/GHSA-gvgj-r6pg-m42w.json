@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gvgj-r6pg-m42w",
+  "modified": "2026-09-02T18:32:29Z",
+  "published": "2026-09-02T18:32:29Z",
+  "aliases": [
+    "CVE-2026-84810"
+  ],
+  "details": "claude-skill-antivirus fails to analyze executable files when scanning local skill directories, reading only SKILL.md while ignoring Python source, bytecode, and other artifacts in the scripts directory. Attackers can distribute skills with malicious code in non-manifest files that receive a SAFE verdict with 100/100 trust score despite containing unanalyzed executable payloads.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84810"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/claude-world/claude-skill-antivirus/issues/33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/claude-world/claude-skill-antivirus"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/claude-world/claude-skill-antivirus/blob/v2.1.3/src/scanner/index.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/claude-world/claude-skill-antivirus/blob/v2.1.3/src/utils/downloader.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/claude-skill-antivirus-analysis-bypass-via-manifest-only-local-directory-scan"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-693"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T17:18:05Z"
+  }
+}

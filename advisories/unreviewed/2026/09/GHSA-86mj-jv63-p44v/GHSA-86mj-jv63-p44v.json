@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-86mj-jv63-p44v",
+  "modified": "2026-09-02T18:32:30Z",
+  "published": "2026-09-02T18:32:30Z",
+  "aliases": [
+    "CVE-2026-77122"
+  ],
+  "details": "An authorization flaw in the REST API repository details endpoint (GET /service/rest/v1/repositories/{repositoryName}) in Sonatype Nexus Repository 3 allowed an account holding read or browse permission on a group repository to retrieve metadata for member repositories on which it held no direct permission, by requesting the endpoint directly for the member repository name. For proxy repositories, the disclosed metadata includes the configured remote URL, which may reveal internal upstream hostnames. This includes the anonymous user if it has been granted this permission; whether the anonymous user holds this permission depends on the role and permission configuration of the specific installation.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77122"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.sonatype.com/en/sonatype-nexus-repository-3-96-0-release-notes.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.sonatype.com/hc/en-us/articles/54637328224019"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T18:21:23Z"
+  }
+}

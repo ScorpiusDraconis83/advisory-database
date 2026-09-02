@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8q4m-qc33-25q8",
+  "modified": "2026-09-02T18:32:30Z",
+  "published": "2026-09-02T18:32:30Z",
+  "aliases": [
+    "CVE-2026-82522"
+  ],
+  "details": "libjxl before 0.12 contains an integer underflow vulnerability in the container box parser that allows remote attackers to inject arbitrary metadata by exploiting 64-bit box size truncation to size_t on 32-bit platforms. Attackers can supply a crafted JPEG XL file causing the decoder to parse attacker-controlled codestream bytes as phantom box headers, enabling injection of arbitrary metadata (Exif, XMP, IPTC, JUMBF) and potential out-of-bounds reads.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82522"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libjxl/libjxl/pull/4885"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libjxl/libjxl/commit/22ad80af1454f0444ea34115e49ed40517147d68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/libjxl/libjxl/releases/tag/v0.12.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/libjxl-container-box-parser-integer-underflow-via-32-bit-size-truncation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-681"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T18:21:27Z"
+  }
+}

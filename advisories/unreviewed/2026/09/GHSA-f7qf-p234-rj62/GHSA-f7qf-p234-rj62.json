@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f7qf-p234-rj62",
+  "modified": "2026-09-02T18:32:10Z",
+  "published": "2026-09-02T18:32:10Z",
+  "aliases": [
+    "CVE-2026-19475"
+  ],
+  "details": "An authenticated user with permission to query a SQL data source can bypass the fix for CVE-2026-33375 by injecting the timeGroup macro through a WHERE clause, which Grafana's regex-based macro parsing does not reject. Evaluating the injected macro causes uncontrolled memory consumption that can terminate the Grafana server process, resulting in a denial of service. The Microsoft SQL Server, PostgreSQL, and MySQL data sources are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19475"
+    },
+    {
+      "type": "WEB",
+      "url": "https://grafana.com/security/security-advisories/cve-2026-19475"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T16:17:15Z"
+  }
+}

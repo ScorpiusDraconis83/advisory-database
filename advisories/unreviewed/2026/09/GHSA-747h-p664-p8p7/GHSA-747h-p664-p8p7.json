@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-747h-p664-p8p7",
+  "modified": "2026-09-02T18:32:30Z",
+  "published": "2026-09-02T18:32:30Z",
+  "aliases": [
+    "CVE-2026-77121"
+  ],
+  "details": "A user account with permission to deploy artifacts to a hosted Maven repository could upload a POM file containing an oversized metadata field. This causes future attempts to list or browse that repository's components to permanently fail until an administrator repairs the underlying data. Only the targeted repository is affected; other repositories and overall server health remain unaffected.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77121"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.sonatype.com/en/sonatype-nexus-repository-3-95-0-release-notes.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.sonatype.com/hc/en-us/articles/54635665756691"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T18:21:23Z"
+  }
+}
