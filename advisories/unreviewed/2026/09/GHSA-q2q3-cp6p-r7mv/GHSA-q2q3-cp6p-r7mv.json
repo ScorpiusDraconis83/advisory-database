@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q2q3-cp6p-r7mv",
+  "modified": "2026-09-02T09:31:29Z",
+  "published": "2026-09-02T09:31:29Z",
+  "aliases": [
+    "CVE-2026-3850"
+  ],
+  "details": "The Divi theme for WordPress is vulnerable to Stored Cross-Site Scripting via the `redirect_url` parameter of the `et_pb_contact_form` shortcode in all versions up to, and including, 4.27.6. This is due to the `redirect_url` attribute being sanitized with `esc_attr()` instead of `esc_url()` before being rendered into the `data-redirect_url` HTML data attribute. Additionally, `redirect_url` is absent from the hardcoded `$url_options` array in `class-et-builder-element.php`, so it does not receive `esc_url_raw()` sanitization during shortcode parsing. After a successful form submission, client-side JavaScript reads this data attribute and passes it directly to `window.location.href`, executing arbitrary JavaScript from a `javascript:` URI. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that execute whenever a user submits the contact form.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3850"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.divichangelog.com/divi-update"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/768fb279-8d35-4002-91d8-c6a3b0f8f51d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T07:16:36Z"
+  }
+}
