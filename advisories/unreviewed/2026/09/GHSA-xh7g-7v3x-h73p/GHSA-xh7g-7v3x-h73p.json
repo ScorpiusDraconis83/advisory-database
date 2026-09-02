@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xh7g-7v3x-h73p",
+  "modified": "2026-09-02T00:31:29Z",
+  "published": "2026-09-02T00:31:29Z",
+  "aliases": [
+    "CVE-2026-18730"
+  ],
+  "details": "A server-side request forgery (SSRF) vulnerability was identified in GitHub Enterprise Server that allowed an unauthenticated attacker to cause the Manage API to send crafted outbound requests to an attacker-controlled host. An unauthenticated endpoint parsed an attacker-supplied cluster configuration and issued gateway-to-agent requests whose HMAC authenticated only a timestamp, not the request path or body. An attacker positioned to intercept the outbound request could capture this token and replay it against privileged management agent endpoints. High-availability deployments were not affected due to a topology restriction. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.22 and was fixed in versions 3.17.19, 3.18.13, 3.19.10, 3.20.6, and 3.21.4. This vulnerability was reported via the GitHub Bug Bounty program.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18730"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.17/admin/release-notes#3.17.19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.18/admin/release-notes#3.18.13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.19/admin/release-notes#3.19.10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.20/admin/release-notes#3.20.6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.github.com/en/enterprise-server@3.21/admin/release-notes#3.21.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-01T22:17:10Z"
+  }
+}

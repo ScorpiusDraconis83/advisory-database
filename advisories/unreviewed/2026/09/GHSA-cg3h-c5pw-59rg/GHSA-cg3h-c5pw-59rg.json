@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cg3h-c5pw-59rg",
+  "modified": "2026-09-02T00:31:30Z",
+  "published": "2026-09-02T00:31:30Z",
+  "aliases": [
+    "CVE-2026-84478"
+  ],
+  "details": "WWBN AVideo contains a path traversal vulnerability in the API get_api_login_code endpoint that allows unauthenticated attackers to delete arbitrary .log files by supplying directory traversal sequences in the code parameter. Attackers can exploit this to destroy audit logs and probe for file existence on the server, with the vulnerability enabling both file deletion and information disclosure about the filesystem.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/security/advisories/GHSA-wh69-gqmj-rcqg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84478"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wwbn-avideo-unauthenticated-arbitrary-log-file-deletion"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-01T23:17:21Z"
+  }
+}
