@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-37f3-6p89-6qr9",
+  "modified": "2026-09-02T14:50:57Z",
+  "published": "2026-09-02T14:50:57Z",
+  "aliases": [
+    "CVE-2026-62672"
+  ],
+  "summary": "Grav: Authenticated ReDoS via regex_replace in Twig Sandbox",
+  "details": "### Summary\n\nThe `regex_replace` filter and function are allowlisted in Grav's Twig content sandbox. When Twig processing in page content is enabled `security.twig_content.process_enabled: true`, authenticated page editors can supply a catastrophically backtracking PCRE pattern, causing unbounded CPU consumption and denying service to the entire web server process.\n\n---\n\n### Details\n\nThe Twig sandbox allowlists, defined in `system/config/security.yaml`, explicitly include `regex_replace` in both the filter and function permission lists:\n\n**Source: `system/config/security.yaml`**\n\n```yaml\ntwig_sandbox:\n  allowed_filters:\n    # ...\n    - regex_replace    #  user-controlled pattern allowed in sandbox\n  allowed_functions:\n    # ...\n    - regex_replace    #  same\n```\n\nThe underlying implementation passes the caller-controlled `$pattern` directly into PHP's `preg_replace()` without any pattern complexity validation:\n\n**Source: `system/src/Grav/Common/Twig/Extension/GravExtension.php:1317-1319`**\n\n```php\npublic function regexReplace($subject, $pattern, $replace, $limit = -1)\n{\n    return preg_replace($pattern, $replace, $subject, $limit);\n}\n```\n\nWhen `twig_content.process_enabled` is `true`, page body content is sandboxed but can use any allowlisted filter. An editor who embeds a catastrophic backtracking pattern causes the PCRE engine to enter exponential time complexity, consuming 100% CPU until the PHP process is killed or the request times out.\n\n**Conditions required**:\n1. `security.twig_content.process_enabled: true` (opt-in, `false` by default on fresh 2.0 installs)\n2. `security.twig_sandbox.enabled: true` (default) - the function is reachable under sandbox\n3. Attacker must have page edit access (authenticated contributor / editor role)\n\n---\n\n### PoC\n\n**Configuration prerequisite** - enable Twig in content:\n\n```yaml\n# user/config/security.yaml\ntwig_content:\n  process_enabled: true\n```\n\n**Payload** — embed in any Grav page body with `process: { twig: true }` in frontmatter:\n\n```\n---\ntitle: Test\nprocess:\n  twig: true\n---\n{{ 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab'|regex_replace('/^(a+)+$/', '') }}\n```\n\nOr as a function call in a page where the editor has Twig access:\n\n```twig\n{{ regex_replace('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab', '/^(a+)+$/', '') }}\n```\n\n**Result**: The PHP-FPM worker (or CLI server process) enters catastrophic PCRE backtracking. On a 2 GHz host, a 32-character string with the above pattern will exhaust one CPU core for seconds to minutes. With a slightly longer string, the time grows exponentially.\n\n---\n\n### Impact\n\n**Vulnerability type**: Regular Expression Denial of Service - ReDoS\n\n**Who is impacted**: Server availability. Any Grav installation where:\n- An editor-role account exists (or has been compromised), AND\n- The operator has enabled `twig_content.process_enabled: true`\n\nAn attacker with page-edit access can render the site unresponsive for all visitors by publishing a page with a catastrophic regex. On single-worker PHP configurations this is a complete outage. On multi-worker setups, multiple concurrent page renders of the malicious page can saturate all workers.\n\n---",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getgrav/grav"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-37f3-6p89-6qr9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62672"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/907116268ad4f48be7472c57f64981918578599a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getgrav/grav"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/releases/tag/2.0.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1333"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-02T14:50:57Z",
+    "nvd_published_at": "2026-08-19T16:18:20Z"
+  }
+}

