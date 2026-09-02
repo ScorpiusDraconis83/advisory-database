@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-49f3-27rf-qcff",
+  "modified": "2026-09-02T15:34:50Z",
+  "published": "2026-09-02T15:34:50Z",
+  "aliases": [
+    "CVE-2026-78604"
+  ],
+  "details": "Incorrect Permission Assignment for Critical Resource (CWE-732) in Elastic Agent can lead to local privilege escalation via Replace Binaries (CAPEC-642). On Windows systems where Elastic Agent is installed in unprivileged mode, resources used by the agent service are created with access controls broader than required. A local user could take advantage of this to cause the service to execute code of their choosing, ultimately obtaining SYSTEM-level privileges on the host.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78604"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/elastic-agent-8-19-21-9-4-6-9-5-2-security-update-esa-2026-150/390109"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-732"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T15:17:41Z"
+  }
+}

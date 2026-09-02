@@ -1,7 +1,7 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c6w2-j4wq-mvwg",
-  "modified": "2026-08-19T19:32:11Z",
+  "modified": "2026-09-02T15:27:32Z",
   "published": "2026-08-19T19:32:11Z",
   "aliases": [
     "CVE-2026-55643"
@@ -10,7 +10,7 @@
   "details": "### Impact\nDue to inconsistent authorization checks, a company-scoped user can bypass tenant boundaries to read, mutate, and soft-delete users who do not belong to any company (company_id = null). While direct instance authorization (isCurrentUserHasAccess) correctly denies access to these out-of-scope users, multiple API endpoints and bulk action web routes fail to enforce this restriction, relying instead on class-level permissions or broad scoped queries.\nImpact: \n\nA malicious user scoped to a specific company (e.g., Company A) can:\n\nData Leakage: Extract PII and assigned licenses of users outside their tenant via the API (/api/v1/users and `/api/v1/users/{id}/licenses)`.\n\nData Modification: Mutate out-of-scope user profiles (e.g., changing city, notes) via the /users/bulkeditsave web route.\n\nData Deletion & Asset Theft: Soft-delete out-of-scope users and transfer their assigned assets to themselves via the /users/merge web route.\n\n\n### Patches\nPatched in https://github.com/grokability/snipe-it/commit/fbe05a8df4742729a9b0756c016d45f48246cc7b,",
   "severity": [
     {
-      "type": "CVSS_V3",
+      "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N"
     }
   ],
@@ -41,8 +41,20 @@
       "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-c6w2-j4wq-mvwg"
     },
     {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55643"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/fbe05a8df4742729a9b0756c016d45f48246cc7b"
+    },
+    {
       "type": "PACKAGE",
       "url": "https://github.com/grokability/snipe-it"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/releases/tag/v8.6.3"
     }
   ],
   "database_specific": {
@@ -52,6 +64,6 @@
     "severity": "HIGH",
     "github_reviewed": true,
     "github_reviewed_at": "2026-08-19T19:32:11Z",
-    "nvd_published_at": null
+    "nvd_published_at": "2026-08-19T19:17:20Z"
   }
 }

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-p6pc-q683-388g",
-  "modified": "2026-08-26T21:31:42Z",
+  "modified": "2026-09-02T15:34:30Z",
   "published": "2026-08-26T21:31:42Z",
   "aliases": [
     "CVE-2026-26445"
   ],
   "details": "stomper 5e2741e is vulnerable to Denial of Service. A malicious client can send partial STOMP frames and keep the TCP connections open, which, combined with the broker s use of edge-triggered epoll (EPOLLET) and MSG_PEEK in recv(), causes sockets to enter a permanent half-read state. When enough such connections accumulate, the broker stops receiving any further epoll events for those sockets and eventually hangs in epoll_wait, effectively refusing to process new messages.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-26T20:17:11Z"

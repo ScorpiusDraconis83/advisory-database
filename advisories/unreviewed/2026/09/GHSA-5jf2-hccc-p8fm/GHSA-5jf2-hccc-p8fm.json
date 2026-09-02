@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5jf2-hccc-p8fm",
+  "modified": "2026-09-02T15:34:49Z",
+  "published": "2026-09-02T15:34:49Z",
+  "aliases": [
+    "CVE-2026-78594"
+  ],
+  "details": "Improper Handling of Highly Compressed Data (CWE-409) in APM Server can lead to a persistent denial of service via Excessive Allocation (CAPEC-130). An authenticated user with write access to source map content could store specially crafted, highly compressed content that exhausts the memory available to APM Server when it is later processed, terminating the process. The condition recurs on every restart until the stored content is removed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78594"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/apm-server-8-19-20-9-4-5-9-5-1-security-update-esa-2026-152/390110"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-409"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T15:17:40Z"
+  }
+}

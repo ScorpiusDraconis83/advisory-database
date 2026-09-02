@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2r8j-r49x-m28r",
+  "modified": "2026-09-02T15:34:48Z",
+  "published": "2026-09-02T15:34:48Z",
+  "aliases": [
+    "CVE-2026-10821"
+  ],
+  "details": "The Yoast SEO Premium WordPress plugin before 27.6.1 does not sanitize control characters from redirect origins before writing them to the site's Apache configuration file when the file-based redirect mode is enabled, and the redirect-creation endpoint is reachable by users with only Author-level access. This allows such users to inject arbitrary newline-delimited Apache directives into the root .htaccess file. On Apache servers that honour PHP directives, the injection can be chained with the user's own media upload (a polyglot image carrying a PHP payload) and an auto_prepend_file directive to achieve Remote Code Execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10821"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/2ddd8362-7248-48de-aab9-74c70e7d5dd6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://yoast.com/yoast-seo-premium-may-26-2026"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-74"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T15:17:37Z"
+  }
+}

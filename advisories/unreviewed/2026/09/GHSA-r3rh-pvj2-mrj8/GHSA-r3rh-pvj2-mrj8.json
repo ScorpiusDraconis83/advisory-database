@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r3rh-pvj2-mrj8",
+  "modified": "2026-09-02T15:34:50Z",
+  "published": "2026-09-02T15:34:50Z",
+  "aliases": [
+    "CVE-2026-78601"
+  ],
+  "details": "Missing Authorization (CWE-862) in Kibana can lead to information disclosure via Privilege Abuse (CAPEC-122). An authorization control was not applied to a Kibana Entity Store configuration operation, allowing an authenticated user with elevated Kibana privileges to indirectly cause a background task to read from Elasticsearch indices that user is not authorized to access. Derived entity data from those indices is then exposed through the entity store output.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78601"
+    },
+    {
+      "type": "WEB",
+      "url": "https://discuss.elastic.co/t/kibana-9-4-5-security-update-esa-2026-147/390107"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T15:17:41Z"
+  }
+}
