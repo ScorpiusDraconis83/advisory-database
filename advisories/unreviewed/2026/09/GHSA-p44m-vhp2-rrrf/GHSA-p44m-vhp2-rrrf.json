@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p44m-vhp2-rrrf",
+  "modified": "2026-09-02T03:31:11Z",
+  "published": "2026-09-02T03:31:11Z",
+  "aliases": [
+    "CVE-2026-84696"
+  ],
+  "details": "Phison PS3111-S11 controller firmware versions through SBFQT1.3 expose privileged vendor unique commands over the ATA interface with absent or defeatable authentication mechanisms. Attackers can bypass the weak CRC-16 based unlock handshake or exploit builds with no VUC lock to read and write controller memory and raw flash, persisting implants across power cycles.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84696"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/trulycrisp/disksec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/trulycrisp/psychite"
+    },
+    {
+      "type": "WEB",
+      "url": "https://trulycrisp.github.io/drivefirmware/phison_s11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/phison-ps3111-s11-controller-firmware-missing-authentication-on-vendor-unique-commands"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T01:17:24Z"
+  }
+}

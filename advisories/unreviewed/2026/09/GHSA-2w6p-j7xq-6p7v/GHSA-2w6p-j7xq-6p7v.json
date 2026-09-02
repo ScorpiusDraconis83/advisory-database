@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2w6p-j7xq-6p7v",
+  "modified": "2026-09-02T03:31:12Z",
+  "published": "2026-09-02T03:31:12Z",
+  "aliases": [
+    "CVE-2026-82968"
+  ],
+  "details": "A flaw was found in the first-broker-login flow of the Keycloak identity management service. When a user links a social identity provider account to their local account, the verification proof generated is not strictly bound to the specific upstream identity being verified. This allows an attacker with a different account on the same social provider to intercept the process and link their own account to the victim's local profile, gaining unauthorized access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82968"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-82968"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2526318"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T02:17:19Z"
+  }
+}

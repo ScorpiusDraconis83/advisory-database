@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9mv7-8vhm-9hc5",
+  "modified": "2026-09-02T03:31:12Z",
+  "published": "2026-09-02T03:31:12Z",
+  "aliases": [
+    "CVE-2026-84701"
+  ],
+  "details": "NocoBase fails to sanitize rich text field values in the read renderer, allowing users with create permissions to store malicious HTML with event handlers. Attackers can write arbitrary markup through the collection API that executes in the browsers of all users viewing the affected record.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84701"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nocobase/nocobase/issues/10416"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nocobase/nocobase"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nocobase/nocobase/blob/v2.2.5/packages/core/client/src/schema-component/antd/input/ReadPretty.tsx"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nocobase-rich-text-field-stored-cross-site-scripting-via-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T01:17:25Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qx8f-9cjx-54j9",
+  "modified": "2026-09-02T03:31:12Z",
+  "published": "2026-09-02T03:31:12Z",
+  "aliases": [
+    "CVE-2026-84697"
+  ],
+  "details": "Mailpit's IsInternalIP deny list function fails to block the Azure WireServer address 168.63.129.16 and the RFC 2765/6145 IPv4-translated IPv6 prefix, allowing server-side request forgery to internal destinations. Attackers can supply hostnames resolving to these addresses in message content to reach the link check API and proxy endpoint for accessing internal resources.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84697"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/axllent/mailpit/commit/a02821bf3424da9196e156c422370f4868a1dff2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/axllent/mailpit"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/axllent/mailpit/blob/v1.31.0/internal/tools/net.go"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mailpit-ssrf-deny-list-bypass-via-azure-metadata-and-ipv6-prefix"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T01:17:24Z"
+  }
+}
