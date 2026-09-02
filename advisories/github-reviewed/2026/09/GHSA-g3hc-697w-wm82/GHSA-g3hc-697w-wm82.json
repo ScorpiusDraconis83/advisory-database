@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g3hc-697w-wm82",
+  "modified": "2026-09-02T14:38:58Z",
+  "published": "2026-09-02T14:38:58Z",
+  "aliases": [
+    "CVE-2026-81887"
+  ],
+  "summary": "Livewire DOM-based cross-site scripting during client-side state handling",
+  "details": "### Impact\nIn Livewire v3 (≤ 3.8.2) and v4 (≤ 4.3.3), a vulnerability allows unauthenticated attackers to execute arbitrary JavaScript in the origin of an affected application in specific scenarios. The issue stems from how certain client-side component state is handled. This vulnerability does not affect prior major versions. Exploitation requires user interaction, but does not require authentication or prior access to the application. The issue does not bypass server-side authorisation and grants an attacker no privileges beyond those the affected user already holds.\n\n### Patches\nThis issue has been patched in Livewire v3.8.3 and v4.3.4. All users are strongly encouraged to upgrade to these versions or later as soon as possible.\n\n### Workarounds\nThere is no known workaround at this time. Users are strongly advised to upgrade to a patched version immediately.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "livewire/livewire"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0-beta.1"
+            },
+            {
+              "fixed": "3.8.3"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 3.8.2"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "livewire/livewire"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0-beta.1"
+            },
+            {
+              "fixed": "4.3.4"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.3.3"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/livewire/livewire/security/advisories/GHSA-g3hc-697w-wm82"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81887"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/livewire/livewire/pull/10467"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/livewire/livewire/commit/11ebe646f7e81dde2d714815da8b3019d058561e"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/livewire/livewire"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/livewire/livewire/releases/tag/v3.8.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/livewire/livewire/releases/tag/v4.3.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1321",
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-02T14:38:58Z",
+    "nvd_published_at": "2026-08-31T21:17:52Z"
+  }
+}

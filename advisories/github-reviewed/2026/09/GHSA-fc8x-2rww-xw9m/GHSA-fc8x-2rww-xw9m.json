@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fc8x-2rww-xw9m",
+  "modified": "2026-09-02T14:38:12Z",
+  "published": "2026-09-02T14:38:12Z",
+  "aliases": [
+    "CVE-2026-82398"
+  ],
+  "summary": "pypdf: Inefficient handling of non-whitespace inputs in read_until_whitespace",
+  "details": "### Impact\nAn attacker who uses this vulnerability can craft a PDF which leads to long runtimes. This requires a call to `read_until_whitespace` with an input which does not have whitespace for a long time.\n\n### Patches\nThis has been fixed in [pypdf==6.15.0](https://github.com/py-pdf/pypdf/releases/tag/6.15.0).\n\n### Workarounds\nIf you cannot upgrade yet, consider applying the changes from PR [#3947](https://github.com/py-pdf/pypdf/pull/3947).",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "pypdf"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.15.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/security/advisories/GHSA-fc8x-2rww-xw9m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82398"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/pull/3947"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/commit/4959848e057e37c218dccad7465259210923faaa"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/py-pdf/pypdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/py-pdf/pypdf/releases/tag/6.15.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-407"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-02T14:38:12Z",
+    "nvd_published_at": "2026-08-31T22:17:23Z"
+  }
+}
