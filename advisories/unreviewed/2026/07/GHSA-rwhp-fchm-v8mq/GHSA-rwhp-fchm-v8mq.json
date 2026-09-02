@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rwhp-fchm-v8mq",
-  "modified": "2026-07-19T18:31:50Z",
+  "modified": "2026-09-02T21:31:50Z",
   "published": "2026-07-19T18:31:50Z",
   "aliases": [
     "CVE-2026-64054"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: shaper: reject duplicate leaves in GROUP request\n\nnet_shaper_nl_group_doit() does not deduplicate NET_SHAPER_A_LEAVES\nentries. When userspace supplies the same leaf handle twice, the same\nold-parent pointer lands twice in old_nodes[]. The cleanup loop double\nfrees the parent. Of course the same parent may still be in old_nodes[]\ntwice if we are moving multiple of its leaves.\n\nNote that this patch also implicitly fixes the fact that the\ni >= leaves_count path forgets to set ret.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:45Z"
