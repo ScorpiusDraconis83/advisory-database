@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2pc6-wpff-x62m",
+  "modified": "2026-09-02T12:31:31Z",
+  "published": "2026-09-02T12:31:31Z",
+  "aliases": [
+    "CVE-2026-84802"
+  ],
+  "details": "Craft CMS versions from 5.7.0 before 5.10.12 contain an information disclosure vulnerability in AssetsController::actionMoveInfo that fails to enforce volume permissions. Authenticated control panel users can submit POST requests to the assets/move-info endpoint with arbitrary folderIds to retrieve asset count and total storage size for volumes they cannot access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-5mjc-jqcw-6vrp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84802"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/craft-cms-5.7.0-before-5.10.12-information-disclosure-via-assetscontroller"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T12:17:17Z"
+  }
+}

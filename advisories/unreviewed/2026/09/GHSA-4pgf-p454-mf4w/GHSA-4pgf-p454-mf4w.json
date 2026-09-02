@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4pgf-p454-mf4w",
-  "modified": "2026-09-02T06:31:16Z",
+  "modified": "2026-09-02T12:31:29Z",
   "published": "2026-09-02T06:31:16Z",
   "aliases": [
     "CVE-2026-81427"
   ],
   "details": "The WC Vendors  WordPress plugin before 2.7.2.1 does not verify that the vendor submitting a front-end order shipment status change owns the referenced order, allowing any authenticated vendor to mark another vendor's order as shipped, add an order note falsely attributed to the victim vendor, and trigger the customer shipment notification email.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-02T06:17:19Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3qmf-g4j6-v744",
-  "modified": "2026-09-02T06:31:15Z",
+  "modified": "2026-09-02T12:31:27Z",
   "published": "2026-09-02T06:31:15Z",
   "aliases": [
     "CVE-2026-19723"
   ],
   "details": "The Social Media Share Buttons & Social Sharing Icons WordPress plugin before 3.0.1 does not properly escape a value taken from the incoming request before outputting it in an inline JavaScript event handler, leading to Reflected Cross-Site Scripting which is triggered when a user interacts with the affected button.\nExploitation requires the Social Media Share Buttons & Social Sharing Icons WordPress plugin before 3.0.1 to be running a non-default icon display configuration.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-02T06:17:17Z"

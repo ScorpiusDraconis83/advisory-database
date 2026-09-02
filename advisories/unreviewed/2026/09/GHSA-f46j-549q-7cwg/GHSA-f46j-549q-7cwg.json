@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f46j-549q-7cwg",
-  "modified": "2026-09-02T06:31:15Z",
+  "modified": "2026-09-02T12:31:28Z",
   "published": "2026-09-02T06:31:15Z",
   "aliases": [
     "CVE-2026-77792"
   ],
   "details": "The RegistrationMagic  WordPress plugin before 6.0.9.9 does not escape a registration form field value before outputting it in an HTML attribute on an administrative page, allowing unauthenticated users to perform Stored Cross-Site Scripting attacks against high privilege users such as admin.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-02T06:17:18Z"

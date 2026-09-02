@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-573w-cgmm-9w7h",
-  "modified": "2026-09-02T06:31:16Z",
+  "modified": "2026-09-02T12:31:28Z",
   "published": "2026-09-02T06:31:16Z",
   "aliases": [
     "CVE-2026-81198"
   ],
   "details": "The MasterStudy LMS WordPress Plugin  WordPress plugin before 3.7.46 does not properly verify ownership of a curriculum object before acting on it, allowing authenticated users with the instructor role to delete or modify curriculum sections and materials belonging to courses owned by other instructors.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-02T06:17:18Z"

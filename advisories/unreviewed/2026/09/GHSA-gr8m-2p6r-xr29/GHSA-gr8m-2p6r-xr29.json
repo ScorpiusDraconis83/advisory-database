@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gr8m-2p6r-xr29",
+  "modified": "2026-09-02T12:31:31Z",
+  "published": "2026-09-02T12:31:31Z",
+  "aliases": [
+    "CVE-2026-84800"
+  ],
+  "details": "Craft CMS versions >= 5.0.0-RC1 and < 5.10.11 contain a missing authorization vulnerability in AssetsController::actionReplaceFile. When a request supplies sourceAssetId and targetFilename but omits assetId, the target asset is resolved by folder and filename after the permission checks execute, so the replacePeerFiles permission is never enforced. An authenticated low-privilege author with only the replaceFiles permission on a shared folder can overwrite the content of a peer's asset file (located in the same folder) with attacker-controlled bytes. Fixed in 5.10.11.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/craftcms/cms/security/advisories/GHSA-329j-cx85-8r56"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84800"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/craft-cms-5.0.0-rc1-before-5.10.11-file-overwrite-via-assets-replace-file"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T12:17:16Z"
+  }
+}

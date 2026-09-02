@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-785m-wqjq-q2rm",
+  "modified": "2026-09-02T12:31:31Z",
+  "published": "2026-09-02T12:31:31Z",
+  "aliases": [
+    "CVE-2026-84805"
+  ],
+  "details": "Kimai versions from 2.61.0 before 2.63.0 fail to disable admin-only work-contract preferences for low-privilege users in the PATCH /api/users/{id}/preferences endpoint. Although the web interface gates these employment-contract fields behind the contract_other_profile admin permission, the WorkContractPreferenceSubscriber (introduced in 2.61.0) registers the preferences as enabled without a permission check, so an authenticated regular user can use the API to modify their own admin-only work-contract data. The issue is fixed in 2.63.0 by applying the same permission check to the API endpoint.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/kimai/kimai/security/advisories/GHSA-5mpc-5cg2-g99r"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84805"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/kimai-2.61.0-before-2.63.0-authentication-bypass-via-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-02T12:17:17Z"
+  }
+}
