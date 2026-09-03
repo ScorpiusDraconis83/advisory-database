@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6983-jfq8-485w",
+  "modified": "2026-09-03T20:33:03Z",
+  "published": "2026-09-03T20:33:03Z",
+  "aliases": [
+    "CVE-2026-56811"
+  ],
+  "summary": "Phoenix: Unbounded channel joins per transport enables DoS over few connections",
+  "details": "### Summary\n\nPhoenix transports do not limit the number of channels in a given connection, making it easy to spawn hundreds of thousands of processes over a single connection, and, eventually reaching the max processes VM limit. The solution is to limit the number of channels per transport, so an attacker needs to start new HTTP/WebSocket connections, allowing third-party services to apply rate limits and intervene more easily.\n\n### Impact\n\nAn unauthenticated remote attacker can cause a denial of service against any Phoenix app that exposes LongPoll/WebSocket transports.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Hex",
+        "name": "phoenix"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0.11.0"
+            },
+            {
+              "fixed": "1.5.15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Hex",
+        "name": "phoenix"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.6.0-rc.0"
+            },
+            {
+              "fixed": "1.6.17"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Hex",
+        "name": "phoenix"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.7.0-rc.0"
+            },
+            {
+              "fixed": "1.7.24"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Hex",
+        "name": "phoenix"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.8.0-rc.0"
+            },
+            {
+              "fixed": "1.8.9"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/phoenixframework/phoenix/security/advisories/GHSA-6983-jfq8-485w"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56811"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phoenixframework/phoenix/commit/16e295d2fccab185d1292322e2bee5d46c725c8a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phoenixframework/phoenix/commit/a612100cd8a4279091abc1a2ef8fb98a6d01c0a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phoenixframework/phoenix/commit/c498ba8cf49f6accbbd0c643a5340b58db891218"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/phoenixframework/phoenix/commit/d19ca0a8d9f82c130b7ed339b9f033433e2dea5e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cna.erlef.org/cves/CVE-2026-56811.html"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/phoenixframework/phoenix"
+    },
+    {
+      "type": "WEB",
+      "url": "https://osv.dev/vulnerability/EEF-CVE-2026-56811"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-03T20:33:03Z",
+    "nvd_published_at": "2026-07-07T16:16:40Z"
+  }
+}
