@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wmrv-hj8c-hqrm",
-  "modified": "2026-07-19T18:31:51Z",
+  "modified": "2026-09-03T15:32:00Z",
   "published": "2026-07-19T18:31:51Z",
   "aliases": [
     "CVE-2026-64072"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme: fix bio leak on mapping failure\n\nThe local bio is always NULL, so we'd leak the bio if the integrity\nmapping failed. Just get it directly from the request.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-19T16:17:47Z"

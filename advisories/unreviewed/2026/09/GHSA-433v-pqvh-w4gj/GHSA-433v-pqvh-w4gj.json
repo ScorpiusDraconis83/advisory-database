@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-433v-pqvh-w4gj",
-  "modified": "2026-09-01T18:30:45Z",
+  "modified": "2026-09-03T15:32:07Z",
   "published": "2026-09-01T18:30:45Z",
   "aliases": [
     "CVE-2026-19590"
   ],
   "details": "OpenAI Codex Desktop for Windows and macOS could execute attacker-controlled Git hooks because automated Git operations trusted the repository's local core.hooksPath setting. If a user opens an attacker-prepared repository whose preserved .git/config points core.hooksPath to an attacker-controlled directory, Codex can run a malicious hook while processing the repository. The hook executes outside Codex's command sandbox, without user approval, and with the user's privileges, allowing it to read, change, or delete the user's files and access other resources available to the user's account. An ordinary Git clone does not preserve the attacker-controlled repository-local configuration required for exploitation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -23,7 +28,7 @@
     "cwe_ids": [
       "CWE-427"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-01T18:17:40Z"

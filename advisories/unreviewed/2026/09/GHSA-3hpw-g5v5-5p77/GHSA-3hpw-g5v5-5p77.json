@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3hpw-g5v5-5p77",
+  "modified": "2026-09-03T15:32:22Z",
+  "published": "2026-09-03T15:32:22Z",
+  "aliases": [
+    "CVE-2026-80515"
+  ],
+  "details": "In Eclipse Arrowhead versions from 5.0.0 to 5.2.1 the management-authorization gate that protects every /…/mgmt/… REST endpoint decides whether to apply its check by calling request.getRequestURL().toString().contains(\"/mgmt/\"). Tomcat returns getRequestURL() un-decoded, while Spring MVC's DispatcherServlet routes on the decoded path. Requesting /serviceregistry/%6Dgmt/systems (%6D == m) therefore fails the substring check — the filter falls through without authorising — yet is decoded to /serviceregistry/mgmt/systems and dispatched to the management controller. Spring Security's StrictHttpFirewall (active via spring-boot-starter-security in arrowhead-common) only rejects encoded / \\ . % ; and null bytes, so percent-encoded ASCII letters pass through. Any authenticated system — regardless of privilege — can reach every management operation, including POST /authentication/mgmt/identities which creates new sysop accounts, yielding full administrative takeover of the local cloud.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:N/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80515"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/752"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-647"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T14:17:01Z"
+  }
+}

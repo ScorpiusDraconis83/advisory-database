@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wxj5-fwg9-6vxf",
+  "modified": "2026-09-03T15:32:10Z",
+  "published": "2026-09-03T15:32:10Z",
+  "aliases": [
+    "CVE-2026-3852"
+  ],
+  "details": "The Divi theme for WordPress is vulnerable to Stored Cross-Site Scripting via the `skype_url` shortcode attribute of the Social Media Follow module in all versions up to, and including, 4.27.6. This is due to a three-part sanitization failure: (1) the `skype_url` field is not included in the `$url_options` whitelist in `class-et-builder-element.php`, so it never invokes `esc_url_raw()` during shortcode processing, (2) the render code in `SocialMediaFollowItem.php` explicitly skips `esc_url()` for Skype URLs (`! $is_skype ? esc_url( $url ) : $skype_url`), and (3) only `sanitize_text_field()` is applied, which preserves single and double quote characters allowing attribute breakout. The unsanitized value is interpolated directly into a single-quoted `href` attribute (`href='{$social_network_link_url}'`). This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user interacts with the injected element.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3852"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.divichangelog.com/divi-update/divi-4/version-4-27-7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/bfc5d53b-272a-4b66-8460-2134087535eb?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T13:05:38Z"
+  }
+}

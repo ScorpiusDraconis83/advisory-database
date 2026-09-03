@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7345-4p68-cx7g",
+  "modified": "2026-09-03T15:32:13Z",
+  "published": "2026-09-03T15:32:13Z",
+  "aliases": [
+    "CVE-2026-78069"
+  ],
+  "details": "Joomla Extension - j2commerce.com - Missing authorization on Apps controller delegation chain in J2Store 1.0.0-3.3.21, 4.0.0-4.0.21, 4.1.0-4.1.6 - `J2StoreControllerApps`'s `appTask` delegation path instantiates app-plugin controllers with no ACL check anywhere in the code. It currently returns 403 only as a side effect of `fof.xml`'s wildcard-deny resolving under the singularised ACL key `app`, which has no explicit allow rule — not because of any deliberate check. Behind that path, `applocalizationdata::getInstallerTool()` used a caller-influenced table name with no allow-list, both to select a `#__j2store_*` table for truncation and to build a path to SQL files it then executes — a path-traversal-capable file read/execute.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78069"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.j2commerce.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T13:06:09Z"
+  }
+}

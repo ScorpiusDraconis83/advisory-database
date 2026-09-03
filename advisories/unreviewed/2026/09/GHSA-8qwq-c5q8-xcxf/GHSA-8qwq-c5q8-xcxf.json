@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8qwq-c5q8-xcxf",
+  "modified": "2026-09-03T15:32:16Z",
+  "published": "2026-09-03T15:32:16Z",
+  "aliases": [
+    "CVE-2026-80752"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: psxpad-spi - set driver data before use\n\npsxpad_spi_suspend() retrieves the controller state with\nspi_get_drvdata(), but probe never stores it, so suspend dereferences a\nNULL pointer. Store it during probe.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80752"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1bba6bd6861b1e0c8ecf20cd1892f0d3877c02a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1edcb7ffee7ac4dc35cbe5bbd0e27bac3614ebe4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62e25677d1440085381b047ec4984be9b6793759"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/732f38c36059e68ba3b4b89c56911d777fd3185c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86531cdfb3a03213e2569deed5195412a4e3f7ee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d622c58205adbc8af19864e277386528b671345"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da6b8b05db0cf43e0cc198431fa8ee9739b3b817"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e980066e434a9c74ff1665ed9140427e95b0ee7c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T13:06:14Z"
+  }
+}

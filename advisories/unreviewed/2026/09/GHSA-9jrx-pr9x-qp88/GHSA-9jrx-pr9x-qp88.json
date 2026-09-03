@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9jrx-pr9x-qp88",
+  "modified": "2026-09-03T15:32:15Z",
+  "published": "2026-09-03T15:32:15Z",
+  "aliases": [
+    "CVE-2026-80747"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Add bounds check for CRAT subtype length\n\nThe CRAT parser validates that the subtype header fits within the image,\nbut does not verify that the advertised subtype length fits. A malformed\nCRAT table with an oversized length field causes out-of-bounds reads when\nkfd_parse_subtype() casts the header to specific subtype structures.\n\nAdd validation that sub_type_hdr + length does not exceed the image\nboundary before parsing the subtype contents.\n\n(cherry picked from commit 48e1d1e6e8798aef0312e68d8e586021b5b3cf4d)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80747"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e7566ba4739dd573c331adde1c96690f7a567bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca91e0cc8087568e4b791648a7c01e804f48cb73"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T13:06:14Z"
+  }
+}

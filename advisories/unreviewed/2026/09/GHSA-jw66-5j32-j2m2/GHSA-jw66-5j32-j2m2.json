@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jw66-5j32-j2m2",
+  "modified": "2026-09-03T15:32:24Z",
+  "published": "2026-09-03T15:32:24Z",
+  "aliases": [
+    "CVE-2026-85176"
+  ],
+  "details": "DbGate fails to validate jslid parameters in the jsldata controller, allowing authenticated users to read and write arbitrary files via file:// scheme resolution. Attackers can exploit getJslFileName() to bypass directory containment and access sensitive files including encrypted database credentials stored in connections configuration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85176"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dbgate/dbgate/issues/1502"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dbgate/dbgate"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dbgate/dbgate/blob/v7.2.6/packages/api/src/controllers/jsldata.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dbgate/dbgate/blob/v7.2.6/packages/api/src/utility/getJslFileName.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/dbgate-through-7.2.6-arbitrary-file-read-and-write-via-file-jslid"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T15:17:38Z"
+  }
+}

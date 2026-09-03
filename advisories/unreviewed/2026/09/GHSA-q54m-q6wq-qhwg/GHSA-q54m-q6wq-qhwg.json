@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q54m-q6wq-qhwg",
+  "modified": "2026-09-03T15:32:25Z",
+  "published": "2026-09-03T15:32:25Z",
+  "aliases": [
+    "CVE-2026-85182"
+  ],
+  "details": "vhr through commit 03abbd3 fails to verify that the account ID in PUT /hr/pass requests belongs to the authenticated caller. Authenticated attackers can change arbitrary account passwords by supplying a target account ID and that account's current password in the request body.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85182"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lenve/vhr/issues/350"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lenve/vhr"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lenve/vhr/blob/03abbd35af24e55368ce4e09f4038dc2aba3ff5f/vhr/vhrserver/vhr-service/src/main/java/org/javaboy/vhr/service/HrService.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lenve/vhr/blob/03abbd35af24e55368ce4e09f4038dc2aba3ff5f/vhr/vhrserver/vhr-web/src/main/java/org/javaboy/vhr/controller/HrInfoController.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vhr-missing-authorization-in-put-hr-pass-allows-cross-account-password-change"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T15:17:39Z"
+  }
+}

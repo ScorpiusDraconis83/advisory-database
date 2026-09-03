@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2h35-47m3-h9hp",
+  "modified": "2026-09-03T15:32:14Z",
+  "published": "2026-09-03T15:32:14Z",
+  "aliases": [
+    "CVE-2026-80735"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\novpn: ensure socket is owned by ovpn before deref sk_user_data\n\nSome subsystems, like BPF SOCKMAP, set sk_user_data without\nactually setting the encap_type.\n\nFor this reason, we must make sure that the type is the\none ovpn expects before dereferencing sk_user_data.\n\nFailing to do so may lead to out-of-bounds reads.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80735"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/43a31142e1d22b3cf5490bd94a94db7196901734"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59aed1eb60d70678a53acccb0cb337a26ce6680e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61fb3cca40ff938671474f4a16adb908c19032d7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T13:06:12Z"
+  }
+}

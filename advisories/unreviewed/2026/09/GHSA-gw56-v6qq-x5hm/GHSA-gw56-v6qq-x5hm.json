@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gw56-v6qq-x5hm",
+  "modified": "2026-09-03T15:32:11Z",
+  "published": "2026-09-03T15:32:11Z",
+  "aliases": [
+    "CVE-2026-76174"
+  ],
+  "details": "Unrestricted file upload vulnerability in the CSV file upload functionality of the Ocsreports admin_info endpoint. The application validates files solely based on the name provided by the client, without properly checking their content or securely restricting the permitted file types. This allows a user with administrator privileges to upload PHP files to a directory accessible via the web interface. If the file is subsequently processed by the server, an attacker could execute arbitrary code with the privileges of the account used by the web service.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.incibe.es/en/incibe-cert/notices/aviso/multiple-vulnerabilities-ocsreports-ocs-inventory-ng"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T13:06:07Z"
+  }
+}

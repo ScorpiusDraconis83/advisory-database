@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jjf7-8pp5-x8vw",
+  "modified": "2026-09-03T15:32:13Z",
+  "published": "2026-09-03T15:32:13Z",
+  "aliases": [
+    "CVE-2026-78064"
+  ],
+  "details": "Joomla Extension - j2commerce.com - Anonymous cart-record tampering via inherited FOF `save` task in J2Store 1.0.0-3.3.21, 4.0.0-4.0.21, 4.1.0-4.1.6 - `fof.xml` grants the `carts` view's tasks a wildcard `true` ACL, and FOF only enforces CSRF tokens on back-end HTML requests, not on front-end `format=raw` requests. `J2StoreControllerCarts` already scoped `remove()` to the caller's own session, but never overrode the generic FOF `save` task, so it remained reachable to insert new cart rows with an attacker-chosen `user_id`/`session_id`, or overwrite an existing row by id.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78064"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.j2commerce.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T13:06:09Z"
+  }
+}

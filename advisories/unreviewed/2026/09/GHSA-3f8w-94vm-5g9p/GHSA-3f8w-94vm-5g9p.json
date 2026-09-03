@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3f8w-94vm-5g9p",
+  "modified": "2026-09-03T15:32:16Z",
+  "published": "2026-09-03T15:32:16Z",
+  "aliases": [
+    "CVE-2026-80751"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npmdomain: mediatek: mfg: initialize prev_o in mtk_mfg_attach_dev()\n\nmtk_mfg_attach_dev() reads prev_o on the first iteration of its loop,\nin \"if (prev_o && prev_o->freq == o->freq)\", before prev_o is assigned\nat the end of the loop body. On that first iteration, evaluating prev_o\nreads an indeterminate value. If it is non-NULL, the condition\ndereferences a stale or invalid pointer, potentially faulting or\nincorrectly skipping the first OPP.\n\nInitialize prev_o to NULL. This matches the intent as well: there is no\nprevious OPP to compare against on the first iteration.\n\nFound with Clang's -Wconditional-uninitialized.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80751"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/090a95dbe13df9965279b588d97eda134831769c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de4eec0dfde8c0e27f8915bbb244d17ff68f2fb4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T13:06:14Z"
+  }
+}
