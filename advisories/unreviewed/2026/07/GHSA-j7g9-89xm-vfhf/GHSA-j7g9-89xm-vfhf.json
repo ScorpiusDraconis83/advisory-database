@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j7g9-89xm-vfhf",
-  "modified": "2026-07-25T12:31:32Z",
+  "modified": "2026-09-03T18:31:17Z",
   "published": "2026-07-25T12:31:32Z",
   "aliases": [
     "CVE-2026-64345"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_printer: take kref only for successful open\n\nprinter_open() returns -EBUSY when the character device is already\nopen, but it increments dev->kref regardless of the return value. VFS\ndoes not call ->release() for a failed open, so every rejected second\nopen permanently leaks one reference.\n\nMove kref_get() into the successful-open branch.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -41,7 +46,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:16Z"

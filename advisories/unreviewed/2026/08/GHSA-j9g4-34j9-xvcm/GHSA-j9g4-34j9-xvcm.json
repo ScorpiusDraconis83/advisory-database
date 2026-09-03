@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j9g4-34j9-xvcm",
-  "modified": "2026-08-30T09:30:23Z",
+  "modified": "2026-09-03T18:31:31Z",
   "published": "2026-08-30T09:30:23Z",
   "aliases": [
     "CVE-2026-19722"
   ],
   "details": "The WPvivid — Backup, Migration & Staging WordPress plugin before 0.9.133 does not validate the destination of files extracted from a backup package during restoration, allowing high privilege users such as administrators to write arbitrary files outside the intended restore directory, which can lead to code execution.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-08-30T07:17:20Z"

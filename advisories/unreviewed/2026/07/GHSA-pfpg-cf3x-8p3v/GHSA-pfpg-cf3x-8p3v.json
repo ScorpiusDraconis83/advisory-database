@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pfpg-cf3x-8p3v",
-  "modified": "2026-07-25T12:31:32Z",
+  "modified": "2026-09-03T18:31:16Z",
   "published": "2026-07-25T12:31:31Z",
   "aliases": [
     "CVE-2026-64335"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: serial: digi_acceleport: fix broken rx after throttle\n\nIf the port is closed while throttled, the read urb is never resubmitted\nand the port will not receive any further data until the device is\nreconnected (or the driver is rebound).\n\nClear the throttle flags and submit the urb if needed when opening the\nport.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:15Z"

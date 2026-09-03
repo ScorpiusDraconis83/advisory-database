@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pghr-8xhx-xv5x",
-  "modified": "2026-07-25T12:31:32Z",
+  "modified": "2026-09-03T18:31:17Z",
   "published": "2026-07-25T12:31:31Z",
   "aliases": [
     "CVE-2026-64338"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: misc: uss720: unregister parport on probe failure\n\nuss720_probe() registers a parport before reading the 1284 register used\nto detect unsupported Belkin F5U002 adapters. If get_1284_register()\nfails, the error path drops the driver private data and the USB device\nreference, but leaves the parport device registered.\n\nLeaving the port registered is more than a private allocation leak:\nparport_register_port() has already reserved a parport number and\nregistered the parport bus device, while pp->private_data still points at\nthe private data that the common error path is about to release.\n\nUndo the pre-announce registration in the get_1284_register() failure\nbranch before jumping to the common private-data cleanup path. Clear\npriv->pp first, matching the disconnect path and avoiding a stale pointer\nin the private data.\n\nThis issue was identified during our ongoing static-analysis research while\nreviewing kernel code.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:15Z"

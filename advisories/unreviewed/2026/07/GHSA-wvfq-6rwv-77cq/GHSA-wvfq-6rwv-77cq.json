@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wvfq-6rwv-77cq",
-  "modified": "2026-07-25T12:31:32Z",
+  "modified": "2026-09-03T18:31:17Z",
   "published": "2026-07-25T12:31:31Z",
   "aliases": [
     "CVE-2026-64337"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: mtu3: unmap request DMA on queue failure\n\nmtu3_gadget_queue() maps the request before checking whether\nthe QMU GPD ring can accept another transfer. the request is\nreturned with -EAGAIN before it is linked on the endpoint\nrequest list if mtu3_prepare_transfer() fails.\n\nNormal completion and dequeue paths unmap requests from\nmtu3_req_complete(), but this error path never reaches that\nhelper, so the DMA mapping is left active. Unmap the request\nbefore returning from the failed queue path.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:15Z"

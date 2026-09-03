@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rx38-5x73-p7h9",
-  "modified": "2026-07-25T12:31:32Z",
+  "modified": "2026-09-03T18:31:17Z",
   "published": "2026-07-25T12:31:32Z",
   "aliases": [
     "CVE-2026-64353"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Keep dynamic inner array lookups nullable\n\nAn ARRAY_OF_MAPS can use an array created with BPF_F_INNER_MAP as its\ninner map template. A concrete inner array with a different max_entries\nvalue can then replace the template.\n\nAfter a successful outer map lookup, the verifier represents the\nresulting map pointer using the inner map template. Const-key lookup\nnullness elision consequently uses the template max_entries even though\nthe runtime helper uses the concrete inner map max_entries.\n\nDo not elide lookup result nullness for maps marked with BPF_F_INNER_MAP,\nbecause the template max_entries does not prove that the key is in bounds\nfor the concrete runtime map.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:17Z"

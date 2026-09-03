@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9px5-jvx8-8qgx",
-  "modified": "2026-07-25T12:31:32Z",
+  "modified": "2026-09-03T18:31:17Z",
   "published": "2026-07-25T12:31:32Z",
   "aliases": [
     "CVE-2026-64342"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: iowarrior: fix use-after-free on disconnect\n\nSubmitted write URBs are not stopped on close() and therefore need to be\nstopped unconditionally on disconnect() to avoid use-after-free in the\ncompletion handler.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:16Z"
