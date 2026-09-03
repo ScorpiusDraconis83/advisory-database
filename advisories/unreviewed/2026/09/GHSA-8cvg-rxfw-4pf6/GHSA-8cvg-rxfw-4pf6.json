@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8cvg-rxfw-4pf6",
+  "modified": "2026-09-03T21:31:15Z",
+  "published": "2026-09-03T21:31:15Z",
+  "aliases": [
+    "CVE-2026-85390"
+  ],
+  "details": "Checkmate through 3.11.0 omits the isAllowed role guard middleware on maintenance-window, notification, and check-deletion routes, allowing read-only users to perform administrative actions. Attackers with user-role sessions can create arbitrary maintenance windows to silence alerts, modify notification channels, and delete monitor check history to erase incident evidence.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85390"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bluewave-labs/Checkmate/issues/3916"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bluewave-labs/Checkmate"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bluewave-labs/Checkmate/blob/v3.11.0/server/src/api/routes/checkRoutes.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bluewave-labs/Checkmate/blob/v3.11.0/server/src/api/routes/maintenanceWindowRoutes.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bluewave-labs/Checkmate/blob/v3.11.0/server/src/api/routes/notificationRoutes.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/checkmate-through-3.11.0-missing-authorization-on-maintenance-window-notification-and-check-deletion-routes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T19:17:30Z"
+  }
+}

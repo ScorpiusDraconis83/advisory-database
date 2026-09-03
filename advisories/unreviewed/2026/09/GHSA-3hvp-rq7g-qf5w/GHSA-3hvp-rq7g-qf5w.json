@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3hvp-rq7g-qf5w",
+  "modified": "2026-09-03T21:31:15Z",
+  "published": "2026-09-03T21:31:15Z",
+  "aliases": [
+    "CVE-2026-85389"
+  ],
+  "details": "Worklenz before 3.0.0 fails to verify task ownership by organization when resolving task-scoped API endpoints, allowing authenticated users to access another tenant's task data. Attackers can query task endpoints with arbitrary task UUIDs to retrieve work logs, comments, attachments, and project insights belonging to other organizations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85389"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Worklenz/worklenz/issues/396"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Worklenz/worklenz/commit/f088ad0e36a23bb52857b46b3d4ce2533daeb65f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Worklenz/worklenz"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Worklenz/worklenz/blob/v3.0.0/worklenz-backend/src/middlewares/verify-task-access.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Worklenz/worklenz/releases/tag/v3.0.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/worklenz-before-3.0.0-authorization-bypass-on-task-scoped-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T19:17:30Z"
+  }
+}

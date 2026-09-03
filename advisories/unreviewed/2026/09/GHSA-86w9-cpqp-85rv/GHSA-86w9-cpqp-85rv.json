@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-86w9-cpqp-85rv",
+  "modified": "2026-09-03T21:31:15Z",
+  "published": "2026-09-03T21:31:15Z",
+  "aliases": [
+    "CVE-2026-85393"
+  ],
+  "details": "node-forge through 1.4.0 fails to validate element count in nested DigestAlgorithm sequences during RSA PKCS#1 v1.5 signature verification. Attackers can embed garbage bytes inside the DigestAlgorithm sequence to forge valid signatures for arbitrary messages using low-exponent RSA keys. This is an incomplete fix for CVE-2026-33894.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85393"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/digitalbazaar/forge/issues/1149"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://github.com/advisories/GHSA-ppp5-5v6c-4jwp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/digitalbazaar/forge"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/digitalbazaar/forge/blob/v1.4.0/lib/asn1.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/digitalbazaar/forge/blob/v1.4.0/lib/rsa.js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/node-forge-through-1.4.0-rsa-pkcs-1-1.5-signature-forgery-via-nested-digestalgorithm-padding"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-347"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T19:17:31Z"
+  }
+}
