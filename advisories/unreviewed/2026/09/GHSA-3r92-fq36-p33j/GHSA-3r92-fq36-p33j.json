@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3r92-fq36-p33j",
+  "modified": "2026-09-04T18:31:29Z",
+  "published": "2026-09-04T18:31:29Z",
+  "aliases": [
+    "CVE-2026-80857"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse: wait for FR_FINISHED on abort_on_kill to prevent use-after-free\n\nThe abort_on_kill path in request_wait_answer() calls fuse_abort_conn()\nand returns without waiting for FR_FINISHED.  If fuse_dev_do_write() is\nconcurrently processing the same request (FR_LOCKED set), the caller\nfrees req->args while it is still being accessed, causing a\nuse-after-free.\n\nFix this by jumping to the existing wait_event(FR_FINISHED) instead of\nreturning early.  The wait will not hang because fuse_abort_conn()\nensures all requests are ended.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80857"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/64b0b5cacbd2fea88001464cb712c9dfc795b26e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/715cb86e33cda43f5224cdc3fd5610c0b6a46f7a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:18:14Z"
+  }
+}

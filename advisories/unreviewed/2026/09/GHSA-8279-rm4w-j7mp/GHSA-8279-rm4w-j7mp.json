@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8279-rm4w-j7mp",
+  "modified": "2026-09-04T18:31:29Z",
+  "published": "2026-09-04T18:31:29Z",
+  "aliases": [
+    "CVE-2026-80860"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse: fix race between interrupt and resend\n\nAfter commit f8fce75fedf7 (\"fuse: clear intr_entry in fuse_resend and\nfuse_remove_pending_req\") the WARN_ON(!list_empty(&req->intr_entry)) in\nfuse_request_free() still triggers due to the following race:\n\nIn request_wait_answer()\n  if (test_bit(FR_SENT, &req->flags)) -> returns true\n\nIn fuse_chan_resend()\n  clear_bit(FR_SENT, &req->flags)\n\nIn request_wait_answer()\n  queue_interrupt(req)\n\nFix by:\n\n - move clearing FR_SENT inside fpq->lock\n\n - move setting FR_PENDING inside fiq->lock\n\n - recheck FR_SENT after acquiring fiq->lock in fuse_dev_queue_interrupt()",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80860"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26fbe4bc3ef3ab0200407681cbef182af5d151de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed9c881f3b498383f73c42712b359419da42a7b0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:18:15Z"
+  }
+}

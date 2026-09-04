@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qx96-qjpp-7jj8",
+  "modified": "2026-09-04T18:31:31Z",
+  "published": "2026-09-04T18:31:31Z",
+  "aliases": [
+    "CVE-2026-80871"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: xilinx-trng - Remove crypto_rng interface\n\nImplementing the crypto_rng interface has no purpose, as it isn't used\nin practice.  It's being removed from other drivers too.  Just remove\nit.  This leaves hwrng, which is actually used.\n\nTagging with 'Cc stable' due to the bugs that this removes:\n\n  - xtrng_trng_generate() sometimes returned success even when it didn't\n    fill in all the bytes.\n\n  - It was possible for xtrng_trng_generate() and\n    xtrng_hwrng_trng_read() to run concurrently and interfere with each\n    other, as the locking code in xtrng_hwrng_trng_read() was broken.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80871"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32b4d29280ed2a991dc196d5845b892acedc63b8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83f29da85dc9d9a32fe62cd1055e8e6705e6bf80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9634db561e1594c151923f4950c012161c545c93"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T17:16:59Z"
+  }
+}

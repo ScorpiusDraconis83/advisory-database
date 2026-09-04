@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rmw8-w7cg-rwfm",
-  "modified": "2026-07-25T12:31:35Z",
+  "modified": "2026-09-04T18:31:12Z",
   "published": "2026-07-25T12:31:35Z",
   "aliases": [
     "CVE-2026-64425"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/io-wq: re-check IO_WQ_BIT_EXIT for each linked work item\n\ncommit 10dc95939817 (\"io_uring/io-wq: check IO_WQ_BIT_EXIT inside work\nrun loop\") fixed the obvious case where io_worker_handle_work() took one\nexit-bit snapshot before draining pending work, but the fix stops one\nlevel too early.\n\nio_worker_handle_work() now re-checks IO_WQ_BIT_EXIT in its outer work\nrun loop, yet it still snapshots that bit once before processing a whole\ndependent linked-work chain. If io_wq_exit_start() sets IO_WQ_BIT_EXIT\nafter the first linked item has started, the remaining linked items can\nstill reuse stale do_kill = false, skip IO_WQ_WORK_CANCEL, and continue\nrunning after exit has begun.\n\nMove the check further inside, so it covers linked items too. Note: this\nis a syzbot special as it loves setting up tons of slow linked work on\nweird devices like msr that take forever to read, and immediately close\nthe ring. Exit then takes a long time.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:26Z"

@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cxj6-pxrj-qc44",
+  "modified": "2026-09-04T18:31:24Z",
+  "published": "2026-09-04T18:31:24Z",
+  "aliases": [
+    "CVE-2026-80763"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_event: validate LE Set CIG Parameters response\n\nThe Command Complete dispatch validates only the fixed part of the LE Set\nCIG Parameters response. After that part is pulled from the skb,\nhci_cc_le_set_cig_params() trusts num_handles and reads each entry in the\ntrailing handle array.\n\nMatching num_handles against the command's num_cis does not guarantee\nthat the response contains the advertised handles. A truncated response\nfrom a malfunctioning controller can therefore make the handler read\nbeyond the skb data.\n\nValidate that the remaining skb data contains all advertised handles.\nInclude this in the existing response validation so malformed responses\nalso follow the established CIG failure handling.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80763"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0acd4eeb4b225b9bebbf9ef96cc10cdd79b94899"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26741d178f31932c9018b36b7953e6dc391436a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6fc540e835dddb518cef3ff522b780f701cd03df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e05783d0bb96a7b853cc058a7c7de2dc4a62154"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a34df5c4a439cfc04565fa5be608ed1e53134f1f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d83ecb7b96105d932dabaa56ccd7418c25fb7cbb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3f82e8f2a5915f533b57a065e9a045aa2ee03bc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:18:01Z"
+  }
+}

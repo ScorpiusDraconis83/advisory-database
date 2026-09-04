@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cj8f-pj7x-5x2c",
-  "modified": "2026-07-25T12:31:32Z",
+  "modified": "2026-09-04T18:31:11Z",
   "published": "2026-07-25T12:31:32Z",
   "aliases": [
     "CVE-2026-64358"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: mtk-jpeg: cancel workqueue on release for supported platforms only\n\nSince a recent fix the mtk_jpeg_release function cancels any pending\nor running work present in the driver workqueue using\ncancel_work_sync function.\nCurrently, only the multicore based variants use this workqueue and they\nhave the jpeg_worker platform data field initialized with a workqueue\ncallback function. For the others, this field value remain NULL by\ndefault.\nThe cancel_work_sync function is unconditionally called in\nmtk_jpeg_release function, even for the variants that do not use the\nworkqueue. This call generates a WARN_ON print in __flush_work because\nthe workqueue callback function presence check fails in __flush_work\nfunction (used by cancel_work_sync).\n\nSo, to avoid these warnings, call cancel_work_sync only if a workqueue\ncallback is defined in platform data.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -36,8 +41,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:18Z"

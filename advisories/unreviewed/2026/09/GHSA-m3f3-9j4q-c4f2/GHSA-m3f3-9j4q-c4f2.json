@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m3f3-9j4q-c4f2",
+  "modified": "2026-09-04T18:31:28Z",
+  "published": "2026-09-04T18:31:28Z",
+  "aliases": [
+    "CVE-2026-80847"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: clamp route advmss to TCP_MIN_MSS\n\ntcp_select_initial_window() assumes that callers never pass an MSS\nsmaller than 1, but route-derived advmss values can violate that\nassumption.\n\nA too-small explicit RTAX_ADVMSS is one way to get there, but it is not\nthe only one. The same divide-by-zero can also be reached through the\n\"default advmss\" path when RTAX_ADVMSS is left at 0 and the effective\nadvmss is later driven down by route MTU and min_adv_mss.\n\nIntroduce a tcp_dst_advmss() helper that clamps route advmss to\nTCP_MIN_MSS before TCP consumes it, and use it in the TCP paths that\nderive advmss from dst metrics. This keeps the effective MSS from\ndropping to zero before tcp_select_initial_window() rounds the receive\nwindow.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80847"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/31cf2349361902769dc323e4dbf4b449795ec288"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b8c20bf61924dfc38fefb145c9f7406d73fae53"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/870a9e42ecc6fe1b8c25d87af043cb0d9c178fe1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:18:13Z"
+  }
+}

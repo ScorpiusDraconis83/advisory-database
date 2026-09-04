@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ghrw-6c83-p2qc",
+  "modified": "2026-09-04T18:31:25Z",
+  "published": "2026-09-04T18:31:25Z",
+  "aliases": [
+    "CVE-2026-80770"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: nintendo: stop device IO before hid_hw_stop on probe failure\n\nnintendo_hid_probe() calls hid_device_io_start() before joycon_init()\nand joycon_leds_create().  If either fails, the error path jumps to\nerr_close which calls hid_hw_close()/hid_hw_stop() without first calling\nhid_device_io_stop().\n\nhid_hw_stop() does not stop device IO, so hid_input_report() may still\nrun and access driver data that is being torn down, resulting in a\nuse-after-free.\n\nAdd an err_io_stop label that calls hid_device_io_stop() before\nhid_hw_close(), and point the two post-io_start error paths at it.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80770"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03a84f9f88b42cd49752ec0259922b67e4b88598"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13a3edf96568a0b7aacadea07c2adec53ac8f630"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f74d3bff6fe04a64e02ab3661d2e0d554565aa6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e0d98dc8a6dea5fc2b72bf66e0dcbd5488644b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5efcd7bbfaaec67d137c99aa0940fa34375db27f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c023443f0e6cfd257846b6515c93c1ea08026593"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2f3d51c7f5222f5b51e0c90f02258d82e1b44dd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:18:02Z"
+  }
+}

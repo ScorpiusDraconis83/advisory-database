@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-924c-v8fr-v5mq",
+  "modified": "2026-09-04T18:31:32Z",
+  "published": "2026-09-04T18:31:32Z",
+  "aliases": [
+    "CVE-2026-80883"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/tegra: gr2d/gr3d: Initialize address register map before HOST1X client is registered\n\nThe host1x_client_register() function is called just prior to register map\ninitialization loop, making the device available to userspace. This may\nresult in userspace attempting to submits a job before the register map is\ninitialized. Address this by moving register initialization before host1x\nclient registration.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80883"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3055292b8eed69553b389a609197a241df47e68e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40a2a91da02c434938f0ba53877984820800b5f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5db37fd7710e74bc4df48bddab8f571d0bfc6769"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e22d5ad61cfa38aa53fab86a530113aff6a3619"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4ef5ba1131346159e31f4ef858525cf377380a6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T17:17:00Z"
+  }
+}

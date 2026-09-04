@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wj23-fx8v-7598",
+  "modified": "2026-09-04T18:31:24Z",
+  "published": "2026-09-04T18:31:24Z",
+  "aliases": [
+    "CVE-2026-78658"
+  ],
+  "details": "IBM UCD - IBM UrbanCode Deploy 7.2 through 7.2.3.25, and 7.3 through 7.3.2.20 and IBM UCD - IBM DevOps Deploy 8.0 through 8.0.1.15, 8.1 through 8.1.2.8, and 8.2 through 8.2.2.1 IBM DevOps Deploy / IBM UrbanCode Deploy (UCD) is susceptible to an formation disclosure vulnerability when processing redacted property values. If a deployment is configured with a secure property that starts with certain non-ASCII characters, the redaction engine may fail to mask subsequent ASCII secure values embedded inside unsecure properties. An authenticated user with permissions to view deployment request details could exploit this flaw via the UI or API to view sensitive values in plain text that should otherwise be redacted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78658"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ibm.com/support/pages/node/7286256"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-212"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:17:59Z"
+  }
+}

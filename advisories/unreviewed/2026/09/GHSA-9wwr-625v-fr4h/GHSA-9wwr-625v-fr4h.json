@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9wwr-625v-fr4h",
+  "modified": "2026-09-04T18:31:25Z",
+  "published": "2026-09-04T18:31:25Z",
+  "aliases": [
+    "CVE-2026-80785"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: serialize mode sysfs access with lock_fb_info()\n\nshow_mode(), show_modes(), and store_mode() access fb_info->modelist\nand fb_info->mode without holding lock_fb_info(). store_modes() takes\nlock_fb_info() while replacing the modelist and freeing the old one.\n\nA concurrent reader or writer can load a pointer to an old modelist\nentry before store_modes() frees it, then dereference freed memory or\nstore a stale freed pointer in fb_info->mode.\n\nTake lock_fb_info() in show_mode(), show_modes(), and store_mode() to\nserialize with store_modes(). In show_mode(), copy the mode to the\nstack and format after dropping the lock. In store_mode(), split\nactivate() into a _locked variant to avoid double-locking, and hold\nthe locks for the modelist walk, mode conversion, activation, and\nfb_info->mode assignment together.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80785"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/061db6b7a910b8378f3b2df64f8c0a3ddc6e85f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26135631ed8e487bc6aef70cc41934e258d09bbe"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:18:04Z"
+  }
+}

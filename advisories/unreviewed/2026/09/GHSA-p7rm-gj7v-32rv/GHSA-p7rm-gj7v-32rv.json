@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p7rm-gj7v-32rv",
+  "modified": "2026-09-04T18:31:26Z",
+  "published": "2026-09-04T18:31:25Z",
+  "aliases": [
+    "CVE-2026-80786"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: Wrap user-invoked calls to fb_set_var() in helper\n\nHandle fbcon during display updates in fb_set_var_from_user(). Check\nwith fbcon if the mode change is possible, update hardware state and\nfinally update fbcon. Update all callers.\n\nOnly the FBIOPUT_VSCREENINFO ioctl currently does all steps. Other\nmode-changes callers in sysfs and driver code are missing fbcon-related\nsteps.\n\nWith the new helper, ps3fb and sh_mobile_lcdcfb no longer maintain\nfbcon state themselves.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80786"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07f7e46833f71472e30da54a50dacdf48521bdd3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f611e5e5f3327cf2e2daabe6ee5acac58cc784e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:18:04Z"
+  }
+}

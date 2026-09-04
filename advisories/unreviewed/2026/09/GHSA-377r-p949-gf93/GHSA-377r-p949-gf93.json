@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-377r-p949-gf93",
+  "modified": "2026-09-04T18:31:33Z",
+  "published": "2026-09-04T18:31:33Z",
+  "aliases": [
+    "CVE-2026-80887"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vmwgfx: use check_add_overflow for shader size+offset bound\n\nvmw_shader_define() validates the user-supplied shader window against\nits backing buffer with\n\n\t(u64)buffer->tbo.base.size < (u64)size + (u64)offset\n\ndrm_vmw_shader_create_arg::offset is __u64 in the uapi; when it is\nnear U64_MAX the unsigned addition wraps and the resulting tiny value\npasses the check.  The unbounded offset is then stored in\nres->guest_memory_offset and forwarded to host SVGA shader-create\ncommands.\n\nUse check_add_overflow() to detect the wrap and compare the resulting\nendpoint against the buffer size.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80887"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1bbe7751f5ebac383405ef29a66622d65bd505d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/54d56d5b42d2e4c72ba6e365e9774da90698aa22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c725901908eb1e52a16fc0e2373cb761df42d21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cfd163169af3be56eaef113c680ea251f0d09189"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3f44438aa805270aaead3b6840ccaea0f4c11f9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T18:17:56Z"
+  }
+}

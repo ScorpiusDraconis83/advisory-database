@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f4hf-w5c6-r4p5",
+  "modified": "2026-09-04T18:31:24Z",
+  "published": "2026-09-04T18:31:24Z",
+  "aliases": [
+    "CVE-2026-75431"
+  ],
+  "details": "PowerJob Server version 5.1.2 (and likely earlier) uses a predictable JWT signing key for HS256-based authentication. This allows a remote attacker to execute arbitrary code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75431"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/unpredictable21/39e6ce22e4bc45b0e553d0fa6a6e4d1c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PowerJob/PowerJob/blob/master/docker-compose.yml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PowerJob/PowerJob/blob/master/powerjob-server/powerjob-server-auth/src/main/java/tech/powerjob/server/auth/jwt/impl/DefaultSecretProvider.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PowerJob/PowerJob/blob/master/powerjob-server/powerjob-server-auth/src/main/java/tech/powerjob/server/auth/jwt/impl/JwtServiceImpl.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PowerJob/PowerJob/blob/master/powerjob-server/powerjob-server-openapi/src/main/java/tech/powerjob/server/openapi/service/impl/OpenApiSecurityServiceImpl.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PowerJob/PowerJob/blob/master/powerjob-server/powerjob-server-starter/src/main/resources/application-daily.properties"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:17:59Z"
+  }
+}

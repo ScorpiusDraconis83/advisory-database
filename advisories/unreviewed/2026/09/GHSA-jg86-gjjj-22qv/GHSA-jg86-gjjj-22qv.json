@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jg86-gjjj-22qv",
+  "modified": "2026-09-04T18:31:33Z",
+  "published": "2026-09-04T18:31:33Z",
+  "aliases": [
+    "CVE-2026-80894"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommufd: Fix wrong hwpt passed to iommufd_auto_response_faults on replace\n\niommufd_hwpt_replace_device() calls:\n\n\tiommufd_auto_response_faults(hwpt, old_handle);\n\npassing the *new* hwpt together with the handle of\nthe device's *old* domain. This should be a parameter mismatch:\n\n1. Semantically, iommufd_auto_response_faults(x, handle) scans\n   x->fault's deliver list and response xarray for groups matching\n   \"handle\". A group is queued under the hwpt that was attached at\n   fault-delivery time. old_handle is fetched *before* the domain switch,\n   so its group lives on old->fault, not on the new hwpt->fault.\n\n2. Historically, the first argument was \"old\". The routine was\n   introduced by commit b7d8833677ba (\"iommufd: Fault-capable hwpt\n   attach/detach/replace\") as __fault_domain_replace_dev() in\n   fault.c, correctly calling iommufd_auto_response_faults(old, curr).\n   Commit fb21b1568ada (\"iommufd: Make attach_handle generic than\n   fault specific\") moved this into iommufd_hwpt_replace_device() in\n   device.c and swapped it to \"hwpt\". This should be a refactor regression,\n   not an intentional change.\n\nFix this by passing \"old\" instead.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80894"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/564ac339c0f8bada4e77a57a92bab9d3df635e07"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8eb077025279304268bd58657f0af3d388822b21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/adb87155b67f9759ff010c0a99559f5bffa45dcf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba5c0f28a26e7d9be1e0997f8920dd638e2782fd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T18:17:57Z"
+  }
+}

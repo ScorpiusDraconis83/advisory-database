@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xqfj-m7qf-gr42",
+  "modified": "2026-09-04T18:31:34Z",
+  "published": "2026-09-04T18:31:34Z",
+  "aliases": [
+    "CVE-2026-80903"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/oa: Fix sync entry leak on OA config emit failure\n\nxe_oa_emit_oa_config() releases the sync entries and the syncs array\nonly on its success path. When it fails before the point of no return\n(fence allocation, config buffer allocation or batch submission), it\nreturns without touching stream->syncs.\n\nThe stream open path handles such failures in the caller, but\nxe_oa_config_locked() propagates the error without any cleanup, so the\nsyncs array and the fence references held by the parsed entries are\nleaked. The next config ioctl overwrites stream->syncs, making the\nmemory unreachable for good.\n\nClean up the parsed syncs when xe_oa_emit_oa_config() fails, matching\nthe cleanup done by the stream open error path.\n\n(cherry picked from commit 8af97b3da2cfce04e6b457c6eb17ed3c1daf912b)",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80903"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/027150e24e173a5dffe7f5ab3a6600618f634da2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d33c4987cd162527375a3905017ae129ba7c3fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/948f346fe36e1d02353c3d61b1f6b66c6af91996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fcf7943b0a38568c547d7b5702de1d8190480616"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T18:17:59Z"
+  }
+}

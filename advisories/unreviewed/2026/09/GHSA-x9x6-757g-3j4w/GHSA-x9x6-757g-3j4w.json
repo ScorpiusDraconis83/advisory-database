@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x9x6-757g-3j4w",
+  "modified": "2026-09-04T18:31:31Z",
+  "published": "2026-09-04T18:31:31Z",
+  "aliases": [
+    "CVE-2026-80868"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs3: Allocate iomap inline_data using alloc_page\n\nThis fixes a BUG reported in iomap_write_end_inline:\niomap_inline_data_valid checks that the inline_data fits within\na page. If the inline_data is allocated with kmemdup there's no\nguarantee that it's page-aligned, so the check sometimes fails.\nAllocate it with alloc_page to ensure it's page-aligned.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80868"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3cd2212012c06d2b1fd03a6bf84f6202ab70056c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70d3855594cf6e8791970714b65cac3202d6160e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T17:16:58Z"
+  }
+}

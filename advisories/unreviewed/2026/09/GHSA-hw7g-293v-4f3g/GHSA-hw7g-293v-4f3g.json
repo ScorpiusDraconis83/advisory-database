@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hw7g-293v-4f3g",
+  "modified": "2026-09-04T18:31:31Z",
+  "published": "2026-09-04T18:31:31Z",
+  "aliases": [
+    "CVE-2026-80873"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: nv: Write ESR_EL2 for injected nested SError exceptions\n\nkvm_inject_el2_exception() writes ESR_EL2 for synchronous exceptions\nbut not for SError. enter_exception64() does not write ESR_ELx for any\nexception type, so the constructed syndrome is dropped. A guest L2\nhypervisor taking a nested SError observes stale ESR_EL2.\n\nThis affects both kvm_inject_nested_serror() and the EASE path in\nkvm_inject_nested_sea().\n\nWrite ESR_EL2 for except_type_serror, matching except_type_sync.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80873"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09f35145f3a4aacea4d9b914ad895bf5af8fc4ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/29227821e2320ff6a174c91742b4ce221fe8d563"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2cb1f4578625e71f461d5c1ce70984193389cbb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T17:16:59Z"
+  }
+}

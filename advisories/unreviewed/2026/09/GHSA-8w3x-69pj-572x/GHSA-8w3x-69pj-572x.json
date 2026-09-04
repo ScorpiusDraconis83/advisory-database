@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8w3x-69pj-572x",
+  "modified": "2026-09-04T18:31:31Z",
+  "published": "2026-09-04T18:31:31Z",
+  "aliases": [
+    "CVE-2026-80866"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: avoid busy looping in tipc_exit_net()\n\nBlamed commit introduced a busy-wait loop in tipc_exit_net()\nto wait for pending UDP bearer cleanup works to complete:\n\n       while (atomic_read(&tn->wq_count))\n               cond_resched();\n\nThis loop can busy-wait for a long time if cond_resched() is a NOP. This\ntypically happens if the netns exit is executed by a high priority task,\nor under kernels configured without preemption (CONFIG_PREEMPT_NONE). In\nsuch cases, it wastes CPU cycles and can lead to soft lockups.\n\nFix this by replacing the busy loop with wait_var_event(), allowing the\nthread to sleep properly until the work queue count reaches zero.\n\nAccordingly, update cleanup_bearer() to use atomic_dec_and_test() and\nwake_up_var() to wake up the waiter when the count drops to zero.\n\nThis uses the global wait queue hash table, avoiding the need to bloat\nstruct tipc_net with a wait_queue_head_t. The atomic_dec_and_test()\nprovides the necessary memory barrier to ensure the wakeup is not missed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80866"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/522d1d950b9e3b68190a6de7534827c8dccedb73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1481c94e74c955e0448ddf46b8615a44d840c1e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T17:16:58Z"
+  }
+}

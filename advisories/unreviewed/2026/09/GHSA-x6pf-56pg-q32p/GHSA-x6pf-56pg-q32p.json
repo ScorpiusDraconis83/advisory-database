@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x6pf-56pg-q32p",
+  "modified": "2026-09-04T18:31:25Z",
+  "published": "2026-09-04T18:31:25Z",
+  "aliases": [
+    "CVE-2026-80771"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: nintendo: register input device after capabilities are set\n\ninput_register_device() exposes the device to userspace immediately.\nIn joycon_input_create() it was called before joycon_config_rumble()\nconfigures the FF_RUMBLE capability and the memless force-feedback\ndevice, so a concurrent EVIOCSFF could dereference a NULL dev->ff.\n\nRegistering early also means the initial udev event lacks button and\naxis information, which can make input managers ignore the device.\n\nMove input_register_device() to the end of joycon_input_create(), after\nall capabilities, the IMU input device and the force-feedback callbacks\nhave been configured.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80771"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/268679f501386ad46405d42c2bcf89384cb5e256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27dc4b8eadac73b3c3cc526c8547d8b4ae8528be"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3288bec1a21d582b504344380139cdc0e88ebe4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9fc7547f911ada09da33c5e204e5acda38e765a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d723bc1fe2e72b9252234e94c11af644ec477bf7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:18:02Z"
+  }
+}

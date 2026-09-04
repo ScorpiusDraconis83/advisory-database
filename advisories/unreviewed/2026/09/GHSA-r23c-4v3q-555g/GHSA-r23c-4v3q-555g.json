@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r23c-4v3q-555g",
+  "modified": "2026-09-04T18:31:29Z",
+  "published": "2026-09-04T18:31:29Z",
+  "aliases": [
+    "CVE-2026-80862"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-tcp: fix usage of page_frag_cache\n\nnvme uses page_frag_cache to preallocate PDU for each preallocated request\nof block device. Block devices are created in parallel threads,\nconsequently page_frag_cache is used in not thread-safe manner.\nThat leads to incorrect refcounting of backstore pages and premature free.\n\nThat can be catched by !sendpage_ok inside network stack:\n\nWARNING: CPU: 7 PID: 467 at ../net/core/skbuff.c:6931 skb_splice_from_iter+0xfa/0x310.\n\ttcp_sendmsg_locked+0x782/0xce0\n\ttcp_sendmsg+0x27/0x40\n\tsock_sendmsg+0x8b/0xa0\n\tnvme_tcp_try_send_cmd_pdu+0x149/0x2a0\nThen random panic may occur.\n\nFix that by serializing the usage of page_frag_cache.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80862"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a9750263ffacbbd2048a391fd4bd22e2146c57d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36ac05f7cfd59d90c597071304b14e98090d5dd1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/64561afb42d8390695bf810d9bbd087cbca00291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e4cf281558709b92ec2ca3054fe2ffc69266ef9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d19f98c79f1b7e09e4cdf5c20d626e571e487467"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:18:15Z"
+  }
+}

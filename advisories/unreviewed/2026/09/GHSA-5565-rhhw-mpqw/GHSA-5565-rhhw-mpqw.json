@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5565-rhhw-mpqw",
+  "modified": "2026-09-04T18:31:25Z",
+  "published": "2026-09-04T18:31:25Z",
+  "aliases": [
+    "CVE-2026-80779"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/ionic: avoid OOB TX partner lookup for hwstamp RXQ\n\nThe dedicated hardware timestamp RX queue is allocated with q->index\nequal to lif->ionic->nrxqs_per_lif. The normal txqcqs array only\ncontains the regular queue pairs, so using that index to set rxq->partner\ncan read one entry past txqcqs[] and then write through the derived\npointer.\nOnly link RX/TX partners for normal queue-pair indexes. Leave the hwstamp\nRX queue unpaired, and make the XDP_TX path abort cleanly if an RX queue\nhas no TX partner.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80779"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/39fc615e355b65b8d43be30da57aa95ae6eaf688"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/881a805a8029ba48c0ce81c6674910f8d83f7afb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d92255b405fb6f5acca408239ccd742e0a42c9cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea081b4435515ac7177eb598a3c0678d1b9e7911"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f3868046e8e2e761d4d943a232bd109ff22a7d5b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:18:03Z"
+  }
+}

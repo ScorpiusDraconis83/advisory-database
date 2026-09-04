@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5v22-vqg5-vrr8",
+  "modified": "2026-09-04T18:31:34Z",
+  "published": "2026-09-04T18:31:34Z",
+  "aliases": [
+    "CVE-2026-80912"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nselinux: reject an unclaimed class value in security_get_classes()\n\nsecurity_get_classes() sizes an array by p_classes.nprim and fills it at\nvalue - 1, so a class value the policy never defines leaves a NULL.\nsel_make_classes() passes every entry to sel_make_dir(), reaching the same\nd_alloc_name() dereference as the permission array. The class symbol table\nis allowed to be sparse (policydb_class_isvalid() exists to absorb that),\nbut this getter builds its own array straight from the hash table and has\nno such predicate.\n\nFail the lookup when a value went unclaimed instead of handing out the\nNULL. Conforming policies define every class they declare and are\nunaffected.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80912"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/099869e9343a5f8c22b58497f074b34f63cbf856"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22b05fec62c0fe9864cfceb52f7d0f3a34d9b1dd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/841aea4d5a25e16273d04cd07a74142b4687e03b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8a10899ea3c84b80de72ca8ee9039e9a5156c9a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0285bb152211c00900136b66d4b420c14a59094"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T18:18:01Z"
+  }
+}

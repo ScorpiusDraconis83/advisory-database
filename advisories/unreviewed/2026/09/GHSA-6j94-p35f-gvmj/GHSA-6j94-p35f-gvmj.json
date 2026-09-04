@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6j94-p35f-gvmj",
+  "modified": "2026-09-04T18:31:30Z",
+  "published": "2026-09-04T18:31:29Z",
+  "aliases": [
+    "CVE-2026-80864"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/rxe: Fix responder UAF on IB_QP_MAX_DEST_RD_ATOMIC modify_qp\n\nrxe_qp_from_attr() handles IB_QP_MAX_DEST_RD_ATOMIC outside the\nIB_QP_STATE path, so it holds no state_lock and runs while the responder\ntask rxe_receiver() (recv_task on rxe_wq) is live. A modify_qp() setting\nonly that attribute calls free_rd_atomic_resources() then\nalloc_rd_atomic_resources(), swapping qp->resp.resources[] while\nrxe_prepare_res()/find_resource() walk it; free_rd_atomic_resources()\nalso leaves the cached pointer qp->resp.res dangling. A local\nunprivileged user can race the free/realloc into a use-after-free in\nrxe_receiver() (local DoS).\n\nDrain recv_task around the swap with rxe_disable_task()/rxe_enable_task(),\nas rxe_qp_reset() already does when tearing this array down, re-enabling\nonly after alloc_rd_atomic_resources() succeeds so the responder never\nresumes against a NULL qp->resp.resources on the ENOMEM path. Also clear\nqp->resp.res in free_rd_atomic_resources(), like the rxe_resp.c\ncompletion paths.\n\nReproduced under KASAN; the slab-use-after-free in rxe_receiver() is gone.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80864"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0136b528b753c5a56e4d997ef20b86bb6750b8fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60dfd47929cd1e7070daa810d40ce538d888410d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f7014237405e7f032b5c53a82d9eccf6161c291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4cd32eb8bd2b0ffbdc7b1f3d82ce6a371f8f844"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ffa4f0be69656be1755090f02db38d49816585c6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:18:15Z"
+  }
+}

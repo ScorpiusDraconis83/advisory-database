@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7cxv-m2m2-8qf9",
+  "modified": "2026-09-04T18:31:27Z",
+  "published": "2026-09-04T18:31:27Z",
+  "aliases": [
+    "CVE-2026-80812"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: dummy: Check card index validity at probe\n\nsnd_dummy_probe() blindly trusts that the given devptr->id value is\nwithin the proper card index range.  It's OK for the devices the\ndriver itself creates at the module probe time, but if the device is\nbound manually via sysfs interface, this could be -1 as \"none\", and\nthis leads to OOB access for index[] and other parameters.\n\nAdd a sanity check for the card index and warn/correct it if it's a\nvalue out of the range.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80812"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02442d5fe8ee365a084b055d4fa81a0c1abfc3fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3dba0e92e18980cb5a4d70a9a263539ae4f0c7ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4d0892a90b57f0e89b274c3f3c51c2fa17937c88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/690b721b9595f9a43395fd4047a832c42b5b6078"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b20eb7ecbdaa3e649023fe41b177d90983ffb487"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b7579e86afcec932e169d10e2d603abed8dd2fdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9f10a001c243d1f069ebb0e2f4999ad4043a254"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f20c2c32ec1c5c3526f29a03b487c55a5890996c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:18:08Z"
+  }
+}

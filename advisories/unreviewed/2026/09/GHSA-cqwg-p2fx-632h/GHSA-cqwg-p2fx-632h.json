@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cqwg-p2fx-632h",
+  "modified": "2026-09-04T18:31:25Z",
+  "published": "2026-09-04T18:31:25Z",
+  "aliases": [
+    "CVE-2026-80769"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: rapoo: fix missing hid_is_usb() check\n\nto_usb_interface() can only be used on a hid_device whose parent is really\nUSB; uhid can create devices that identify as being on BUS_USB, but don't\nactually have a USB parent.\nFix the use of to_usb_interface() without a hid_is_usb() check.\n\nAdd a dependency on USB_HID for hid_is_usb(), as other HID drivers do; the\nalternative would be to provide a simple stub implementation on !USB_HID\nbuilds.\n\nI have verified that it is currently possible to trigger a kernel splat due\nto this bug in an ASAN build, and that this commit fixes the issue.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80769"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/49b6fd28fbcc0b6457e16e25c7617f63449d4808"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/99ed3febafe0452994620a4d819f595583289bec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b57af2448268c30c25509a832b6ff6dc27176b28"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T16:18:02Z"
+  }
+}

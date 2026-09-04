@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6r46-6gmq-67cv",
+  "modified": "2026-09-04T18:31:32Z",
+  "published": "2026-09-04T18:31:31Z",
+  "aliases": [
+    "CVE-2026-80867"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nalpha/PCI: Add security_locked_down() check to pci_mmap_resource()\n\nCurrently, Alpha's pci_mmap_resource() does not check\nsecurity_locked_down(LOCKDOWN_PCI_ACCESS) before allowing userspace to mmap\nPCI BARs.\n\nThe generic version has had this check since commit eb627e17727e (\"PCI:\nLock down BAR access when the kernel is locked down\") to prevent DMA\nattacks when the kernel is locked down.\n\nAdd the same check to Alpha's pci_mmap_resource().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/257b55dc3d18d7ef01f62a8ff7317871f7597e28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4de5ff924c0a8ef8166c1a68af9087826e1e8d61"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e368485a1ac19fbde0a8b6a332d4545ae72a8ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78a228f0aa0e9eba31955950c8a40a9945e2c8bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85f966b1120874fe530edec50d28373ceb06ebcd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94defb18ac792fd16407d5a52ad0d3f5055c4b43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3234efe21d4198945492cf7dba6859476f0f6ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed2cd1fee0ed16a1c2dff49175e65c641eb8ae2b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T17:16:58Z"
+  }
+}
