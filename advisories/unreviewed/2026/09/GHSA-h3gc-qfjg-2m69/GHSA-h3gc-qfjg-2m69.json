@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h3gc-qfjg-2m69",
+  "modified": "2026-09-04T15:36:15Z",
+  "published": "2026-09-04T15:36:15Z",
+  "aliases": [
+    "CVE-2026-85674"
+  ],
+  "details": "aider (aider-chat) automatically loads a .aider.conf.yml configuration file from the root of the git repository it is launched in. A crafted repository can set test-cmd (executed at startup) or lint-cmd (executed on the first file edit), which aider runs through a shell (subprocess with shell=True) without any user confirmation, LLM interaction, or API key. Consequently, a user who clones and runs aider inside an attacker-supplied repository achieves arbitrary command execution on their machine. The behavior is long-standing and was confirmed on 0.86.3.dev (current main).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85674"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Aider-AI/aider/issues/5254"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Aider-AI/aider"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Aider-AI/aider/blob/v0.86.2/aider/main.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/aider-0.86.2-remote-code-execution-via-aider-conf-yml"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T15:17:45Z"
+  }
+}

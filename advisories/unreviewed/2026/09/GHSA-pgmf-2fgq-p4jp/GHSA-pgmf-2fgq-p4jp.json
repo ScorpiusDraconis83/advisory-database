@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pgmf-2fgq-p4jp",
-  "modified": "2026-09-04T09:31:58Z",
+  "modified": "2026-09-04T15:36:06Z",
   "published": "2026-09-04T09:31:58Z",
   "aliases": [
     "CVE-2026-74853"
   ],
   "details": "The Pods  WordPress plugin before 3.3.9.2 does not restrict which functions a display callback may resolve to, allowing users with the author role and above to read arbitrary files from the server, including files outside the web root. Only sites using the restricted display-callback mode are affected, which is the automatic default on installations whose first Pods version predates 3.1.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-552"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-04T07:17:09Z"

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-756c-28v8-3vfp",
+  "modified": "2026-09-04T15:36:16Z",
+  "published": "2026-09-04T15:36:16Z",
+  "aliases": [
+    "CVE-2026-85687"
+  ],
+  "details": "surya 0.22.1 screenshot server contains an unauthenticated arbitrary file read vulnerability in the /info, /page, and /process routes that accept raw file_path parameters. Attackers can read any image or PDF file on the host by supplying arbitrary file paths to Image.open or pypdfium2.PdfDocument, obtaining rendered contents as base64 and using /info as an existence oracle.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85687"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/datalab-to/surya/issues/518"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/datalab-to/surya"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/datalab-to/surya/blob/v0.22.1/surya/scripts/screenshot_app.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/surya-0.22.1-unauthenticated-arbitrary-file-read-via-screenshot-server"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T15:17:46Z"
+  }
+}

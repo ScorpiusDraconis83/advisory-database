@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cm87-gp55-7cgj",
+  "modified": "2026-09-04T15:36:13Z",
+  "published": "2026-09-04T15:36:13Z",
+  "aliases": [
+    "CVE-2026-85620"
+  ],
+  "details": "Postgres MCP Pro 0.3.0 contains a restricted-mode bypass vulnerability where function-name validation is not applied to RangeFunction nodes in FROM clauses. Attackers can execute file-reading functions like pg_read_file through FROM-clause syntax to read arbitrary files despite restricted-mode protections.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85620"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/crystaldba/postgres-mcp/issues/178"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/crystaldba/postgres-mcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/crystaldba/postgres-mcp/blob/v0.3.0/src/postgres_mcp/sql/safe_sql.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/postgres-mcp-pro-0.3.0-restricted-mode-bypass-via-from-clause-function"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T15:17:42Z"
+  }
+}

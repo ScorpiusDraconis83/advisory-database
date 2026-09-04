@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qx8h-9fgq-w49h",
+  "modified": "2026-09-04T15:36:15Z",
+  "published": "2026-09-04T15:36:15Z",
+  "aliases": [
+    "CVE-2026-85669"
+  ],
+  "details": "potpie through 2.0.0 fails to verify user ownership on the POST /conversations/{conversation_id}/code-changes/sync endpoint. Authenticated attackers can write arbitrary file changes into other users' conversations by supplying their conversation IDs, allowing unauthorized modification of pending changes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85669"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/potpie-ai/potpie/issues/870"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/potpie-ai/potpie"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/potpie-ai/potpie/blob/v2.0.0/legacy/app/modules/conversations/conversations_router.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/potpie-through-2.0.0-missing-ownership-check-via-code-changes-sync"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T15:17:44Z"
+  }
+}

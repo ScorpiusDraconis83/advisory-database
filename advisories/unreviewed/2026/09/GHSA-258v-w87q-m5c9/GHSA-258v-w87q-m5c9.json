@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-258v-w87q-m5c9",
+  "modified": "2026-09-04T15:36:16Z",
+  "published": "2026-09-04T15:36:16Z",
+  "aliases": [
+    "CVE-2026-85693"
+  ],
+  "details": "Chatbot UI contains an authorization bypass vulnerability in the retrieval endpoint that allows authenticated attackers to access private file content belonging to other users by supplying arbitrary file UUIDs. The endpoint uses a service-role Supabase client that bypasses row-level security and fails to validate file ownership, enabling attackers to retrieve indexed content chunks from victim files through crafted POST requests.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mckaywrigley/chatbot-ui/issues/2028"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mckaywrigley/chatbot-ui"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mckaywrigley/chatbot-ui/blob/81328b61d2a4ab597a7a057be70e785cf756d9f8/app/api/retrieval/retrieve/route.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/chatbot-ui-cross-user-private-file-content-disclosure-via-retrieval-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T15:17:47Z"
+  }
+}

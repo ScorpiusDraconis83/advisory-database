@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g238-2mw5-49xx",
+  "modified": "2026-09-04T15:36:13Z",
+  "published": "2026-09-04T15:36:13Z",
+  "aliases": [
+    "CVE-2026-85618"
+  ],
+  "details": "ConvertX 0.17.0 contains an arbitrary file read vulnerability in the xelatex converter that allows authenticated users to read files by uploading LaTeX files with input directives. Attackers can upload .tex files containing \\\\input{path} or \\\\verbatiminput{path} directives to have the TeX engine read arbitrary files accessible to the server process and include them in downloadable PDF output.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85618"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/C4illin/ConvertX/issues/573"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/C4illin/ConvertX"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/C4illin/ConvertX/blob/v0.18.0/src/converters/xelatex.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/convertx-0.17.0-arbitrary-file-read-via-latex-input-directives"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T15:17:41Z"
+  }
+}

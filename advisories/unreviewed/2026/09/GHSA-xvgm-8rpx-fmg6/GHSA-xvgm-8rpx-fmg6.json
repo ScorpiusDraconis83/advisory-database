@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xvgm-8rpx-fmg6",
+  "modified": "2026-09-04T15:36:17Z",
+  "published": "2026-09-04T15:36:17Z",
+  "aliases": [
+    "CVE-2026-85698"
+  ],
+  "details": "Turso through 0.8.0-pre.8 contains an out-of-bounds read vulnerability in the table-leaf page reader that uses an attacker-controlled cell-count field without bounds validation. Attackers can craft a malicious database file with a modified cell count value to trigger an index-out-of-bounds panic when querying, causing denial of service in any application that opens untrusted database files.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85698"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tursodatabase/turso/issues/7473"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tursodatabase/turso"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tursodatabase/turso/blob/v0.8.0-pre.8/core/storage/pager.rs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/turso-through-0.8.0-pre.8-out-of-bounds-read-denial-of-service"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T15:17:48Z"
+  }
+}

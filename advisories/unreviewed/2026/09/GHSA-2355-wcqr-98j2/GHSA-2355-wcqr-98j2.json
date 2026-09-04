@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2355-wcqr-98j2",
-  "modified": "2026-09-04T09:31:58Z",
+  "modified": "2026-09-04T15:36:07Z",
   "published": "2026-09-04T09:31:58Z",
   "aliases": [
     "CVE-2026-82193"
   ],
   "details": "The WPvivid — Backup, Migration & Staging WordPress plugin before 0.9.134 does not validate a user supplied file name before using it to build a write path, allowing administrators to write files of permitted types to arbitrary locations on the server and to overwrite existing files.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:N/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-04T07:17:10Z"

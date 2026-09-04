@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cv99-jq97-cc3r",
-  "modified": "2026-09-04T09:31:58Z",
+  "modified": "2026-09-04T15:36:06Z",
   "published": "2026-09-04T09:31:58Z",
   "aliases": [
     "CVE-2026-79631"
   ],
   "details": "The WPFunnels  WordPress plugin before 3.13.0 does not restrict access to the log files it writes to a predictable location under the public uploads directory, allowing unauthenticated users to download customer order details and opt-in form submissions when logging is enabled.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-04T07:17:09Z"

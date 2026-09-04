@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wqg8-2mq9-qgvj",
+  "modified": "2026-09-04T15:36:10Z",
+  "published": "2026-09-04T15:36:10Z",
+  "aliases": [
+    "CVE-2026-74236"
+  ],
+  "details": "GFI Exinda AI before 7.6.5 contains a path traversal vulnerability in the diagnostic file deletion handler. The unlink_or_email_file() function accepts parameters prefixed with v_file_row_ and appends their values directly to a base directory path without sanitizing for directory traversal sequences. An authenticated attacker with Admin privileges can delete arbitrary files from the system in the context of root.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74236"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gfi.ai/products-and-solutions/network-management-solutions/exinda-networkorchestrator/resources/documentation/product-releases"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gfi-exinda-ai-path-traversal-via-diagnostic-file-deletion-handler"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T13:20:08Z"
+  }
+}

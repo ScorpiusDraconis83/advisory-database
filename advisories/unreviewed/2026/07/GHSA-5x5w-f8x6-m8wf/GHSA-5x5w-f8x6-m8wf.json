@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5x5w-f8x6-m8wf",
-  "modified": "2026-07-25T12:31:31Z",
+  "modified": "2026-09-04T15:35:50Z",
   "published": "2026-07-25T12:31:31Z",
   "aliases": [
     "CVE-2026-64330"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: tcpm: Validate SVID index in svdm_consume_modes()\n\nIn svdm_consume_modes(), the SVID value is read from pmdata->svids using\npmdata->svid_index as an array index without bounds validation:\n\n    paltmode->svid = pmdata->svids[pmdata->svid_index];\n\nIf pmdata->svid_index is driven beyond SVID_DISCOVERY_MAX (16), it results\nin an out-of-bounds read of the pmdata->svids array. Because pd_mode_data\nis embedded inside struct tcpm_port, indexing past svids reads into\nadjacent fields. In particular:\n- At index 16, it reads the altmodes count.\n- At index 18 and beyond, it reads into altmode_desc[], which contains\n  partner-supplied SVDM Discovery Modes VDOs.\n\nBy injecting a chosen SVID into altmode_desc[0].vdo and driving svid_index\nto 20, the partner can force paltmode->svid to be loaded with an arbitrary,\npartner- chosen SVID, which is then registered via\ntypec_partner_register_altmode().\n\nFix this by validating that pmdata->svid_index is non-negative and strictly\nless than pmdata->nsvids before accessing the pmdata->svids array inside\nsvdm_consume_modes().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-129"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:14Z"

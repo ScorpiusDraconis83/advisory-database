@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vpwp-65cp-hgqm",
-  "modified": "2026-07-25T12:31:34Z",
+  "modified": "2026-09-04T15:35:53Z",
   "published": "2026-07-25T12:31:34Z",
   "aliases": [
     "CVE-2026-64407"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btnxpuart: Fix out-of-bounds firmware read in nxp_recv_fw_req_v3()\n\nDuring the v3 firmware download the controller sends a v3_data_req with a\n32 bit offset and a 16 bit len. nxp_recv_fw_req_v3() checks only the lower\nbound of the offset and then sends firmware from that offset.\n\n  nxpdev->fw_dnld_v3_offset = offset - nxpdev->fw_v3_offset_correction;\n  serdev_device_write_buf(nxpdev->serdev, nxpdev->fw->data +\n                          nxpdev->fw_dnld_v3_offset, len);\n\nNothing checks that fw_dnld_v3_offset + len stays within nxpdev->fw->size,\nso a controller that asks for an offset or length past the firmware image\nmakes the driver read past the end of nxpdev->fw->data and send that\nmemory back over UART.\n\nnxp_recv_fw_req_v1() already bounds the same write. Add the equivalent\ncheck to the v3 path, reject the request when it falls outside the firmware\nimage, and zero len on the error path so the fw_v3_prev_sent bookkeeping at\nfree_skb stays consistent.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -36,8 +41,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:24Z"

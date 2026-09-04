@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3q9g-fh5w-hp67",
+  "modified": "2026-09-04T15:36:14Z",
+  "published": "2026-09-04T15:36:14Z",
+  "aliases": [
+    "CVE-2026-85664"
+  ],
+  "details": "Chroma 1.5.9 fails to validate maximum bounds on HNSW index parameters max_neighbors, ef_construction, and ef_search in collection-create requests. Unauthenticated attackers can supply arbitrarily large parameter values to exhaust server memory and cause denial of service during index compaction.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85664"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chroma-core/chroma/issues/7225"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chroma-core/chroma"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chroma-core/chroma/blob/1.5.9/rust/frontend/src/auth/mod.rs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/chroma-core/chroma/blob/1.5.9/rust/types/src/hnsw_configuration.rs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/chroma-1.5.9-unbounded-hnsw-index-parameters-memory-exhaustion"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T15:17:44Z"
+  }
+}

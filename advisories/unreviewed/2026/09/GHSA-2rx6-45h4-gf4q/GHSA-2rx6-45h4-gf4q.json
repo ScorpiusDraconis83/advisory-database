@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2rx6-45h4-gf4q",
+  "modified": "2026-09-04T15:36:13Z",
+  "published": "2026-09-04T15:36:13Z",
+  "aliases": [
+    "CVE-2026-85607"
+  ],
+  "details": "Blinko 1.8.7 contains an authorization bypass (IDOR) vulnerability in multiple tRPC procedures (message.list, message.update, message.delete, message.clearAfter in server/routerTrpc/message.ts and conversation.clearMessages in server/routerTrpc/conversation.ts). Although these procedures require authentication, they query the database by caller-supplied conversation or message ID without verifying that the resource belongs to the requesting account. Any authenticated user can therefore read another user's full AI chat history, modify individual message content, and delete or wipe entire conversations by enumerating sequential integer IDs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85607"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blinkospace/blinko/issues/1218"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blinkospace/blinko"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blinkospace/blinko/blob/1.8.8/server/routerTrpc/conversation.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blinkospace/blinko/blob/1.8.8/server/routerTrpc/message.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/blinko-1.8.7-cross-user-ai-conversation-read-and-write-via-message-trpc-router"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T15:17:41Z"
+  }
+}

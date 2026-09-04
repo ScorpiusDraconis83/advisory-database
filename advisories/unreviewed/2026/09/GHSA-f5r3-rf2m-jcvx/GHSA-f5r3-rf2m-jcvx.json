@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f5r3-rf2m-jcvx",
+  "modified": "2026-09-04T15:36:16Z",
+  "published": "2026-09-04T15:36:16Z",
+  "aliases": [
+    "CVE-2026-85696"
+  ],
+  "details": "SadTalker contains an OS command injection vulnerability in the video muxing process where uploaded audio filenames are interpolated into ffmpeg commands without proper escaping. Attackers can upload audio files with shell metacharacters in the filename to break out of quoted arguments and execute arbitrary system commands when video generation occurs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85696"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenTalker/SadTalker/issues/1043"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenTalker/SadTalker"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenTalker/SadTalker/blob/v0.0.2/src/utils/videoio.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sadtalker-os-command-injection-via-audio-filename"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T15:17:48Z"
+  }
+}

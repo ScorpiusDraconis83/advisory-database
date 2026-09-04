@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gpf9-4466-gc5g",
+  "modified": "2026-09-04T15:36:16Z",
+  "published": "2026-09-04T15:36:15Z",
+  "aliases": [
+    "CVE-2026-85685"
+  ],
+  "details": "AgentScope through 2.0.7.post1 contains a path traversal vulnerability in LocalWorkspace.add_skill that copies arbitrary server directories into the agent workspace via an unconfined source path parameter. Attackers can supply any directory path in the skill_path request parameter to copy files into the skills directory, making them accessible through the workspace skill listing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agentscope-ai/agentscope/issues/2069"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agentscope-ai/agentscope"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agentscope-ai/agentscope/blob/v2.0.7.post1/src/agentscope/workspace/_local_workspace.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/agentscope-through-2.0.7-post1-arbitrary-directory-copy-via-add-skill"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T15:17:46Z"
+  }
+}

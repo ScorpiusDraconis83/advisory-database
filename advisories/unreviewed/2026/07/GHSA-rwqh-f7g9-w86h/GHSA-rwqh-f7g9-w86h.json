@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rwqh-f7g9-w86h",
-  "modified": "2026-07-25T12:31:31Z",
+  "modified": "2026-09-04T15:35:50Z",
   "published": "2026-07-25T12:31:31Z",
   "aliases": [
     "CVE-2026-64328"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_fs: Fix DMA fence leak\n\nIn ffs_dmabuf_transfer(), a ffs_dma_fence object is kmalloc'd, with the\nunderlying dma_fence later initialized by dma_fence_init(), which sets\nits kref counter to 1. Then, dma_resv_add_fence() gets a second\nreference, and a pointer to the ffs_dma_fence is passed as the\nusb_request's \"context\" field.\n\nThe dma-resv mechanism will manage the second reference, but the first\nreference is never properly released; the ffs_dmabuf_cleanup() function\ndecreases the reference count, but only to balance with the reference\ngrab in ffs_dmabuf_signal_done().\n\nThe code will then slowly leak memory as more ffs_dma_fence objects are\ncreated without being ever freed.\n\nAddress this issue by transferring ownership of the fence to the DMA\nreservation object, by calling dma_fence_put() right after\ndma_resv_add_fence(). The ffs_dma_fence then gets properly discarded\nafter being signalled.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:14Z"

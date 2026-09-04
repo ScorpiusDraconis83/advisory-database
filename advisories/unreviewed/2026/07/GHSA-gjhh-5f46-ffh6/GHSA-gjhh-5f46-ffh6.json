@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gjhh-5f46-ffh6",
-  "modified": "2026-07-25T12:31:31Z",
+  "modified": "2026-09-04T15:35:50Z",
   "published": "2026-07-25T12:31:31Z",
   "aliases": [
     "CVE-2026-64327"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_fs: Initialize epfile->in early to fix endpoint direction checks\n\nWhen parsing endpoint descriptors, ffs_data_got_descs() generates the\neps_addrmap which contains the endpoint direction. However, epfile->in\nwas previously only populated in ffs_func_eps_enable() which executes\nupon USB host connection. As a result, early userspace ioctls like\nFUNCTIONFS_DMABUF_ATTACH that run before the host connects would see\nepfile->in as 0, leading to incorrect DMA directions.\n\nBy moving the initialization to ffs_epfiles_create(), epfile->in is\naccurate before userspace opens the endpoint files.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:14Z"

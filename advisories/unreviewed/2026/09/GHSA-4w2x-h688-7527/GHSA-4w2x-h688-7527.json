@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4w2x-h688-7527",
-  "modified": "2026-09-04T09:31:58Z",
+  "modified": "2026-09-04T15:36:06Z",
   "published": "2026-09-04T09:31:58Z",
   "aliases": [
     "CVE-2026-79632"
   ],
   "details": "The WPFunnels  WordPress plugin before 3.13.0 does not perform any authorisation or nonce check in one of its opt-in submission handlers, and takes the notification recipients and subject from the request, allowing unauthenticated users to make the site send emails to arbitrary recipients with an arbitrary subject.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-04T07:17:10Z"

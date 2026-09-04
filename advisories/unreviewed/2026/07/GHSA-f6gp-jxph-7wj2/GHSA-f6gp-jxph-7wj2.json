@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f6gp-jxph-7wj2",
-  "modified": "2026-07-25T12:31:34Z",
+  "modified": "2026-09-04T15:35:53Z",
   "published": "2026-07-25T12:31:34Z",
   "aliases": [
     "CVE-2026-64404"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: avoid NULL deref of conn in iso_conn_big_sync()\n\niso_conn_big_sync() drops the socket lock to call hci_get_route() and\nthen re-acquires it, but dereferences iso_pi(sk)->conn->hcon afterwards\nwithout re-checking that conn is still valid.\n\nWhile the lock is dropped, the connection can be torn down under the\nsame socket lock: iso_disconn_cfm() -> iso_conn_del() -> iso_chan_del()\nsets iso_pi(sk)->conn to NULL (and the broadcast teardown path can also\nclear conn->hcon on its own). When iso_conn_big_sync() re-acquires the\nlock and reads conn->hcon, conn may be NULL, causing a NULL pointer\ndereference (hcon is the first member of struct iso_conn).\n\nThis path is reached from iso_sock_recvmsg() for a PA-sync broadcast\nsink socket (BT_SK_DEFER_SETUP | BT_SK_PA_SYNC), so the dropped-lock\nwindow can race with connection teardown driven by controller events.\n\nRe-validate iso_pi(sk)->conn and its hcon after re-acquiring the socket\nlock and bail out if the connection went away, as already done in the\nsibling iso_sock_rebind_bc().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -32,8 +37,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:24Z"

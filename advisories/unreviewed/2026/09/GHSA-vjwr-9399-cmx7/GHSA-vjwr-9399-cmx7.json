@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vjwr-9399-cmx7",
+  "modified": "2026-09-04T15:36:13Z",
+  "published": "2026-09-04T15:36:13Z",
+  "aliases": [
+    "CVE-2026-85624"
+  ],
+  "details": "Blinko 1.8.7 contains a cross-user private note disclosure vulnerability in the noteReferenceList procedure that performs no ownership verification on supplied note identifiers. Authenticated attackers can enumerate sequential note IDs and retrieve complete content of other users' private notes including attachments and tags.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85624"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blinkospace/blinko/issues/1217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blinkospace/blinko"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/blinkospace/blinko/blob/1.8.8/server/routerTrpc/note.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/blinko-1.8.7-cross-user-private-note-disclosure-via-notereferencelist"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T15:17:42Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f3xc-8q46-qff6",
-  "modified": "2026-09-04T09:31:58Z",
+  "modified": "2026-09-04T15:36:07Z",
   "published": "2026-09-04T09:31:58Z",
   "aliases": [
     "CVE-2026-82186"
   ],
   "details": "The WPLP Cookie Consent  WordPress plugin before 4.4.2 does not properly validate a pagination parameter before using it in a SQL query, allowing users with administrator privileges to perform SQL injection attacks.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-04T07:17:10Z"
