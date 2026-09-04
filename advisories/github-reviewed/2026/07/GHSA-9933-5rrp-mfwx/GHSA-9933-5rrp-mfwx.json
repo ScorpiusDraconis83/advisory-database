@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9933-5rrp-mfwx",
-  "modified": "2026-07-07T15:32:56Z",
+  "modified": "2026-09-04T19:24:54Z",
   "published": "2026-07-07T12:31:35Z",
   "aliases": [
     "CVE-2026-48892"
   ],
+  "summary": "Apache Airflow exposes secrets backend credentials through the Config API",
   "details": "The Config API in Apache Airflow surfaced per-key secrets-backend overrides (environment variables like `AIRFLOW__SECRETS__BACKEND_KWARG__SECRET_ID` and `AIRFLOW__WORKERS__SECRETS_BACKEND_KWARG__SECRET_ID`) as synthetic config options whose option names were not in `sensitive_config_values`, so the masker did not redact them. An authenticated UI/API user with Config read permission could retrieve plaintext secrets-backend credentials (Vault `role_id` / `secret_id`, etc.) from the Config API output. Affects deployments that configure secrets backends via per-key environment overrides. Users are advised to upgrade to `apache-airflow` 3.3.0 or later.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "apache-airflow"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.3.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -22,6 +43,18 @@
     {
       "type": "WEB",
       "url": "https://github.com/apache/airflow/pull/67622"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/commit/f0f978d2736891a2f9e9d2954e87fc358e1ef4e3"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/airflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/apache-airflow/PYSEC-2026-2087.yaml"
     },
     {
       "type": "WEB",
@@ -37,8 +70,8 @@
       "CWE-200"
     ],
     "severity": "MODERATE",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-04T19:24:54Z",
     "nvd_published_at": "2026-07-07T10:16:41Z"
   }
 }

@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3322-mjxh-9mp5",
-  "modified": "2026-07-07T15:32:56Z",
+  "modified": "2026-09-04T19:24:07Z",
   "published": "2026-07-07T12:31:35Z",
   "aliases": [
     "CVE-2026-48891"
   ],
+  "summary": "Apache Airflow exposes unreadable DAG identifiers in the scheduling dependencies graph",
   "details": "A bug in Apache Airflow's `/ui/dependencies` scheduling graph endpoint applied the caller's readable-Dag filter to the top-level serialized Dag key but still emitted referenced Dag IDs through the `dep.source` and `dep.target` fields of trigger / sensor dependency entries. An authenticated UI user with read permission on some Dags could enumerate the identifiers of other Dags they were not authorized to read by inspecting the dependency graph for trigger / sensor references. Affects deployments that rely on per-Dag read scoping to keep Dag identifiers private across teams. This is a residual gap in the fix for CVE-2026-28563, which filtered the top-level Dag key but did not propagate the filter into the trigger / sensor dep-source / dep-target fields. Users who already upgraded for CVE-2026-28563 should additionally upgrade to `apache-airflow` 3.3.0 or later to cover the residual trigger / sensor dependency leak.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "apache-airflow"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.3.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -22,6 +43,18 @@
     {
       "type": "WEB",
       "url": "https://github.com/apache/airflow/pull/67627"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/commit/e61c9bac30a7b1a7f68589629f10c4cb247c683e"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/airflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/apache-airflow/PYSEC-2026-2086.yaml"
     },
     {
       "type": "WEB",
@@ -37,8 +70,8 @@
       "CWE-200"
     ],
     "severity": "MODERATE",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-04T19:24:07Z",
     "nvd_published_at": "2026-07-07T10:16:41Z"
   }
 }
