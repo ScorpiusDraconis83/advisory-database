@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-22hf-vx2v-gjff",
+  "modified": "2026-09-04T19:28:48Z",
+  "published": "2026-07-07T12:31:36Z",
+  "aliases": [
+    "CVE-2026-49487"
+  ],
+  "summary": "Apache Airflow exposes deferred trigger kwargs in task-instance API responses",
+  "details": "In Apache Airflow before 3.3.0, the REST API task-instance detail and list endpoints returned a deferred task's trigger kwargs without masking. When a deferred operator passed a secret (for example a provider API key) into its trigger, any authenticated user with DAG-scoped task-instance read access for that DAG could read that secret in clear text while the task was deferred.\nUsers should upgrade to apache-airflow 3.3.0 or later, which masks sensitive values in trigger kwargs returned by the API.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "apache-airflow"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.3.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49487"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/pull/67868"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/airflow/commit/9101aa66754af052ba5010a5fce9f8fa4140e6c7"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/airflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypa/advisory-database/tree/main/vulns/apache-airflow/PYSEC-2026-2088.yaml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/qlw6pozlzlfhkvmbgqsbjlq6vj4v0pc4"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/07/07/6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-04T19:28:48Z",
+    "nvd_published_at": "2026-07-07T10:16:41Z"
+  }
+}
