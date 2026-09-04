@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wfgh-7j4x-4xjq",
+  "modified": "2026-09-04T00:31:09Z",
+  "published": "2026-09-04T00:31:09Z",
+  "aliases": [
+    "CVE-2026-85441"
+  ],
+  "details": "MOOS core-moos through 10.4.0 fails to validate that serialized string lengths are non-negative in CMOOSMsg::operator>>. Unauthenticated attackers can send a crafted message with a negative length value to the MOOSDB port, causing an unhandled exception that terminates the database process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85441"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos/pull/74"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos/commit/04c92981091fdaa2ff85e2ba7eff94f6288bdbaf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos/blob/ec9c77c68fcbdef8f5e4c60fe243acd223433f0c/Core/libMOOS/Comms/MOOSMsg.cpp#L453"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/moos-core-moos-through-10.4.0-moosdb-denial-of-service-via-negative-serialized-string-length"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-195"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T23:17:23Z"
+  }
+}

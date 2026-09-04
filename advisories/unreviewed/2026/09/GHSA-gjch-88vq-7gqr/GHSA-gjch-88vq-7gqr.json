@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gjch-88vq-7gqr",
+  "modified": "2026-09-04T00:31:10Z",
+  "published": "2026-09-04T00:31:10Z",
+  "aliases": [
+    "CVE-2026-85456"
+  ],
+  "details": "MOOS-IvP through 24.8.1 fails to properly validate variable names extracted from alog files in the SplitHandler, allowing attackers to write files outside the split directory. Attackers can supply crafted alog files with backslash sequences in variable names to escape the output directory and append to arbitrary files on Windows systems.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85456"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moos-ivp/moos-ivp/pull/137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moos-ivp/moos-ivp/commit/6f0619e905b325d6b88f76425673045c6e4f6f94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moos-ivp/moos-ivp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moos-ivp/moos-ivp/blob/1de9ae146cd63c209e8c3fd81611a4ed2472971b/ivp/src/lib_logutils/SplitHandler.cpp#L189"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/moos-ivp-through-24.8.1-alog-splitting-path-traversal-on-windows"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T23:17:25Z"
+  }
+}

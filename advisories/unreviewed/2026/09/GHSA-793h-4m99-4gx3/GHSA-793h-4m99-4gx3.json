@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-793h-4m99-4gx3",
+  "modified": "2026-09-04T00:31:10Z",
+  "published": "2026-09-04T00:31:10Z",
+  "aliases": [
+    "CVE-2026-85454"
+  ],
+  "details": "MOOS core-moos through 10.4.0 contains a buffer overflow vulnerability in CMOOSSerialPort::GetTelegram() that writes a NUL terminator one byte past the serial telegram stack buffer. Attackers controlling the serial line can send a full-length telegram to trigger the off-by-one write, corrupting the stack and potentially enabling code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:P/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85454"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos/pull/73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos/commit/befb04df2039d0080715ea35f56268092db4ec0f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos/blob/ec9c77c68fcbdef8f5e4c60fe243acd223433f0c/Core/libMOOS/Utils/MOOSSerialPort.cpp#L595"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/moos-core-moos-through-10.4.0-off-by-one-buffer-overflow-in-serial-telegram-handling"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-193"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T23:17:25Z"
+  }
+}

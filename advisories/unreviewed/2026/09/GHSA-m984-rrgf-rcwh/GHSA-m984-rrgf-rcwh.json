@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m984-rrgf-rcwh",
+  "modified": "2026-09-04T00:31:09Z",
+  "published": "2026-09-04T00:31:09Z",
+  "aliases": [
+    "CVE-2026-85440"
+  ],
+  "details": "MOOS core-moos through 10.4.0 contains a pre-authentication heap overflow vulnerability in MOOSCommPkt packet handling that allows remote attackers to write arbitrary data by declaring a negative packet length. Attackers can exploit the signed integer check in InflateTo() and negative size conversion in recv() to overflow a four-byte heap buffer during the HandShake phase before authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85440"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos/pull/82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos/commit/96c49c5cdda6e07ee734a5324e8d25ba5a7f2d7a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos/blob/ec9c77c68fcbdef8f5e4c60fe243acd223433f0c/Core/libMOOS/Comms/MOOSCommPkt.cpp#L67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/moos-core-moos-through-10.4.0-moosdb-pre-authentication-heap-overflow-via-negative-packet-length"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T23:17:23Z"
+  }
+}

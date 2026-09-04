@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7674-4w38-m6r3",
+  "modified": "2026-09-04T00:31:08Z",
+  "published": "2026-09-04T00:31:08Z",
+  "aliases": [
+    "CVE-2026-85435"
+  ],
+  "details": "MOOS-IvP uFldNodeBroker through 24.8.1 fails to validate the source of TRY_SHORE_HOST messages on the vehicle bus, allowing any publisher to enroll attacker-controlled shore routes. Attackers can publish malicious shore route messages to receive bridged vehicle traffic including sensor data and control information.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85435"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moos-ivp/moos-ivp/pull/124"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moos-ivp/moos-ivp/commit/d66394f576cae0c63c0a777760e1595802b83edf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moos-ivp/moos-ivp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moos-ivp/moos-ivp/blob/1de9ae146cd63c209e8c3fd81611a4ed2472971b/ivp/src/uFldNodeBroker/NodeBroker.cpp#L97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/moos-ivp-through-24.8.1-ufldnodebroker-unauthenticated-shore-route-enrollment"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T23:17:22Z"
+  }
+}

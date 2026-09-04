@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w2px-4923-958m",
+  "modified": "2026-09-04T00:31:10Z",
+  "published": "2026-09-04T00:31:10Z",
+  "aliases": [
+    "CVE-2026-85450"
+  ],
+  "details": "MOOS core-moos through 10.4.0 contains a denial of service vulnerability in the MOOSDB HTTP server that creates unbounded connections and threads without limits. Attackers can open many connections and send endless header data to exhaust server threads and memory, causing service unavailability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85450"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos/pull/79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos/commit/dfef92b3bc31886bc47e4d680aef583b78cb8d72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/themoos/core-moos/blob/ec9c77c68fcbdef8f5e4c60fe243acd223433f0c/Core/libMOOS/DB/HTTPConnection.cpp#L167"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/moos-core-moos-through-10.4.0-moosdb-http-server-resource-exhaustion"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-03T23:17:25Z"
+  }
+}
