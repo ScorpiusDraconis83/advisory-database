@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jmfx-96g9-5g4f",
+  "modified": "2026-09-04T21:31:50Z",
+  "published": "2026-09-04T21:31:50Z",
+  "aliases": [
+    "CVE-2026-80118"
+  ],
+  "details": "PassMark PerformanceTest before 11.1 build 1012, BurnInTest before 11.1 build 1000, and OSForensics before 11.1 build 1016 contain an unauthenticated physical memory disclosure in DirectIo64.sys, reachable by unprivileged local users through a single IOCTL with no caller-identity check. The handler writes a crash-dump-format (PAGEDU64) image of all physical memory to a caller-supplied file path in the SYSTEM context, allowing a standard user to create files in locations they cannot otherwise write and to recover memory belonging to processes of other users. The image is preceded by a header that exposes the kernel loaded-module list, active-process list and PFN database pointers, defeating KASLR. The same handler also dereferences the return value of an internal kernel-structure locator without a NULL check; that locator returns NULL on three distinct failure paths, and a kernel crash results on builds where any of those paths is taken.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://dkom.dev/posts/directio64-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/floppywiggler/directio64-disclosure"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.osforensics.com/whats-new.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.passmark.com/products/burnintest/history.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.passmark.com/products/performancetest/history.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/passmark-performancetest-burnintest-and-osforensics-kernel-null-pointer-dereference-via-directio64-sys-ioctl"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T19:17:28Z"
+  }
+}
