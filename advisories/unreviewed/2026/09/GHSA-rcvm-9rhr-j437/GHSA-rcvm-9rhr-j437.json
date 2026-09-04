@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rcvm-9rhr-j437",
-  "modified": "2026-09-03T15:32:16Z",
+  "modified": "2026-09-04T06:31:20Z",
   "published": "2026-09-03T15:32:15Z",
   "aliases": [
     "CVE-2026-80748"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmmc: loongson2: Fix sg iteration in data reorder functions\n\nIn ls2k0500_mmc_reorder_cmd_data() and ls2k2000_mmc_reorder_cmd_data(),\nthe for_each_sg() macro already iterates over the scatterlist entries,\nwith 'sg' pointing to the current entry. However, the code incorrectly\nuses '&sg[i]' and 'sg_dma_len(&sg[i])' inside the loop, which treats\n'sg' as an array base and indexes it again, leading to access of\nwrong sg entries (or out-of-bounds if the list is not an array).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-03T13:06:14Z"

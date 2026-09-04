@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g6c9-vf65-gggg",
-  "modified": "2026-09-03T15:32:15Z",
+  "modified": "2026-09-04T06:31:20Z",
   "published": "2026-09-03T15:32:15Z",
   "aliases": [
     "CVE-2026-80736"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nthunderbolt: Fix bandwidth group reservation indexing\n\nValid bandwidth group IDs range from 1 through MAX_GROUPS, while Group\nID 0 is reserved. tb_consumed_dp_bandwidth() uses the Group ID directly\nto index its local group_reserved[] array.\n\nThe array currently has MAX_GROUPS entries, so its valid indices are 0\nthrough MAX_GROUPS - 1. Group ID MAX_GROUPS therefore accesses one\nelement past the end, and the final group's reserved bandwidth is not\nincluded when the array is summed.\n\nGive group_reserved[] MAX_GROUPS + 1 entries so direct Group ID\nindexing covers the reserved ID 0 and valid IDs 1 through MAX_GROUPS.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-03T13:06:12Z"

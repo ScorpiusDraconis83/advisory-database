@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-r977-99pr-5gm5",
-  "modified": "2026-09-03T15:32:16Z",
+  "modified": "2026-09-04T06:31:20Z",
   "published": "2026-09-03T15:32:16Z",
   "aliases": [
     "CVE-2026-80750"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npmdomain: mediatek: fix remaining %pOF after of_node_put()\n\nscpsys_get_bus_protection_legacy() looks up several legacy bus\nprotection regmaps from device-tree nodes.\n\nTwo error paths put the device node before checking whether the regmap\nlookup failed, but still pass that node to dev_err_probe() with %pOF on\nfailure. If of_node_put() drops the last reference, the later %pOF\nformatting can dereference a freed device node.\n\nKeep the node reference until after the error message has been emitted in\nthe infracfg and SMI lookup paths. Also drop the SMI node before\nreturning when the SMI phandle is missing.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-03T13:06:14Z"

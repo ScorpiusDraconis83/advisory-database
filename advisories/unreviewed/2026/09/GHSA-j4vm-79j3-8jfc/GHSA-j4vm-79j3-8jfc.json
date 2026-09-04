@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j4vm-79j3-8jfc",
-  "modified": "2026-09-03T15:32:15Z",
+  "modified": "2026-09-04T06:31:20Z",
   "published": "2026-09-03T15:32:15Z",
   "aliases": [
     "CVE-2026-80737"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: amba-pl011: synchronize DMA teardown\n\ndmaengine_terminate_all() does not wait for a running callback, so the TX\ncallback can still touch the TX buffer after it is freed. The RX poll\ntimer reads the RX buffers without the port lock.\n\nSwitch to dmaengine_terminate_sync() and delete the RX timer before\nfreeing the buffers.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-03T13:06:12Z"
