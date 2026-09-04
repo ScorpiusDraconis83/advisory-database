@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8297-6g53-8gp5",
+  "modified": "2026-09-04T12:30:55Z",
+  "published": "2026-09-04T12:30:55Z",
+  "aliases": [
+    "CVE-2026-81666"
+  ],
+  "details": "An integer overflow was found in Corosync's handling of membership commit token messages. The length-validation check for these messages can be bypassed on 32-bit systems due to an integer overflow in the calculation of the expected message length, allowing a crafted network packet to trigger an out-of-bounds memory access that crashes the Corosync daemon. This results in a denial of service for the affected cluster node. The overflow does not occur on 64-bit systems, where the length calculation is correctly performed in 64-bit arithmetic.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81666"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-81666"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2524923"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T10:17:13Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v453-9p95-fp34",
+  "modified": "2026-09-04T12:31:01Z",
+  "published": "2026-09-04T12:31:01Z",
+  "aliases": [
+    "CVE-2026-85602"
+  ],
+  "details": "The Grav Form plugin (getgrav/grav-plugin-form) versions 8.0.6 through 9.1.19 select the reCAPTCHA version to validate based solely on which response field key is present in the submitted payload. On a site configured for reCAPTCHA v3, an anonymous attacker can place their v3 token under the v2 field name (g-recaptcha-response instead of token), causing validation to use the v2 branch, which never applies the score threshold or verifies the expected action. This results in a complete bypass of reCAPTCHA v3 bot protection. The issue is fixed in version 9.1.20.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-89j6-8h38-2cc3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85602"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-form-plugin-before-9.1.20-recaptcha-v3-authentication-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-807"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T12:17:23Z"
+  }
+}
