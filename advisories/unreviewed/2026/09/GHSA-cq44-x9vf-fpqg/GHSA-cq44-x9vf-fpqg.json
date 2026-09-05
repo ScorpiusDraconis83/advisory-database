@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cq44-x9vf-fpqg",
+  "modified": "2026-09-05T21:31:20Z",
+  "published": "2026-09-05T21:31:20Z",
+  "aliases": [
+    "CVE-2026-67278"
+  ],
+  "details": "MikroTik RouterOS accepts malformed RSA/PKCS#1 v1.5 signatures during X.509 validation. Because its trust store includes an e=3 root CA, an attacker controlling or redirecting an outbound RouterOS TLS connection can use the root’s public certificate - without its private key - to forge a trusted intermediate and issue certificates for arbitrary hostnames, enabling TLS server impersonation.\n\nThis issue was fixed in versions: 6.49.21 (Long-term), 7.23.4 (Long-term) and 7.24.2 (Stable)",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67278"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2026/09/mikrotik-routeros-cve"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2026/09/vulnerabilities-in-mikrotik-routeros-actively-exploited"
+    },
+    {
+      "type": "WEB",
+      "url": "https://forum.mikrotik.com/t/6-49-21-long-term-is-released/272802"
+    },
+    {
+      "type": "WEB",
+      "url": "https://forum.mikrotik.com/t/7-23-4-long-term-is-released/272801"
+    },
+    {
+      "type": "WEB",
+      "url": "https://forum.mikrotik.com/t/7-24-2-stable-is-released/272800"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mikrotik.com/supportsec/september-2026-vulnerability"
+    },
+    {
+      "type": "WEB",
+      "url": "https://npratley.net/reversing-mikrotiks-silent-patch-the-routeros-7-23-4-fix-they-wouldnt-explain"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-347"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T20:17:18Z"
+  }
+}
