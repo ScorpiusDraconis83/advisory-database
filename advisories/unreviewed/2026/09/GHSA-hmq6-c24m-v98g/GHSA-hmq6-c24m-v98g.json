@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hmq6-c24m-v98g",
+  "modified": "2026-09-05T06:32:38Z",
+  "published": "2026-09-05T06:32:38Z",
+  "aliases": [
+    "CVE-2026-86145"
+  ],
+  "details": "PCRE2 before 10.48 allows a pcre2_dfa_match out-of-bounds write because reuse of a cached workspace block, in a recursive DFA matching workspace, lacks a size check (even though a newly allocated block, for the same purpose, does have a size check). This outcome requires an attacker-controlled regular expression, or a recursive pattern in conjunction with a small heap limit (this can be set through the API).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/PCRE2Project/pcre2/security/advisories/GHSA-3r4p-g7gg-ppmf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86145"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.48"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-424"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T06:17:10Z"
+  }
+}

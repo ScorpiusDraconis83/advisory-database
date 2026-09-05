@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3x7x-qm6m-gh57",
+  "modified": "2026-09-05T06:32:37Z",
+  "published": "2026-09-05T06:32:37Z",
+  "aliases": [
+    "CVE-2025-14945"
+  ],
+  "details": "The Events Manager - Calendar, Bookings, Tickets, and more! plugin for WordPress is vulnerable to Stored Cross-Site Scripting via event attribute values in all versions up to, and including, 7.3.3. This is due to insufficient input sanitization when storing attribute values (using only `wp_unslash()` without sanitization) and lack of output escaping when rendering the '#_ATT{key}' placeholder. This makes it possible for authenticated attackers, with Author-level access and above, or unauthenticated attackers when anonymous event submissions are enabled, to inject arbitrary web scripts that execute when any user views the affected event page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14945"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/events-manager/trunk/classes/em-event.php#L1206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/events-manager/trunk/classes/em-event.php#L2608"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3567065"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a1985eb5-bfb5-4220-a4f8-fcfa84beae6a?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T06:17:09Z"
+  }
+}
