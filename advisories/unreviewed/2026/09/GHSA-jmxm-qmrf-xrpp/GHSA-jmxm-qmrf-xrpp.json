@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jmxm-qmrf-xrpp",
+  "modified": "2026-09-05T12:31:26Z",
+  "published": "2026-09-05T12:31:26Z",
+  "aliases": [
+    "CVE-2026-86122"
+  ],
+  "details": "Rowboat through 0.9.1 fails to validate custom MCP server and webhook URLs, allowing authenticated users to configure arbitrary destinations. Attackers can point these URLs at internal services and cloud metadata endpoints to perform server-side request forgery and enumerate internal network topology.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86122"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rowboatlabs/rowboat/issues/621"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rowboatlabs/rowboat"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rowboatlabs/rowboat/blob/v0.9.1/apps/rowboat/src/application/lib/agents-runtime/agent-tools.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rowboatlabs/rowboat/blob/v0.9.1/apps/rowboat/src/application/use-cases/projects/add-custom-mcp-server.use-case.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rowboat-through-0.9.1-server-side-request-forgery-via-custom-mcp-server"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T10:16:43Z"
+  }
+}

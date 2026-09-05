@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7xvg-gx2w-r5cc",
+  "modified": "2026-09-05T12:31:26Z",
+  "published": "2026-09-05T12:31:26Z",
+  "aliases": [
+    "CVE-2026-86123"
+  ],
+  "details": "SQL Chat contains four unauthenticated API endpoints that accept client-supplied database connection parameters and execute arbitrary SQL queries against attacker-specified hosts. Attackers can connect to internal databases, execute SQL commands, enumerate schemas, and pivot into the server's network without authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sqlchat/sqlchat/issues/189"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sqlchat/sqlchat"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sqlchat/sqlchat/blob/665af875413affadfeefff81794f1d7758782bc2/src/pages/api/connection/execute.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sqlchat/sqlchat/blob/665af875413affadfeefff81794f1d7758782bc2/src/pages/api/connection/test.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sql-chat-unauthenticated-database-connection-proxy-in-the-api-connection-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T10:16:43Z"
+  }
+}

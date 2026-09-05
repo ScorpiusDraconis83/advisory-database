@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pj2x-fr4j-wrxq",
+  "modified": "2026-09-05T12:31:26Z",
+  "published": "2026-09-05T12:31:25Z",
+  "aliases": [
+    "CVE-2026-86114"
+  ],
+  "details": "Arcane versions before 2.0.0 fail to properly restrict template operations, allowing default user role accounts to create, modify, and delete compose templates including instance-wide defaults. Attackers can inject malicious container configurations with privileged settings or host path mounts that execute with administrative privileges when deployed by administrators.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86114"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getarcaneapp/arcane/commit/1500646aa91f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/geo-chen/oss/blob/main/arcane.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getarcaneapp/arcane"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getarcaneapp/arcane/blob/v1.19.5/backend/api/handlers/templates.go"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getarcaneapp/arcane/releases/tag/v2.0.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/arcane-before-2.0.0-missing-administrator-authorization-on-the-compose-template-mutation-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T10:16:42Z"
+  }
+}

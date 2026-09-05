@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-phg3-p22v-rp9q",
+  "modified": "2026-09-05T12:31:25Z",
+  "published": "2026-09-05T12:31:25Z",
+  "aliases": [
+    "CVE-2026-86111"
+  ],
+  "details": "BookWyrm through 0.9.1 fails to validate user visibility permissions in the status edit endpoint, allowing authenticated attackers to read followers-only and direct-message reviews by enumerating sequential status IDs. Attackers can access the raw content of restricted statuses through the edit view, bypassing the privacy protections documented for these message types.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86111"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bookwyrm-social/bookwyrm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bookwyrm-social/bookwyrm/blob/v0.9.1/bookwyrm/templates/snippets/create_status/content_field.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bookwyrm-social/bookwyrm/blob/v0.9.1/bookwyrm/views/status.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/geo-chen/oss/blob/main/bookwyrm.md#finding-1-authenticated-idor-in-editstatus-exposes-private-review-comment-and-quotation-content"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bookwyrm-through-0.9.1-insecure-direct-object-reference-in-editstatus-exposes-followers-only-and-direct-statuses"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T10:16:40Z"
+  }
+}

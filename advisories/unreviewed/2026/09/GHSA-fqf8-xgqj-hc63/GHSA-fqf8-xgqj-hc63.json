@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fqf8-xgqj-hc63",
+  "modified": "2026-09-05T12:31:28Z",
+  "published": "2026-09-05T12:31:28Z",
+  "aliases": [
+    "CVE-2026-86185"
+  ],
+  "details": "Bilibili Desktop through 1.18.0 disables TLS certificate verification process-wide and executes unsigned remote JavaScript configuration without integrity checks. An attacker in an on-path network position can intercept configuration fetches, inject arbitrary JavaScript executed in the renderer with access to the privileged IPC bridge, and execute system commands or steal login credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86185"
+    },
+    {
+      "type": "WEB",
+      "url": "https://app.bilibili.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LeoWSY-hashblue/bilibili-desktop-tls-disabled-rce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LeoWSY-hashblue/bilibili-desktop-tls-disabled-rce/blob/main/advisory.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bilibili-desktop-through-1.18.0-remote-code-execution-via-tls-verification-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T12:16:49Z"
+  }
+}

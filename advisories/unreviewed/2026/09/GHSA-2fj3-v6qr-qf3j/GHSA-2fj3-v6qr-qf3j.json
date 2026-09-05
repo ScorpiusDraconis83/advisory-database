@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2fj3-v6qr-qf3j",
+  "modified": "2026-09-05T12:31:28Z",
+  "published": "2026-09-05T12:31:28Z",
+  "aliases": [
+    "CVE-2026-86175"
+  ],
+  "details": "NetBox through 4.7.0 fails to redact sensitive data source backend credentials in REST and GraphQL API responses. Authenticated users with only view permission can retrieve plaintext passwords and secret keys for Git and Amazon S3 backends through API endpoints, gaining unauthorized access to external repositories and storage buckets.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86175"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netbox-community/netbox/issues/12625"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/geo-chen/oss/blob/main/netbox.md#finding-2-netbox-data-source-backend-credentials-git-password--s3-secret-key-returned-in-plaintext-via-rest-api-and-graphql-to-users-with-only-view-permission-incomplete-fix-of-12625"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netbox-community/netbox"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netbox-community/netbox/blob/v4.7.0/netbox/core/api/serializers_/data.py#L26-L32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netbox-community/netbox/blob/v4.7.0/netbox/core/data_backends.py#L80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/netbox-community/netbox/blob/v4.7.0/netbox/core/graphql/types.py#L30-L38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netbox-through-4.7.0-credential-disclosure-via-rest-and-graphql-apis"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-522"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T11:16:46Z"
+  }
+}

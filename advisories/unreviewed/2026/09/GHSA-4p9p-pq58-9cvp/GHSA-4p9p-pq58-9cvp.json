@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4p9p-pq58-9cvp",
+  "modified": "2026-09-05T12:31:26Z",
+  "published": "2026-09-05T12:31:25Z",
+  "aliases": [
+    "CVE-2026-86113"
+  ],
+  "details": "BookWyrm through 0.9.1 contains an authorization bypass vulnerability in the edit_readthrough function that allows authenticated users to modify other users' reading records. Attackers can exploit sequential ReadThrough IDs to overwrite arbitrary users' start dates, finish dates, progress, and progress mode, affecting reading statistics and exported data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86113"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bookwyrm-social/bookwyrm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bookwyrm-social/bookwyrm/blob/v0.9.1/bookwyrm/views/status.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/geo-chen/oss/blob/main/bookwyrm.md#finding-3-authenticated-idor-in-edit-readthrough-allows-tampering-with-other-users-reading-progress"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bookwyrm-through-0.9.1-insecure-direct-object-reference-in-edit-readthrough-allows-tampering-with-other-users-reading-records"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T10:16:42Z"
+  }
+}

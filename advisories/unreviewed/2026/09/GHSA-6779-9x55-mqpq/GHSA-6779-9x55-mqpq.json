@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6779-9x55-mqpq",
+  "modified": "2026-09-05T12:31:25Z",
+  "published": "2026-09-05T12:31:25Z",
+  "aliases": [
+    "CVE-2026-86112"
+  ],
+  "details": "BookWyrm through 0.9.1 fails to validate user visibility permissions in the Favorite and Unfavorite views, allowing authenticated attackers to favorite or unfavorite followers-only and direct statuses they cannot access. Attackers can POST to the favorite endpoint with a status ID to create unauthorized interactions, trigger ActivityPub broadcasts, and enumerate private status IDs through response differentiation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86112"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bookwyrm-social/bookwyrm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bookwyrm-social/bookwyrm/blob/v0.9.1/bookwyrm/views/interaction.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/geo-chen/oss/blob/main/bookwyrm.md#finding-2-authenticated-idor-in-favoriteunfavorite-allows-interaction-with-private-statuses"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bookwyrm-through-0.9.1-missing-authorization-on-the-favorite-and-unfavorite-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T10:16:42Z"
+  }
+}
