@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qpr5-j4j4-r5pg",
+  "modified": "2026-09-05T09:30:21Z",
+  "published": "2026-09-05T09:30:21Z",
+  "aliases": [
+    "CVE-2026-3853"
+  ],
+  "details": "The Divi theme for WordPress is vulnerable to DOM-Based Stored Cross-Site Scripting via the `image_src` attribute of the `et_pb_video_slider_item` shortcode in all versions up to, and including, 4.27.6. This is due to the `image_src` field not being included in the `$url_options` whitelist (which only contains `url`, `button_link`, `button_url`), so it never receives `esc_url_raw()` at save time. On the server side, the value is rendered into a `data-image` HTML attribute using `esc_attr()`, which encodes double quotes as `&quot;`. However, the client-side JavaScript carousel code in `custom.unified.js` reads this attribute using jQuery's `.data('image')`, which returns the browser-decoded value (with `&quot;` decoded back to `\"`). The decoded value is then concatenated directly into an HTML string and injected into the DOM via `jQuery.after()` without re-escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user hovers over the carousel thumbnail.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3853"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.divichangelog.com/divi-update/divi-4/version-4-27-7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d5de8f35-266f-45ce-8678-e52a33036b30?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T07:17:11Z"
+  }
+}

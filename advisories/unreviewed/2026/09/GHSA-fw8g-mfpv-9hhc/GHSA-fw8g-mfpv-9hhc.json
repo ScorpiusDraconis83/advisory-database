@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fw8g-mfpv-9hhc",
+  "modified": "2026-09-05T09:30:20Z",
+  "published": "2026-09-05T09:30:20Z",
+  "aliases": [
+    "CVE-2026-14975"
+  ],
+  "details": "The WP File Download plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 6.3.8 via the 'remoteurl' parameter. This makes it possible for authenticated attackers, with subscriber-level access and above, to read the contents of arbitrary files on the server, which can contain sensitive information. An authenticated attacker with Subscriber-level access first poisons the _wpfd_file_metadata['file'] post-meta value via the unprotected file.save handler, after which the streaming endpoint — hooked on init with no authentication requirement — resolves and streams the traversed file path to any caller, including unauthenticated visitors.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14975"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-file-download/trunk/app/site/init.php#L225"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.joomunited.com/changelog/wp-file-download-changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2b99e525-c1d3-463d-8b87-b7d7fdd535d1?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T07:17:10Z"
+  }
+}
