@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c8vx-3h2j-4f8m",
+  "modified": "2026-09-05T00:31:06Z",
+  "published": "2026-09-05T00:31:06Z",
+  "aliases": [
+    "CVE-2026-86098"
+  ],
+  "details": "ntop nDPI versions before 6.0 contain a heap buffer overflow vulnerability in the ndpi_json_string_escape function that writes beyond caller-supplied buffer boundaries. Attackers can trigger the overflow by supplying crafted network packet data including TLS SNI, HTTP headers, or DNS names that reach the vulnerable function, causing heap corruption.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86098"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ntop/nDPI/commit/94e82c1de12323d992895830231865736a8abf2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ntop/nDPI"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ntop/nDPI/blob/5.0/src/lib/ndpi_serializer.c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ntop-ndpi-before-6.0-heap-buffer-overflow-via-ndpi-json-string-escape"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T23:18:03Z"
+  }
+}

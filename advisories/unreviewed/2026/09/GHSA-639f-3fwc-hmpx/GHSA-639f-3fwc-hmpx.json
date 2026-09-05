@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-639f-3fwc-hmpx",
+  "modified": "2026-09-05T00:31:06Z",
+  "published": "2026-09-05T00:31:06Z",
+  "aliases": [
+    "CVE-2026-76925"
+  ],
+  "details": "A flaw was found in Flatpak. A Time-of-check to time-of-use (TOCTOU) race condition exists in the `org.freedesktop.Flatpak.SystemHelper` component. This vulnerability occurs because a privileged `chmod` operation executes before the OSTree repository validation within the `Deploy()` function. An attacker can exploit this timing window to redirect symlinks to arbitrary files, potentially leading to unauthorized file manipulation or information disclosure.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76925"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-76925"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2520099"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-04T22:17:18Z"
+  }
+}
