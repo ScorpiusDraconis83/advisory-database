@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5r9v-8527-q4jv",
+  "modified": "2026-09-05T21:31:19Z",
+  "published": "2026-09-05T21:31:19Z",
+  "aliases": [
+    "CVE-2026-31912"
+  ],
+  "details": "libpcap BPF interpreter detects neither reaching the end of the filter program buffer due to lack of a return instruction nor executing a jump instruction with an offset that translates to a pointer outside of the buffer.  In particular uncommon use cases a crafted filter program can cause the interpreter to try reading the OS process memory in the 32GiB around the buffer on 64-bit architectures and in the entire address space on 32-bit architectures.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31912"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/the-tcpdump-group/libpcap/commit/d3f358d3cffbe1ecb94d5284b3e81f052a0adcb9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-05T19:16:55Z"
+  }
+}
