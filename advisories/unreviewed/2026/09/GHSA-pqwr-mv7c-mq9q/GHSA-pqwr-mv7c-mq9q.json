@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pqwr-mv7c-mq9q",
-  "modified": "2026-09-05T09:30:20Z",
+  "modified": "2026-09-06T12:30:21Z",
   "published": "2026-09-05T09:30:20Z",
   "aliases": [
     "CVE-2025-15693"
   ],
   "details": "The JCH Optimize WordPress plugin before 5.0.1 does not properly restrict a directory path provided to one of its administrative image-browsing features to within the site, allowing high-privilege users, administrators on single-site and sub-site administrators on multisite, to enumerate directories and file names outside the web root.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-05T07:17:10Z"
