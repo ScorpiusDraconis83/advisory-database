@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pv54-wq7v-wf7v",
+  "modified": "2026-09-06T03:30:24Z",
+  "published": "2026-09-06T03:30:24Z",
+  "aliases": [
+    "CVE-2026-75816"
+  ],
+  "details": "The Frontend Admin by DynamiApps plugin for WordPress is vulnerable to Authentication Bypass to Account Takeover in all versions up to, and including, 3.29.12. This is due to the pre_update_value function lacking any capability or ownership check, and ActionPost::conditions_logic() short-circuiting its current_user_can('edit_post') authorization gate whenever the post ID is non-numeric — such as the string user_1 — allowing unauthenticated form submissions to be routed to arbitrary user records without restriction. This makes it possible for unauthenticated attackers to overwrite any user's registered email address, including an administrator's, and then leverage WordPress's native password-reset flow to fully take over the targeted account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75816"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.10/main/frontend/fields/user/class-user-email.php#L127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.10/main/frontend/forms/actions/post.php#L1001"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.10/main/frontend/forms/actions/post.php#L1224"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.10/main/frontend/forms/classes/display.php#L26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.10/main/frontend/forms/classes/submit.php#L125"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3664865/acf-frontend-form-element"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/f1637a3b-7b0f-485d-9d19-4f711f8c671b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-06T03:17:16Z"
+  }
+}

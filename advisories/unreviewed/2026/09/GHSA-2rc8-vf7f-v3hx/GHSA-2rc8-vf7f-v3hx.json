@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2rc8-vf7f-v3hx",
+  "modified": "2026-09-06T03:30:24Z",
+  "published": "2026-09-06T03:30:24Z",
+  "aliases": [
+    "CVE-2026-16310"
+  ],
+  "details": "The MemberDash plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 1.8.5 via the 'id' parameter due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to change the password of any WordPress user, including administrators, by supplying an arbitrary user ID during registration, and take over their account without any notification sent to the victim.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16310"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.memberdashwp.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/222e0f27-f269-4751-9544-1a6cb03ab3a7?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-06T03:17:15Z"
+  }
+}
