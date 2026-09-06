@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rvj6-j43w-hcgw",
-  "modified": "2026-09-05T09:30:21Z",
+  "modified": "2026-09-06T12:30:22Z",
   "published": "2026-09-05T09:30:21Z",
   "aliases": [
     "CVE-2026-81423"
   ],
   "details": "The Accept Stripe Payments WordPress plugin before 2.1.4 does not validate a user-supplied URL before using it in a redirect, allowing unauthenticated attackers to redirect visitors to an arbitrary external website, which can be leveraged for phishing.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-05T07:17:12Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j6wc-w47f-c97j",
-  "modified": "2026-09-05T09:30:21Z",
+  "modified": "2026-09-06T12:30:21Z",
   "published": "2026-09-05T09:30:21Z",
   "aliases": [
     "CVE-2026-19861"
   ],
   "details": "The JetFormBuilder — Dynamic Blocks Form Builder WordPress plugin before 3.6.5.2 does not properly sanitise and escape a form field's value before including it in the HTML notification emails it sends, allowing unauthenticated users to inject arbitrary HTML into messages delivered to administrators and other recipients. Whether injected script executes depends on the recipient's mail client, but the injected markup is rendered regardless.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-05T07:17:11Z"

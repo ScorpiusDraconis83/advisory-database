@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rc6j-63fm-mhq4",
+  "modified": "2026-09-06T12:30:24Z",
+  "published": "2026-09-06T12:30:24Z",
+  "aliases": [
+    "CVE-2026-86256"
+  ],
+  "details": "wger before 2.6 (affected versions <= 2.5.0) contains an open redirect vulnerability in the trainer_login view (wger/core/views/user.py). After a trainer enters impersonation mode, the view redirects to the user-supplied 'next' GET parameter via HttpResponseRedirect() without validating it with url_has_allowed_host_and_scheme(). An attacker who delivers a crafted link to an authenticated trainer can redirect the trainer's browser to an attacker-controlled domain, enabling phishing and leaking the wger URL structure (including the impersonated user's user_pk) via the Referer header.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/wger-project/wger/security/advisories/GHSA-vqv8-j3mj-wjxj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86256"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wger-before-2.6-open-redirect-via-trainer-login-next-parameter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-06T12:17:16Z"
+  }
+}
