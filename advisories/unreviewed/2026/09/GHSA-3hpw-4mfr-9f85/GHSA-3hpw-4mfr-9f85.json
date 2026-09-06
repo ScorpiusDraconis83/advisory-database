@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3hpw-4mfr-9f85",
+  "modified": "2026-09-06T18:34:39Z",
+  "published": "2026-09-06T18:34:39Z",
+  "aliases": [
+    "CVE-2026-82209"
+  ],
+  "details": "When libpsl support is enabled, libcurl fails to enforce the Public Suffix\nList boundary check when processing a `Set-Cookie` header where the `Domain`\nattribute explicitly matches an origin host that is itself a public suffix\n(e.g., `Domain=co.uk` set by `co.uk`).\n\nInstead of coercing it into a strict host-only cookie, libcurl saves the\ncookie with wildcard domain scope (`.co.uk`). Consequently, the cookie is\ninappropriately included in subsequent outbound requests or HTTP redirects to\narbitrary sibling subdomains under the same public suffix (e.g.,\n`attacker.co.uk`).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82209"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackerone.com/reports/3972385"
+    },
+    {
+      "type": "WEB",
+      "url": "https://curl.se/docs/CVE-2026-82209.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://curl.se/docs/CVE-2026-82209.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-06T18:17:22Z"
+  }
+}

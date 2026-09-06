@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jrp3-jq4v-w9gc",
+  "modified": "2026-09-06T18:34:39Z",
+  "published": "2026-09-06T18:34:39Z",
+  "aliases": [
+    "CVE-2026-80229"
+  ],
+  "details": "When performing transfers via libcurl’s multi interface, pooled TLS\nconnections can outlive their originating easy handles. In OpenSSL 3 provider\nconfigurations, libcurl attaches an allocated library context to the easy\nhandle's state and passes it to OpenSSL without acquiring an ownership\nreference; destroying the easy handle prematurely frees this context while the\nactive connection retains a dangling pointer, leading to a heap-use-after-free\nupon subsequent I/O or post-handshake operations.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80229"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackerone.com/reports/3969255"
+    },
+    {
+      "type": "WEB",
+      "url": "https://curl.se/docs/CVE-2026-80229.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://curl.se/docs/CVE-2026-80229.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-06T18:17:22Z"
+  }
+}
