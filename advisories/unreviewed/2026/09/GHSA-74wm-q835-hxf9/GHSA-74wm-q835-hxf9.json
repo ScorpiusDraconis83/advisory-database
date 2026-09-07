@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-74wm-q835-hxf9",
+  "modified": "2026-09-07T00:30:19Z",
+  "published": "2026-09-07T00:30:19Z",
+  "aliases": [
+    "CVE-2026-86227"
+  ],
+  "details": "A weakness has been identified in valkey-io valkey up to 9.0.5/9.1.1. This affects the function kvstoreGetHashtable of the file src/kvstore.c. This manipulation of the argument didx causes out-of-bounds read. It is possible to initiate the attack remotely. The attack is considered to have high complexity. It is indicated that the exploitability is difficult. The exploit has been made available to the public and could be used for attacks. Patch name: 4691888e7fab3df128f0bde5750c9fde2ae552fa. To fix this issue, it is recommended to deploy a patch. Exploitation requires cluster mode plus attacker-controlled dump.rdb at startup (data-dir write access, replication feed, or a stored crafted RDB) - an attacker-position DoS at boot, not network pre-auth. The issue report was closed stating it \"is worth fixing for the sake of memory safety… but I don't think it meets our bar for a security disclosure.\"",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86227"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/valkey-io/valkey/issues/4222"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/valkey-io/valkey/pull/4229"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/valkey-io/valkey/commit/4691888e7fab3df128f0bde5750c9fde2ae552fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/user-attachments/files/30195539/RDB.zip"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/valkey-io/valkey"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-86227"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/897659"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/399380"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/399380/cti"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-119"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-06T23:17:38Z"
+  }
+}
