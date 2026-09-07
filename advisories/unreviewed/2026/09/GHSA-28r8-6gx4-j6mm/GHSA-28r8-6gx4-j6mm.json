@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-28r8-6gx4-j6mm",
+  "modified": "2026-09-07T03:30:22Z",
+  "published": "2026-09-07T03:30:22Z",
+  "aliases": [
+    "CVE-2026-86314"
+  ],
+  "details": "Integer overflow in the source-bounds check in Memory::init() (src/runtime/Memory.cpp) in Samsung walrus on all platforms allows a remote attacker to cause an out-of-bounds heap read and denial of service via a crafted WebAssembly module in which a 32-bit unsigned addition wraps around and bypasses the bounds check.\n\n\n\nThis issue affects Walrus: ff3bf5ff5c4878f8e5572c9593d303f6bc997443.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86314"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Samsung/walrus/pull/482"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-07T03:17:19Z"
+  }
+}
