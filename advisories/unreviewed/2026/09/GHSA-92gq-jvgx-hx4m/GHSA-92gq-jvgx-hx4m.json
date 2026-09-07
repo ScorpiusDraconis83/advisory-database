@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-92gq-jvgx-hx4m",
+  "modified": "2026-09-07T15:33:49Z",
+  "published": "2026-09-07T15:33:49Z",
+  "aliases": [
+    "CVE-2022-51010"
+  ],
+  "details": "PocketMine-MP versions before 4.4.2 fail to properly validate item IDs received from clients in itemstack NBT data. Attackers can send crafted item IDs outside the valid range to trigger an uncaught exception that crashes the server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/security/advisories/GHSA-fqx3-r75h-vc89"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2022-51010"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/commit/5fd685e07d61ef670584ed11a52fd5f4b99a81a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pocketmine-mp-before-4.4.2-server-crash-via-item-id"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-07T13:17:21Z"
+  }
+}

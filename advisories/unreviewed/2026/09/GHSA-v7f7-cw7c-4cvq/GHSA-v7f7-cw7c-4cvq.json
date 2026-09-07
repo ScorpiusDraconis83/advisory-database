@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v7f7-cw7c-4cvq",
+  "modified": "2026-09-07T15:33:52Z",
+  "published": "2026-09-07T15:33:52Z",
+  "aliases": [
+    "CVE-2026-86424"
+  ],
+  "details": "ImageMagick before 7.1.2-30 and 6.9.13-55 contains a time-of-check-time-of-use (TOCTOU) vulnerability in the video decoder that allows attackers to bypass path policy write restrictions via symlink swaps. An attacker can replace a symlink between policy validation (check-time) and the file write operation (use-time) to write to policy-denied locations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-9x6f-98x9-rx6g"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86424"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/imagemagick-before-7.1.2-30-path-traversal-via-toctou-symlink-race"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-07T13:20:41Z"
+  }
+}

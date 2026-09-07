@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pvh2-45c7-fq5c",
+  "modified": "2026-09-07T15:33:51Z",
+  "published": "2026-09-07T15:33:51Z",
+  "aliases": [
+    "CVE-2026-4945"
+  ],
+  "details": "The Otter Blocks – Gutenberg Blocks, Page Builder for Gutenberg Editor & FSE plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 3.1.7 via the 'watch_checkout' function due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to pay for a lower-cost product while obtaining entitlement for a premium product by manipulating the product_id parameter independently of the price_id parameter in the Stripe checkout URL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4945"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/otter-blocks/trunk/inc/plugins/class-stripe-api.php#L234"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/otter-blocks/trunk/inc/plugins/class-stripe-api.php#L304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/otter-blocks/trunk/inc/render/class-stripe-checkout-block.php#L69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3496611"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/7ecb9f61-68d5-4c70-8d7d-e4fb067fcff9?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-07T13:20:22Z"
+  }
+}

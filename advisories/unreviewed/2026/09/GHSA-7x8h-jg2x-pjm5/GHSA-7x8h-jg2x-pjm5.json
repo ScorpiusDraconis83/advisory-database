@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7x8h-jg2x-pjm5",
+  "modified": "2026-09-07T15:33:53Z",
+  "published": "2026-09-07T15:33:53Z",
+  "aliases": [
+    "CVE-2026-86429"
+  ],
+  "details": "The league/commonmark (thephpleague/commonmark) library in versions >= 1.5.0 and < 2.9.1 contains quadratic parsing complexity in its SmartPunctExtension and AttributesExtension. When either extension is explicitly registered on the Environment (they are not enabled by default and are excluded from the standard CommonMark and GitHub-Flavored Markdown converters), an unauthenticated attacker can submit small, specially crafted Markdown documents — such as text alternating with unpaired quotes, contiguous runs of block-level attribute blocks, or repeated class attributes — to trigger disproportionate CPU consumption and cause a denial of service. Fixed in 2.9.1.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thephpleague/commonmark/security/advisories/GHSA-jjv6-8j6v-6j52"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86429"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/commonmark-before-2.9.1-denial-of-service-via-smartpunct-and-attributes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-407"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-07T13:20:42Z"
+  }
+}
