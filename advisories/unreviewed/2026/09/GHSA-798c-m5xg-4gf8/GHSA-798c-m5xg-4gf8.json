@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-798c-m5xg-4gf8",
+  "modified": "2026-09-07T12:30:29Z",
+  "published": "2026-09-07T12:30:29Z",
+  "aliases": [
+    "CVE-2026-86347"
+  ],
+  "details": "Affected versions of MISP allow any authenticated user to access TemplatesController::uploadFile() because the ACL entry for templates/uploadFile used the wildcard *. This bypasses the intended role restrictions applied to neighboring template-management operations.\n\n\nThe upload handler accepts arbitrary content with only minimal checks and writes it into app/tmp/files/. A low-privileged or read-only user can therefore repeatedly upload files and consume server disk space without requiring perm_add or perm_template. The fix changes the ACL requirement from * to perm_add.\n\nThe commit also rules out stronger impacts: uploaded files receive random names, path traversal/predictable overwrite is not available, the temporary directory is outside the web root, and the files are not directly served over HTTP. Therefore, the issue should not be described as arbitrary file overwrite, stored XSS, or RCE.\n\nVersion affected: ≤2.5.45",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86347"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/8e8885971"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-07T10:16:55Z"
+  }
+}

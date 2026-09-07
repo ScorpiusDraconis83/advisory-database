@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j5p2-2hh2-r977",
+  "modified": "2026-09-07T12:30:29Z",
+  "published": "2026-09-07T12:30:29Z",
+  "aliases": [
+    "CVE-2026-85201"
+  ],
+  "details": "In Eclipse Ankaios versions 0.1.0 through 1.0.1, the agent does not limit the length declared by a workload in a length-delimited protobuf message received through the Control Interface FIFO. A workload granted Control Interface access can specify an excessive message length, causing an unbounded memory allocation that may abort the Ankaios agent process. This results in loss of orchestration services for workloads managed by the affected agent.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85201"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-ankaios/ankaios/pull/791"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-ankaios/ankaios/releases/tag/v1.0.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/900"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-789"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-07T11:17:37Z"
+  }
+}
