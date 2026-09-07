@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j59p-mqmr-fcgh",
+  "modified": "2026-09-07T09:31:38Z",
+  "published": "2026-09-07T09:31:38Z",
+  "aliases": [
+    "CVE-2026-14296"
+  ],
+  "details": "When using the Direct XIP\nupdate strategy, the main application image starts other cores (i.e. radio\ncore), based on the currently active slot without additional verification. The\nMCUboot in the bare (upstream) configuration assumes that if there is at least\na single slot for each image available, the system is bootable and continues\nthe boot process. This may lead to a situation when MCUboot picks different\nslot for different images (i.e. (a) for the main application and (b) for the\nradio image), boots the main application (from slot (a)) that afterwards starts\nthe radio image by providing an address of the unauthenticated slot ((a)\ninstead of (b)).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.nordicsemi.com/r/bundle/struct_sa/page/struct/sa.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-347"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-07T08:17:11Z"
+  }
+}
