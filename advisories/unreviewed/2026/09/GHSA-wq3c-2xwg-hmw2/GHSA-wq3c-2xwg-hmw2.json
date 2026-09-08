@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wq3c-2xwg-hmw2",
+  "modified": "2026-09-08T18:31:52Z",
+  "published": "2026-09-08T18:31:52Z",
+  "aliases": [
+    "CVE-2026-86719"
+  ],
+  "details": "WWBN AVideo through commit c3edcc274c389816d434acadac07ee78eaf330c1 (master) contains a cross-site request forgery vulnerability in the CustomizeUser plugin endpoint plugin/CustomizeUser/swapUser.json.php. The endpoint takes users_id from $_REQUEST and invokes User::swapUser() without calling forbidIfNotPost() or forbidIfInvalidToken(), and the global autoCSRFGuard() check only runs for POST requests to *.json.php, so the action is reachable via GET. An attacker who causes an authenticated administrator's browser to issue a cross-origin GET (for example via an <img> tag or link) can replace that administrator's session with a non-admin user account, causing the administrator to lose administrative access until the swap is cancelled; swapping to another administrator account is rejected, so this is not privilege escalation. The JSON response also discloses the session_id. The CustomizeUser plugin is enabled by default, and no patch was available at the time of publication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/security/advisories/GHSA-xrp7-6w7g-q7fx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86719"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wwbn-avideo-customizeuser-cross-site-request-forgery-session-hijacking"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-08T16:18:31Z"
+  }
+}
