@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hvx2-xh3r-xcr6",
+  "modified": "2026-09-08T12:31:30Z",
+  "published": "2026-09-08T12:31:30Z",
+  "aliases": [
+    "CVE-2026-78234"
+  ],
+  "details": "A flaw was found in hawtio-operator. The operator reads the OpenShift Service CA private signing key from the openshift-service-ca namespace and uses it to mint client certificates with a Subject Common Name (CN) supplied by the author of a namespaced Hawtio custom resource. Because the operator ships a ClusterRole that aggregates Hawtio CR permissions into the edit and admin roles, any user with edit access in any namespace can obtain a Service-CA-signed certificate with an arbitrary subject. This certificate can be used to impersonate any in-cluster service identity to peers that trust the Service CA for client authentication, including Jolokia agents and other Service-CA-trusting components.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78234"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-78234"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2524894"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-08T12:16:59Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7xpg-hm9r-chmf",
+  "modified": "2026-09-08T12:31:30Z",
+  "published": "2026-09-08T12:31:30Z",
+  "aliases": [
+    "CVE-2026-80219"
+  ],
+  "details": "A flaw was found in hawtio-operator. When deploying Hawtio in cluster mode, the operator creates a cluster-scoped OAuthClient with automatic grant approval (GrantMethod: auto) and no client secret (public client). The redirect URIs are derived from the operator-created Route, whose hostname is tenant-controlled via the Hawtio CR spec.routeHostName field. A malicious tenant can register an arbitrary hostname as a valid OAuth redirect target and, because grants are auto-approved, obtain OpenShift access tokens of any cluster user who visits the crafted authorization URL without any consent prompt.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80219"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-80219"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2524895"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1390"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-08T12:16:59Z"
+  }
+}

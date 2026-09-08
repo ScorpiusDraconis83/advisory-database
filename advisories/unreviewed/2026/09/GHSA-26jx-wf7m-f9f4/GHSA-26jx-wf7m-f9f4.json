@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-26jx-wf7m-f9f4",
+  "modified": "2026-09-08T12:31:30Z",
+  "published": "2026-09-08T12:31:30Z",
+  "aliases": [
+    "CVE-2026-86713"
+  ],
+  "details": "PX4 Autopilot through 1.17.0 contains a use-after-free vulnerability in the load_mon module's stop path where exit_and_cleanup() deletes the LoadMon object and frees the performance counter before perf_end() attempts to access it. Attackers can trigger this vulnerability by issuing the load_mon stop command from any PXH or MAVLink shell, causing reads and writes through freed memory that corrupt heap objects and destabilize the flight stack.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86713"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PX4/PX4-Autopilot/pull/28544"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PX4/PX4-Autopilot/commit/354823e2efd8dd7ac47f4b8984b8e0fb06dc3b79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PX4/PX4-Autopilot"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PX4/PX4-Autopilot/blob/v1.17.0/src/modules/load_mon/LoadMon.cpp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/px4-autopilot-through-1.17.0-use-after-free-in-load-mon"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-08T12:17:00Z"
+  }
+}

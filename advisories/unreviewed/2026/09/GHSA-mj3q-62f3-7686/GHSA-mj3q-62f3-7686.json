@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mj3q-62f3-7686",
+  "modified": "2026-09-08T12:31:29Z",
+  "published": "2026-09-08T12:31:29Z",
+  "aliases": [
+    "CVE-2026-12230"
+  ],
+  "details": "The LearnPress – WordPress LMS Plugin for Create and Sell Online Courses plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'layout_custom_css' parameter in all versions up to, and including, 4.3.9.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12230"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.4/inc/ExternalPlugin/Elementor/Widgets/Instructor/ListInstructorsElementor.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.4/inc/ExternalPlugin/Elementor/Widgets/Instructor/ListInstructorsElementor.php#L82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.4.0/inc/ExternalPlugin/Elementor/Widgets/Instructor/ListInstructorsElementor.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/9f662888-c388-4191-bda9-b8a22d63cb3f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-08T12:16:50Z"
+  }
+}
