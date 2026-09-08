@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7pqw-9j4j-h8q3",
-  "modified": "2026-08-17T15:30:40Z",
+  "modified": "2026-09-08T20:42:52Z",
   "published": "2026-08-17T15:30:40Z",
   "aliases": [
     "CVE-2026-19693"
   ],
+  "summary": "extract-zip allows arbitrary file writes through symlink archive entries",
   "details": "extract-zip through 2.0.1 containment-checks only the parent directory of each archive entry and never the entry's own final path component, so an archive containing two entries with identical names - a symlink whose target is outside the destination, followed by a regular file - writes through the planted symlink and yields an arbitrary file write outside the destination directory.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "extract-zip"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "2.0.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -21,6 +42,10 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/max-mapper/extract-zip/pull/160"
+    },
+    {
+      "type": "PACKAGE",
       "url": "https://github.com/max-mapper/extract-zip"
     },
     {
@@ -33,8 +58,8 @@
       "CWE-22"
     ],
     "severity": "HIGH",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-08T20:42:52Z",
     "nvd_published_at": "2026-08-17T14:20:20Z"
   }
 }
