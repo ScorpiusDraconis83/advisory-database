@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c7r6-vx3h-w5g2",
+  "modified": "2026-09-08T20:40:47Z",
+  "published": "2026-09-08T20:40:47Z",
+  "aliases": [
+    "CVE-2026-84374"
+  ],
+  "summary": "Laravel Excel writes exports outside the configured filesystem disk when given a caller-controlled path",
+  "details": "### Summary\n\n`Excel::store()` resolved the destination path against the process working\ndirectory rather than the configured filesystem disk. When that path resolved to\nan existing file, the export was written straight to it with `fopen()`,\nbypassing the disk entirely. An application that passes a user-controlled value\nas the export path could therefore be made to overwrite an arbitrary existing\nfile that the PHP process can write to, with content the user controls.\n\n### Details\n\n`Maatwebsite\\Excel\\Files\\Disk::copy()` contained two paths:\n\n```php\nif (realpath($destination)) {\n    $tempStream = fopen($destination, 'rb+');\n    $success    = stream_copy_to_stream($readStream, $tempStream) !== false;\n} else {\n    $success = $this->put($destination, $readStream);\n}\n```\n\n`$destination` is the `$filePath` argument given to `Excel::store()`,\n`$export->store()` or `->storeExcel()`. `realpath()` resolves it against the\n**current working directory** — `public/` for a typical web request — not\nagainst the disk root. On a hit, the write went directly to the filesystem and\nnever reached Flysystem, which would otherwise have rejected `../` traversal and\nconfined absolute paths to the disk root. The disk argument was effectively\nignored for those paths, including for remote disks such as S3.\n\nTwo consequences follow:\n\n* the destination could be any existing file the PHP process can write, in or\n  out of the disk root;\n* the stream was opened `'rb+'`, which does not truncate, so a shorter export\n  left trailing bytes of the previous file behind.\n\nBecause the file must already exist, the primitive is an **overwrite** rather\nthan an arbitrary file creation. Overwriting a PHP file that is reachable by the\nweb server (for example a front controller or a cached view) turns\nattacker-controlled row content into code execution, since CSV and HTML writers\nemit cell values verbatim. Passing an explicit writer type to `store()` bypasses\nthe extension-based type detection that would otherwise reject a `.php` target.\n\nExploitation requires the **application** to pass an unsanitized, user-controlled\nvalue as the export path. Applications that pass a fixed or server-derived path\nare not affected.\n\n### Impact\n\nArbitrary overwrite of existing files writable by the PHP process, with\npartially attacker-controlled content, leading to remote code execution where\nthe overwritten file is executed by the web server.\n\n### Patches\n\nFixed in **3.1.70**. `Disk::copy()` now always writes through the configured\nfilesystem disk, so Flysystem enforces the disk root for every export.\n\nNote the behaviour change: passing an absolute path to `store()` previously\nwrote to that path once the file existed. Paths now always resolve relative to\nthe disk root. Applications that relied on that should configure a disk rooted\nat the target location.\n\n### Workarounds\n\nFor anyone unable to upgrade, validate the path before passing it to `store()` —\nreject absolute paths and any `..` segment, or derive the filename server-side\nand never build it from request input:\n\n```php\n$name = basename($request->input('filename'));   // strips any directory part\nExcel::store($export, 'exports/' . $name, 'local');\n```\n\n### Credit\n\nReported responsibly by @seck19 via the contact address in `SECURITY.md`.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "maatwebsite/excel"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.1.8"
+            },
+            {
+              "fixed": "3.1.70"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/SpartnerNL/Laravel-Excel/security/advisories/GHSA-c7r6-vx3h-w5g2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84374"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SpartnerNL/Laravel-Excel/commit/b5cafdfcf7ec63924e83303763be8fcae340f70b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/SpartnerNL/Laravel-Excel"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SpartnerNL/Laravel-Excel/releases/tag/3.1.70"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22",
+      "CWE-73"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-08T20:40:47Z",
+    "nvd_published_at": "2026-09-01T22:17:19Z"
+  }
+}
