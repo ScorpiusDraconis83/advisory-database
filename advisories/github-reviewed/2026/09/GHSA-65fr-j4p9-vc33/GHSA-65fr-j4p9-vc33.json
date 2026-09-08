@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-65fr-j4p9-vc33",
+  "modified": "2026-09-08T21:27:42Z",
+  "published": "2026-09-08T21:27:42Z",
+  "aliases": [
+    "CVE-2026-81525"
+  ],
+  "summary": "mongodb: Reject \".\" and NUL bytes in database and collection names",
+  "details": "### Impact\nPassing untrusted input as part of a database or collection name may result in targeting a different database or collection than specified.\n\n### Patches\nFixed in PHP library 1.21.4 and 2.4.1.\n\n### Workarounds\nValidate database and collection names prior to passing into APIs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mongodb/mongodb"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.21.4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mongodb/mongodb"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0"
+            },
+            {
+              "fixed": "2.4.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mongodb/mongo-php-library/security/advisories/GHSA-65fr-j4p9-vc33"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81525"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mongodb/mongo-php-library/pull/1967"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mongodb/mongo-php-library/pull/1968"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mongodb/mongo-php-library/commit/3a462213bb4fd46efa58a1937b06b1b0553b67a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mongodb/mongo-php-library/commit/6f305a3b21740080255a3093b12458274c7cc8ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mongodb/mongo-php-driver/releases/tag/1.21.6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mongodb/mongo-php-driver/releases/tag/1.21.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mongodb/mongo-php-driver/releases/tag/2.4.1"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mongodb/mongo-php-library"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mongodb/mongo-php-library/releases/tag/1.21.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mongodb/mongo-php-library/releases/tag/2.4.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jira.mongodb.org/browse/PHPLIB-1927"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-943"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-08T21:27:42Z",
+    "nvd_published_at": "2026-08-27T20:18:50Z"
+  }
+}
