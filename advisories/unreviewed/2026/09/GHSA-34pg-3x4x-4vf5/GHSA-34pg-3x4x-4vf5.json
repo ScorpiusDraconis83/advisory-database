@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-34pg-3x4x-4vf5",
-  "modified": "2026-09-07T00:30:20Z",
+  "modified": "2026-09-08T21:33:03Z",
   "published": "2026-09-07T00:30:20Z",
   "aliases": [
     "CVE-2026-86304"
   ],
   "details": "MojoX::Authentication versions before 0.006 for Perl allow SAML authentication bypass because parse_assertion builds Net::SAML2::Binding::POST without a trust anchor.\n\nparse_assertion in MojoX::Authentication::Model::SAML2 calls Net::SAML2::Binding::POST->new with no cacert, cert_text or anchors argument, then passes the returned XML to Net::SAML2::Protocol::Assertion->new_from_xml with the IdP signing certificate as cacert. In Net::SAML2 before 0.86 that certificate guards only encrypted assertions, so the signature on an unencrypted assertion is checked against the certificate the response itself carries.\n\nAn attacker starts a SAML login, then posts a response signed with a certificate of their own. The audience, InResponseTo and timestamp checks that follow are all satisfiable by the attacker, so the response authenticates any NameID it carries.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -31,7 +36,7 @@
     "cwe_ids": [
       "CWE-347"
     ],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-06T23:17:39Z"

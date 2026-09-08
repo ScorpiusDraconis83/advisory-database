@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-456r-qjr2-xph9",
-  "modified": "2026-09-07T21:30:22Z",
+  "modified": "2026-09-08T21:33:08Z",
   "published": "2026-09-07T21:30:22Z",
   "aliases": [
     "CVE-2026-86287"
   ],
   "details": "Net::IP::LPM versions before 1.12 for Perl accept malformed prefix lengths.\n\nNon-numeric and non-ASCII prefix lengths are accepted and treated as 0. Integers over 31 bits are silently truncated.  A single malformed mask will poison the lookup table.\n\nThe result is that the lookup will silently succeed for every address. An allow-list will allow every address, and a deny-list will block every address.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -31,7 +36,7 @@
     "cwe_ids": [
       "CWE-1287"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-07T19:17:28Z"

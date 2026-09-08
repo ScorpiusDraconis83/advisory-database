@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6wvf-77m9-58rm",
-  "modified": "2026-08-31T21:31:53Z",
+  "modified": "2026-09-08T21:31:48Z",
   "published": "2026-08-27T21:31:31Z",
   "aliases": [
     "CVE-2026-37004"
   ],
+  "summary": "LiteLLM vulnerable to server-side template injection in the /prompts/test endpoint",
   "details": "BerriAI litellm <=1.82.4 is vulnerable to Server-Side Template Injection (SSTI), which allows unauthenticated remote attackers to execute arbitrary OS commands via a crafted dotprompt_content parameter in the /prompts/test endpoint due to use of an unsandboxed jinja2.Environment.",
   "severity": [
     {
@@ -13,7 +14,27 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "litellm"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.83.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
@@ -21,7 +42,19 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/BerriAI/litellm/commit/d910a95661fce3cdd36f3b06c03ecf9c46c6457c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/BerriAI/litellm"
+    },
+    {
+      "type": "WEB",
       "url": "https://github.com/BerriAI/litellm/blob/244bdffd1bfe7bebdfdef516e1ebe426a898e2f0/litellm/proxy/prompts/prompt_endpoints.py#L1073"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BerriAI/litellm/releases/tag/v1.83.7-stable"
     },
     {
       "type": "WEB",
@@ -33,8 +66,8 @@
       "CWE-1336"
     ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-08T21:31:48Z",
     "nvd_published_at": "2026-08-27T20:17:41Z"
   }
 }
