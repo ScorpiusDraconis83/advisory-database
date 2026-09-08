@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pvv8-qxr5-pq93",
+  "modified": "2026-09-08T21:34:34Z",
+  "published": "2026-09-08T21:34:34Z",
+  "aliases": [
+    "CVE-2026-86819"
+  ],
+  "details": "Waves Central for macOS contains a local privilege escalation in the privileged helper service. The helper authorizes connecting XPC clients by comparing the caller's code-signing certificate chain for equality with its own, rather than validating the caller against a pinned code requirement (application identifier and Team ID). A local, authenticated user can execute code within the vendor-signed process, satisfy the helper's client check, and cause the helper to execute a script with root privileges. Fixed in 17.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86819"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-251-02.json"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2026-86819"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.waves.com/downloads/release-notes#v17"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-08T21:18:47Z"
+  }
+}

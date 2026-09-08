@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wf33-c5j5-v44h",
+  "modified": "2026-09-08T21:34:31Z",
+  "published": "2026-09-08T21:34:30Z",
+  "aliases": [
+    "CVE-2026-78635"
+  ],
+  "details": "The Okta Privileged Access client URL handler does not insert an option terminator before appending the target value to the command-line arguments. When a scaleft:// protocol handler link contains a value beginning with a hyphen, the underlying CLI framework interprets it as a command-line flag, causing unintended modification of the SSH client's behavior.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78635"
+    },
+    {
+      "type": "WEB",
+      "url": "https://trust.okta.com/security-advisories/improper-input-validation-in-the-okta-privileged-access-ssh-client-url-handler-argument-cve-2026-78635"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-88"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-08T21:18:41Z"
+  }
+}

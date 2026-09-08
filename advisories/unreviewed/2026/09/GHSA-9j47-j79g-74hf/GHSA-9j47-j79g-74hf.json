@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9j47-j79g-74hf",
+  "modified": "2026-09-08T21:34:29Z",
+  "published": "2026-09-08T21:34:29Z",
+  "aliases": [
+    "CVE-2026-78623"
+  ],
+  "details": "The Okta Access Gateway does not sanitize SAML assertion values before interpolating them into database queries in the advanced mode datastore configuration. The unsanitized values are substituted directly into the query string prior to preparation, resulting in unintended SQL execution against the configured backend database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78623"
+    },
+    {
+      "type": "WEB",
+      "url": "https://trust.okta.com/security-advisories/improper-handling-of-saml-assertion-attributes-in-okta-access-gateway-advanced-mode-datastores-cve-2026-78623"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-08T20:18:37Z"
+  }
+}
