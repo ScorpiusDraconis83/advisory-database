@@ -1,13 +1,13 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-866g-f22w-33x8",
-  "modified": "2026-05-29T16:18:57Z",
+  "modified": "2026-09-08T16:16:50Z",
   "published": "2026-05-18T00:31:37Z",
   "aliases": [
     "CVE-2026-8769"
   ],
   "summary": "@ai-sdk/provider-utils has an Uncontrolled Resource Consumption issue",
-  "details": "A vulnerability was determined in Vercel AI up to 3.0.97. The impacted element is the function `createJsonResponseHandler/createJsonErrorResponseHandler` of the file `packages/provider-utils/src/response-handler.ts` of the component `provider-utils`. This manipulation causes resource consumption. The attack may be initiated remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+  "details": "Versions of `@ai-sdk/provider-utils` before 3.0.28, from 4.0.0 before 4.0.33, and from 5.0.0 before 5.0.1 are vulnerable to uncontrolled resource consumption. The `createJsonResponseHandler`, `createJsonErrorResponseHandler`, and `createStatusCodeErrorResponseHandler` functions in `packages/provider-utils/src/response-handler.ts` read response bodies without a shared size limit, allowing a remote attacker with low privileges to cause excessive memory consumption. The exploit has been publicly disclosed and may be utilized.",
   "severity": [
     {
       "type": "CVSS_V3",
@@ -32,7 +32,45 @@
               "introduced": "0"
             },
             {
-              "last_affected": "3.0.97"
+              "fixed": "3.0.28"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@ai-sdk/provider-utils"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "4.0.0-beta.10"
+            },
+            {
+              "fixed": "4.0.33"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "@ai-sdk/provider-utils"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.0.0-beta.0"
+            },
+            {
+              "fixed": "5.0.1"
             }
           ]
         }
@@ -46,11 +84,43 @@
     },
     {
       "type": "WEB",
+      "url": "https://github.com/vercel/ai/pull/16374"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vercel/ai/commit/6a436e31d247d678ddaedfc6f61e73ac0595e4b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vercel/ai/commit/b30e43ac3fae2432a40b4f4f27f844f3d78b119e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vercel/ai/commit/b85c4fbc603b8173cf50a9790823397aada908a9"
+    },
+    {
+      "type": "WEB",
       "url": "https://gist.github.com/YLChen-007/fb1096bc8428bed9a428f764d9d103bb"
     },
     {
       "type": "PACKAGE",
       "url": "https://github.com/vercel/ai"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vercel/ai/blob/main/packages/provider-utils/CHANGELOG.md#501"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vercel/ai/releases/tag/@ai-sdk/provider-utils@3.0.28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vercel/ai/releases/tag/@ai-sdk/provider-utils@4.0.33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vercel/ai/releases/tag/@ai-sdk/provider-utils@5.0.1"
     },
     {
       "type": "WEB",
