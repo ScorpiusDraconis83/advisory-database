@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6ph4-r249-58p2",
+  "modified": "2026-09-08T00:30:22Z",
+  "published": "2026-09-08T00:30:22Z",
+  "aliases": [
+    "CVE-2026-86540"
+  ],
+  "details": "knowns versions before 0.30.0 fail to validate the settings.lsp.languages binary field in project configuration files, allowing attackers to execute arbitrary binaries by crafting a malicious .knowns/config.json file. When a repository with a crafted configuration is opened, the unvalidated binary path is executed twice under the user's account without any verification.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/security/advisories/GHSA-mc52-mwq4-vfx3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86540"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/commit/d3989829fb5095666d23d005b2f78a082832a396"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/blob/v0.29.1/internal/lsp/detect.go#L128-L157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/blob/v0.29.1/internal/models/config.go#L205-L216"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/releases/tag/v0.30.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/knowns-before-0.30.0-arbitrary-code-execution-via-lsp-binary"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-07T23:16:53Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pcf3-jgx6-7m94",
+  "modified": "2026-09-08T00:30:22Z",
+  "published": "2026-09-08T00:30:22Z",
+  "aliases": [
+    "CVE-2026-86543"
+  ],
+  "details": "knowns versions before 0.30.0 serve the management API without authentication on all network interfaces by default, with no password required on fresh installations. Attackers can access the unauthenticated /api/tunnel/start endpoint to provision a public tunnel and republish the API at a publicly accessible address.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/security/advisories/GHSA-fc85-99vc-9c75"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86543"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/commit/878a02cb7cc14f0a592fdfda7a520af3cac500fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/blob/v0.29.1/internal/cli/browser.go#L193-L200"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/blob/v0.29.1/internal/server/auth.go#L80-L86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/blob/v0.29.1/internal/server/routes/tunnel.go#L26-L38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/releases/tag/v0.30.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/knowns-before-0.30.0-unauthenticated-management-api-exposure"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-07T23:16:54Z"
+  }
+}

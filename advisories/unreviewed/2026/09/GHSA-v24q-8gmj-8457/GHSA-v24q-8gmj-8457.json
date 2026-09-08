@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v24q-8gmj-8457",
+  "modified": "2026-09-08T00:30:21Z",
+  "published": "2026-09-08T00:30:21Z",
+  "aliases": [
+    "CVE-2026-86436"
+  ],
+  "details": "Lara Dashboard before 1.3.2 fails to authorize access to the post-builder image and video upload endpoints, allowing authenticated accounts without content permissions to upload files. Attackers can upload polyglot files with attacker-chosen extensions to the public web root and execute code if the deployment permits execution of the uploaded file type.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/security/advisories/GHSA-hp3f-j9w2-5rqg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/security/advisories/GHSA-j4mm-xcgj-vpvv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86436"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/commit/738cc1a219ce459323ef1d09c3789075f1b8d2f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/blob/v1.3.1/app/Http/Controllers/Backend/PostController.php#L727-L741"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/blob/v1.3.1/routes/web.php#L243-L244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laradashboard/laradashboard/releases/tag/v1.3.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lara-dashboard-before-1.3.2-missing-authorization-in-post-builder-media-upload-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-07T22:17:21Z"
+  }
+}

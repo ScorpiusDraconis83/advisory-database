@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fc26-7cjr-27x6",
+  "modified": "2026-09-08T00:30:22Z",
+  "published": "2026-09-08T00:30:22Z",
+  "aliases": [
+    "CVE-2026-86539"
+  ],
+  "details": "knowns through 0.33.0 contains a server-side request forgery vulnerability in the POST /api/embedding-models/test endpoint that issues outbound requests to caller-supplied destinations without validation. Attackers can enumerate internal hosts and cloud metadata endpoints by observing transport error messages that reveal network reachability information.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/security/advisories/GHSA-qx9v-m9gg-p5jg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86539"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/blob/v0.33.0/internal/server/routes/embedding_models.go#L64-L110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/blob/v0.33.0/internal/server/routes/imports.go#L317-L330"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/knowns-through-0.33.0-server-side-request-forgery-via-embedding-models-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-07T23:16:53Z"
+  }
+}
