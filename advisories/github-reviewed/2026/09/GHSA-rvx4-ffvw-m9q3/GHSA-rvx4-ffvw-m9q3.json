@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rvx4-ffvw-m9q3",
+  "modified": "2026-09-08T21:25:41Z",
+  "published": "2026-09-08T21:25:41Z",
+  "aliases": [
+    "CVE-2026-84361"
+  ],
+  "summary": "Composer arbitrary command execution via a malicious package's Perforce source URL",
+  "details": "## Summary\n\nIf the `p4` Perforce CLI client is installed, a malicious dependency package from a package repository allowing arbitrary perforce source URLs (packagist.org is safe) could execute arbitrary commands when running `composer install` or `composer update`. Composer passed a package's Perforce source address to the `p4` CLI client without validating it. The `p4` CLI client accepts addresses that mean \"run this local command\" instead of \"connect to this server\". This is remote code execution with the privileges of the user or CI account running Composer.\n\n## Am I affected?\n\nYou are only affected if all of the following are true:\n\n- The Perforce `p4` command line client is installed and on the `PATH` of the machine running Composer.\n- An attacker can control a package metadata's `source` section with a perforce type. Packagist.org does not allow perforce source metadata, so you are only exploitable if you rely on another Composer repository (any custom `composer`-type repository, or an inline `package` repository entry), or a `composer.lock` file you obtained from somewhere you do not trust.\n- The package gets installed from source, either because it has no dist artifact or because source installs are selected (for example `--prefer-source`).\n\nPlainly not affected: anyone without the `p4` client installed, which is the large majority of Composer users. Perforce is an optional VCS integration. Also not affected: projects that only consume packages from Packagist.org, which does not allow Perforce source repositories and therefore cannot serve a package with a Perforce source address.\n\nMost realistic way to get hit: a developer workstation or CI image that has Perforce tooling installed, pulling packages from a private or third party Composer repository that an attacker has compromised.\n\n## Patched versions\n\nComposer now validates Perforce source addresses before handing them to the `p4` client, and accepts only real network endpoints (an optional `tcp`/`ssl` transport with a host and port). Addresses that make the client spawn a local process are rejected, and the package fails validation on both update and install, before any `p4` command runs. Fixed in Composer **2.10.3** and **2.2.30**.\n\nNote: If you legitimately use Perforce with an unusual `P4PORT` value that is not a plain host and port, Composer will now reject it.\n\n## Workarounds\n\nUpgrading is the only complete fix.\n\nRisk reduction short of upgrading:\n\n- Remove the `p4` client from the `PATH` of machines that run Composer but do not use Perforce. This fully blocks this specific attack, since the vulnerability depends on that client being present.\n- Restrict configured repositories to sources you control or trust, and treat lock files from untrusted sources as untrusted input.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "composer/composer"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.3.0"
+            },
+            {
+              "fixed": "2.10.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "composer/composer"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0"
+            },
+            {
+              "fixed": "2.2.30"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/composer/composer/security/advisories/GHSA-rvx4-ffvw-m9q3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84361"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/composer/composer/commit/0aac50528e83ed635cf788333635897469440220"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/composer/composer/commit/199ad81a9cc6a2a5164ad79a8da26b2e19e521af"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/composer/composer"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/composer/composer/releases/tag/2.10.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/composer/composer/releases/tag/2.2.30"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-08T21:25:41Z",
+    "nvd_published_at": "2026-09-01T21:18:47Z"
+  }
+}
