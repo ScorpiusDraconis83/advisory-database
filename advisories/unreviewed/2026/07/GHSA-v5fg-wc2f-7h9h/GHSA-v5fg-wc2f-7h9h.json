@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v5fg-wc2f-7h9h",
-  "modified": "2026-07-25T12:31:33Z",
+  "modified": "2026-09-08T15:31:28Z",
   "published": "2026-07-25T12:31:33Z",
   "aliases": [
     "CVE-2026-64381"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: Fix next buffer leak in receive_encrypted_standard()\n\nreceive_encrypted_standard() allocates next_buffer before checking\nwhether the number of compound PDUs already reached MAX_COMPOUND. If\nthe limit check fails, the function returns immediately and the newly\nallocated next_buffer is not assigned to server->smallbuf/server->bigbuf,\nmaking it leaked.\n\nMove the MAX_COMPOUND check before allocating next_buffer.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -48,8 +53,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-07-25T10:17:21Z"

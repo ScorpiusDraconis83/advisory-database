@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wpfp-j2f8-c6vj",
+  "modified": "2026-09-08T15:31:57Z",
+  "published": "2026-09-08T15:31:57Z",
+  "aliases": [
+    "CVE-2026-84282"
+  ],
+  "details": "A Server-Side Request Forgery (SSRF) vulnerability exists in the ONLYOFFICE ownCloud Integration plugin version 9.12. The /apps/onlyoffice/ajax/settings/address endpoint does not sufficiently validate the user-supplied Document Server URL before initiating outbound connections. An authenticated administrator can manipulate the document server parameter to cause the ownCloud server to send arbitrary requests to attacker-controlled destinations, including localhost and internal network hosts. This allows internal network reconnaissance and TCP port scanning based on differences in server responses.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84282"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ONLYOFFICE/onlyoffice-owncloud/blob/master/controller/settingsapicontroller.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kb.cert.org/vuls/id/943094"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-08T15:18:51Z"
+  }
+}

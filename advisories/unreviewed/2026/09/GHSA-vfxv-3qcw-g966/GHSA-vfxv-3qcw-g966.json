@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vfxv-3qcw-g966",
+  "modified": "2026-09-08T15:31:53Z",
+  "published": "2026-09-08T15:31:53Z",
+  "aliases": [
+    "CVE-2026-62437"
+  ],
+  "details": "When guests are terminated, various pieces of cleanup need carrying out.\nThe cleaning up of PCI devices which were assigned to guests, and the\nassociated removal of tracking structures for IRQs used by the devices\noccurs relatively early in the process.  Unfortunately after that point\nthe guest about to be terminated could cause its device model (DM) to\nre-establish such tracking structures, by having it bind one or more IRQs\nanew.  While some of those tracking structures would still be cleaned up\nlater on, at least one would not be.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62437"
+    },
+    {
+      "type": "WEB",
+      "url": "https://xenbits.xenproject.org/xsa/advisory-509.html"
+    },
+    {
+      "type": "WEB",
+      "url": "http://xenbits.xen.org/xsa/advisory-509.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-08T13:17:19Z"
+  }
+}

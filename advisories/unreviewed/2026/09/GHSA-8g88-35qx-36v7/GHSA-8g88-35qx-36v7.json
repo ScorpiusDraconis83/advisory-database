@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8g88-35qx-36v7",
+  "modified": "2026-09-08T15:31:54Z",
+  "published": "2026-09-08T15:31:54Z",
+  "aliases": [
+    "CVE-2026-33389"
+  ],
+  "details": "An improper certificate/host key validation vulnerability was discovered in the Smart Polling functionality, which established encrypted connections to target devices without validating the remote host's identity, and no option was provided to enable it. A man-in-the-middle attacker positioned between a sensor and a polled device can, during a polling session, impersonate the device and intercept the communication, including the credentials used to access it. The captured credentials can then be replayed to authenticate against the device itself or against other devices sharing the same credentials, allowing the attacker to access and tamper with the device's data and to disrupt its operations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:N/VA:N/SC:H/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33389"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.nozominetworks.com/NN-2026:20-01"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-671"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-08T14:17:22Z"
+  }
+}

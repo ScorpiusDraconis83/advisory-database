@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pwv5-r8hr-fvgr",
+  "modified": "2026-09-08T15:31:54Z",
+  "published": "2026-09-08T15:31:54Z",
+  "aliases": [
+    "CVE-2026-79603"
+  ],
+  "details": "x86 PV guests can free memory pages while still keeping a stale TLB entry\npointing to them.  A TLB flush is only issued by Xen (if needed) when the\npage is re-used.  Since it's possible for the page to be scrubbed ahead of\nthe TLB flush, there's a window where a PV guest can modify an already\nscrubbed page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://xenbits.xenproject.org/xsa/advisory-511.html"
+    },
+    {
+      "type": "WEB",
+      "url": "http://xenbits.xen.org/xsa/advisory-511.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-664"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-08T13:17:27Z"
+  }
+}
