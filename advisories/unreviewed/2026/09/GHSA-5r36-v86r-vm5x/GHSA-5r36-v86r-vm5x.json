@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5r36-v86r-vm5x",
+  "modified": "2026-09-09T12:32:11Z",
+  "published": "2026-09-09T12:32:11Z",
+  "aliases": [
+    "CVE-2026-86776"
+  ],
+  "details": "KeePass versions 2.35 through 2.61.1 fail to validate KDBX header field sizes before memory allocation in the ReadHeaderField function. Attackers can craft a malicious KDBX file declaring excessive header field lengths to trigger allocation of gigabytes of memory, causing the application to consume resources and terminate.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86776"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/KSecur1ty/KDBX-Header-Size-Mirage-POC"
+    },
+    {
+      "type": "WEB",
+      "url": "https://keepass.info"
+    },
+    {
+      "type": "WEB",
+      "url": "https://keepass.info/download.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/keepass-2.35-through-2.61.1-memory-exhaustion-via-kdbx-header-field-size"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-789"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T10:22:33Z"
+  }
+}
