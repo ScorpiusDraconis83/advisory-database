@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6v37-8246-gmfc",
-  "modified": "2026-09-09T06:31:40Z",
+  "modified": "2026-09-09T18:31:56Z",
   "published": "2026-09-09T06:31:40Z",
   "aliases": [
     "CVE-2026-85037"
   ],
   "details": "The Sunshine Photo Cart  WordPress plugin before 3.7 does not validate that a client-supplied price identifier belongs to the item being purchased when it is added to the cart, allowing unauthenticated users to buy items at a lower price defined elsewhere on the site and complete an order at that price, resulting in financial loss for the site owner.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-09T06:17:18Z"

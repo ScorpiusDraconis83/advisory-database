@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-crqp-42h3-7fcv",
-  "modified": "2026-09-08T21:34:30Z",
+  "modified": "2026-09-09T18:31:30Z",
   "published": "2026-09-08T21:34:30Z",
   "aliases": [
     "CVE-2026-30754"
   ],
   "details": "A memory corruption vulnerability exists in FFmpeg before 8.1. The RTP encoding process. In the nal_send function in libavformat/rtpenc_h264_hevc.c, a negative size parameter (size=-3) is passed to memcpy when transmitting H.264/HEVC streams via RTP using a crafted input file. This was detected using AddressSanitizer.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -28,8 +33,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-08T21:17:06Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-m96f-c5vh-h7cm",
-  "modified": "2026-09-09T06:31:40Z",
+  "modified": "2026-09-09T18:31:56Z",
   "published": "2026-09-09T06:31:40Z",
   "aliases": [
     "CVE-2026-81741"
   ],
   "details": "The Groundhogg — CRM, Newsletters, and Marketing Automation WordPress plugin before 4.7.2 does not restrict the redirect target of its email preference confirmation flow to the site's own host, allowing unauthenticated attackers to redirect visitors to an arbitrary external URL by way of a crafted link.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-09T06:17:17Z"

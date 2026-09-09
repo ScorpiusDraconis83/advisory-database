@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-72h7-pjj2-r4pr",
+  "modified": "2026-09-09T18:32:05Z",
+  "published": "2026-09-09T18:32:05Z",
+  "aliases": [
+    "CVE-2026-87872"
+  ],
+  "details": "A flaw was found in the OCAPI modules (ocapi_command, ocapi_info) of the\ncommunity.general Ansible collection. The shared OCAPI request helper disables\nTLS certificate validation on every request and the modules expose no parameter\nto re-enable it, while sending HTTP Basic-Auth credentials to an https endpoint.\nAn attacker positioned on the network path between the Ansible controller and the\nOCAPI-managed storage/enclosure device can present any certificate, intercept the\nsession, capture the credentials, and tamper with responses.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87872"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-87872"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2530988"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T17:17:52Z"
+  }
+}

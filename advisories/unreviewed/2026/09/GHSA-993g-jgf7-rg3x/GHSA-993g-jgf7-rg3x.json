@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-993g-jgf7-rg3x",
+  "modified": "2026-09-09T18:32:05Z",
+  "published": "2026-09-09T18:32:05Z",
+  "aliases": [
+    "CVE-2026-87853"
+  ],
+  "details": "A flaw was found in SSSD's IdP authentication provider. The eval_access_token_buf() function compares the OIDC subject identifier using strncmp() with the authenticated user's identifier length, performing a prefix comparison instead of an exact match. An attacker whose IdP identifier is a strict prefix of a target user's identifier can authenticate as the target user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87853"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-87853"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2530888"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-187"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T17:17:52Z"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-337q-m32v-p95j",
+  "modified": "2026-09-09T18:32:04Z",
+  "published": "2026-09-09T18:32:04Z",
+  "aliases": [
+    "CVE-2026-80921"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: vsie: zero stale crypto bits\n\nWhen shadowing crypto access bits from a format0 apcb (crycb 0 or 1),\nthe bits 64..255 are unchanged from whatever is in the vsie page in the\ncrycb and thus in the apcb. This gives a nested guest potential access\nto a device no longer available. Zero out the remaining bits.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80921"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/087c19cc60a8caa1a08e1e434c8be2caf6c27733"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/29b4f7bc2991313bd3e6f6fb8fdf1b173f086dd6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34d5b5b646c91cfb9338d7a12c955a70ffb8c66b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59d51550b5cb916bda037673a721a404b3b47a0d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d23489f51109e3ebba5b5db8c5f0185af7b7fdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/935eeba276012916c76243e5cbb843efd8fdb75d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d110b3297f11ef227098b8a82ade2d5f123b7d2f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d4bcd2df6d0d2af916b4fe1a533958778ea7c45b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6079dca67eccb5eabef9f72437948c66dc5131f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T17:17:47Z"
+  }
+}

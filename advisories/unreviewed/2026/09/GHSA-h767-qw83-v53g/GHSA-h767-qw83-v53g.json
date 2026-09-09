@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-h767-qw83-v53g",
-  "modified": "2026-09-09T06:31:40Z",
+  "modified": "2026-09-09T18:31:56Z",
   "published": "2026-09-09T06:31:40Z",
   "aliases": [
     "CVE-2026-82185"
   ],
   "details": "The WPLP Cookie Consent  WordPress plugin before 4.4.2 does not have capability or nonce checks on some of its A/B testing actions, allowing any authenticated user, such as a subscriber, to overwrite the cookie banner configuration shown to every visitor and to irreversibly reset the stored A/B test results.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-09T06:17:17Z"

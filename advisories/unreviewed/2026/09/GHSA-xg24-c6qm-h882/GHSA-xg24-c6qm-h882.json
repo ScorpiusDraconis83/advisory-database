@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xg24-c6qm-h882",
+  "modified": "2026-09-09T18:32:04Z",
+  "published": "2026-09-09T18:32:04Z",
+  "aliases": [
+    "CVE-2026-80920"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: defer eventfd signaling when queued from a wakeup handler\n\nio_req_local_work_add() signals the CQ ring eventfd inline when it is the\none to push the first entry onto ->work_list. For DEFER_TASKRUN rings that\nadd is frequently done from a waitqueue wakeup handler, where an\narbitrary waitqueue lock is held.\n\neventfd_signal_mask() only refuses to recurse when current->in_eventfd\nis set, but that bit is set by eventfd_signal_mask() itself. If the wake\nchain starts somewhere else, signal goes out inline and can feed back\ninto epoll.\n\nAdd IOU_F_TWQ_IN_WAKE, set it on the task_work add done from the three\nwaitqueue callbacks, and use it to force io_eventfd_signal() down the\nexisting call_rcu_hurry() deferral instead of signaling inline.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80920"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40b6ccf68731809ceb85c6e9f0f8f2ed61c7aa5a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b6bb334b0e9348887e3e55e1f494b0c3b8fbf59f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd305ee3633a45fcf5f3a5d83f99f3cb77d87b6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e22f4494cc9487d326e5e3067f33dea7c1e442b2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T17:17:47Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7838-p44c-rv6w",
-  "modified": "2026-09-09T06:31:40Z",
+  "modified": "2026-09-09T18:31:56Z",
   "published": "2026-09-09T06:31:40Z",
   "aliases": [
     "CVE-2026-80341"
   ],
   "details": "The Payment Plugins for PayPal WooCommerce WordPress plugin before 2.0.26 does not verify that a stored payment method belongs to the user attaching it, allowing any authenticated user, such as a subscriber, to bind another customer's stored card to their own account and then charge or delete it.\nExploitation requires the attacker to already know the payment provider's identifier for the victim's stored method, which the Payment Plugins for PayPal WooCommerce WordPress plugin before 2.0.26 does not expose.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-09T06:17:16Z"

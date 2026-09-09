@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vppq-2m7c-f4xg",
+  "modified": "2026-09-09T18:32:04Z",
+  "published": "2026-09-09T18:32:04Z",
+  "aliases": [
+    "CVE-2026-80918"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: core: fix number/pointer type confusion on long items\n\nWhen fetch_item() is called by hid_scan_report() on an item with\nHID_ITEM_TAG_LONG, it stores a pointer to the item data in\nitem->data.longdata instead of storing a value directly in\nitem->data.{u8/u16/u32}.\n\nWhen item_udata() or item_sdata() encounters such an item, it incorrectly\nassumes that the item is in short format, and therefore returns the lower\npart of a kernel pointer reinterpreted as a number.\n\nWhen a HID device is connected whose descriptor contains a\nHID_GLOBAL_ITEM_TAG_REPORT_SIZE encoded in long format with size=4, this\ncauses the lower half of a kernel pointer to be printed into dmesg as a\nnumber, like this:\n\n    hid (null): invalid report_size 107953555\n\nTo fix it, let item_udata() and item_sdata() verify that the item is in\nshort format.\n\nNote that this bug only affects hid_scan_report(), while the main parsing\npass hid_parse_collections() will always bail out when encountering a long\nitem.\n\nSidenote: There are currently no users of data.longdata; maybe we should\njust remove any parsing of long-format descriptors as a follow-up.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80918"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fa1591efd417e39e5e164bebea8ca7a3837c469"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/28abce951343fcec26e397610868efa4e1395c3f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/634f498ea5d5e8e01f8d9414d4f45eeaf9ee1996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/abec577de5fc16cd5caae42f97cdcd0983c06d66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aec2c2ec87d4ec1f098979f68cd81b29f031c8cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bed7fe3a936b6bdd84671385951397ca673cf6e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd8035dec26e98204d6e4a6e0cee5c4d329b3d7e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e542edada3f79387c0ac2a528cebf01f4ef47df8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e60159f5ea60254a5c3de4ea4f2f939f0171031b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T17:17:46Z"
+  }
+}

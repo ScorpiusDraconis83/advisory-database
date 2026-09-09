@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9xm7-6q66-g534",
+  "modified": "2026-09-09T18:32:05Z",
+  "published": "2026-09-09T18:32:05Z",
+  "aliases": [
+    "CVE-2026-87874"
+  ],
+  "details": "A flaw was found in the memcached cache plugin of the community.general Ansible\ncollection. Although its documentation states that records are stored in JSON\nformat, the plugin performs no explicit serialization and relies on\npython-memcached, which pickles values on write and unpickles them on read.\nBecause memcached is unauthenticated and cache keys are predictable, an attacker\nable to reach a network-exposed or shared memcached instance can write a crafted\npickle payload that is deserialized and executed on the Ansible controller when\nthe poisoned fact cache is next read, leading to remote code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87874"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-87874"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2530995"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T17:17:53Z"
+  }
+}

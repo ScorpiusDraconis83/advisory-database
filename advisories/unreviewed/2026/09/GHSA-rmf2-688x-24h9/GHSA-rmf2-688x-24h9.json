@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rmf2-688x-24h9",
-  "modified": "2026-09-09T06:31:40Z",
+  "modified": "2026-09-09T18:31:57Z",
   "published": "2026-09-09T06:31:40Z",
   "aliases": [
     "CVE-2026-82184"
   ],
   "details": "The WPLP Cookie Consent  WordPress plugin before 4.4.2 does not have any authorisation or CSRF checks when storing visitor consent state, and the code that does so runs on every front-end page load, allowing unauthenticated attackers to overwrite a site-wide option with arbitrary data.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-09T06:17:17Z"
