@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wjgf-rg4p-gj99",
+  "modified": "2026-09-09T00:30:30Z",
+  "published": "2026-09-09T00:30:30Z",
+  "aliases": [
+    "CVE-2026-18090"
+  ],
+  "details": "A flaw was found in gdk-pixbuf. This vulnerability allows a remote attacker to cause a heap out-of-bounds read by providing a specially crafted Apple Icon Image (.icns) file. The uncompress() function, which handles RLE-encoded ICNS icon data, fails to validate the source buffer's boundaries during decompression. This can lead to a denial of service, where the application crashes, or to information disclosure, potentially revealing sensitive data from adjacent memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18090"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-18090"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2517751"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/issues/308"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-08T23:17:22Z"
+  }
+}
