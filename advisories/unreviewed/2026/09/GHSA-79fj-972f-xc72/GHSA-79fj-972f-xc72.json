@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-79fj-972f-xc72",
+  "modified": "2026-09-09T09:32:59Z",
+  "published": "2026-09-09T09:32:59Z",
+  "aliases": [
+    "CVE-2026-14989"
+  ],
+  "details": "The Cookie Banner for GDPR / CCPA – WPLP Cookie Consent plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'wpl_user_preference' parameter in all versions up to, and including, 4.4.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The consent-logging AJAX endpoint is registered for unauthenticated users and its required nonce (wpl_consent_logging_nonce) is publicly emitted via wp_localize_script on the frontend, meaning any unauthenticated site visitor can plant a payload without any prior authentication or privileged access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14989"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.2.7/public/modules/consent-logs/class-wpl-consent-logs.php#L700"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.2.7/public/modules/consent-logs/class-wpl-cookie-consent-consent-logs.php#L594"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.2.7/public/modules/consent-logs/class-wpl-cookie-consent-consent-logs.php#L725"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.3.5/public/modules/consent-logs/class-wpl-consent-logs.php#L700"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.3.5/public/modules/consent-logs/class-wpl-cookie-consent-consent-logs.php#L594"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.3.5/public/modules/consent-logs/class-wpl-cookie-consent-consent-logs.php#L725"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3674117%40gdpr-cookie-consent&new=3674117%40gdpr-cookie-consent"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/6045c4fd-60ed-4771-93f4-d4df41ef888b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T09:17:10Z"
+  }
+}

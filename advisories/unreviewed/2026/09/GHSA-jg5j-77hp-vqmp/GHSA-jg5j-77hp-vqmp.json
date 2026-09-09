@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jg5j-77hp-vqmp",
+  "modified": "2026-09-09T09:32:59Z",
+  "published": "2026-09-09T09:32:59Z",
+  "aliases": [
+    "CVE-2026-14359"
+  ],
+  "details": "The YITH WooCommerce Waitlist Premium plugin for WordPress is vulnerable to Privilege Escalation in versions up to, and including, 3.35.0. This is due to the add_user_in_waiting_list() function registered on the wp_ajax_yith_wcwtl_add_user action being missing both a capability check and a nonce verification, and using parse_str() + extract() to import attacker-controlled variables from $_POST['params'] that are then passed to wp_create_user() and $user->set_role(). This makes it possible for authenticated attackers, with Subscriber-level access and above, to elevate their privileges to that of an administrator by creating a new user account and assigning it the administrator role.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14359"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/48660afe-1e03-4bf5-b821-6538a4daf201?source=cve"
+    },
+    {
+      "type": "WEB",
+      "url": "https://yithemes.com"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T09:17:10Z"
+  }
+}
