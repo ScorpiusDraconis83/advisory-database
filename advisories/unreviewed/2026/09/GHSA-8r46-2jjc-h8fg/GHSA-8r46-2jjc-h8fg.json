@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8r46-2jjc-h8fg",
+  "modified": "2026-09-09T21:31:57Z",
+  "published": "2026-09-09T21:31:57Z",
+  "aliases": [
+    "CVE-2026-71803"
+  ],
+  "details": "money-pos 1.0 contains a stored Cross-Site Scripting (XSS) vulnerability. When processing returns, the backend fails to filter or escape the goodsName parameter, directly concatenating it into the order log description; the frontend subsequently renders this content using v-html. An attacker with product creation privileges can inject a malicious JavaScript payload, causing unauthorized code execution when an administrator views the order logs.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/W000i/vuln/issues/7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T21:17:03Z"
+  }
+}

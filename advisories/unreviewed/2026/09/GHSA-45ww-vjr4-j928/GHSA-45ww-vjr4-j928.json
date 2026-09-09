@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-45ww-vjr4-j928",
+  "modified": "2026-09-09T21:31:57Z",
+  "published": "2026-09-09T21:31:57Z",
+  "aliases": [
+    "CVE-2026-79324"
+  ],
+  "details": "Missing authorization in the Address Delete controller in Mageplaza GDPR for Magento 2 (mageplaza/module-gdpr) through 4.2.9 allows remote unauthenticated attackers to delete any customer's saved address, and to erase all stored addresses by iterating the address id, via a GET request to /customer/address/delete/id/{id}. The controller extends the legacy Action class instead of AbstractAccount, so no authentication, ownership or form key check is enforced.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79324"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/mrtantoine/4311aa0c267c7a77c15d292820eb3c36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://packagist.org/packages/mageplaza/module-gdpr"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T20:20:43Z"
+  }
+}

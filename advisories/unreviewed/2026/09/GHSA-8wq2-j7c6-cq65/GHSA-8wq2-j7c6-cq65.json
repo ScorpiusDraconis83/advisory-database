@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8wq2-j7c6-cq65",
+  "modified": "2026-09-09T21:31:57Z",
+  "published": "2026-09-09T21:31:57Z",
+  "aliases": [
+    "CVE-2026-71802"
+  ],
+  "details": "A stored Cross-Site Scripting (XSS) vulnerability exists in the announcement preview component of REBUILD 4.4.3. Although the announcement content undergoes HTML escaping on the server side, the client-side preview code reverses the escaped entities using jQuery's `html().text()` method and subsequently injects the result into the DOM. An administrator or attacker capable of controlling the announcement content can exploit this vulnerability to execute arbitrary JavaScript code in the browsers of users viewing the affected pages \"which may include the dashboard, activity feed, or login page, depending on the announcement's visibility settings.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71802"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/W000i/vuln/issues/6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T21:17:03Z"
+  }
+}

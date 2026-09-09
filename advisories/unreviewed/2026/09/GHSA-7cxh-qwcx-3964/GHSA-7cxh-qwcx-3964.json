@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7cxh-qwcx-3964",
-  "modified": "2026-09-04T21:31:51Z",
+  "modified": "2026-09-09T21:31:18Z",
   "published": "2026-09-04T21:31:51Z",
   "aliases": [
     "CVE-2026-79390"
   ],
   "details": "Trueview TI8161 6.0.23.4 is vulnerable to information disclosure due to the transmission of MQTT communications in plaintext over TCP port 1883. An unauthenticated attacker with access to the same network segment can intercept MQTT traffic and obtain sensitive device information and operational data, including device identifiers, message metadata, and control-related information.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-04T20:17:28Z"

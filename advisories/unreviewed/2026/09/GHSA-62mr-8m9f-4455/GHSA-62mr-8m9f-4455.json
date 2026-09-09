@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-62mr-8m9f-4455",
-  "modified": "2026-09-08T15:31:57Z",
+  "modified": "2026-09-09T21:31:18Z",
   "published": "2026-09-08T15:31:57Z",
   "aliases": [
     "CVE-2026-79571"
   ],
   "details": "Incorrect access control in the SellerAuthorizeAspect component of springboot-project v1.0.0 allows unauthenticated attackers to access all seller management interfaces and list all products/orders, put products on/off sale, finish/cancel orders, and modify categories without authentication.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-08T15:18:48Z"
