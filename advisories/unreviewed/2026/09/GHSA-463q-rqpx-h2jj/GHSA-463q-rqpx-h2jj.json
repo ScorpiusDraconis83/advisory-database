@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-463q-rqpx-h2jj",
+  "modified": "2026-09-09T15:35:14Z",
+  "published": "2026-09-09T15:35:14Z",
+  "aliases": [
+    "CVE-2026-86766"
+  ],
+  "details": "Snipe-IT versions up to and including 8.6.3 contain a race condition (TOCTOU) in the consumable checkout API endpoint (POST /api/v1/consumables/{consumable_id}/checkout). The requested quantity is validated against the number of remaining units before the database transaction begins, and the transaction then creates the checkout records without locking the consumable row or re-checking availability. An authenticated user with permission to check out consumables can submit concurrent checkout requests for the same consumable so that both requests pass the availability check and succeed, over-allocating stock and driving the remaining inventory negative (e.g., a consumable with 1 remaining unit ends at -1 after two concurrent 1-unit checkouts). The issue is fixed in 8.7.0, which re-fetches the parent row under lockForUpdate inside the transaction and re-validates availability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-x4g2-87xc-m5jm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86766"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/commit/f71806b1e0efbd3bc2b6be61994ad2a5d5d6c206"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/snipe-it-8.6.3-race-condition-via-consumable-checkout"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T14:17:26Z"
+  }
+}

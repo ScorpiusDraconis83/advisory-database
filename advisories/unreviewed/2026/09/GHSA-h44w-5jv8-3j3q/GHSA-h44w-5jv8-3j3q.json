@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h44w-5jv8-3j3q",
+  "modified": "2026-09-09T15:35:11Z",
+  "published": "2026-09-09T15:35:11Z",
+  "aliases": [
+    "CVE-2026-86740"
+  ],
+  "details": "Snipe-IT before 8.7.0 fails to check the return value of Storage::delete() in UploadedFilesController::destroy() and Api\\\\UploadedFilesController::destroy(), allowing deletion requests to report success while files remain on disk. Administrators performing attachment deletions receive success responses and see files hidden from listings, but the physical files persist on disk and remain accessible to anyone with filesystem or backup access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-4c4h-cpgf-h4qr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86740"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/snipe-it-before-8.7.0-attachment-deletion-reports-success-while-file-remains"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-212"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T14:17:22Z"
+  }
+}

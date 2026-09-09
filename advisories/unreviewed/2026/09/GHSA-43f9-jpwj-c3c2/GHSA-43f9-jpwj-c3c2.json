@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-43f9-jpwj-c3c2",
+  "modified": "2026-09-09T15:35:15Z",
+  "published": "2026-09-09T15:35:15Z",
+  "aliases": [
+    "CVE-2026-86774"
+  ],
+  "details": "Snipe-IT versions before 8.7.0 contain a broken access control vulnerability in AssetModelPolicy where the files() method cascades from assets.files permission, allowing authenticated users to upload and delete file attachments on Asset Model records without the required models.files permission. Attackers with only assets.files permission can mutate shared model file attachments across company boundaries and bypass the dedicated models.files permission intended to restrict file management on the shared Asset Model catalog.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-rhrf-7x22-x2rj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86774"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/snipe-it-before-8.7.0-broken-access-control-via-assetmodelpolicy"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T14:17:28Z"
+  }
+}

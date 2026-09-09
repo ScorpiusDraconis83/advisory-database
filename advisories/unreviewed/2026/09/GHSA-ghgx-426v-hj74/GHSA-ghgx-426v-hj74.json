@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ghgx-426v-hj74",
+  "modified": "2026-09-09T15:35:10Z",
+  "published": "2026-09-09T15:35:10Z",
+  "aliases": [
+    "CVE-2023-54393"
+  ],
+  "details": "PocketMine-MP versions before 4.20.5 contain a denial of service vulnerability in LoginPacket JSON parsing due to improper validation in the JsonMapper dependency. Attackers can send malformed JSON structures in LoginPacket to crash the server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/security/advisories/GHSA-pqp3-8rrw-g8vm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54393"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/commit/09668a37d66c6023685a948b7550c918620e98f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/commit/a31902a31f5b6fdb832f57c0e3a3f16a3b41c012"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pocketmine-mp-before-4.20.5-denial-of-service-via-loginpacket"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T14:17:09Z"
+  }
+}

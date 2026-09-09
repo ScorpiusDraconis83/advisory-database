@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-35jx-w2j3-h2m2",
+  "modified": "2026-09-09T15:35:10Z",
+  "published": "2026-09-09T15:35:10Z",
+  "aliases": [
+    "CVE-2026-56711"
+  ],
+  "details": "VLC media player computes the size of a picture buffer with 32-bit arithmetic and allocates from the wrapped result. In AllocatePicture in src/misc/picture.c the running total is accumulated as i_bytes += p->i_pitch * p->i_lines, and both plane_t fields are declared int in include/vlc_picture.h, so the multiplication is evaluated at 32 bits and wraps before it is widened to the size_t accumulator. The overflow check that precedes it divides in 64-bit arithmetic and therefore does not constrain the product, and the subsequent comparison against PICTURE_SW_SIZE_MAX examines the already wrapped value, so both guards pass. aligned_alloc then reserves the small wrapped size while the decoder writes scanlines sized from the original dimensions. A crafted PNG whose IHDR declares large width and height reaches this path through the image demuxer, whose only size guard is on the input file's byte count rather than the declared dimensions, and the decoder in modules/codec/png.c writes past the end of the allocation with attacker-influenced length and content. Opening the file directly or through a playlist entry is sufficient, with no non-default settings.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56711"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/videolan/vlc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/videolan/vlc/blob/3.0.23/include/vlc_picture.h"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/videolan/vlc/blob/3.0.23/modules/codec/png.c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/videolan/vlc/blob/3.0.23/modules/demux/image.c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/videolan/vlc/blob/3.0.23/src/misc/picture.c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vlc-media-player-3.0.0-through-3.0.23-heap-out-of-bounds-write-via-integer-overflow-in-picture-allocation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T14:17:12Z"
+  }
+}

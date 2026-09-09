@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3464-x248-vrcx",
-  "modified": "2026-09-08T15:31:57Z",
+  "modified": "2026-09-09T15:34:46Z",
   "published": "2026-09-08T15:31:57Z",
   "aliases": [
     "CVE-2026-79575"
   ],
   "details": "The JWT signing secret in yfexam-exam v2.0 is derived from the username and the current month instead of a random server-side key, making the secret key easily obtainable via a bruteforce attack.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-330"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-08T15:18:48Z"

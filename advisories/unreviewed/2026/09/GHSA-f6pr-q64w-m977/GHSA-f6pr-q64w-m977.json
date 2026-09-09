@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f6pr-q64w-m977",
+  "modified": "2026-09-09T15:35:14Z",
+  "published": "2026-09-09T15:35:14Z",
+  "aliases": [
+    "CVE-2026-86763"
+  ],
+  "details": "Snipe-IT versions >= 7.0.12 and <= 8.6.3 contain an authorization bypass in the Livewire importer component (App\\Livewire\\Importer, mounted at the imports.index route). The component only checked the broad 'import' ability at mount time, while its files() and activeFile() computed properties queried the imports table with no owner or company scope. As a result, any authenticated non-superuser holding the import permission could view every Import record on the instance (original filename, file_path, filesize, import_type and creation timestamp) and could invoke the selectFile($id) Livewire action with any auto-incrementing Import ID to load another user's record, exposing its stored preview data (header_row column headers and first_row, the first data row of the CSV). Because import CSVs commonly contain personal data, asset serial numbers and license keys, this discloses sensitive information; in Full Multiple Companies Support (FMCS) deployments the disclosure also crosses company/tenant boundaries. Impact is limited to preview data rather than the full CSV file, and superusers were unaffected. Fixed in version 8.7.0, which scopes non-superuser reads to imports owned by the caller.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-89q3-jmfm-hvcm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86763"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/snipe-it-7.0.12-through-8.6.3-authorization-bypass-via-importer"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T14:17:26Z"
+  }
+}

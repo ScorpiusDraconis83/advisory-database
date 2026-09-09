@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qrr8-c2f6-fmqr",
+  "modified": "2026-09-09T15:35:11Z",
+  "published": "2026-09-09T15:35:11Z",
+  "aliases": [
+    "CVE-2026-86201"
+  ],
+  "details": "PocketMine-MP before 5.41.1 contains a denial of service vulnerability in LoginPacket processing where large or complex structures in unknown clientData JWT properties cause excessive logging without sanitization. Attackers can send crafted LoginPackets with deeply nested or massive object structures to trigger out-of-memory conditions and crash the server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/security/advisories/GHSA-h6rj-3m53-887h"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86201"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/commit/87d1c0cea09d972fd4c2fafb84dac2ecab7649f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pocketmine-mp-before-5.41.1-logdos-via-loginpacket-clientdata"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T14:17:21Z"
+  }
+}

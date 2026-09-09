@@ -1,13 +1,17 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hx7m-vxj3-9qmx",
-  "modified": "2026-09-07T12:30:28Z",
+  "modified": "2026-09-09T15:34:42Z",
   "published": "2026-09-07T09:31:40Z",
   "aliases": [
     "CVE-2026-86342"
   ],
   "details": "Affected versions of MISP contain improper authorization checks in the freetext feed preview functionality. The preview performed correlation lookups against attributes from events without applying the requesting user's ACL, allowing restricted event correlations and associated event information to be exposed to users who could not otherwise access those events. The vulnerable queries were scoped only by attribute values and deletion status rather than MISP's event, organization, sharing-group, attribute, and object-level access controls.\n\n\nThe same preview functionality also returned cross-feed correlation information without properly restricting the feed list to feeds visible to the caller. This exposed metadata for feeds that were not marked lookup_visible; one affected response additionally included the configured feed URL even though that value was not required by the feature.\n\nThe fixes apply the caller's ACL to attribute correlation searches, remove feed URLs from correlation results, restrict cross-feed results according to feed visibility, and correct host-organization ID comparison so the authorization rules are applied consistently.\n\nVersion affected: ≤2.5.45",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-238x-cw5p-56x5",
+  "modified": "2026-09-09T15:35:10Z",
+  "published": "2026-09-09T15:35:10Z",
+  "aliases": [
+    "CVE-2024-58380"
+  ],
+  "details": "PocketMine-MP versions before 5.11.2 contain a denial of service vulnerability in BookEditPacket handling that crashes the server when an invalid inventory slot value is provided. Attackers can send a crafted BookEditPacket with an inventory slot greater than 35 to trigger an unhandled exception and crash the server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/security/advisories/GHSA-xc7j-wj36-qjfr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58380"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/commit/47f011966092f275cc1b11f8de635e89fd9651a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pocketmine-mp-before-5.11.2-denial-of-service-via-bookeditpacket"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T14:17:10Z"
+  }
+}

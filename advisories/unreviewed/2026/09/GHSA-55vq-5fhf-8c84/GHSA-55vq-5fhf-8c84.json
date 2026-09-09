@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-55vq-5fhf-8c84",
+  "modified": "2026-09-09T15:35:13Z",
+  "published": "2026-09-09T15:35:13Z",
+  "aliases": [
+    "CVE-2026-86749"
+  ],
+  "details": "Snipe-IT versions <= 8.6.3 (fixed in 8.7.0) do not check the return value of storage write operations in ImageUploadRequest::handleImages(). Because Laravel's default disk mode does not throw on failure, a silently failed Storage::disk('public')->put(...) call still caused the application to delete the previous image via deleteExistingImage() and to reassign and persist the model's image reference to the new filename, destroying the existing image and leaving the database row pointing at a file that was never written. A mirror problem existed in deleteExistingImage(), where a failed Storage::delete() still nulled the model's image field, orphaning the file on disk. The condition is not directly attacker-controlled: it is triggered when any legitimate authenticated user submits an image upload while the storage backend transiently fails (for example an S3 network error, a local filesystem permission problem, or quota exhaustion). The result is unrecoverable loss of the prior image and a durable inconsistency between the database and disk that requires manual reconciliation. All models whose controllers route through ImageUploadRequest::handleImages (assets, asset models, users, companies, manufacturers, locations, categories, suppliers, departments, and other image-carrying models) are affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/grokability/snipe-it/security/advisories/GHSA-v37p-hr9x-5w85"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/snipe-it-before-8.7.0-data-loss-via-failed-image-write"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-252"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T14:17:23Z"
+  }
+}

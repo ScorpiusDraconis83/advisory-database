@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hp34-98g7-38jv",
+  "modified": "2026-09-09T15:35:11Z",
+  "published": "2026-09-09T15:35:11Z",
+  "aliases": [
+    "CVE-2026-86198"
+  ],
+  "details": "PocketMine-MP versions before 5.44.2 fail to properly validate multiple ResourcePackClientResponsePacket packets with STATUS_COMPLETED status during resource pack handling. Malicious clients can send batches of these packets to repeatedly trigger pre-spawn progression, creating duplicate Player objects and amplifying memory consumption and network traffic.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/security/advisories/GHSA-pg53-p7qp-65cv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86198"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pmmp/PocketMine-MP/commit/7a27894146a04964ab628ed9033140fdbf887ff3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pocketmine-mp-before-5.44.2-denial-of-service-via-resourcepackclientresponsepacket"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-837"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T14:17:20Z"
+  }
+}

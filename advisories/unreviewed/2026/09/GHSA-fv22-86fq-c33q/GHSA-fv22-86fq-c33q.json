@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fv22-86fq-c33q",
+  "modified": "2026-09-09T15:35:10Z",
+  "published": "2026-09-09T15:35:10Z",
+  "aliases": [
+    "CVE-2024-58382"
+  ],
+  "details": "league/commonmark versions before 2.6.0 contain polynomial time complexity vulnerabilities in Markdown parsing that allow attackers to cause denial of service. Attackers can submit carefully crafted Markdown inputs designed to trigger worst-case performance, and sending multiple requests in parallel exhausts CPU resources and PHP-FPM processes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/thephpleague/commonmark/security/advisories/GHSA-c2pc-g5qf-rfrf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58382"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/league-commonmark-before-2.6.0-denial-of-service-via-quadratic-complexity"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-407"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-09T14:17:10Z"
+  }
+}

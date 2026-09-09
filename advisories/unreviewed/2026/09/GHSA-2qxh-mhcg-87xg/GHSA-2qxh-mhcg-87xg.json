@@ -1,13 +1,17 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2qxh-mhcg-87xg",
-  "modified": "2026-09-07T15:33:52Z",
+  "modified": "2026-09-09T15:34:43Z",
   "published": "2026-09-07T15:33:52Z",
   "aliases": [
     "CVE-2026-86408"
   ],
   "details": "Affected versions of MISP do not enforce parent-event visibility when serving cryptographic keys through CryptographicKeysController::view().\n\n\nThe vulnerable handler queried CryptographicKey directly using the supplied key ID and selected sensitive fields such as:\n\n\n\n  *  \ntype\n\n\n  *  \nkey_data\n\n\n  *  \nfingerprint\n\n\n\n\n\nbut did not fetch or authorize the associated parent event first.\n\n\nThe upstream commit explicitly states that cryptographicKeys/view could return a protected event’s signing key to any authenticated user.\n\n\nThe fix adds parent_id and parent_type to the lookup and then enforces authorization through the associated event using fetchSimpleEvent($user, parent_id). If the parent is not an Event, access is limited to site administrators.\n\nVersion affected: ≤2.5.45",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
