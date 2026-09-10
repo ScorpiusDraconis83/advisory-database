@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jqh-27cv-xqr6",
+  "modified": "2026-09-10T09:31:33Z",
+  "published": "2026-09-10T09:31:33Z",
+  "aliases": [
+    "CVE-2026-42804"
+  ],
+  "details": "A stack-based buffer overflow vulnerability exists in the Bosch Sensortec BHI360 SensorAPI(C-Library) in versions up to and including commit d6b200416a.\n\nThe vulnerability is located within the FIFO parsing and debug logging subsystem inside the function bhi360_parse_debug_message() in bhi360_parse.c (lines 1852-1875). \n\nThe parser trusts the first payload byte of a debug frame as the message length (msg_length) and copies that many bytes into a fixed-size 17-byte stack buffer (debug_msg) via memcpy without performing any bounds checking.\n\nA locally or physically positioned attacker (e.g., via a malicious sensor, counterfeit hardware module, or a Man-in-the-Middle on the communication bus) can exploit this vulnerability by injecting a crafted debug frame with a length byte exceeding 16.\n\nThis corrupts adjacent stack data, including the saved return address.\n\nFurthermore, because the overflowed buffer is subsequently passed to a printf-style logging sink, the attacker can supply format string specifiers (e.g., %n) to execute arbitrary code on the host microcontroller/SoC or cause a reliable system crash (Denial of Service).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42804"
+    },
+    {
+      "type": "WEB",
+      "url": "https://psirt.bosch.com/security-advisories/BOSCH-SA-223618.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T09:17:01Z"
+  }
+}

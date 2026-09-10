@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m73h-r7p8-3rvm",
+  "modified": "2026-09-10T09:31:33Z",
+  "published": "2026-09-10T09:31:33Z",
+  "aliases": [
+    "CVE-2026-42807"
+  ],
+  "details": "A heap-based buffer overflow vulnerability in the PC bridge protocol decoder of BoschSensortec COINES_SDK (versions 2.10 through 2.12.2) allows attackers to cause a denial of service (process crash) or potentially execute arbitrary code. \n\nThe bridge decoder ({{bridge_decoder.c}}) trusts the packet length field provided by the external device and forwards it to the host response queue ({{mqueue_add_data}}) without validating the bounds of the destination buffer. \n\nA malicious or compromised USB or Bluetooth Low Energy (BLE) peripheral can advertise a payload size up to ~3 KB, which exceeds the default queue slot size of 255 bytes. \n\nThis results in an unbounded heap overwrite ({{memcpy}}), corrupting adjacent heap metadata on the host system when processing the device's response.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42807"
+    },
+    {
+      "type": "WEB",
+      "url": "https://psirt.bosch.com/security-advisories/BOSCH-SA-223618.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T09:17:02Z"
+  }
+}

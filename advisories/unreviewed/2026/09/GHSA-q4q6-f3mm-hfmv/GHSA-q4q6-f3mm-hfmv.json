@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q4q6-f3mm-hfmv",
+  "modified": "2026-09-10T09:31:33Z",
+  "published": "2026-09-10T09:31:33Z",
+  "aliases": [
+    "CVE-2026-88770"
+  ],
+  "details": "A flaw was found in the Device Authorization Grant flow of Keycloak, an identity and access management solution. The issue occurs because the token redemption process fails to check if a user account is currently locked due to brute-force protection. If an attacker has an active session for a locked account, they can complete the device login process and receive new security tokens. This allows the attacker to maintain access to the account even when it should be temporarily disabled to prevent unauthorized entry.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88770"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-88770"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2531302"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-307"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T08:17:02Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7h94-3r4w-8qw8",
+  "modified": "2026-09-10T09:31:33Z",
+  "published": "2026-09-10T09:31:33Z",
+  "aliases": [
+    "CVE-2026-42805"
+  ],
+  "details": "A stack-based buffer overflow vulnerability exists in the Bosch Sensortec BHI385 SensorAPI (C library) within the debug message parser function bhi385_parse_debug_message (located in bhi385_parse.c). \n\nThe function parses FIFO events and extracts an 8-bit message length directly from the attacker-controlled event payload (callback_info->data_ptr[0]) without enforcing bounds checks or clamping the value.\n\nWhen copying the payload into a fixed-size stack buffer of 17 bytes (uint8_t debug_msg[17]) via memcpy, providing a length byte greater than 16 causes the function to write past the allocated stack boundary. \n\nThis memory corruption can be triggered by a malicious or compromised sensor or bus participant, leading to a firmware crash, Denial of Service (DoS), or potentially the execution of arbitrary code via adjacent stack data corruption.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42805"
+    },
+    {
+      "type": "WEB",
+      "url": "https://psirt.bosch.com/security-advisories/BOSCH-SA-223618.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-121"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T09:17:02Z"
+  }
+}
