@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-52wr-g3vp-7h6v",
+  "modified": "2026-09-10T03:30:21Z",
+  "published": "2026-09-10T03:30:21Z",
+  "aliases": [
+    "CVE-2026-19584"
+  ],
+  "details": "Velociraptor allows for the creation of notebook backups in its default enabled daily backup feature. When Velociraptor restores the backup, the notebook cell content is interpolated into a template with no ACL checks. This allows a malicious user with NOTEBOOK_EDITOR permission to plant a VQL query which will be evaluated at elevated permissions if the notebook's backup is subsequently restored.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19584"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Velocidex/velociraptor/pull/4967"
+    },
+    {
+      "type": "WEB",
+      "url": "http://docs.velociraptor.app/announcements/advisories/cve-2026-19584"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T03:17:00Z"
+  }
+}
