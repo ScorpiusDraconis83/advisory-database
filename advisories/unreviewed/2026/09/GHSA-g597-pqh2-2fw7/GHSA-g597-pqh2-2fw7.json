@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g597-pqh2-2fw7",
+  "modified": "2026-09-10T15:33:17Z",
+  "published": "2026-09-10T15:33:17Z",
+  "aliases": [
+    "CVE-2026-88864"
+  ],
+  "details": "Capgo (capgo.app) fails to restrict direct write access to the public.sso_providers table exposed through Supabase PostgREST. A holder of an ordinary Capgo full API key can insert a row with status='active' and enforce_sso=true, bypassing the intended backend SSO provisioning route (supabase/functions/_backend/private/sso/providers.ts) and its controls: the Enterprise plan requirement, SSO provider creation via the Supabase Management API, DNS TXT domain-ownership verification, the pending_verification → verified → active status transition, and issuance of a trusted provider ID by Supabase Auth. The forged row is trusted by SSO discovery and enforcement logic, including the unauthenticated login preflight endpoint /private/sso/check-domain, which then reports {\"has_sso\": true, \"enforce_sso\": true} for domains that were never verified, allowing attacker-controlled SSO enforcement to be asserted for arbitrary domains and disrupting normal login. All versions are affected; at the time of the advisory no patch was available.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cap-go/capgo.app/security/advisories/GHSA-xg7v-83qv-qfff"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88864"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/capgo-sso-provider-authentication-bypass-via-postgrest-direct-write"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T14:17:12Z"
+  }
+}

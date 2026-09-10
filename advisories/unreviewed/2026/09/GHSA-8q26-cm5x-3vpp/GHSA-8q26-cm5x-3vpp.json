@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8q26-cm5x-3vpp",
-  "modified": "2026-09-10T09:31:32Z",
+  "modified": "2026-09-10T15:33:12Z",
   "published": "2026-09-10T09:31:32Z",
   "aliases": [
     "CVE-2026-19439"
   ],
   "details": "The Ultimate Gift Cards for WooCommerce WordPress plugin before 3.2.10 does not have any authorisation check when displaying gift card details, allowing unauthenticated users to retrieve the gift cards attached to arbitrary orders and disclose customer personal data, balances, dates and, in 3.2.9, the live redemption code, which anyone holding it can spend.\n\nVersions from 3.0.3 to 3.2.8 disclose the same data without the redemption code.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-10T07:17:02Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3f78-gj22-rhmc",
-  "modified": "2026-09-08T21:34:14Z",
+  "modified": "2026-09-10T15:32:59Z",
   "published": "2026-09-08T21:34:14Z",
   "aliases": [
     "CVE-2026-28613"
   ],
   "details": "In initAppLinkTypeAndIntent of ChannelImpl.java, there is a possible launch an arbitrary intent due to improper input validation. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is needed for exploitation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-08T19:17:53Z"

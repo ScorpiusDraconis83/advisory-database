@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hpwh-25jq-4wxm",
+  "modified": "2026-09-10T15:33:19Z",
+  "published": "2026-09-10T15:33:19Z",
+  "aliases": [
+    "CVE-2026-88891"
+  ],
+  "details": "OpenPanel fails to enforce read-only project access level on 26 of 29 mutating procedures, allowing read-level members to modify, delete, and publish project data. Attackers with explicit read-only access can delete reports and dashboards, schedule entire projects for deletion, publish private analytics to public share links, and modify alerting rules by exploiting missing access level validation in mutation resolvers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Openpanel-dev/openpanel/security/advisories/GHSA-f9rx-pxgw-c6rg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88891"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openpanel-read-only-access-level-enforcement-bypass-via-mutations"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T14:17:18Z"
+  }
+}
