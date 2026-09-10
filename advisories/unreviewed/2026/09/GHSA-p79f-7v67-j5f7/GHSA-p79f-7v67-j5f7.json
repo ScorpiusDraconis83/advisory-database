@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p79f-7v67-j5f7",
+  "modified": "2026-09-10T12:31:20Z",
+  "published": "2026-09-10T12:31:20Z",
+  "aliases": [
+    "CVE-2026-87961"
+  ],
+  "details": "ESP32-audioI2S versions 3.4.4 through 4.0.0 contain a heap-based out-of-bounds read vulnerability in the read_ID3_Header function due to a shadowed length parameter in ID3 synchronized-lyrics processing. Attackers can craft malicious MP3 files or HTTP audio streams with oversized frame size declarations to read past allocated buffer boundaries, causing device crashes or exposing adjacent heap memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87961"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/schreibfaul1/ESP32-audioI2S/issues/1380"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/schreibfaul1/ESP32-audioI2S/pull/1381"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/schreibfaul1/ESP32-audioI2S/commit/4dc4614b9dab2de7b342d682b1c18b109d75b677"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/schreibfaul1/ESP32-audioI2S"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/schreibfaul1/ESP32-audioI2S/blob/490ff729eca344f06581f3e9bda9cfba948fd5a1/src/Audio.cpp#L2526-L2531"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/schreibfaul1/ESP32-audioI2S/blob/490ff729eca344f06581f3e9bda9cfba948fd5a1/src/Audio.cpp#L2629-L2635"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/schreibfaul1/ESP32-audioI2S/blob/f01ad7923dcf3355eeca7fb99bf8a4d9945e7478/src/Audio.cpp#L2270-L2276"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/esp32-audioi2s-3.4.4-through-4.0.0-heap-based-out-of-bounds-read-via-shadowed-length-parameter-in-read-id3-header"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T11:17:07Z"
+  }
+}
