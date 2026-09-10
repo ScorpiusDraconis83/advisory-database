@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-86p5-fgr2-j5mh",
+  "modified": "2026-09-10T18:31:46Z",
+  "published": "2026-09-10T18:31:46Z",
+  "aliases": [
+    "CVE-2026-88937"
+  ],
+  "details": "knowns through 0.33.0 fails to properly validate template destination paths in the code generation template engine, allowing attackers to read and write arbitrary files outside the project root. Attackers can supply malicious templates that traverse directories to overwrite shell profiles, steal credentials, or achieve persistent code execution on victim systems.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/security/advisories/GHSA-68cq-4rwm-f7jr"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/security/advisories/GHSA-xjcg-5j3r-m6f9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88937"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/blob/v0.33.0/internal/codegen/template_engine.go#L318-L344"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/knowns-dev/knowns/blob/v0.33.0/internal/codegen/template_engine.go#L625-L636"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/knowns-through-0.33.0-path-traversal-via-template-engine"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T16:18:12Z"
+  }
+}

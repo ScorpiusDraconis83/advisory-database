@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mjfw-8c8c-xr6h",
-  "modified": "2026-09-09T12:32:13Z",
+  "modified": "2026-09-10T18:31:39Z",
   "published": "2026-09-09T12:32:13Z",
   "aliases": [
     "CVE-2026-54048"
   ],
   "details": "Specifying tblproperties('avro.schema.url'=' http://...' ) or with a 'file:///' URI on a table in Impala 2.0.0 to 4.5.1 on all platforms allows an attacker to trigger a GET request to internal endpoints they may not have access to but that Impala does and the response my be exposed via parsing error messages.\nUsers are recommended to upgrade to version 4.5.2, which fixes this issue.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -27,7 +32,7 @@
     "cwe_ids": [
       "CWE-918"
     ],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-09T11:17:14Z"
