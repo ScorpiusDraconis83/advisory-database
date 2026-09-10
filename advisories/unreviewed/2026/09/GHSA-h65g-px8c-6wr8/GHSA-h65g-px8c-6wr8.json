@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h65g-px8c-6wr8",
+  "modified": "2026-09-10T06:31:43Z",
+  "published": "2026-09-10T06:31:43Z",
+  "aliases": [
+    "CVE-2026-15823"
+  ],
+  "details": "The Builderall Cheetah For Wp plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the disable() function in versions up to, and including, 3.0.2. The wp_ajax_ba_cheetah_disable AJAX handler is registered without any capability or nonce verification, and the target post_id is sourced directly from user-controlled $_POST['ba_cheetah_data']['post_id']. This makes it possible for authenticated attackers, with Subscriber-level access and above, to disable the page builder layout on arbitrary posts by setting the _ba_cheetah_enabled post meta to false, including on posts owned by other users.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15823"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/builderall-cheetah-for-wp/tags/3.0.2/classes/class-ba-cheetah-model.php#L208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/builderall-cheetah-for-wp/tags/3.0.2/classes/class-ba-cheetah-model.php#L334"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/builderall-cheetah-for-wp/tags/3.0.2/classes/class-ba-cheetah-model.php#L462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/builderall-cheetah-for-wp/tags/3.0.2/classes/class-ba-cheetah-model.php#L692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/374c8bc8-83b1-48d3-877a-f6c8fa2f044b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T04:17:48Z"
+  }
+}

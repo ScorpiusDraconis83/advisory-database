@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g7cw-8rxh-mw2v",
+  "modified": "2026-09-10T06:31:43Z",
+  "published": "2026-09-10T06:31:43Z",
+  "aliases": [
+    "CVE-2026-15820"
+  ],
+  "details": "The Builderall for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Photo Module 'attributes' Setting in all versions up to, and including, 3.0.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15820"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/builderall-cheetah-for-wp/trunk/classes/class-ba-cheetah-ajax.php#L165"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/builderall-cheetah-for-wp/trunk/classes/class-ba-cheetah-model.php#L4106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/builderall-cheetah-for-wp/trunk/classes/class-ba-cheetah-model.php#L4227"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/builderall-cheetah-for-wp/trunk/modules/photo/includes/frontend.php#L33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/builderall-cheetah-for-wp/trunk/modules/photo/photo.php#L312"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/7b2688ee-f416-4fce-b73a-864f31057146?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T04:17:48Z"
+  }
+}
