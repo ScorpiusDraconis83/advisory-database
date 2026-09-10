@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hcpr-9cm8-436x",
+  "modified": "2026-09-10T21:31:36Z",
+  "published": "2026-09-10T21:31:36Z",
+  "aliases": [
+    "CVE-2026-89054"
+  ],
+  "details": "A missing authorization vulnerability in OpenNMS Horizon allows configuration changes without authentication. The Spring Security policy for the /api/v2 REST API defines authorization rules for every HTTP method except PATCH, so the shipped @PATCH configuration endpoints for event configuration and SNMP data collection (which enable and disable event definitions and data-collection sources) are reachable with no authorization enforced. An unauthenticated attacker able to reach the web UI can disable event definitions and SNMP data collection, suppressing event and alarm generation and stopping metric collection - silently degrading monitoring and detection - with the change persisted and reloaded into the running system.\n\n\n\nThe solution is to upgrade to Horizon 36.0.4 or newer. Meridian and Horizon installation instructions state that they are intended for installation within an organization's private networks and should not be directly accessible from the Internet.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89054"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenNMS/opennms/pull/8833"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T20:17:31Z"
+  }
+}

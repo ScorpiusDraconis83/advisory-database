@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-72w5-w82m-7hm9",
+  "modified": "2026-09-10T21:31:36Z",
+  "published": "2026-09-10T21:31:36Z",
+  "aliases": [
+    "CVE-2026-84432"
+  ],
+  "details": "Concrete CMS 9 through  9.5.2 did not validate an anti-CSRF token in the Boards custom slot dialog controller (concrete/controllers/dialog/board/custom_slot.php) saveTemplate() action. The action created a board_slot_proxy Block and dispatched an AddCustomSlotToBoardCommand against a board instance while gating only on the per-resource canEditBoardContents() permission, so a crafted cross-site request could cause a user holding board-edit permission with an active session to write attacker-chosen slot and template data to a board under their own authority. The state-changing database write completed before any downstream rendering, so the forged request succeeded even when the HTTP response returned a non-200 status. The Concrete CMS security team gave this vulnerability a CVSS v4.0 score of 5.3 with vector CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks Winston Crooker for reporting.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84432"
+    },
+    {
+      "type": "WEB",
+      "url": "https://documentation.concretecms.org/developers/introduction/version-history/953-release-notes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T20:17:28Z"
+  }
+}

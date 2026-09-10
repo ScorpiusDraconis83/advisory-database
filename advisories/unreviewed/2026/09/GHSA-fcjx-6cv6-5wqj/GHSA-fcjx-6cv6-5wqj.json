@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fcjx-6cv6-5wqj",
+  "modified": "2026-09-10T21:31:38Z",
+  "published": "2026-09-10T21:31:38Z",
+  "aliases": [
+    "CVE-2026-89089"
+  ],
+  "details": "A SQL injection vulnerability exists in the JasperReports-based reporting feature of multiple versions of OpenNMS Meridian and Horizon. A low-privileged authenticated user (ROLE_USER) can run the shipped, default-enabled online reports \"Maintenance contracts expired\" (AssetManagementMaintExpired) and \"Maintenance contracts strategy\" (AssetManagementMaintStrategy) via the reporting REST API (POST /rest/reports/{id}) and supply a DATE_FORMAT parameter that the report templates substitute literally, un-escaped, into their SQL queries. This lets an attacker execute arbitrary SQL against the OpenNMS database and read arbitrary data, including database-stored secrets such as provisioning and notification credentials and SNMP community strings.\n\n\n\nThe solution is to upgrade to Meridian 2024.3.13, 2025.0.10 and Horizon 36.0.4 or newer. Meridian and Horizon installation instructions state that they are intended for installation within an organization's private networks and should not be directly accessible from the Internet.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89089"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/OpenNMS/opennms/pull/8832"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T21:17:53Z"
+  }
+}

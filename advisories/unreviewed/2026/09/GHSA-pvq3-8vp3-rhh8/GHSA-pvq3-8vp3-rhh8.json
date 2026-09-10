@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pvq3-8vp3-rhh8",
-  "modified": "2026-09-09T12:32:13Z",
+  "modified": "2026-09-10T21:31:30Z",
   "published": "2026-09-09T12:32:13Z",
   "aliases": [
     "CVE-2026-57866"
   ],
   "details": "Server side request forgery in Apache Impala versions 4.4.x and 4.5.x.  Authenticated Impala users with permissions to execute the ai_generate_text() function can exfiltrate secrets provided by the credential providers configured in the `hadoop.security.credential.provider.path` property of `core-site.xml`. The secret's key must be known to the user.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -27,7 +32,7 @@
     "cwe_ids": [
       "CWE-918"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-09T11:17:14Z"
