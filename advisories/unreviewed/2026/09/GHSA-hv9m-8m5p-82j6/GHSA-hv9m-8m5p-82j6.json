@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hv9m-8m5p-82j6",
+  "modified": "2026-09-11T12:33:25Z",
+  "published": "2026-09-11T12:33:25Z",
+  "aliases": [
+    "CVE-2026-89147"
+  ],
+  "details": "Net-SNMP through 5.9.5.2 contains a denial of service vulnerability in the SMUX module where smux_accept() performs an unauthenticated blocking read without timeout on newly accepted connections. An unauthenticated remote client can connect to the SMUX listener and send no data, causing the single-threaded snmpd main loop to block indefinitely and suspend all SNMP processing.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89147"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/thesmartshadow/001cea595e75fed6aaea7389666dc9eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/net-snmp/net-snmp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/net-snmp/net-snmp/blob/v5.9.5.2/agent/mibgroup/smux/smux.c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/net-snmp-through-5.9.5.2-denial-of-service-via-blocking-unauthenticated-smux-read"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T11:16:58Z"
+  }
+}

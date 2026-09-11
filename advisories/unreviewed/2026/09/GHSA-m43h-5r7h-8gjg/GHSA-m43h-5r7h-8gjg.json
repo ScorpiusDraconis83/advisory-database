@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m43h-5r7h-8gjg",
+  "modified": "2026-09-11T12:33:25Z",
+  "published": "2026-09-11T12:33:25Z",
+  "aliases": [
+    "CVE-2026-89247"
+  ],
+  "details": "WWBN AVideo at commit c3edcc274c389816d434acadac07ee78eaf330c1 and earlier contains an XML injection vulnerability in plugin/AD_Server/VMAP.php, which is reachable without authentication when the AD_Server plugin is enabled. The script emits Content-Type: application/xml and writes the timeOffset and idTag values returned by AD_Server::getVMAPSFromRequest() directly into VMAP attributes without encoding. Those values originate from the base64- and JSON-decoded $_REQUEST['vmaps'] parameter, which is not covered by $securityFilter in objects/security.php. A remote attacker can craft a vmaps value (containing a non-empty VAST.campaing entry) and induce a user to open the resulting VMAP URL or a video page using it, injecting arbitrary <vmap:AdBreak> and <vmap:AdTagURI>/AdSource nodes into the generated XML. The player's IMA path (afterVideoJS -> PlayerSkins::setIMAADTag) then requests the attacker-supplied ad URLs, resulting in ad injection and cross-origin requests from the victim's playback session. The issue was unfixed at the time of reporting.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/security/advisories/GHSA-whh8-w65x-9fvx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wwbn-avideo-xml-injection-via-plugin-ad-server-vmap-php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-91"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T12:16:54Z"
+  }
+}

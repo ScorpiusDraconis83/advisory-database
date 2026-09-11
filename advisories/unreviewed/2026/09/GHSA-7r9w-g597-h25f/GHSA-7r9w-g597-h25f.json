@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7r9w-g597-h25f",
+  "modified": "2026-09-11T12:33:26Z",
+  "published": "2026-09-11T12:33:26Z",
+  "aliases": [
+    "CVE-2026-89257"
+  ],
+  "details": "AVideo through 29.0 contains an insecure direct object reference (IDOR) vulnerability in objects/categoryDeleteAssets.json.php. The endpoint validates only the Category::canCreateCategory() capability and a CSRF nonce before passing the attacker-supplied $_REQUEST['id'] to Category::deleteAssets(), which recursively removes {systemRootPath}videos/categories/assets/{id}/. It omits the Category::userCanEditCategory() ownership check enforced by the sibling Category::delete(). On installations where the non-default usersCanCreateNewCategories setting is enabled, an authenticated non-admin user with the canUpload capability can send a POST request with an arbitrary category ID and recursively delete any category's on-disk asset directory (icons/images). Category records and videos are not deleted. As of the advisory publication no patched version was available.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/security/advisories/GHSA-gf2v-r8wx-ghqj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89257"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/avideo-through-29.0-cross-user-category-asset-deletion-via-missing-ownership-check"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T12:16:56Z"
+  }
+}

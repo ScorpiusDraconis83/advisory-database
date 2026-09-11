@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-36jf-c365-9q55",
+  "modified": "2026-09-11T12:33:25Z",
+  "published": "2026-09-11T12:33:25Z",
+  "aliases": [
+    "CVE-2026-89248"
+  ],
+  "details": "AVideo through commit c3edcc274c389816d434acadac07ee78eaf330c1 is missing an authentication/authorization check in plugin/WebRTC/status.json.php. When the WebRTC plugin is present, any unauthenticated remote user can request /plugin/WebRTC/status.json.php and receive JSON containing the absolute filesystem path of the WebRTC2RTMP helper binary (revealing the document-root path), the configured WebRTC port, file_exists/is_executable status for the binary, the contents of the WebRTC log/JSON files (videos/WebRTC2RTMP.log) when present, and whether the configured port is reachable on loopback (127.0.0.1) and on the public address. The endpoint performs no User::isLogged(), User::isAdmin(), or forbiddenPage() check. The issue was unfixed at the time of reporting.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/security/advisories/GHSA-wqv3-v6h8-m9qx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89248"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/avideo-webrtc-plugin-information-disclosure-via-status-json-php"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T12:16:54Z"
+  }
+}
