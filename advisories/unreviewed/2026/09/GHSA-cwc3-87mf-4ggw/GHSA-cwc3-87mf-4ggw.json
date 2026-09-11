@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cwc3-87mf-4ggw",
+  "modified": "2026-09-11T00:31:16Z",
+  "published": "2026-09-11T00:31:16Z",
+  "aliases": [
+    "CVE-2026-18121"
+  ],
+  "details": "Concrete CMS 9.5.2 and below is vulnerable to an authorization bypass (IDOR) because the frontend calendar lightbox endpoint (/ccm/calendar/view_event/{bID}/{occurrence_id}) does not verify that the caller is permitted to view the calendar that owns the requested event occurrence. The controller loads the occurrence directly from an attacker‑supplied, sequential identifier without confirming that it belongs to the calendar configured on the referenced block. An unauthenticated visitor who can render any public calendar block with lightbox properties enabled could therefore supply an arbitrary occurrence identifier and disclose event metadata — title, date, description, page link, and configured event attributes — from calendars they are not permitted to view. The Concrete CMS security team gave this vulnerability a CVSS v4.0 score of 6.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N. Thanks riodrwn for reporting.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18121"
+    },
+    {
+      "type": "WEB",
+      "url": "https://documentation.concretecms.org/developers/introduction/version-history/953-release-notes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T00:17:28Z"
+  }
+}

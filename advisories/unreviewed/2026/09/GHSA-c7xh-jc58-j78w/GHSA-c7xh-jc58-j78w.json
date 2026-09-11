@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c7xh-jc58-j78w",
+  "modified": "2026-09-11T00:31:15Z",
+  "published": "2026-09-11T00:31:15Z",
+  "aliases": [
+    "CVE-2026-81210"
+  ],
+  "details": "IBM DataStage on Cloud Pak for Data 5.4.0.0 concatenates three caller-supplied strings into a String.format path on the shared /ds-storage RWX PVC and returns the file with no project ACL — pure IDOR plus traversal. Read is constrained to files named job.log/error.log, but DataStage job logs routinely carry connection strings, {dsnextenc} ciphertexts (decryptable via d2-f023), and customer-data row samples. This is the operator's tenant-to-tenant PVC-leakage threat verbatim; MEDIUM→HIGH via threat match.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81210"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.ibm.com/support/pages/node/7286562"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-10T22:17:01Z"
+  }
+}
