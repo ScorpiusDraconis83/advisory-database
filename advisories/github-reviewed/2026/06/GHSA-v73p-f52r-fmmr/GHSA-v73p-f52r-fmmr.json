@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v73p-f52r-fmmr",
-  "modified": "2026-06-22T18:34:11Z",
+  "modified": "2026-09-11T22:05:26Z",
   "published": "2026-06-22T09:30:45Z",
   "aliases": [
     "CVE-2025-62198"
   ],
+  "summary": "Apache Atlas UI: Authenticated User XSS",
   "details": "An authenticated user can perform XSS.\n\nThis issue affects Apache Atlas versions 2.4.0 and earlier.\n\nUsers are recommended to upgrade to version 2.5.0, which fixes the issue.",
   "severity": [
     {
@@ -13,11 +14,39 @@
       "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.apache.atlas:atlas-dashboardv2"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.5.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "ADVISORY",
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-62198"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/atlas/commit/800f979307d6ea0f0b6563ec890f6b728022e497"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/apache/atlas"
     },
     {
       "type": "WEB",
@@ -33,8 +62,8 @@
       "CWE-80"
     ],
     "severity": "MODERATE",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-11T22:05:26Z",
     "nvd_published_at": "2026-06-22T08:16:35Z"
   }
 }
