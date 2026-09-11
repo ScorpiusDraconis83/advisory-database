@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gqrp-6638-7vpg",
+  "modified": "2026-09-11T03:30:23Z",
+  "published": "2026-09-11T03:30:23Z",
+  "aliases": [
+    "CVE-2026-89145"
+  ],
+  "details": "Flextype CMS versions 0.9.9 through 1.0.0-alpha.3 fail to HTML-escape plugin directory names in the dependency error page rendered by getValidPluginsDependencies(). Attackers with write access to the plugins directory can create a plugin with HTML characters in its name to execute arbitrary scripts in users' browsers when dependency validation fails.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:H/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89145"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flextype/flextype/issues/597"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flextype/flextype"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/flextype/flextype/blob/aea4ead8c449ea5517ed53b6dcbd28b0a528ad9d/src/flextype/core/Plugins.php#L345"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flextype-cms-0.9.9-through-1.0.0-alpha.3-stored-xss-via-plugin-directory"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T02:18:35Z"
+  }
+}
