@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4j85-4728-jr5q",
+  "modified": "2026-09-11T18:31:25Z",
+  "published": "2026-09-11T18:31:25Z",
+  "aliases": [
+    "CVE-2026-89261"
+  ],
+  "details": "MoguBlog through 6.2 exposes Elasticsearch index management endpoints in the mogu_search service without authentication, allowing remote attackers to delete, recreate, or alter the blog search index. Attackers can invoke POST endpoints to wipe the entire search index, delete specific documents, or inject malicious index entries, causing search functionality to return incorrect or no results.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89261"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitee.com/moxi159753/mogu_blog_v2/releases"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LinYuanyi1/cve-request-poc/blob/master/mogublog-poc/C05_search_initElasticSearchIndex.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LinYuanyi1/cve-request-poc/blob/master/mogublog-poc/C06_search_deleteElasticSearchByUids.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LinYuanyi1/cve-request-poc/blob/master/mogublog-poc/C07_search_deleteElasticSearchByUid.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LinYuanyi1/cve-request-poc/blob/master/mogublog-poc/C11_search_addElasticSearchIndexByUid.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moxi624/mogu_blog_v2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moxi624/mogu_blog_v2/blob/025d78c7ac7e19b1abf796fa3cc158d855723d15/mogu_search/src/main/java/com/moxi/mogublog/search/config/WebSecurityConfig.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/moxi624/mogu_blog_v2/blob/025d78c7ac7e19b1abf796fa3cc158d855723d15/mogu_search/src/main/java/com/moxi/mogublog/search/restapi/ElasticSearchRestApi.java"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mogublog-through-6.2-missing-authentication-for-elasticsearch-index-management-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T16:17:50Z"
+  }
+}
