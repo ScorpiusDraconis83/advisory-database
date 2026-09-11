@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gq6w-h4cf-wpff",
+  "modified": "2026-09-11T15:32:41Z",
+  "published": "2026-09-11T15:32:41Z",
+  "aliases": [
+    "CVE-2026-57842"
+  ],
+  "details": "NetBSD contains a use-after-free and double-free vulnerability in msg_recv_copyin() within the COMPAT_NETBSD32 compatibility layer due to a missing return statement before the cleanup label on the success path. Any local user able to execute a 32-bit binary on a 64-bit NetBSD system can trigger a kernel panic or memory corruption by calling recvmsg() with msg_iovlen between 9 and IOV_MAX, causing the kernel to access a freed iovec buffer and subsequently free the same allocation a second time.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57842"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gnats.netbsd.org/60373"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netbsd-compat-netbsd32-double-free-use-after-free-via-recvmsg-msg-iovlen"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-415"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T14:17:27Z"
+  }
+}

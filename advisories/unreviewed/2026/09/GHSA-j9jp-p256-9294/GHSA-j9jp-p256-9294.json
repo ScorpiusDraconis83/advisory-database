@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j9jp-p256-9294",
+  "modified": "2026-09-11T15:32:42Z",
+  "published": "2026-09-11T15:32:42Z",
+  "aliases": [
+    "CVE-2026-85979"
+  ],
+  "details": "Affected versions of Puppet Enterprise contain a command injection vulnerability in the handling of the java_keystore_passwd parameter. An authenticated user with Puppet administrative privileges can inject arbitrary shell commands by providing a specially crafted value for this parameter, which is passed to a shell execution context without sufficient sanitization. Because the resulting commands are executed with root privileges, successful exploitation can lead to full compromise of the affected system.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85979"
+    },
+    {
+      "type": "WEB",
+      "url": "https://portal.perforce.com/s/cve/a91Qi000003CybNIAS/command-injection-in-puppet-enterprise"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T15:17:06Z"
+  }
+}
