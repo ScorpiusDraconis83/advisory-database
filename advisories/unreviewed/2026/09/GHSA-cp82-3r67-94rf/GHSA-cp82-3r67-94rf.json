@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cp82-3r67-94rf",
+  "modified": "2026-09-11T21:31:32Z",
+  "published": "2026-09-11T21:31:32Z",
+  "aliases": [
+    "CVE-2026-89559"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibnvdimm/labels: Prevent integer overflow in __nd_label_validate()\n\nThe on-media namespace index field nslot is a u32 read from the DIMM\nlabel storage area.  __nd_label_validate() bounds it against the config\narea size, but sizeof_namespace_label() returns unsigned, so the product\nnslot * label_size is evaluated in 32-bit and wraps modulo 2^32 before\nthe comparison.  A crafted nslot passes the bound and is then used as the\nloop trip count in nd_label_data_init(), whose memset() walks off the end\nof the config_size buffer: an out-of-bounds write.\n\nThe field is not trusted -- it comes from the medium, or from userspace\nvia ND_CMD_SET_CONFIG_DATA.  Evaluate the product in 64-bit so the bound\ncheck is exact; conforming labels are unaffected.\n\nThe check was safe when introduced by commit 4a826c83db4e (\"libnvdimm:\nnamespace indices: read and validate\"): it multiplied by sizeof(struct\nnd_namespace_label), a size_t, so on a 64-bit build the product did not\nwrap.  Commit 564e871aa66f (\"libnvdimm, label: add v1.2 nvdimm label\ndefinitions\") narrowed it to 32 bits when the label size became a runtime\nvalue read via sizeof_namespace_label().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89559"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/037770686126155eafc44501312989e2837b9659"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09e649117c54b7e1c004f22eaa19efbadd9ac856"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/69a734359639fca16a0dd73ab17a34943e76c68b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e057efcc9c71d90099d9ee00bed0748d0e9fd586"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:39Z"
+  }
+}

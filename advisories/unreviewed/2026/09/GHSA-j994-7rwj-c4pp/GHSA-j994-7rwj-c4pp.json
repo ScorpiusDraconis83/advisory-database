@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j994-7rwj-c4pp",
+  "modified": "2026-09-11T21:31:26Z",
+  "published": "2026-09-11T21:31:26Z",
+  "aliases": [
+    "CVE-2026-89453"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/amd: Put PCI device after handling PPR faults\n\niommu_call_iopf_notifier() looks up the requester with\npci_get_domain_bus_and_slot(), which returns a PCI device with its\nreference count incremented.\n\nNeither the successful iommu_report_device_fault() path nor the abort\npath drops that reference, so every handled PPR request leaks a PCI\ndevice reference.\n\nThis is the same ownership rule that was fixed for the old iommu_v2\nppr_notifier() path by commit 6cf0981c2233 (\"iommu/amd: Fix pci device\nrefcount leak in ppr_notifier()\"), but iommu_call_iopf_notifier() was\nadded later as a separate PPR/IOPF notifier path.\n\nDrop the PCI device reference after handling the PPR entry.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89453"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1de4443f85e4405af00153cdf8ba73ff12a65036"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af3b69b16383fbc8fe5f61b5b0150d2e41ede71f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cfc5c1b2caa176dfd40b873a6ff07b11da34cc3e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1470e16c1977e6c94fadf6048deafaa4d150fec"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:25Z"
+  }
+}

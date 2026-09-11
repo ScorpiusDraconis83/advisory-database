@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5pfc-pqwh-23px",
+  "modified": "2026-09-11T21:31:37Z",
+  "published": "2026-09-11T21:31:37Z",
+  "aliases": [
+    "CVE-2026-89719"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nzram: fix out-of-bounds access in read_block_state()\n\nread_block_state() calculates nr_pages before taking dev_lock.  If the\ndevice is reset and reinitialized with a smaller disksize before lock\nacquisition, nr_pages still describes the old table.  The subsequent loop\ncan then call slot_lock() past the end of the newly allocated table.\n\nRead disksize after acquiring dev_lock and checking that the device is\ninitialized.  The read lock then keeps the table and its bound stable for\nthe duration of the scan.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89719"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/391f057f44a51cc9418da5cba78b014324174264"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5e458fa714a55b6b64a9fe0c6d4fa609609f9ec3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7dbcb7a561a21e9a8f5b5fa90bb95aefbd0739d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:20:00Z"
+  }
+}

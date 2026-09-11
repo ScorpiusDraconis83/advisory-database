@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ww3r-fjgm-2rcq",
+  "modified": "2026-09-11T21:31:26Z",
+  "published": "2026-09-11T21:31:26Z",
+  "aliases": [
+    "CVE-2026-89454"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: plda: Fix IRQ domain leaks in the error paths of plda_init_interrupts()\n\nplda_init_interrupts() initializes IRQ domains and creates IRQ mapping but\ndoes not unwind them when later step fails.\n\nIf platform_get_irq() or either irq_create_mapping() fails\nin plda_init_interrupts(), the domains are never deinitialized. If\nirq_create_mapping() fails, port->intx_irq stays initialized.\n\nHence, remove the IRQ domains in the error path by calling\nplda_pcie_irq_domain_deinit().\n\nSince plda_pcie_irq_domain_deinit() now disposes of the intx_irq and\nmsi_irq mappings itself before removing their domains, the msi_irq\nmapping failure path can go directly to err_irq_domain_deinit instead of\ndisposing of port->intx_irq separately first.\n\nThis issue was found by automated review of sashiko-bot\n\n[mani: commit log]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89454"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01b05cebe1e862e31e382359848d7dca02525a4f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/19a30bbb6477bfd7e3109b7a2943e6597ee9de37"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b575052ea65423693726a21826d783cf3f1745e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e54e8d2a0f9c8bf251ae4385ea4f4a68840fedad"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:26Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cjwf-376p-qpm9",
+  "modified": "2026-09-11T21:31:35Z",
+  "published": "2026-09-11T21:31:34Z",
+  "aliases": [
+    "CVE-2026-89642"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: call pagecache_isize_extended() in cifs_setsize() when extending\n\ncifs_setsize() calls truncate_pagecache() but skips\npagecache_isize_extended() on extension.  truncate_setsize() shows\nthe correct pattern:\n\n  i_size_write(inode, newsize);\n  if (newsize > oldsize)\n      pagecache_isize_extended(inode, oldsize, newsize);\n  truncate_pagecache(inode, newsize);\n\npagecache_isize_extended() zeroes the tail of the page straddling old\nEOF.  Without it, dirty bytes in that region can be written back to\nthe server, exposing stale data in the newly extended range.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89642"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12bafe32f09c0d24f5096154b59c347b9c6606e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c510edb9734af1c274d18f4f31a471a166bbc7e8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:49Z"
+  }
+}

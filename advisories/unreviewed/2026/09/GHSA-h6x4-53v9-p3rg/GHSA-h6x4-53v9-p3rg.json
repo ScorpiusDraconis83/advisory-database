@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h6x4-53v9-p3rg",
+  "modified": "2026-09-11T21:31:33Z",
+  "published": "2026-09-11T21:31:33Z",
+  "aliases": [
+    "CVE-2026-89611"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: validate non-resident attribute offsets\n\nntfs_attr_update_meta() shifts the attribute name when converting between\nnon-sparse and sparse attributes. Converting to sparse also adds the\ncompressed_size field before the name and mapping pairs, requiring eight\nadditional bytes in the attribute record.\n\nHowever, the validator does not check that name_offset is within safe\nboundaries for these operations or that the additional space is available.\nA malicious MFT record could set name_offset such that:\n\n1. The name is positioned at the very end of a non-sparse attribute.\n   Converting to sparse would shift the name forward by 8 bytes,\n   writing beyond the attribute boundary.\n\n2. The name overlaps with the mapping pairs, causing corruption during\n   conversion.\n\nAdd validation to ensure:\n- For named attributes, name_offset is within valid bounds\n- Name does not extend beyond the attribute or overlap with mapping pairs\n- For non-sparse, non-compressed attributes, eight bytes are available\n  after mapping_pairs_offset for the compressed_size field\n\nThe space check also covers unnamed attributes, for which name_offset = 0\nis valid and no name range needs to be checked.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89611"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a83e82b0ec3ae523028e24813f23f18b43e8fc1c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cd7b3dc7557faadeea626034e3bac68a449851ef"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:46Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gfmm-7qwj-299m",
+  "modified": "2026-09-11T21:31:34Z",
+  "published": "2026-09-11T21:31:34Z",
+  "aliases": [
+    "CVE-2026-89617"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: validate dirty page table on log replay\n\nEach DIR_PAGE_ENTRY ends in a page_lcns[] array whose length is the on-disk\nlcns_follow field. check_rstbl() validates the table bookkeeping but never\nchecks that this array fits in the entry, so a crafted lcns_follow lets the\nv0->v1 conversion memmove and later replay passes run off the entry.\n\nAdd check_dp_table() to reject, right after check_rstbl(), any entry larger\nthan its size claims via struct_size() (the same expression used to allocate\nthese entries, so the check is overflow-safe by construction). All consumers\ncan then trust lcns_follow as the real capacity. This covers every\npage_lcns[] access whose index is bounded by the entry itself (the\nconversion memmove, the HotFix store via find_dp(), and the self-bounded\nscan loops). Accesses whose index comes from the log record need a separate\nbound and are handled in a follow-up patch.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89617"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/006cb7713dec10368e699abc4367e5faa334c9a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0908da07c23be4f94b99dfd9a94765525f0fe4bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1200c2779c43b62656ccbb67df9468a7a9af2484"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d94ffc9d7b5bb3517b129fe63b52d84bcd4ae56"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:46Z"
+  }
+}

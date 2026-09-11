@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2jg4-h8v3-7354",
+  "modified": "2026-09-11T21:31:27Z",
+  "published": "2026-09-11T21:31:27Z",
+  "aliases": [
+    "CVE-2026-89462"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: max17040: propagate register read errors\n\nmax17040_get_vcell() and max17040_get_soc() ignore errors returned by\nregmap_read().  When an I2C transfer fails, the uninitialized register\nvalue is converted and reported to userspace as a valid voltage or state\nof charge.  The polling worker can also replace the cached state of charge\nwith the bogus value and emit a spurious change event.\n\nPropagate read errors through the power supply get_property callback and\nkeep the last valid cached state of charge when polling fails.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13fb0477da9b400071b9d518b24d6434c4965263"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2943a0edd4865ed744702ada647921c3981207f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/659cc3d8d5ef246263873fce72c8cadeeed073cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7aa4c3708cc0d8487336f8281665eaea87130f6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:27Z"
+  }
+}

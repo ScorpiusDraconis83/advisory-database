@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-542v-8xr4-x59m",
+  "modified": "2026-09-11T21:31:27Z",
+  "published": "2026-09-11T21:31:27Z",
+  "aliases": [
+    "CVE-2026-89474"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: bq256xx: drain usb_work before freeing the charger\n\nThe USB-PHY notifier queues usb_work, whose handler calls\npower_supply_changed(bq->charger). The reset devm action only unregisters\nthe notifier and was registered before the power supplies, so devm frees\nbq->charger on unwind before the action runs; a usb_work still queued can\nthen dereference it.\n\nRegister the reset action after the power supplies, so it unregisters\nthe notifiers and drains usb_work before the supplies are released.\nInitialize usb_work and obtain the PHY references before registering\nthe notifiers, so the worker cannot run before the supplies exist.\n\nFound by static analysis.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89474"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2dd6cd823777bea6d9a880a12a92a73ec76aee0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a467bd1e6811011026ad4c8de701b940d88a00c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e1aba34df9a87d53460888e05718717c0f69343"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c8addb842ae8dcf69c15fc976e33e3bd538a41d7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:28Z"
+  }
+}

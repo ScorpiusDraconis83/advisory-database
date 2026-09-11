@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9cv8-xv6f-2jmx",
+  "modified": "2026-09-11T21:31:30Z",
+  "published": "2026-09-11T21:31:30Z",
+  "aliases": [
+    "CVE-2026-89534"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsvcrdma: Clear sc_cm_id when ADDR_CHANGE replacement fails\n\nWhen svc_rdma_listen_handler() handles RDMA_CM_EVENT_ADDR_CHANGE,\nit creates a replacement listener cm_id and returns 1, telling\nthe CM core to destroy the old one. If the replacement allocation\nfails, sc_cm_id still points at the old cm_id that the CM core is\nabout to destroy. Any subsequent dereference of sc_cm_id --\nsuch as svc_rdma_detach()'s rdma_disconnect() call -- is a\nuse-after-free.\n\nNULL sc_cm_id on the failure path and guard svc_rdma_detach()'s\nrdma_disconnect() call against NULL so that the listener can\nbe torn down safely when the server shuts down.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89534"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01500306e1d50de7ca7a2cdcdfa28ac0523eb747"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/673e358ab7c11f8cec223c6a36a793056a67facd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:36Z"
+  }
+}

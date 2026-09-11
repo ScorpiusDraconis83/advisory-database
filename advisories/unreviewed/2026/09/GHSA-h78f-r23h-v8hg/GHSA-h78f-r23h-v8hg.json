@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h78f-r23h-v8hg",
+  "modified": "2026-09-11T21:31:29Z",
+  "published": "2026-09-11T21:31:29Z",
+  "aliases": [
+    "CVE-2026-89500"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nring-buffer: Make cpu_buffer::free_page a buffer_data_read_page\n\nDiscarding a cached reader page after a concurrent ring buffer resize\nuses the new global subbuf_order for the free_pages() call. This\nmismatched order may crashes the kernel or leaks memory because the cached\npage was allocated under the old size.\n\nSave the actual free_page order alongside the page address to ensure we\nalways refer to the correct value and do not rely on the potentially\nstalled cpu_buffer->subbuf_order value. The simplest is to make\nfree_page a buffer_data_read_page which already covers exactly what we\nneed: a page address and a page order.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89500"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a1fb95de5404134f8758c1295ce88986bdf117c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a1dabe68fb53730bc0be60c5dbfd3f4c560084e7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d787d509bdf6c88c85e095247daf7456cb7fb772"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:32Z"
+  }
+}

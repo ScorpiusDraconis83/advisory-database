@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4rjj-pgm8-m2r9",
+  "modified": "2026-09-11T21:31:30Z",
+  "published": "2026-09-11T21:31:30Z",
+  "aliases": [
+    "CVE-2026-89528"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsvcrdma: Reject Read lists that exceed the page budget\n\nIndividual Read segment lengths are validated at decode time, but\nnothing prevents a requester from sending multiple segments whose\ncumulative length exceeds the rq_pages array budget. When one\nsegment fills the page array exactly, the runtime guard in\nsvc_rdma_build_read_segment() is bypassed because len reaches zero.\nA subsequent segment then accesses the NULL sentinel slot at\nrq_pages[rq_maxpages], resulting in a NULL pointer dereference during\nDMA mapping.\n\nAccumulate pages across all Read segments and reject the message at\ndecode time when the total would overflow the page budget.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89528"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ca487abb3bdf581851664b5db21f364caf57682"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a3af2262cb384112ef38632de4690682be528b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/465f511f59a0fa7a80d5d1073c4b24f28ea38f58"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:35Z"
+  }
+}

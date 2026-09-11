@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g7ff-3gj4-4wp3",
+  "modified": "2026-09-11T21:31:25Z",
+  "published": "2026-09-11T21:31:25Z",
+  "aliases": [
+    "CVE-2026-89440"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmmc: via-sdmmc: stop card-detect handling on probe failure\n\nrequest_irq() registers the SD card-detect interrupt and the probe enables\nit before mmc_add_host() runs. If mmc_add_host() fails, the error path only\nunmaps the registers and returns: the interrupt stays registered, so the\nhandler keeps running against the host once it is freed. via_sdc_isr()\ndereferences sdhost and its MMIO base and schedules carddet_work, which\nvia_sdc_card_detect() also runs against freed memory through its\ncontainer_of() dereference.\n\nAdd a probe-error path that disables and frees the interrupt and cancels\ncarddet_work before unmapping. carddet_work can re-enable the device\ninterrupt via via_reset_pcictrl(), which restores PCIINTCTRL, so mask it\nagain after cancelling the work.\n\nThis issue was found by an in-house static analysis tool and confirmed by\nmanual code review.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89440"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/088eaa92fcebaa6b957ccf9635afdf39643a577d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2550f89589caad7402d618d7dffc038582c94b6b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2b8a624911999399cc14822fec3e35032b3cee4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/efe7f25dd27e35063477b4b0e7eed3675669fd99"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:24Z"
+  }
+}

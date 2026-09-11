@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jq6v-47fj-pp2p",
+  "modified": "2026-09-11T21:31:26Z",
+  "published": "2026-09-11T21:31:25Z",
+  "aliases": [
+    "CVE-2026-89447"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommufd: Avoid locking internal accesses during unmap\n\niommufd_access_notify_unmap() skips internal accesses because they do\nnot have an external unmap callback to invoke.\n\nHowever, the current test calls iommufd_lock_obj() before checking\nwhether the access is internal. If iommufd_lock_obj() succeeds, the loop\nthen sees the internal access and continues, bypassing the matching\niommufd_put_object() used by the normal unmap path. This leaks the\nobject reference taken by iommufd_lock_obj().\n\nCheck for internal accesses first so skipped entries are never locked.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89447"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0dbcdf4473a614adbd732d567c9b39ac0e040e0c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/436189ee4bb2c7c993b945d68570dd38c3e4349e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/50a66a63d1c841ae6b28a4551f642c1bba4c9529"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:25Z"
+  }
+}

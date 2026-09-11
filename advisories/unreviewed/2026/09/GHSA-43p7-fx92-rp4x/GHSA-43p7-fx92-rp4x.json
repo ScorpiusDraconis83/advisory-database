@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-43p7-fx92-rp4x",
+  "modified": "2026-09-11T21:31:31Z",
+  "published": "2026-09-11T21:31:31Z",
+  "aliases": [
+    "CVE-2026-89545"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsunrpc: defer rq_argp and rq_resp free until after RCU grace period\n\nsvc_rqst_free() frees rqstp->rq_argp and rqstp->rq_resp synchronously\nvia kfree(), but defers the rqstp struct free via kfree_rcu().  After\nsvc_exit_thread() calls list_del_rcu() and svc_rqst_free(), there is\na window where RCU readers that started before list_del_rcu() can still\ntraverse the thread list and find the rqstp.  These readers (e.g.\nnfsd_nl_rpc_status_get_dumpit()) dereference rqstp->rq_argp, which has\nalready been freed — a use-after-free.\n\nFix this by moving the kfree of rq_argp and rq_resp into an explicit\ncall_rcu() callback alongside the struct free.  Resources not accessed\nby RCU readers (bvec, buffer pages, scratch folio, auth_data) remain\nsynchronously freed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89545"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08bc49e0541260bf294962cf889a32a2d2713ad6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c479bde671cbe2f9e152834a8b0eb7c3c295bbaf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0c5693d3f9a5d4911735ab0e0eba4eecb1f1090"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:37Z"
+  }
+}

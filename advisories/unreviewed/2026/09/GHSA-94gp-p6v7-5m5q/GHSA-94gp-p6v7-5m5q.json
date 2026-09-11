@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-94gp-p6v7-5m5q",
+  "modified": "2026-09-11T21:31:26Z",
+  "published": "2026-09-11T21:31:26Z",
+  "aliases": [
+    "CVE-2026-89457"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/dasd: Guard sysfs discipline callbacks against unallocated private data\n\nSeveral sysfs show/store handlers call a discipline callback that\ndereferences device->private, either directly or through the\nDASD_DEFINE_ATTR() macro. During dasd_generic_set_online() the discipline\nis assigned before check_device() allocates device->private, so an\nunprivileged read of one of these world-readable attributes in that window\ndereferences a NULL pointer and panics.\n\nGuard the dereference inside each callback that actually touches\ndevice->private.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89457"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2a1780f9fc2493bd34c418a0be6fc58943afcecf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/449f3bada7a9fad8b8cdf4bb20baf27ee9ca56c5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/536407b272402af679155910d7fdeeb4834eefb9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6452c13646af7c13d7f6668b6690cfb2427e7f7b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:26Z"
+  }
+}

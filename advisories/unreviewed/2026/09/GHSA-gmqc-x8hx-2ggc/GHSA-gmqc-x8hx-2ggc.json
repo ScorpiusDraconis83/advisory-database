@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gmqc-x8hx-2ggc",
+  "modified": "2026-09-11T21:31:32Z",
+  "published": "2026-09-11T21:31:32Z",
+  "aliases": [
+    "CVE-2026-89552"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nparams: fix charp corruption on allocation failure\n\nparam_set_charp() stores charp parameters in allocated memory after slab is\navailable, and releases the previous value when the parameter is updated.\n\nThe previous value is released before the replacement allocation succeeds.\nIf kmalloc_parameter() fails, the setter returns -ENOMEM with the parameter\nleft as NULL.\n\nFailing zswap's compressor update before zswap is initialized can later\ntrigger:\n\n  BUG: kernel NULL pointer dereference, address: 0000000000000000\n  RIP: 0010:strcmp+0x10/0x30\n  Call Trace:\n    zswap_setup+0x3b1/0x490\n    zswap_enabled_param_set+0x5b/0xa0\n    param_attr_store+0x93/0xe0\n    module_attr_store+0x1c/0x30\n    kernfs_fop_write_iter+0x116/0x1f0\n\nAllocate and copy the replacement first, then replace the parameter value\nonly after allocation succeeds.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89552"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d8e2404925a0607ffec79a53170715a46936896"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3dfaae04243cde460d82dfc2a7dd0bb6664d20ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/614f873268c5b172804c9af6639bd17b7e1e2359"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/704ecd010d4a9b33160e40b74eb402f6b86a18e0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:38Z"
+  }
+}

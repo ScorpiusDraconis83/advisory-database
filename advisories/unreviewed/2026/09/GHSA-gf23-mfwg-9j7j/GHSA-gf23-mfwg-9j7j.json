@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gf23-mfwg-9j7j",
+  "modified": "2026-09-11T21:31:22Z",
+  "published": "2026-09-11T21:31:22Z",
+  "aliases": [
+    "CVE-2026-80967"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: pcxhr: initialize mutexes before requesting threaded IRQ\n\npcxhr_probe() requests pcxhr_threaded_irq() before initializing\nmgr->lock, even though the threaded handler takes that mutex.\n\nInitialize the manager locks before request_threaded_irq() so an\nearly interrupt cannot run against uninitialized mutex state during\nprobe.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80967"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c97817e20598e5473094e0e38d1f51f1cf4dfff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7cf280fbef5db6310e1b32074c8c34d1ba459796"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ef9ad82d95dd3c74570d80a689a0570fbc7539e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c069b3cfd753d6688ea0271c43553631ab38ce10"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:02Z"
+  }
+}

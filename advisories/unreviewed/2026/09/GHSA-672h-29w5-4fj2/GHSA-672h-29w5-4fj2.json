@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-672h-29w5-4fj2",
+  "modified": "2026-09-11T21:31:32Z",
+  "published": "2026-09-11T21:31:32Z",
+  "aliases": [
+    "CVE-2026-89562"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nip6_gre: fix hardware header length for NBMA tunnels\n\nip6gre_tnl_link_config_route() accumulates the lower device's hardware\nheader length into dev->hard_header_len whenever header_ops is set. This\nis incorrect for both users of header_ops.\n\nip6gretap and ip6erspan have a fixed Ethernet hardware header length.\nFor an NBMA ip6gre tunnel, ip6gre_header() creates only the GRE header,\nthe optional FOU or GUE header, and the outer IPv6 header. The lower\ndevice header is headroom needed later, not part of the tunnel device's\nhardware header.\n\nKeep the lower device header in needed_headroom. Set hard_header_len to\nthe tunnel header length only for ARPHRD_IP6GRE devices with header_ops,\nand leave the fixed Ethernet header length unchanged for tap and erspan\ndevices.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89562"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/505b6d296c486ef7d1274f279d4c43a172f63224"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/565038b0092f65afe384961c0f548d605bf438b9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bfe746afee38dd6e4348ddcd22d554789dbb9ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8282668d8fa7c61b80e8e4890729031c291a16c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:40Z"
+  }
+}

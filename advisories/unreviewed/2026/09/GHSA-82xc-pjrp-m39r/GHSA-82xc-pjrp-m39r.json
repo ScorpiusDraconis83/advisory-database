@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-82xc-pjrp-m39r",
+  "modified": "2026-09-11T21:31:20Z",
+  "published": "2026-09-11T21:31:20Z",
+  "aliases": [
+    "CVE-2026-80940"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw88: pci: fix resource leak on failed NAPI setup\n\nrtw_pci_probe() allocates PCI resources through\nrtw_pci_setup_resource() before it sets up NAPI. If\nrtw_pci_napi_init() fails, the error path jumps straight to\nerr_pci_declaim and skips rtw_pci_destroy(), leaving the PCI\nresources allocated by rtw_pci_setup_resource() behind.\n\nAdd a dedicated cleanup label for the NAPI setup failure path so probe\ndestroys the PCI resources.\n\nThe bug was first flagged by an experimental analysis tool we are\ndeveloping for kernel memory-management bugs while analyzing current\nmainline kernels. The tool is still under development and is not yet\npublicly available. Manual inspection confirms that the bug is still\npresent in v7.1-rc7.\n\nAn x86_64 allyesconfig build showed no new warnings. As we do not have a\nsuitable rtw88 PCI board to test with, no runtime testing was able to be\nperformed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80940"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/34a505071d1ffc5ebf3dc3cd16d2a12b044bcc84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/481fff9bda01720c70b19fb260808145a3f21594"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1596e212ab1739930b25b9d3daf6b5cd307b537"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e779df4806cd29cbcca5c9dc0a1073662c76b889"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:18:58Z"
+  }
+}

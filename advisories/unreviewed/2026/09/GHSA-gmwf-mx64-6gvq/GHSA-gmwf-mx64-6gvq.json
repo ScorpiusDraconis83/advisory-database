@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gmwf-mx64-6gvq",
+  "modified": "2026-09-11T21:31:20Z",
+  "published": "2026-09-11T21:31:20Z",
+  "aliases": [
+    "CVE-2026-80935"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: bound the device EEPROM address before the EFUSE copy\n\nmt7996_mcu_get_eeprom() derives the destination of the EFUSE/EXT block\ncopy from the address reported by the MCU response (event->addr, a\ndevice-controlled __le32) and clamps only the copy length, never the\ndestination offset into dev->mt76.eeprom.data. A malicious or\nmalfunctioning device can report an arbitrary address and drive an\nout-of-bounds write of up to MT7996_EXT_EEPROM_BLOCK_SIZE bytes past\neeprom.data.\n\nReject a response whose address would place the copy outside eeprom.data\nbefore deriving the destination pointer. Devices that echo the requested\nin-bounds offset are unaffected.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80935"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13b3c29a782033ce4a230be9e5618032813dbcd4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6be59da2063d5b3522bfde8aae0487ec095eb384"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:18:57Z"
+  }
+}

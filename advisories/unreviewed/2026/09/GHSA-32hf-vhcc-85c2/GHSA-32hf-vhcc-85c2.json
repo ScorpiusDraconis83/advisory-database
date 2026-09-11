@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-32hf-vhcc-85c2",
+  "modified": "2026-09-11T21:31:23Z",
+  "published": "2026-09-11T21:31:23Z",
+  "aliases": [
+    "CVE-2026-81000"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: tun: bound receive headroom\n\ntun_get_user() uses tun->align both as skb headroom and when choosing how\nmuch packet data to keep linear. OVS can propagate an oversized headroom\nrequest from another port to TUN or TAP.\n\nWhen align is larger than the usable space in a one-page skb head,\nSKB_MAX_HEAD(align) underflows and the result becomes negative when stored\nin good_linear. That value later wraps when assigned to the size_t linear\nvariable, and tun_alloc_skb() can place skb->data outside the allocated\nhead.\n\nBound the headroom stored by TUN to the one-page skb-head budget and the\nlargest non-sentinel 16-bit skb header offset. Leave one linear byte for\nraw TUN and a complete Ethernet header for TAP, including NET_IP_ALIGN.\n\nAlso pull the raw-TUN protocol byte and the TAP Ethernet header before\naccessing them, so these checks remain safe for nonlinear skbs supplied by\nother allocation paths.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81000"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ada54ea63e48b9c1608e917ccb7dfadbe86db28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/379d85c7f25f3e05a428225e6b8a65613c6e9b9d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/447c9303942c439a117d9b76ce6d6e2116b38ee7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e098d9cc8859614a7f7baebc96e32a5a16b18ed2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:07Z"
+  }
+}

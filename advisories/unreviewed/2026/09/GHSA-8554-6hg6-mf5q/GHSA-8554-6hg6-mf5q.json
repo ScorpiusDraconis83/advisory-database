@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8554-6hg6-mf5q",
+  "modified": "2026-09-11T21:31:25Z",
+  "published": "2026-09-11T21:31:25Z",
+  "aliases": [
+    "CVE-2026-89437"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: int1092: Fix potential memory leak in sar_probe()\n\nThe memory allocated for device_mode_info in parse_package() called by\nsar_get_data() is not freed in some of the error paths in sar_probe().\nFix that by converting to use device managed allocations.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89437"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/30c906cff490c3601ee9ff110fe8115fabe75fd4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/582b82e573a059be9319bb16b84c45d0ef66f471"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:23Z"
+  }
+}

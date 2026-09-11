@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5fpq-2c4w-2f7x",
+  "modified": "2026-09-11T21:31:27Z",
+  "published": "2026-09-11T21:31:27Z",
+  "aliases": [
+    "CVE-2026-89461"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: max17040: synchronize work cancellation on suspend\n\nmax17040_work() requeues itself after every poll. cancel_delayed_work()\nonly cancels a pending instance and does not wait for a callback that is\nalready running.\n\nIf system suspend races with the polling callback, the callback can\ncontinue accessing the fuel gauge and requeue itself after the suspend\ncallback returns.\n\nUse cancel_delayed_work_sync() to ensure polling is quiesced before\nsuspend completes.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89461"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36e6ce0f402f965328b27fd31ac793110e8a0c39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a863417fb9a1034ab1cfe4fa0de46ce1f95f3ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86a3a8a926aa5969c329d1df2d3259f189961bbc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aad7247bd35ad44af90a5e8974cdff614235b497"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:27Z"
+  }
+}

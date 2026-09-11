@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h2g3-mgp6-wj27",
+  "modified": "2026-09-11T21:31:23Z",
+  "published": "2026-09-11T21:31:23Z",
+  "aliases": [
+    "CVE-2026-80991"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ravb: serialize PTP clock teardown\n\nravb_ptp_interrupt() can race with ravb_ptp_stop() and pass the clock to\nptp_clock_event() while ptp_clock_unregister() is freeing it. This can\nlead to a use-after-free.\n\nUse READ_ONCE() and WRITE_ONCE() for lockless access to the clock pointer.\nAtomically detach it with xchg() before disabling PTP interrupts, then\nsynchronize all IRQs which can invoke ravb_ptp_interrupt() before\nunregistering the detached clock.\n\nA handler which read the old pointer completes before the clock is\nunregistered, while later handlers read NULL and skip the event.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80991"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1cb9663789c5b7a12fcd419fcca6d6254c398252"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66b50c31419e7946e9aa325a468ad9b64c961a25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/67a82e6f886beed0de8f8da08bb767e68fba952d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/695acb5534a9e366efb47b40c7487fc56488b09b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:05Z"
+  }
+}

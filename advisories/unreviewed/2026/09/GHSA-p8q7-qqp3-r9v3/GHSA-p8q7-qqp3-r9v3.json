@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p8q7-qqp3-r9v3",
+  "modified": "2026-09-11T21:31:39Z",
+  "published": "2026-09-11T21:31:39Z",
+  "aliases": [
+    "CVE-2026-89770"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niomap: don't free integrity payload that doesn't exist\n\nfs_bio_integrity_alloc might not allocate a bio integrity payload if PI\nverification is disabled on the block device.  Check for that case before\ncalling fs_bio_integrity_free in iomap_bio_read_folio_range_sync to\navoid a NULL pointer dereferences.\n\nMake the branch cover the PI verification as well - while\nfs_bio_integrity_verify works without an integrity payload, it requires\none to actually do useful work.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89770"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/65651f1001aa3638909bc58c7b2b46160692757b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8a8685b32c0718cc7b2cb4d6202e5a5b8e0a8e2d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:20:08Z"
+  }
+}

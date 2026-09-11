@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-72rp-5pw2-wrgc",
+  "modified": "2026-09-11T21:31:33Z",
+  "published": "2026-09-11T21:31:33Z",
+  "aliases": [
+    "CVE-2026-89585"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nauxdisplay: charlcd: cancel backlight work on registration failure\n\nWith CONFIG_CHARLCD_BL_FLASH, charlcd_init() schedules bl_work before\ncharlcd_register() calls misc_register(). If registration fails, the\ncaller frees the charlcd object while delayed work still contains its\naddress.\n\nAdd charlcd_deinit() to cancel the delayed work and turn the backlight\noff. Use it for both registration rollback and normal unregistration.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89585"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/84858671842ae5857b9ed1202b62f9045373dcd1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3e3bf40916c1e810df03958cfa7ba6883cdce79"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe7ba73dde94c5f413b1588cd444b49105015dda"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff2fb3c1e60cb247ea3e28c0ea0bea81c18f7755"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:42Z"
+  }
+}

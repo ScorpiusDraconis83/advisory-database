@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g365-rm76-m26c",
+  "modified": "2026-09-11T21:31:19Z",
+  "published": "2026-09-11T21:31:19Z",
+  "aliases": [
+    "CVE-2026-80927"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntimekeeping: Check the return value of tk_get_aux_ts64 in __do_adjtimex()\n\nIf the auxiliary clock is disabled during tk_get_aux_ts64() but is enabled\nbefore tks->clock_valid is checked, then uninitialized stackdata will be\nused in the calculations and indirectly leaked to userspace.\n\nThe same race window also exists after this change and also for the core\ntimekeeper. But in these cases the only effect would be incorrect\nadjustments and this is userspace's responsibility to avoid this.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80927"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4b61084b11bcecce86d03804ff30f8d7b465593c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc59dac50cb45a725f7a50760c7cc72a0964f722"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fecf1e37775269ad38c172b468ad4ecc3968aa63"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:18:56Z"
+  }
+}

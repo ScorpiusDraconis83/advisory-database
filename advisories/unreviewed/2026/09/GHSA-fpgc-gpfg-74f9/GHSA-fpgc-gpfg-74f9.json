@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fpgc-gpfg-74f9",
+  "modified": "2026-09-11T21:31:35Z",
+  "published": "2026-09-11T21:31:35Z",
+  "aliases": [
+    "CVE-2026-89673"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: fix XDR padding calculation in ff_encode_getdeviceinfo\n\nnfsd4_ff_encode_getdeviceinfo() computes the da_addr_body reservation\nas 16 + netid_len + addr_len, but the subsequent xdr_encode_opaque()\ncalls emit 8 + round_up(netid_len, 4) + round_up(addr_len, 4) bytes.\nThe mismatch means the declared da_addr_body length exceeds the actual\nencoded data by 2-8 bytes on every flexfile GETDEVICEINFO reply,\nleaking stale reply-page content to the client and mis-aligning the\nsubsequent version list decode.\n\nUse xdr_align_size() for each string length to match what\nxdr_encode_opaque() actually writes.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89673"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41ebca28e17f84293650598f86bd69532ec1a8e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62e5949f0dd5ec837af144860ff908369df4c7c9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74015b7be806ad9e21d46f7bd2831df280c6c783"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b989aaec85e1293a871d602590c951fe44b8647"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:53Z"
+  }
+}

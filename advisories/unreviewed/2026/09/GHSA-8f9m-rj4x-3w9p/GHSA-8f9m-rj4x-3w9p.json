@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8f9m-rj4x-3w9p",
+  "modified": "2026-09-11T21:31:20Z",
+  "published": "2026-09-11T21:31:20Z",
+  "aliases": [
+    "CVE-2026-80943"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtlwifi: rtl8192du: check QoS TID before indexing tids\n\nrtl92du_tx_fill_desc() uses ieee80211_get_tid() to read the QoS TID\nfrom the 802.11 header and then uses it as an index into\nsta_entry->tids[]. ieee80211_get_tid() returns the low 4-bit QoS TID\nvalue, so the result can be in the range 0..15.\n\nrtlwifi only allocates MAX_TID_COUNT entries for sta_entry->tids[], and\nMAX_TID_COUNT is 9. A QoS TID greater than 8 therefore indexes past the\naggregation state array. Keep the default RTL_AGG_STOP state for\nout-of-range TIDs, matching rtl92cu_tx_fill_desc().\n\nThis issue was detected by our static analysis tool and confirmed by\nmanual audit. UBSAN validation for the same bug pattern reports an\narray-index-out-of-bounds access with index 10 for type\n'rtl_tid_data [9]'.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80943"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0c0b374e12d52af23ca741728db31091677cf9dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42785f7e8d31540e6172bbcf08a7cc3cae1086f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e327f14e1c43e175bf530f9165b2cadff308553"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed4f05d9f2f42fd866f55108db8123eefcc5fb33"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:18:59Z"
+  }
+}

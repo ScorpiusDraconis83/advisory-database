@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5hvg-pfp7-3397",
+  "modified": "2026-09-11T21:31:20Z",
+  "published": "2026-09-11T21:31:20Z",
+  "aliases": [
+    "CVE-2026-80949"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: brcmfmac: Fix memory leak in brcmf_sdio_read_control()\n\nThe memory allocated for buf is not freed in some of the error paths in\nbrcmf_sdio_read_control(). Fix that by adding vfree() calls.\n\n[arend: rework as suggested by Johannes]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80949"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d10db8e94fcb23a799789aaa696b4d8f937e207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/261d7c7610b4b2f476382c88a2d1ae0cc5e07add"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba04715ee672c336272be3ceb43bda9ffc33eb75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fdb880a7d575efe8b5c7b5b819b96d9251a3937f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:00Z"
+  }
+}

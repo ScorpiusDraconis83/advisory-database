@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5hf2-3p4g-qfhr",
+  "modified": "2026-09-11T21:31:25Z",
+  "published": "2026-09-11T21:31:25Z",
+  "aliases": [
+    "CVE-2026-89443"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: ISST: Validate level in perf mask ioctls\n\nisst_if_get_perf_level_mask() and isst_if_get_base_freq_mask() use the\nuser-provided level as an index into perf_levels[] via\n_read_pp_level_info() and _read_bf_level_info(), but neither helper\nvalidates it first.\n\nThe adjacent level-info helpers reject levels above max_level before\nreading the same per-level register block. Add the same bounds checks to\nthe mask helpers, and reject disabled SST-PP levels in\nisst_if_get_perf_level_mask() to match isst_if_get_perf_level_info().\n\nThis prevents out-of-bounds reads from the per-level offset table on\ninvalid ioctl input.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89443"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1889a9156553f0692acd57caf15e877baace1a01"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a8bab5ceee1a42a78de12d3d69f67516a20588e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80e0d353c86a9a168ad6d213f494796294381538"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d19385624bdfb577db9c94bb8879992fd5e17bcd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:24Z"
+  }
+}

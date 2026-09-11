@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-33rp-ch35-2jf6",
+  "modified": "2026-09-11T21:31:23Z",
+  "published": "2026-09-11T21:31:23Z",
+  "aliases": [
+    "CVE-2026-80990"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: thunderbolt: Release the Rx HopID that was handed out on mismatch\n\ntb_xdomain_alloc_in_hopid() passes the wanted HopID to ida_alloc_range()\nas the lower bound, so a taken id is not an error there: the allocator\nreturns the next free one above it. tbnet_connected_work() asks for the\npeer's transmit path, treats any other id as a failure and returns\nwithout releasing what it got, so that allocation stays live for the rest\nof the XDomain connection with nothing left holding a reference to it.\n\nRelease the id when it is not the one we asked for, the same way the\nerror unwind at the end of the function releases the expected one.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80990"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c361f6cf39be7cc0ce37c0b67bd1cdf74b0a0c1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f1463554d0561a2fead81e3888604e5c1125e29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61ff3c353e5d2ff4eb9d0b6d8d9e47805b136eea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9eac1817bfc5fa76e3a2d1b8fd824cc6ef5a9ab0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:05Z"
+  }
+}

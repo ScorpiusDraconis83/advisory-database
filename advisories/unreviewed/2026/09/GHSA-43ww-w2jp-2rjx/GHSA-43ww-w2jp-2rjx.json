@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-43ww-w2jp-2rjx",
+  "modified": "2026-09-11T21:31:29Z",
+  "published": "2026-09-11T21:31:29Z",
+  "aliases": [
+    "CVE-2026-89502"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nring-buffer: Free cpu_buffer::free_page with subbuf_order\n\nWhen sub-buffers use an order greater than 0, cpu_buffer->free_page is\nallocated with subbuf_order. Use the correct order for\ncpu_buffer->free_page.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89502"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/234b1a72e9706fe20c08c96f4374ec8e83b934cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/77275ccea06eaf297e8e6ac3fc830cb72086379a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81063bbb16c4fcf0136c9117d5e49d3621dd6a1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c1ecdcdea738efe0494af908f12c0ae3a97fffa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:32Z"
+  }
+}

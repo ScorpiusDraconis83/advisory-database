@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xjfx-r9g7-66w3",
+  "modified": "2026-09-11T21:31:30Z",
+  "published": "2026-09-11T21:31:30Z",
+  "aliases": [
+    "CVE-2026-89514"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: fnic: Use GFP_ATOMIC for VLAN alloc under spinlock\n\nfnic_fcoe_process_vlan_resp() allocates a VLAN descriptor with\nkzalloc_obj() (default GFP_KERNEL) while holding vlans_lock via\nspin_lock_irqsave(). GFP_KERNEL may sleep, which is not allowed in this\natomic context and can trigger a sleeping-from-invalid-context warning\nor deadlock.\n\nPass GFP_ATOMIC so the allocation is safe under the IRQ-safe spinlock.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89514"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9639c6324524ea3f934908bd51f02430000954ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4ade059aaeb51fdb3f4ae71e1ea3e2019b85178"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d86f65aed01408613607f8fc31493f07554788f2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:33Z"
+  }
+}

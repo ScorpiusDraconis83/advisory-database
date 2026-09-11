@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2pcp-qx27-wf69",
+  "modified": "2026-09-11T21:31:19Z",
+  "published": "2026-09-11T21:31:19Z",
+  "aliases": [
+    "CVE-2026-80933"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: validate default EEPROM firmware size\n\nThe default EEPROM firmware is parsed and copied as a full EEPROM\nwithout checking its length. A truncated file can make the driver\nread beyond the firmware buffer during variant validation or the\nfallback copy.\n\nReject files shorter than MT7996_EEPROM_SIZE before parsing or\ncopying the firmware.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80933"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03b81f015dbb29807ce1ec6d45537d658abdac69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/653c6e289b13cc6942f3e8f8e3c568e70fa42d1f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7074ec3769820302f1ccf8794a40a6582153b820"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:18:57Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5hxm-7wcj-79fv",
+  "modified": "2026-09-11T21:31:29Z",
+  "published": "2026-09-11T21:31:29Z",
+  "aliases": [
+    "CVE-2026-89499"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nring-buffer: Stop remote reader update when page swap fails\n\nThe remote swap_reader_page callback can return -EBUSY when the writer\nmoves the head before the remote catches it, particularly during an event\nstorm on a small buffer. __rb_get_reader_page_from_remote() currently\nwarns about that failure but continues with the unchanged reader ID and\nrearranges the local page list as though the swap succeeded.\n\nHandle the callback failure as a recoverable error. Report it with\npr_warn_ratelimited() and return NULL. Callers already handle a NULL reader\npage as a failed attempt. This avoids splicing the same page as both the\nprevious and new reader without flooding the log under contention.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89499"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5eab74874d11160725c42ab676ba97a797a362eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a14a97048e48471e283d76879b83d2ae323e0722"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:32Z"
+  }
+}

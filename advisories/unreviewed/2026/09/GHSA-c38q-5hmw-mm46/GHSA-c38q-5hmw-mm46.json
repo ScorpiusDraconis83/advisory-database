@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c38q-5hmw-mm46",
+  "modified": "2026-09-11T21:31:38Z",
+  "published": "2026-09-11T21:31:38Z",
+  "aliases": [
+    "CVE-2026-89735"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: midi2: remove default configfs groups on teardown\n\nf_midi2_alloc_inst() creates default configfs child groups for the\ndefault endpoint and default block using configfs_add_default_group(),\nsetting their internal refcount to 1.\n\nHowever, during function teardown in f_midi2_free_inst() or EP cleanup\nin f_midi2_ep_opts_release(), configfs_remove_default_groups() is\nnever called, therefore never dropping the refcount and leaking struct\nf_midi2_ep_opts and f_midi2_block_opts.\n\nAdd the missing configfs_remove_default_groups() in the afformentioned\nfunctions to free the structs properly.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89735"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f6bffb5008f0cba9cad5ded2caccc64466a6e54"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4beda67ee72e0c8df5b49951dd8b96f6adb25e02"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ea5dfb2bfef4f8a7e704d1921d8a790cb7fb700"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a15c2acd3083461f91725760e59dff88b33c28f6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:20:03Z"
+  }
+}

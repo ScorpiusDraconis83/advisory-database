@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fm3c-92pm-qq7p",
+  "modified": "2026-09-11T21:31:23Z",
+  "published": "2026-09-11T21:31:23Z",
+  "aliases": [
+    "CVE-2026-80989"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: thunderbolt: Mark the connection down when bringing it up fails\n\nEvery failure path in tbnet_connected_work() undoes its own work and\nreturns without clearing login_sent, so the connection still looks\nestablished. The next tbnet_tear_down() therefore takes its main branch\nand repeats a teardown that already happened: it stops rings that are\nalready stopped, which is a dev_WARN() and fatal under panic_on_warn,\nand it releases net->remote_transmit_path even on the HopID mismatch\npath, where this connection never owned that id, silently freeing one\nthat someone else is still using.\n\nClear login_sent on those paths. That is enough for tbnet_tear_down() to\nleave the unwound state alone, and login_received has to stay set: it\nrecords that the peer has logged in and carries the transmit path it gave\nus, which nothing on this side can make the peer send again. Two things\nchange beyond keeping the teardown out of the way: the logout request in\nthat block is no longer sent, and the peer's next login request now\nre-queues our login work rather than connected_work, giving the\nconnection a fresh login instead of a retry on stale state.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80989"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c8b26ebf525ba5960510f48c6e9936a79ebe76f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d6c0af293129345a17dc31c9b4179dc7f3d6af7a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed1d6e3d735e7b03f43a02f4306c89eb7663da14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f01e6a35c440b62f060e21f36b385e574a7f308c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:05Z"
+  }
+}

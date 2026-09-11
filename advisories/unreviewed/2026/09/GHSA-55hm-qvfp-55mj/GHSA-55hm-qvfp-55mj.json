@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-55hm-qvfp-55mj",
+  "modified": "2026-09-11T21:31:34Z",
+  "published": "2026-09-11T21:31:34Z",
+  "aliases": [
+    "CVE-2026-89621"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: mcp2221: validate report size in mcp2221_raw_event()\n\nmcp2221_raw_event() never validates the size of incoming HID reports.\nIn the MCP2221_I2C_GET_DATA path it trusts the device-supplied data[3]\nas the copy length without checking that 4 + data[3] bytes actually\nexist in the received report. A malicious or misbehaving USB device can\nsend a short report with a large data[3], causing the memcpy to read\npast the valid report data in the HID transfer buffer and leak\nuninitialized kernel memory back to userspace through the I2C/SMBus\nread path.\n\nAdd a minimum size check at entry and validate that the source range\nfits within the received report before the copy.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89621"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/127de5919820f88a9d55e8371ad4ac49f625f4c5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c9a6998c19503626c57a2267bf279e204113079"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7c18fb36708a97ff6772825cc087b6d537bbf0d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bdc6a3af0dd734a326acdb7d6401a3b6a9f4f149"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:47Z"
+  }
+}

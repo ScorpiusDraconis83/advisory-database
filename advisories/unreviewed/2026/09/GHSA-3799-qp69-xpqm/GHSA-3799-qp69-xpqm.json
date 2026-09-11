@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3799-qp69-xpqm",
+  "modified": "2026-09-11T21:31:29Z",
+  "published": "2026-09-11T21:31:29Z",
+  "aliases": [
+    "CVE-2026-89497"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\norangefs: skip leading spaces before parsing client debug masks\n\norangefs_prepare_cdm_array() sizes each client debug keyword buffer\nwith strcspn(cds_head, \" \"), but then parses the keyword with %s. The\n%s conversion skips leading whitespace, while strcspn() does not.\n\nIf a client debug entry starts with a space, the allocation can be sized\nfor an empty keyword while sscanf() copies the following non-empty token.\nThis can write past the end of the allocated keyword buffer.\n\nSkip leading spaces before computing the keyword length so the allocation\nmatches the string parsed by sscanf().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89497"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/116d14f29a0524853c9316f32a2ac06cff5d4bf6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15d79c806231e62a7b746d3b42626810004e1b27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1774c5b3713add32fe15ab0d3db4b73355f94e35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d410cd5303ec59c7cf23dd61423752ce8e9ecb59"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:31Z"
+  }
+}

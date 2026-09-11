@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9gr7-7h3r-cj7p",
+  "modified": "2026-09-11T21:31:21Z",
+  "published": "2026-09-11T21:31:21Z",
+  "aliases": [
+    "CVE-2026-80959"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-pcache: bound the persisted tail-position offset\n\ncache_pos_decode() takes the persisted key_tail and dirty_tail seg_off from\nthe cache device and addresses within the segment with it. A seg_off at or\npast the segment data_size, controllable by whoever supplies the device\n(CAP_SYS_ADMIN), reads past the segment data.\n\nReject a decoded seg_off that is not below the segment data_size.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80959"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8bf7a06ca3c1611809725f58cfd573f2ffbda75f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1898576090a10d2ac2715218a652e78fb65a6b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ffd9a214a94f9928e54856f42b1cc3e33fb10e36"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:01Z"
+  }
+}

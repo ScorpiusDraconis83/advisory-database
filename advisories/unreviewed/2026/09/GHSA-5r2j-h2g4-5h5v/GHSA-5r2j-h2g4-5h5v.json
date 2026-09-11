@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5r2j-h2g4-5h5v",
+  "modified": "2026-09-11T21:31:34Z",
+  "published": "2026-09-11T21:31:34Z",
+  "aliases": [
+    "CVE-2026-89626"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: sensor: custom: Fix field sysfs group cleanup on failure\n\nhid_sensor_custom_add_attributes() creates one sysfs group for each\ncustom sensor field. If sysfs_create_group() fails after some groups\nhave already been created, the function returns the error without\nremoving the previously created groups.\n\nAdd a local unwind path to remove the groups that were already created.\nWith enable_sensor exposed only after the field attributes are ready,\nthis path can free sensor_inst->fields without leaving enable_sensor\nable to access pointers into that array.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89626"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3789d0802ddb4b3be04062caf4bfadd23496e9a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79154fad98ee843e5363940841e2d831503c190a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d96f8958d4469ac02d9c563686cdd968005b944d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f3f37b937a6ea2a00fb5e6189e74f855caa43eb5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:48Z"
+  }
+}

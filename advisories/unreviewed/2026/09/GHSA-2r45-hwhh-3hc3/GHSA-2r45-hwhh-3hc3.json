@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2r45-hwhh-3hc3",
+  "modified": "2026-09-11T21:31:21Z",
+  "published": "2026-09-11T21:31:21Z",
+  "aliases": [
+    "CVE-2026-80956"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-pcache: only hand out initialized cache segments\n\nget_cache_segment() scans the segment map up to cache->n_segs, the\nphysical device segment count, but cache_segs_init() only initializes\nthe first cache_info->n_segs segments. A crafted image with\ncache_info->n_segs smaller than the device count leaves the remaining\npcache_cache_segment structs zeroed (segment.data == NULL), and the\nallocator can hand one to cache_kset_close(), which writes through the\nreturned segment's data pointer with no NULL check.\n\nBound the allocator's search to cache_info->n_segs so only initialized\nsegments are ever returned. A conforming cache sets n_segs equal to the\ndevice segment count, so this rejects nothing legitimate.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80956"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2df0fc042e299bae3c0f60ea5cd2af9285658e9f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/692037ae1a7cfacc2f0c22c6e034c1dfee0e553f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83e3116283ed2c6a6a1fa662862a4b4d7d2701a2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:01Z"
+  }
+}

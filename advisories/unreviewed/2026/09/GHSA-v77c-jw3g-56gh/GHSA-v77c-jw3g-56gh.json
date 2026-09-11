@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v77c-jw3g-56gh",
+  "modified": "2026-09-11T21:31:23Z",
+  "published": "2026-09-11T21:31:23Z",
+  "aliases": [
+    "CVE-2026-80993"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: phylink: correctly validate returned PCS in phylink_inband_caps\n\nIn phylink_inband_caps(), the PCS returned by mac_select_pcs is only\nchecked if NULL but mac_select_pcs can also return an error pointer.\n\nThis can cause a kernel panic as phylink_pcs_inband_caps() only checks\nif passed PCS is not NULL and directly dereference ops from the phylink_pcs\nstruct.\n\nUse the IS_ERR_OR_NULL macro to address both case where the returned\nPCS can be NULL or an error pointer and prevent a kernel panic.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80993"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b6b533f83461c3730875cf3ed5ff6362dcb67be9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2849b1fd059ec9b3281b771e6ac5aad9feee851"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb4d77553841ae85bed9b2cf03351c401e871d85"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:06Z"
+  }
+}

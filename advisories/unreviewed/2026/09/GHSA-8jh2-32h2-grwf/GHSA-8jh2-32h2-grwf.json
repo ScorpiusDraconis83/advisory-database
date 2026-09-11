@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8jh2-32h2-grwf",
+  "modified": "2026-09-11T21:31:19Z",
+  "published": "2026-09-11T21:31:19Z",
+  "aliases": [
+    "CVE-2026-80934"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: fix TX DMA mapping leak for AddBA req frames\n\nmt7996/mt7992 hand the firmware a HW MAC-TXP for AddBA req action frames\n(MT_TXD7_MAC_TXD, set in mt7996_mac_write_txwi_80211()), but are otherwise\nFW-TXP devices. On tx free mt76_connac_txp_skb_unmap() therefore decodes\nthe per-frame txp as a struct mt76_connac_fw_txp. For a MAC-TXP the\nfw_txp.nbuf byte aliases the AddBA TID word (MT_TXP1_TID_ADDBA), which is\nalways zero, so the unmap loop runs zero times and the skb DMA mapping in\nbuf[1] is never unmapped. buf[1].skip_unmap is set unconditionally, so the\ngeneric DMA-ring cleanup skips it as well.\n\nEach AddBA req therefore leaks one TX DMA mapping, roughly one per\n(re)association. With WED enabled these mappings are bounced through the\nWED swiotlb pool, so under continuous client reconnect churn the pool is\nexhausted after ~1-2 days, after which DMA mapping fails for WED, the WiFi\nMCU and other on-SoC consumers.\n\nKeep the deferred (token release) unmap that the design relies on, and add\nan mt7996-specific txp unmap that inspects MT_TXD7_MAC_TXD and unmaps\nbuf[1] from the MAC-TXP layout for those frames, delegating to\nmt76_connac_txp_skb_unmap() otherwise.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80934"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/01f2e0da8548f82d704b65b513026cfedc5f8962"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b754d3a6d44c53d9853eba374d8a7ef279a9d00a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/deaa2e3656937fbbe312f0ee2616c756c6e2511f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:18:57Z"
+  }
+}

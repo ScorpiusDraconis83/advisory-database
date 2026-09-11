@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3wv2-w328-38h2",
+  "modified": "2026-09-11T21:31:33Z",
+  "published": "2026-09-11T21:31:33Z",
+  "aliases": [
+    "CVE-2026-89605"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\necryptfs: release message context on send failure\n\necryptfs_send_message_locked() moves a message context from the free\nlist to the allocated list before sending the request to the userspace\ndaemon.\n\nIf ecryptfs_send_miscdev() fails, the context is left on the\nallocated list and cannot be reused. Move it back to the free list on\nfailure and clear the caller's pointer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89605"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/219644a3ad5518217b2d62cad6d2c36a2308c949"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47ce611cb13f0eefa550d5434c1afcd4217bfc3e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/654b7e79443f5ea90849f5c1cf70c0d94bd5b10e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9319706316a8e79f374627554386d575a84b637f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:45Z"
+  }
+}

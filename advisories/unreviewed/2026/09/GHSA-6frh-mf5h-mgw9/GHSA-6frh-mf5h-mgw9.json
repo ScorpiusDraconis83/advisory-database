@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6frh-mf5h-mgw9",
+  "modified": "2026-09-11T21:31:29Z",
+  "published": "2026-09-11T21:31:29Z",
+  "aliases": [
+    "CVE-2026-89505"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/uverbs: Guard legacy bundles without method_elm\n\nThe legacy write() path dispatches through a uverbs_api_write_method, but\nthe uverbs_attr_bundle passed to provider code does not have an ioctl\nmethod element. If malformed provider input causes the common uverbs\nvalidation code to emit an error message, uverbs_get_handler_fn()\ndereferences the uninitialized method_elm pointer.\n\nInitialize method_elm explicitly for legacy bundles and make\nuverbs_get_handler_fn() return NULL when no ioctl method is present. The\nlegacy dispatcher continues to use its local write method, while the ioctl\npath continues to use the registered ioctl handler.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89505"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60a42d510113f46de47e86a84bf5758597644487"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/edae84e5461749ed9adf9fcf5c6e075381040ac3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:32Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pfq2-9rm7-2x65",
+  "modified": "2026-09-11T21:31:29Z",
+  "published": "2026-09-11T21:31:29Z",
+  "aliases": [
+    "CVE-2026-89506"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/uverbs: Add UVERBS_ATTR_UHW to UVERBS_METHOD_REG_MR\n\nThe original commit missed that three drivers (mthca, irdma, siw) have UHW\ndata associated with reg_mr that cannot be passed through the ioctl. They\nalso assume that the udata cannot be NULL, so failing to pass a valid\nudata can trigger a NULL udata crash in those drivers.\n\nThis never happens in real systems since in rdma-core ibv_cmd_reg_mr_ex()\ndoes not accept a udata and those three drivers don't use it, however a\nmalicious userspace could trigger it.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89506"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/011199f46f44a9fd93a9e5ab5d7fd1328d80e9bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71d5c41ac583df09a7c32199bef7d42de7267d07"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e71d0f4944ba5641e01db29b3256c963656d671"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:32Z"
+  }
+}

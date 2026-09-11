@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2hjf-83c6-w88p",
+  "modified": "2026-09-11T21:31:38Z",
+  "published": "2026-09-11T21:31:38Z",
+  "aliases": [
+    "CVE-2026-89729"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: sensor-hub: Fix out-of-bounds write in sensor_hub_get_feature\n\nsensor_hub_get_feature() clamps its return value to the caller's buffer\nsize, but the copy loop still copies field->report_size / 8 bytes for\neach report value. A malicious HID descriptor can advertise a large\nfeature field size while an IIO caller supplies a small stack buffer,\nsuch as a single s32, causing an out-of-bounds write.\n\nHID core stores parsed report values in __s32 slots and clamps extracted\nvalues to 32 bits. Reject feature fields that require more than one slot\nper value, guard the total byte count calculation, and clamp each\nper-value copy to the remaining caller buffer.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89729"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f43499ce6458a572b781f6bb46c464ab59fa825"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc3d72c44bff17688dc5f3e5132a53b51dae0f04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c92693f3ed099401d0383ef35ca1fe1e6ba033de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa95b14198b6c8ea721b4784f466d3c2c2bac83a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:20:03Z"
+  }
+}

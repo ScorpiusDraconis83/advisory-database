@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9fjc-q922-2qfq",
+  "modified": "2026-09-11T21:31:26Z",
+  "published": "2026-09-11T21:31:26Z",
+  "aliases": [
+    "CVE-2026-89446"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommufd: Release current IOAS on xa_store() failure\n\niommufd_take_all_iova_rwsem() takes an object reference and the\niova_rwsem write lock before storing the IOAS in the temporary ioas_list\nxarray.\n\nIf xa_store() fails, the current IOAS has not been inserted into\nioas_list yet. iommufd_release_all_iova_rwsem() only unwinds IOAS\nobjects already present in that xarray, so it cannot release the current\nIOAS.\n\nRelease the current IOAS rwsem and object reference before unwinding the\npreviously stored entries.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89446"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07b4fe1367f076886c1c47a19c70936138325087"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ac2ce123824d5f885c868fa1f9f4d463141a2ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c33d00ad9a911e87ea222986f732ce072e3aa26"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:25Z"
+  }
+}

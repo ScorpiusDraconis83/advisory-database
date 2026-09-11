@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9g9c-4vjc-cw83",
+  "modified": "2026-09-11T21:31:29Z",
+  "published": "2026-09-11T21:31:29Z",
+  "aliases": [
+    "CVE-2026-89498"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\norangefs: fix double-free of trailer_buf on readdir copy failure\n\nOn a readdir downcall, orangefs_devreq_write_iter() frees\nop->downcall.trailer_buf with vfree() when copy_from_iter_full() fails,\nbut does not clear the pointer before goto Efault. The waiter in\ndo_readdir() is then woken with a negative status and frees the same\npointer again on its r < 0 path, causing a deterministic double-free.\nA client holding /dev/pvfs2-req triggers it by sending a readdir\ndowncall whose declared trailer_size exceeds the bytes it supplies.\n\nClear the pointer after freeing so the readdir-side vfree() becomes a\nno-op.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89498"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f5454a25127854c232fde5d1d65d16fbcd42d43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/519f4146b8b8c5f20c2ad01913acd6df2df8fc8e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f574296be7f46eb60beca851240b526df232f480"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f796f38a324e89547738f4b70cc33be5be2bc6da"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T20:19:31Z"
+  }
+}
