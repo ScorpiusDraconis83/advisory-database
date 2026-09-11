@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-634q-j8cp-w5hg",
+  "modified": "2026-09-11T06:31:12Z",
+  "published": "2026-09-11T06:31:12Z",
+  "aliases": [
+    "CVE-2026-18964"
+  ],
+  "details": "The Floating Chat Widget: Contact Chat Icons, Telegram Chat, Line Messenger, WeChat, Email, SMS, Call Button – Chaty plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 's' parameter in all versions up to, and including, 3.5.9 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link. WordPress's server-side HTML encoding of the 's' search parameter in the &lt;title&gt; element is bypassed because the browser DOM API decodes HTML entities when jQuery's .text() method reads document.title, returning literal special characters that are then embedded unescaped into the constructed HTML attribute value.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/chaty/trunk/js/cht-front-script.min.js#L1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3637386%40chaty%2Ftrunk%2Fjs%2Fcht-front-script.min.js&old=3485342%40chaty%2Ftrunk%2Fjs%2Fcht-front-script.min.js&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/918af0dc-afad-4645-b4ad-8b10a34e20b2?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T04:17:24Z"
+  }
+}

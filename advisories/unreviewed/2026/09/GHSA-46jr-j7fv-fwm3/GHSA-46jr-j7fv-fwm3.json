@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-46jr-j7fv-fwm3",
+  "modified": "2026-09-11T06:31:13Z",
+  "published": "2026-09-11T06:31:13Z",
+  "aliases": [
+    "CVE-2026-81825"
+  ],
+  "details": "The Simple Ajax Chat – Add a Fast, Secure Chat Box plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Chat Message in all versions up to, and including, <= 20260811 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The nonce protecting chat message submission is publicly visible on the chat page, rendering it ineffective as an authentication barrier and allowing fully unauthenticated attackers to submit malicious messages that are stored persistently and rendered to all visitors on every page load.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81825"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-ajax-chat/trunk/simple-ajax-chat-core.php#L34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-ajax-chat/trunk/simple-ajax-chat-form.php#L143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-ajax-chat/trunk/simple-ajax-chat-form.php#L144"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-ajax-chat/trunk/simple-ajax-chat-form.php#L182"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-ajax-chat/trunk/simple-ajax-chat.php#L329"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/simple-ajax-chat/trunk/simple-ajax-chat.php#L698"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3669278%40simple-ajax-chat%2Ftrunk&old=3640838%40simple-ajax-chat%2Ftrunk&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/8336d8d6-81ac-40a6-af1e-167c12440908?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T04:17:58Z"
+  }
+}

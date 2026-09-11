@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-536j-38mh-gp8m",
+  "modified": "2026-09-11T06:31:12Z",
+  "published": "2026-09-11T06:31:12Z",
+  "aliases": [
+    "CVE-2026-18561"
+  ],
+  "details": "The Unlimited Elements For Elementor plugin for WordPress is vulnerable to SQL Injection via the 'addontype' parameter in versions up to, and including, 2.0.16. This is due to insufficient escaping on the user-supplied parameter and the lack of sufficient preparation on the existing SQL query in the getWhereString() function; when the parameter is supplied as an array, element zero is used verbatim as the SQL comparison operator and concatenated into the WHERE clause without sanitization, while normalizeAjaxInputData() strips WordPress's magic_quotes protection from the value. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18561"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/trunk/inc_php/framework/db.class.php#L216"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/trunk/inc_php/unitecreator_actions.class.php#L87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/trunk/inc_php/unitecreator_addon.class.php#L304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/trunk/inc_php/unitecreator_addons.class.php#L1387"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/trunk/provider/provider_functions.class.php#L611"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3661670%40unlimited-elements-for-elementor%2Ftrunk&old=3628543%40unlimited-elements-for-elementor%2Ftrunk&sfp_email=&sfph_mail="
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/969d605d-e093-447c-abf7-0d56cb3ac569?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T04:17:20Z"
+  }
+}
