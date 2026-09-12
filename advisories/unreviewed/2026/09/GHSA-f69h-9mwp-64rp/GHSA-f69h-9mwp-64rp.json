@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f69h-9mwp-64rp",
+  "modified": "2026-09-12T09:33:35Z",
+  "published": "2026-09-12T09:33:35Z",
+  "aliases": [
+    "CVE-2026-77161"
+  ],
+  "details": "The Smart Marketing SMS and Newsletters Forms plugin for WordPress is vulnerable to generic SQL Injection via Parameter Name in all versions up to, and including, 5.1.24 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Exploitation requires the plugin's sync feature to be enabled (options['enabled']) and get_option('egoi_mapping') to be truthy, both of which reflect ordinary configured states for the plugin's core contact mapping functionality.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77161"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/smart-marketing-for-wp/trunk/admin/class-egoi-for-wp-listener.php#L132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/smart-marketing-for-wp/trunk/admin/class-egoi-for-wp-listener.php#L183"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/smart-marketing-for-wp/trunk/includes/class-egoi-for-wp.php#L841"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/smart-marketing-for-wp/trunk/includes/class-egoi-for-wp.php#L908"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3663923%40smart-marketing-for-wp&new=3663923%40smart-marketing-for-wp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/f14e3f20-b022-49f8-89b0-acca9b950cb8?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-12T08:16:24Z"
+  }
+}
