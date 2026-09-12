@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-crrq-mjw6-39qp",
+  "modified": "2026-09-12T03:30:22Z",
+  "published": "2026-09-12T03:30:22Z",
+  "aliases": [
+    "CVE-2026-89268"
+  ],
+  "details": "QloApps through 1.7.0 renders back-office list filter POST parameters into HTML input value attributes without escaping them in the list helper template. Attackers can induce authenticated users to submit crafted POST requests with malicious payloads to list controllers, executing arbitrary JavaScript in the victim's session to read administrative data and perform actions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89268"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/pull/1801"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/commit/153ec1c8567798bd99155098ecc0a340e38f25bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/blob/v1.7.0/admin/themes/default/template/helpers/list/list_header.tpl"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/qloapps-through-1.7.0-reflected-xss-via-list-filter-parameters"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-12T02:16:24Z"
+  }
+}
