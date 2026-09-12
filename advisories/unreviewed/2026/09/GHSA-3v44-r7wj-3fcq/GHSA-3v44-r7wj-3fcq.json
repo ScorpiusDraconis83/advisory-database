@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3v44-r7wj-3fcq",
+  "modified": "2026-09-12T15:31:50Z",
+  "published": "2026-09-12T15:31:50Z",
+  "aliases": [
+    "CVE-2026-90549"
+  ],
+  "details": "WWBN AVideo through commit c3edcc274c389816d434acadac07ee78eaf330c1 fails to properly authorize access to the videosAndroid.json.php endpoint, allowing unauthenticated guests to list password-protected videos with sensitive owner information. Attackers can retrieve video metadata including owner email, lastLogin, filename, and hashId by sending an unauthenticated GET request to the endpoint.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/security/advisories/GHSA-frrh-5hwx-jggr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90549"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wwbn-avideo-missing-authorization-via-videosandroid-json-php-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-12T13:16:53Z"
+  }
+}

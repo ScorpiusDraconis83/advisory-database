@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h5pf-gc8w-pff5",
+  "modified": "2026-09-12T15:31:49Z",
+  "published": "2026-09-12T15:31:49Z",
+  "aliases": [
+    "CVE-2026-10148"
+  ],
+  "details": "The Booking for Appointments and Events Calendar plugin for WordPress is vulnerable to Stored Cross-Site Scripting via multiple Elementor widgets in versions up to and including 2.4.9. This is due to insufficient input sanitization and output escaping on the 'load_manually' parameter in the render() methods of classes. This makes it possible for authenticated attackers, with Contributor-level access and above who can use Elementor, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The vulnerability was partially patched in version 2.4.8.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10148"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ameliabooking/tags/2.2.1/src/Infrastructure/WP/Elementor/AmeliaEventsCalendarBookingElementorWidget.php#L186"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ameliabooking/tags/2.2.1/src/Infrastructure/WP/Elementor/AmeliaEventsElementorWidget.php#L134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ameliabooking/tags/2.2.1/src/Infrastructure/WP/Elementor/AmeliaEventsListBookingElementorWidget.php#L247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ameliabooking/tags/2.2.1/src/Infrastructure/WP/Elementor/AmeliaStepBookingElementorWidget.php#L200"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ameliabooking/tags/2.2.1/src/Infrastructure/WP/Elementor/AmeliaStepBookingElementorWidget.php#L226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ameliabooking/trunk/src/Infrastructure/WP/Elementor/AmeliaEventsCalendarBookingElementorWidget.php#L186"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ameliabooking/trunk/src/Infrastructure/WP/Elementor/AmeliaEventsElementorWidget.php#L134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ameliabooking/trunk/src/Infrastructure/WP/Elementor/AmeliaEventsListBookingElementorWidget.php#L247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ameliabooking/trunk/src/Infrastructure/WP/Elementor/AmeliaStepBookingElementorWidget.php#L200"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ameliabooking/trunk/src/Infrastructure/WP/Elementor/AmeliaStepBookingElementorWidget.php#L226"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3657136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3687762"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/06ec5c60-169c-4bbb-92bf-802805d46c62?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-12T13:16:50Z"
+  }
+}
