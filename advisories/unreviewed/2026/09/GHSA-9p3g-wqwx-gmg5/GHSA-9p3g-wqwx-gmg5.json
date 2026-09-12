@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9p3g-wqwx-gmg5",
+  "modified": "2026-09-12T15:31:49Z",
+  "published": "2026-09-12T15:31:49Z",
+  "aliases": [
+    "CVE-2026-90536"
+  ],
+  "details": "WWBN AVideo through commit c3edcc274c389816d434acadac07ee78eaf330c1 fails to authorize access to the adsInfo API endpoint, allowing unauthenticated attackers to retrieve password-protected video owner identifiers. Attackers can call the adsInfo API with a videos_id parameter to obtain the owner's user ID and personalized ad creative URLs without authentication or permission checks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/security/advisories/GHSA-989c-frwf-gprj"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90536"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/wwbn-avideo-missing-authorization-via-adsinfo-api-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-12T13:16:51Z"
+  }
+}

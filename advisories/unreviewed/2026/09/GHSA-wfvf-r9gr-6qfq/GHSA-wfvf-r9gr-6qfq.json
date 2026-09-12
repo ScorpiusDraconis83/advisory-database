@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wfvf-r9gr-6qfq",
+  "modified": "2026-09-12T15:31:49Z",
+  "published": "2026-09-12T15:31:49Z",
+  "aliases": [
+    "CVE-2026-90534"
+  ],
+  "details": "Flowise is a low-code platform for building LLM applications. In versions up to and including 3.1.3, the POST /api/v1/node-load-method/:name endpoint is mounted without any route-level permission check and invokes component loadMethods with an attacker-controlled nodeName, loadMethod, inputs, and credential value. The selected credential is resolved by raw Credential.id via getCredentialData() and decrypted without verifying Credential.workspaceId against the caller's active or shared workspace, unlike other credential read paths which are workspace-scoped. As a result, an authenticated low-privilege user (or workspace API key) in one workspace can supply a credential ID owned by another workspace and cause Flowise to act as a confused deputy, performing third-party provider calls with the victim workspace's credential and returning provider metadata to the attacker. Statically identified affected load methods include Google Drive listFiles, Google Sheets listSpreadsheets, and AWS DynamoDB KV Storage listTables. The raw credential secret itself is not returned to the attacker. This issue is fixed in version 3.1.4.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-hqvm-7539-v83j"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90534"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flowise-before-3.1.4-cross-workspace-credential-idor-via-node-load-method"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-12T13:16:51Z"
+  }
+}

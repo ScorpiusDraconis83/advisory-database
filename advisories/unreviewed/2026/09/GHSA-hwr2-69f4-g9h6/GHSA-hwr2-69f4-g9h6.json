@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hwr2-69f4-g9h6",
+  "modified": "2026-09-12T15:31:49Z",
+  "published": "2026-09-12T15:31:49Z",
+  "aliases": [
+    "CVE-2026-90533"
+  ],
+  "details": "Flowise before 3.1.4 contains a broken access control vulnerability in GET /api/v1/organizationuser that allows any authenticated organization member to retrieve the organization owner's full user record including bcrypt password hash and temporary tokens. Attackers can query the endpoint with any user ID to obtain the owner's credential hash for offline cracking, enabling account takeover of the highest-privileged account.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-fhxm-xxcx-g6x3"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90533"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flowise-before-3.1.4-broken-access-control-via-organizationuser"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-12T13:16:51Z"
+  }
+}
