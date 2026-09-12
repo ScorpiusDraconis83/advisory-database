@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-323p-5qr7-q36j",
+  "modified": "2026-09-12T00:31:28Z",
+  "published": "2026-09-12T00:31:28Z",
+  "aliases": [
+    "CVE-2026-90445"
+  ],
+  "details": "An interface that accepts file uploads from authenticated users extracts the contents of uploaded archives without validating that extracted file paths remain within the intended destination directory. This allows an authenticated attacker to craft an archive whose entries traverse outside the destination directory, causing the extraction process to write files to arbitrary locations with the privileges of that process. This could allow an attacker to inject fabricated records into the system's stored data or tamper with application configuration.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90445"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-254-01.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T22:16:46Z"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wv2v-v3c6-8438",
+  "modified": "2026-09-12T00:31:29Z",
+  "published": "2026-09-12T00:31:29Z",
+  "aliases": [
+    "CVE-2026-90455"
+  ],
+  "details": "A prior update that raised a bundled HTTP client library to a version remediating known vulnerabilities was later reverted, reintroducing the earlier, vulnerable version into a log-processing component. The only code path in that component using the library issues a request to a single fixed, trusted vendor URL at initialization and does not process attacker-controlled input through the library, limiting practical exploitability of the reintroduced version in this context.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90455"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/OT/white/2026/icsa-26-254-01.json"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-11T22:16:47Z"
+  }
+}
