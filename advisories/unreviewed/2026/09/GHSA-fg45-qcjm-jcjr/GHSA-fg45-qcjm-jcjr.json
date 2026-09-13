@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fg45-qcjm-jcjr",
+  "modified": "2026-09-13T12:31:12Z",
+  "published": "2026-09-13T12:31:12Z",
+  "aliases": [
+    "CVE-2026-90780"
+  ],
+  "details": "SIPp through 3.7.7 contains a buffer overflow vulnerability in the get_header() function in src/sip_parser.cpp when processing SIP messages with header content exceeding 20,490 bytes. Unauthenticated remote attackers can send crafted SIP messages with oversized headers to overflow the static buffer and crash the process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90780"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SIPp/sipp/pull/881"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SIPp/sipp/commit/8ddfb43359703e665041a955543e07f504f80232"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SIPp/sipp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SIPp/sipp/blob/v3.7.7/src/sip_parser.cpp#L164-L227"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sipp-through-3.7.7-buffer-overflow-via-oversized-sip-header-content"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-13T12:17:17Z"
+  }
+}
