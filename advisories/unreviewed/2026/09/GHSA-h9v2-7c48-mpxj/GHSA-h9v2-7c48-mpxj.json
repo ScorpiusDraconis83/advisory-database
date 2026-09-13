@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-h9v2-7c48-mpxj",
-  "modified": "2026-09-11T21:31:35Z",
+  "modified": "2026-09-13T09:32:27Z",
   "published": "2026-09-11T21:31:35Z",
   "aliases": [
     "CVE-2026-89662"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFSD: Prevent lock owner use-after-free during client teardown\n\n__destroy_client() releases a client's open owners, but a lock owner\nwhose only reference is a blocked lock (nbl) stays on\ncl_ownerstr_hashtbl.  client_has_state() does not count a bare owner,\nso DESTROY_CLIENTID can reach __destroy_client() with such owners\npresent.\n\n__destroy_client() then walks the table, calling remove_blocked_locks()\non each owner without a reference.  Freeing a blocked lock drops the\nowner reference held via flc_owner.  The per-net laundromat reaps\nblocked locks from nn->blocked_locks_lru independently of client state.\nThe two paths share blocked_locks_lock only for the list splice, not\nthe owner's lifetime.  The laundromat therefore frees the owner as\n__destroy_client() dereferences it, a NULL dereference in\nremove_blocked_locks().\n\nnfsd4_release_lockowner() holds a reference across the same call;\n__destroy_client() does not.  Hold cl_lock across the walk, taking a\nreference and unhashing each owner, then drop it before\nremove_blocked_locks() and nfs4_put_stateowner(), which take\nblocked_locks_lock and cl_lock.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:52Z"

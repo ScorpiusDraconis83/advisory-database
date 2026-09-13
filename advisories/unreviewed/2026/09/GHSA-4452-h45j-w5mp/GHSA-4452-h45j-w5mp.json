@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4452-h45j-w5mp",
-  "modified": "2026-09-11T21:31:34Z",
+  "modified": "2026-09-13T09:32:26Z",
   "published": "2026-09-11T21:31:34Z",
   "aliases": [
     "CVE-2026-89636"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: clear ce->tgthint in free_tgts()\n\nWhen free_tgts() frees all structures in ce->tlist, ce->tgthint\nis left pointing to one of the freed cache_dfs_tgt structures.\n\nIf ce->tgthint is not reset before it is used later, it results\nin a use-after-free.\n\nSet ce->tgthint to NULL in free_tgts() after the elements are\nfreed to reflect that no elements remain.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:49Z"

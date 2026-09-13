@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6jq9-cvjw-v2h5",
-  "modified": "2026-09-11T21:31:28Z",
+  "modified": "2026-09-13T09:32:13Z",
   "published": "2026-09-11T21:31:28Z",
   "aliases": [
     "CVE-2026-89486"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipmi: Fix use-after-free of cmd_rcvr in _ipmi_destroy_user()\n\nCommit 9e91f8a6c868 (\"ipmi:msghandler: Remove srcu for the\nipmi_interfaces list\") dropped the synchronize_rcu() between unlinking\nthe command receivers from intf->cmd_rcvrs and freeing them, updating\nonly the comment that explains why the barrier is needed.\n\nThe cmd_rcvrs list is still traversed under plain RCU: find_cmd_rcvr()\nwalks it inside rcu_read_lock(), and handle_ipmb_get_msg_cmd() borrows\nrcvr->user from that lookup within the same read-side section. Without\nthe grace period, _ipmi_destroy_user() can kfree() a cmd_rcvr while a\nreader still holds a pointer to it, causing a use-after-free.\n\nThe rework only made srcu unnecessary for the interfaces list; the\ncmd_rcvrs list still relies on plain RCU. Restore the synchronize_rcu()\nbefore freeing the receivers.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:30Z"

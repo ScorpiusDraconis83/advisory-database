@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5r7p-vjpr-vvgf",
-  "modified": "2026-09-11T21:31:30Z",
+  "modified": "2026-09-13T09:32:17Z",
   "published": "2026-09-11T21:31:30Z",
   "aliases": [
     "CVE-2026-89524"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath6kl: clamp assoc request/response lengths before subtracting IE offsets\n\nath6kl_cfg80211_connect_event() subtracts fixed IE offsets from\nassoc_req_len (-= 4) and assoc_resp_len (-= 6), both u8, with no lower\nbound. The aggregate check recently added to ath6kl_wmi_connect_event_rx()\nbounds the declared lengths from above (their sum must fit the received\nevent), but an assoc request/response shorter than its fixed offset still\nunderflows here: the u8 wraps to ~250, and cfg80211_connect_result() /\ncfg80211_roamed() then treat that wrapped value as the IE length and copy\nthat many bytes out of the small assoc_info buffer to user space via\nnl80211, disclosing adjacent slab memory.\n\nClamp both lengths to their offsets before subtracting.\n\nFound by 0sec (https://0sec.ai) using automated source analysis; the\nmissing lower bound is evident from source. Compile-tested.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:35Z"

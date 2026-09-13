@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c9wm-w8pc-47gc",
-  "modified": "2026-09-11T21:31:29Z",
+  "modified": "2026-09-13T09:32:14Z",
   "published": "2026-09-11T21:31:29Z",
   "aliases": [
     "CVE-2026-89503"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nring-buffer: Fix subbuf resize race with ring_buffer_alloc_read_page()\n\nring_buffer_alloc_read_page() is racy with ring_buffer_subbuf_order_set,\nit can allocate a reader page with an outdated order. This isn't a big\nissue, the user can still re-allocate a new reader page and try again.\n\nHowever, what is more problematic is if the value of subbuf_order\nchanges in the middle of ring_buffer_alloc_read_page(). In that case,\nbpage->order might not match the actual allocated memory.\n\nUse bpage->order for the allocation to prevent this race.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:32Z"

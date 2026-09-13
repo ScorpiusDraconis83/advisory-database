@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9677-q555-56wx",
-  "modified": "2026-09-11T21:31:29Z",
+  "modified": "2026-09-13T09:32:14Z",
   "published": "2026-09-11T21:31:29Z",
   "aliases": [
     "CVE-2026-89501"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nring-buffer: Hold cpu_buffer::lock when resizing a subbuf\n\nBecause, ring_buffer_subbuf_order_set() can clear cpu_buffer->free_page,\nhold cpu_buffer->lock to prevent races with\nring_buffer_alloc_read_page() and ring_buffer_free_read_page().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:32Z"

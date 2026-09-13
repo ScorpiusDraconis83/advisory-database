@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-36mf-r537-f6c6",
-  "modified": "2026-09-11T21:31:37Z",
+  "modified": "2026-09-13T09:32:27Z",
   "published": "2026-09-11T21:31:37Z",
   "aliases": [
     "CVE-2026-89697"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: add fh_want_write() for early-verified SETATTR in nfsd_proc_setattr()\n\nThe BOTH_TIME_SET branch calls fh_verify() early so setattr_prepare()\ncan inspect the dentry. This causes nfsd_setattr() to skip\nfh_want_write(), so notify_change() runs without a mount write\nreference.\n\nAdd the missing fh_want_write() call after the early fh_verify().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:56Z"

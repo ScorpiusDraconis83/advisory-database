@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g58f-8h46-hjgv",
-  "modified": "2026-09-11T21:31:37Z",
+  "modified": "2026-09-13T09:32:28Z",
   "published": "2026-09-11T21:31:37Z",
   "aliases": [
     "CVE-2026-89709"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nlockd, nfsd: RCU-protect nlmsvc_ops dispatch\n\nnlmsvc_ops is published by nfsd_lockd_init() and cleared by\nnfsd_lockd_shutdown() with plain stores, while lockd dereferences\nit unguarded from dispatch sites in fs/lockd/svcsubs.c. The pointer\ntargets nfsd's .rodata and the fopen/fclose callbacks live in nfsd's\n.text, so a stale load after rmmod nfsd results in either a NULL\nderef or a module-text use-after-free.\n\nDeclare nlmsvc_ops as __rcu, publish via rcu_assign_pointer(), clear\nvia RCU_INIT_POINTER() + synchronize_rcu(). Add a struct module\n*owner field to nlmsvc_binding and pin the module across indirect\ncalls with try_module_get/module_put. When the binding is torn down,\nfall back to fput() to avoid leaking struct file references.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:58Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-485c-xrj6-wvh4",
-  "modified": "2026-09-11T21:31:23Z",
+  "modified": "2026-09-13T09:32:10Z",
   "published": "2026-09-11T21:31:23Z",
   "aliases": [
     "CVE-2026-80987"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nNTB: ntb_transport: Reject oversized TX buffers\n\nntb_process_tx() handles an oversized buffer by calling tx_handler()\nwith a NULL data pointer and returning success. ntb_netdev therefore\nneither frees the skb in its completion callback nor takes its enqueue\nerror path, leaking it.\n\nReject oversized buffers in ntb_transport_tx_enqueue() before acquiring\na queue entry and return -EMSGSIZE. The caller retains ownership of the\nbuffer, and the preceding netdev patch frees the skb when enqueue\nreturns this permanent error.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:05Z"

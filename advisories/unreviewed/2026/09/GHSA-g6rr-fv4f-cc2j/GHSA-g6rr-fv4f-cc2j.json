@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g6rr-fv4f-cc2j",
-  "modified": "2026-09-11T21:31:26Z",
+  "modified": "2026-09-13T09:32:12Z",
   "published": "2026-09-11T21:31:26Z",
   "aliases": [
     "CVE-2026-89452"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/msm: Unwind probe state on registration failure\n\nmsm_iommu_probe() adds its devm-managed IOMMU object to\nqcom_iommu_devices before adding the IOMMU sysfs device and registering\nit with the IOMMU core.\n\nIf iommu_device_sysfs_add() fails, probe returns with the object still on\nqcom_iommu_devices. The driver core then releases the devm allocation,\nleaving a dangling list entry that later list walks may dereference.\n\nIf iommu_device_register() fails, the same dangling list entry remains\nand the sysfs device is left registered as well.\n\nUnwind the sysfs device and global list entry in reverse setup order on\nthe corresponding failure paths.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:25Z"

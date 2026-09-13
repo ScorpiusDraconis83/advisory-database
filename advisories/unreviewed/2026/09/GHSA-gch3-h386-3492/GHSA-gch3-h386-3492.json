@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gch3-h386-3492",
-  "modified": "2026-09-11T21:31:34Z",
+  "modified": "2026-09-13T09:32:25Z",
   "published": "2026-09-11T21:31:34Z",
   "aliases": [
     "CVE-2026-89630"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: restore the data_offset bound in is_valid_oplock_break()\n\nCommit 83bfbd0bb902 (\"cifs: Remove the RFC1002 header from smb_hdr\")\nchanged the quantity this bound is measured against.  It used to be\nsrv->total_read minus the 4-byte RFC1002 preamble that total_read then\nincluded, so it was the SMB message length.  The same commit stopped\ncounting the preamble, and the mechanical substitution to\nsrv->total_read - srv->pdu_size left an expression that is identically\nzero: standard_receive3() reads MID_HEADER_SIZE() bytes and then exactly\npdu_length - MID_HEADER_SIZE() more, adding both to total_read.\n\nlen is therefore 0, the subtraction below it wraps, and no __u32\nDataOffset can exceed the result, so the check from commit 097f5863b1a0\n(\"cifs: read overflow in is_valid_oplock_break()\") no longer rejects\nanything.  Use total_read, which is now the message length on its own.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:48Z"

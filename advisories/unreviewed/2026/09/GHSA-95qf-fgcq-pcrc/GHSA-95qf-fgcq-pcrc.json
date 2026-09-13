@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-95qf-fgcq-pcrc",
-  "modified": "2026-09-11T21:31:34Z",
+  "modified": "2026-09-13T09:32:25Z",
   "published": "2026-09-11T21:31:34Z",
   "aliases": [
     "CVE-2026-89631"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: reject a tree connect response whose byte count is too small\n\nCIFSTCon() bounds its strnlen() over the byte area with the server's\nByteCount minus two, which for ByteCount 0 or 1 goes negative as an int\nand converts to a huge size_t.  The later subtraction wraps the __u16\nbytes_left, and that is what bounds cifs_strndup_from_utf16(): a bound of\nup to 65535 against a ~16 KB cifs_req_poolp object runs off the end of the\nslab object, and the bytes reach userspace through tcon->nativeFileSystem\nin /proc/fs/cifs/DebugData.\n\nReject a byte area too small for what the parser consumes.  Two bytes is\nthe least it can consume, and no conformant response carries fewer.  The\nnew trace point is the 129th smb_eio_trace entry, which __mode(byte)\ncannot represent, so the attribute goes with it.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:48Z"

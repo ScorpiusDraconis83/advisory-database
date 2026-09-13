@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c77f-5fp9-7h2f",
-  "modified": "2026-09-11T21:31:33Z",
+  "modified": "2026-09-13T09:32:20Z",
   "published": "2026-09-11T21:31:33Z",
   "aliases": [
     "CVE-2026-89609"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\necryptfs: hold msg ctx list lock when cleaning daemon queue\n\necryptfs_exorcise_daemon() drops queued messages from a dying daemon\nwithout holding ecryptfs_msg_ctx_lists_mux, but\necryptfs_msg_ctx_alloc_to_free() requires that lock.\n\nTake the list lock while moving the queued contexts back to the free\nlist to avoid racing with other global msg ctx list users.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:45Z"

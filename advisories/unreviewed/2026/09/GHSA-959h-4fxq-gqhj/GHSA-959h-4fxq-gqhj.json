@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-959h-4fxq-gqhj",
-  "modified": "2026-09-11T21:31:34Z",
+  "modified": "2026-09-13T09:32:25Z",
   "published": "2026-09-11T21:31:34Z",
   "aliases": [
     "CVE-2026-89634"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix ALIGN() overflow in symlink_data() error context loop\n\nThe check added by commit 7d9a7f1f96cd (\"smb/client: fix possible\ninfinite loop and oob read in symlink_data()\") compared the post-ALIGN\nlength against the remaining buffer, but ALIGN() itself can overflow:\nfor ErrorDataLength near UINT32_MAX (e.g. 0xFFFFFFF9), ALIGN(x, 8)\nwraps to 0, so the subsequent bounds check passes, and the loop\nadvances by zero bytes leaving 'p' pointing into stale data.\n\nFix by checking the raw ErrorDataLength against the remaining space\nbefore applying ALIGN(), then checking again after.  Since raw_len is\nbounded by the buffer, raw_len + 7 cannot overflow, so the second check\nis an exact post-alignment bounds guard.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:49Z"

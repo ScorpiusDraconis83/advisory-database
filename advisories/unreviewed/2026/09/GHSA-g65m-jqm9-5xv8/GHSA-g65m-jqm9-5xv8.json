@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g65m-jqm9-5xv8",
-  "modified": "2026-09-11T21:31:33Z",
+  "modified": "2026-09-13T09:32:20Z",
   "published": "2026-09-11T21:31:33Z",
   "aliases": [
     "CVE-2026-89601"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\next2: Fix lost inode updates for IS_SYNC inodes\n\next2_setsize() and ext2_xattr_set2() had a construct like:\n\n\tif (IS_SYNC(inode)) {\n\t\tsync_inode_metadata(inode, 1);\n\t} else {\n\t\tmark_inode_dirty(inode);\n\t}\n\nwhich leads to lost inode updates for IS_SYNC inodes because\nsync_inode_metadata() does anything only if the inode is already dirty\nand hence inode updates may be simply lost. Fix the problem by\nunconditionally marking the inode dirty and *then* call\nsync_inode_metadata().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-11T20:19:44Z"
