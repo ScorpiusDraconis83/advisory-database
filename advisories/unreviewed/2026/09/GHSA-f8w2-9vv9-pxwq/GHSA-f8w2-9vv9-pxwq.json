@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f8w2-9vv9-pxwq",
+  "modified": "2026-09-13T15:30:21Z",
+  "published": "2026-09-13T15:30:21Z",
+  "aliases": [
+    "CVE-2026-90781"
+  ],
+  "details": "alsa-lib through 1.2.16.1 contains a stack buffer overflow in the __snd_ctl_ascii_elem_id_parse() function that writes one byte past a 64-byte buffer when parsing a name= field with 64 or more characters. Attackers can supply a long control-element identifier string through saved state files or command-line arguments to overwrite adjacent stack memory and crash the calling process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90781"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/alsa-project/alsa-lib/commit/f84cd4ced7b36fddb8e4ee24404cf7c091d27020"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/alsa-project/alsa-lib"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/alsa-project/alsa-lib/blob/v1.2.16.1/src/control/ctlparse.c#L216-L241"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lore.kernel.org/alsa-devel/CACBQ=P2FhO3M6dkv3cWuKb6Qhs92ouV+FJ3SJZ_PVBSSdJWRAQ@mail.gmail.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/alsa-lib-through-1.2.16.1-off-by-one-stack-buffer-overflow-in-snd-ctl-ascii-elem-id-parse"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-193"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-13T13:16:29Z"
+  }
+}
