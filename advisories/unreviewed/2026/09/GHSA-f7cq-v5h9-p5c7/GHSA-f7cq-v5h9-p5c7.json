@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f7cq-v5h9-p5c7",
+  "modified": "2026-09-13T21:31:41Z",
+  "published": "2026-09-13T21:31:41Z",
+  "aliases": [
+    "CVE-2026-90576"
+  ],
+  "details": "A security vulnerability has been detected in GPAC up to f1219cde. Affected is the function gf_node_list_add_child of the file scenegraph/base_scenegraph.c of the component MP4Box. Such manipulation leads to null pointer dereference. The attack can only be performed from a local environment. The exploit has been disclosed publicly and may be used. Upgrading to version abi-16.23 is able to address this issue. The name of the patch is 49dee5cad329cfed310c1682703df7daa47df31a. You should upgrade the affected component.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90576"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gpac/gpac/issues/3815"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gpac/gpac/commit/49dee5cad329cfed310c1682703df7daa47df31a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gpac/gpac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gpac/gpac/releases/tag/abi-16.23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/r1ck9-2q/cve_summit/blob/main/Vuln-GPAC-MP4Box-gf_node_list_add_child-SEGV.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-90576"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/913204"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/403161"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/403161/cti"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-404"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-13T19:16:52Z"
+  }
+}
