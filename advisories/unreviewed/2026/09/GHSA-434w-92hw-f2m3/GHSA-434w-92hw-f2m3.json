@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-434w-92hw-f2m3",
+  "modified": "2026-09-14T21:31:42Z",
+  "published": "2026-09-14T21:31:41Z",
+  "aliases": [
+    "CVE-2026-82035"
+  ],
+  "details": "PyMuPDF through 1.28.2, fixed in commit b2c8f3a, contains a path traversal vulnerability in the font branch of extract_objects() in src/__main__.py, where the output filename is constructed by joining a document-controlled BaseFont name directly onto the user-supplied output directory without stripping path separators or dot-dot sequences. Attackers can supply a crafted PDF, EPUB, XPS, or FB2 file with a BaseFont name containing encoded path separators that decode to ../ sequences or absolute paths, causing arbitrary file writes outside the intended output directory without requiring authentication or elevated privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82035"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pymupdf/PyMuPDF/commit/b2c8f3a859fed35c379a44df566f770dc3e18605"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pymupdf-path-traversal-via-extract-objects-font-branch"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T19:17:50Z"
+  }
+}

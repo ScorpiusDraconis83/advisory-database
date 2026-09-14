@@ -1,13 +1,17 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6fmw-8rj9-p9pg",
-  "modified": "2026-09-14T15:32:49Z",
+  "modified": "2026-09-14T21:31:40Z",
   "published": "2026-09-14T15:32:49Z",
   "aliases": [
     "CVE-2026-82434"
   ],
   "details": "Description\n\nWhen ZooKeeper authentication is configured, Storm deliberately retains\n`storm.zookeeper.topology.auth.payload` in the topology configuration, because workers need it. Nimbus then\nserved that configuration verbatim to any caller holding read-only topology permissions, so a user whose\nonly grant was the ability to view a topology received its ZooKeeper credential.\n\nThat credential is not read-only. The cluster state implementation uses write-capable ACLs for worker\nheartbeats, backpressure and error state, so a recipient can forge or remove that state for the topology\nconcerned. It is not a write credential on assignments.\n\nThe same advisory covers the submission client, which logged the generated payload at INFO on every\nsubmission that generated one, and the SASL handlers, which logged it at DEBUG. The credential therefore\nalso reached any log aggregation or support bundle collected from the cluster.\n\nMitigation\n\nUpgrade to 3.1.0, where the payload is removed from the configuration served to read-only callers and is no\nlonger written to logs.\n\nUsers who cannot upgrade immediately should rotate `storm.zookeeper.topology.auth.payload` for existing\ntopologies, review retained logs and support bundles for the value, and restrict read-only topology\npermissions to trusted principals.\n\nCredit\n\nThe ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
