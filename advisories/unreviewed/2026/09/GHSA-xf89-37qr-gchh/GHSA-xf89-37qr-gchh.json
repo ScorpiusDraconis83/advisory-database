@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xf89-37qr-gchh",
+  "modified": "2026-09-14T09:31:03Z",
+  "published": "2026-09-14T09:31:03Z",
+  "aliases": [
+    "CVE-2026-90698"
+  ],
+  "details": "A security flaw has been discovered in memcached 1.6.41/1.6.42/1.6.43. This vulnerability affects the function try_read_command_asciiauth of the file proto_text.c of the component mcmc Tokenizer. The manipulation results in out-of-bounds read. It is possible to launch the attack remotely. The exploit has been released to the public and may be used for attacks. Upgrading to version 1.6.44 is able to resolve this issue. The patch is identified as af05c9302bba508b736c3da1d5670f63fe8b7db4. You should upgrade the affected component.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90698"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/memcached/memcached/commit/af05c9302bba508b736c3da1d5670f63fe8b7db4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/memcached/memcached"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/memcached/memcached/releases/tag/1.6.44"
+    },
+    {
+      "type": "WEB",
+      "url": "https://protectiv.ph/research/memcached-asciiauth-empty-line-dos"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-90698"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/916217"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/916219"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/403231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/403231/cti"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-119"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T09:17:02Z"
+  }
+}
