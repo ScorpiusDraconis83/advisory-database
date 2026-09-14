@@ -1,11 +1,12 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8qrg-7j2f-rf2h",
-  "modified": "2026-06-21T15:31:24Z",
+  "modified": "2026-09-14T17:19:35Z",
   "published": "2026-06-21T15:31:24Z",
   "aliases": [
     "CVE-2026-56265"
   ],
+  "summary": "Crawl4AI: authentication bypass vulnerability due to a hardcoded default JWT signing key in the Docker API server",
   "details": "Crawl4AI before 0.8.7 contains an authentication bypass vulnerability due to a hardcoded default JWT signing key in the Docker API server. Attackers who know the default key can forge valid authentication tokens for any user, bypassing authentication and gaining full access to protected functionality.",
   "severity": [
     {
@@ -14,10 +15,30 @@
     },
     {
       "type": "CVSS_V4",
-      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
     }
   ],
-  "affected": [],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "crawl4ai"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.8.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "references": [
     {
       "type": "WEB",
@@ -28,8 +49,12 @@
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56265"
     },
     {
-      "type": "WEB",
+      "type": "PACKAGE",
       "url": "https://github.com/unclecode/crawl4ai"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/unclecode/crawl4ai/releases/tag/v0.8.7"
     },
     {
       "type": "WEB",
@@ -41,8 +66,8 @@
       "CWE-798"
     ],
     "severity": "CRITICAL",
-    "github_reviewed": false,
-    "github_reviewed_at": null,
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-14T17:19:35Z",
     "nvd_published_at": "2026-06-21T14:16:24Z"
   }
 }
