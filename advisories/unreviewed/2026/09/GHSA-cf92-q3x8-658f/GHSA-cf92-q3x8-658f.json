@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cf92-q3x8-658f",
+  "modified": "2026-09-14T15:32:49Z",
+  "published": "2026-09-14T15:32:48Z",
+  "aliases": [
+    "CVE-2026-82019"
+  ],
+  "details": "TripleLift's ad rendering script (video-bundle.js) contains a DOM-based cross-site scripting vulnerability that allows unauthenticated attackers to execute arbitrary JavaScript in a publisher's domain by sending crafted postMessage payloads without origin validation. Attackers can cause a victim to visit an attacker-controlled page that sends malicious postMessage events to a publisher page running the ad script, enabling session hijacking and unauthorized DOM manipulation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82019"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hussein-mahmoud7.medium.com/cve-2026-82019-how-a-random-ad-led-to-dom-xss-while-testing-chess-com-f043584e1e68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://triplelift.com/creative-technology"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/triplelift-video-bundle-js-dom-based-xss-via-postmessage"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T15:17:09Z"
+  }
+}

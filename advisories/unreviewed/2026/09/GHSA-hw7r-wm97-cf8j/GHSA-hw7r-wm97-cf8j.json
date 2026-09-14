@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hw7r-wm97-cf8j",
+  "modified": "2026-09-14T15:32:49Z",
+  "published": "2026-09-14T15:32:49Z",
+  "aliases": [
+    "CVE-2026-82432"
+  ],
+  "details": "Description\n\nNimbus validated `topology.blobstore.map` against the calling subject at submission time only. The rebalance\noperation accepts configuration overrides and stripped a small set of keys from them, but never re-ran that\nvalidation, so a caller authorised to rebalance a topology could introduce a blobstore map entry naming a\nblob whose ACL does not grant them access. Supervisors localise whatever key the map names, placing the\nblob's contents into the topology's working directory.\n\nThe same advisory covers `listBlobs`, which performed no authorization check and passed no subject, unlike\nthe neighbouring `getBlobMeta` and `beginBlobDownload` operations. It therefore returned every key in the\nblobstore to any caller able to reach the Nimbus Thrift port, which provides the key names that make the\nabove practical. On its own the disclosure is metadata only.\n\nMitigation\n\nUpgrade to 3.1.0, where rebalance configuration overrides are validated exactly as submission-time\nconfiguration is, against the rebalancing caller, and where `listBlobs` applies the configured\nauthorization.\n\nUsers who cannot upgrade immediately should restrict rebalance rights to trusted principals, keeping in mind\nthat membership of a topology's `topology.users` or `topology.groups` confers them.\n\nCredit\n\nThe ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82432"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/psy1gj77jhf9y3lhph9yz4f5fovmkz7b"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/09/13/12"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T15:17:10Z"
+  }
+}

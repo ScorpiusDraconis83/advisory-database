@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c92j-r2f4-67xg",
+  "modified": "2026-09-14T15:32:48Z",
+  "published": "2026-09-14T15:32:48Z",
+  "aliases": [
+    "CVE-2026-12985"
+  ],
+  "details": "Mattermost versions 11.9.x <= 11.9.0, 11.8.x <= 11.8.4, 11.7.x <= 11.7.7 Mattermost failed to validate Dynamic Client Registration redirect URIs by URL component (matching glob patterns against the raw URI string instead) which allows a remote unauthenticated attacker to register an OAuth client with an attacker-controlled callback host that bypasses the configured redirect URI allowlist via a crafted redirect URI that places an allowlisted host/path suffix inside the query string.. Mattermost Advisory ID: MMSA-2026-00700",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12985"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mattermost.com/security-updates"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T15:17:04Z"
+  }
+}

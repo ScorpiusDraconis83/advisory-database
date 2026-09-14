@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9f2h-f5v4-r5qq",
+  "modified": "2026-09-14T15:32:44Z",
+  "published": "2026-09-14T15:32:44Z",
+  "aliases": [
+    "CVE-2026-90927"
+  ],
+  "details": "filebrowser through 2.63.23 fails to limit WebSocket message size in the /api/command handler before checking permissions, allowing authenticated users to buffer arbitrarily large messages. Attackers can send oversized WebSocket messages to exhaust server heap memory and cause denial of service regardless of EnableExec setting or Execute permission.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/filebrowser/filebrowser/security/advisories/GHSA-39cx-23x9-5c8p"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90927"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/filebrowser-through-2.63.23-denial-of-service-via-unbounded-websocket-message"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T13:19:30Z"
+  }
+}

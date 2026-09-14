@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-23w6-w5w9-qrj5",
-  "modified": "2026-09-04T18:31:23Z",
+  "modified": "2026-09-14T15:32:14Z",
   "published": "2026-09-04T18:31:23Z",
   "aliases": [
     "CVE-2026-75429"
   ],
   "details": "PowerJob versions 4.x through 5.1.2 contain an unauthenticated remote code execution vulnerability in the /friend/process endpoint of the Server-Worker transport layer",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,11 +30,17 @@
     {
       "type": "WEB",
       "url": "https://github.com/PowerJob/PowerJob/blob/master/docker-compose.yml"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/unpredictable21/CVE-2026-75429_PowerJob_friend_process_RCE"
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-04T16:17:59Z"
