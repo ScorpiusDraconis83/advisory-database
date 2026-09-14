@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-prm2-rg4g-w438",
+  "modified": "2026-09-14T18:31:29Z",
+  "published": "2026-09-14T18:31:29Z",
+  "aliases": [
+    "CVE-2026-91079"
+  ],
+  "details": "Huly Platform through 0.7.426 contains a server-side request forgery vulnerability in the print service due to missing hostname allowlist validation. Authenticated workspace members can supply arbitrary URLs to the print endpoint, which Puppeteer renders and returns as downloadable PDFs or images, enabling access to internal metadata services and network hosts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:H/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91079"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hcengineering/platform/issues/10908"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hcengineering/platform"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hcengineering/platform/blob/v0.7.426/services/print/pod-print/src/config.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hcengineering/platform/blob/v0.7.426/services/print/pod-print/src/server.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/huly-platform-through-0.7.426-ssrf-via-print-service"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T18:20:29Z"
+  }
+}

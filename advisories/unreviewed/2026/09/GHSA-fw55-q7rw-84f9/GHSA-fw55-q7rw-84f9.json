@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fw55-q7rw-84f9",
+  "modified": "2026-09-14T18:31:22Z",
+  "published": "2026-09-14T18:31:22Z",
+  "aliases": [
+    "CVE-2026-90803"
+  ],
+  "details": "A security vulnerability has been detected in GNU Binutils 2.47. Affected by this vulnerability is the function elf_x86_64_relocate_section of the file bfd/elf64-x86-64.c of the component ld. Such manipulation of the argument roff leads to buffer overflow. An attack has to be approached locally. The exploit has been disclosed publicly and may be used. Upgrading to version 2.48 addresses this issue. The name of the patch is 471130b39c03623ec6d78ece377ff4da3f6bfe7b. It is recommended to upgrade the affected component.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/r1ck9-2q/cve_summit/blob/main/Heap%20OOB%20readwrite%20and%20SEGV%20in%20%60elf_x86_64_relocate_section%60%20(bfdelf64-x86-64.c4530%20%204835)%20via%20malformed%20relocation.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sourceware.org/bugzilla/show_bug.cgi?id=34444"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;h=471130b39c03623ec6d78ece377ff4da3f6bfe7b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-90803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/920280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/403305"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/403305/cti"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.gnu.org"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-119"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T17:17:56Z"
+  }
+}
