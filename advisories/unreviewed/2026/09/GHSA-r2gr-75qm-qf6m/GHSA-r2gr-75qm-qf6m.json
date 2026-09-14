@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r2gr-75qm-qf6m",
+  "modified": "2026-09-14T12:31:40Z",
+  "published": "2026-09-14T12:31:40Z",
+  "aliases": [
+    "CVE-2026-79701"
+  ],
+  "details": "Joomla Extension - joomshaper.com - Unauthenticated CAPTCHA Bypass in Module Context in the Contact, Opt-in and Form Builder Addons in SP Page Builder Pro 3.2.6 - 6.9.0 - In the ajax_contact, optin_form and form_builder addons, the result returned by the CAPTCHA plugin's onCheckAnswer event was discarded and replaced with a test for a non-empty string whenever the request-supplied view_type parameter equalled module. Submitting view_type=module together with any arbitrary token value therefore passed verification. This affected every instance of these addons placed inside an SP Page Builder module, irrespective of the CAPTCHA type configured for the site, and the view_type parameter was never validated against the context in which the form was actually rendered.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79701"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.joomshaper.com/joomla-extensions/sp-page-builder-pro"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-807"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T12:17:46Z"
+  }
+}

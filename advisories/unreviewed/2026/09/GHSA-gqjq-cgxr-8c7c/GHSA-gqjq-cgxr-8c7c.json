@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gqjq-cgxr-8c7c",
+  "modified": "2026-09-14T12:31:40Z",
+  "published": "2026-09-14T12:31:40Z",
+  "aliases": [
+    "CVE-2026-90898"
+  ],
+  "details": "Bifrost registers MCP clients through its management API. A stdio client is a command plus args. Bifrost starts that program in the gateway the moment the client is added. No MCP handshake required.\n\n\n\nThe default is governance.auth_config.is_enabled=false. Auth off means every caller is a local admin. One unauthenticated POST /api/mcp/client is enough to run a program as the Bifrost process user (appuser on the official image).\n\n\n\n transports/v2.1.0 refuses an unauthenticated stdio registration with 403. transports/v2.0.0 still allows it.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90898"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/maximhq/bifrost/pull/6757"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/maximhq/bifrost/commit/12e170352bd25eab1ae9ba16611f1797d1fd8fdc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/maximhq/bifrost"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/maximhq/bifrost/releases/tag/transports/v2.1.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T11:17:08Z"
+  }
+}

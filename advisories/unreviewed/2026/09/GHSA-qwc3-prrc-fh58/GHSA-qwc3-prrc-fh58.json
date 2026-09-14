@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qwc3-prrc-fh58",
+  "modified": "2026-09-14T12:31:39Z",
+  "published": "2026-09-14T12:31:39Z",
+  "aliases": [
+    "CVE-2026-81565"
+  ],
+  "details": "Joomla Extension - joomshaper.com - Missing Directory Confinement in Media Upload in SP Page Builder (Free and Pro) 4.0.0 - 6.9.0 - The folder request parameter replaced the generated date-based destination folder in its entirety and was then passed to Folder::create() and File::upload() without either of the directory boundary checks applied elsewhere in the same file. Files could be written into any directory beneath the web root, including administrator/, templates/, cli/ and the site root. Joomla's PATH input filter prevented traversal above the web root, and existing files were not overwritten.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81565"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.joomshaper.com/joomla-extensions/sp-page-builder-pro"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T11:17:04Z"
+  }
+}

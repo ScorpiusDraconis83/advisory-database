@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g37r-568w-2pwm",
+  "modified": "2026-09-14T12:31:37Z",
+  "published": "2026-09-14T12:31:37Z",
+  "aliases": [
+    "CVE-2026-90893"
+  ],
+  "details": "MISP contains a Cross-Site Request Forgery (CSRF) vulnerability in the UserSettingsController. The actions setTheme, setHomePage, and eventIndexColumnToggle were explicitly added to the Security component's unlockedActions list, which disabled all CSRF validation (both token and field-hash checks) for those endpoints. Because these endpoints accept POST requests and modify per-user application state (theme selection, default homepage URL, and event index column visibility), an attacker who can induce a logged-in MISP user to load a malicious page (e.g., via a crafted link, embedded image, or auto-submitting form) can forge requests that alter the victim's settings without their knowledge or consent. The most impactful action is setHomePage, which allows an attacker to redirect the victim's default landing page to an arbitrary attacker-controlled URL, potentially facilitating phishing or further social engineering. The setTheme action can alter the user's visual theme, and eventIndexColumnToggle can change which columns are displayed in the event index view. No authentication bypass is involved; the victim must already be authenticated to MISP. The vulnerability was reported by the Scottish Government National Cyber Team.\n\nVersion affected: ≤2.5.45",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90893"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/979337b18"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T10:17:05Z"
+  }
+}
