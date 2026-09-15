@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j6jh-78h2-2667",
+  "modified": "2026-09-15T18:32:28Z",
+  "published": "2026-09-15T18:32:28Z",
+  "aliases": [
+    "CVE-2026-91938"
+  ],
+  "details": "Flowise versions before 3.1.4 contain a server-side request forgery vulnerability in Cheerio, Playwright, and Puppeteer document loader nodes that bypass SSRF protection. Attackers can provide arbitrary URLs to fetch cloud metadata, internal services, and private network resources with response content returned as document text.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-9cvr-5wv9-2gxr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91938"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flowise-before-3.1.4-server-side-request-forgery-via-document-loaders"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T16:17:45Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w579-5rqc-5mqh",
+  "modified": "2026-09-15T18:32:28Z",
+  "published": "2026-09-15T18:32:28Z",
+  "aliases": [
+    "CVE-2026-91945"
+  ],
+  "details": "FreeRDP versions before 3.31.0 contain an out-of-bounds read vulnerability in smartcard response decoders that fail to validate ATR length fields against fixed inline arrays. Authenticated RDP clients can send oversized ATR lengths in PAKID_CORE_DEVICE_IOCOMPLETION responses to trigger reads past stack or heap objects, causing process termination.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-q65v-4w7q-hx3r"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91945"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/commit/9626564421df72c84f891afdbc0b20bf702f369f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/freerdp-before-3.31.0-out-of-bounds-read-via-smartcard-atr"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T16:17:46Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7849-h6h3-vww8",
+  "modified": "2026-09-15T18:32:31Z",
+  "published": "2026-09-15T18:32:31Z",
+  "aliases": [
+    "CVE-2026-91986"
+  ],
+  "details": "gitoxide gix-transport before 0.59.2 fails to filter control characters in git-daemon connect requests, allowing attackers to inject NUL/CR/LF bytes via crafted git URLs. Attackers can inject extra NUL-delimited protocol fields to spoof virtual hosts or inject newlines into daemon requests and logs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/GitoxideLabs/gitoxide/security/advisories/GHSA-rc7h-wp5f-w3g5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91986"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gitoxide-gix-transport-before-0.59.2-cr-lf-nul-injection"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-74"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T16:17:57Z"
+  }
+}
