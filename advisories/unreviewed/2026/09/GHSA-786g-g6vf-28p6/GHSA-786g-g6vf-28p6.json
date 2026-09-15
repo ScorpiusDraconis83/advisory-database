@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-786g-g6vf-28p6",
+  "modified": "2026-09-15T03:30:29Z",
+  "published": "2026-09-15T03:30:29Z",
+  "aliases": [
+    "CVE-2026-85657"
+  ],
+  "details": "The Co-Authors, Multiple Authors and Guest Authors in an Author Box with PublishPress Authors plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘profile_fields_user_email_value_prefix’ parameter in all versions up to, and including, 4.15.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user clicks on a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85657"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/publishpress-authors/tags/4.15.0/src/modules/author-boxes/author-boxes.php#L2019"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d4cc9537-879c-4c12-8b76-60241b7a3420?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T01:16:53Z"
+  }
+}

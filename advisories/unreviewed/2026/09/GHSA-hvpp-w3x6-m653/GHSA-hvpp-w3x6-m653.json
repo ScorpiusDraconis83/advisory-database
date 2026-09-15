@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hvpp-w3x6-m653",
+  "modified": "2026-09-15T03:30:29Z",
+  "published": "2026-09-15T03:30:29Z",
+  "aliases": [
+    "CVE-2026-91750"
+  ],
+  "details": "WeKnora before 0.7.0 fails to re-validate HTTP redirect targets in the POST /api/v1/knowledge-bases/:id/knowledge/url endpoint when downloading documents from user-supplied URLs. Authenticated attackers can bypass initial SSRF validation by supplying a public URL that redirects to internal network addresses, allowing access to internal services and cloud metadata.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91750"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Tencent/WeKnora/issues/2511"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Tencent/WeKnora/commit/1d322c525a6197d24f07555b4b18ad33313b4328"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Tencent/WeKnora"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Tencent/WeKnora/blob/v0.6.2/internal/application/service/knowledge_util.go#L339-L348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/weknora-before-0.7.0-ssrf-via-unvalidated-http-redirects"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T01:16:54Z"
+  }
+}

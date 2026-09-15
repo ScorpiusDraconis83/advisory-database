@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hf65-v49c-m7f4",
+  "modified": "2026-09-15T03:30:30Z",
+  "published": "2026-09-15T03:30:30Z",
+  "aliases": [
+    "CVE-2026-91770"
+  ],
+  "details": "IceHRM before 36.0.0 fails to validate employee ownership on seven REST sub-resource endpoints, allowing authenticated employees to read any colleague's HR records. Attackers can substitute arbitrary employee IDs in skill, education, certification, language, leave, attendance, and status endpoints to access sensitive personnel data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91770"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gamonoid/icehrm/issues/375"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gamonoid/icehrm/commit/19674f29a0591c985712dc4a5c841e21d7dbf971"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gamonoid/icehrm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gamonoid/icehrm/blob/e75ed7e45de41f7b2b3ea319d9406514afa2bf29/core/src/Employees/Rest/EmployeeSkillsRestEndPoint.php#L20-L51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gamonoid/icehrm/releases/tag/v36.0.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/icehrm-before-36.0.0-broken-access-control-via-employee-id"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T02:16:49Z"
+  }
+}
