@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5r6g-j57j-3387",
+  "modified": "2026-09-15T21:33:06Z",
+  "published": "2026-09-15T21:33:05Z",
+  "aliases": [
+    "CVE-2026-92234"
+  ],
+  "details": "QloApps through 1.7.0 reflects unescaped child feature names into back-office validation error messages in the Hotel Reservation System feature management page. Authenticated back-office users who follow a crafted link can execute injected JavaScript in their administrative session via the child_features parameter.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92234"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/pull/1796"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/commit/54a3b30e4e5c2d6b224dc8fe55e75db173064b91"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Qloapps/QloApps/blob/v1.7.0/modules/hotelreservationsystem/controllers/admin/AdminHotelfeaturesController.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@leediay/r1aoFrMFGl"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/qloapps-through-1.7.0-reflected-xss-via-hotel-feature-validation-errors"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T21:16:49Z"
+  }
+}
