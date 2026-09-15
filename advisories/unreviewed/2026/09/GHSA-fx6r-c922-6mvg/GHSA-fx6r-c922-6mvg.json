@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fx6r-c922-6mvg",
+  "modified": "2026-09-15T09:30:31Z",
+  "published": "2026-09-15T09:30:31Z",
+  "aliases": [
+    "CVE-2026-91819"
+  ],
+  "details": "Affected versions of MISP rely on CakePHP request-method override processing in a way that can disable CSRF and form-security validation.\n\nCakePHP honors a _method field or X-HTTP-Method-Override header by rewriting the effective request method. For override values outside the normal write verbs POST, PUT, PATCH, and DELETE, CakePHP also clears the parsed request body. MISP’s security component then determines whether to perform _validatePost() and _validateCsrf() based on whether request data remains. With a value such as:\n\n\n_method=GET\n\nthe body becomes empty before those checks run, so both protections are skipped. A cross-site form containing only that override can therefore reach actions whose parameters are taken from the URL rather than the request body\n\nVersion affected: ≤2.5.45",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91819"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/29af008c4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T08:17:07Z"
+  }
+}

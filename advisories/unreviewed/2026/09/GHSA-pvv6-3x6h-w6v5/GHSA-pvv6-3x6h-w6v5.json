@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pvv6-3x6h-w6v5",
+  "modified": "2026-09-15T09:30:31Z",
+  "published": "2026-09-15T09:30:31Z",
+  "aliases": [
+    "CVE-2026-89141"
+  ],
+  "details": "The AI Engine – The Chatbot, AI Framework & MCP for WordPress plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 3.7.7 via the 'mediaId' parameter due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with subscriber-level access and above, to access and retrieve the transcribed contents of private audio attachments belonging to other users, including Administrators, via a supplied attachment ID. This vulnerability requires the Public API module to be enabled in the plugin settings; when disabled, the REST route is absent and the endpoint returns HTTP 404.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89141"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.7.7/classes/api.php#L1168"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.7.7/classes/api.php#L637"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.7.7/classes/api.php#L663"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ai-engine/tags/3.7.7/classes/core.php#L253"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3693379"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2cb2ad5d-aa92-4186-aaae-45dde4a52f30?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T07:16:31Z"
+  }
+}
