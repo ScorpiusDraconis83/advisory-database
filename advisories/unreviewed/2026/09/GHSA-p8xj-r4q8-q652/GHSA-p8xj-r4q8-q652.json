@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p8xj-r4q8-q652",
+  "modified": "2026-09-15T00:31:13Z",
+  "published": "2026-09-15T00:31:13Z",
+  "aliases": [
+    "CVE-2026-91146"
+  ],
+  "details": "Takahe through 0.11.0 fails to restrict URL schemes in link hrefs within federated post content and profile summaries, allowing remote actors to inject javascript: links. Attackers can deliver federated content with malicious javascript: hrefs that execute in the instance origin when clicked, enabling session hijacking or impersonation of viewers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91146"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jointakahe/takahe/issues/728"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jointakahe/takahe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jointakahe/takahe/blob/0.11.0/core/html.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/takahe-through-0.11.0-cross-site-scripting-via-javascript-url-scheme"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T22:16:59Z"
+  }
+}

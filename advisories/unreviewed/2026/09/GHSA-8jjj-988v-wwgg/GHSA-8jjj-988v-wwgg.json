@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8jjj-988v-wwgg",
+  "modified": "2026-09-15T00:31:15Z",
+  "published": "2026-09-15T00:31:15Z",
+  "aliases": [
+    "CVE-2026-91199"
+  ],
+  "details": "Refly through 1.1.0 contains a server-side request forgery vulnerability in the POST /v1/misc/scrape endpoint that fetches caller-supplied URLs without validating the scheme, host, or resolved address. Authenticated attackers can make the backend issue requests to loopback, private, and link-local addresses including cloud metadata services to read page titles and descriptions of internal resources.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/refly-ai/refly/issues/2280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/refly-ai/refly"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/refly-ai/refly/blob/77fb0ca184251bba7380cbac2dbdf7a6c9944652/apps/api/src/modules/misc/misc.controller.ts#L38-L43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/refly-ai/refly/blob/77fb0ca184251bba7380cbac2dbdf7a6c9944652/packages/utils/src/scrape-weblink.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/refly-through-1.1.0-server-side-request-forgery-via-scrape-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-14T23:19:00Z"
+  }
+}
