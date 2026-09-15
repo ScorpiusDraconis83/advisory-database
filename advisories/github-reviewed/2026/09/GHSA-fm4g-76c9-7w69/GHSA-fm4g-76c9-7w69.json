@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fm4g-76c9-7w69",
+  "modified": "2026-09-15T19:54:37Z",
+  "published": "2026-09-15T19:54:37Z",
+  "aliases": [
+    "CVE-2026-69208"
+  ],
+  "summary": "Http4s: DigestAuth nonce map grows unbounded",
+  "details": "The `DigestAuth` server middleware's stale-nonce cleanup uses an inverted comparison: it removes *fresh* nonces and stops at the first *stale* one.  Because a new nonce is created for every unauthenticated challenge, an attacker can drive the nonce map to grow without bound until the JVM runs out of heap.\n\n## Impact\n\nUnauthenticated remote denial of service (gradual heap exhaustion / OOM) against\nany service using DigestAuth.  The leak is persistent.\n\n## Preconditions\n\n- Application uses `DigestAuth` on at least one route.\n\n## Workarounds\n\n- Front the DigestAuth protected routes with a rate limiter to slow the leak.\n- Restart periodically.\n\n## Fixes\n\n- The eviction logic is corrected.\n- A max cache size of 1000000 is imposed to protected against a burst between evictions.  This limit is not yet configurable.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.http4s:http4s-ember-server_2.12"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.23.35"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 0.23.34"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.http4s:http4s-ember-server_2.13"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.23.35"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 0.23.34"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.http4s:http4s-ember-server_3"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.23.35"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 0.23.34"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.http4s:http4s-ember-server_2.13"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0-M1"
+            },
+            {
+              "fixed": "1.0.0-M47"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.0.0-M46"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.http4s:http4s-ember-server_3"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0-M1"
+            },
+            {
+              "fixed": "1.0.0-M47"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.0.0-M46"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/http4s/http4s/security/advisories/GHSA-fm4g-76c9-7w69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/http4s/http4s/commit/8cfeda8472954d631dfbe5dc026463a27653e482"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/http4s/http4s"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/http4s/http4s/releases/tag/v0.23.35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/http4s/http4s/releases/tag/v1.0.0-M47"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400",
+      "CWE-401"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-15T19:54:37Z",
+    "nvd_published_at": null
+  }
+}
