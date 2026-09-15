@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q5h7-5rfp-9ghc",
+  "modified": "2026-09-15T12:31:47Z",
+  "published": "2026-09-15T12:31:47Z",
+  "aliases": [
+    "CVE-2026-91993"
+  ],
+  "details": "Jpom through 2.11.12 fails to validate workspace ownership when resolving repositoryId on the /build/branch-list endpoint, allowing authenticated users to access repositories from other workspaces. Attackers can submit repository identifiers from different workspaces to enumerate repository existence, determine repository type, and execute git ls-remote commands using other workspaces' stored credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91993"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/Jpom/issues/115"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/Jpom"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/Jpom/blob/v2.11.12/modules/server/src/main/java/org/dromara/jpom/controller/build/BuildInfoController.java#L436-L454"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jpom-through-2.11.12-workspace-isolation-bypass-via-build-branch-list"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T12:17:54Z"
+  }
+}

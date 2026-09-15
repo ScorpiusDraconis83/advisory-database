@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xwj5-m236-f9hp",
+  "modified": "2026-09-15T12:31:44Z",
+  "published": "2026-09-15T12:31:44Z",
+  "aliases": [
+    "CVE-2025-13166"
+  ],
+  "details": "The SMS OTP flow fails to adequately handle error messages, allowing an attacker to infer the existence of registered user accounts based on the responses received during the OTP initiation process.\n\nThis weakness can be exploited by an attacker to discover valid usernames within the system. The impact is amplified for accounts that have not configured a mobile number, as the enumeration is specifically tied to this condition. The discovery of these usernames can facilitate subsequent brute force attacks, social engineering attempts, and information leakage, potentially leading to reputational damage, loss of customer trust, and regulatory non-compliance.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-13166"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2025-4353"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-203"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T10:17:00Z"
+  }
+}

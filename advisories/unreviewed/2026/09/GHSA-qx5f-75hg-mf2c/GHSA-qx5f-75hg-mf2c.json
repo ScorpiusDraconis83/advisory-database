@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qx5f-75hg-mf2c",
+  "modified": "2026-09-15T12:31:46Z",
+  "published": "2026-09-15T12:31:46Z",
+  "aliases": [
+    "CVE-2026-91859"
+  ],
+  "details": "Affected versions of MISP can record incorrect access-log data for requests that terminate in an exception.\n\n\nBecause CakeErrorController extends AppController, exception rendering runs the application startup path a second time. As a result, __accessMonitor() calls AccessLog::logRequest() twice for one HTTP request. The second deferred writer measures the error-controller execution instead of the original request and can overwrite the row created by the first pass. The corrupted fields include request duration, SQL query count, memory usage, and potentially the recorded query log.\n\n\nThe bug was masked because the same model instance retained the ID of the first saved row, causing the later save to issue an UPDATE rather than insert an obvious duplicate row.\n\nVersion affected: ≤2.5.45",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91859"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/0dae5c072"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-223"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T10:17:06Z"
+  }
+}

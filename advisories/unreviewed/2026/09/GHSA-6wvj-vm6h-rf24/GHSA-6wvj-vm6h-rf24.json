@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6wvj-vm6h-rf24",
+  "modified": "2026-09-15T12:31:46Z",
+  "published": "2026-09-15T12:31:46Z",
+  "aliases": [
+    "CVE-2026-91857"
+  ],
+  "details": "Affected versions of MISP expose several state-changing controller actions without restricting them to POST.\n\n\nThe affected actions are:\n\n\n\n - EventReportsController::purgeUnusedPictures()\n\n - NoticelistsController::enableNoticelist()\n\n - ServersController::removeOrphanedCorrelations()\n\n - WorkflowsController::rebuildRedis()\n\n\n\n\n\n\nThe patch adds allowMethod(['post']) to each action, preventing them from being triggered through ordinary GET requests.\n\n\nFor purgeUnusedPictures(), the corresponding UI previously used $.get(). The fix converts that request to POST and supplies X-CSRF-Token, while the controller enables header-only CSRF validation for that AJAX action.\n\n\nBecause GET requests can be induced cross-origin through links, images, redirects, or navigation, accepting GET for these state-changing operations can let an attacker trigger them using the authenticated victim's session.\n\nVersion affected: ≤2.5.45",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91857"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/b4a5486b5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T10:17:06Z"
+  }
+}

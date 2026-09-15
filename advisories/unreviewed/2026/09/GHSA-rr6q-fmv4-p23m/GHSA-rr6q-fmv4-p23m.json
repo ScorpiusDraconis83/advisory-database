@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rr6q-fmv4-p23m",
+  "modified": "2026-09-15T12:31:47Z",
+  "published": "2026-09-15T12:31:47Z",
+  "aliases": [
+    "CVE-2026-92003"
+  ],
+  "details": "Affected versions of MISP do not consistently apply the existing authentication-failure logging throttle.\n\n\nTwo API authentication failure branches wrote directly to the Log model:\n\n - API requests with no authentication key;\n - requests supplying an API key with an incorrect length\n\n\n\n\nUnlike other authentication failures, these paths bypassed _shouldLog(), so every request could create another durable auth_fail entry.\n\nVersion affected: ≤2.5.45",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92003"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/2bf887433"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T12:17:55Z"
+  }
+}

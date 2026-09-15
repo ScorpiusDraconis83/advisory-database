@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hrrx-73rq-wgm3",
+  "modified": "2026-09-15T12:31:45Z",
+  "published": "2026-09-15T12:31:45Z",
+  "aliases": [
+    "CVE-2026-19515"
+  ],
+  "details": "The WSO2 Integrator MI VS Code extension fails to properly sanitize or validate user-supplied input when processing Micro Integrator projects opened from untrusted sources. This allows a crafted project to inject and execute arbitrary operating system commands through the unit test execution flow.\n\nSuccessful exploitation of this vulnerability could lead to the execution of arbitrary OS commands on the system where the VS Code extension is running. The extent of the impact is dependent on the privileges of the user account under which VS Code is operating. Exploitation requires the user to grant workspace trust to the malicious project and subsequently trigger the unit test execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19515"
+    },
+    {
+      "type": "WEB",
+      "url": "https://security.docs.wso2.com/en/latest/security-announcements/security-advisories/2026/WSO2-2026-5854"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T10:17:02Z"
+  }
+}

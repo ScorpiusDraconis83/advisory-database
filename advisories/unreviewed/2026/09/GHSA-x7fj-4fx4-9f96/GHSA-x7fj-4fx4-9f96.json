@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x7fj-4fx4-9f96",
+  "modified": "2026-09-15T12:31:47Z",
+  "published": "2026-09-15T12:31:47Z",
+  "aliases": [
+    "CVE-2026-91926"
+  ],
+  "details": "A flaw was found in gss-ntlmssp. A memory leak occurs in the NTLM target-info parser when a crafted NTLM CHALLENGE message contains duplicated string-valued AV_PAIR entries. The parser allocates memory for each string value but does not free the previous allocation when the same AV_PAIR type appears more than once, leaking the earlier allocation. A malicious or man-in-the-middle server can exploit this to cause gradual memory exhaustion on the client during NTLM authentication, leading to a denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91926"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-91926"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2533698"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T12:17:54Z"
+  }
+}
