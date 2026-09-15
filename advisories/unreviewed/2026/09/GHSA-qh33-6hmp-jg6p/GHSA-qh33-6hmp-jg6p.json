@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qh33-6hmp-jg6p",
+  "modified": "2026-09-15T21:31:19Z",
+  "published": "2026-09-15T21:31:19Z",
+  "aliases": [
+    "CVE-2026-68534"
+  ],
+  "details": "Concrete CMS before 9.5.3 rendered Express entry labels as raw HTML when displaying associated entries, resulting in stored cross-site scripting. An unauthenticated attacker could submit a payload through a public Express Form; it then executed in an administrator's dashboard session when the associated entry was viewed, or in the browser of any visitor to a page using an Express Entry List block with association columns, allowing actions to be performed with that user's privileges. The Concrete CMS security team gave this vulnerability a CVSS v4.0 score of 2.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks v01demort for reporting.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68534"
+    },
+    {
+      "type": "WEB",
+      "url": "https://documentation.concretecms.org/developers/introduction/version-history/953-release-notes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T19:17:37Z"
+  }
+}

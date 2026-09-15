@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mcfm-6jvw-6qf6",
+  "modified": "2026-09-15T21:31:19Z",
+  "published": "2026-09-15T21:31:19Z",
+  "aliases": [
+    "CVE-2026-68531"
+  ],
+  "details": "Concrete CMS 9 before 9.5.3 did not escape SQL LIKE wildcard characters in the keyword search filters used by the file manager, file folders, and page list, allowing an authenticated user with editor-level or higher privileges to submit a crafted search containing many single-character wildcards. Because the keyword input was placed into the LIKE clause without neutralizing its wildcard metacharacters, a short request could force the database to evaluate every row and perform a full-table scan, and repeated or wildcard-dense searches could sustain elevated database CPU and I/O, degrading responsiveness for other users on large installations. The Concrete CMS security team gave this vulnerability a CVSS v4.0 score of 2.1 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N. Thanks noivan for reporting.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68531"
+    },
+    {
+      "type": "WEB",
+      "url": "https://documentation.concretecms.org/developers/introduction/version-history/953-release-notes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-405"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T19:17:36Z"
+  }
+}

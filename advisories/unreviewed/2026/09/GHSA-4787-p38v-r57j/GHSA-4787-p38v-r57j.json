@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4787-p38v-r57j",
+  "modified": "2026-09-15T21:31:37Z",
+  "published": "2026-09-15T21:31:37Z",
+  "aliases": [
+    "CVE-2026-76796"
+  ],
+  "details": "The LoadImageAsPngBase64 endpoint of the Newell Brands DYMO Connect Desktop local web service accepts a file path parameter without adequate validation, allowing a crafted path to read arbitrary image files from the host filesystem outside the intended scope. Fixed in 1.6.2. The fix limits access by file extension only, not by directory - arbitrary-location reads of files with an allowed image extension remain possible by design (accepted residual risk).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76796"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mediaserver.newellrubbermaid.com/dls/DCDesktop/win/en/Content/WhatsNew.htm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://raw.githubusercontent.com/cisagov/CSAF/develop/csaf_files/IT/white/2026/va-26-258-01.json"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.cve.org/CVERecord?id=CVE-2026-76796"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.dymo.com/support?cfid=online-support"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T20:17:56Z"
+  }
+}
