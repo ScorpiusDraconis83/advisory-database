@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-75j7-xvw4-g5cm",
+  "modified": "2026-09-15T06:30:31Z",
+  "published": "2026-09-15T06:30:31Z",
+  "aliases": [
+    "CVE-2026-81320"
+  ],
+  "details": "A flaw was found in hawtio-operator. When a custom Route TLS secret is configured and the operator runs at debug log level 1 or higher, the entire Route object — including the TLS private key in PEM format — is serialized to JSON and written to the operator's standard output. Operator logs are typically forwarded to centralized logging systems and readable by anyone with pods/log access in the openshift-operators namespace. Debug level 1 is a low threshold commonly enabled during troubleshooting.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81320"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-81320"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2524898"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T06:16:58Z"
+  }
+}

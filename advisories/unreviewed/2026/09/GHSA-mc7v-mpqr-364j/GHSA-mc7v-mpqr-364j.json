@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mc7v-mpqr-364j",
+  "modified": "2026-09-15T06:30:31Z",
+  "published": "2026-09-15T06:30:31Z",
+  "aliases": [
+    "CVE-2026-81303"
+  ],
+  "details": "A flaw was found in hawtio-operator. The operator holds routes/custom-host:create permission cluster-wide and writes the tenant-supplied spec.routeHostName value from the Hawtio custom resource directly into the Route spec without validation or authorization checks. A namespace edit user, who normally cannot set custom Route hostnames, can use the operator as a confused deputy to claim arbitrary externally-routable hostnames, enabling subdomain takeover and, in combination with the auto-grant OAuthClient, OAuth redirect hijack.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-81303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2524897"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-441"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T06:16:58Z"
+  }
+}
