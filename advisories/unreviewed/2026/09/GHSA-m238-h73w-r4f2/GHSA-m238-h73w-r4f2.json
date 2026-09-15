@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m238-h73w-r4f2",
+  "modified": "2026-09-15T15:32:11Z",
+  "published": "2026-09-15T15:32:11Z",
+  "aliases": [
+    "CVE-2026-16140"
+  ],
+  "details": "OpenBMC's IPMI implementation, phosphor-net-ipmid, is vulnerable to a logic flaw where the authorization context of an existing session can be replaced with a target account while still maintaining the original integrity and encryption keys. Several downstream vendors implement phosphor-net-ipmid as their IPMI stack, such as NVIDIA and H3C. This issue effectively allows for privilege escalation without re-authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.runzero.com/advisories/openbmc-ipmi-privsec-rakp-cve-2026-16140"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.runzero.com/blog/lights-out-exposed"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T14:16:50Z"
+  }
+}

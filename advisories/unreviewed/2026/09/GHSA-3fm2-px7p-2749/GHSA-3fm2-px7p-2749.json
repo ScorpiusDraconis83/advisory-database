@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3fm2-px7p-2749",
+  "modified": "2026-09-15T15:32:11Z",
+  "published": "2026-09-15T15:32:11Z",
+  "aliases": [
+    "CVE-2026-25827"
+  ],
+  "details": "An issue was discovered in Keyfactor SignServer before 7.6.0. A number of properties were identified to not have any restrictions to what path they can be set to by an admin user. Setting these properties to specific file paths can reveal information to the client side. Three specific properties were identified: The property ATTRIBUTESFILE in PKCS11CryotoToken can be set to a readable but not an accepted (i.e., recognized with attributes) file. In this case an error is thrown, confirming the existence of the file. The property KEYSTOREPATH in KeyStoreCryptoToken can be set to a non-existing file that will return an error confirming to the client side that the file does not exist. The property TRUSTSTOREPATH in RenewalWorker can be set to any path (without any restrictions) by an admin user. In the case that the provided path points to an existing file, readable by the user running the application server, but is not a recognized PEM format, it returns this as an error to the client side, confirming the existences of the file.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25827"
+    },
+    {
+      "type": "WEB",
+      "url": "https://keyfactor.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.keyfactor.com/hc/en-us/articles/46345356843291-SignServer-CVE-2026-25827-Local-File-Enumeration"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T15:17:14Z"
+  }
+}
