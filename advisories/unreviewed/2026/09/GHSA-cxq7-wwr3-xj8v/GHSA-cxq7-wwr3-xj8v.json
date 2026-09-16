@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cxq7-wwr3-xj8v",
+  "modified": "2026-09-16T21:32:51Z",
+  "published": "2026-09-16T21:32:51Z",
+  "aliases": [
+    "CVE-2026-76412"
+  ],
+  "details": "A vulnerability in the remote diagnostics debugger of Cisco Secure FMC Software could allow an authenticated, remote attacker to enable the remote diagnostics debugger service.\n\nThis vulnerability is due to an error when checking the privilege level of a user who is invoking remote diagnostics. An attacker could exploit this vulnerability by authenticating to the device, either through the web-based management interface or the REST API, and using the remote diagnostics debugger to grant a user elevated privileges. A successful exploit could allow the attacker to elevate privileges to root.\nNotes:\n\nTo exploit this vulnerability, the attacker must have valid user credentials on the affected device.\nThe CVSSv3.1 Attack Complexity is High due to the multistage process required to fully exploit this vulnerability.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76412"
+    },
+    {
+      "type": "WEB",
+      "url": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-fmc2-multivulns-HXgcqRG"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T21:17:13Z"
+  }
+}

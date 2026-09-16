@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8c8p-h27x-rrc9",
+  "modified": "2026-09-16T21:32:54Z",
+  "published": "2026-09-16T21:32:54Z",
+  "aliases": [
+    "CVE-2026-92778"
+  ],
+  "details": "CMAK through 3.0.0.6 fails to apply the scheduled leader election feature toggle to HTML form routes, allowing attackers to bypass the feature gate. Attackers can access the form endpoints to start and stop the recurring election scheduler, disrupting leadership across managed Kafka clusters.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92778"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yahoo/CMAK/issues/936"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yahoo/CMAK"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yahoo/CMAK/blob/3.0.0.6/app/controllers/PreferredReplicaElection.scala#L110-L143"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cmak-through-3.0.0.6-feature-gate-bypass-via-html-form-routes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-693"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T21:17:26Z"
+  }
+}

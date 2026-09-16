@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9hmf-cxg8-mqx6",
+  "modified": "2026-09-16T21:32:52Z",
+  "published": "2026-09-16T21:32:52Z",
+  "aliases": [
+    "CVE-2026-92752"
+  ],
+  "details": "metasfresh DocumentAttachmentsRestController and CommentsRestController endpoints check only that callers are logged in without enforcing record-level permissions. Attackers can enumerate sequential document identifiers to read, replace, and delete attachments and comments on records their role cannot access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92752"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/metasfresh/metasfresh/issues/24665"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/metasfresh/metasfresh"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/metasfresh/metasfresh/blob/c4c7766ef403eb470c9130031cf24cc33625ceed/backend/de.metas.ui.web.base/src/main/java/de/metas/ui/web/attachments/DocumentAttachmentsRestController.java#L63-L225"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/metasfresh/metasfresh/blob/c4c7766ef403eb470c9130031cf24cc33625ceed/backend/de.metas.ui.web.base/src/main/java/de/metas/ui/web/upload/ImageRestController.java#L100-L107"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/metasfresh-unauthorized-access-via-document-attachments-and-comments-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T21:17:24Z"
+  }
+}

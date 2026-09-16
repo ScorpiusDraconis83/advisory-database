@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-48fw-mh64-g6wf",
+  "modified": "2026-09-16T21:32:54Z",
+  "published": "2026-09-16T21:32:54Z",
+  "aliases": [
+    "CVE-2026-92773"
+  ],
+  "details": "Trigger.dev before 4.6.0 fails to verify that an authenticated user controls a GitHub App installation before binding it to their organization. Attackers can claim another user's GitHub App installation by replaying state cookies and supplying sequential installation identifiers, gaining unauthorized access to the victim's repositories.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:H/VI:L/VA:N/SC:H/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/triggerdotdev/trigger.dev/security/advisories/GHSA-9rx3-j5hm-5f27"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92773"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/triggerdotdev/trigger.dev"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/triggerdotdev/trigger.dev/blob/v4.5.16/apps/webapp/app/services/gitHub.server.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/triggerdotdev/trigger.dev/blob/v4.6.0/apps/webapp/app/services/gitHub.server.ts#L83-L86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/trigger-dev-before-4.6.0-github-app-installation-takeover"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T21:17:26Z"
+  }
+}

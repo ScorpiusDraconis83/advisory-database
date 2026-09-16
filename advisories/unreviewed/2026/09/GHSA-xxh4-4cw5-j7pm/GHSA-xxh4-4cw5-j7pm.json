@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xxh4-4cw5-j7pm",
+  "modified": "2026-09-16T21:32:57Z",
+  "published": "2026-09-16T21:32:57Z",
+  "aliases": [
+    "CVE-2026-92810"
+  ],
+  "details": "PrestaShop blockwishlist through 3.0.2 fails to validate wishlist ownership in the getUrlByIdWishListAction method, allowing authenticated customers to retrieve share tokens for any wishlist by identifier. Attackers can supply sequential wishlist identifiers to obtain valid share links and read other customers' private wishlist contents.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92810"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PrestaShop/blockwishlist"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PrestaShop/blockwishlist/blob/v3.0.2/controllers/front/action.php#L411-L421"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/geo-chen/oss/blob/main/prestashop.md#finding-2-blockwishlist-idor-wishlist-share-token-disclosure-via-missing-authorization-check"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/prestashop-blockwishlist-through-3.0.2-information-disclosure"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T21:17:30Z"
+  }
+}

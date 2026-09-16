@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4p5c-28rj-gq4p",
-  "modified": "2026-09-16T15:31:11Z",
+  "modified": "2026-09-16T21:32:38Z",
   "published": "2026-09-16T15:31:11Z",
   "aliases": [
     "CVE-2026-92138"
   ],
   "details": "The OAuth authorization endpoint in Jenkins Bitbucket Server Integration Plugin 6.0.1 and earlier reads the `oauth_callback` URL from the submitted form rather than from the server-side stored request token, allowing attackers to hijack the OAuth flow and obtain an access token on behalf of the victim.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-16T14:17:15Z"

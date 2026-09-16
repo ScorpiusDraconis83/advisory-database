@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mgr8-fxxv-82mj",
+  "modified": "2026-09-16T21:32:54Z",
+  "published": "2026-09-16T21:32:54Z",
+  "aliases": [
+    "CVE-2026-92781"
+  ],
+  "details": "Builder.io Gen2 SDKs through versions 5.2.11 and 0.25.13 contain a prototype pollution vulnerability in the unflatten helper that processes builder.userAttributes query parameters without prototype guards. Attackers can craft preview links with __proto__ or prototype segments to pollute Object.prototype in a visitor's browser when the SDK processes the malicious URL.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92781"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BuilderIO/builder/issues/4824"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BuilderIO/builder"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BuilderIO/builder/blob/main/packages/sdks/src/functions/get-content/generate-content-url.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/BuilderIO/builder/blob/main/packages/sdks/src/helpers/flatten.ts#L60-L76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/builder-io-gen2-sdks-through-5.2.11-prototype-pollution-via-builder-userattributes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1321"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T21:17:27Z"
+  }
+}

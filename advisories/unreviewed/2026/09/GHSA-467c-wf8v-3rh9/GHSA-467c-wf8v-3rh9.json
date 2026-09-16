@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-467c-wf8v-3rh9",
+  "modified": "2026-09-16T21:32:55Z",
+  "published": "2026-09-16T21:32:55Z",
+  "aliases": [
+    "CVE-2026-92790"
+  ],
+  "details": "Higress before 2.2.4 panics when processing a Cookie header segment without an equals sign, causing the plugin wrapper to recover and return a continue action that bypasses AI token rate limiting. Unauthenticated attackers can craft a malformed Cookie header to skip rate limit checks and exceed thresholds intended to restrict costly model backend calls.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92790"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/higress-group/higress/issues/4599"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/higress-group/higress"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/higress-group/higress/blob/v2.2.3/plugins/wasm-go/extensions/ai-token-ratelimit/util/utils.go#L52-L63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/higress-group/higress/blob/v2.2.4/plugins/wasm-go/extensions/ai-token-ratelimit/util/utils.go#L52-L63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/higress-before-2.2.4-rate-limit-bypass-via-malformed-cookie-header"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-703"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T21:17:28Z"
+  }
+}
