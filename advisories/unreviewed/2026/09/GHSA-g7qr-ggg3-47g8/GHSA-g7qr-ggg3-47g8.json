@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g7qr-ggg3-47g8",
+  "modified": "2026-09-16T12:30:36Z",
+  "published": "2026-09-16T12:30:36Z",
+  "aliases": [
+    "CVE-2026-89800"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/nouveau/uvmm: clear the dirty flag when unwinding an OP_UNMAP_SPARSE\n\nA successful OP_UNMAP_SPARSE marks its region dirty with\nnouveau_uvma_region_dirty() and defers the teardown to\nnouveau_uvmm_bind_job_cleanup(); it does not remove the region from\nuvmm->region_mt.\n\nIf a later op in the job fails, the unwind path never clears reg->dirty\n(set in one place, cleared nowhere) and sets op->reg = NULL, so cleanup\nskips the teardown. The region is left in the tree with dirty set and its\ncompletion never signalled. Later binds over that range then fail\npermanently -- -ENOENT or -EINVAL from the dirty checks, or an unkillable\nwait_for_completion() in bind_validate_region() -- for the lifetime of\nthe uvmm.\n\nClear reg->dirty when the unwind reverts the sparse unmap, restoring the\nregion to the state it was found in.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89800"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1101cbfe7f342e5eaaf7444965d4f1215abdac4c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/196ce9e5e93202da097062be24e404984dbc5ac2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/38a62306c4266bcb3cd89e33c7111ee33096ebb3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a129b2b875c148aba233ace8447a0c36ca3bae07"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c60033c172420179b7bbb3d1f843f8dc90164dc5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:44Z"
+  }
+}

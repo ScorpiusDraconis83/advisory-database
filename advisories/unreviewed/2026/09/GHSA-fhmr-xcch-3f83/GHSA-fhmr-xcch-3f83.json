@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fhmr-xcch-3f83",
+  "modified": "2026-09-16T12:30:40Z",
+  "published": "2026-09-16T12:30:39Z",
+  "aliases": [
+    "CVE-2026-89872"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: v4l2-fwnode: Fix fwnode leak in v4l2_fwnode_parse_link\n\nIn v4l2_fwnode_parse_link(), the remote endpoint fwnode reference is\nacquired using fwnode_graph_get_remote_endpoint(). This reference is\nproperly released in the error paths, but it is leaked on the success\npath.\n\nAdd the missing fwnode_handle_put() before returning 0 to prevent the\nreference leak.\n\n[Sakari Ailus: Fix subject prefix and coding style a little.]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89872"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ced388b7908270529e5aa6d221840114b6c33bc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/578c4bfa28bf21458ecdde2fd3fc429475f34c10"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/881aafb139520570fd3390bf9938d7098b7fbb99"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6e86efd7f85e519bf48417f41923f8bd51f1597"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9b5238d173ee9b94dcaa2b34244ea89c8024feb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ccd8d1d80afab8b492a583ae81bfd295835bab2f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d92dc4692834e04bc0ef1d0908589852050d1a66"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ef609b3ce456f021320fee2fb7e45094a3ccf232"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:55Z"
+  }
+}

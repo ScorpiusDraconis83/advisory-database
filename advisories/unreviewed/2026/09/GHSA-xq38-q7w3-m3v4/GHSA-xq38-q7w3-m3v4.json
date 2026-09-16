@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xq38-q7w3-m3v4",
+  "modified": "2026-09-16T12:30:41Z",
+  "published": "2026-09-16T12:30:41Z",
+  "aliases": [
+    "CVE-2026-89924"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: Fix old_data leak in guest debug error path\n\n__import_wp_info() allocates a per-watchpoint old_data buffer to back up\nthe original guest memory contents. If a later watchpoint of the same\nKVM_SET_GUEST_DEBUG request fails to import, kvm_s390_import_bp_data()\njumps to the error label, which frees the wp_info array but not the\nold_data buffers of the entries that were imported successfully. Up to\nMAX_BP_COUNT - 1 buffers of up to MAX_WP_SIZE bytes are leaked per failed\nrequest, and the request can be repeated.\n\nCreate error handling for cleaning up all created old_data memory\nareas.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89924"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/124c81ee610e1fbdd93d4399f88d9e28ba97a941"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4048d0a252163084794be3e37995b872c5178913"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/46cb8a273e2f853f89a78b59dbdff8787b6e1c86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5fbf319137735252eefa507193c9a619af5b7457"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aa9c8e8baf1e765fa65b93212522c636f25d846f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c85d402553987777cc4742751437ea5dcbf98a7b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5ae7816e5ad145618f7fd568a0e8a94dd9f81f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f55e4d415d95342d5753e528e05a1e8623992c3f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:17:01Z"
+  }
+}

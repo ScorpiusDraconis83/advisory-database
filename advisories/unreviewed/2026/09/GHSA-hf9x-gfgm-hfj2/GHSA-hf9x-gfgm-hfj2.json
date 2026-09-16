@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hf9x-gfgm-hfj2",
+  "modified": "2026-09-16T12:30:38Z",
+  "published": "2026-09-16T12:30:38Z",
+  "aliases": [
+    "CVE-2026-89839"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: use the mount idmap for the owner check in f2fs_xattr_advise_set()\n\nf2fs_xattr_advise_set() calls inode_owner_or_capable() with &nop_mnt_idmap\nbefore allowing the \"system.advise\" xattr to be set, instead of the idmap\nthat the VFS passes to the ->set() handler.\n\nf2fs supports idmapped mounts, so on such a mount this checks the caller's\nfsuid against the unmapped on-disk owner rather than the mapped owner: the\nactual owner can be wrongly denied with -EPERM and an unrelated caller\nwrongly allowed.  Pass the handler's idmap instead.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89839"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b681229e9f8fb1dd29bc65983bf3c87779e4ca3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c0c610b480cfbc57528aa1acbd6be12ed2a6fb1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a54ffce4637acb0db8e695188a6c7f99f14c3576"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab31e3b774f5d06b4489cef6c297b48c47c9dcbd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3e2692c7a58e0bdb84bd658d827e89dcecea3ad"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:50Z"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gprv-q9q2-hpx6",
+  "modified": "2026-09-16T12:30:45Z",
+  "published": "2026-09-16T12:30:45Z",
+  "aliases": [
+    "CVE-2026-90019"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: fix null pointer dereference in usb_put_function_instance()\n\nusb_put_function_instance() attempts to dereference fd inside fi struct\nto get mod in uvc_alloc_inst() error path. However, fd is not allocated\nuntil later in try_get_usb_function_instance() after allocating fi in\nuvc_alloc_inst() and thus guranteed to be null in error path. Fix this\nby adding a null check for fi->fd that returns if fd is null.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90019"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0fc54a00954f9f4c3e3d4ffa64a530685d99a39b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a9691fff79bcce95338435599df6d3ae433cfdc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5117f236e9e30744338b425395d55913c4500897"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e6736c049683380f5e20becde498986e9293ca4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e74ac5c596fd246e37eadfc354567179ccbe9aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ea3a073ca97716d4a73df49a3bec1c3ccf8e2a0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a4f4ca7ff32ae24807c83e2a06d62b13378d53c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3a7fa61997db3bf6dadef4c1bd87a4fa782a817"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:17:14Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4j65-qcr2-qw3x",
+  "modified": "2026-09-16T12:30:37Z",
+  "published": "2026-09-16T12:30:37Z",
+  "aliases": [
+    "CVE-2026-89807"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: guard against NULL restore_mqd in CRIU queue restore\n\nBoth create_queue_cpsch() and create_queue_nocpsch() unconditionally\ncall mqd_mgr->restore_mqd() when a CRIU restore is in progress\n(qd != NULL), with no NULL guard. On any system where restore_mqd is\nnot implemented for the given queue type, a user holding\nCAP_CHECKPOINT_RESTORE can trigger a kernel NULL pointer dereference\nand panic the machine by issuing KFD_IOC_CRIU_OP_RESTORE with a\ncrafted queue restore object. Note that checkpoint_mqd is likewise\nunimplemented on GFX12, so no legitimate CRIU image can reach this\npath — only a hand-crafted restore payload.\n\nAdd a NULL guard for restore_mqd immediately after mqd_mgr is\nresolved, unwinding via the existing error labels and returning\n-EOPNOTSUPP if the callback is not implemented. This mirrors the\nexisting checkpoint_mqd guard in checkpoint_mqd().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89807"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/19c73848493ab58e39649700da6de11710a36de1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6aa530642f95d5c48aa336416f94a35e7949b647"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c643c229babe2e8efc5eefe60e19d44868a643ff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ebffa44e7a21ead59ac4b4264e8fc2cbb44c4a21"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:45Z"
+  }
+}

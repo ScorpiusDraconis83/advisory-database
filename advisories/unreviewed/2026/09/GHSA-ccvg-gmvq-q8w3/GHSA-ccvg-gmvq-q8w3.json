@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ccvg-gmvq-q8w3",
+  "modified": "2026-09-16T12:30:38Z",
+  "published": "2026-09-16T12:30:38Z",
+  "aliases": [
+    "CVE-2026-89828"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix init ordering in amdgpu_vram_mgr_init()\n\ndrmm_cgroup_register_region() is called before INIT_LIST_HEAD() and\ngpu_buddy_init() in amdgpu_vram_mgr_init(). If it fails, the function\nreturns early and bypasses those initializations.\n\nSince adev->mman.initialized is set to true before amdgpu_vram_mgr_init()\nis called, a failure triggers amdgpu_ttm_fini(), which calls\namdgpu_vram_mgr_fini(), which then:\n\n - Calls list_for_each_entry_safe() on reservations_pending and\n   reserved_pages, whose list_head::next pointers are zero-initialized\n   (NULL). The loop does not recognize them as empty and dereferences NULL.\n\n - Calls gpu_buddy_fini(), which iterates free_trees[] unconditionally\n   via for_each_free_tree(). Since mm->free_trees is NULL\n   (never allocated), this dereferences NULL.\n\nBoth result in a kernel panic on the module load error path.\n\nFix by moving drmm_cgroup_register_region() to after the list and buddy\nallocator are fully initialized, so the teardown path is safe to run.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89828"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3e234c6face8651045f46895dfe9c086ea64f03b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e184e46ca1ba652ab8053a10a51b39aad06d3f5c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e773798e14ac0aea54ca9676083b91f445e5bc59"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:49Z"
+  }
+}

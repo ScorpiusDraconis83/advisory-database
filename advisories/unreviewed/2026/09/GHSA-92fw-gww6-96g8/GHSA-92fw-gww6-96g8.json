@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-92fw-gww6-96g8",
+  "modified": "2026-09-16T12:30:38Z",
+  "published": "2026-09-16T12:30:38Z",
+  "aliases": [
+    "CVE-2026-89834"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: fix to migrate all curseg types during free_segment_range\n\nIn free_segment_range(), the curseg evacuation loop only iterates up to\nNR_CURSEG_PERSIST_TYPE (0..5), missing non-persistent in-memory curseg\ntypes such as CURSEG_COLD_DATA_PINNED and CURSEG_ALL_DATA_ATGC.\n\nEven though these in-memory curseg types are not saved in the on-disk\ncheckpoint header, they still occupy active physical segments at runtime.\nIf an active in-memory curseg happens to be allocated within the segment\nrange being truncated during filesystem shrink, failing to evacuate it\nwill cause subsequent writes to the curseg attempting out-of-bounds I/O\non the truncated storage range.\n\nFix this by expanding the curseg evacuation loop upper bound to\nNR_CURSEG_TYPE to ensure all active curseg types are safely migrated\nout of the target range.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89834"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b85edf3391f3e1f624f409a7d2d239885f567b7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ec06f50ddd8d201bd7e55b896ae28ed9d4cb7d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8ae1228c153622afa71a179c9d4dc268117e0f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9776094aa7118e8e5dfdcd791ffc8330c5ca408"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:50Z"
+  }
+}

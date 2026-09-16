@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fm87-69w9-6w3j",
+  "modified": "2026-09-16T12:30:41Z",
+  "published": "2026-09-16T12:30:41Z",
+  "aliases": [
+    "CVE-2026-89921"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: Zero initialize data structures for inject_pfault_token\n\n__kvm_inject_pfault_token() only sets .type and .u.ext.ext_params2 of\nthe on-stack struct kvm_s390_irq but the full ext substructure is copied\ninto the cpu local variable on inject. ext_params and pad contain stale\nstack values.\n\nInterrupt delivery only uses ext_params2, so nothing leaks to the guest,\nbut a host user can use the migration ioctls to get to the data.\n\nFix by zero-initializing the irq struct.\nDo the same for the inti data structure.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89921"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/134f235e0e8de54611a72d3cc3f63e5f31246baa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e2c7f7cbc27418f9a290399b986c1b85ff93b90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b046de62b8098af6e2ba820b125ec9dc5f162c8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:17:01Z"
+  }
+}

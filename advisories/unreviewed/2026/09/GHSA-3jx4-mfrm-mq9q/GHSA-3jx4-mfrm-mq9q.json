@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3jx4-mfrm-mq9q",
+  "modified": "2026-09-16T12:30:37Z",
+  "published": "2026-09-16T12:30:37Z",
+  "aliases": [
+    "CVE-2026-89820"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: fix dc_lock leak on GPU reset error paths\n\nOn GPU reset, dm_suspend() takes dc_lock and leaves it for dm_resume()\nto drop. If amdgpu_dm_commit_zero_streams() or dm_dmub_hw_init() fails,\nthe function returns with the lock still held. The matching resume path\nis then skipped, so every later dc_lock take hangs.\n\nRelease the cached DC state and unlock before returning the error.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89820"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/295d2bf42061db490254e748f9344545bb7faf19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/92a9eebd2a1f892fe482154d83f9f1626bc73d3b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dac29cbb405b912742f4f7eda833cec8e7a53780"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:47Z"
+  }
+}

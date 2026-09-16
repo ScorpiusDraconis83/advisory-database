@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gh89-f7g4-6qgp",
+  "modified": "2026-09-16T12:30:38Z",
+  "published": "2026-09-16T12:30:38Z",
+  "aliases": [
+    "CVE-2026-89831"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: protect critical_task_priority updates with s_umount\n\nThe sysfs store path already takes s_umount for GC thread control\nentries, and ckpt_thread_ioprio is covered as well.\n\ncritical_task_priority also updates checkpoint or GC kthread scheduling\nstate, but it is not covered by that serialization. It can race with\nremount or teardown paths that are stopping those threads.\n\nProtect critical_task_priority sysfs writes with s_umount too.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89831"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e4692c6c165e81b2cbb847d8da4b45a53483b33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bee6dfcc111b1dffdb3e13d73b7028b699fa0165"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:49Z"
+  }
+}

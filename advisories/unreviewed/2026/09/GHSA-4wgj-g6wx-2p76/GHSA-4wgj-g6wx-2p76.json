@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4wgj-g6wx-2p76",
+  "modified": "2026-09-16T12:30:42Z",
+  "published": "2026-09-16T12:30:42Z",
+  "aliases": [
+    "CVE-2026-89944"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: hdac_hda: Fix hlink refcount leak on component registration failure\n\nhdac_hda_dev_probe() gets the HDA link with snd_hdac_ext_bus_link_get()\nbefore registering the ASoC component. If component registration fails,\nthe function returns without dropping the link reference.\n\nAlways call snd_hdac_ext_bus_link_put() after the registration attempt so\nthe reference taken during probe is balanced on both success and failure.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89944"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ad4892c4f5cb437a928a02f5b7d37d496aa9268"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7eef9ae3b4ef782557526dd8ba0c206f028d8c2f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cb6b0b1a9d5a61ef841739d42c6211094e9c8e2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8ea01a0457080b0cc7c69c430c0ab65d84dc377"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:17:04Z"
+  }
+}

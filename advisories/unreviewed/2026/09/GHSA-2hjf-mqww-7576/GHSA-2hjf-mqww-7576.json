@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2hjf-mqww-7576",
+  "modified": "2026-09-16T12:30:38Z",
+  "published": "2026-09-16T12:30:38Z",
+  "aliases": [
+    "CVE-2026-89835"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: avoid NULL checkpoint thread access in sysfs\n\ncheckpoint_merge can be enabled even when no checkpoint merge thread is\nrunning. A read-only mount is one case: f2fs does not start\nf2fs_issue_ckpt there, but ckpt_thread_ioprio is still writable through\nsysfs.\n\nThe ckpt_thread_ioprio store path updates the saved ioprio value and,\nwhen checkpoint_merge is enabled, calls set_task_ioprio() for the\ncheckpoint thread. If cprc->f2fs_issue_ckpt is NULL, that dereferences a\nNULL task pointer.\n\nProtect ckpt_thread_ioprio sysfs writes with s_umount as well, so the\ncheckpoint thread cannot disappear under the store path while updating\nits ioprio.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89835"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5cb33b00c8fbb6e8f1fa3d281c3036d5f7c7c41f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f3b99c50dd0da1777994ce7c7e60d39b9f60f4b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6573f3ffc19542de9ebc1a2b1f930fd48ba538c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aefcec3bebdeed2bff444378122300763325ba23"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:50Z"
+  }
+}

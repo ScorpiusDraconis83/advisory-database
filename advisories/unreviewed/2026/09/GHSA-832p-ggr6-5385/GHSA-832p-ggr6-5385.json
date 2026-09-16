@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-832p-ggr6-5385",
+  "modified": "2026-09-16T12:30:40Z",
+  "published": "2026-09-16T12:30:40Z",
+  "aliases": [
+    "CVE-2026-89896"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: cedrus: fix memory leak in cedrus_init_ctrls()\n\nIn cedrus_init_ctrls(), the V4L2 control handler is initialized before\nallocating memory for ctx->ctrls. If this allocation fails, the function\nreturns -ENOMEM without freeing the previously allocated handler\nresources, leading to a memory leak.\n\nFix this by calling v4l2_ctrl_handler_free() on the ctx->ctrls allocation\nfailure path.\n\nThe bug was first flagged by an experimental analysis tool we are\ndeveloping for kernel memory-management bugs while analyzing\nv6.13-rc1. The tool is still under development and is not yet publicly\navailable. Manual inspection confirms that the bug is still\npresent in v7.1.1.\n\nAn x86_64 allyesconfig build showed no new warnings. As we do not have an\nAllwinner SoC or board with a Cedrus VPU available to test with, no\nruntime testing was able to be performed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89896"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22441be29ec27c693f40c1ef499093275ef529d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6fabacc3b79a528450aef4c32464da2ec681049e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/729a1ffab968b3c493f61d1cd683f5bafec500ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/79fd0b0161506fc9507bf7a6fe4c975a857a5be8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81aa608ac3a56cdd4aab0bd12442ed529a24ba31"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9df2fbe563194da1967a5db083442186c1323efe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce5693b6e3a693fcdc3800af309363f6250104c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f78cf36cabf911da348ea80e4e9f430d74f6905c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:58Z"
+  }
+}

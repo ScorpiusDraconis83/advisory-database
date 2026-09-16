@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xw3m-mp44-62gr",
+  "modified": "2026-09-16T12:30:43Z",
+  "published": "2026-09-16T12:30:43Z",
+  "aliases": [
+    "CVE-2026-89976"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/ethosu: fix job completion fence cleanup\n\nethosu_ioctl_submit_job() allocates done_fence before validating buffer\nhandles. Errors after allocation call ethosu_job_err_cleanup(), which frees\nthe job but leaks the uninitialized fence.\n\nA scheduler dependency error also lets ethosu_job_run() return before\ndma_fence_init(). Normal cleanup then passes a zeroed refcount to\ndma_fence_put().\n\nRelease done_fence in the common cleanup path and use\ndma_fence_was_initialized() to distinguish initialized fences from raw\nallocations.\n\n[robh: also fix goto]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89976"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2d2a3adc91950f9a18829dadc7317fb5180a15c5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3e0f79af1f27339d8d2527c02cc3e8397c2f69f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:17:08Z"
+  }
+}

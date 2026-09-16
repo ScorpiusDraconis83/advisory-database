@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qwmr-87j6-fh8c",
+  "modified": "2026-09-16T12:30:44Z",
+  "published": "2026-09-16T12:30:44Z",
+  "aliases": [
+    "CVE-2026-89982"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: mux: Fix channel node leak on adapter add failure\n\ni2c_mux_add_adapter() takes a reference to the Device Tree channel node\nbefore registering the new adapter. If adapter registration fails, the\nerror path frees the private data without dropping that reference.\n\nRelease the channel node before freeing the private data.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89982"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0927153f2abf48b6cc3e5f27063a17f7a8d47f38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b3b06cb709c4bf75a3fe3da3a0ca368ee3b40e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/385c7af4e3b95d0769fd211831674e83b16a2ebf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4c9bc46a2a4afb7a11c48d33bdf19febab431015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f42f70afd2447f3c82ca69d1e03466a75348ba9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/694e7e6edf249723ca7d3ef77c2ca1badfc78dc4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b580f062b24c4eef562f08f210c028adb34ef14e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd2c1e6747b17b24ecddd48a7bb6bb964c2793d1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:17:09Z"
+  }
+}

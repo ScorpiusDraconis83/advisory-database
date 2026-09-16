@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9jg7-wvq2-32v3",
+  "modified": "2026-09-16T12:30:41Z",
+  "published": "2026-09-16T12:30:41Z",
+  "aliases": [
+    "CVE-2026-89931"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: nVMX: Ensure KVM_REQ_GET_NESTED_STATE_PAGES is cleared on VM-Exit\n\nAlways check and clear KVM_REQ_GET_NESTED_STATE_PAGES when emulating a\nnested VM-Exit to ensure the request is cleared, even when KVM was built\nwith CONFIG_KVM_HYPERV=n, as KVM subtly relies on the \"check\" to clear\nthe flag and thus avoid double-mapping the vmcs12 pages, e.g. if KVM\nmanages to bail from VM-Enter without processing the request, and then\nemulates VMLAUNCH or VMRESUME.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89931"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11722439fb206c88e6f31be54173efa9880b4ccb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/674a3244f07f323f21a106a7bdcaebb6db6a5058"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae190f2439ca30067927077bf570d4c5edf07a0f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bbec4adc2f340d85f4a77a9ddcddaa6b1f4639c5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:17:02Z"
+  }
+}

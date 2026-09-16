@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-52m9-92gj-jg2v",
+  "modified": "2026-09-16T12:30:39Z",
+  "published": "2026-09-16T12:30:39Z",
+  "aliases": [
+    "CVE-2026-89850"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Don't query firmware state while chip is down\n\nqla2x00_fw_state_show() initializes rval to QLA_FUNCTION_FAILED and jumps\nto the out: label when the chip is down or EEH is busy. The out: block\nthen re-issued qla2x00_get_firmware_state() because rval != QLA_SUCCESS,\ndefeating the chip-down/EEH-busy guards and issuing a mailbox command\n(outside optrom_mutex) during ISP reset or PCI error recovery, which can\nhang the adapter. It also turned a normal in-lock mailbox failure into a\nsecond unsynchronized mailbox attempt.\n\nMake the out: fallback only mark the firmware state as unknown. The\nmailbox is now issued at most once, inside optrom_mutex, and only when\nthe chip is up and not EEH-busy.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89850"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/178d984e8875292582e4295cf559b2b11d3c9325"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22f44f77da496bc355479c08a0a9dbc9ad42ba42"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7bc2baed8a3d6a1e2a3f6b78d245f25d1e18a749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a194684853dceaa1d6b7a9a02bc12f479232ad9b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6374b508893de15fee78583a95f5099d7812e85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b6a30baa29695fa0eaba4a3a04435a3c1a5cb63d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cba780c01f72f8585ca81ad7304097f8b12ef339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0cebe20dcffbed9c078fe30e2d18cd5046d9eff"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:52Z"
+  }
+}

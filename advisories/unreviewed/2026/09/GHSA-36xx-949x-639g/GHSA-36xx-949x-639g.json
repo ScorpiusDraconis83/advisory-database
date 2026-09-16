@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-36xx-949x-639g",
+  "modified": "2026-09-16T12:30:44Z",
+  "published": "2026-09-16T12:30:44Z",
+  "aliases": [
+    "CVE-2026-89993"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: dw-edma: Initialize IRQ data before requesting IRQs\n\ndw_edma_irq_request() passes struct dw_edma_irq to request_irq() before\ndw_edma_channel_setup() fills the back pointer. A shared interrupt can\ntherefore enter the handler with dw_irq->dw still NULL, leading to a\nNULL pointer dereference.\n\nSet the back pointer before installing each handler.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89993"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/07e50cef557def076418c67051a336e4c6bd50e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17ef63843c0fcbf1efdfbbfb0f5584a5ea2c91ba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/647217abea849d3d45f8cb0b8ee5b78d50f26985"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b86280b12ccf33b68b309b7cb0e4476894dfe77c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d232bc6cf4562132ef50644484dfd4b23a593295"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d91fb6c0d10dad32929dc5c6850f89df34e1bfcd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fac202d73e7a649b7d4010325c6c6dcd9334fe65"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:17:10Z"
+  }
+}

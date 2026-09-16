@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x8h3-pr46-6w2j",
+  "modified": "2026-09-16T12:30:43Z",
+  "published": "2026-09-16T12:30:43Z",
+  "aliases": [
+    "CVE-2026-89981"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\narm64: Don't read GMID_EL1 when MTE is disabled\n\n__cpuinfo_store_cpu() gates the GMID_EL1 read on the raw\nID_AA64PFR1_EL1, so it reads the register even when the kernel has\ndisabled MTE (CONFIG_ARM64_MTE=n or arm64.nomte). KVM sets HCR_EL2.TID5\nin that case, and pKVM injects an UNDEF the host cannot handle:\n\n  Internal error: Oops - Undefined instruction: 0000000002000000 [#1]  SMP\n  pc : __cpuinfo_store_cpu+0xf4/0x264\n  Kernel panic - not syncing: Attempted to kill the idle task!\n\nOnly pKVM reaches it, and only after a CPU is offlined and brought back\nonline: its CPU_ON relay sets the host HCR before the CPU enters EL1,\nwhile plain nVHE sets it at CPUHP_AP_KVM_ONLINE.\n\nGate the read on the CPU's own ID_AA64PFR1_EL1 with the command-line\noverride applied, and on CONFIG_ARM64_MTE, which no register reflects.\nThe boot CPU stores its registers before init_cpu_features() strips an\nunsafe override, so clamp against the hardware value here too.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89981"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5445d64199626974269fcdf347769ad44b0bb53b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2d22ff377cd43f2e9660426ff22e3cd4c534637"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:17:09Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9v89-j77v-qgfm",
+  "modified": "2026-09-16T12:30:45Z",
+  "published": "2026-09-16T12:30:45Z",
+  "aliases": [
+    "CVE-2026-90021"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: f_midi: initialize work in f_midi_alloc()\n\nf_midi_alloc initializes free_ref to 1 and it can only be incremented\nwhen a sound card is registered via f_midi_register_card().\nf_midi_register_card() is only called in f_midi_bind() which actually\nperforms INIT_WORK. If f_midi_bind() is never run, work is not\ninitialized and the if condition in f_midi_free becomes true,\nthis results in a warning later in __flush_work as work->func = 0.\nFix this by moving INIT_WORK from f_midi_bind() to f_midi_alloc().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90021"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/02ac76f27db23ef652358458c272d9d2d6f51167"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d8b11255e632170f32f1925bfcaf96331f36317"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7e07d3e4c389217d7d7171d80edf2e23ac70f1ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/858576de6b2f5166b08dae803f0fd0766dcb3002"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:17:15Z"
+  }
+}

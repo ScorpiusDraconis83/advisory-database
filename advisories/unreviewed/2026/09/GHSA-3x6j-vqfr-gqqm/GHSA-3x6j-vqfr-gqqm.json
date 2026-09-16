@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3x6j-vqfr-gqqm",
+  "modified": "2026-09-16T12:30:43Z",
+  "published": "2026-09-16T12:30:43Z",
+  "aliases": [
+    "CVE-2026-89978"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/amdxdna: return early from a zero-length flush\n\nSYNC_BO does not constrain its size, so a request for zero bytes reaches\ndrm_clflush_virt_range(), which ends with an unconditional\nclflushopt(end - 1). For an empty range that is the byte before the\nmapping, and abo->mem.kva comes from vmap(), so the access lands in the\nguard page below the vmalloc area and faults:\n\n  BUG: unable to handle page fault for address: ffffd16fbbc70fff\n  #PF: supervisor read access in kernel mode\n  Oops: Oops: 0000 [#1] SMP NOPTI\n  CPU: 7 UID: 1000 Comm: sync_bo_probe\n  RIP: 0010:drm_clflush_virt_range+0x3c/0x70\n  Call Trace:\n   amdxdna_drm_sync_bo_ioctl+0x124/0x430 [amdxdna]\n   drm_ioctl+0x301/0x4c0\n   __x64_sys_ioctl+0x115/0x2f0\n   do_syscall_64+0xa6/0x3d0\n\nAny process that can open the render node can do this. Reproduced 3 of 3\ntimes on a Strix Point NPU (1022:17f0), by calling SYNC_BO with size 0 on\nan AMDXDNA_BO_SHARE object. The import arm takes the same request but\nflushes the whole scatterlist, so it survives it.\n\nNothing needs flushing for an empty range, so answer before choosing a\npath.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89978"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/45962da5821d0a691f638ccb13842889156d8969"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc14753664240cedf669623b27ae9922b0618b25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f00def884a831dc49eb659dac2dd09dbfd21e67f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:17:08Z"
+  }
+}

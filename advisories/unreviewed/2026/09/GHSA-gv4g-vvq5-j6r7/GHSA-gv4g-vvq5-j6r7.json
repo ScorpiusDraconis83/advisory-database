@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gv4g-vvq5-j6r7",
+  "modified": "2026-09-16T12:30:40Z",
+  "published": "2026-09-16T12:30:40Z",
+  "aliases": [
+    "CVE-2026-89892"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: em28xx: defer audio-only extension registration\n\nThe audio-only path registers extensions while probing the primary device.\nFor a dual-TS board, this happens before dev_next is created. The duplicate\ndevice inherits is_audio_only and is then independently inserted into\nem28xx_devlist.\n\nThe list is intended to contain only primary devices: extension operations\nreach the secondary device through dev_next. The independently linked\nsecondary can be freed during disconnect while its list node remains\nreachable, resulting in a use-after-free.\n\nDefer audio-only extension registration to the module-request work item. It\nruns only after probing has completed construction of the optional\nsecondary device, so only the primary is registered and extension callbacks\nreach the secondary through dev_next.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0da1e627f4fc9d0e947fdae90913042120878923"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1abe9524dec0fd26e9ceb8d586034d6f68dd8273"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4666197ca4f7d80cd3b0292054fe45d76be9ba04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e11c45dfdc72ab656067b1df8fcebaf52fd4715"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/95f76f51937fdfb0fc1e14cae606b1ef574a56f3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d06067ee32620f272cfb80c7bc7c572ad4e74724"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8d7e77d9c621b42a191c67a9b37bec23dc1d555"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f9322ac9f862961d7f377b87ec26c8565af7e073"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T11:16:57Z"
+  }
+}
