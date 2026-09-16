@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8g2f-g3gq-5rjv",
+  "modified": "2026-09-16T13:49:19Z",
+  "published": "2026-09-16T13:49:19Z",
+  "aliases": [
+    "CVE-2026-61590"
+  ],
+  "summary": "djust's observability endpoints are network-exposed: the localhost gate is an opt-in middleware the docs omit, and the views enforce only DEBUG",
+  "details": "### Impact\ndjust's observability endpoints expose live view/session state and a remote method-invocation surface (`eval_handler`). The localhost restriction was an **opt-in middleware that the documented setup omits**; the views themselves enforced only `DEBUG`. In the misconfigured-but-documented scenario (DEBUG on, middleware not installed) a non-localhost client could read live application state and invoke handlers remotely.\n\n### Patches\nFixed in **djust 1.0.7**. The localhost restriction is enforced **in-view** on every observability endpoint (no longer dependent on a separately-installed middleware), and `eval_handler` is restricted; gated requests receive a non-disclosing response.\n\n### Workarounds\nEnsure `DEBUG=False` in production, and do not expose the observability endpoints to untrusted networks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "djust"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/djust-org/djust/security/advisories/GHSA-8g2f-g3gq-5rjv"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/djust-org/djust"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/djust-org/djust/releases/tag/v1.0.7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-306",
+      "CWE-668"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-16T13:49:19Z",
+    "nvd_published_at": null
+  }
+}
