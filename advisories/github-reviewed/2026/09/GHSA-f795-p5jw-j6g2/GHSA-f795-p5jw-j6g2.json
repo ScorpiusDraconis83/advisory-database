@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f795-p5jw-j6g2",
+  "modified": "2026-09-16T21:53:43Z",
+  "published": "2026-09-16T21:53:43Z",
+  "aliases": [
+    "CVE-2026-61592"
+  ],
+  "summary": "djust: SSE sessions are not bound to the authenticated user; the client-chosen session_id is the sole authorization capability (session hijack)",
+  "details": "### Impact\nSSE sessions were keyed solely by a **client-chosen** `session_id` with no binding to the authenticated user — a control the WebSocket transport has but that was dropped on SSE. An attacker who learns (or a victim who leaks) a `session_id` could connect to the message endpoint and dispatch event handlers that execute with the **victim's identity and state**.\n\n### Patches\nFixed in **djust 1.0.7**. Each SSE session is bound to its owning principal at creation and cross-principal access is rejected; SSE session creation is additionally capped per principal.\n\n### Workarounds\nDisable the SSE transport short of upgrading.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "djust"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/djust-org/djust/security/advisories/GHSA-f795-p5jw-j6g2"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/djust-org/djust"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/djust-org/djust/releases/tag/v1.0.7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-384",
+      "CWE-639",
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-16T21:53:43Z",
+    "nvd_published_at": null
+  }
+}
