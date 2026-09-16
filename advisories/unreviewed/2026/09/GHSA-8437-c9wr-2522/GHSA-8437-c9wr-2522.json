@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8437-c9wr-2522",
+  "modified": "2026-09-16T09:30:30Z",
+  "published": "2026-09-16T09:30:30Z",
+  "aliases": [
+    "CVE-2026-89790"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: avoid divide by zero in rt6_multipath_rebalance\n\nrt6_multipath_rebalance() calculates the total eligible nexthop weight\nin one pass and programs upper bounds in a second pass. Since\nRTM_NEWROUTE is RTNL-free, a concurrent\nignore_routes_with_linkdown update can make the first pass return zero\nwhile the second sees an eligible nexthop, causing\nrt6_upper_bound_set() to divide by zero.\n\nUBSAN: division-overflow in net/ipv6/route.c:4845:17\nOops: divide error: 0000 [#1] SMP KASAN NOPTI\n  rt6_upper_bound_set() net/ipv6/route.c:4845\n  rt6_multipath_rebalance()\n  fib6_add_rt2node()\n  ip6_route_multipath_add()\n  inet6_rtm_newroute()\n\nSkip upper-bound calculation when the first pass reports a zero total.\nThis respects the lock-free performance considerations here and solves\ninsecure scenarios.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89790"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2c26c2911dd1a363c488add4fb63eb5f0f28f87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f30cf8fd9872299c0c27f9916252ba2b9f422dce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f82b5dbb2fef65b52a62d5ffe05e0483c4385a83"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T09:17:09Z"
+  }
+}

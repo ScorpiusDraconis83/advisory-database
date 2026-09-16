@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g3p6-8r9x-w9g7",
+  "modified": "2026-09-16T09:30:29Z",
+  "published": "2026-09-16T09:30:29Z",
+  "aliases": [
+    "CVE-2026-89774"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: SCO: hold sk properly in sco_conn_ready\n\nsk deref in sco_conn_ready must be done either under conn->lock, or\nholding a refcount, to avoid concurrent close. conn->sk and parent sk is\ncurrently accessed without either, and without checking parent->sk_state:\n\n    [Task 1]            [Task 2]\n                        sco_sock_release\n    sco_conn_ready\n      sk = conn->sk\n                          lock_sock(sk)\n                            conn->sk = NULL\n      lock_sock(sk)\n                          release_sock(sk)\n                          sco_sock_kill(sk)\n       UAF on sk deref\n\nand similarly for access to sco_get_sock_listen() return value.\n\nFix possible UAF by holding sk refcount in sco_conn_ready() and making\nsco_get_sock_listen() increase refcount. Also recheck after lock_sock\nthat the socket is still valid.  Adjust conn->sk locking so it's\nprotected also by lock_sock() of the associated socket if any.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89774"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e37f6452d586b95c346a9abdd2fb80b67794f39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/50aae396dc30377bec8e3b181b8346f8fd38f7d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e3840578aaad1a296aab1eaaa89ea3b7d5cbae1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7199c78c3a3e399a4dc439d845826793880ccedc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/73cb063f5ec6ca51eb1e246c6d332563002ac277"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d141d9b769bcd1b747898528c5023270cda040f2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T09:17:07Z"
+  }
+}

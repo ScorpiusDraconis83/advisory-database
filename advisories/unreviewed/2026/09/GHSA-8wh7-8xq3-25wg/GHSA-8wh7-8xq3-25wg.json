@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8wh7-8xq3-25wg",
+  "modified": "2026-09-16T09:30:26Z",
+  "published": "2026-09-16T09:30:26Z",
+  "aliases": [
+    "CVE-2026-2380"
+  ],
+  "details": "On affected platforms running Arista EOS with OpenConfig-related services (i.e., gNMI, gNSI, RESTCONF and NETCONF), sensitive requests and responses may be unintentionally logged. These may be stored on the local EOS device or recorded on remote accounting servers. Note that gRPC-based streaming via Streaming Telemetry Agent to CloudVision is not affected by this vulnerability.\n\nExamples of sensitive information include:\n- Sensitive CLI commands (e.g., \"username bob secret myPass\")\n- Sensitive OpenConfig YANG leafs (e.g., \"system/aaa/global/tacacs/config/secret-key\")\n\nThis issue was discovered internally by Arista, and the company is not aware of any malicious exploitation of this vulnerability in customer networks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2380"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.arista.com/en/support/advisories-notices/security-advisory/24724-security-advisory-0168"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-256"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T09:17:04Z"
+  }
+}

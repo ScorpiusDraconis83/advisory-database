@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w62x-5q5r-fgmp",
+  "modified": "2026-09-16T09:30:26Z",
+  "published": "2026-09-16T09:30:26Z",
+  "aliases": [
+    "CVE-2026-77955"
+  ],
+  "details": "In NLnet Labs Unbound 1.13.2 up to and including 1.26.1, a vulnerability in ZONEMD configured zones (zonemd-check: yes) which are located below (but not at) a trust anchor allow for an attack window where (tampered with) zone contents are served (or stored to disk) prior to the ZONEMD integrity check. This is caused by the needed DS/DNSKEY asynchronous resolution that needs to happen before the ZONEMD check completes. If a zonefile is written to disk (zonefile: option) while the ZONEMD check failed, the tampered data are reloaded on startup and available until ZONEMD verification concludes again. If verification fails, the data is not served any more but still persists on disk for future reloads.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.nlnetlabs.nl/downloads/unbound/CVE-2026-77955.txt"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T09:17:05Z"
+  }
+}
