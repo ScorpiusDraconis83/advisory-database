@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hj6r-7gmv-7mph",
+  "modified": "2026-09-16T15:31:12Z",
+  "published": "2026-09-16T15:31:12Z",
+  "aliases": [
+    "CVE-2026-92468"
+  ],
+  "details": "zlt2000 microservices-platform through 6.0.0 contains an authorization bypass vulnerability in the search-center service that allows authenticated attackers to read any Elasticsearch index by specifying the index name in POST /search/{indexName} and GET /agg/requestStat/{indexName}/{routing} path variables. Attackers can query arbitrary indices including sys_user to retrieve sensitive user records and password hashes without proper access controls.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92468"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LinYuanyi1/cve-request-poc/blob/master/microservice-platform/C22_request_stat_agg.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LinYuanyi1/cve-request-poc/blob/master/microservice-platform/C24_search_any_index.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zlt2000/microservices-platform"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zlt2000/microservices-platform/blob/v6.0.0/zlt-business/search-center/search-server/src/main/java/com/central/search/controller/AggregationController.java#L33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zlt2000/microservices-platform/blob/v6.0.0/zlt-business/search-center/search-server/src/main/java/com/central/search/controller/SearchController.java#L36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/microservices-platform-through-6.0.0-arbitrary-elasticsearch-index-read-via-search-center"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T14:17:17Z"
+  }
+}

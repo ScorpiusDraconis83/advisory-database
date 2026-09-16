@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5h65-jm98-j8f7",
-  "modified": "2026-09-16T09:30:30Z",
+  "modified": "2026-09-16T15:30:57Z",
   "published": "2026-09-16T09:30:30Z",
   "aliases": [
     "CVE-2026-89792"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: prevent out-of-bounds reads in share config responses\n\nValidate IPC share configuration payload sizes before consuming\nvariable-length fields. Bound veto list parsing and account for\nthe separator byte when deriving the path length.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-16T09:17:10Z"

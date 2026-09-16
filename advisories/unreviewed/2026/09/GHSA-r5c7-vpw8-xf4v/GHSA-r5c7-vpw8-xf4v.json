@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r5c7-vpw8-xf4v",
+  "modified": "2026-09-16T15:31:13Z",
+  "published": "2026-09-16T15:31:13Z",
+  "aliases": [
+    "CVE-2026-82964"
+  ],
+  "details": "Improper preservation of permissions in the Avast sandbox minifilter driver (aswSnx.sys) on Windows allows a local, low-privileged attacker executing inside the sandbox to escape file isolation and escalate to SYSTEM.\n\n\n\nWhen the sandbox virtualizes a file it copies the original security descriptor, but the driver opened the virtualization target object with GENERIC_WRITE and FILE_WRITE_ATTRIBUTES only, omitting WRITE_DAC. Every attempt to apply the original DACL therefore failed, and the failure was discarded silently, leaving virtualized copies of sensitive files with permissive permissions. Because the IRP_MJ_CREATE callback additionally did not strip WRITE_DAC for sensitive directories, a sandboxed process could rewrite the security descriptor of a virtualized object, read the virtualized copy of the SAM database, extract local NTLM password hashes and execute code as SYSTEM.\n\n\n\nThe absence of an IRP_MJ_SET_SECURITY callback in the driver's operation registration table is a related defense-in-depth gap, but it is not the control that prevents this attack.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MSNightmare/PrettyPrague"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.avast.com/en-us/article/Update-Antivirus"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.avg.com/SupportArticleView?l=en&urlname=Update-AVG-Antivirus"
+    },
+    {
+      "type": "WEB",
+      "url": "https://support.norton.com/sp/en/us/home/current/solutions/v20240108175512167"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.gendigital.com/us/en/contact-us/security-advisories"
+    },
+    {
+      "type": "WEB",
+      "url": "https://x.com/msnightmare2000/status/2094106041046765752"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-281"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T15:17:55Z"
+  }
+}

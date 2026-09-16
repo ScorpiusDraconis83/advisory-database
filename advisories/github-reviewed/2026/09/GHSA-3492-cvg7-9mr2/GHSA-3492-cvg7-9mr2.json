@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3492-cvg7-9mr2",
+  "modified": "2026-09-16T15:32:10Z",
+  "published": "2026-09-16T15:32:10Z",
+  "aliases": [
+    "CVE-2026-61595"
+  ],
+  "summary": "djust: Multi-tenant isolation fails open on the WebSocket/SSE path, disclosing other tenants' data",
+  "details": "### Impact\n`djust.tenants` isolation was enforced only on the HTTP path. The current tenant was stored in `threading.local()` and set exclusively by the HTTP-only `TenantMiddleware`, so on the live (WebSocket/SSE) path `get_current_tenant()` was always `None` during mount and every event handler — and the tenant-aware `QuerySet` manager failed **OPEN** (returned the unfiltered queryset, ignoring `STRICT_MODE`), disclosing **every** tenant's rows to whoever held the socket. `threading.local` was additionally shared across connections on the `sync_to_async` executor thread.\n\n### Patches\nFixed in **djust 1.0.7**. Tenant storage moved to a `contextvars.ContextVar` (per async task); the resolved tenant is bound around WS/SSE mount and every dispatch; both managers scope the base queryset once and fail **CLOSED** (`.none()` under the default `STRICT_MODE`); and system check **S006** warns when `STRICT_MODE=False`.\n\n### Workarounds\nNo workaround on the live path short of upgrading.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "djust"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/djust-org/djust/security/advisories/GHSA-3492-cvg7-9mr2"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/djust-org/djust"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/djust-org/djust/releases/tag/v1.0.7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-636",
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-16T15:32:10Z",
+    "nvd_published_at": null
+  }
+}

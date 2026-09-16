@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-57x9-hhc6-cx9h",
+  "modified": "2026-09-16T15:31:14Z",
+  "published": "2026-09-16T15:31:14Z",
+  "aliases": [
+    "CVE-2026-92616"
+  ],
+  "details": "FileRise before version 3.28.0 contains a privilege escalation vulnerability that allows authenticated low-privilege attackers to gain unauthorized read and write access by exploiting improper session isolation between the WebDAV interface and the web application session context. Attackers can combine valid Basic-Auth credentials with an active admin PHPSESSID cookie to bypass authorization boundaries, as the WebDAV layer incorrectly inherits elevated privileges from an ambient web session rather than enforcing independent stateless authentication per RFC 4918.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92616"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/error311/FileRise/releases/tag/v3.28.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/filerise-privilege-escalation-via-webdav-session-inheritance"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T15:19:02Z"
+  }
+}

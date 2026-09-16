@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-6hg4-jgf3-q6jw",
-  "modified": "2026-09-15T21:31:18Z",
+  "modified": "2026-09-16T15:30:56Z",
   "published": "2026-09-15T21:31:18Z",
   "aliases": [
     "CVE-2026-57012"
   ],
   "details": "In the Setup Wizard, there is a possible remote package install due to a missing permission check. This could lead to remote escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-693"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-15T19:17:30Z"

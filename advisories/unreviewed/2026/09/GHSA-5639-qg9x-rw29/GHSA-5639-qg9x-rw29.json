@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5639-qg9x-rw29",
+  "modified": "2026-09-16T15:31:13Z",
+  "published": "2026-09-16T15:31:13Z",
+  "aliases": [
+    "CVE-2026-74909"
+  ],
+  "details": "Keycloak provides a policy enforcer to protect applications by matching incoming web requests against defined security policies. A flaw was found where the enforcer fails to correctly normalize web addresses that contain special encoded characters, such as those representing semicolons or directory traversal segments. An authenticated user can use these encoded characters to trick the enforcer into applying a less restrictive security policy than intended, potentially gaining unauthorized access to sensitive administrative or private application endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74909"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-74909"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2517354"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T15:17:43Z"
+  }
+}

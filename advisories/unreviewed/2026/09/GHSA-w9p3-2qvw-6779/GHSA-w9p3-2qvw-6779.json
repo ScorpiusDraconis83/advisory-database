@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w9p3-2qvw-6779",
+  "modified": "2026-09-16T15:31:10Z",
+  "published": "2026-09-16T15:31:10Z",
+  "aliases": [
+    "CVE-2026-56719"
+  ],
+  "details": "MikroTik RouterOS before 7.24 contains an out-of-bounds read vulnerability in the userspace SMB daemon that allows unauthenticated attackers to read beyond the end of the request buffer by supplying a crafted uniPwdLen field value in a minimal SMB1 SessionSetupAndX frame. The out-of-bounds read occurs in the SessionSetupAndX handler before any credential validation, potentially exposing sensitive memory contents.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56719"
+    },
+    {
+      "type": "WEB",
+      "url": "https://forum.mikrotik.com/t/7-24-stable-is-released/272381"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mikrotik-routeros-out-of-bounds-read-via-smb1-sessionsetupandx"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T14:17:05Z"
+  }
+}

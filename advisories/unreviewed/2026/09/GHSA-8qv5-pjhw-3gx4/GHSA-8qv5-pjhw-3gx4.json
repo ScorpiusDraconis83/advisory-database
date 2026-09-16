@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8qv5-pjhw-3gx4",
+  "modified": "2026-09-16T15:31:13Z",
+  "published": "2026-09-16T15:31:13Z",
+  "aliases": [
+    "CVE-2026-79651"
+  ],
+  "details": "A flaw was found in the theme localization endpoints of the keycloak-services component, which is the core service responsible for authentication flows and theme management in Keycloak. The issue occurs because the system accepts arbitrary locale tags from unauthenticated requests and stores them in a permanent in-memory cache without limits. An attacker can exploit this by sending a large number of unique locale tags, eventually causing the server to run out of memory and crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79651"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-79651"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2523345"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T15:17:52Z"
+  }
+}

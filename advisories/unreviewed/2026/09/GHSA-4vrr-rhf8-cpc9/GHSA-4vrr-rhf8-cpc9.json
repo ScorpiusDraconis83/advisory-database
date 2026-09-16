@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4vrr-rhf8-cpc9",
+  "modified": "2026-09-16T15:31:13Z",
+  "published": "2026-09-16T15:31:13Z",
+  "aliases": [
+    "CVE-2026-84860"
+  ],
+  "details": "ScadaLTS 2.8.1-release-candidate build 0 is affected by an Authorization Bypass\n\n\n\nSpring Security gates DWR endpoints by URL path pattern, but DWR itself dispatches method calls based on the POST body parameters c0-scriptName and c0-methodName. The crossDomainSessionSecurity setting in web.xml is set to false, which disables DWR's built-in origin validation. This means any authenticated user can invoke any DWR method (regardless of the URL-based access control) by sending their request to a URL they are permitted to access (e.g. MiscDwr.initializeLongPoll.dwr) while targeting a restricted class in the POST body.\n\n\n\nThis is the systemic root cause that enables multiple other findings to be exploited as a low privilege user.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84860"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.tenable.com/security/research/tra-2026-60"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T15:18:00Z"
+  }
+}

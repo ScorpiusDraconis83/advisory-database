@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pqfm-7x4v-9w63",
+  "modified": "2026-09-16T15:31:10Z",
+  "published": "2026-09-16T15:31:09Z",
+  "aliases": [
+    "CVE-2026-19662"
+  ],
+  "details": "An attacker may be able to cause a `named` resolver to abort. The attack requires inducing the victim resolver to send multiple queries for a DNSSEC-signed zone hosted by an authoritative server under the control of the attacker. If the auth responds with a particular sequence of crafted answers, and those answers arrive in a particular order with particular timing, the `named` resolver will encounter a use-after-free bug, and abort.\nThis issue affects BIND 9 versions 9.11.0 through 9.18.50, 9.20.0 through 9.20.27, 9.11.3-S1 through 9.18.50-S1, and 9.20.9-S1 through 9.20.27-S1.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19662"
+    },
+    {
+      "type": "WEB",
+      "url": "https://downloads.isc.org/isc/bind9/9.20.29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kb.isc.org/docs/cve-2026-19662"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T14:17:04Z"
+  }
+}
