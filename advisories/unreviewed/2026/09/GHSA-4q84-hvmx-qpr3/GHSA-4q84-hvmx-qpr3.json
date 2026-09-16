@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4q84-hvmx-qpr3",
+  "modified": "2026-09-15T21:31:21Z",
+  "published": "2026-09-15T21:31:21Z",
+  "aliases": [
+    "CVE-2026-81923"
+  ],
+  "details": "In Concrete CMS before 9.5.3, the SEO Bulk Update Meta Tags editor did not check per-page edit permissions before saving. The saveRecord() action validated the per-page CSRF token but never called canEditPageProperties() for the target page, so a user who was granted access to the bulk SEO tool and could view (but not edit) a given page was able to change that page's meta title, meta description, and URL handle outside their edit scope, tampering with the presentation and live URLs of otherwise protected content. The Concrete CMS security team gave this vulnerability a CVSS v4.0 score of 2.1 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks Andrew Gonzalez for reporting.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81923"
+    },
+    {
+      "type": "WEB",
+      "url": "https://documentation.concretecms.org/developers/introduction/version-history/953-release-notes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T19:17:41Z"
+  }
+}

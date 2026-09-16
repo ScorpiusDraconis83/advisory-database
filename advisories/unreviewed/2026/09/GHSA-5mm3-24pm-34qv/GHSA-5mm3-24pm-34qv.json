@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5mm3-24pm-34qv",
+  "modified": "2026-09-15T18:32:28Z",
+  "published": "2026-09-15T18:32:28Z",
+  "aliases": [
+    "CVE-2026-91953"
+  ],
+  "details": "FreeRDP versions before 3.31.0 contain a heap buffer overflow vulnerability in nego_send_negotiation_request() that fails to validate the LB_LOAD_BALANCE_INFO field length before writing to a fixed 512-byte buffer. A malicious RDP server or man-in-the-middle can send a Server Redirection PDU with an oversized LB_LOAD_BALANCE_INFO value to overflow the buffer with attacker-controlled content, causing denial of service or heap corruption before authentication completes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-r9pv-ffph-6gg6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91953"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/freerdp-before-3.31.0-heap-buffer-overflow-via-lb-load-balance-info"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T16:17:49Z"
+  }
+}

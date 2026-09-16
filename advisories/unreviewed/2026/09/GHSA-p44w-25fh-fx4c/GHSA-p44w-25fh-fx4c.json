@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p44w-25fh-fx4c",
+  "modified": "2026-09-15T18:32:33Z",
+  "published": "2026-09-15T18:32:33Z",
+  "aliases": [
+    "CVE-2026-79699"
+  ],
+  "details": "A flaw was found in the containers/storage library. A crafted tar archive containing a malicious whiteout header (e.g. victim/.wh.) can cause the extraction destination directory to be replaced with an arbitrary file when processed by storage/pkg/archive.UnpackLayer, ApplyLayer, or ApplyUncompressedLayer.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79699"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-79699"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2523408"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-59"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T17:17:27Z"
+  }
+}

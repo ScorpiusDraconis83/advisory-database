@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c7vx-mcw6-m8m4",
+  "modified": "2026-09-15T18:32:30Z",
+  "published": "2026-09-15T18:32:30Z",
+  "aliases": [
+    "CVE-2026-91967"
+  ],
+  "details": "AVideo through 29.0 contains a blind server-side request forgery vulnerability in the getHeaderContentTypeFromURL function that issues get_headers() calls guarded only by format validation. Authenticated users with canUpload permission can store attacker-chosen URLs as video links, triggering vulnerable function execution on every video watch page render to probe internal hosts using content-type oracles and timing-based detection.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WWBN/AVideo/security/advisories/GHSA-vjgr-5x63-cq96"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91967"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/avideo-through-29.0-blind-ssrf-via-getheadercontenttypefromurl"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T16:17:52Z"
+  }
+}

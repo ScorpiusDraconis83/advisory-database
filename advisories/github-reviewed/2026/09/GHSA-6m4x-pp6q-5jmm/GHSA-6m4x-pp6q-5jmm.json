@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6m4x-pp6q-5jmm",
+  "modified": "2026-09-15T19:52:58Z",
+  "published": "2026-09-15T19:52:58Z",
+  "aliases": [
+    "CVE-2026-69202"
+  ],
+  "summary": "Http4s Ember HTTP/2: unbounded inbound body buffering",
+  "details": "Ember's HTTP/2 stack replenishes the inbound flow-control window based on bytes\nreceived off the wire, not bytes consumed by the application.  Received DATA is buffered in an unbounded per-stream channel.  Flow control therefore\nprovides no backpressure: a peer can stream a large or unbounded body faster than the application drains it and the connection retains every payload in heap.\n\nThis is the read-path mirror of the [outbound queue issue](https://github.com/http4s/http4s/security/advisories/GHSA-8f3q-3jmv-7prw).\n\nThis affects an Ember receiving a request body and an Ember client receiving a response body from a hostile server.\n\n### Impact\n\nUnauthenticated remote denial of service (OOM) against any Ember server built\n`.withHttp2` for a non-draining or slow-draining route, and against an Ember client consuming from a hostile or compromised server.\n\n### Workarounds\n\n- Disable HTTP/2 to remove the vector entirely.\n- Apply an aggregate request-entity size limit (e.g. `EntityLimiter` middleware) on routes that consume the body.\n- Ensure handlers fully drain request bodies with aggressive idle timeouts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.http4s:http4s-ember-core_2.12"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.23.35"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 0.23.34"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.http4s:http4s-ember-core_2.13"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.23.35"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 0.23.34"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.http4s:http4s-ember-core_3"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.23.35"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 0.23.34"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.http4s:http4s-ember-core_2.13"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0-M1"
+            },
+            {
+              "fixed": "1.0.0-M47"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.0.0-M46"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.http4s:http4s-ember-core_3"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0-M1"
+            },
+            {
+              "fixed": "1.0.0-M47"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.0.0-M46"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/http4s/http4s/security/advisories/GHSA-6m4x-pp6q-5jmm"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/http4s/http4s/commit/22d2335975d02dc9fb9fb75cfe002279521d86ac"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/http4s/http4s"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/http4s/http4s/releases/tag/v0.23.35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/http4s/http4s/releases/tag/v1.0.0-M47"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400",
+      "CWE-770"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-15T19:52:58Z",
+    "nvd_published_at": null
+  }
+}

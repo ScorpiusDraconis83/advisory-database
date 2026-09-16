@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xv9c-9hwm-jp8g",
+  "modified": "2026-09-15T21:33:06Z",
+  "published": "2026-09-15T21:33:06Z",
+  "aliases": [
+    "CVE-2026-91939"
+  ],
+  "details": "Cotonti 1.0.0 Comments plugin passes the ci GET parameter to unserialize() without allowed_classes restriction, allowing unauthenticated attackers to instantiate arbitrary PHP classes with attacker-controlled properties. Attackers can exploit PHP object injection through crafted serialized payloads to trigger gadget chains and achieve database manipulation or code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91939"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/issues/1888"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/pull/1889"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/blob/1.0.0/plugins/comments/comments.setup.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/blob/1.0.0/plugins/comments/controllers/actions/DisplayAction.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/blob/1.0.0/plugins/comments/inc/CommentsWidget.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cotonti-1.0.0-comments-plugin-php-object-injection-via-ci-parameter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-15T21:16:48Z"
+  }
+}
