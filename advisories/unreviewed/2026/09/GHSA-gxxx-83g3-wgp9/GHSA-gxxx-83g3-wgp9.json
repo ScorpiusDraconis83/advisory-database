@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gxxx-83g3-wgp9",
+  "modified": "2026-09-16T18:32:07Z",
+  "published": "2026-09-16T18:32:07Z",
+  "aliases": [
+    "CVE-2026-92716"
+  ],
+  "details": "Shuffle through 2.2.1 contains a cross-tenant privilege escalation vulnerability in the HandleApiGeneration endpoint that allows administrators to reset and read API keys of non-administrator users in other organizations. Attackers with admin privileges in one organization can supply arbitrary user IDs to generate valid API keys for users in different organizations, enabling account takeover across tenant boundaries.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92716"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Shuffle/shuffle-shared/commit/c1b582e91b429bc7d5ad02e6c22f98234ec67615"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Shuffle/Shuffle"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Shuffle/shuffle-shared/blob/v1.2.50/shared.go#L9888-L9912"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/geo-chen/oss/blob/main/shuffle.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/shuffle-through-2.2.1-api-key-reset-cross-tenant-privilege-escalation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T18:17:22Z"
+  }
+}

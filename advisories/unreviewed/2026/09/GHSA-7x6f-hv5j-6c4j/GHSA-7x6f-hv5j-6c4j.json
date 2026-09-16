@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7x6f-hv5j-6c4j",
+  "modified": "2026-09-16T18:32:06Z",
+  "published": "2026-09-16T18:32:05Z",
+  "aliases": [
+    "CVE-2026-47094"
+  ],
+  "details": "SIMAC MyPHR 1.1 contains an insecure direct object reference (IDOR) vulnerability that allows authenticated attackers to access and modify arbitrary employee records due to missing server-side ownership validation. Attackers can send a PUT request to the employee update endpoint with an arbitrary employee identifier and a controlled password value to take over target accounts, enumerate employee records, and retrieve sensitive personally identifiable information including private pay bulletins.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/LnPaulin/33e9b08ef0e26198afbfcc1343850682"
+    },
+    {
+      "type": "WEB",
+      "url": "https://it.simac.tn/nos-solutions/logiciel-de-gestion-des-ressources-humaines"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/simac-myphr-idor-account-takeover-via-api-employes-put-id"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T18:17:09Z"
+  }
+}

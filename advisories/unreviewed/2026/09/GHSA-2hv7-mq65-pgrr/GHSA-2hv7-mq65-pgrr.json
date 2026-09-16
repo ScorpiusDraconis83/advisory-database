@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2hv7-mq65-pgrr",
+  "modified": "2026-09-16T18:32:07Z",
+  "published": "2026-09-16T18:32:07Z",
+  "aliases": [
+    "CVE-2026-92605"
+  ],
+  "details": "IRIS through 2.4.29 fails to properly validate case authorization in comment listing endpoints for notes, tasks, IOCs, assets, and evidence items. Attackers with access to any single case can enumerate sequential object identifiers and read comment threads from cases they have no authorization to access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92605"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dfir-iris/iris-web"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dfir-iris/iris-web/blob/v2.4.29/source/app/blueprints/case/case_notes_routes.py#L404-L411"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dfir-iris/iris-web/blob/v2.4.29/source/app/datamgmt/case/case_comments.py#L22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/geo-chen/oss/blob/main/iris-web.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/iris-through-2.4.29-unauthorized-comment-access-via-object-id"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T18:17:22Z"
+  }
+}

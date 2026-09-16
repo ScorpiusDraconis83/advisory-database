@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8qc6-4wmj-p8f9",
+  "modified": "2026-09-16T18:32:05Z",
+  "published": "2026-09-16T18:32:05Z",
+  "aliases": [
+    "CVE-2026-92603"
+  ],
+  "details": "ContiNew Admin through 4.1.0 contains an authorization bypass vulnerability in the personal message delete endpoint that allows authenticated users to delete other users' messages and announcements. Attackers can supply arbitrary message identifiers in the IdsReq parameter to remove any message row and purge all recipients' read receipts without ownership validation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/continew-org/continew-admin/issues/220"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/continew-org/continew-admin/commit/665ea2c757a3f1246db62fb139fec1aac3cca296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/continew-org/continew-admin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/continew-org/continew-admin/blob/v4.1.0/continew-system/src/main/java/top/continew/admin/system/controller/UserMessageController.java#L93-L97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/continew-org/continew-admin/blob/v4.1.0/continew-system/src/main/java/top/continew/admin/system/service/impl/MessageServiceImpl.java#L130-L135"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/continew-admin-through-4.1.0-unauthorized-message-deletion-via-usermessagecontroller"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T17:18:20Z"
+  }
+}

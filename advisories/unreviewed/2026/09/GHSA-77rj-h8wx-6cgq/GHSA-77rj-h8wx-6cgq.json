@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-77rj-h8wx-6cgq",
+  "modified": "2026-09-16T18:32:07Z",
+  "published": "2026-09-16T18:32:07Z",
+  "aliases": [
+    "CVE-2026-92718"
+  ],
+  "details": "Nuclei versions before 3.11.1 cache template signature verification based only on file modification time without content checksums. Attackers can replace verified templates with unsigned malicious content and restore the original modification time to bypass signature checks and execute arbitrary operating system commands.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92718"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectdiscovery/nuclei/issues/7663"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectdiscovery/nuclei/commit/9de96e4dda5a03da963b9ae6582f03ea55791a76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectdiscovery/nuclei"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectdiscovery/nuclei/blob/v3.11.0/pkg/catalog/index/metadata.go#L78-L84"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/projectdiscovery/nuclei/blob/v3.11.0/pkg/templates/compile.go#L610-L624"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nuclei-from-3.7.0-before-3.11.1-template-signature-bypass-via-modification-time-only-cache"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-347"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-16T18:17:22Z"
+  }
+}
