@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xp8x-3q7w-cpqr",
+  "modified": "2026-09-17T21:31:42Z",
+  "published": "2026-09-17T21:31:42Z",
+  "aliases": [
+    "CVE-2026-15815"
+  ],
+  "details": "Grafana OSS and Grafana Enterprise did not safely resolve symbolic links when\nextracting plugin archives. A crafted plugin archive can chain relative symbolic link\nentries to escape the plugin installation directory, writing arbitrary files and an\nexecutable backend binary outside that directory. The dropped executable runs with the\nprivileges of the Grafana server process, resulting in remote code execution.\n\nPlugin archives are extracted before their signature is verified, so a valid plugin\nsignature does not prevent the write. An operator can therefore be affected by\ninstalling a plugin that appears legitimate, as well as by installing a plugin from an\narbitrary archive using grafana-cli, the GF_INSTALL_PLUGINS environment variable, or\npreinstall configuration.\n\nGrafana Enterprise is affected because it includes the same plugin extraction code as\nGrafana OSS.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15815"
+    },
+    {
+      "type": "WEB",
+      "url": "https://grafana.com/security/security-advisories/cve-2026-15815"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T21:17:11Z"
+  }
+}
