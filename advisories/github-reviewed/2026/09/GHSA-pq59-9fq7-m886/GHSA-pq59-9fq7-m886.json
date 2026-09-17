@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pq59-9fq7-m886",
+  "modified": "2026-09-17T16:30:37Z",
+  "published": "2026-09-17T16:30:37Z",
+  "aliases": [
+    "CVE-2026-77401"
+  ],
+  "summary": "Zope AccessControl vulnerable to information disclosure through Python string `format` and `format_map` functions",
+  "details": "### Impact\nPython's string `format` functionality allows someone controlling the format string to \"read\" objects accessible (recursively) via attribute access and subscription from accessible objects. Those attribute accesses and subscriptions use Python's full blown `getattr` and `getitem`, not the policy restricted `AccessControl` variants `_getattr_` and `_getitem_`. This can lead to critical information disclosure.\n\nThe `AccessControl` package already guards against direct access to the formatting functions on string instances, but these mitigations did not cover subclasses of `str`.\n\nAffected are all users who allow untrusted users to create AccessControl controlled Python code and execute it.\n\n### Patches\nA fix was published with version 7.4.\n\n### Workarounds\nThere is no workaround.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "AccessControl"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "7.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/zopefoundation/AccessControl/security/advisories/GHSA-pq59-9fq7-m886"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77401"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zopefoundation/AccessControl/commit/f980450eea416718be62847f34dfd51822938e43"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/zopefoundation/AccessControl"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zopefoundation/AccessControl/releases/tag/7.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-693"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-17T16:30:37Z",
+    "nvd_published_at": "2026-09-16T15:17:46Z"
+  }
+}

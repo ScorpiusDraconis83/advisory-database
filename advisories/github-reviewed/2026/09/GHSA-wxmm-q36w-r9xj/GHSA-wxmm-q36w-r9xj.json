@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wxmm-q36w-r9xj",
+  "modified": "2026-09-17T16:29:54Z",
+  "published": "2026-09-17T16:29:53Z",
+  "aliases": [
+    "CVE-2026-61700"
+  ],
+  "summary": "MariaDB Connector/J does not enforce allowLocalInfile=false  on server-initiated LOCAL INFILE requests",
+  "details": "## Summary\n\nMariaDB Connector/J does not enforce `allowLocalInfile=false` when \nprocessing server-initiated LOCAL INFILE requests (protocol packet \ntype `0xfb`). However, exploitation is constrained: the server can \nonly request the exact filename the client already included in its \n`LOAD DATA LOCAL INFILE` query, it cannot redirect to arbitrary paths.\n\n## Details\n\nWhen a client executes `LOAD DATA LOCAL INFILE '/path/to/file'`, the \nconnector sends the filename to the server as part of the COM_QUERY. \nA rogue or MitM server responds with a `0xfb` packet echoing that \nsame filename. The connector, without checking `allowLocalInfile`, \ntransmits the file content.\n\nThe bypass is therefore limited to the file the application itself \nintended to load. The attacker cannot escalate to other files \n(e.g. `/etc/passwd`) unless the application's own query targets them.\n\nThe real-world risk is:\n- An application that uses `LOAD DATA LOCAL INFILE` on potentially \n  sensitive files (credentials, exports, configs) and connects over \n  an untrusted network.\n- `allowLocalInfile=false` is supposed to disable this entire \n  mechanism as a defense-in-depth measure, but the flag is ignored.\n\n## Impact\n\nThe security guarantee of `allowLocalInfile=false` is not upheld, \nbut practical exploitation requires both a MitM/rogue server and an \napplication that actively uses LOCAL INFILE on sensitive data.\n\n## Credit\n\nReported by tharavel",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.mariadb.jdbc:mariadb-java-client"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.7.14"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.mariadb.jdbc:mariadb-java-client"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.3.5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.mariadb.jdbc:mariadb-java-client"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.4.0"
+            },
+            {
+              "fixed": "3.4.3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.mariadb.jdbc:mariadb-java-client"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.5.0"
+            },
+            {
+              "fixed": "3.5.9"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mariadb-corporation/mariadb-connector-j/security/advisories/GHSA-wxmm-q36w-r9xj"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mariadb-corporation/mariadb-connector-j/commit/0205d8be947918566cd9ce5a9db149541bbc8dee"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/mariadb-corporation/mariadb-connector-j"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mariadb-corporation/mariadb-connector-j/releases/tag/3.5.9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-17T16:29:53Z",
+    "nvd_published_at": null
+  }
+}

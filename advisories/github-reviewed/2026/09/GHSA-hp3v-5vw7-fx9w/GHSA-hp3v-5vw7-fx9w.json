@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hp3v-5vw7-fx9w",
+  "modified": "2026-09-17T16:30:22Z",
+  "published": "2026-09-17T16:30:22Z",
+  "aliases": [
+    "CVE-2026-76825"
+  ],
+  "summary": "RestrictedPython vulnerable to sandbox escape via string.Formatter field resolution",
+  "details": "### Impact\nRestrictedPython could allow a sandbox escape when a policy exposes the standard library `string` module, or otherwise exposes `string.Formatter`, to restricted code.\n\n`string.Formatter` field resolution methods such as `get_field` can perform attribute and item traversal internally and return live object references. This can bypass RestrictedPython's normal attribute guards and may allow access to sensitive objects such as function globals, builtins, file access, or code execution primitives.\n\nUsers are impacted if they run untrusted code with RestrictedPython and expose `string.Formatter`, directly or indirectly, for example through a custom import policy or globals.\n\n### Patches\nThe problem has been patched by blocking access to `string.Formatter` and unsafe `string.Formatter` traversal methods in `safer_getattr`.\n\nUsers should upgrade to the patched release once available. Affected and patched version numbers should be filled in when the release is published.\n\n### Workarounds\nDo not expose the standard library `string` module or `string.Formatter` to restricted code.\n\nIf a custom import hook is used, deny imports of `string` or provide only a restricted wrapper that does not expose `Formatter`. If custom globals are supplied, ensure neither `string.Formatter` nor `Formatter` instances are available to restricted code.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "RestrictedPython"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "8.4"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/zopefoundation/RestrictedPython/security/advisories/GHSA-hp3v-5vw7-fx9w"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76825"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zopefoundation/RestrictedPython/commit/3b47440070b91f8807c2b2998aca99e94783639a"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/zopefoundation/RestrictedPython"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/zopefoundation/RestrictedPython/releases/tag/8.4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200",
+      "CWE-470",
+      "CWE-680",
+      "CWE-693"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-17T16:30:22Z",
+    "nvd_published_at": "2026-09-16T15:17:46Z"
+  }
+}
