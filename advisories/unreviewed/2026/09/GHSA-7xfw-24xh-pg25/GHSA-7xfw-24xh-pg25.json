@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7xfw-24xh-pg25",
+  "modified": "2026-09-17T18:32:11Z",
+  "published": "2026-09-17T18:32:11Z",
+  "aliases": [
+    "CVE-2026-93110"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/core: Wait for RCU callbacks before unloading ib_core\n\nput_gid_ndev() is queued with call_rcu() and implemented in ib_core.\nStopping the workqueues does not drain callbacks already queued, so RCU\ncould invoke it after the module code has been unloaded.\n\nsynchronize_rcu() does not wait for callbacks. Wait for them after all\nproducers have stopped.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d5817fa4819abdc445fa77b5be4f0d49334a864"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1646e123e56c3ad679fbfb571e8eef6386efb729"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48b72fa0d209a92fb51b834a6080171cfa207b2c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7853af5f15738dc00aebaa1fc9f1f0df40f6f603"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d75592114d1664623c8cf191a12b38052c04483"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82dfd1df456227279b1c8c648983a530f2612098"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8e4f1677c09d75d738099f42afcf65d8587b664a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9d998297fdaf47492f6679287f6552879d1a7e3a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:05Z"
+  }
+}

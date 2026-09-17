@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6wmr-43p3-p5m9",
+  "modified": "2026-09-17T18:32:09Z",
+  "published": "2026-09-17T18:32:09Z",
+  "aliases": [
+    "CVE-2026-93079"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncxl/features: Reject Get Feature count larger than the output buffer\n\ncxlctl_get_feature() sizes its output buffer from the user's\nfwctl_rpc.out_len, but the device is told to write\ncxl_mbox_get_feat_in.count bytes into rpc_out->payload, which is a\nseparate user-controlled value. Nothing bounds count against out_len, so\na small out_len with a large count overflows the kvzalloc()'d buffer.\nA heap OOB write reachable from FWCTL_RPC.\n\nReject requests where count exceeds the available payload room, before\nallocating.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93079"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/329ea475581c647a680a6937e353c1a6e2534b40"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f02031a0a53de0d3ef066c92d0486b2b11be40c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4bf6bac375076ced2fa4b3fef8739bd985f93456"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:01Z"
+  }
+}

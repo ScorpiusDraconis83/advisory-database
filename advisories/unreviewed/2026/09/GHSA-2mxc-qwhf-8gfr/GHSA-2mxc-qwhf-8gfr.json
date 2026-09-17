@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2mxc-qwhf-8gfr",
+  "modified": "2026-09-17T18:32:07Z",
+  "published": "2026-09-17T18:32:07Z",
+  "aliases": [
+    "CVE-2026-92505"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/amd: Fix undefined behavior in devid_write debugfs function\n\nWhen for_each_pci_segment() loop completes without finding a matching\nsegment, the pci_seg pointer is not NULL but points to an invalid memory\nlocation (the list head). Accessing pci_seg->id after the loop causes\nundefined behavior.\n\nFix this by handling the successful case inside the loop and returning\n-EINVAL after the loop if no matching segment is found.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92505"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/843e149989665f8309ad2efe6048dc76591e1f94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8aabe0fba01486b5d893e708b05a8fa7f1b7efbb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/99d42aef089a07cfb1d404a7227ac9dc7628b497"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:53Z"
+  }
+}

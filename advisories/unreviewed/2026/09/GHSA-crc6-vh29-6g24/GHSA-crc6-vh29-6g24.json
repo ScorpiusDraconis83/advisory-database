@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-crc6-vh29-6g24",
+  "modified": "2026-09-17T18:32:01Z",
+  "published": "2026-09-17T18:32:01Z",
+  "aliases": [
+    "CVE-2026-90331"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: asus: refactor the two workqueues and init sequence\n\nMultiple issues have been found within the hid-asus driver:\n- unchecked size in asus_raw_event()\n- unclean teardown of asus_probe on failure\n- possible use-after-free in asus_probe\n- multiple workqueue used for jobs where one was enough\n- sleeping calls in atomic context\n- packets of incorrect size being sent to the keyboard controller\n\nJoin the two workqueues into one reusing the stopping mechanism\nof the brightness workqueue, use the joined workqueue to also\nmove the asus_wmi_send_event() sleeping call away from atomic\ncontext and add a size check in asus_raw_event().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90331"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/47669bec44fe12fe2c7adf2b299e980d7935a2ce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/744b3f930c1173ad57f49b614fc875d8d2715396"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:31Z"
+  }
+}

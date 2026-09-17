@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vh7j-gj65-xh7c",
+  "modified": "2026-09-17T18:32:06Z",
+  "published": "2026-09-17T18:32:06Z",
+  "aliases": [
+    "CVE-2026-92486"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix CFI mismatch in task work callback\n\nBPF subprograms use the bpf_callback_t ABI, but task work invokes the\ncallback through a three-argument function pointer. This trips kCFI.\n\nStore and invoke the callback as bpf_callback_t.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92486"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2805abd089576799b15092949420e3f8ba97fabd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85a33c910edc3651f68b17ae3c597c012545958f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a2cbab47f44e9ea8c5a161ecba1b6bb8535771eb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:50Z"
+  }
+}

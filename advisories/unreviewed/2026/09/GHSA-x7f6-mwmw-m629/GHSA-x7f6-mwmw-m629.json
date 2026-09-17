@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x7f6-mwmw-m629",
+  "modified": "2026-09-17T18:32:09Z",
+  "published": "2026-09-17T18:32:09Z",
+  "aliases": [
+    "CVE-2026-93089"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scmi: Free transport channel on IDR failure\n\nIf transport channel setup succeeds but the following IDR insertion fails,\nthe error path destroys the transport device and frees the channel info\nwithout invoking the transport cleanup callback.\n\nCall chan_free() before destroying the device so transport specific\nresources such as IRQs, mailbox channels and mapped shared memory are\nreleased consistently with the normal teardown path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93089"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae7980c9af698d0a7e6790d49249abc71f0fc304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d72e7e5f24687c0490aabf317653caffe0447aeb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7c60c0fe2bd452b56fe07947842d64da61b7290"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de0a4c103740cf54cf77370d47e03c9aa51aa5ee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fbaebd380caa4e1cec9306ca00231da6518a123f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:02Z"
+  }
+}

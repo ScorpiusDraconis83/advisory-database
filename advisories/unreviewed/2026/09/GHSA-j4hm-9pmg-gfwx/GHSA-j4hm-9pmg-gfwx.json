@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4hm-9pmg-gfwx",
+  "modified": "2026-09-17T18:31:51Z",
+  "published": "2026-09-17T18:31:51Z",
+  "aliases": [
+    "CVE-2026-90123"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nirqchip/ast2700-intc: Avoid allocating in the irq_domain activate() callback\n\nThe interrupt core calls the irq_domain_activate() callback from\n__setup_irq() with desc->lock held and interrupts disabled. Both\naspeed_intc1_irq_domain_activate() and aspeed_intc0_resolve_route() test a\ncompatible string with fwnode_device_is_compatible().\n\nfwnode_device_is_compatible() invokes fwnode_property_match_string(), which\nallocates with GFP_KERNEL. That's obviously not possible with interrupts\ndisabled and a raw spinlock held.\n\nBoth call sites are only ever handed OF nodes, so use\nof_device_is_compatible() instead: it walks the property in place and does\nnot allocate.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90123"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b76eee9c2157223aa4aac42ceebb563288e078aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2f0da11648616e47419dca93610f6c0d70ec00b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:04Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vrhg-47fw-7vch",
+  "modified": "2026-09-17T18:32:04Z",
+  "published": "2026-09-17T18:32:04Z",
+  "aliases": [
+    "CVE-2026-90404"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/chrome: cros_ec_debugfs: Unregister panic notifier\n\ncros_ec_debugfs_probe() registers notifier_panic with the EC panic\nnotifier chain. The remove path tears down debugfs and the console log,\nbut leaves the notifier registered. A later panic notification can call\nback into the removed instance and queue work that accesses released\ndata.\n\nUnregister the panic notifier before tearing down the debugfs and\nconsole log state.\n\nThis issue was found by a static analysis tool.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90404"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05c1081ae4503e45b934b390350f942db3208892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/56989e2a9c292ff7689603feed41d030301ca636"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a5d3128b06ccfc398c2e456fddebadce52310bd8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2cbe14361d7cb0b5abd66d87f3afa0e16efde9f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e5954d3031fb55dd31aa59bae477d63c68e941c0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:40Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-279q-p928-6329",
+  "modified": "2026-09-17T18:31:50Z",
+  "published": "2026-09-17T18:31:50Z",
+  "aliases": [
+    "CVE-2026-90096"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse: invalidate the correct range after O_APPEND direct write\n\nfuse_direct_write_iter() captures pos before generic_write_checks(),\nwhich moves ki_pos to EOF for O_APPEND writes:\n\n  fuse_direct_write_iter()\n  {\n      pos = iocb->ki_pos;           /* 0 (user-supplied)       */\n      generic_write_checks();       /* ki_pos -> EOF           */\n      fuse_direct_io();             /* writes at EOF, correct  */\n      invalidate(pos, pos + res);   /* [0, res) -- wrong       */\n  }\n\nThe post-write invalidation targets a stale range instead of the\nactual written range at EOF.\n\nThis can cause data inconsistency when the file size is not\npage-aligned.  The tail page straddling EOF has a valid portion\nbefore EOF that concurrent readers can fault back in during the\nDIO write window:\n\n  Tail page (file size X not page-aligned):\n\n    page_start         X (EOF)   page_end\n    |--- valid data ----|-- stale --|\n\n  CPU0 (O_APPEND DIO writer)    CPU1 (buffered reader)\n  --------------------------    ----------------------\n  invalidate [X, X+len)\n    tail page evicted\n  FUSE_WRITE in flight ...\n                                read [page_start, X)\n                                  tail page re-faulted\n                                  [X, page_end) = stale\n  FUSE_WRITE completes\n  i_size = X + len\n  invalidate [0, len)  <- WRONG\n    tail page still cached\n                                read [X, X+len)\n                                  hits stale tail page\n                                  returns old data\n\nFix by reading pos back from iocb->ki_pos after generic_write_checks(),\nas generic_file_direct_write() does.\n\nAlso fix a typo in the comment (\"may have\" -> \"may have competed\").",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90096"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/26d7e1f5c407b5859122b5cd47d7ebbf4b4c1cd2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/833963069adf86dcbdffd4e7d7b3171f95070b77"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:01Z"
+  }
+}

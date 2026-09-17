@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hxgm-rjxg-hq44",
+  "modified": "2026-09-17T18:32:04Z",
+  "published": "2026-09-17T18:32:03Z",
+  "aliases": [
+    "CVE-2026-90396"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: fix dio leak on metadata mapping error\n\nA failed integrity mapping holds a dio reference, so we need to go\nthrough the full bio ending in case there were previously submitted\nbio's in the sequence.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90396"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/702a2a9f3dfe066a7481698c858371112f3cb697"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cbbaf0c870dde06cf4b887a77a94e3094179ca9f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d29c5a88d5703afb6286038e86e1b88daa4962a9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:39Z"
+  }
+}

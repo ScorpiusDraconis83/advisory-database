@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gqc9-g66v-x8p5",
+  "modified": "2026-09-17T18:31:48Z",
+  "published": "2026-09-17T18:31:48Z",
+  "aliases": [
+    "CVE-2026-90056"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: fec: only stop PTP if it was initialized\n\nfec_ptp_init() is only called when fep->bufdesc_ex is available.\nHowever, fec_probe() unconditionally calls fec_ptp_stop() on the\nfailed_init path, and fec_drv_remove() unconditionally calls\nfec_ptp_stop() during device removal.\n\nCheck fep->bufdesc_ex before calling fec_ptp_stop() in both paths\nto avoid stopping PTP when it was not initialized.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90056"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0602a4c238d2b6ed6e2bf5fa8ef7fa0203883dac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0dc8b3a395c3a749ab62c078f2fd54a402ae7e2b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1973f108c481fab9bdc7daa6c77442af4a7388ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1f9639caeece703012bdb23975ebedf70f426269"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/383f699a86fd04458dc47d10578c17e94f63d92f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5975009651c4e5ec1492612962d0dd3dc86f6bda"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7566789664813c1778f0d4b7e0539fd863ea450c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dd890ae29299636fb037276fc1b5238698d08b03"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:16:54Z"
+  }
+}

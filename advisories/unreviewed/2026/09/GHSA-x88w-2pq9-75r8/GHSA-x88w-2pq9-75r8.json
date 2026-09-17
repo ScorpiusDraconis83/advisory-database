@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x88w-2pq9-75r8",
+  "modified": "2026-09-17T18:31:58Z",
+  "published": "2026-09-17T18:31:58Z",
+  "aliases": [
+    "CVE-2026-90277"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/md-llbitmap: prevent create failure bitmap UAF\n\nllbitmap_create() publishes mddev->bitmap before reading the bitmap\nsuperblock. This is needed because llbitmap_read_sb() can initialize a\nnew bitmap and flush it through helpers that use mddev->bitmap.\n\nIf llbitmap_read_sb() fails, the old cleanup dropped bitmap_info.mutex\nand freed llbitmap before clearing mddev->bitmap. Readers such as\n/proc/mdstat rely on bitmap_info.mutex to keep the bitmap pointer stable\nwhile collecting bitmap stats, so they could observe the stale pointer\nafter the failed create path released the mutex.\n\nClear mddev->bitmap while still holding bitmap_info.mutex, then free the\nfailed llbitmap after dropping the mutex. This makes mutex-protected\nreaders see either a live bitmap or no bitmap.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90277"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2116c2f0a0e547615886900e2ed8c529c016499b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f0722435ce3a844dbb66b9bb0a18229dcc8739c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/930cc4f1af5a1afcd545a6ba00e38921ff8401e0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:24Z"
+  }
+}

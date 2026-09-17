@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-286w-pmvg-5rp9",
+  "modified": "2026-09-17T18:32:04Z",
+  "published": "2026-09-17T18:32:04Z",
+  "aliases": [
+    "CVE-2026-90421"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: Fix UAF when probe runs concurrent to dyn ID removal\n\nDynamic IDs are only guaranteed to be valid when dynids.lock is held,\nas remove_id_store() can free the node. Thus, make a copy in\npci_match_device(). Also, clarify that the id parameter is only valid\nduring probe.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90421"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3ffc4c9690c33ee28cdb3d0182b12f9c623e3acc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42a5661ff7e4c7d3c5025d0f8e5079fb5479ea49"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:46Z"
+  }
+}

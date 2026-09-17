@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-583f-vmr6-5jpr",
+  "modified": "2026-09-17T18:32:10Z",
+  "published": "2026-09-17T18:32:10Z",
+  "aliases": [
+    "CVE-2026-93109"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/mlx5: Drain RCU callbacks during module teardown\n\ndevx_free_subscription() can remain queued after the last DevX event file\ndrops its module reference or an auxiliary driver detaches its devices.\nmlx5_ib can then unload before the callback runs.\n\nRegistration error unwind has the same risk because driver registration\ncan attach existing devices before failing. Wait after all drivers have\nstopped.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f946e7839f677fa14574b6babad14b37ae0bbbe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4664368b9bd9d5d79ebad24056b98c34b9fed20f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4be7810ba70291abb2f68cc6db0ae1b93ee9c76a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59d60e04afd012f07e996d2e34cb90a4ec6f5cff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7babc25d8dd5b7642920fbc0737cfd1469e7025b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca428e597f12b278bf158356e34641e6386cfa82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e37cdd75f8d61c1123d324ae5667ac3da562290e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:05Z"
+  }
+}

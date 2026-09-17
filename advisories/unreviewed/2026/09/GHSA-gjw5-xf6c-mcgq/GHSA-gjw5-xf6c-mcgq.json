@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gjw5-xf6c-mcgq",
+  "modified": "2026-09-17T18:32:05Z",
+  "published": "2026-09-17T18:32:05Z",
+  "aliases": [
+    "CVE-2026-90428"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/tegra241-cmdqv: Don't run the error ISR before probe sets up vintfs\n\n__tegra241_cmdqv_probe() requests the error IRQ before it has allocated the\ncmdqv->vintfs array and set cmdqv->num_vintfs. A CMDQV left enabled with a\nlatched error across a kexec fires the IRQ as soon as it is requested, and\ntegra241_cmdqv_isr() then walks the uninitialized cmdqv->vintfs array.\n\nRequest the IRQ only after cmdqv->vintfs is allocated and zeroed, so that\na latched interrupt firing early runs the ISR against a valid array of NULL\nslots that it safely skips.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90428"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2f627118b668659c6b195ac48beedb1bf8f53368"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5acd67ceb38debe2fbf70ea35e2dec9f7ab01bbd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a168254ff8db08f2292be3d8fcbd37d2bb8c3d2d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1605a56745f22670205f6561df5771bbbb62a99"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:47Z"
+  }
+}

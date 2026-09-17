@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gx3g-862r-xxh6",
+  "modified": "2026-09-17T18:31:49Z",
+  "published": "2026-09-17T18:31:49Z",
+  "aliases": [
+    "CVE-2026-90068"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: dapm: Fix off-by-one check on the second enum channel\n\nThe snd_soc_dapm_put_enum_double() rejects item[0] once it reaches\ne->items, but it lets item[1] be equal to it.  Both go on to\nsnd_soc_enum_item_to_val(), which indexes e->values with no bound of\nits own, so an enum with a value table reads one element past the end.\n\nThe indexing arrived with the MUX consolidation, which relaxed the\nitem[1] check in the same hunk.  The value MUX handler it deleted used\n>= there, and the snd_soc_put_enum_double() in soc-ops.c still does.\n\nOnly adav80x pairs a value table with two shifts, and its second\nchannel looks accidental, but the control does report two values.\nWriting three into it reads off the end of adav80x_mux_values.  The\ncore catches that only under CONFIG_SND_CTL_INPUT_VALIDATION, which\ndefaults off.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90068"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/10a36512c21f861a03fba461a7ead09023df9c1b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/14511c9b54ceeeef487409d73947c89ee8563590"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32fc048391112559c34cb88d13594546939a4cd6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/496081b4edc1f6e662418831c5b14cddd8d7920c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/55126ef66298e43c69f192acebae8c7cc0022cf6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/57ab955bde747327fb2042516ae1b7192c30e881"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/806fa4e1f2bf73c54bc4b6360790ecc69d095ca5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/faf539af1a595a26e5a081a4e512caee2bc2f4c5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:16:55Z"
+  }
+}

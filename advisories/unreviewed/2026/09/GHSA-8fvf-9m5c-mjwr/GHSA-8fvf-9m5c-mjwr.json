@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8fvf-9m5c-mjwr",
+  "modified": "2026-09-17T18:32:09Z",
+  "published": "2026-09-17T18:32:09Z",
+  "aliases": [
+    "CVE-2026-93092"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scmi: Unregister device notifier before IDR teardown\n\nThe requested-devices notifier looks up protocol fwnodes from the\nactive_protocols IDR. During remove, unregister the notifier before\nreleasing and destroying active_protocols so no notifier callback can race\nwith the IDR teardown.\n\nKeep the bus notifier registered until after the protocol state is torn\ndown, matching the existing remove ordering for SCMI bus users.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93092"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/492fb49eac24beecd6d3c5e4744a513e626f8dcf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66a0bbf30cc14140fe13f63cd594a7c1ee352b75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70a26b37389846f1f29a09f7983aa3f45feff529"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74fcaa0a3f7ad3edfde2e8c6cb8ae457a00e0b7a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f5e528f631425416f9b39e9d8b385c9f1ceb40d6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:03Z"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j4hm-6c8x-4hfr",
+  "modified": "2026-09-17T18:31:59Z",
+  "published": "2026-09-17T18:31:59Z",
+  "aliases": [
+    "CVE-2026-90283"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhugetlbfs: release subpool on fill_super failure\n\nhugetlbfs_fill_super() allocates a hugepage subpool when size or min_size\nmount options are specified.  hugepage_new_subpool() may also reserve huge\npages for min_size.\n\nIf root dentry creation fails after the subpool is created, the failure\npath frees the subpool with kfree().  This bypasses hugepage_put_subpool()\nand can leave min_size reservations charged.\n\nUse hugepage_put_subpool() on the failure path, matching the normal\nput_super path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90283"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/04f0354a4abf6793aa5b3f32e2b019ab206f344d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d8be4ee81e73fcc52e58f47842d9a2277cfeaaa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/308ab73e97c87bd0e142b11758faab7f88d82854"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b7fc7a1ce2a5f2cd8ed80a883157c7108074e0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91c4f3a87862fd86594d5945512decbfa0b1d13d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc2bd517ac0bce4ec7498644bd16b6db502df8e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dfe848cadfde4179a0691da34f4bed36ff7185b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f2d6cea221d777fab3ba18f805ba4c17c90e0b8b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:25Z"
+  }
+}

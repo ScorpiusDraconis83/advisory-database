@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w98f-qgf3-22gf",
+  "modified": "2026-09-17T18:32:11Z",
+  "published": "2026-09-17T18:32:11Z",
+  "aliases": [
+    "CVE-2026-93132"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nACPI: RISC-V: Fix riscv_acpi_add_prt_dep() loop handling\n\nThe loop in riscv_acpi_add_prt_dep() includes error conditions that are\nhandled in a dubious - if not outright wrong - way, by continuining the\nloop (which skips and misses the entry pointer update to point to the next\nentry).\n\nRewrite the loop as a for loop (that handles the continuation correctly)\nand wrap the condition and update statements using helper functions to make\nit cleaner.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a56321d0aceee2a0bd80d23366401c131ff8350"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3fd86a5d6facb6618f63a76d499f28007cef878f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41652ca8c6ff2b77b9780cbbb2f20f1551b9ff80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9729ced165d6c5b57d99141b6632bb8711efec9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:08Z"
+  }
+}

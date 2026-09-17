@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qmq3-vr5x-q9gg",
+  "modified": "2026-09-17T18:32:06Z",
+  "published": "2026-09-17T18:32:06Z",
+  "aliases": [
+    "CVE-2026-92479"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: ufs: Avoid NULL CQE dereference when reporting invalid tags\n\nThe single-doorbell completion path can call ufshcd_compl_one_cqe() with a\nNULL CQE. If no command is associated with the completion tag, the warning\nmessage dereferences the CQE while reporting the error.  Avoid that\ndereference and include the invalid tag in the warning.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92479"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/331bda797e6afc143127ce72b1469d73316f49b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a769095d1d74ebac2b1474c56bbd29bb0b9ed5a7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:49Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-58p8-3wpr-hmrp",
+  "modified": "2026-09-17T18:32:13Z",
+  "published": "2026-09-17T18:32:13Z",
+  "aliases": [
+    "CVE-2026-93171"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nleds: lp5860: Fix a potential double-unlock\n\nIn lp5860_device_init(), if lp5860_init_dt() fails, an already unlocked\nmutex is unlocked another time.\n\nSlightly rework how the lock is taken/released to avoid this potential\ndouble unlock.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93171"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/10a5a70c02277a1c12999b669a1bd1922558338a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/989f3d01fc1961d0850b343e0b4e3973c082d82e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:12Z"
+  }
+}

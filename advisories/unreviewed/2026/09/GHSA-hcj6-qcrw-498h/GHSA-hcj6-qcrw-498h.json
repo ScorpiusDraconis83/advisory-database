@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hcj6-qcrw-498h",
+  "modified": "2026-09-17T18:32:06Z",
+  "published": "2026-09-17T18:32:06Z",
+  "aliases": [
+    "CVE-2026-92491"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scmi: Roll back partial protocol table registration\n\nscmi_protocol_table_register() can leave earlier requests registered when\na later entry in the same ID table fails. Each request retains a pointer\nto the driver's ID table, so a failed module load can leave a dangling\npointer after the module storage is released.\n\nUnrequest only the successfully registered prefix, in reverse order,\nbefore returning the failure. Leave the failed entry and the remaining\nentries untouched because matching requests can be owned by another\ndriver.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92491"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2224b622260ba590ab56ea1585d6bf7610be25b2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3fa8cabd2d8ed80dd0b818ca7fd410b591392ff6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/456856a34906475fcf4b23879237103770dc7ef2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/826413b858ea2969e4c3e8197d0065efc47c6343"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee556d118b11c6f5b60a32c1e84f366b336ac7d7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:51Z"
+  }
+}

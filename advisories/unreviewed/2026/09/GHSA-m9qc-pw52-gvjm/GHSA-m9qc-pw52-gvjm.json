@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m9qc-pw52-gvjm",
+  "modified": "2026-09-17T18:32:14Z",
+  "published": "2026-09-17T18:32:14Z",
+  "aliases": [
+    "CVE-2026-93198"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-pcache: validate the persisted dirty_tail chain at load\n\nThe writeback worker follows the persisted dirty_tail chain, which is\ndecoded from the cache device independently of the key_tail chain that\ncache_replay() walks and bounds. A crafted image, whose on-media fields are\nauthenticated only by a crc32c with a fixed seed, can aim dirty_tail at a\nchain of last ksets that never terminates, so cache_writeback_fn() re-arms\nitself with no delay forever.\n\nWalk the dirty_tail chain once at load with the same hop cap cache_replay()\nuses and fail the table load with -EIO if it does not reach an end within\nn_segs hops.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93198"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4822a030929e0e77aa380722dc42e3e4c9edd346"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/58d620ee9e01d4bdbceaf2ae1450d307a2a9d58b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8195cf3f4a82ef49d9b0651c507ed0784caf23fb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:16Z"
+  }
+}

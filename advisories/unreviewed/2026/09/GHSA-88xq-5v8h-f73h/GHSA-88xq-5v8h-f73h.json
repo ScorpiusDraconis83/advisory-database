@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-88xq-5v8h-f73h",
+  "modified": "2026-09-17T18:32:12Z",
+  "published": "2026-09-17T18:32:12Z",
+  "aliases": [
+    "CVE-2026-93156"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: rk3288 - fail ahash requests on HASH idle timeout\n\nrk_hash_run() waits for RK_CRYPTO_HASH_STS to become idle after the\nfinal DMA transfer, but ignores the poll result. If the hash engine\nnever becomes idle, the driver still reads the digest registers and\nfinalizes the request with the previous success value.\n\nStore the poll result and finalize the request with the timeout error\nbefore reading the digest registers.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93156"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a261177ad3245af393548d0632226d99c643191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2feb52b2796c25510903bf0f18a84cde44631391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a22dc48d58ef46e21c0172ba83c33f1c9859e63c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ae150db7826f21e8d19e54fb6243169628809c4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7d8ddd471d2895f1d4098832c21121d4191adaa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:10Z"
+  }
+}

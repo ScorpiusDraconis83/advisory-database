@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h42m-cfhq-9g8c",
+  "modified": "2026-09-17T18:31:49Z",
+  "published": "2026-09-17T18:31:49Z",
+  "aliases": [
+    "CVE-2026-90066"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsamples/ftrace: Fix kthread_stop() on ERR_PTR in ftrace-direct-multi-modify\n\nftrace_direct_multi_init() assigns kthread_run()'s return value to\nsimple_tsk without an IS_ERR() check. When kthread_run() fails it\nreturns ERR_PTR(-ENOMEM), but init still returns 0, so the module loads\nwith simple_tsk holding an error pointer. On unload,\nftrace_direct_multi_exit() then passes that ERR_PTR to kthread_stop(),\nleading to a null-pointer-dereference.\n\nCheck the return value of kthread_run() with IS_ERR(); on failure,\nunregister the ftrace direct call and propagate the error code.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90066"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/626614df9080d7052fbe24dc90b5434717ab7a9f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6727b7618f49401acf373fa3ec5712e2ec52e5cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a96b9f6d5ba23dbce66c8a4a242effd4c01a830"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98b7b2a29ae87937aa02ab9391543ef8c602cd94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf839636911d8313f3ecd098329fd0b96499e4cf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:16:55Z"
+  }
+}

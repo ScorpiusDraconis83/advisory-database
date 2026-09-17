@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m596-7j6r-7chf",
+  "modified": "2026-09-17T18:32:11Z",
+  "published": "2026-09-17T18:32:11Z",
+  "aliases": [
+    "CVE-2026-93118"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: aspeed_udc: check endpoint DMA allocation\n\nast_udc_probe() allocates a coherent DMA buffer used as the backing store\nfor endpoint buffers. ast_udc_init_ep() derives per-endpoint buffer\npointers from udc->ep0_buf, so a failed allocation is dereferenced during\nprobe.\n\nCheck the allocation before endpoint setup. The existing probe error path\ncalled ast_udc_remove(), which unregisters the gadget unconditionally and\nis not safe before usb_add_gadget_udc() succeeds. Add a local cleanup\nhelper for probe failures so pre-registration failures only unwind the\nresources that were actually initialized.\n\nThis was found by a local static analysis checker for unchecked allocator\nreturns while scanning Linux 6.16. The change was checked by applying it\nto current mainline and by running checkpatch. I do not have access to\nAspeed UDC hardware, so no runtime testing was performed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4aaad88f857498ed1294f061f0b25d27ae891c55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6182e708e2e1f55521c8a01d7535630ecc2d7df9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/97cee53a94be3bd4fd8fbed6071bd2f32dad1ab1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9e6f57107c1886052d4baaa047a2bc3d0e91be5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7ae1a48e70e9c3451b7dc7bc3896c82884bc4df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ff6e88e29965bd06f640e59acdcf0bbf04a7f55c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:06Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x7w4-f354-q3xf",
+  "modified": "2026-09-17T18:32:10Z",
+  "published": "2026-09-17T18:32:10Z",
+  "aliases": [
+    "CVE-2026-93097"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncxl/mbox: Break poison list loop on an empty payload\n\nA device that returns count == 0 with CXL_POISON_FLAG_MORE set on every\niteration never advances nr_records, so the max_errors guard never\ntrips and the do/while loops forever while holding poison.mutex. That\nhangs the sysfs-triggered scan thread and blocks all subsequent poison\noperations on the device. The existing \"Protect against an uncleared\n_FLAG_MORE\" guard was intended to bound a misbehaving device but does\nnot cover the count == 0 case.\n\nStop the loop on an empty payload so a malfunctioning or malicious\ndevice cannot wedge the poison scan.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93097"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/42eab80981f4d2ac820e253e80ecf92f8cd91f69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ad491cef1a812cf7b53aa769cd8869516c47362"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86771c105293ca26bfcc320b4f60d32c137b54aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b301c4afbce4bc3f94528441d8d5ce1366504ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e77594e0cea67ab1c2317a27aa77a744e26ad6a6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:03Z"
+  }
+}

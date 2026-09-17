@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2gpx-r754-7j65",
+  "modified": "2026-09-17T18:31:58Z",
+  "published": "2026-09-17T18:31:58Z",
+  "aliases": [
+    "CVE-2026-90268"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: sd: Fix error handling in sd_probe() after large pool creation failure\n\nAfter device_add(&sdkp->disk_dev) succeeds, sd_large_pool_create()\nfailure must unregister disk_dev and let scsi_disk_release() free\nsdkp. Going through out_free_index kfree()s an already registered device\nand leaks the sysfs entry.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90268"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/748a14a0d41cfe3017251c11b314f85045414942"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3cc6ea1a745e7f5d326f919a428b244fa119d8f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:23Z"
+  }
+}

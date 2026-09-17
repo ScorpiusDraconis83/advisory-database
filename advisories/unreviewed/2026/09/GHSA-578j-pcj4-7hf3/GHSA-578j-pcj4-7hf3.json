@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-578j-pcj4-7hf3",
+  "modified": "2026-09-17T18:31:52Z",
+  "published": "2026-09-17T18:31:52Z",
+  "aliases": [
+    "CVE-2026-90128"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvdpa/mlx5: fix wrong list iterated in add_direct_chain error path\n\nIn add_direct_chain(), newly allocated direct MR entries are added to\nthe local list 'tmp', which is spliced into mr->head only on success.\nOn the error path, the cleanup loop was incorrectly iterating over\nmr->head instead of tmp.\n\nFix by iterating over 'tmp' in the err_alloc cleanup path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90128"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/22d52af9e26a72bdfe2dcfb1419a091de4862cd9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23ae56d9e74c122f95cae71ae3b9fc259fb88446"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/637d867530daea61898e3346975978b7f67fc2ac"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6ca752850de3b8162f030793cc15001aec85c4cf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c678d04ac9e5a64c2559c43bce273e845fbd09eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c93defccf5eb0a92bdafa43487be6ce0221a2477"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed3462365636df3bc63e34d7468f4faed3f70a4e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eeac2ea4ad2654e3f160a9b608d05c9af31433a6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:05Z"
+  }
+}

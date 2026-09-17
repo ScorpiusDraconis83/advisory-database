@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7g5x-2qhh-7xcv",
+  "modified": "2026-09-17T18:32:04Z",
+  "published": "2026-09-17T18:32:04Z",
+  "aliases": [
+    "CVE-2026-90403"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtlwifi: pci: fix error path in rtl_pci_probe()\n\nIn the last error path in rtl_pci_probe(), the cleanup functions are\nskipped due to a wrong goto label. Moreover, the successful call to\nrtl_init_rfkill(), ieee80211_register_hw(), rtl_debug_add_one() have to\nbe reverted. Fix this issue by updating the labels and adding the\nrelevant cleanup functions to the last error path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90403"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b68b6e529ce75112fab98e89583a76370ca394b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2634998247d24be34ba16a7666f31815ef1da00b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c2999d13eeb222ae56631aeb7ca248090f2b210"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86e6187f8525c8f8219eb49e022eba854cc6ab86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a89818977338ba71194b1ab1d071f0c0848b1e13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aef178ffae5420afdbf46f7133ed28bd4248e15c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b42fcfb097da46f0e86564736ced939e83cb8442"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cfd6824dd1d151ab3abc00117b3774c8056006e0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:40Z"
+  }
+}

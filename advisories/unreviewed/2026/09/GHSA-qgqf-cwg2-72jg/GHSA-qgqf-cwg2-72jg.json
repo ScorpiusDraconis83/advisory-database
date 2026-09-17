@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qgqf-cwg2-72jg",
+  "modified": "2026-09-17T18:31:53Z",
+  "published": "2026-09-17T18:31:53Z",
+  "aliases": [
+    "CVE-2026-90165"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/server: fix invalid pointer dereference in ksmbd_stop_durable_scavenger()\n\nSee the procedure below:\n\n  ksmbd_launch_ksmbd_durable_scavenger\n    durable_scavenger_running = true\n    server_conf.dh_task = kthread_run() // fail, dh_task is an ERR_PTR()\n\n  server_ctrl_handle_reset\n    ksmbd_stop_durable_scavenger\n    kthread_stop(server_conf.dh_task) // invalid pointer",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90165"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f8651f6bb52159c9e23993c77a2b51b9505ad64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a2eb72b4d53bb9d8d6c00f3f794eaccb4b1ce5ed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/af9cb997d13a17029a0d3863e33f4c837e27a8ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2d78c199dfd983638662ace0612d4fade3dbea1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bef46b604732d83f8da29f782868de4d25bf972c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:09Z"
+  }
+}

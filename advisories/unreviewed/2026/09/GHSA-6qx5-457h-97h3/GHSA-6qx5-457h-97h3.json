@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6qx5-457h-97h3",
+  "modified": "2026-09-17T18:32:05Z",
+  "published": "2026-09-17T18:32:05Z",
+  "aliases": [
+    "CVE-2026-92476"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: keembay - Initialize completion before requesting IRQ\n\nkmb_ocs_aes_probe() requests the device IRQ before initializing\nirq_completion. Once the handler is registered it can run immediately,\nand ocs_aes_irq_handler() unconditionally calls complete(). An\ninterrupt in this window would therefore use an uninitialized\ncompletion.\n\nInitialize the completion before requesting the IRQ, as the sibling\nOCS HCU and ECC drivers already do.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92476"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ce407055ae9d37f46a3c6f05eb27198b354d287"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5aae80dcec0748b4ed61daace2ad8b12082261f2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7efb51a5893b22003a679d088b7794be2ccd6c32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3ffced8be1555f283680065c3b87a19f5ab9097"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d52a15c4559b69805bc69bf4ad9e16bbf6480d52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8970ee9e315c9e2258ae8914d5fb32b1039d2f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fce20289dd622cc7ab78d72c8a979a9f8b7cb10e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:49Z"
+  }
+}

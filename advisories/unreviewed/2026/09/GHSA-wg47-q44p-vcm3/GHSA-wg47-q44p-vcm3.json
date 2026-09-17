@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wg47-q44p-vcm3",
+  "modified": "2026-09-17T18:31:58Z",
+  "published": "2026-09-17T18:31:58Z",
+  "aliases": [
+    "CVE-2026-90276"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/md-llbitmap: stop daemon timer rearm on destroy\n\nllbitmap_destroy() deletes pending_timer before flushing\nmd_llbitmap_io_wq. However, daemon_work can still be queued or running\nafter the timer has been deleted, and the daemon path can arm\npending_timer again when it finds dirty chunks that are not ready to\nflush yet.\n\nIf that happens during teardown, pending_timer can remain armed after\nllbitmap is freed and later dereference freed memory.\n\nAdd a BITMAP_SHUTDOWN bit to llbitmap->flags, set it before deleting\nthe timer, and make the timer and daemon paths stop queueing or rearming\nwork once teardown starts. Cancel daemon_work before flushing the shared\nworkqueue so no already queued daemon instance can race with the free.\nUse timer_shutdown_sync() so a daemon instance that passed the shutdown\ncheck before teardown cannot rearm the timer afterward.\n\nBITMAP_SHUTDOWN is a runtime-only state. Mask it out when reading and\nupdating the llbitmap superblock so the shutdown state is never loaded\nfrom disk or persisted to disk.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90276"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5553d64e01d9a995be6c3de38501c6dd4ceede3b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb7f92d58fca9a9f06f3f51a82481c5f0bbbd46c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c55aa6c17f019b6296952d336939891efa084c06"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:24Z"
+  }
+}

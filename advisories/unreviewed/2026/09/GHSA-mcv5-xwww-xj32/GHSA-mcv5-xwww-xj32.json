@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mcv5-xwww-xj32",
+  "modified": "2026-09-17T18:32:07Z",
+  "published": "2026-09-17T18:32:07Z",
+  "aliases": [
+    "CVE-2026-92514"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/erdma: Fix CEQ tasklet use-after-free on removal\n\nEach CEQ interrupt handler only schedules eqc->tasklet. The tasklet calls\nerdma_ceq_completion_handler(), which reads the DMA-coherent EQ ring\nthrough get_next_valid_eqe() and updates eq->dbrec through notify_eq().\n\nerdma_ceqs_uninit() frees each CEQ IRQ and then destroys its EQ.\nfree_irq() prevents another hard IRQ and waits for an in-flight handler,\nbut it does not drain a tasklet that the handler already scheduled. The\ntasklet can therefore access eq->qbuf or eq->dbrec after\nerdma_eq_destroy() frees them.\n\nClearing ceq_cb->ready does not synchronize with a tasklet that already\npassed the check at the start of erdma_ceq_completion_handler().\n\nKill the tasklet after free_irq(), when no handler can schedule it again,\nand before erdma_ceq_uninit_one() releases the EQ buffers.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92514"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0ca79979384f031d710c4b3bae065dcb5d95aca3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e8b78dabb1f156db05ffe74c6eae861167c7c21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61a25b8d333e1eb2a189881d516f8d5194e26840"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e129c1310abfa786a510cc63e69c5ef12349048"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a60c36d8d17f1b86705523d5eb6d290df28831e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f738c0a372d36a10dfae6dc357717c13b2aa72f4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:54Z"
+  }
+}

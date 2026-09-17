@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q6p6-cfp2-cmw7",
+  "modified": "2026-09-17T18:32:12Z",
+  "published": "2026-09-17T18:32:12Z",
+  "aliases": [
+    "CVE-2026-93162"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: qat - cancel work on re-enable SR-IOV timeout\n\nThe QAT reset worker queues SR-IOV reenable work using a work_struct and\ncompletion embedded in an on-stack adf_sriov_dev_data. If the completion\nwait times out, the reset worker can return while device_sriov_wq still\nholds or executes the stack-backed work item.\n\nCancel the work on the device_sriov_wq on timeout before the stack frame\nunwinds.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93162"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1a106c6e17525827ee6d8091bb8c06fafbc21fed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/455b0f3ac9e254edab9f5a873d337abe5e6e3604"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b19f343ae8ada4c84209bc6f62d50ea9781c4ae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cbeef7ba0de4a7b84a772eee1784948473e7a7e6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:11Z"
+  }
+}

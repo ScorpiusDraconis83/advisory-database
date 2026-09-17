@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fmfr-wc4p-75cj",
+  "modified": "2026-09-17T18:32:11Z",
+  "published": "2026-09-17T18:32:11Z",
+  "aliases": [
+    "CVE-2026-93114"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/surface: acpi-notify: Check ACPI companion before use\n\nSince every platform driver can be forced to match a device that doesn't\nmatch its list of device IDs because of device_match_driver_override(),\nplatform drivers that rely on the existence of a device's ACPI companion\nobject should verify its presence.\n\nsan_probe() dereferences the result of ACPI_COMPANION() when installing\nthe GSBUS address space handler, so force-binding the driver to a device\nwithout an ACPI companion leads to a NULL pointer dereference.  The\ndereference was introduced when the probe function was switched from\nACPI_HANDLE() to ACPI_COMPANION().\n\nCheck the ACPI companion against NULL and return -ENODEV when it is\nmissing, like commit e4865a56d013 (\"ACPI: driver: Check ACPI_COMPANION()\nagainst NULL during probe\") does for the core ACPI platform drivers.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93114"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b3a5dabe89e330413af403246b648c1890f368f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3855be0100efb98c26228c610db70a673611f3bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/428a82d987fcd8844e8868c85582eae75b4b5c51"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4faa43d4ef0b98beb6c2b77a279f4aa5d7fa2d13"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7fea5a310e3b2db24f7aafe64897e4e659ffbb7d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b6479da662c2ec4e931ed9f7228df46aa8c3766"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f276b62f2ce1cbff7fa50a8ee5afd8fef5a60897"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:05Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4cvp-2fxw-jr85",
+  "modified": "2026-09-17T18:32:02Z",
+  "published": "2026-09-17T18:32:01Z",
+  "aliases": [
+    "CVE-2026-90345"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: brcmfmac: fix P2P action frame handling without device vif\n\nSome P2P action frame paths assume the P2P device vif is always\navailable. That is not true when userspace sends non-P2P public action\nframes through the primary interface, or when action-frame abort runs\nafter the P2P device vif has not been created.\n\nFall back to the primary vif when aborting an action frame without a P2P\ndevice vif, and guard P2P device saved IE access before using it for\npeer channel search.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90345"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1b1edb9ebed49099bdc924cef49a9aea8b552199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f26e1b16904555e171292e183c3cfc1c38159fc5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:33Z"
+  }
+}

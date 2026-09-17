@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2fmc-xx62-q6fm",
+  "modified": "2026-09-17T18:31:58Z",
+  "published": "2026-09-17T18:31:58Z",
+  "aliases": [
+    "CVE-2026-90274"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncoresight: etm4x: fix underflow for usage of (nrseqstate - 1)\n\nAccording to IHI006H Embedded Trace Macrocell Architecture\nSpecification[0], TRCSEQEVR<n> is implemented only when\nTRCIDR5.NUMSEQSTATE is 0b100, in which case n ranges from 0 to 2;\notherwise, TRCIDR5.NUMSEQSTATE is 0b000.\n\nIOW, the number of usage in the initialisation or setting\nTRCSEQEVR<n> with drvdata->nrseqstate - 1 in the loop could make\nunderflow issue when TRCIDR5.NUMSEQSTATE is 0b000.\n\nTherefore, introduce nr_seq_ctrls field and untie it from nrseqstate.\nAs part of this introduce ETM_MAX_SEQ_TRANSITIONS macro and\napply nr_seq_ctrls and above macro to TRCSEQEVR<n> relevant fields setup.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90274"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1674d9bff8073bdee5dbc200f56fc3caa28d0566"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1ade9a335c69fc735cb7b3f222ed35ab135540fb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4091f2d5b26d117c992ffcce1a5df425a0daedcd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f9a0f548413bf864f609c9f4bc56e3f1b3577d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5ac900f73ce1d4d8308f40752b51bc8a02b244d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d669db59f7283b838e029af29da12e505265fae"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be7b2de5b9a96ae68ffa3528e0a40d63e0fd8148"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:23Z"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-74pp-fw2v-5w87",
+  "modified": "2026-09-17T18:31:57Z",
+  "published": "2026-09-17T18:31:57Z",
+  "aliases": [
+    "CVE-2026-90245"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfbdev: kyro: Validate overlay viewport coordinates\n\nThe overlay viewport end coordinates are computed from the viewport\norigin and dimensions using 32-bit unsigned arithmetic. Large input\nvalues can cause these calculations to wrap around before the resulting\ncoordinates are passed to SetOverlayViewPort().\n\nSetOverlayViewPort() packs the viewport coordinates into 16-bit\nregister fields. The X coordinates are additionally adjusted by +2\nand +1 before being written. Validate the coordinate calculations\nfor 32-bit wraparound and ensure that the adjusted coordinates fit\nwithin their 16-bit register fields before calling\nSetOverlayViewPort().\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90245"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2ac6e30a552e6f9932c21c865a5c69f40c8aef64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/33e54e3e0b2ca959304e62c3d84f0ad49bbe1afe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/413d763439ba68e5d547538e6b6c7de97d5818a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b5c7bc55e13e7f5ac7b1eaf5c6d690389ea5ee3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7bf36dc23bcf3496dec274a46ae0aaff4961ea03"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6decd4e72fc5846d3b268bd085a2089213fd5ee"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8c1a9579cbd8f4ac5cbd5a10f1afb5ee64adf30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e8d4e4cf388daeb49704f3de10b203034f28eb90"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:20Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-636p-hq8h-v2cp",
+  "modified": "2026-09-17T18:32:13Z",
+  "published": "2026-09-17T18:32:13Z",
+  "aliases": [
+    "CVE-2026-93179"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/powerplay: fix VoltageObjectInfo zero-stride loop and OOB read\n\nReject voltage objects whose usSize is smaller than the header or would\nadvance the cursor past the table end, preventing an infinite loop or\nheap OOB read when the VBIOS supplies a malformed VoltageObjectInfo table.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93179"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d3cc8e388464f485d0944b87b8f9426e637d082"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83c680de6d41d627c077dedb24f89d9e5be0e2a2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:13Z"
+  }
+}

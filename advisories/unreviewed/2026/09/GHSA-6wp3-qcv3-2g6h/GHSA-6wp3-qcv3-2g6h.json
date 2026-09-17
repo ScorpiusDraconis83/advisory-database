@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6wp3-qcv3-2g6h",
+  "modified": "2026-09-17T18:32:09Z",
+  "published": "2026-09-17T18:32:09Z",
+  "aliases": [
+    "CVE-2026-93065"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: fix counter type in iwl_fwrt_dump_error_logs\n\nThe loop counter 'count' was declared as u8 while num_pc is u32.\nIf firmware advertises more than 255 PC entries the counter wraps\nback to zero and the loop never terminates potentially causing an\ninfinite loop or reading past the allocated pc_data array.\n\nChange the declaration to u32 to match num_pc.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93065"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71e67b4b59337b2f9f4fef976a27de2dad7aabf2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/769e1910d41fdd01453cef4ae032a3c162f029f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d74cb5fbb7a0d825403a74d18386dc7b22426a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8d8a526f3ec659194f846a2cb33844d9f6cb9995"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9710b20d09d847e07e190087b0b529673d3f1fad"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:00Z"
+  }
+}

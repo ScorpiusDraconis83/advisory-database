@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rfmv-f8jw-7mhw",
+  "modified": "2026-09-17T18:32:14Z",
+  "published": "2026-09-17T18:32:14Z",
+  "aliases": [
+    "CVE-2026-93296"
+  ],
+  "details": "MISP contains a stored cross-site scripting (XSS) vulnerability in the Overmind theme's statistics views. The event General card (event_general.ctp) and the server/feed preview card (preview_general.ctp) constructed donut chart legend labels by directly concatenating object name or category keys into an innerHTML string without HTML-encoding. Because MISP object names (e.g., attribute names, event names, or server/feed identifiers) are user-controllable by any authenticated user with sufficient permissions to create or modify such objects, an attacker could craft a name containing malicious markup (for example, a script tag or event-handler attribute). When any other user viewed the affected Overmind dashboard, the injected markup would be interpreted as live HTML/JavaScript in the victim's browser, executing in the context of the MISP application origin. This could allow session hijacking, data exfiltration, or arbitrary actions performed on behalf of the victim. The vulnerability requires the attacker to have low-level authenticated access to create or rename an object whose name is rendered in the legend, and the victim to view the Overmind event or server preview page. No special browser conditions or race conditions are required.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/misp/commit/382188d2f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:17Z"
+  }
+}

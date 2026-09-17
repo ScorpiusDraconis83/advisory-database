@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9v89-8pp7-7fmp",
+  "modified": "2026-09-17T18:32:12Z",
+  "published": "2026-09-17T18:32:12Z",
+  "aliases": [
+    "CVE-2026-93149"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211_hwsim: avoid NULL skb in stop queue drain\n\nmac80211_hwsim_stop() drops any frames left in data->pending. The loop\ncurrently checks skb_queue_empty() and then dequeues separately.\n\nThat split is racy with TX status handling, which can remove a pending\nframe under the queue lock. If the last entry is removed after the empty\ncheck, skb_dequeue() returns NULL and the stop path passes that NULL skb\nto ieee80211_free_txskb().\n\nUse skb_dequeue() as the loop condition instead. The dequeue result is the\nobject that stop owns and frees, and a concurrent status completion that\nempties the queue simply makes the loop terminate.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93149"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/158438cd6ad69d6dd7d871582c38baf22169fede"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1c2a4ab6efa26415dd131b8c222e7893fda03435"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2817431a61557f46dc63077b7cc126bc906c242e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c40ba47f2ba1951cb32ea048667ed014d36a5749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d131027054a8dd922dda01fe8d381abe5af4970b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e7fccad2c8e6ef6bbafe509c95869d161d0f466b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:10Z"
+  }
+}

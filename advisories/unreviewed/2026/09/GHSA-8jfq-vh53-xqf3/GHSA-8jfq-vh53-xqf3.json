@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8jfq-vh53-xqf3",
+  "modified": "2026-09-17T18:31:47Z",
+  "published": "2026-09-17T18:31:47Z",
+  "aliases": [
+    "CVE-2026-93015"
+  ],
+  "details": "BlueKitchen BTstack through 1.8.2 fails to validate the peer-reported endpoint count against table bounds in A2DP stream endpoint discovery. A bonded peer can send an AVDTP DISCOVER response with more endpoints than the fixed table holds, causing out-of-bounds writes that corrupt adjacent static objects and crash the process or sever event delivery.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93015"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bluekitchen/btstack/commit/fc208fcce056d4e0a5bb916abc90e83a383e1cdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bluekitchen/btstack"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bluekitchen/btstack/blob/v1.8.2/src/classic/a2dp.c#L568"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/bluekitchen/btstack/blob/v1.8.2/src/classic/avdtp.c#L1703"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bluekitchen-btstack-through-1.8.2-a2dp-sep-discovery-out-of-bounds-write"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T16:18:35Z"
+  }
+}

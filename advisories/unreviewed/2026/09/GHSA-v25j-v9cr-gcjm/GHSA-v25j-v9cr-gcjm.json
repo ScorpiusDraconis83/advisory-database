@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v25j-v9cr-gcjm",
+  "modified": "2026-09-17T18:32:03Z",
+  "published": "2026-09-17T18:32:03Z",
+  "aliases": [
+    "CVE-2026-90378"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt792x: Fix memory leak in SDIO TX path\n\nWhen tx_prepare_skb() returns an error in the SDIO TX path, the\nskb is not freed, leading to a memory leak. This can occur when\nzero-length frames (such as WNM NULL frames) are dropped to prevent\npotential hardware TX hangs.\n\nFix this by properly releasing the skb with ieee80211_tx_status_ext()\nwhen tx_prepare_skb() fails.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90378"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a342db7a6502bc6781579145e05d4d4731786ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a8000c76dc34490a2bb321ad1a5f882a2ccab7c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/808f2767d4217a5b96f674288573b9b89d432eed"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ef1351209d42b7d96604f2a13d7ea8215a24e07"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b64d196280aff8494ba6fb387e37b18479c99b83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c2c7f16f2c62f79f7c381e500afa7123580742a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ddf6a17d8e3d0dbb841c13c10d7c1340a138a80d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:37Z"
+  }
+}

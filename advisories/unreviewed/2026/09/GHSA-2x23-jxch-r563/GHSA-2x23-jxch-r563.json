@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2x23-jxch-r563",
+  "modified": "2026-09-17T18:32:01Z",
+  "published": "2026-09-17T18:32:01Z",
+  "aliases": [
+    "CVE-2026-90319"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nrapidio: clear mport->net when rio_add_net() fails\n\nrio_alloc_net() stores the newly allocated rio_net in mport->net before\nrio_scan_alloc_net() registers the device.\n\nIf rio_add_net() fails, rio_scan_alloc_net() drops the device reference\nwith put_device(), which releases the rio_net through the device release\ncallback.  However, mport->net is left pointing at the freed object.\n\nA later mport unregister path can then dereference the dangling mport->net\npointer and may try to free the same rio_net again.\n\nClear mport->net in the rio_add_net() failure path, matching the cleanup\ndone for the destID table allocation failure path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90319"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24f60ebabeb8757cec8ec2f97660d521bc9147ec"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/332591a245de978349a7558f8b20469951bb77cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3f00999e44d9984036a029dbad9d2afe94a674d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44a37264b26911e13d0a4f5630751c4157ed0354"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/530a9d5ef831a0049dad9a6b2b92d02301352c38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a760a53e73064735cdfa9e51c664983a89baf96"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/75f0bc167b96bbbef8182b88308c732af82c8d83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b74030fbf187b43c1f85b66a7082e9946511cb5d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:29Z"
+  }
+}

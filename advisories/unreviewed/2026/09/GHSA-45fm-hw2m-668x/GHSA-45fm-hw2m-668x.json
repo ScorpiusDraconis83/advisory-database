@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-45fm-hw2m-668x",
+  "modified": "2026-09-17T18:31:49Z",
+  "published": "2026-09-17T18:31:49Z",
+  "aliases": [
+    "CVE-2026-90057"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nslip: remove slip_hangup() to fix use-after-free in slip_receive_buf()\n\nJaeyoung Chung and Eulgyu Kim reported a slab-use-after-free read\nin slip_receive_buf() when racing against tty hangup.\n\ntty_ldisc_hangup() calls ld->ops->hangup() while holding only\na read lock on tty->ldisc_sem (via tty_ldisc_ref()).\nBecause slip_hangup() simply called slip_close(), it ran concurrently\nwith reader functions such as slip_receive_buf().\n\nslip_close() unregisters and frees the net device and its private\nstruct slip, causing concurrent reader threads in slip_receive_buf()\nto dereference freed memory.\n\nLine discipline close() is already guaranteed to be called under\nthe write lock of tty->ldisc_sem during hangup processing\n(in tty_ldisc_reinit() or tty_ldisc_kill()).\n\nRemove slip_hangup() so teardown is serialized cleanly by slip_close().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90057"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/23c53269f2baaedf2d92784290cb9ef6db2a3bce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a3b1edff1ecb47d323f2506b3ffc22178acd1c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a2dbac3fb03b4427ccf057debc83fc61ee102529"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a540a49fcca59d1c92c3a6462e67ca21676a88df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ddbc5dc5a2e29b3934da09c1ba3c930fd8a40fd6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de1f978c0f6ab42b28192d74dc59af52fdc76135"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:16:54Z"
+  }
+}

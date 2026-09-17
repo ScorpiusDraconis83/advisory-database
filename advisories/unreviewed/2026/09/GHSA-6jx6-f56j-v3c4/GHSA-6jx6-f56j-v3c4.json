@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jx6-f56j-v3c4",
+  "modified": "2026-09-17T18:32:09Z",
+  "published": "2026-09-17T18:32:09Z",
+  "aliases": [
+    "CVE-2026-93085"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_scmi: Reject out of range DT protocol IDs\n\nSCMI protocol IDs carried in message headers are limited by\nMSG_PROTOCOL_ID_MASK. The DT parsing paths noticed protocol IDs\noutside that range, but only logged an error and then kept processing\nthe invalid value.\n\nThat lets a malformed 32-bit DT reg value reach helpers which take a u8\nprotocol ID, where it can be truncated and/or treated as a different\nprotocol.\n\nFor channel setup, two different out-of-range values can also be used as\ndistinct IDR keys while aliasing the generated SCMI protocol identity.\n\nSkip DT protocol nodes whose reg value does not fit the SCMI protocol ID\nfield before setting up channels or creating protocol devices.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93085"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b6e59eb885f985a5ea7beed385adfa9412b324d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5142fd31bd8c9aff9bad4f6e0cc20e9574f2cee1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59407ccb52130f2c81f4b3cbe4f14114afceb54f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8eb2ab209570526728b35e39c4aecdb5099fbaf7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e66756313d1b4eadd13f39a0aee9fc8773d4d375"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:02Z"
+  }
+}

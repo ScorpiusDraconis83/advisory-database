@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9qrw-29c6-r5gv",
+  "modified": "2026-09-17T18:32:01Z",
+  "published": "2026-09-17T18:32:01Z",
+  "aliases": [
+    "CVE-2026-90340"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npinctrl: generic: free maps on pinctrl_generic_to_map() failure\n\npinctrl_generic_to_map() parses DT configuration and allocates pinctrl\nmaps via pinctrl_utils_reserve_map().\n\nIf subsequent steps (such as pinctrl_utils_add_map_mux(),\npinctrl_generic_add_group(), pinconf_generic_parse_dt_config(), or\npinctrl_utils_add_map_configs()) return an error, *maps may contain\npartially allocated map entries. Returning the error directly without\nfreeing *maps leaks the allocated mapping memory across all drivers\nthat rely on pinctrl_generic_to_map().\n\nFix this by calling pinctrl_utils_free_map() and resetting *maps,\n*num_maps, and *num_reserved_maps in the error path of\npinctrl_generic_to_map().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90340"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09f47abc95ee9e819e7e93cd68c1c23abe11c842"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17007cd700601777d9ee203a13d97e64ece3a10f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:32Z"
+  }
+}

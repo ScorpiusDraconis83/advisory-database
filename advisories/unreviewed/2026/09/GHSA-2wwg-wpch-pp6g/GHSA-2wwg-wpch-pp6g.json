@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2wwg-wpch-pp6g",
+  "modified": "2026-09-17T18:32:02Z",
+  "published": "2026-09-17T18:32:02Z",
+  "aliases": [
+    "CVE-2026-90350"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: reject out-of-range link ids in mt76_vif_link()\n\nmt76_vif_link() indexes mvif->link[] without validating link_id, but\ncallers pass mvif->deflink_id / msta->deflink_id, which hold\nIEEE80211_LINK_UNSPECIFIED (0xf) until the first link has been added.\nSince IEEE80211_MLD_MAX_NUM_LINKS is 15, that reads one element past the\nend of the array, aliasing mt76_vif_data.offchannel_link.\n\nReachable via mt7996_set_tsf()/mt7996_offset_tsf() and\nmt7996_net_fill_forward_path(). Bounds check link_id and return NULL,\nmatching mt7996_sta_link() and mt7996_sta_link_protected().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90350"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13f6a9c786022d5213e84d494cc8717c378f5395"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9ba744a28c26eaa5cae930688a22e01888395308"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c1442c345ca8da857fadea1d0797b97347ab6984"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:33Z"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q9wf-hxpx-57g5",
+  "modified": "2026-09-17T18:31:59Z",
+  "published": "2026-09-17T18:31:59Z",
+  "aliases": [
+    "CVE-2026-90287"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nphy: sunplus: fix error handling in sp_uphy_init()\n\nFix the error paths of sp_uphy_init() to undo exactly what each stage\ndid: return directly if clk_prepare_enable() fails, release only the clock\nif reset_control_deassert() fails, and jump to err_reset if\nupdate_disc_vol() fails so the clock and reset are not leaked.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90287"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1489b694b1f3265cd5363100642a22190033f4b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1fce81a40e3b3ec6b4f52e278d5c2bde79b25939"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a7dcbe3112aef3505beae4f982331a00326217c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5acdc4d5b58bd0730824938db79b5f08ef996d9c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b2683bc4cc18c581b7cd24f227cbe61abca7f4d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d8856bfe6d00c21c4c0ba689cb6c9e30ceaccb8f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:25Z"
+  }
+}

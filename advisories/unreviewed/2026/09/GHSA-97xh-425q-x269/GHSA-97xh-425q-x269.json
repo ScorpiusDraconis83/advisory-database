@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-97xh-425q-x269",
+  "modified": "2026-09-17T18:31:59Z",
+  "published": "2026-09-17T18:31:59Z",
+  "aliases": [
+    "CVE-2026-90284"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware_loader: do not queue completed sysfs fallback requests\n\nfw_load_sysfs_fallback() calls device_add() before adding the fw_priv to\npending_fw_head. device_add() publishes the fallback loading interface, so\na userspace helper which discovers the device by scanning sysfs can write 0\nto the loading attribute and complete the request before it is queued as\npending.\n\nIn that interleaving firmware_loading_store() calls fw_state_done() while\npending_list still points to itself, so it cannot remove an entry from\npending_fw_head. The subsequent unconditional list_add() then queues an\nalready-completed fw_priv. Once the request is released, pending_fw_head\ncan retain a pointer to freed memory and the next fallback request can\nfault while validating the list.\n\nOnly in-flight fallback requests need suspend or reboot abort handling. If\nthe request is already DONE after device_add(), return success from the\nfallback path without sending another uevent, waiting again, or queueing it\nas pending. This preserves the invariant that pending_fw_head contains only\nactive fallback requests.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90284"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5a250bff75a446374c05622973b18b4ab662b504"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6eaa632d0ed7bbb84f9cb670e5ec4e2cecf4cc7b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85aeb8fc61839098ae0942ccba86e669c08e75d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93a2385730540105df8524447dcc11309ad280f9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b48373c901951fad1a26bd7c33ad91172b3945b5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c8b97c5130f27b64fa2cfe1aa4bebb13f724c6c7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea33fac0df7fe7b49a4b27acb83e227b82317d1d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb4824880b0dba0e7b3a497c46c642f979630392"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:25Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c854-fhx8-wg6w",
+  "modified": "2026-09-17T18:32:04Z",
+  "published": "2026-09-17T18:32:04Z",
+  "aliases": [
+    "CVE-2026-90418"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnilfs2: fix BUG in nilfs_copy_dirty_pages() on dirty state mismatch\n\nSyzbot reported a kernel BUG triggered within nilfs_copy_dirty_pages(),\nwhich copies dirty DAT file folios/pages to its shadow page cache.  The\nBUG occurs when a retrieved dirty folio/page unexpectedly loses its\n'dirty' status.\n\nThis issue arises because, since the commit referenced below, the 'dirty'\nflag of a folio/page can be cleared asynchronously after the filesystem\ndetects metadata corruption and transitions to read-only mode.\n\nResolve the issue by returning an -EROFS error if the filesystem has\ntransitioned to read-only mode.  Also change the behavior to issue a\nkernel warning only once instead of triggering a kernel BUG when this\nunexpected 'dirty' state is detected while the filesystem is not in\nread-only mode.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90418"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3904fb0ee741ebbbc27ec8f50a9bb6cd31e8af05"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4e1f21e7540b25d83f86b50780836ed7d2afcc93"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5166a21b12f549774f2983fa86d2526ea9e66ace"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66f4ad3ce158902e5f98afea93189972ed8750c2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f181155baf0c93a74ebe804c6cecbe970e78ee9e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:46Z"
+  }
+}

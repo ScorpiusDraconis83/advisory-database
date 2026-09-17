@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6ch6-r62g-8chc",
+  "modified": "2026-09-17T18:32:03Z",
+  "published": "2026-09-17T18:32:03Z",
+  "aliases": [
+    "CVE-2026-90376"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: fix MLD ID in MAC TXD and HIF TXP\n\nProblem:\nMCU command timeout while the firmware state is normal, and the\nfirmware keeps showing the error log \"ERROR!! NO PAUSE...\".\n\nRoot cause:\nIf the MLD_ID field in the TXD is neither the primary link id nor the\nsecondary link id, it may lead to a firmware busy loop when the third\nlink is in power saving mode.\n\nRemap frames directed to a third link to the primary link wcid. Since\nTX status events and txfree completions carry the wcid the firmware\nsaw, use the remapped wcid for packet id tracking and non-AQL packet\naccounting as well, while the frame keeps its original link context\nfor addressing, band and OMAC selection.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90376"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a951ff6704db7b46c3f6d03b77e6053122be8ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5183b9f092fc0041618f38f895bd0ad860c26ca9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ce35ecffc96e6d097d27b6fe30677a2cfe2e0461"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:36Z"
+  }
+}

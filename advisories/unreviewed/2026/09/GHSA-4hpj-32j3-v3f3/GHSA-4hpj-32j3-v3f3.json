@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4hpj-32j3-v3f3",
+  "modified": "2026-09-17T18:32:04Z",
+  "published": "2026-09-17T18:32:03Z",
+  "aliases": [
+    "CVE-2026-90394"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: sc2731_charger: cancel work on remove\n\nThe USB notifier and initial charger detection can schedule info->work.\nThe remove path unregisters the notifier, but does not cancel queued or\nrunning work before the devm-allocated driver data is released.\n\nSet the platform drvdata used by remove, then cancel the work after\nunregistering the notifier.\n\nThis issue was found by a static analysis tool.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90394"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05c188addc6d1af51e28496e95096f4df9a000e9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/232e9e946b496e4706e2f34ce4a617460d8ae713"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/972d88069050d0272b776145b824198b8f899dce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aab9d81a415c6653b44b057695ebfbba34dc9556"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb74a5ab30963022981381ea6aee176fd0c7957c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c6df6e0c099086bc553d44410015cc81795070e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5266b4c5c77152e386a3a2d9d5244b3b6cbd57a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dfc859bb8d332c525872f1a44028137724fa1998"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:39Z"
+  }
+}

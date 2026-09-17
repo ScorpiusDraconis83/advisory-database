@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-39h4-xrh5-39fg",
+  "modified": "2026-09-17T18:31:54Z",
+  "published": "2026-09-17T18:31:54Z",
+  "aliases": [
+    "CVE-2026-90192"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmailbox: qcom-cpucp: handle NULL data in send_data callback\n\nmailbox_clear_channel() calls mbox_send_message() with NULL data to\nnotify the remote side that the RX channel has been cleared.\nqcom_cpucp_mbox_send_data() blindly dereferenced the data pointer,\ncausing a NULL pointer dereference kernel panic when invoked from\nthis path under PREEMPT_RT.\n\nAdd an explicit NULL check and return early without writing to the\nTX register, which is the correct behaviour for a channel-clear\nnotification.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90192"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d11d2a6c9a10de287e0f1b53a5e65d16afe2760"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/413b0b94d6d06b8d49735280e86a01dac90cf177"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3d73e7440e0c40644285be1bda349cdf90122d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc4f2f99530298a1739226947aa76525142d421d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:13Z"
+  }
+}

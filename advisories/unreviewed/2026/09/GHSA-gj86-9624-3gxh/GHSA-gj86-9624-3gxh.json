@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gj86-9624-3gxh",
+  "modified": "2026-09-17T18:31:58Z",
+  "published": "2026-09-17T18:31:58Z",
+  "aliases": [
+    "CVE-2026-90266"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: zoned: don't force read-only on transient -EAGAIN from reloc merge\n\nOn a zoned FS, btrfs_delayed_refs_rsv_refill() returns -EAGAIN whenever\nthe over-committed metadata plus the zone_unusable bytes exceeds the\nusable size in a metadata block-group to avoid heavy over-commit of\nmetadata and early ENOSPC in one transaction.\n\nIf this happens while doing reclaim, the transaction is getting aborted.\n\nTreat -EAGAIN as a soft, retryable condition in case of block-group\nreclaim.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90266"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8249dfe46337d599e2087b772a2e32ef9f77282b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e549093c11a2fff8430df3dfbdb45eb9811a69a5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:23Z"
+  }
+}

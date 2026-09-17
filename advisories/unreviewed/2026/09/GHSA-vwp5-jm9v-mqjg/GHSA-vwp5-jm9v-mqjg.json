@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vwp5-jm9v-mqjg",
+  "modified": "2026-09-17T18:31:51Z",
+  "published": "2026-09-17T18:31:50Z",
+  "aliases": [
+    "CVE-2026-90101"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbnxt_en: Fix call to hardware monitoring event handler\n\nThe first parameter of hwmon_notify_event() is supposed to be the hardware\nmonitoring device. The bnxt driver calls it with the platform device as\nfirst parameter instead. This API break results in undefined behavior and\nmay result in a crash.\n\nPass the hardware monitoring device as parameter instead to fix the\nproblem.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90101"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/001ff5d8e68aacd91768b824b930dd7e68db6688"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/622d698df4239fef3e0eb51fe59f4198f957f28a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b17907ef665bc76a495a8f909f74656d3f32b7a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e3cad8389a72b8a309b5689c1683310126b0d7da"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:01Z"
+  }
+}

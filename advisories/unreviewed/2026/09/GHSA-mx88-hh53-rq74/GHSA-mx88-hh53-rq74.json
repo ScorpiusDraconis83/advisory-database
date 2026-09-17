@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mx88-hh53-rq74",
+  "modified": "2026-09-17T18:32:07Z",
+  "published": "2026-09-17T18:32:07Z",
+  "aliases": [
+    "CVE-2026-93043"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Disallow interpreter fallback for gotox insn\n\nThe interpreter does not recognize the BPF_JMP|BPF_JA|BPF_X insn, which\nis used for insn_array map. Thereafter, it would hit the BUG_ON() in\n___bpf_prog_run() at run time.\n\n[    2.563726] BPF interpreter: unknown opcode 0d (imm: 0x0)\n[    2.564557] ------------[ cut here ]------------\n[    2.565206] kernel BUG at kernel/bpf/core.c:2349!\n[    2.565882] Oops: invalid opcode: 0000 [#1] SMP PTI\n\nSet jit_required as true when insn_array map is used in the prog in\norder to disallow interpreter fallback for gotox insn in\ncore.c::__bpf_prog_select_runtime().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93043"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/17da80d0c7b56579476b6644120bcfea778e531a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/905f716362e1186c1a23447ca279e6d21f795cdb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:57Z"
+  }
+}

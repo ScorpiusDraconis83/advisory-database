@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x6hm-2gxw-v8r3",
+  "modified": "2026-09-17T18:32:11Z",
+  "published": "2026-09-17T18:32:11Z",
+  "aliases": [
+    "CVE-2026-93126"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nremoteproc: qcom_q6v5_adsp: Fix reference leak for device node\n\nWhen calling of_parse_phandle_with_args(), the caller is responsible\nto call of_node_put() to release the reference of device node.\nIn adsp_map_carveout, it does not release the reference.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93126"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5aed51501447ebb925b0ce0d7d923a9d5ce0bf9e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7420aac8b1f7e5a75a9d659be3f151dd89de6911"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8c952807c2cebd5e9e9b37146c9383229794c129"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a73cfa80f1ec6b0f948cf3c91455c62423747b3e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8bf07b031b202a93d8aa44a4a230a0bbfe0c1fc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:07Z"
+  }
+}

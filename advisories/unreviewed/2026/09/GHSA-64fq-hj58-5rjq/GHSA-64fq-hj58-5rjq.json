@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-64fq-hj58-5rjq",
+  "modified": "2026-09-17T18:31:55Z",
+  "published": "2026-09-17T18:31:55Z",
+  "aliases": [
+    "CVE-2026-90208"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nclocksource/drivers/samsung_pwm: Switch to raw_spinlock_t type\n\nSamsung PWM timer might be used as a clock source on some legacy systems.\nWhen PREEMPT_RT is enabled on ARM, regular spinlock is converted to a\nsleeping lock (mutex-based), which must not be used in atomic context\nsuch as hard interrupt handlers. Switch the samsung_pwm_lock to the\nraw_spinlock, which remains a true non-sleeping spinlock even\nunder PREEMPT_RT.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90208"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b212f9d70805d91febae01d618868f4860e267c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7eb5764d25c4ac7f5d126621660f7219b61fd2fd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:15Z"
+  }
+}

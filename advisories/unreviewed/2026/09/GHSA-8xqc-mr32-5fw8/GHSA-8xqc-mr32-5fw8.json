@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8xqc-mr32-5fw8",
+  "modified": "2026-09-17T18:31:52Z",
+  "published": "2026-09-17T18:31:52Z",
+  "aliases": [
+    "CVE-2026-90134"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: fix kmap_local_page() usage in compress\n\nSeveral compressed I/O paths discard the address returned by\nkmap_local_page() and later access or unmap the page using page_address().\nThis is invalid for highmem pages, and local mappings must also be unmapped\nusing the address returned by kmap_local_page().\n\nMap each destination page in ntfs_decompress() only while producing the\ncurrent sub-block. Use memcpy_from_page(), memcpy_to_page(), and\nmemzero_page() for the other page accesses. Remove unnecessary local\nmappings from ntfs_write_cb(), where pages are accessed through the vmap()\nmapping.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90134"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e03fbd5f772ad24ea64f7632e4d0d73184787ca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/950e2ecc7aec21af24b05bc661a097a81c670409"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:05Z"
+  }
+}

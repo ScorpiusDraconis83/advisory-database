@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hf49-hh29-x2wv",
+  "modified": "2026-09-17T18:32:11Z",
+  "published": "2026-09-17T18:32:11Z",
+  "aliases": [
+    "CVE-2026-93115"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/mellanox: mlxbf-pmc: Check ACPI_COMPANION() against NULL\n\nEvery platform driver can be forced to match a device that doesn't match\nits list of device IDs because of device_match_driver_override(), so\nplatform drivers that rely on the existence of a device's ACPI companion\nobject need to verify its presence.\n\nmlxbf_pmc_probe() passes the result of ACPI_COMPANION() to\nacpi_device_hid(), which dereferences it, so force-binding the driver to\na device without an ACPI companion leads to a NULL pointer dereference.\n\nAccordingly, add a requisite ACPI_COMPANION() check against NULL to the\nmlxbf-pmc driver and return -ENODEV when the companion is missing.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93115"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71ba8b6e28f7a83b724036f5de07e03bb5473286"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/950d8e8375f3ff4787de51b7bdf8dd23a3ad6547"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a75b84119e56fc34b0f1403f3b93d357a55dabb6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf1e0cc5cc1d4e71b699fc98cc9198ead0ed53e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c38cce70adef874c2a7b5132c14d6c221401deff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d25dd08268aeaceb485189aaa84aa6d68a460291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fdfb736282b9665c0169df0c4152ec91fdea2767"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:06Z"
+  }
+}

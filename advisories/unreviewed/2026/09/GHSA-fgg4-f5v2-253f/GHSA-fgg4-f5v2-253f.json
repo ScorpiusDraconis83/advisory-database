@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fgg4-f5v2-253f",
+  "modified": "2026-09-17T18:32:13Z",
+  "published": "2026-09-17T18:32:13Z",
+  "aliases": [
+    "CVE-2026-93167"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncsky: Fix a4/a5 restoration in syscall trace path\n\nThe syscall trace path reloads syscall arguments from pt_regs before\ncalling the syscall handler. On C-SKY ABIv2, the 5th and 6th syscall\narguments are prepared as stack arguments before invoking syscallid.\n\nThe current code adjusts sp before loading LSAVE_A4 and LSAVE_A5. Since\nthose offsets are relative to the original pt_regs base, loading them\nafter changing sp fetches the wrong slots. As a result, traced syscalls\nthat use the 5th or 6th argument may receive corrupted arguments.\n\nThis is visible with mmap2(), which takes six arguments. A small\nPTRACE_SYSCALL reproducer opens a file and maps one page with:\n\n  mmap(NULL, 4096, PROT_READ | PROT_EXEC, MAP_PRIVATE, fd, 0)\n\nBefore the fix, the traced child fails the mmap and exits with 12.\nAfter the fix, the mapping succeeds and the child exits with 0.\n\nFix the trace path by loading a4/a5 from pt_regs before changing sp.\n\nTested on: ck860f, linux-4.19.15, C-SKY abiv2",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93167"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/31c81b376e5f058c7f2c94f69719cf7caec2fc3f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/343aa5275484d627c921a42e8e115cae366be5de"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/64e3ec7a71d3b715e2567f19f64207f04999bb0c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/863fa63fd1491f201ac819f805a8db98d2a32c3d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a776afa89424570bfa637ebf812ca281a5732904"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/abb81e5ce7d995baa41556b8125fa59e28ba3be8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e71a3dc5b8d2ea4d9cfbdb135d6b7777de84212e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e9ae8e86eed68bea5d2670eadf61938a43bd2263"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:12Z"
+  }
+}

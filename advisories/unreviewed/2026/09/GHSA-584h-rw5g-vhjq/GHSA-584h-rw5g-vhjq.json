@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-584h-rw5g-vhjq",
+  "modified": "2026-09-17T18:31:55Z",
+  "published": "2026-09-17T18:31:55Z",
+  "aliases": [
+    "CVE-2026-90213"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirewire: core: fix memory leak in error path of build_tree()\n\nIn the error path of build_tree(), node instances can remain in the local\nlinked list when the function returns.\n\nWhenever an invalid value is detected in the self ID sequence, each\nallocated node instance is either an entry in the linked list or an\nentry in the ports array of its parent node. Therefore, the allocate\nnode instances can be safely released by traversing the linked list from\nits head.\n\nRelease the remaining node instances with for_each_fw_node() before\nreturning to the caller.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05bfb1327dc5fb61528bab31cd8f0c1e4bddec23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6a990e74d4e848f32eda91d69e4f885604fc326d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/848eaef4d30b385eb074214b7fa58287506158ad"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d6037e42aa4dd29bb9d9f67ef438128c5bfe3448"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:16Z"
+  }
+}

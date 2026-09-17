@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6gqw-gw67-f4rg",
+  "modified": "2026-09-17T18:31:53Z",
+  "published": "2026-09-17T18:31:53Z",
+  "aliases": [
+    "CVE-2026-90164"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/server: abort initialization when proc setup fails\n\nksmbd_server_init() calls ksmbd_proc_init() before creating the\nremaining proc entries and server subsystems. ksmbd_proc_init() tears\ndown partial state on a procfs or percpu_counter allocation failure,\nbut returns void, so ksmbd_server_init() continues as if the counters\nwere usable.\n\nOnce userspace starts the server, server_ctrl_handle_init() calls\nksmbd_proc_reset(), which reaches percpu_counter_set() with a NULL\nper-CPU counters pointer on SMP systems. The later ksmbd_proc_create()\ncalls also receive a NULL parent and may create entries in the /proc\nroot; ksmbd_proc_cleanup() cannot remove those entries because\nksmbd_proc_fs is NULL.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90164"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/db97f3763727d652112ae70038d4e17b3ce277bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fb4ba2bdfc1de8866e7c8e00df99f4b03ff42f09"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:09Z"
+  }
+}

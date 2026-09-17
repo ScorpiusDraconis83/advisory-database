@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p39c-xj5c-vgmf",
+  "modified": "2026-09-17T18:31:58Z",
+  "published": "2026-09-17T18:31:58Z",
+  "aliases": [
+    "CVE-2026-90271"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\narm_mpam: Fix a NULL pointer dereference on unbinding after an error interrupt\n\nIf a user unbinds an MSC after mpam_disable() has been run in response\nto an error interrupt then a dereference of a NULL pointer occurs as\nmpam_disable() sets the drvdata to NULL. Add an early return to the driver\nremove callback to avoid this.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90271"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a29044c9c83513c7463de2adb84c169685562ad2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fc996c39689bb15aa80e5366809434f7258fb703"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:23Z"
+  }
+}

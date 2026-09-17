@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7g8p-mffc-5643",
+  "modified": "2026-09-17T18:32:13Z",
+  "published": "2026-09-17T18:32:13Z",
+  "aliases": [
+    "CVE-2026-93175"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Fix dangling pointer in CRTC reset function\n\namdgpu_dm_crtc_reset_state() frees the old state before allocating\na new one. If kzalloc() fails, the function returns without updating\nthe state pointer, leaving a dangling pointer to already freed memory.\n\nFix this by allocating the new state first. On allocation failure, the\nold state remains untouched and the function safely returns.\n\nFound by Linux Verification Center (linuxtesting.org) with SVACE.\n\n[adjust for movement around current amd-staging-drm-next]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93175"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0aeed866cb938943908c3ba46422128e49d2d080"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/32bd68edbc6cbcfac0e4033b64f0bcadbf0efef5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:13Z"
+  }
+}

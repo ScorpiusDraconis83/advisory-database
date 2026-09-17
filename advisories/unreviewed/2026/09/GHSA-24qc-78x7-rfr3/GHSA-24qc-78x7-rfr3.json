@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-24qc-78x7-rfr3",
+  "modified": "2026-09-17T18:31:58Z",
+  "published": "2026-09-17T18:31:58Z",
+  "aliases": [
+    "CVE-2026-90273"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncoresight: etm4x: missing cscfg_csdev_disable_active_config() in perf enable\n\nIn the perf enable path, there are missing cases where\ncscfg_csdev_disable_active_config() is not called:\n\n  - Branch broadcast is selected but not supported by the hardware\n  - etm4_enable_hw() fails\n\nThis can lead to a leak of config_desc->active_cnt.\nFix this by properly calling cscfg_csdev_disable_active_config()\nin these error paths.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90273"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0a47f0be6557b4a851addd430383a4dc7ee08752"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7e4f2702bbadbde887a5d8897297720a7f037ee5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:23Z"
+  }
+}

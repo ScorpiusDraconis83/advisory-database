@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wqjr-928r-pqhq",
+  "modified": "2026-09-17T18:32:06Z",
+  "published": "2026-09-17T18:32:06Z",
+  "aliases": [
+    "CVE-2026-92484"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncxl/region: Fix use-after-free in find_pos_and_ways() error path\n\nThe error path releases its reference to a switch decoder before\nlogging an error that includes the decoder name. If the released\nreference is the last one, the decoder can be freed before the error\nmessage accesses its name.\n\nDrop the reference after the error is reported.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92484"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15da704b732332cc1e8f121f624e5e6c05124c5d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/68edf359b0b45cad2654510c1ca257079b241aa5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f7683ce37a53eeabd721941517341d2eef2cf3c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b38ca9ce8c7d9b8151bb9e4770404c5e39600a48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f54b96e8aadbfc7f2a1b26df349ef9b062c47d2e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:50Z"
+  }
+}

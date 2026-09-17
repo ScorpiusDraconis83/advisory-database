@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-785w-94x7-r876",
+  "modified": "2026-09-17T18:32:08Z",
+  "published": "2026-09-17T18:32:08Z",
+  "aliases": [
+    "CVE-2026-93059"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm: Fix task_struct reference leak in recover_worker\n\nget_pid_task() increments the task reference count, but the\ncorresponding put_task_struct() was missing in the else branch,\nleaking a reference on every GPU hang recovery.\n\nPatchwork: https://patchwork.freedesktop.org/patch/730662/",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40b793714ad8f393ab3d469f9d00b20ebda46257"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6c472fde2c8096e16bb46b0605adda2488f300c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d684f756d029d81db1cd64cd9645556e53fcc784"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:59Z"
+  }
+}

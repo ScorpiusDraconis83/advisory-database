@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q82p-xqw2-q8m2",
+  "modified": "2026-09-17T18:32:02Z",
+  "published": "2026-09-17T18:32:02Z",
+  "aliases": [
+    "CVE-2026-90364"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nACPI: processor: Unregister cpufreq notifier on init failure\n\nacpi_processor_driver_init() registers the cpufreq policy notifier before\nregistering the ACPI processor driver and setting up CPU hotplug state.\n\nIf driver_register() or cpuhp_setup_state() fails, the error path only\nunregisters the ACPI processor driver and the idle driver. The cpufreq\nnotifier remains registered even though initialization failed.\n\nMirror the module exit path on the init failure path and unregister the\ncpufreq notifier when it has been registered.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90364"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06f32dd67e6b23a05bef0d8183c5335af91c0c3b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/182cd086b31ea4ccc1d8f2ec5b81e988dfe0b892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/64976f3b34b07eb866ead4052cefe7e9ff45fd2f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f3036c5de8b651880f323e223b1604b6cfbff21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ccee0785030978c49505e04954eee3f30a5f01ca"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:35Z"
+  }
+}

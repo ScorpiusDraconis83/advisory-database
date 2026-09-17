@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g2cj-3w7x-6824",
+  "modified": "2026-09-17T18:32:02Z",
+  "published": "2026-09-17T18:32:02Z",
+  "aliases": [
+    "CVE-2026-90362"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm/dsi: Drop dev_pm_opp_set_rate(0)\n\ndev_pm_opp_set_rate(0) removes the vote specified in required-opps but\ndoes not actually park the clock, making it run without the necessary\npower backing. Drop the explicit call to it.\n\nEvery call site of ops->link_clk_disable() is followed by\npm_runtime_put(), so the power vote will be rescinded if deemed safe.\n\nPatchwork: https://patchwork.freedesktop.org/patch/742783/",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90362"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/00008e6f544c2d480f920ab1e593a46cfb87cead"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06b7ba206561619bb34116f49e0ef26b867ce3aa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27e181c185194baf5c1ef18bbff1fc3bc283ef21"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/393b43cc12c95f3d2762a06f799807313029032e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c3e537db05021c93ea40a46bd0c50eee2f30f87"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/83bc4eab83ae5ab88d410148a2e73e09e6f21c04"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bc1df05cccdb4f08aa42e736b54d265c6c11a45b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3e8355a63cead3dedaa52f46cd1ee9796fdc7a8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:35Z"
+  }
+}

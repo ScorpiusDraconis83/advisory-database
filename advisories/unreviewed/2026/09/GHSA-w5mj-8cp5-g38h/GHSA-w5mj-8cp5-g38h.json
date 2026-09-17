@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w5mj-8cp5-g38h",
+  "modified": "2026-09-17T18:31:58Z",
+  "published": "2026-09-17T18:31:58Z",
+  "aliases": [
+    "CVE-2026-90270"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\narm_mpam: Disable driver unbind to avoid UAF\n\nWhen a user unbinds an MSC and that MSC is the only MSC left for a\ncomponent then the corresponding mpam_component will be freed. If the user\nthen goes on to read the schemata file in the resctrl filesystem then the\nmpam_component will be accessed from resctrl_arch_get_config() leading to a\nuse after free.\n\nAs the MPAM driver is not a module the unbind sysfs interface is the only\nway to trigger the remove. Instead of dealing with the complexity of\nallowing some unused MSC to unbind just remove the unbind sysfs interface.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90270"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d199b6a0651abad3ca6d0877dbedbe8fe6ea9e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb1a0f582d519c0461b0940116e2b52c5ba31459"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:23Z"
+  }
+}

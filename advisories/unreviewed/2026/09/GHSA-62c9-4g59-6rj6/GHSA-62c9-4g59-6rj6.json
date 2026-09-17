@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-62c9-4g59-6rj6",
+  "modified": "2026-09-17T18:32:01Z",
+  "published": "2026-09-17T18:32:01Z",
+  "aliases": [
+    "CVE-2026-90333"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm-integrity: replace forgeable discard filler with a keyed sector marker\n\nThe discard-block check in dm_integrity_rw_tag() treats a stored tag\nof all 0xf6 bytes (DISCARD_FILLER) as proof a block was discarded and\nskips HMAC verification. allow_discards is only accepted in\ndm-integrity's standalone mode. An attacker with raw write access to\nthe backing device, but without the integrity key, can stamp any block\nwith an all-0xf6 tag and have it served as authentic.\n\nAdd a new \"allow_discards_keyed\" target argument that marks discarded\nblocks with a keyed checksum of (salt || sector) instead, computed by\nintegrity_discard_checksum().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90333"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5c58ea19a909ef6bed4f0f824e9cd7e30d7e4775"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6228722c27304e4682cddc1fede03898f87e4414"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/68c5c42567bc462139128968ebbfadd0aefff519"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:31Z"
+  }
+}

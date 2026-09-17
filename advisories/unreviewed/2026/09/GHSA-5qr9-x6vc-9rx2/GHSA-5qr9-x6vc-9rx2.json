@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5qr9-x6vc-9rx2",
+  "modified": "2026-09-17T18:32:06Z",
+  "published": "2026-09-17T18:32:06Z",
+  "aliases": [
+    "CVE-2026-92487"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nexfat: fix valid_size extension over a shared writable mapping\n\nWhen a shared writable mapping has its valid_size extended by a buffered\nwrite or a page fault, exfat zeroes the page-cache gap below the new\nvalid_size. A store through the mapping can race with this zeroing and be\noverwritten.\n\nFix this by zeroing the gap lazily. Drop ->map_pages so that every first\nwrite fault goes through exfat_page_mkwrite(), which advances valid_size to\ncover the faulting page. With fault-around enabled, a store could install a\nwritable PTE, skip ->page_mkwrite(), and land past valid_size without\nadvancing it. Extending valid_size one faulting page at a time also leaves\nnever-written pages in a large mapping alone.\n\nThe gap is filled with block granularity, zeroing only the not-uptodate\nblocks and preserving blocks that may hold data stored through the mapping.\nOn the buffered-write path the invalidate lock is held and the gap is\nunmapped before zeroing, so a racing store re-faults and, under the inode\nlock, completes only after the gap has been zeroed and valid_size covers\nit.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92487"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1135704ed22f54873eb0498a232611d9eca30dd4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24f20986b253c3e4eb13ebe3c2007d1d352408a6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:50Z"
+  }
+}

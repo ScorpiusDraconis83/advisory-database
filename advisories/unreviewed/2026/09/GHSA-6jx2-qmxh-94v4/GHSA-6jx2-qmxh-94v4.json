@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6jx2-qmxh-94v4",
+  "modified": "2026-09-17T18:32:00Z",
+  "published": "2026-09-17T18:32:00Z",
+  "aliases": [
+    "CVE-2026-90317"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Invalidate RCU pointers after final spin unlock\n\nIn a sleepable BPF program, a spin lock can provide the only RCU protection\nfor a kptr. The final bpf_spin_unlock() ends that protection, but the\nverifier leaves the pointer valid. Another CPU can then free the object\nbefore the pointer is used. A capability-limited runtime PoC triggered a\ntask_struct use-after-free in __bpf_get_task_stack().\n\nRecord whether the program is in an RCU-protected context before releasing\nthe lock. Invalidate RCU-protected pointers only when the unlock leaves the\nfinal such context. This preserves valid pointers in non-sleepable programs\nand inside an explicit RCU read-side section.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90317"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/180c7000712db77063b3a26f4c97e7dd9038f449"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ae71629357d0a6d0bdadb929c7b296d5b7e61c2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:29Z"
+  }
+}

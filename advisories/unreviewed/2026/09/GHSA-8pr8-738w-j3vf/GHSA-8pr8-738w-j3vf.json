@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8pr8-738w-j3vf",
+  "modified": "2026-09-17T18:32:08Z",
+  "published": "2026-09-17T18:32:08Z",
+  "aliases": [
+    "CVE-2026-93052"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: bcm-vk: Use acquire/release for msgq_inited\n\nbcm_vk_sync_msgq() fills the message queue information and then sets\nmsgq_inited. Readers call bcm_vk_drv_access_ok() before accessing the\nmessage queues and their cached queue information.\n\natomic_set()/atomic_read() do not order those accesses. A reader can see\nmsgq_inited set while still seeing stale queue information. Use release\nwhen publishing the initialized queues and acquire when checking the gate.\n\nKeep the clear in bcm_vk_blk_drv_access() as atomic_set(). It closes the\ngate and does not publish queue state to readers.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93052"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1df3926ed8771edf286ff753428b243f334e6041"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4984277bc43f84d7506346a09b29af138246d54a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61b101c6a150057b6d512421ed108aed16e822ea"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/679cfada6868723ccf162ec3b78c7402ff2405bf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a45d6dd3c11e921882a2e74c7c8710b975f2eaa7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bab66a9e30e39a06f3463b19f8c704386dfd5268"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7a8f4cbc8cede0be55220367dc52b126e2d39e5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:58Z"
+  }
+}

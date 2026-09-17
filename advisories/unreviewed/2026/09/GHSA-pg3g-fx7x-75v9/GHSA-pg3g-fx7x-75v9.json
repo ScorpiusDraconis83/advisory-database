@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pg3g-fx7x-75v9",
+  "modified": "2026-09-17T18:32:00Z",
+  "published": "2026-09-17T18:32:00Z",
+  "aliases": [
+    "CVE-2026-90310"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen/xenbus: check otherend_id only after it has been initialized\n\nWhen device just got initialized (for example on module load), the\notherend_id field is initialized only after\nxenbus_read_otherend_details() gets called. If xenstore watch triggers\nxenbus_dev_changed() before that, it might consider still zeroed\notherend_id field (not matching actual xenstore content) as a sign of\ndevice state reset. It can happen because xenstore watch are handled in\nanother thread (xenwatch), which can run in parallel to the initial\ndevice probe running at module load. In that case, it would call\ndevice_unregister(), which would deadlock against device probe from\nmodule init.\n\nFix this by considering dev->otherend_id change only after dev->otherend\nis set (which happen after otherend_id is initialized).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90310"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/36fb592af353c55832e2cafe3fcfc3291be05f19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c76cbf348c7df077f93fa99a1225a527ce64cfa1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:28Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r9gp-2p3g-7gww",
+  "modified": "2026-09-17T18:32:05Z",
+  "published": "2026-09-17T18:32:05Z",
+  "aliases": [
+    "CVE-2026-90426"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/tegra241-cmdqv: Free the error IRQ before tearing down VINTFs\n\ntegra241_cmdqv_remove() tears each VINTF down first, then calls free_irq().\nTearing a VINTF down frees vintf0 and clears cmdqv->vintfs[0]. An error in\nthat window makes tegra241_cmdqv_isr() read the stale slot and hand it to\ntegra241_vintf0_handle_error(), which dereferences a NULL or freed pointer.\n\nFree the IRQ before tearing the VINTFs down. free_irq() waits for in-flight\nhandlers to finish and blocks new ones, so no ISR can observe a VINTF as it\nis torn down.\n\nNote: a user-owned VINTF (viommu) could outlive this teardown, which unmaps\ncmdqv->base and frees cmdqv->vintfs, so a later viommu close then touches\nfreed memory. This is neither introduced nor fixed here: a physical IOMMU\nis not a pluggable device, so iommufd by design holds no reference on the\none behind a viommu, and this teardown is not expected while that viommu is\nstill alive.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90426"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/076a4f5b1fc2016b973a12bc2ebb9b730e5e1e48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/421f5ab135cd4a1353891e5bf2602cfc3c01afc7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61f0d437988e5730b04442f6a7d30a9907339f2a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/735698e81f798b4c02dcb6291ffbdd1b962c8c66"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:47Z"
+  }
+}

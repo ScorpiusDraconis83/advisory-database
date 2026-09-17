@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m5cm-762c-jpjj",
+  "modified": "2026-09-17T18:32:09Z",
+  "published": "2026-09-17T18:32:09Z",
+  "aliases": [
+    "CVE-2026-93076"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndax/fsdev: clear vmemmap_shift when binding static pgmap\n\nClear pgmap->vmemmap_shift for static DAX devices. When rebinding a static\ndevice from device_dax (which may set vmemmap_shift based on alignment) to\nfsdev_dax, the stale vmemmap_shift persists on the shared pgmap. Explicitly\nzero it before devm_memremap_pages() so the vmemmap is built for order-0\nfolios as fsdev requires.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93076"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d298a0513aaf7d48f2a9f4a90041de910750cfcf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e0239229931faf9ca3367e3befcf16f77b2cd45b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:01Z"
+  }
+}

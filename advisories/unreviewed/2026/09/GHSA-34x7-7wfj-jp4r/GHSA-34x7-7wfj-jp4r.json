@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-34x7-7wfj-jp4r",
+  "modified": "2026-09-17T18:31:47Z",
+  "published": "2026-09-17T18:31:47Z",
+  "aliases": [
+    "CVE-2026-93013"
+  ],
+  "details": "RAGFlow through 0.27.2 contains a path traversal vulnerability in the dev_insert_chunks_from_file and dev_insert_metadata_from_file endpoints that allows authenticated attackers to read arbitrary files by supplying absolute file paths in the file_path parameter. Attackers with valid access tokens can exploit missing path validation to read any file accessible to the service, with disclosure limited to files matching expected JSON structures that are then written to datasets.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93013"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/infiniflow/ragflow/issues/19122"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/infiniflow/ragflow/pull/19591"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/infiniflow/ragflow/commit/aa78e8d224e0eab818d9fcd46f8791ebd73831bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/infiniflow/ragflow"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/infiniflow/ragflow/blob/v0.27.2/internal/handler/tenant.go#L360"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ragflow-through-0.27.2-tenant-import-endpoints-path-traversal"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T16:18:35Z"
+  }
+}

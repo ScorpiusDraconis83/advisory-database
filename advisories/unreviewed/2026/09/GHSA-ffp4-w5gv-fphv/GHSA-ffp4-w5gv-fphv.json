@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ffp4-w5gv-fphv",
+  "modified": "2026-09-17T18:32:13Z",
+  "published": "2026-09-17T18:32:13Z",
+  "aliases": [
+    "CVE-2026-93195"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/bridge: synopsys: dw-dp: Support unregistering the AUX channel\n\nThe DisplayPort AUX channel gets initialized and registered during\ndw_dp_bind(), but it is never unregistered, which may lead to resource\nleaks and/or use-after-free.\n\nAdd the missing dw_dp_unbind() function to allow the users of the\nlibrary to handle the required cleanup, i.e. unregister the AUX adapter.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93195"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48aaa495e24ce5aec3dc56706473b0bd4305a306"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2bec2d4a769d5b7b8202123404c7cd1aec17861"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ed04e8e2307f35b3d8d49a554faf5e72d3d224e6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:15Z"
+  }
+}

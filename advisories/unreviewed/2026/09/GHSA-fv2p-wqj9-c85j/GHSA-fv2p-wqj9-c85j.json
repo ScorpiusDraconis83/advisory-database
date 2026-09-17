@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fv2p-wqj9-c85j",
+  "modified": "2026-09-17T18:31:52Z",
+  "published": "2026-09-17T18:31:51Z",
+  "aliases": [
+    "CVE-2026-90130"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvdpa_sim: fix cleanup after worker creation failure\n\nvdpasim_create() leaves vdpasim->worker as an ERR_PTR when\nkthread_run_worker() fails. The error path then drops the device\nreference, which releases the partially initialized simulator.\n\nvdpasim_free() unconditionally passes the worker pointer to\nkthread_destroy_worker(), so the ERR_PTR is dereferenced and can trigger\na general protection fault.\n\nStore the worker error, clear the pointer, and only clean up the worker\nwhen it was successfully initialized. Also make the release path tolerate\npartially initialized objects by guarding virtqueue and IOTLB cleanup,\nsince the same release path can be reached from other initialization\nfailures.\n\nI found this bug myself, though the patch was written with AI assistance.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90130"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05ddc94afb69e36df59e88cfa9e5c7bf9d10cfd0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/68b726b3a01fb02a68843781b17d05ef3d759987"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bd670e5dfd2b01fd9692f61fa1456434c54026a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca6f3fa599cb764518df595368b743f856fdb516"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/feafa109f031ed111f7f968e447c13985db498e0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:05Z"
+  }
+}

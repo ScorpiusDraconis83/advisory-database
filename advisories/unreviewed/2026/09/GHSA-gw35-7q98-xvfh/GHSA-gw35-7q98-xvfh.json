@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gw35-7q98-xvfh",
+  "modified": "2026-09-17T18:32:08Z",
+  "published": "2026-09-17T18:32:07Z",
+  "aliases": [
+    "CVE-2026-92524"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nirqchip/gic-v3-its: Prevent leak in its_vpe_irq_domain_alloc()\n\nWhen its_irq_gic_domain_alloc() fails, the following\nits_vpe_irq_domain_free() fails to invoke its_vep_teardown() for the\ncorresponding interrupt, which leaks the resource.\n\nInvoke its_vpe_teardown() in the error handling path to avoid the leak.\n\n[ tglx: Massaged change log ]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92524"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05c199d6b806ed1cc64807062f9986f11315e8ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0d1951a1935a11c197272dbd38349033f0ef8991"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/325ff3e78c64cd619d52b99f7c8b09a3f31e1495"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6cd7e9b5463e1bceddcaf4acec6ca0f12553455b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6eb1f1414bf70185dad2525ecac5411db551faa2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82bccf7f9a12bf0eec9774968f6a853020ea26d3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4643bcb3bdda96b7292d6ab6ed196755a5bc304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d324c4353f64190a032c78d6e07be6d57ddfb2f1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:55Z"
+  }
+}

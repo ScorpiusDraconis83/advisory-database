@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cg6w-564g-phrg",
+  "modified": "2026-09-17T18:31:58Z",
+  "published": "2026-09-17T18:31:58Z",
+  "aliases": [
+    "CVE-2026-90258"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\npinctrl: airoha: add missed IRQ resource helpers\n\nWithout hooking .irq_request_resources, gpiolib cannot set\nGPIOD_FLAG_USED_AS_IRQ. This breaks pin direction locking and can allow\nuserspace or another driver to reconfigure an active IRQ pin as an output",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90258"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2c968c11592b478af4fbcb9453a0e1ac664c2e90"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a02fa031b9520e46e98bff17e12b472eba770670"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fda7350f257e59eee1bc7537c202e36bd56aea97"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:22Z"
+  }
+}

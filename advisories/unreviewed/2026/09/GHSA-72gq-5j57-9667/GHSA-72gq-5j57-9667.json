@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-72gq-5j57-9667",
+  "modified": "2026-09-17T18:31:53Z",
+  "published": "2026-09-17T18:31:53Z",
+  "aliases": [
+    "CVE-2026-90166"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/server: fix null-ptr-deref in ksmbd_ipc_tree_connect_request()\n\nSee the procedure below:\n\n  ksmbd_tree_conn_connect\n    ksmbd_share_config_get\n      share->name = kstrdup() // fail\n      if (!test_share_config_flag(share, KSMBD_SHARE_FLAG_PIPE)) // false\n      // do not check `share->name`\n    ksmbd_ipc_tree_connect_request\n      strlen(share->name) // null-ptr-deref",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90166"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4eb74a34ea401abfbbd5991076715dae3de938df"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7065d3648b1a48d2c49da3d6364dd3c4d503b10c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8461f27902727ad434375caf13a0100aafc0340f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d2ccf905f47d2344270749f4dfa905afcd3edeb0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:09Z"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4w2p-3v8x-m8hh",
+  "modified": "2026-09-17T18:32:11Z",
+  "published": "2026-09-17T18:32:11Z",
+  "aliases": [
+    "CVE-2026-93136"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbus: mhi: ep: Fix device refcount leak in the error path of MHI device creation\n\nmhi_ep_create_device() takes one device reference for the UL channel and\nanother for the DL channel after allocating the transfer device. These\nreferences are normally released by mhi_ep_destroy_device() before the\ndevice itself is removed.\n\nIf dev_set_name() or device_add() fails, the error path currently drops\nonly one reference. The remaining channel references keep the device\nfrom being released and leave the channels associated with a device that\nwas never registered.\n\nRoute both failures through a common unwind path that drops the DL\nchannel reference, the UL channel reference, and the initial reference\nfrom device_initialize().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4fae8fd4adc7f4765463ddeb1a5fad23936432f6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/51ddb831a36102fd0ea25f354935e49abce9f0a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5587e7871ce994bb079f97fe7e430d99627e5292"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6f12862600bb70e599a614d706a095ea5f8f9858"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8acc3813ab5015af73eeb74c9032443162f122d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8f3f64faee335eb678fd7dca7b95dfe3d0b271fd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:08Z"
+  }
+}

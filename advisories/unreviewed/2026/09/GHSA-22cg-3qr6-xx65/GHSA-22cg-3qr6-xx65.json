@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-22cg-3qr6-xx65",
+  "modified": "2026-09-17T18:32:12Z",
+  "published": "2026-09-17T18:32:12Z",
+  "aliases": [
+    "CVE-2026-93163"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwrng: core - fix rng list on registration error\n\nhwrng_register(rng) does the following:\n\n1. Checks if rng has name and read methods set\n2. Checks if the name already exists\n3. Adds rng to global rng_list\n4. May try to set rng to current_rng\n\nIf step 4 fails, it returns an error. However, it does not remove the\nrng from rng_list, causing a dangling reference which can result in\nuse-after-free if the caller frees rng, since registration failed.\n\nAdd a list_del_init() cleanup step.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93163"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3a5834db2b1ce25649f330e78efe1ccde78967fd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bee8d1fcdc8f389b595b0a4cf6fe8440f499458a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf293c9c7424de0d04b51367d07f40570ce80231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/de4f1bcb61a73cc896decdbd27d61a34add93b53"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:18:11Z"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mw3g-rrrf-x4m2",
+  "modified": "2026-09-17T18:32:06Z",
+  "published": "2026-09-17T18:32:06Z",
+  "aliases": [
+    "CVE-2026-92495"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/bnxt_re: Clear VM_MAYWRITE on DBR/toggle page mmap\n\nbnxt_re_mmap() rejects VM_WRITE for the DBR_PAGE and TOGGLE_PAGE mmap\nflags, but a read-only mapping can still retain VM_MAYWRITE. nd later\nbe upgraded with mprotect(PROT_WRITE). This can bypass the write check\nthat only runs at mmap time.\n\nClear VM_MAYWRITE before vm_insert_page() in the shared DBR/toggle-page\nbranch, matching the existing policy that userspace writes are not\nexpected for these pages.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92495"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0afbfe019c881483337d9f8304e678af05ebe7cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/13e7861809ef9e7e720ff5f0af1d4293a6d0a9b4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/518df61b9b0a5b288dfa72c87246045329c18b8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5361fb1e5bc246f9a2c0721543f72c8dac200769"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b66c9af7172ffcf727214fa0ebe9a5e1ed6eb16"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:51Z"
+  }
+}

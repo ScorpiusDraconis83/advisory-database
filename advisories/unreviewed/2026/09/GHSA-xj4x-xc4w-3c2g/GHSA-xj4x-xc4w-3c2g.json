@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xj4x-xc4w-3c2g",
+  "modified": "2026-09-17T18:32:03Z",
+  "published": "2026-09-17T18:32:03Z",
+  "aliases": [
+    "CVE-2026-90390"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/bitmap: resume array on backlog_store() error path\n\nbacklog_store() suspends the array before checking whether a write-mostly\ndevice exists. If no such device exists, the error path only unlocks\nreconfig_mutex and leaves the array suspended, blocking subsequent I/O.\n\nUse mddev_unlock_and_resume() to release both states.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90390"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03aad318f0a1f039dddf98739e705fdca3bf0d86"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2911cd0a0f4366a7e06832bc5f0a7fdcc138e4dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6763fb409a0b4106676a52cf934440d9484b32c8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc543e769b97d563b089b9e0ebf8ad361d15076f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T17:17:38Z"
+  }
+}
