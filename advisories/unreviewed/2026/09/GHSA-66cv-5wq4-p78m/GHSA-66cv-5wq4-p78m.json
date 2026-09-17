@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-66cv-5wq4-p78m",
+  "modified": "2026-09-17T15:32:14Z",
+  "published": "2026-09-17T15:32:14Z",
+  "aliases": [
+    "CVE-2026-81829"
+  ],
+  "details": "A flaw was found in SmallRye JWT's AwsAlbKeyResolver, which is used by applications to verify JSON Web Tokens signed by AWS Application Load Balancers. When the AWS_ALB key provider is configured, the resolver constructs the key-fetch URL by directly concatenating the attacker-controlled kid header value from an inbound JWT without sanitizing path traversal characters or query-string separators. This allows an unauthenticated remote attacker to force the application server to issue GET requests to arbitrary paths on the same origin as the configured key endpoint. As a result, non-public endpoints or internal data reachable on that origin may be read by the attacker before JWT signature verification takes place.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81829"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-81829"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2524980"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T14:17:32Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j6fr-jm3x-jjr8",
-  "modified": "2026-09-16T06:31:36Z",
+  "modified": "2026-09-17T15:31:55Z",
   "published": "2026-09-16T06:31:36Z",
   "aliases": [
     "CVE-2026-87959"
   ],
   "details": "The WPBot  WordPress plugin before 8.7.6 does not perform a capability check on the AJAX action that saves its Claude AI provider settings, allowing users with subscriber-level access to overwrite those settings, including the API key used for the WPBot  WordPress plugin before 8.7.6's outgoing AI requests.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-16T06:16:35Z"

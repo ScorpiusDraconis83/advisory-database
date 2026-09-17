@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jq63-mx4g-ww7g",
+  "modified": "2026-09-17T15:32:19Z",
+  "published": "2026-09-17T15:32:19Z",
+  "aliases": [
+    "CVE-2026-92984"
+  ],
+  "details": "HUBzero CMS through 2.2.32 accepts session identifiers from query strings and request variables instead of cookies alone, allowing unauthenticated attackers to fixate victim sessions. Attackers can obtain a valid session identifier, send victims a crafted link containing it, and replay the identifier after the victim authenticates to hijack their account and access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92984"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hubzero/hubzero-cms/commit/e60e8ebee5e1d38b1db1fc41bd9164b265b24356"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hubzero/hubzero-cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hubzero/hubzero-cms/blob/v2.2.32/core/libraries/Hubzero/Session/Manager.php#L123-L132"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hubzero-cms-through-2.2.32-session-fixation-via-query-string-session-identifier"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-384"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T15:17:01Z"
+  }
+}

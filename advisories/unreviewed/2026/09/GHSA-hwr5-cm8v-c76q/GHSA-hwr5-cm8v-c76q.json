@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hwr5-cm8v-c76q",
+  "modified": "2026-09-17T15:32:15Z",
+  "published": "2026-09-17T15:32:14Z",
+  "aliases": [
+    "CVE-2026-92944"
+  ],
+  "details": "vm2 versions 3.10.2 through 3.11.6 contain a sandbox escape vulnerability on Node.js 26 where Promise.prototype.finally() bypasses vm2's wrapper protections due to a stale PromiseThenLookupChain protector in V8 14.6. Attackers can exploit this by creating an async function that returns a Promise with an attacker-controlled constructor Symbol.species, allowing them to reach the host Function constructor and process object for arbitrary code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/patriksimek/vm2/security/advisories/GHSA-27g9-p43v-cw3v"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92944"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/patriksimek/vm2/commit/4635ddd85839461c8ad791990023a477efefe7bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/patriksimek/vm2/commit/7b26e81087ec88c287d9a4812f969d412f32774e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vm2-3.10.2-through-3.11.6-sandbox-escape-via-promise-protector"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-693"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T14:17:59Z"
+  }
+}

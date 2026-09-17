@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mc5w-3m87-prj3",
-  "modified": "2026-09-16T06:31:35Z",
+  "modified": "2026-09-17T15:31:54Z",
   "published": "2026-09-16T06:31:35Z",
   "aliases": [
     "CVE-2026-84905"
   ],
   "details": "The Eventin  WordPress plugin before 4.1.24 does not verify a user's capability to create accounts when adding a speaker, allowing users with contributor-level access and above to create new WordPress user accounts that carry capabilities beyond their own, including publishing content and uploading files, and, by supplying an email address they control, to obtain a working login to the created account.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-16T06:16:33Z"

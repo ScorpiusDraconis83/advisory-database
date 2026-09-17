@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7f4v-rw2p-hvrp",
-  "modified": "2026-09-16T06:31:35Z",
+  "modified": "2026-09-17T15:31:54Z",
   "published": "2026-09-16T06:31:35Z",
   "aliases": [
     "CVE-2026-85349"
   ],
   "details": "The FluentBoards  WordPress plugin before 2.0.15 does not properly verify authorization when returning the list of boards a user belongs to, allowing any authenticated user, including a Subscriber with no board access, to disclose the private board memberships of arbitrary users by referencing their user ID.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-16T06:16:34Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mp62-wj23-fc7f",
-  "modified": "2026-09-16T06:31:36Z",
+  "modified": "2026-09-17T15:31:55Z",
   "published": "2026-09-16T06:31:36Z",
   "aliases": [
     "CVE-2026-87854"
   ],
   "details": "The Subscriptions for WooCommerce WordPress plugin before 2.0.3 does not correctly validate the shared secret protecting one of its REST endpoints, allowing unauthenticated users to retrieve the store's full list of subscriptions, including customer usernames, product names, recurring amounts and payment dates.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-16T06:16:35Z"

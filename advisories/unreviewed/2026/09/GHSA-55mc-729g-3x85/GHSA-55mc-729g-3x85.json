@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-55mc-729g-3x85",
-  "modified": "2026-09-16T06:31:35Z",
+  "modified": "2026-09-17T15:31:55Z",
   "published": "2026-09-16T06:31:35Z",
   "aliases": [
     "CVE-2026-85569"
   ],
   "details": "The Tutor LMS  WordPress plugin before 4.0.8 does not correctly determine whether an incoming request is addressed to its own REST API, and does not enforce the permission recorded against an API credential, allowing the holder of a read-only key to act as the administrator account that issued it.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-16T06:16:34Z"

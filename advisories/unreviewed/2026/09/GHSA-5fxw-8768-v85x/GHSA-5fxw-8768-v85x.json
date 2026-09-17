@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5fxw-8768-v85x",
+  "modified": "2026-09-17T15:32:19Z",
+  "published": "2026-09-17T15:32:19Z",
+  "aliases": [
+    "CVE-2026-92987"
+  ],
+  "details": "roxmltree through 0.21.1 performs quadratic-time attribute and namespace validation during XML parsing without limits on attribute count. Attackers can craft XML documents with tens of thousands of attributes on a single element to consume excessive CPU time and cause denial of service.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92987"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RazrFalcon/roxmltree/issues/153"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RazrFalcon/roxmltree"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RazrFalcon/roxmltree/blob/v0.21.1/src/lib.rs#L751-L755"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/RazrFalcon/roxmltree/blob/v0.21.1/src/parse.rs#L1014-L1020"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/roxmltree-through-0.21.1-denial-of-service-via-quadratic-parsing"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-407"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T15:17:02Z"
+  }
+}

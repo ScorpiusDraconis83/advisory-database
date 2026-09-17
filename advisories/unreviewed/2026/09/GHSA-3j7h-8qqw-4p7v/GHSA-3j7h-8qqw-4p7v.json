@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3j7h-8qqw-4p7v",
+  "modified": "2026-09-17T15:32:17Z",
+  "published": "2026-09-17T15:32:17Z",
+  "aliases": [
+    "CVE-2026-92971"
+  ],
+  "details": "InternLM LMDeploy through 0.17.0 contains a reachable assertion vulnerability in the DistServe decode migration loop that allows unauthenticated attackers to terminate the inference engine. Attackers can submit a migration_request with an empty remote_block_ids list to trigger an AssertionError that crashes the engine loop and causes subsequent inference requests to fail.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92971"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/InternLM/lmdeploy/issues/4965"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/InternLM/lmdeploy"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/InternLM/lmdeploy/blob/v0.17.0/lmdeploy/pytorch/engine/engine_loop.py#L560-L564"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/InternLM/lmdeploy/blob/v0.17.0/lmdeploy/pytorch/utils.py#L187-L214"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/InternLM/lmdeploy/blob/v0.17.0/lmdeploy/serve/openai/endpoints/completions.py#L130-L136"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/internlm-lmdeploy-through-0.17.0-assertion-denial-of-service"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-617"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T14:18:03Z"
+  }
+}
