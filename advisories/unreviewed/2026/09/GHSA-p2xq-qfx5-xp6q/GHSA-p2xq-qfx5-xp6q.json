@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p2xq-qfx5-xp6q",
+  "modified": "2026-09-17T12:32:02Z",
+  "published": "2026-09-17T12:32:02Z",
+  "aliases": [
+    "CVE-2026-92903"
+  ],
+  "details": "Improper input validation in Snowflake CLI versions prior to 3.27.0 allowed unsanitized user-controlled values to be interpolated into SQL strings that are executed as multi-statement queries. An attacker who is able to supply a malicious project configuration file or craft command-line input can cause Snowflake CLI to execute attacker-controlled SQL statements in the context of the victim's Snowflake session and active role. Successful exploitation requires either write or pull-request access to a project repository whose CI/CD pipeline runs Snowflake CLI under an elevated service account role, or the ability to supply untrusted input to CLI-wrapping automation. Impact is limited by the privileges held by the configured Snowflake role at execution time. The fix is available in Snowflake CLI version 3.27.0, which also addresses several additional security findings. Users must manually upgrade.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92903"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/snowflakedb/snowflake-cli/releases/tag/v3.27.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T11:17:03Z"
+  }
+}
