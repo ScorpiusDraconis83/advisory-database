@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3w98-rrpr-fprr",
+  "modified": "2026-09-17T20:32:16Z",
+  "published": "2026-09-17T20:32:16Z",
+  "aliases": [
+    "CVE-2026-81875"
+  ],
+  "summary": "HAPI FHIR: SHCParser unbounded DEFLATE decompression causes denial of service",
+  "details": "### Summary\n`SHCParser` inflates compressed Smart Health Card JWT payloads into memory without a decompressed-size limit. An attacker who can submit SHC content for validation can craft a small compressed JWT payload that expands to a very large byte array, causing memory exhaustion or severe garbage collection pressure.\n\n### Details\nThe vulnerable code is in `org.hl7.fhir.r5/src/main/java/org/hl7/fhir/r5/elementmodel/SHCParser.java`.\n\n`decodeJWT()` checks `MAX_ALLOWED_SHC_LENGTH`, but this only logs an error and parsing continues:\n\n```java\n// SHCParser.java:282-284\nif (jwt.length() > MAX_ALLOWED_SHC_LENGTH) {\n  logError(...);\n}\n```\n\nIf the header contains `\"zip\":\"DEF\"`, the payload is inflated before JSON parsing:\n\n```java\n// SHCParser.java:300-304\nif (\"DEF\".equals(res.header.asString(\"zip\"))) {\n  payloadJson = inflate(payloadJson);\n}\nres.payload = JsonParser.parseObject(FileUtilities.bytesToString(payloadJson), true);\n```\n\n`inflate()` accumulates all decompressed output in a `ByteArrayOutputStream` and has no maximum output size:\n\n```java\n// SHCParser.java:455-468\nwhile (!inflater.finished()) {\n  final int count = inflater.inflate(buffer);\n  outputStream.write(buffer, 0, count);\n}\nreturn outputStream.toByteArray();\n```\n\nThe same unbounded decompression pattern exists in `decompress()` at `SHCParser.java:410-423`.\n\n### PoC\nCreate a highly compressible SHC-shaped JSON payload, compress it with raw DEFLATE (`new Deflater(9, true)`), Base64URL-encode it as the JWT payload, and set the JWT header to `{\"zip\":\"DEF\"}`.\n\nLocal verification measured the following expansion through `SHCParser.inflate()`:\n\n```text\nplain=1000066 compressed=1052 inflated=1000066 ratio=950\nplain=16000066 compressed=15626 inflated=16000066 ratio=1023\n```\n\nA small compressed payload can therefore allocate many megabytes of heap. Larger payloads can trigger `OutOfMemoryError` or process instability.\n\n### Impact\nThis is a denial-of-service vulnerability. Any validator service or application that accepts attacker-supplied SHC content can be forced to allocate excessive heap memory. Impact ranges from request failure and severe GC pressure to process termination.\n\n### Credits\n- Thai Son Dinh from VinSOC Labs (R&D)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "ca.uhn.hapi.fhir:org.hl7.fhir.r5"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.9.12"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 6.9.11"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "ca.uhn.hapi.fhir:org.hl7.fhir.validation"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "6.9.12"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 6.9.11"
+      }
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "ca.uhn.hapi.fhir:org.hl7.fhir.validation.cli"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "5.0.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/hapifhir/org.hl7.fhir.core/security/advisories/GHSA-3w98-rrpr-fprr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81875"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hapifhir/org.hl7.fhir.core/pull/2493"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hapifhir/org.hl7.fhir.core/commit/fbb94216e0ad21ded75be77e5e20242ba194e83f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/hapifhir/org.hl7.fhir.core"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hapifhir/org.hl7.fhir.core/releases/tag/6.9.11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hapifhir/org.hl7.fhir.core/releases/tag/6.9.12"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20",
+      "CWE-400",
+      "CWE-409"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-17T20:32:16Z",
+    "nvd_published_at": "2026-09-16T19:17:44Z"
+  }
+}

