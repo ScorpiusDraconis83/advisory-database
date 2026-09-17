@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q2j8-x8hf-63ch",
+  "modified": "2026-09-17T20:44:39Z",
+  "published": "2026-09-17T20:44:39Z",
+  "aliases": [
+    "CVE-2026-75834"
+  ],
+  "summary": "Grav: Single invalid UTF-8 byte disables every rule in Security::detectXss(), bypassing the page-content XSS safety gate",
+  "details": "## Vulnerability Details\n\n**Component**: getgrav/grav core\n**File**: `system/src/Grav/Common/Security.php`\n**Function**: `detectXss()` (all six entries in the `$patterns` array use the PCRE `u` modifier), invoked from `Grav\\Common\\Data\\Validation::checkSafety()` (the save-time XSS gate for any non-`security.xss_whitelist` account's blueprint field, including the page `content` field) and `detectXssInEditorContent()` (the render-time backstop for GHSA-2c4f-86xc-cr74)\n**CWE**: CWE-79 (Stored XSS), root-caused by CWE-20 (Improper Input Validation — fails open on malformed input)\n**Severity**: High\n**CVSS**: 8.0 — CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N\n\n### Relationship to prior advisories\nThis project's `detectXss()`/`checkSafety()` stack has been patched at least three times for the \"page editor without super-admin rights stores an event handler that runs for site visitors\" bug class: GHSA-9695-8fr9-hw5q / GHSA-c2q3-p4jr-c55f / GHSA-w8cg-7jcj-4vv2 (unquoted-attribute bypasses), GHSA-269c-h76q-8cxw (quoted-attribute-boundary bypass), GHSA-2c4f-86xc-cr74 (render-time Twig-assembled bypass). All three patched the **regex logic**. This is a different, lower-level defect: the PHP regex *engine* silently refuses to evaluate the pattern at all once the input contains one invalid UTF-8 byte, independent of what the regex logic says — no amount of regex-logic hardening fixes this.\n\n### Root Cause\nEvery pattern in `$patterns` uses the PCRE `u` (UTF-8) modifier. PHP's documented behavior: if the subject string contains even one byte sequence that is not valid UTF-8, `preg_match()` does not \"skip\" that byte or report \"no match\" — it returns `false` for the **entire call**, with `preg_last_error() === PREG_BAD_UTF8_ERROR`. `detectXss()` only checks truthiness (`if (preg_match(...) || preg_match(...))`), so `false` and \"0 matches\" are indistinguishable to the calling code. A single stray byte anywhere in a field's value — not even near the actual payload — makes every one of the six checks silently report \"no XSS found\".\n\nMeanwhile, a real browser decoding the same bytes as UTF-8 (the encoding Grav serves pages as) does not fail open: it substitutes the invalid byte with one U+FFFD replacement character and renders the surrounding markup completely normally. The `<img ... onerror=...>` tag is untouched structurally; the payload still fires.\n\n### Vulnerable Code\n```php\n$patterns = [\n    'on_events' => '#<(?:\"[^\"]*\"|\\'[^\\']*\\'|[^>\"\\'])*?(?:[\\s\\x00-\\x20\\\"\\'\\/]|\"[^\"]*\"|\\'[^\\']*\\')on\\s*[a-z]+\\s*=#iu',\n    // ... five more, all with the /u modifier\n];\nforeach ($patterns as $name => $regex) {\n    if (!empty($enabled_rules[$name])) {\n        if (preg_match($regex, (string) $string) || preg_match($regex, $orig)) {\n            return $name;\n        }\n        // ...\n    }\n}\nreturn null; // reached even when the string contains <img onerror=...>,\n             // as long as it also contains one invalid UTF-8 byte anywhere\n```\n\nDirectly reproducible against the exact regex:\n```php\n$regex = '#<(?:\"[^\"]*\"|\\'[^\\']*\\'|[^>\"\\'])*?(?:[\\s\\x00-\\x20\\\"\\'\\/]|\"[^\"]*\"|\\'[^\\']*\\')on\\s*[a-z]+\\s*=#iu';\nvar_dump(preg_match($regex, \"<img src=x onerror=alert(1)>\"));          // int(1)  -- caught\nvar_dump(preg_match($regex, \"<img src=x \\x80onerror=alert(1)>\"));      // bool(false), preg_last_error()==4\n```\n\n### Attack Scenario\n1. Attacker holds a page-edit (\"publisher\") account without super-admin rights.\n2. Sets page content to `Hello world \\x80<img src=x onerror=alert(document.cookie)>` (a raw invalid UTF-8 byte, deliverable via any non-JSON submission path — e.g. the bundled Form plugin's multipart/urlencoded field, or any blueprint-validated field populated from a raw POST body — `$_POST` values are not UTF-8-validated by PHP).\n3. `Validation::checkSafety()` runs `detectXss()` on the value; every `preg_match()` call returns `false`, so `detectXss()` returns `null` (\"no violation\"). The payload saves unmodified.\n4. Any visitor (including a super-admin browsing the public site) loads the page; the browser renders the intact `<img onerror=...>` element, executing the attacker's JavaScript in the visitor's session.\n\n### Impact\n- **Type**: Stored XSS (CWE-79)\n- **Auth required**: Page-edit (\"publisher\") account, not super-admin\n- **Consequence**: Arbitrary JavaScript execution in any visitor's browser, including a super-admin who views the page — a cross-trust-boundary escalation from publisher to admin-equivalent action capability.\n\n### Recommended Fix\n```php\npublic static function detectXss($string, ?array $options = null): ?string\n{\n    if (null === $string || !is_string($string) || empty($string)) {\n        return null;\n    }\n\n    // Fail closed: mb_check_encoding() validates the whole string up front\n    // and returns a normal boolean — it never \"fails open\" the way a\n    // /u-flagged preg_match() does on malformed input.\n    if (!mb_check_encoding($string, 'UTF-8')) {\n        return 'invalid_encoding';\n    }\n\n    // ... rest unchanged\n}\n```\n`Validation::checkSafety()` only invokes `detectXss()` for accounts outside `security.xss_whitelist` (default `admin.super`), so this introduces no behavior change for whitelisted accounts.\n\n### Verification\nDynamically confirmed on grav 2.0.13: called the live `Security::detectXss()` directly (bootstrapped through Grav's own service container, not a standalone regex copy) — a clean payload was correctly flagged (`\"on_events\"`), the same payload plus one invalid UTF-8 byte returned `NULL` (bypass), and an ordinary safe string returned `NULL` as expected. Note: the JSON REST API (`api` plugin, the path Admin2's SPA uses to save pages) happens to reject raw invalid UTF-8 before it reaches `detectXss()`, because RFC 8259 requires JSON text to be valid UTF-8 and PHP's `json_decode()` enforces this — that's an incidental protection of the JSON layer, not a fix, and any non-JSON submission path (e.g. the bundled Form plugin's multipart/urlencoded fields) remains exposed. After applying the fix above, the same bypass payload correctly returns `\"invalid_encoding\"` (a violation), while an ordinary safe string still returns `NULL` (no regression).\n\nA ready-to-apply fix branch is prepared locally against this repo's `develop` branch (based on the `2.0.13` tag); happy to push it to a private fork once one is available for this advisory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "getgrav/grav"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.14"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-q2j8-x8hf-63ch"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75834"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/getgrav/grav"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-before-stored-xss-via-invalid-utf-8-byte"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-17T20:44:39Z",
+    "nvd_published_at": null
+  }
+}
