@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5p39-cfhj-2xmp",
+  "modified": "2026-09-18T17:17:10Z",
+  "published": "2026-09-18T17:17:10Z",
+  "aliases": [
+    "CVE-2026-64847"
+  ],
+  "summary": "AnyIO process-pool workers can block indefinitely on undrained stderr",
+  "details": "### Impact\nAnyIO starts process-pool workers with stderr connected to a pipe but never drains that pipe. The worker redirects stdin and stdout to /dev/null to protect its protocol, but does not redirect stderr even though the documentation says all three standard streams are redirected. Worker code that writes enough attacker-influenced data to stderr can fill the pipe, block before returning the stdout protocol response, and wedge the awaiting process-pool call.\n\nAnyone who runs untrusted or faulty code that writes too much to `stderr` is at risk.\n\n### Patches\nThis vulnerability will be patched in v4.14.2.\n\n### Workarounds\nClosing `sys.stderr` in the target function should at least prevent the deadlock.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "anyio"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.14.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/agronholm/anyio/security/advisories/GHSA-5p39-cfhj-2xmp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agronholm/anyio/pull/1207"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agronholm/anyio/commit/f1b7301c8264b0d2e8d24a5788fd29e93dea4040"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/agronholm/anyio"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/agronholm/anyio/releases/tag/4.14.2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-18T17:17:10Z",
+    "nvd_published_at": null
+  }
+}
