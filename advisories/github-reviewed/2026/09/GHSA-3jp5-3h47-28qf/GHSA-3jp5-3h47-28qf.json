@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3jp5-3h47-28qf",
+  "modified": "2026-09-18T16:40:36Z",
+  "published": "2026-09-18T16:40:36Z",
+  "aliases": [
+    "CVE-2026-77606"
+  ],
+  "summary": "Semantic MediaWiki has reflected XSS in Special:Ask plain table headers",
+  "details": "#### Failure mode\n\nWhen `headers=plain`, table header text was emitted into `<th>` via a raw HTML path. User-controlled `mainlabel` content could therefore become executable HTML.\n\n#### Remediation\n\n- `TableResultPrinter` now applies output-context escaping before passing plain headers to the table renderer.\n- The fix is limited to the HTML/plain-header branch so safe rendering modes are unaffected.\n\n#### Why this is the right layer\n\nThe header value is not a structural token; it is display data. Sanitizing it at the sink is correct because the renderer owns the final HTML emission.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mediawiki/semantic-media-wiki"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "7.2.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 7.1.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/security/advisories/GHSA-3jp5-3h47-28qf"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/releases/tag/7.2.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-18T16:40:36Z",
+    "nvd_published_at": null
+  }
+}
