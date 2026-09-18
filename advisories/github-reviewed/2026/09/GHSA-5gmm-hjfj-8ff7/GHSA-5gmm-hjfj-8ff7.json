@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5gmm-hjfj-8ff7",
+  "modified": "2026-09-18T17:58:55Z",
+  "published": "2026-09-18T17:58:55Z",
+  "aliases": [
+    "CVE-2026-71537"
+  ],
+  "summary": "Paymenter has a credit-refund double-spend race condition in service downgrade (doUpgrade)",
+  "details": "### Summary\n\nThe service downgrade implementation in `app/Livewire/Services/Upgrade.php::doUpgrade()` executes a proration calculation and a subsequent user credit refund without any transactional safety or database locks. The only concurrency check relies on an unisolated database query checking for existing pending upgrades. Because there is no active database transaction or pessimistic row-level lock spanning this validation and the subsequent credit update, concurrent downgrade requests can bypass the guard simultaneously. This allows a user to trigger multiple refunds for a single service downgrade.\n\n### Technical Details\n\nThe issue occurs because the application verifies eligibility using an unlocked read operation (`Service::upgradable`) which checks if a pending upgrade row exists. Since there is no enclosing `DB::transaction` or `lockForUpdate()`, multiple requests sent in parallel can all query the database at the same millisecond, observe that no pending upgrade exists, and pass the safety check.\n\nOnce passed, each concurrent request inserts its own pending upgrade record and executes `$credit->increment('amount', abs($price))`. Because the balance updates are not serialized against the initial check, the user's credit balance is cumulatively inflated by $N$ times the refund amount for a single legitimate downgrade.\n\n### Impact\n\nThis race condition allows any authenticated customer with an active, downgradable service to inflate their spendable credit balance to an arbitrary multiple of their legitimate refund amount.\n\nBecause the newly granted balance acts as real, spendable store credit, it can be immediately leveraged to settle future platform invoices or provision additional services, resulting in direct financial and resource loss to the operator.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "paymenter/paymenter"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.7"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.5.6"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Paymenter/Paymenter/security/advisories/GHSA-5gmm-hjfj-8ff7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Paymenter/Paymenter/commit/a42e7f8bafce054ad70de3a2c2ac94d13579f41b"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/Paymenter/Paymenter"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Paymenter/Paymenter/releases/tag/v1.5.7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-18T17:58:55Z",
+    "nvd_published_at": null
+  }
+}
