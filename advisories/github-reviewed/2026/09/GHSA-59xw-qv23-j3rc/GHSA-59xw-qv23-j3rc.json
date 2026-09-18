@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-59xw-qv23-j3rc",
+  "modified": "2026-09-18T16:42:50Z",
+  "published": "2026-09-18T16:42:50Z",
+  "aliases": [
+    "CVE-2026-77608"
+  ],
+  "summary": "Semantic MediaWiki has reflected XSS in `Special:SearchByProperty` (`property` and `value` parameters)",
+  "details": "#### Failure mode\n\nThe `value` parameter was reflected back into rendered output and error messaging paths without enough output-context encoding.\n\n#### Remediation\n\n- The form value is escaped before it is placed back into the input field.\n- Derived error messages are also escaped before being rendered into HTML.\n\n#### Maintenance note\n\nDo not treat error text as trusted just because it originated from validation. Validation output can still be attacker-influenced.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mediawiki/semantic-media-wiki"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "7.2.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 7.1.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/security/advisories/GHSA-59xw-qv23-j3rc"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/releases/tag/7.2.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-18T16:42:50Z",
+    "nvd_published_at": null
+  }
+}
