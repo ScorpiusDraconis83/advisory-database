@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3v3g-3pf9-fgcf",
+  "modified": "2026-09-18T21:32:27Z",
+  "published": "2026-09-18T21:32:27Z",
+  "aliases": [
+    "CVE-2026-93872"
+  ],
+  "details": "Cotonti 1.0.0 passes the base64-decoded cb parameter to unserialize() without allowed_classes restriction in the comments plugin EditAction. Registered users with comment write permissions can instantiate arbitrary PHP objects and potentially achieve file write or code execution through gadget chains.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93872"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/issues/1894"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/pull/1897"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/blob/1.0.0/plugins/comments/controllers/actions/EditAction.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/blob/1.0.0/system/cache.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cotonti-1.0.0-php-object-injection-via-comments-plugin-edit-action-cb-parameter"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-502"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T20:17:35Z"
+  }
+}

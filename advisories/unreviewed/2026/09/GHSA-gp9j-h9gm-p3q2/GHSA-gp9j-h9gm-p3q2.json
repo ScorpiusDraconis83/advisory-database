@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gp9j-h9gm-p3q2",
+  "modified": "2026-09-18T21:32:27Z",
+  "published": "2026-09-18T21:32:27Z",
+  "aliases": [
+    "CVE-2026-93871"
+  ],
+  "details": "Cotonti through 1.0.0 fails to validate redirect destinations in page bodies prefixed with redir:, allowing authenticated users with page creation or edit permissions to store redirects to arbitrary external hosts. Attackers can craft pages on trusted domains that redirect visitors to malicious sites for phishing attacks without administrative privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93871"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/issues/1893"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/pull/1901"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/blob/1.0.0/modules/page/inc/page.main.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cotonti-through-1.0.0-stored-open-redirect-via-page-redir-prefix"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-601"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T20:17:35Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7h6q-853g-5r6c",
+  "modified": "2026-09-18T21:32:27Z",
+  "published": "2026-09-18T21:32:27Z",
+  "aliases": [
+    "CVE-2026-93870"
+  ],
+  "details": "Cotonti through 1.0.0 fails to validate anti-CSRF tokens in the ratings plugin AJAX handler, allowing attackers to forge ratings on behalf of authenticated users. Attackers can craft malicious pages that auto-submit POST requests to modify stored rating data when visited by logged-in users.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93870"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/issues/1892"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/pull/1900"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cotonti/Cotonti/blob/1.0.0/plugins/ratings/ratings.ajax.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/cotonti-through-1.0.0-cross-site-request-forgery-in-the-ratings-plugin-ajax-handler"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T20:17:34Z"
+  }
+}
