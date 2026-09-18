@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wx4g-wvfp-r25g",
+  "modified": "2026-09-18T15:32:21Z",
+  "published": "2026-09-18T15:32:21Z",
+  "aliases": [
+    "CVE-2026-93660"
+  ],
+  "details": "SQLBot through 1.10.1 fails to verify dashboard ownership in update_resource and update_canvas endpoints, allowing authenticated workspace members to modify other users' private dashboards. Attackers can supply arbitrary dashboard IDs to rename dashboards and overwrite component data, canvas styles, and view information belonging to other workspace members.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93660"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dataease/SQLBot/issues/1377"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dataease/SQLBot/commit/fccdd29421dfc32d3a552ab29b2554974e1ebc4c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dataease/SQLBot"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dataease/SQLBot/blob/v1.10.1/backend/apps/dashboard/crud/dashboard_service.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dataease/SQLBot/blob/v1.10.1/backend/apps/system/schemas/permission.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sqlbot-through-1.10.1-improper-access-control-via-dashboard-update"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T15:17:22Z"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6f4p-h3xm-c8rc",
+  "modified": "2026-09-18T15:32:20Z",
+  "published": "2026-09-18T15:32:20Z",
+  "aliases": [
+    "CVE-2026-93565"
+  ],
+  "details": "### Summary\n`RtspMethods.valueOf()` silently strips trailing control bytes (any character with code point <= 0x20, the full range that `String.trim()` removes) before performing a cache lookup against its ten pre-populated method constants. A wire-delivered RTSP request whose method token ends with a trailing control byte — for example `PLAY\\x00` or `PLAY\\r`, immediately before the separating space — is decoded by `RtspDecoder` as a fully successful PLAY request, with `decoderResult().isSuccess() == true and request.method() == RtspMethods.PLAY` (same object reference as the cached singleton). The application layer cannot distinguish this from a clean\n`PLAY` request.\n\nThis is the same root cause as #16723 and #16971, in a sibling that those fixes did not reach. The fix for `HttpMethod` hardened `HttpMethod.valueOf()` directly, but `RtspMethods.valueOf()` has its own independent `checkNonEmptyAfterTrim()` call that runs before the cache lookup — meaning a trailing-control-byte token hits the cache before the hardened `HttpMethod` constructor ever sees it.\n\n### Reproduction\n\nMinimal wire-level reproduction\n\nSend the following raw bytes to any Netty-based RTSP server using R",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93565"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-93565"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2536952"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T15:17:20Z"
+  }
+}

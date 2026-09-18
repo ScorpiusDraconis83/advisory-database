@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jr2j-wmqp-cp5r",
+  "modified": "2026-09-18T15:32:17Z",
+  "published": "2026-09-18T15:32:17Z",
+  "aliases": [
+    "CVE-2026-93595"
+  ],
+  "details": "ArcadeDB before 26.9.1 contains an access control bypass vulnerability in the query_database tool exposed through the AI chat endpoints. The tool executes queries without binding the authenticated principal to DatabaseContext, causing per-type and per-bucket ACL checks to silently no-op and allowing authenticated users to read data they are explicitly denied at the per-type level. Attackers can prompt the AI assistant to execute queries against restricted types or buckets to retrieve sensitive data that would be rejected through normal query endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-chrr-vr3p-crcc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93595"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/arcadedb-before-26.9.1-acl-bypass-via-query-database-tool"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T14:19:10Z"
+  }
+}

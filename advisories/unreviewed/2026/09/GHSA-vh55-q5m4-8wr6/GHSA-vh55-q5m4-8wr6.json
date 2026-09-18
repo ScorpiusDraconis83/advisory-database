@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-vh55-q5m4-8wr6",
-  "modified": "2026-09-16T18:32:03Z",
+  "modified": "2026-09-18T15:31:52Z",
   "published": "2026-09-16T18:32:03Z",
   "aliases": [
     "CVE-2026-90999"
   ],
   "details": "Sentry Seer is vulnerable to a multi-stage trust-boundary violation that allows unauthenticated attacker-controlled telemetry to become code that is executed by an agent in a privileged automation environment. An external attacker can submit fabricated Sentry events without having access to the victim’s Sentry account, source repository, or infrastructure.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-16T16:17:21Z"

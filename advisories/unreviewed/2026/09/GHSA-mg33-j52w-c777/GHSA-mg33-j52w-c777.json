@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mg33-j52w-c777",
+  "modified": "2026-09-18T15:32:19Z",
+  "published": "2026-09-18T15:32:19Z",
+  "aliases": [
+    "CVE-2026-10832"
+  ],
+  "details": "A flaw was found in the DERDecoder class within wildfly-elytron-asn1. A remote attacker can exploit this resource exhaustion vulnerability by sending a specially crafted DER (Distinguished Encoding Rules) payload. The decoder attempts to allocate excessive memory based on an inflated length value without proper validation, leading to Java Virtual Machine (JVM) memory exhaustion. This results in a remote Denial of Service (DoS) for services that process untrusted DER/ASN.1 input, including SASL (Simple Authentication and Security Layer) authentication mechanisms and X.500 certificate principal parsing paths.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10832"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-10832"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2484703"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T15:17:04Z"
+  }
+}
