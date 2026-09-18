@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-26vp-8gxg-v4pg",
+  "modified": "2026-09-18T15:05:13Z",
+  "published": "2026-09-18T15:05:13Z",
+  "aliases": [
+    "CVE-2025-53837"
+  ],
+  "summary": "org.xwiki.rendering:xwiki-rendering-xml has an Eval Injection issue",
+  "details": "### Impact\nAny user who can edit their own user profile or any other document can execute arbitrary script macros including Groovy and Python macros that allow remote code execution including unrestricted read and write access to all wiki contents. The reason is that rendering output is included as content of HTML macros without further escaping and it is thus possible to close the HTML macro and inject script macros that are executed with programming rights.\n\nThis can be demonstrated by adding an object of type `XWiki.UIExtensionClass` to a document with content `{{html wiki=\"true\"}}~{~{~/~h~t~m~l~}~}~ ~{~{~c~a~c~h~e~}~}~{~{~g~r~o~o~v~y~}~}~p~r~i~n~t~l~n~(~1~)~{~{~/~g~r~o~o~v~y~}~}~{~{~/~c~a~c~h~e~}~}{{/html}}`, extension point id `org.xwiki.platform.html.head`, extension id `org.xwiki.myuser.test` and extension scope \"current user\". When opening `<xwiki-server>/xwiki/bin/view/Main/?sheet=CKEditor.ContentSheet&xpage=plain` where `<xwiki-server>` is the URL of the XWiki installation, the output should start with `{{/html}} {{cache}}{{groovy}}println(1){{/groovy}}{{/cache}}` and not with ` 1</p>`.\n\nThis escaping was always missing at least in XWiki syntax version 2, it is definitely exploitable in XWiki 3.3 Milestone 1 via the user profile (not through extension points), though this has also been fixed by a separate patch, see the [advisory](https://github.com/xwiki/xwiki-platform/security/advisories/GHSA-x764-ff8r-9hpx). Exploitable extension points include [`org.xwiki.platform.search.ui.docdoesnotexist`](https://www.xwiki.org/xwiki/bin/view/Documentation/DevGuide/ExtensionPoint/Suggestions%20for%20Document%20Does%20Not%20Exist/) which has been added in XWiki 8.3 Milestone 1.\n\n### Patches\nThis has been patched in XWiki 14.10.2 and 15.0 RC1 by making sure that rendering output cannot close the surrounding HTML macro.\n\n### Workarounds\nIt is in principle possible to add escaping to all places where rendering output is used in wiki documents but at the moment there is no list of them.\n\n### For more information\n\nIf you have any questions or comments about this advisory:\n* Open an issue in [Jira XWiki.org](https://jira.xwiki.org/)\n* Email us at [Security Mailing List](mailto:security@xwiki.org)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.xwiki.rendering:xwiki-rendering-xml"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "14.10.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/xwiki/xwiki-rendering/security/advisories/GHSA-26vp-8gxg-v4pg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xwiki/xwiki-rendering/commit/92bc8095ed3acce15ab200c8525e1623b4898be5"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/xwiki/xwiki-rendering"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xwiki/xwiki-rendering/releases/tag/xwiki-rendering-14.10.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/xwiki/xwiki-rendering/releases/tag/xwiki-rendering-15.0-rc-1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jira.xwiki.org/browse/XRENDERING-693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jira.xwiki.org/browse/XWIKI-20313"
+    },
+    {
+      "type": "WEB",
+      "url": "https://jira.xwiki.org/browse/XWIKI-20327"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-95"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-18T15:05:13Z",
+    "nvd_published_at": null
+  }
+}
