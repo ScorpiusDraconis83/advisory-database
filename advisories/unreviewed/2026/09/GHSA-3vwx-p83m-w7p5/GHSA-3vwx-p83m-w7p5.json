@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3vwx-p83m-w7p5",
+  "modified": "2026-09-18T03:30:26Z",
+  "published": "2026-09-18T03:30:26Z",
+  "aliases": [
+    "CVE-2026-82980"
+  ],
+  "details": "Any authenticated user can lock or unlock files they do not own by targeting absolute WebDAV paths of other users. The DAV plugin resolves files from the absolute request URI without verifying that the path segment matches the authenticated session user. This enables:\n\nCross-user manual locks : attacker locks a victim's files, blocking writes (PUT/MOVE/DELETE, editor saves).\nLock-token disclosure: the app returns the lock token to unauthorized callers, enabling them to remove token-based locks (client locks) of other users.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82980"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackerone.com/reports/3301553"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T02:17:07Z"
+  }
+}

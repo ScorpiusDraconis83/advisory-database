@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mm25-wh7f-mmv7",
+  "modified": "2026-09-18T03:30:26Z",
+  "published": "2026-09-18T03:30:25Z",
+  "aliases": [
+    "CVE-2026-93312"
+  ],
+  "details": "A flaw has been found in Freedesktop Poppler 26.07.0. Impacted is the function JBIG2Stream::rewind of the file poppler/JBIG2Stream.cc. This manipulation causes null pointer dereference. It is possible to initiate the attack remotely. The exploit has been published and may be used. Upgrading to version 26.08.0 is recommended to address this issue. Patch name: 5e49250f13b0390edeb3f90eb4c02c9941f97067. Upgrading the affected component is advised.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93312"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/r1ck9-2q/cve_summit/blob/main/Null-pointer-offset-undefined-behavior-in-JBIG2Stream-rewind-JBIG2Stream.cc-1229.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.freedesktop.org/poppler/poppler/-/commit/5e49250f13b0390edeb3f90eb4c02c9941f97067"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.freedesktop.org/poppler/poppler/-/merge_requests/2314"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.freedesktop.org/poppler/poppler/-/work_items/1759"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-93312"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/942345"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/406610"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/406610/cti"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-404"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T01:16:56Z"
+  }
+}

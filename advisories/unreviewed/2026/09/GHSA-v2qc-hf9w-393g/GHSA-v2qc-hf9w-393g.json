@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v2qc-hf9w-393g",
+  "modified": "2026-09-18T03:30:26Z",
+  "published": "2026-09-18T03:30:26Z",
+  "aliases": [
+    "CVE-2026-93455"
+  ],
+  "details": "django-page-cms through 2.0.13 fails to properly validate page permissions in admin helper views, allowing any staff account to read arbitrary page content and stored media paths. Attackers with low-privilege staff credentials can enumerate content identifiers and access unpublished drafts, page listings, and file paths without proper authorization checks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93455"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/batiste/django-page-cms/issues/244"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/batiste/django-page-cms"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/batiste/django-page-cms/blob/bc4cbe6c187d2d4573289c5695ce8dec0556994d/pages/admin/views.py#L174-L178"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/batiste/django-page-cms/blob/bc4cbe6c187d2d4573289c5695ce8dec0556994d/pages/admin/views.py#L226-L229"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/batiste/django-page-cms/blob/bc4cbe6c187d2d4573289c5695ce8dec0556994d/pages/admin/views.py#L35-L36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/django-page-cms-through-2.0.13-unauthorized-content-access-via-staff-account"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T02:17:08Z"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w4mj-3r4x-wxm3",
+  "modified": "2026-09-18T03:30:26Z",
+  "published": "2026-09-18T03:30:26Z",
+  "aliases": [
+    "CVE-2026-82982"
+  ],
+  "details": "The Approval app's approve/reject endpoint is meant to require the file's current etag as a freshness check, preventing an approver from approving or rejecting a file whose contents changed after they reviewed it. The backend only enforced this check when the etag parameter was present and non-empty in the request. An attacker able to intercept and modify the approval request could omit the etag field entirely, bypassing the freshness check and approving or rejecting a file version they never reviewed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82982"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackerone.com/reports/3610332"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T02:17:08Z"
+  }
+}
