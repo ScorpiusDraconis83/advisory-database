@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g24p-55f9-p54c",
+  "modified": "2026-09-18T00:31:06Z",
+  "published": "2026-09-18T00:31:06Z",
+  "aliases": [
+    "CVE-2026-14311"
+  ],
+  "details": "The Booking for Appointments and Events Calendar – Amelia plugin for WordPress is vulnerable to unauthorized access and modification of data due to a missing ownership verification on /users/customers/<id> endpoint  in all versions up to, and including, 2.4.4. This makes it possible for authenticated attackers, with wpamelia-provider role, to view and modify arbitrary customers, including password reset. Takeover of WordPress user accounts, with the roles up to Editor, is also possible if that user had made an Amelia booking. This vulnerability affects only the Premium version of the plugin, where the Employee Panel is present.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14311"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3614392"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/df09d88a-2cda-4ab1-99a0-c54e98cf59e5?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-17T22:16:58Z"
+  }
+}

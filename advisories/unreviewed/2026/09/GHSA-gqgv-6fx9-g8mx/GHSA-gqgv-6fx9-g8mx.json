@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gqgv-6fx9-g8mx",
+  "modified": "2026-09-18T00:31:11Z",
+  "published": "2026-09-18T00:31:11Z",
+  "aliases": [
+    "CVE-2026-93453"
+  ],
+  "details": "SOGo before 5.12.11 constructs password-reset links using the client-supplied Origin header as the authority, allowing unauthenticated attackers to redirect recovery tokens to attacker-controlled domains. Attackers can submit password recovery requests with a malicious Origin header to have valid password-reset tokens mailed to victim recovery addresses within links pointing to attacker infrastructure, enabling account takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93453"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Alinto/sogo/commit/04a3e9823889acaf6c247b224f5f7a0108f8f829"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Alinto/sogo/commit/382118a93b6925de2ce7f774abc1865ebea2dbba"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Alinto/sogo"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Alinto/sogo/blob/SOGo-5.12.10/UI/MainUI/SOGoRootPage.m#L1375"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.sogo.nu/news/2026/sogo-v51211-released.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sogo-before-5.12.11-password-reset-token-interception-via-origin-header"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-640"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T00:17:49Z"
+  }
+}

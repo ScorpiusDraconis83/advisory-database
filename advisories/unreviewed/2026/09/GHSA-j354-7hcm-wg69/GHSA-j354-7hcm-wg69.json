@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j354-7hcm-wg69",
+  "modified": "2026-09-18T00:31:11Z",
+  "published": "2026-09-18T00:31:11Z",
+  "aliases": [
+    "CVE-2026-93450"
+  ],
+  "details": "go-openapi/swag jsonutils before 0.27.1 contains a stack overflow vulnerability in ordered JSON parsing and serialization due to unbounded recursion with no depth limit. Remote unauthenticated attackers can submit deeply nested JSON documents to services accepting OpenAPI specifications, causing fatal stack overflow that terminates the process and all in-flight requests.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-openapi/swag/security/advisories/GHSA-xh24-9qpg-8w28"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93450"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-openapi/swag/commit/0c24346ced59a25811e8694a915e7131d25ccb0e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-openapi/swag"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-openapi/swag/blob/v0.27.0/jsonutils/adapters/stdlib/json/adapter.go#L68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/go-openapi/swag/blob/v0.27.0/jsonutils/adapters/stdlib/json/ordered_map.go#L214"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/go-openapi-swag-jsonutils-before-0.27.1-uncontrolled-recursion-in-ordered-json-marshal-and-unmarshal"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T00:17:49Z"
+  }
+}

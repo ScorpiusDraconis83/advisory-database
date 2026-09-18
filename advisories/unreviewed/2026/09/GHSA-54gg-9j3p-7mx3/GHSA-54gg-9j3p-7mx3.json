@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-54gg-9j3p-7mx3",
+  "modified": "2026-09-18T00:31:10Z",
+  "published": "2026-09-18T00:31:10Z",
+  "aliases": [
+    "CVE-2026-18441"
+  ],
+  "details": "The Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 5.6.9  via the set_customer_object due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to enumerate arbitrary customer records and disclose personally identifiable information -  including first name, last name, email address, and phone number - by iterating the customer[id] parameter. This issue is exploitable only when the site is configured with customer authentication disabled (guest checkout enabled).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18441"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.9/latepoint.php#L1006"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.9/lib/controllers/steps_controller.php#L341"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.9/lib/helpers/steps_helper.php#L1184"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.9/lib/models/model.php#L574"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d80ed885-43f8-43a4-bc61-e9ef92e3207e?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T00:16:57Z"
+  }
+}
