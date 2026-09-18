@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9rhx-p462-pg2j",
-  "modified": "2026-09-18T09:31:08Z",
+  "modified": "2026-09-18T12:31:16Z",
   "published": "2026-09-18T09:31:08Z",
   "aliases": [
     "CVE-2026-93493"
   ],
   "details": "A flaw was found in Netty's `netty-handler-ssl-ocsp` component. A remote attacker can exploit this vulnerability by providing an Online Certificate Status Protocol (OCSP) response that omits the optional `nextUpdate` field. This omission causes the OCSP validation to be silently skipped, leading to applications proceeding with an unvalidated certificate. This can result in a bypass of security controls where certificate validation is expected.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -27,7 +32,7 @@
     "cwe_ids": [
       "CWE-299"
     ],
-    "severity": null,
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-18T08:17:02Z"

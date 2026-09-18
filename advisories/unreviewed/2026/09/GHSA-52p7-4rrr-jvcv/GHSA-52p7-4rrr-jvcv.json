@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-52p7-4rrr-jvcv",
-  "modified": "2026-09-18T06:31:30Z",
+  "modified": "2026-09-18T12:31:15Z",
   "published": "2026-09-18T06:31:30Z",
   "aliases": [
     "CVE-2026-87966"
   ],
   "details": "The Easy Appointments WordPress plugin before 4.0.2.2 does not perform an ownership or authorization check on its unauthenticated appointment-reservation endpoint before updating an existing appointment identified by a request-supplied id, allowing unauthenticated attackers to overwrite, and through a follow-on cleanup delete, arbitrary appointments.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-18T06:16:40Z"

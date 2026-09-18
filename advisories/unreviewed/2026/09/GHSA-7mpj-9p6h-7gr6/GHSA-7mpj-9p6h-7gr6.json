@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7mpj-9p6h-7gr6",
-  "modified": "2026-09-18T06:31:29Z",
+  "modified": "2026-09-18T12:31:14Z",
   "published": "2026-09-18T06:31:29Z",
   "aliases": [
     "CVE-2026-84738"
   ],
   "details": "The AF Companion  WordPress plugin before 2.2.0 does not validate the type of files uploaded through one of its import features, allowing users with a low-privileged store-management role to upload arbitrary files, including PHP ones, leading to Remote Code Execution.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-18T06:16:39Z"

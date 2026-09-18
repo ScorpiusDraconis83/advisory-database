@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jmx3-m859-mrgc",
+  "modified": "2026-09-18T12:31:20Z",
+  "published": "2026-09-18T12:31:20Z",
+  "aliases": [
+    "CVE-2026-93572"
+  ],
+  "details": "## Summary\n\n`RedisArrayAggregator` recently added `maxElements` and `maxNestedArrayDepth` limits to fix public Redis resource-exhaustion advisories. The limits are independent, but the allocator remains eager: every positive nested RESP array header creates `new ArrayList<RedisMessage>(length)` before any child element exists.\n\nWith the default constructor, an attacker can send nested array headers with length `1,000,000` until the default nesting limit of `1024` is reached. This can reserve up to `1,024,000,000` child slots from roughly 12 KB of RESP input. This is backing capacity, not logical list size: `ArrayList(int)` constructs an empty list with the specified initial capacity.\n\n## Technical Details\n\nCurrent `decodeRedisArrayHeader(...)` checks the two limits independently:\n\n```java\nif (header.length() > maxElements) {\n    throw new CodecException(\"this codec doesn't support longer length than \" + maxElements);\n}\n\nif (depths.size() >= maxNestedArrayDepth) {\n    releaseAndClearDepths();\n    throw new CodecException(\"max nested array depth exceeded: \"  + maxNestedArrayDepth);\n}\ndepths.push(new AggregateState((int) header.length()));\n```\n\n`AggregateState` i",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93572"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-93572"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2536963"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-770"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T11:17:21Z"
+  }
+}

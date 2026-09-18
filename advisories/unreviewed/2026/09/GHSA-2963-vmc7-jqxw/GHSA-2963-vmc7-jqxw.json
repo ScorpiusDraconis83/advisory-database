@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2963-vmc7-jqxw",
-  "modified": "2026-09-18T06:31:30Z",
+  "modified": "2026-09-18T12:31:15Z",
   "published": "2026-09-18T06:31:30Z",
   "aliases": [
     "CVE-2026-89007"
   ],
   "details": "The Bookit — Booking & Appointment Calendar WordPress plugin before 2.6.0.5 does not perform a capability check in one of its appointment-deletion functions, allowing users with its low-privileged custom Staff role to delete arbitrary appointments.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-18T06:16:41Z"

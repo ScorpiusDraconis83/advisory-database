@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-49x6-35hm-mhc5",
-  "modified": "2026-09-18T06:31:29Z",
+  "modified": "2026-09-18T12:31:14Z",
   "published": "2026-09-18T06:31:29Z",
   "aliases": [
     "CVE-2026-84902"
   ],
   "details": "The King Addons for Elementor  WordPress plugin before 51.1.81 does not perform an object-level authorization check when importing template content into a page, allowing users with contributor-level access and above to overwrite the Elementor content of arbitrary posts and pages, including those owned by administrators, and to inject JavaScript through a widget setting that is output without escaping, resulting in Stored Cross-Site Scripting that executes in the session of any user who views the affected page.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-18T06:16:39Z"

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fcr3-v77c-x7hx",
+  "modified": "2026-09-18T12:31:20Z",
+  "published": "2026-09-18T12:31:20Z",
+  "aliases": [
+    "CVE-2026-93575"
+  ],
+  "details": "### Summary\nNetty's fix for CVE-2026-44248 is incomplete. The decoder checks if the MQTT packet's `Remaining Length` exceeds `maxBytesInMessage`, but fails to validate the `Properties Length` against the `Remaining Length`. An attacker can bypass the size limit by sending a small `Remaining Length` but an enormous `Properties Length`. This forces Netty to buffer and parse millions of properties, allowing an unauthenticated remote attacker to trigger excessive memory and CPU consumption, leading to OutOfMemoryError.\n\n### Details\nIn `io.netty.handler.codec.mqtt.MqttDecoder`, the `decodeProperties()` helper method reads `totalPropertiesLength` and attempts to parse that many bytes. If the buffer lacks the full length, a `Signal` is thrown. The `catch` block inside `decode()` only enforces `maxBytesInMessage` against `bytesRemainingBeforeVariableHeader` (the packet's `Remaining Length`).\n\nBy sending a `CONNECT` packet with a small `Remaining Length` but a huge `Properties Length`, the size check passes. `ReplayingDecoder` then buffers data from the network until the huge `Properties Length` is reached, parsing millions of `UserProperty` objects and exhausting CPU and memory.\n\n#",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-93575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2536967"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T11:17:22Z"
+  }
+}
