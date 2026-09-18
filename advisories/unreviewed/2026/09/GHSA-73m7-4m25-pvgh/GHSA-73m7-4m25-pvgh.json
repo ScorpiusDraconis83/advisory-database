@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-73m7-4m25-pvgh",
-  "modified": "2026-09-17T18:32:05Z",
+  "modified": "2026-09-18T18:31:32Z",
   "published": "2026-09-17T18:32:05Z",
   "aliases": [
     "CVE-2026-90425"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/tegra241-cmdqv: Require exactly one Stream ID for a vSID\n\ntegra241_vintf_init_vsid() maps a guest vSID to a single physical Stream ID\ntaken from master->streams[0], and only warns when the device does not have\nexactly one stream. A device with several streams gets only its first one\nmapped, so a guest vSID invalidation cannot reach the others' ATC and IOTLB\nentries; a device with none makes master->streams a ZERO_SIZE_PTR, read out\nof bounds.\n\nReject the mapping with -EOPNOTSUPP if master->num_streams is not one.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-17T17:17:47Z"

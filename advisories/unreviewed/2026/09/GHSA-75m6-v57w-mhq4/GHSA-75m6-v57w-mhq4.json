@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-75m6-v57w-mhq4",
-  "modified": "2026-09-17T18:31:53Z",
+  "modified": "2026-09-18T18:31:27Z",
   "published": "2026-09-17T18:31:53Z",
   "aliases": [
     "CVE-2026-90161"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs: fix interlaced ztailpacking pclusters\n\nOn-disk sizes of interlaced pclusters should be block-aligned, and\nztailpacking interlaced pclusters should be invalid at all.\n\nCurrently, mkfs.erofs won't generate any interlaced pcluster with\nztailpacking enabled, so this doesn't affect any existing valid\nfilesystems.\n\nHowever, crafted images can contain invalid interlaced ztailpacking\npclusters, resulting in an out-of-bounds read from a kmap'd page and\ncopying irrelevant kernel memory into userspace-visible page cache.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-17T17:17:09Z"

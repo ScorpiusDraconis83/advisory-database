@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7p55-3fjg-254h",
-  "modified": "2026-09-17T18:31:49Z",
+  "modified": "2026-09-18T18:31:25Z",
   "published": "2026-09-17T18:31:49Z",
   "aliases": [
     "CVE-2026-90062"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: move hardware offload step after building the chain blob\n\nAllocate the chain blob before the ruleset offload to reduce chances of\nentering an inconsistent state where the offloaded ruleset in the nic\nand the software ruleset differ.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-17T17:16:54Z"

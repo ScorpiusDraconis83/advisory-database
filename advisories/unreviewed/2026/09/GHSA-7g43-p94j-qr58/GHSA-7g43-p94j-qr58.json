@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7g43-p94j-qr58",
+  "modified": "2026-09-18T18:31:44Z",
+  "published": "2026-09-18T18:31:44Z",
+  "aliases": [
+    "CVE-2026-93751"
+  ],
+  "details": "uri-js through 4.4.1 contains an improper UTF-8 decoding vulnerability in pctDecChars() that decodes invalid and overlong percent-encoded sequences into ASCII metacharacters. Attackers can craft percent-encoded payloads to bypass platform decoder validation and inject path traversal or CRLF sequences that downstream consumers process without filtering.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93751"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/garycourt/uri-js/issues/106"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/garycourt/uri-js"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/garycourt/uri-js/blob/a1acf730b4bba3f1097c9f52e7d9d3aba8cdcaae/src/uri.ts#L103-L141"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/uri-js-through-4.4.1-improper-utf-8-decoding-via-pctdecchars"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-176"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T18:18:34Z"
+  }
+}

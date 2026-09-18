@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-84xw-5r3f-vrrr",
+  "modified": "2026-09-18T18:31:41Z",
+  "published": "2026-09-18T18:31:41Z",
+  "aliases": [
+    "CVE-2026-75031"
+  ],
+  "details": "In the interchange/interchange project, a critical remote code execution (RCE) vulnerability was found in the \n“quick question” admin feature. In default installations arbitrary Perl \ncode can be injected and executed server-side by unauthenticated users. \nThe Perl code normally runs within a Safe container which limits the \nscope of what it can do, unless the non-default AllowGlobal directive is\n configured for the catalog being accessed.CTOR]",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75031"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/interchange/interchange/commit/65b6ea9d3761dd1fd2071c962819562afa335e4e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.interchangecommerce.org/i/dev/news?mv_arg=00071"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T16:17:09Z"
+  }
+}

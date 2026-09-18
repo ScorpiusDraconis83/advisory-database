@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6wxq-x76c-fqrf",
+  "modified": "2026-09-18T18:31:44Z",
+  "published": "2026-09-18T18:31:44Z",
+  "aliases": [
+    "CVE-2026-93432"
+  ],
+  "details": "A flaw was found in the Quarkus Qute template engine. When the {#eval} section helper processes a sub-template, it fails to pass the parent template's content type information. This bypasses standard escaping mechanisms, allowing untrusted data to be output as raw, unescaped text. This vulnerability can lead to Cross-Site Scripting (XSS) and JSON Injection, potentially allowing a remote attacker to execute arbitrary code in a user's browser or manipulate data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93432"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-93432"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2536859"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T18:18:26Z"
+  }
+}

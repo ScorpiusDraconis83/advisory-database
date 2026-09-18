@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2f43-vjp7-v3qj",
+  "modified": "2026-09-18T18:31:43Z",
+  "published": "2026-09-18T18:31:43Z",
+  "aliases": [
+    "CVE-2026-91142"
+  ],
+  "details": "A flaw was found in Cockpit. An integer overflow vulnerability in the `do_lastlog()` function, specifically in the offset calculation for `lastlog` entries on ILP32 (Integer, Long, Pointer 32-bit) builds, can be exploited. A low-privileged authenticated user with a specially provisioned large User ID (UID) can cause the computed offset to wrap around. This allows the user to perform unauthorized reads and writes to other users' `lastlog` records, potentially disclosing or altering sensitive login accounting information.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91142"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-91142"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2479459"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T17:17:05Z"
+  }
+}

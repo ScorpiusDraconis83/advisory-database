@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-grx3-v6wv-8gq8",
+  "modified": "2026-09-18T18:31:42Z",
+  "published": "2026-09-18T18:31:41Z",
+  "aliases": [
+    "CVE-2026-93689"
+  ],
+  "details": "WinFsp through 2.2.26215 contains a null pointer dereference vulnerability in the kernel driver's Fast I/O device control handler that fails to validate the volume context before use. An unprivileged local user can trigger a denial of service by opening the WinFsp control device and issuing FSP_IOCTL_TRANSACT requests, causing a system crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93689"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/winfsp/winfsp/commit/b8103265ec63fa87ac264c62bb796dbc38376652"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/winfsp/winfsp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/winfsp/winfsp/blob/v2.2B4/src/sys/devctl.c#L105-L114"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/winfsp/winfsp/blob/v2.2B4/src/sys/devctl.c#L146-L152"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/winfsp/winfsp/blob/v2.2B4/src/sys/devctl.c#L68-L73"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/winfsp/winfsp/blob/v2.2B4/src/sys/volume.c#L1059-L1060"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/winfsp/winfsp/releases/tag/v2.2B4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/winfsp-through-2.2.26215-null-pointer-dereference-via-fast-i-o"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T16:17:15Z"
+  }
+}

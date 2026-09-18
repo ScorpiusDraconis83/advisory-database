@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4ff5-3w52-wwv7",
-  "modified": "2026-09-17T18:32:05Z",
+  "modified": "2026-09-18T18:31:32Z",
   "published": "2026-09-17T18:32:05Z",
   "aliases": [
     "CVE-2026-90435"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/mlx5: Fix integer overflow of user QP buffer size\n\nset_user_buf_size() computes the QP buffer size by left-shifting the\nuser-supplied rq.wqe_cnt and rq.wqe_shift values as signed integers.\nA sufficiently large rq.wqe_cnt causes signed integer overflow, which\nis undefined behavior, and yields a small or negative buf_size, causing\nib_umem_get() to map a buffer smaller than the hardware will actually\nwrite into.\n\nReplace the shifts and addition with check_shl_overflow() and\ncheck_add_overflow(), rejecting invalid user inputs.\n\nMoreover, guard the identical shift computing qp->sq.offset in\n_create_user_qp() before set_user_buf_size() is reached.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -49,7 +54,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-17T17:17:48Z"

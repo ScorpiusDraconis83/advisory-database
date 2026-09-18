@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-63c9-g3g8-7rpv",
-  "modified": "2026-09-17T18:32:07Z",
+  "modified": "2026-09-18T18:31:33Z",
   "published": "2026-09-17T18:32:07Z",
   "aliases": [
     "CVE-2026-92518"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nriscv, bpf: Fix kernel stack corruption in tailcall with CFI\n\nWhen CONFIG_CFI_CLANG is enabled, prog->bpf_func already skips the kcfi\ninstruction during setup. Including it again in the tailcall jump offset\ncauses it to jump over an extra 4 bytes, skipping the stack pointer\nadjustment, which will result in kernel stack corruption.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-17T17:17:54Z"

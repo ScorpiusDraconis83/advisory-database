@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8wpj-9x79-phww",
+  "modified": "2026-09-18T18:31:42Z",
+  "published": "2026-09-18T18:31:42Z",
+  "aliases": [
+    "CVE-2026-93736"
+  ],
+  "details": "Mealie before 3.21.0 fails to validate user ownership in the ratings and favorites endpoints, allowing authenticated attackers to read any user's recipe ratings and favorites by specifying arbitrary user IDs in the URL path. Attackers can access private recipe identifiers, rating values, and favorite flags belonging to other users across different groups or households.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93736"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mealie-recipes/mealie/issues/7909"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mealie-recipes/mealie/pull/7903"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mealie-recipes/mealie/commit/6889101a760a457019276c10514e630660b3ed28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mealie-recipes/mealie"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mealie-recipes/mealie/blob/v3.20.1/mealie/repos/repository_users.py#L82-L88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mealie-recipes/mealie/blob/v3.20.1/mealie/routes/users/ratings.py#L44-L52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mealie-recipes/mealie/releases/tag/v3.21.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mealie-before-3.21.0-information-disclosure-via-ratings-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T16:17:16Z"
+  }
+}

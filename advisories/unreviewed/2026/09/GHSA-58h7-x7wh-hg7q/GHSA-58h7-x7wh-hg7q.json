@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-58h7-x7wh-hg7q",
-  "modified": "2026-09-17T18:32:13Z",
+  "modified": "2026-09-18T18:31:34Z",
   "published": "2026-09-17T18:32:13Z",
   "aliases": [
     "CVE-2026-93192"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/v3d: Clear queue->active_job when v3d_fence_create() fails\n\nThe run_job() callbacks for BIN, RENDER, TFU and CSD assign the incoming\njob to queue->active_job before calling v3d_fence_create(). If\nv3d_fence_create() fails, the callback returns NULL without clearing\nactive_job, leaving a dangling pointer.\n\nCreate a failure path in all run_job() callbacks that clears the active\njob before returning NULL. The BIN path takes queue->queue_lock around the\nclear as it races against v3d_overflow_mem_work(); RENDER, TFU and CSD\npaths have no concurrent reader, so the clear is lock-free.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-17T17:18:15Z"
