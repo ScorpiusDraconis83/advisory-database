@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jvcr-7q46-jqm3",
+  "modified": "2026-09-18T09:31:08Z",
+  "published": "2026-09-18T09:31:07Z",
+  "aliases": [
+    "CVE-2026-85705"
+  ],
+  "details": "The Location Manager plugin for WordPress is vulnerable to generic SQL Injection via 'latitude' and 'longitude' REST API Parameters in all versions up to, and including, 2.3.38 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The injection is triggered when the orderby=lat_lon parameter is supplied, and affects multiple publicly accessible REST endpoints including geodir/v2/locations/cities, /regions, /countries, and /neighbourhoods via both the get_locations() and get_neighbourhoods() functions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85705"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpgeodirectory.com/downloads/location-manager"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/f0ada9b6-a27c-4336-8550-99294c119a88?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T08:17:01Z"
+  }
+}

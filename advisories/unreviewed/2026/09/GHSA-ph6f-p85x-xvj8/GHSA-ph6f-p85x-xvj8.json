@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-ph6f-p85x-xvj8",
+  "modified": "2026-09-18T09:31:07Z",
+  "published": "2026-09-18T09:31:07Z",
+  "aliases": [
+    "CVE-2026-13471"
+  ],
+  "details": "The LatePoint – Calendar Booking Plugin for Appointments and Events plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 5.6.3 via the LatePointAbilityDeleteBooking::execute due to missing validation on a user controlled key. This makes it possible for attackers, with  LatePoint Agent-level access and above, to read bookings and customer PII (full name, email, phone, and notes) assigned to other LatePoint agents, and delete arbitrary bookings by supplying any booking ID. This vulnerability is only exploitable when an administrator has enabled the Abilities API toggles (latepoint_abilities_api, latepoint_abilities_api_delete, and/or latepoint_abilities_api_edit) in the plugin settings.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13471"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/lib/abilities/abstract-ability.php#L55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/lib/abilities/bookings/abstract-booking-ability.php#L34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/lib/abilities/bookings/delete-booking.php#L47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/lib/abilities/bookings/list-bookings.php#L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/lib/abilities/class-latepoint-abilities.php#L77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/lib/abilities/customers/list-customers.php#L78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.3/lib/abilities/abstract-ability.php#L55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.3/lib/abilities/bookings/abstract-booking-ability.php#L34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.3/lib/abilities/bookings/delete-booking.php#L47"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.3/lib/abilities/bookings/list-bookings.php#L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.3/lib/abilities/class-latepoint-abilities.php#L77"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.3/lib/abilities/customers/list-customers.php#L78"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3590914%40latepoint&old=3584059%40latepoint"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/448df3b0-32a7-4097-a37d-07e253993496?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T08:16:59Z"
+  }
+}

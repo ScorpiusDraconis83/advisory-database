@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-prxh-6hcq-7gvg",
+  "modified": "2026-09-18T09:31:07Z",
+  "published": "2026-09-18T09:31:07Z",
+  "aliases": [
+    "CVE-2026-15275"
+  ],
+  "details": "The WP Multi Store Locator Pro plugin for WordPress is vulnerable to generic SQL Injection via the 'store_locatore_search_radius' parameter in all versions up to, and including, 4.5.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The injection occurs in a numeric, unquoted SQL context, meaning WordPress's wp_magic_quotes() addslashes-based protection cannot neutralize the payload, and the AJAX handler is registered on wp_ajax_nopriv_make_search_request with no nonce or capability check, making it fully accessible without authentication.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15275"
+    },
+    {
+      "type": "WEB",
+      "url": "https://codecanyon.net/item/wp-multi-store-locator-pro/19385351"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/d18fd2a8-a95c-40e2-bf35-333ee853639d?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T08:16:59Z"
+  }
+}

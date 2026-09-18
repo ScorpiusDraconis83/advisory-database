@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8xr3-mxv3-qm4h",
+  "modified": "2026-09-18T09:31:06Z",
+  "published": "2026-09-18T09:31:06Z",
+  "aliases": [
+    "CVE-2026-91707"
+  ],
+  "details": "The The Divi theme for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 5.11.1. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for unauthenticated attackers to execute arbitrary shortcodes. When the 'Force Enable D4 Shortcode Framework' option is enabled, this includes invoking the et_pb_contact_form shortcode to send email to an attacker-selected recipient with attacker-controlled content.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91707"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.divichangelog.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.divichangelog.com/divi-update/divi-5/version-5-12-0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/79a2fa3b-f9eb-49d8-97be-3a81d1b69c2e?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-18T07:16:51Z"
+  }
+}
