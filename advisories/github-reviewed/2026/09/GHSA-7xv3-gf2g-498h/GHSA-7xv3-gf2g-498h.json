@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7xv3-gf2g-498h",
+  "modified": "2026-09-18T16:50:01Z",
+  "published": "2026-09-18T16:50:01Z",
+  "aliases": [
+    "CVE-2026-77607"
+  ],
+  "summary": "Semantic MediaWiki affected by Special:Ask table `sep` parameter reflected XSS",
+  "details": "#### Failure mode\n\n`sep` was inserted verbatim into the HTML that joins a table cell's values. This made it possible to inject HTML through the separator value. The same unsanitised table HTML is produced both for the standard `Special:Ask` render and for its raw request output (`request_type=raw`), so the injection was reachable without authentication.\n\n#### Remediation\n\n- In all non-wiki output modes (HTML, raw request, file), `sep` is escaped unless it is a safe `<br>` variant.\n- This preserves legitimate line-break separators while blocking markup injection.\n\n#### Maintenance note\n\nIf the table renderer ever gains richer separator semantics, keep the whitelist explicit. Do not expand the allowed HTML surface casually.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "mediawiki/semantic-media-wiki"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "7.2.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 7.1.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/security/advisories/GHSA-7xv3-gf2g-498h"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki/releases/tag/7.2.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-18T16:50:01Z",
+    "nvd_published_at": null
+  }
+}
