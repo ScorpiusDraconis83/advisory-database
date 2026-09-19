@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c79v-6v55-pvvh",
+  "modified": "2026-09-19T09:32:11Z",
+  "published": "2026-09-19T09:32:11Z",
+  "aliases": [
+    "CVE-2026-13191"
+  ],
+  "details": "The Create plugin for WordPress is vulnerable to generic SQL Injection via the 'order_by' parameter in all versions up to, and including, 2.5.3 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with author-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The REST endpoint permission callback defaults to the publish_posts capability, meaning any Author-level user or above can reach the vulnerable code path without any additional preconditions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mediavine-create/tags/2.5.2/lib/class-api-services.php#L191"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mediavine-create/tags/2.5.2/lib/class-permissions.php#L22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mediavine-create/tags/2.5.2/lib/db-interface/class-mv-dbi.php#L1183"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mediavine-create/tags/2.5.2/lib/db-interface/class-mv-dbi.php#L1586"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mediavine-create/tags/2.5.2/lib/db-interface/class-mv-dbi.php#L1646"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mediavine-create/tags/2.5.2/lib/products/class-products.php#L533"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3627606%40mediavine-create&new=3627606%40mediavine-create"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/46fa99f1-9152-4130-a5b1-2ea10032069b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T08:16:52Z"
+  }
+}

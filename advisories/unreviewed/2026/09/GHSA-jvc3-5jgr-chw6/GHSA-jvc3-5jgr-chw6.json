@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jvc3-5jgr-chw6",
+  "modified": "2026-09-19T09:32:12Z",
+  "published": "2026-09-19T09:32:12Z",
+  "aliases": [
+    "CVE-2026-85658"
+  ],
+  "details": "The Paid Membership Plugin, Ecommerce, User Registration Form, Login Form, User Profile & Restrict Content – ProfilePress plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 4.17.2 This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for authenticated attackers, with subscriber-level access and above, to execute arbitrary shortcodes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85658"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-avatar/tags/4.17.2/src/Classes/EditUserProfile.php#L337"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-avatar/tags/4.17.2/src/Functions/GlobalFunctions.php#L1715"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-avatar/tags/4.17.2/src/ShortcodeParser/Builder/FrontendProfileBuilder.php#L339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-avatar/tags/4.17.2/src/ShortcodeParser/FrontendProfileTag.php#L133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-user-avatar/tags/4.17.2/src/Themes/DragDrop/ProfileFieldListing.php#L146"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3682604/wp-user-avatar/trunk/src/ShortcodeParser/Builder/FrontendProfileBuilder.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3682619%40wp-user-avatar%2Ftags%2F4.17.3&old=3666803%40wp-user-avatar%2Ftags%2F4.17.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b8486d1d-8a76-446e-867b-8db32499ebf8?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T08:16:54Z"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fhmr-f2rv-cv78",
+  "modified": "2026-09-19T09:32:12Z",
+  "published": "2026-09-19T09:32:12Z",
+  "aliases": [
+    "CVE-2026-87917"
+  ],
+  "details": "The MC4WP: Mailchimp for WordPress plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via 'data' Dynamic Content Tag in all versions up to, and including, 4.14.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87917"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mailchimp-for-wp/tags/4.14.0/includes/class-dynamic-content-tags.php#L127"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mailchimp-for-wp/tags/4.14.0/includes/forms/class-form-tags.php#L109"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/mailchimp-for-wp/tags/4.14.0/includes/forms/class-form-tags.php#L57"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3689679%40mailchimp-for-wp%2Ftags%2F4.14.1&old=3655905%40mailchimp-for-wp%2Ftags%2F4.14.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3698084%40mailchimp-for-wp%2Ftags%2F4.14.1&old=3655905%40mailchimp-for-wp%2Ftags%2F4.14.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/ee4f837a-d0b5-48df-8c96-2a294985612e?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T08:16:54Z"
+  }
+}

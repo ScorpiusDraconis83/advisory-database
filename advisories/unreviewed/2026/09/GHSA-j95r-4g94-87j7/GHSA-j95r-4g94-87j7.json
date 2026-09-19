@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j95r-4g94-87j7",
+  "modified": "2026-09-19T09:32:13Z",
+  "published": "2026-09-19T09:32:12Z",
+  "aliases": [
+    "CVE-2026-9766"
+  ],
+  "details": "The Empik for Woocommerce plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 1.5.1. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to modify arbitrary WooCommerce product metadata, including Empik logistic class (_empik_logistic_klass), product state (_empik_product_state, _empik_product_state_all_variants), and Empik export and offer flags on any product in the store.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9766"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/empik-for-woocommerce/tags/1.5.1/src/Wp_Admin/CSV/CSV_Ajax.php#L12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/empik-for-woocommerce/tags/1.5.1/src/Wp_Admin/CSV/CSV_Ajax.php#L19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/empik-for-woocommerce/tags/1.5.1/src/Wp_Admin/CSV/CSV_Ajax.php#L64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/empik-for-woocommerce/tags/1.5.1/src/Wp_Admin/CSV/CSV_Import.php#L38"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/empik-for-woocommerce/tags/1.5.1/src/Wp_Admin/Products_List_Offers_import_Column.php#L29"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/empik-for-woocommerce/tags/1.5.1/src/Wp_Admin/Products_List_Product_import_Column.php#L28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3592900%40empik-for-woocommerce&new=3592900%40empik-for-woocommerce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/a0a5259d-7340-48b5-a0cf-f68abdb21156?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T09:16:35Z"
+  }
+}
