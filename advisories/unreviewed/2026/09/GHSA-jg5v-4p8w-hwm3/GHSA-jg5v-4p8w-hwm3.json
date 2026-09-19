@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jg5v-4p8w-hwm3",
+  "modified": "2026-09-19T12:32:11Z",
+  "published": "2026-09-19T12:32:11Z",
+  "aliases": [
+    "CVE-2026-93987"
+  ],
+  "details": "rclone versions 1.56.0 through 1.75.0 contain a path traversal vulnerability in the `rclone serve docker` volume plugin. newVolume() in cmd/serve/docker/volume.go computes a volume's mountpoint as filepath.Join(drv.root, name) from the attacker-supplied `name` field of a Docker VolumeDriver.Create request without verifying that the result stays within drv.root (default /var/lib/docker-volumes/rclone), and checkMountpoint() then creates that directory with file.MkdirAll before mounting. A volume name containing enough `..` components (e.g. \"../../../../../../etc\") therefore resolves outside the base directory, allowing anyone able to submit a VolumeDriver.Create request to the plugin socket — normally the Docker daemon, or a workload that can request named volumes in a multi-tenant orchestration setup — to make the privileged rclone plugin process create a directory and mount a remote filesystem specified in the same request at an arbitrary host path, shadowing or disrupting system directories. The advisory notes Volume.restoreState() had the same missing validation when reloading persisted volume state. Fixed in 1.75.1.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:H/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/rclone/rclone/security/advisories/GHSA-p6vx-hf7p-98j6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93987"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rclone-serve-docker-path-traversal-via-volume-name"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T12:16:42Z"
+  }
+}

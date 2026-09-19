@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2m8f-94rg-j65x",
+  "modified": "2026-09-19T12:32:11Z",
+  "published": "2026-09-19T12:32:11Z",
+  "aliases": [
+    "CVE-2026-93984"
+  ],
+  "details": "OpenPanel tracking API through commit bad75bddc74d12d36cfb843f4531d3b830a8d994 fails to verify client secret cryptographic hash before authorizing revenue events and bot filtering. Attackers with only a public client ID can supply arbitrary dummy secrets to inject forged revenue metrics and bypass bot detection filters.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Openpanel-dev/openpanel/security/advisories/GHSA-956w-65qh-w3jh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93984"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openpanel-api-authentication-bypass-via-unverified-client-secret"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T12:16:41Z"
+  }
+}

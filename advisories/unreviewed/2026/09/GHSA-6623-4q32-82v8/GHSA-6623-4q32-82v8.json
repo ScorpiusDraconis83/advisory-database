@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6623-4q32-82v8",
+  "modified": "2026-09-19T12:32:10Z",
+  "published": "2026-09-19T12:32:10Z",
+  "aliases": [
+    "CVE-2026-93981"
+  ],
+  "details": "hono before 4.13.7 fails to HTML-escape plain strings rendered by hono/jsx as a child or fallback of Suspense, as a string child of ErrorBoundary alongside an asynchronous sibling, as the single child of a Context.Provider, or as the root value passed to renderToString() or renderToReadableStream() from hono/jsx/dom/server. These paths stringify their input and treat the result as already-escaped markup, so an attacker who controls such a string during server-side rendering can inject arbitrary HTML and execute script under the application's origin.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/honojs/hono/security/advisories/GHSA-hxh3-vqpv-xpqv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93981"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hono-jsx-before-4.13.7-cross-site-scripting-via-unescaped-strings"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T12:16:41Z"
+  }
+}
