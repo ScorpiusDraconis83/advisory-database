@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jfm6-64hf-4hh9",
+  "modified": "2026-09-19T00:32:44Z",
+  "published": "2026-09-19T00:32:44Z",
+  "aliases": [
+    "CVE-2026-93922"
+  ],
+  "details": "SiYuan through 3.8.4 renders notebook names as raw HTML in the Daily Note picker dialog without escaping, allowing stored cross-site scripting in the Electron renderer. Attackers can create notebooks with HTML payloads in names that execute JavaScript with Node.js access when the picker opens, enabling operating system command execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-8c2m-33v9-vvqm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93922"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/blob/v3.8.4/app/src/util/mount.ts#L72"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/blob/v3.8.4/kernel/model/file.go#L2446-L2454"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/siyuan-through-3.8.4-stored-xss-via-notebook-names"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T00:16:57Z"
+  }
+}

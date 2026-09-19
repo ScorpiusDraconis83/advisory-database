@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-92ph-4c2m-29x6",
+  "modified": "2026-09-19T00:32:43Z",
+  "published": "2026-09-19T00:32:43Z",
+  "aliases": [
+    "CVE-2026-77875"
+  ],
+  "details": "The application protects access through its calculator-style vault passcode, but the stored data is not bound to that authentication boundary. A local actor who can access shared external storage, such as through an authorized non-root ADB shell or another local file-reading context with suitable storage access, can copy the SQLite database and media files directly without entering the vault passcode.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77875"
+    },
+    {
+      "type": "WEB",
+      "url": "https://fluidattacks.com/advisories/grin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://play.google.com/store/apps/details?id=com.macymind.calculatorlock"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-922"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T00:16:57Z"
+  }
+}

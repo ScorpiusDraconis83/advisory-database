@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qvp6-cjg5-8753",
+  "modified": "2026-09-19T00:32:44Z",
+  "published": "2026-09-19T00:32:44Z",
+  "aliases": [
+    "CVE-2026-93923"
+  ],
+  "details": "SiYuan through 3.8.4 fails to escape heading style attributes when rendering outline and bookmark dock HTML, allowing stored cross-site scripting. Attackers can supply crafted notebooks or call administrative endpoints to inject malicious style values that execute in the Electron renderer with full system access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-928g-4hfq-qwvx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93923"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/blob/v3.8.4/app/src/util/Tree.ts#L133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/blob/v3.8.4/app/src/util/Tree.ts#L194"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/blob/v3.8.4/kernel/model/render.go#L71-L76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/siyuan-through-3.8.4-stored-xss-via-heading-style-attribute"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T00:16:57Z"
+  }
+}
