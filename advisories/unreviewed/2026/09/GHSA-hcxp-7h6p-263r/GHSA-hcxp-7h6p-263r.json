@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hcxp-7h6p-263r",
+  "modified": "2026-09-19T03:32:02Z",
+  "published": "2026-09-19T03:32:02Z",
+  "aliases": [
+    "CVE-2026-15760"
+  ],
+  "details": "The Divi Essential plugin for WordPress is vulnerable to sensitive information exposure in versions up to, and including, 5.8.1 via the dnxte_get_database_tables and dnxte_get_database_data AJAX actions. The handlers  only conditionally verify a nonce (the check runs solely when the 'nonce' POST parameter is present and can be trivially bypassed by omitting the parameter) and never call current_user_can() or otherwise enforce a capability. This makes it possible for authenticated attackers, with Subscriber-level access and above, to enumerate every table in the WordPress database and read up to a caller-controlled number of rows from any table — including wp_users (usernames, emails, hashed passwords), wp_usermeta (session tokens, secret keys), and wp_options (privileged settings, API keys, credentials stored by other plugins).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15760"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.divinext.com/divi-essential-changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/61831b3e-4b2a-4fce-8fa2-818aa9991bb2?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T03:17:13Z"
+  }
+}

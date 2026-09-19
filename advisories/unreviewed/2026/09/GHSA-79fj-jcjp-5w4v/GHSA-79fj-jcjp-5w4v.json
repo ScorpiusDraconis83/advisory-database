@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-79fj-jcjp-5w4v",
+  "modified": "2026-09-19T03:32:02Z",
+  "published": "2026-09-19T03:32:02Z",
+  "aliases": [
+    "CVE-2026-77820"
+  ],
+  "details": "The WPComplete plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'empty' Shortcode Attribute in all versions up to, and including, 2.9.9.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires the premium version of the software in order to exploit. Please note this only affects the pro version.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77820"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpcomplete/tags/2.9.5.7/includes/class-wpcomplete.php#L305"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpcomplete/tags/2.9.5.7/public/class-wpcomplete-public.php#L1692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpcomplete/tags/2.9.5.7/public/class-wpcomplete-public.php#L1802"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wpcomplete/tags/2.9.5.7/public/class-wpcomplete-public.php#L1859"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5b91bb81-b5e4-4a50-833b-e2e98ccc09ff?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T02:16:54Z"
+  }
+}

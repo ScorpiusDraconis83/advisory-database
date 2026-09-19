@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-95p6-v6qj-q4v6",
+  "modified": "2026-09-19T03:32:03Z",
+  "published": "2026-09-19T03:32:03Z",
+  "aliases": [
+    "CVE-2026-88944"
+  ],
+  "details": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 4.0.8. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to permanently delete arbitrary WordPress posts — including pages, courses, quizzes, and WooCommerce products — via wp_delete_post( $id, true ). The exploit chain requires the attacker to first trigger the profile-photo upload flow to obtain an authored wp_posts attachment row, then create a Tutor topic reparented to that attachment, before invoking the lesson deletion handler against any target post ID.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88944"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/Course.php#L1758"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/Course.php#L2055"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/Lesson.php#L541"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/User.php#L395"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/Utils.php#L3277"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/Utils.php#L7481"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/Utils.php#L7666"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3700174%40tutor&new=3700174%40tutor"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/7e23fcd0-62b4-460d-9b64-8adbf14bf820?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T03:17:16Z"
+  }
+}
