@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-4c39-75m8-74f3",
-  "modified": "2026-09-19T09:32:09Z",
+  "modified": "2026-09-19T15:31:21Z",
   "published": "2026-09-19T09:32:09Z",
   "aliases": [
     "CVE-2026-16557"
   ],
   "details": "The Nimble Page Builder WordPress plugin through 3.3.8 does not perform an authorization check when returning page-builder content through an authenticated AJAX action, allowing any authenticated user (Subscriber+) to disclose the page-builder content of arbitrary non-public (draft, pending, private, scheduled) posts and pages.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-19T07:16:32Z"

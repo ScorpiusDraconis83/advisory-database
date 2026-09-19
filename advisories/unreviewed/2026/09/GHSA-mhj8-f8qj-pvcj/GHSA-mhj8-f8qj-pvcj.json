@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mhj8-f8qj-pvcj",
-  "modified": "2026-09-19T09:32:10Z",
+  "modified": "2026-09-19T15:31:22Z",
   "published": "2026-09-19T09:32:10Z",
   "aliases": [
     "CVE-2026-92430"
   ],
   "details": "The Rede Itaú for WooCommerce — Payment PIX, Credit Card and Debit WordPress plugin before 5.4.7 does not verify the authenticity of its PIX payment webhook before updating an order's status, allowing unauthenticated attackers to mark a pending order as paid without paying.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-19T07:16:34Z"

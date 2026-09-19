@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cq73-82v9-gx86",
-  "modified": "2026-09-19T09:32:09Z",
+  "modified": "2026-09-19T15:31:21Z",
   "published": "2026-09-19T09:32:09Z",
   "aliases": [
     "CVE-2026-84750"
   ],
   "details": "The Ultra Addons for Contact Form 7 WordPress plugin before 3.5.51 does not validate the type or extension of files uploaded through one of its form fields, and stores them at a predictable public path with the attacker-chosen extension intact, allowing unauthenticated users to upload arbitrary files. The PHP handler shipped by default with the Debian and Ubuntu Apache packages maps .phar to PHP alongside .php and .phtml, so on that stack the uploaded file is executed and the issue leads to Remote Code Execution and full site takeover. Where the host routes only .php to the PHP handler, the same file is instead served from the site's own origin with its script intact, leading to Stored Cross-Site Scripting.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-19T07:16:32Z"

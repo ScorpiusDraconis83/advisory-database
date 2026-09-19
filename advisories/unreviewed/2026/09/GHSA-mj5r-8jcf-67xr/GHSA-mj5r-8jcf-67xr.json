@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mj5r-8jcf-67xr",
-  "modified": "2026-09-19T09:32:10Z",
+  "modified": "2026-09-19T15:31:22Z",
   "published": "2026-09-19T09:32:10Z",
   "aliases": [
     "CVE-2026-91847"
   ],
   "details": "The Online Scheduling and Appointment Booking System  WordPress plugin before 28.2 does not verify that the requester owns the AI booking-assistant conversation named in its unauthenticated conversation actions, allowing any unauthenticated visitor to read another visitor's assistant messages and to inject messages into their in-progress conversation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-19T07:16:33Z"

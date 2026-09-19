@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qc48-4x35-wh3c",
-  "modified": "2026-09-19T09:32:10Z",
+  "modified": "2026-09-19T15:31:22Z",
   "published": "2026-09-19T09:32:10Z",
   "aliases": [
     "CVE-2026-92435"
   ],
   "details": "The Mailchimp for WooCommerce WordPress plugin before 6.1.1 does not verify that the requesting user holds the required capability in the permission callback for several of its REST API routes, allowing unauthenticated users to reach administrator-oriented endpoints and trigger a persistent state change.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-19T07:16:34Z"
