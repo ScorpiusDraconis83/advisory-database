@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-9547-95qm-hm4c",
-  "modified": "2026-09-20T09:30:20Z",
+  "modified": "2026-09-20T15:30:23Z",
   "published": "2026-09-20T09:30:20Z",
   "aliases": [
     "CVE-2026-92410"
   ],
   "details": "The Sign-up Sheets WordPress plugin before 2.4.0 does not properly validate the CSRF nonce that protects its sign-up deletion action, allowing attackers to delete sign-up records via a forged request handled in the session of a logged-in user with the required capability.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-20T07:16:50Z"

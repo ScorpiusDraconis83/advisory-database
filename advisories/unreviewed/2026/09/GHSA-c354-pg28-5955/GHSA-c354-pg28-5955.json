@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c354-pg28-5955",
-  "modified": "2026-09-20T09:30:20Z",
+  "modified": "2026-09-20T15:30:23Z",
   "published": "2026-09-20T09:30:20Z",
   "aliases": [
     "CVE-2026-82842"
   ],
   "details": "The SAML Single Sign On  WordPress plugin before 6.0.0 does not honour the configured criterion for linking an incoming single sign-on identity to a WordPress account, always resolving the identity by login name whatever the site has chosen, which allows an attacker who can have the site's identity provider assert a login name of their choosing to authenticate as any account, including an administrator, without proving ownership of that account.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-20T07:16:50Z"

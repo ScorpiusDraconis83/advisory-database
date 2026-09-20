@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-774v-j88v-3m84",
-  "modified": "2026-09-20T09:30:21Z",
+  "modified": "2026-09-20T15:30:23Z",
   "published": "2026-09-20T09:30:21Z",
   "aliases": [
     "CVE-2026-92965"
   ],
   "details": "The TikTok WordPress plugin before 1.4.2 does not check that a request is authorised before acting on a sign-in code supplied in the URL, so any visitor can make the site redeem a code of their choosing against the advertising platform, using the site's own credentials. It matches that code loosely, so URLs that merely resemble the expected one trigger it too, and the callback runs on every request to the site rather than only on the administrator's sign-in.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-20T07:16:51Z"
