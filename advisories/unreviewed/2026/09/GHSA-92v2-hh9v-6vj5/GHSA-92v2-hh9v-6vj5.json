@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-92v2-hh9v-6vj5",
+  "modified": "2026-09-20T00:30:24Z",
+  "published": "2026-09-20T00:30:24Z",
+  "aliases": [
+    "CVE-2026-93993"
+  ],
+  "details": "Mistral Vibe before 2.25.5 contains a remote code execution vulnerability in the worktree creation process that executes git hooks before trust validation. Attackers can supply a repository with a crafted post-checkout hook that executes arbitrary shell commands with the privileges of the user running Vibe.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93993"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mistralai/mistral-vibe/issues/996"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mistralai/mistral-vibe/commit/c069ffa1e12fb5f2487b489217c40ab97721d553"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mistralai/mistral-vibe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mistralai/mistral-vibe/blob/19b5b74faa78d0816b8d4d4c7d7543fc3520678c/vibe/core/git/repo.py#L411-L431"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mistralai/mistral-vibe/releases/tag/v2.25.5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mistral-vibe-before-2.25.5-remote-code-execution-via-git-post-checkout"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-829"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-19T23:17:10Z"
+  }
+}
