@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m76p-p4wh-76x9",
+  "modified": "2026-09-20T12:30:27Z",
+  "published": "2026-09-20T12:30:27Z",
+  "aliases": [
+    "CVE-2026-94104"
+  ],
+  "details": "NivoCart through 2.4.0 contains an arbitrary file upload vulnerability in the File Manager multi() endpoint that fails to validate file extensions for new filenames or when chunks parameter is 2 or higher. Attackers with view-only back-office access can upload PHP files to the web-accessible image/data/ directory and execute them for remote code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nivocart/nivocart/issues/25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nivocart/nivocart"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nivocart/nivocart/blob/6ea6600cda1263ae70c0aab0a70d31091a32c46b/upload/admin/controller/common/filemanager.php#L527-L562"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/nivocart/nivocart/blob/6ea6600cda1263ae70c0aab0a70d31091a32c46b/upload/admin/controller/common/filemanager_full.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nivocart-through-2.4.0-arbitrary-file-upload-rce-via-filemanager"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-20T12:17:05Z"
+  }
+}
