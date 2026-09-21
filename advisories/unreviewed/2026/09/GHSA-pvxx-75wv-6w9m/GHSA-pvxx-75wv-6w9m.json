@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pvxx-75wv-6w9m",
+  "modified": "2026-09-21T21:31:54Z",
+  "published": "2026-09-21T21:31:53Z",
+  "aliases": [
+    "CVE-2026-94501"
+  ],
+  "details": "jshERP through 3.6 contains an authorization bypass vulnerability in the userBusiness CRUD endpoints that allows authenticated users to create, modify, or delete authorization-relation rows without privilege checks. Attackers can manipulate user-role mappings and access controls to escalate privileges, strip access from other accounts, or modify role-function relationships for any user in the tenant.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94501"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LinYuanyi1/cve-request-poc/blob/master/jshERP/poc-07-userbusiness-authorization-delete.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/v3.6/jshERP-boot/src/main/java/com/jsh/erp/controller/UserBusinessController.java#L50-L80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jsherp-through-3.6-privilege-escalation-via-userbusiness-crud"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-21T19:17:21Z"
+  }
+}

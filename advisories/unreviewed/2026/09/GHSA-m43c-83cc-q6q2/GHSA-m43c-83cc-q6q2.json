@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m43c-83cc-q6q2",
+  "modified": "2026-09-21T21:31:56Z",
+  "published": "2026-09-21T21:31:55Z",
+  "aliases": [
+    "CVE-2026-79317"
+  ],
+  "details": "A session invalidation flaw exists in x-ui 0.3.2. The full user object is stored in a client-side signed cookie, and authentication only checks that a user object can be retrieved from the cookie without re-validating against the database or any session version. When an administrator changes the username or password, previously issued session cookies are not revoked, so an attacker who holds a pre-change admin cookie can continue accessing and operating the management interface after the credentials have been rotated.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79317"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lichoin/TraceLoom/blob/main/CVEs/CVE-2026-79317.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vaxilu/x-ui"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-21T21:17:12Z"
+  }
+}

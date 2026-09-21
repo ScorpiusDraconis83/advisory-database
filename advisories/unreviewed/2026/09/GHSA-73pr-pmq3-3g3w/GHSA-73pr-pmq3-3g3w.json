@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73pr-pmq3-3g3w",
+  "modified": "2026-09-21T21:31:54Z",
+  "published": "2026-09-21T21:31:54Z",
+  "aliases": [
+    "CVE-2026-94494"
+  ],
+  "details": "jshERP through 3.6 contains a tenant isolation bypass vulnerability that allows authenticated users to read other tenants' records via the GET /tenant/info endpoint. Attackers can iterate the primary key to enumerate and access sensitive tenant data including login names, validity dates, user quotas, and enabled state across all platform tenants.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94494"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LinYuanyi1/cve-request-poc/blob/master/jshERP/poc-09-tenant-cross-tenant-read.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jishenghua/jshERP/blob/v3.6/jshERP-boot/src/main/java/com/jsh/erp/controller/TenantController.java#L36-L48"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/jsherp-through-3.6-tenant-information-disclosure-via-get-tenant-info"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-21T19:17:20Z"
+  }
+}
