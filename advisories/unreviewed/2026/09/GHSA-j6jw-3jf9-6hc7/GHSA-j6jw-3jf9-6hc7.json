@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j6jw-3jf9-6hc7",
+  "modified": "2026-09-21T18:32:09Z",
+  "published": "2026-09-21T18:32:09Z",
+  "aliases": [
+    "CVE-2026-93012"
+  ],
+  "details": "Email::Sender::Transport::Sendmail versions before 2.602 for Perl allow arbitrary command execution on Windows sending a message whose envelope address reaches the shell in _sendmail_pipe.\n\nOn MSWin32 the envelope sender and every recipient go into a single command string, which open() passes to a shell. Every other platform gets the list form, which runs sendmail directly. When the caller supplies no envelope, Email::Sender::Simple takes the recipients from the To and Cc headers and the sender from the From header.\n\nAn attacker who controls one of those header addresses runs commands as the sending process.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93012"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rjbs/Email-Sender/commit/9a587bc9ff4edae13239190c2651da2c76b1e72c.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/RJBS/Email-Sender-2.602/changes"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-21T18:17:16Z"
+  }
+}
