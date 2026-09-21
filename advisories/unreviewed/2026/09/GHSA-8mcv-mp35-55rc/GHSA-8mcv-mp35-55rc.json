@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8mcv-mp35-55rc",
+  "modified": "2026-09-21T12:32:36Z",
+  "published": "2026-09-21T12:32:36Z",
+  "aliases": [
+    "CVE-2026-94277"
+  ],
+  "details": "MISP's galaxy matrix statistics view (app/View/Users/statistics_galaxymatrix.ctp) renders the galaxy name directly into HTML output via sprintf() without any HTML encoding. An authenticated user holding the perm_galaxy_editor permission can create or modify a galaxy whose name contains arbitrary HTML or JavaScript markup. Because the value is interpolated verbatim into the page, any user who subsequently opens the galaxy matrix statistics page will have the embedded script executed in their browser context. This enables session hijacking, credential theft, data exfiltration, or the performance of arbitrary actions on behalf of the victim within the MISP application.\n\nVersion affected: <2.5.47",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94277"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/6b7637bf4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-21T10:17:17Z"
+  }
+}
