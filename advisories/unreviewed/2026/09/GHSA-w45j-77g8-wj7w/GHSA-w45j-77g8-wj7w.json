@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w45j-77g8-wj7w",
+  "modified": "2026-09-21T15:32:04Z",
+  "published": "2026-09-21T15:32:04Z",
+  "aliases": [
+    "CVE-2026-94387"
+  ],
+  "details": "Aureus ERP before 1.6.0 contains a stored cross-site scripting vulnerability in the Chatter field-change log where old_value and new_value entries are rendered without proper escaping. Any user permitted to edit tracked text fields can inject malicious markup that executes when other users, including administrators, view the record's Chatter panel.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94387"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aureuserp/aureuserp/pull/1465"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aureuserp/aureuserp/commit/57cf5cf4c98d82a0ad89003402f27823fbe1e27c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aureuserp/aureuserp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aureuserp/aureuserp/blob/v1.5.0/plugins/webkul/chatter/resources/views/filament/infolists/components/messages/content-text-entry.blade.php#L165"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aureuserp/aureuserp/blob/v1.5.0/plugins/webkul/chatter/resources/views/filament/infolists/components/messages/content-text-entry.blade.php#L182"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/aureuserp/aureuserp/releases/tag/v1.6.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@leediay/stored-xss-aureuserp-chatter"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/aureus-erp-before-1.6.0-stored-xss-via-chatter-field-change-log"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-21T14:17:30Z"
+  }
+}

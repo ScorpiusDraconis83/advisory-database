@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x7pw-mf2h-rgr4",
+  "modified": "2026-09-21T15:32:04Z",
+  "published": "2026-09-21T15:32:04Z",
+  "aliases": [
+    "CVE-2026-94382"
+  ],
+  "details": "Beszel before 0.19.0 contains an insecure direct object reference vulnerability in the POST and DELETE /api/beszel/user-alerts handlers that allows any authenticated user to create or delete alerts on systems they cannot access. Attackers can supply arbitrary system IDs in the request body to register alert rules and receive notifications disclosing target system names and metrics.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/henrygd/beszel/security/advisories/GHSA-759g-ch5m-2gch"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94382"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/henrygd/beszel/commit/6f92b9396dfbacaf71c20444d175af78e0517409"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/henrygd/beszel"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/henrygd/beszel/blob/v0.18.8/internal/alerts/alerts_api.go#L19-L80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/henrygd/beszel/releases/tag/v0.19.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/beszel-before-0.19.0-insecure-direct-object-reference-via-user-alerts"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-21T14:17:30Z"
+  }
+}

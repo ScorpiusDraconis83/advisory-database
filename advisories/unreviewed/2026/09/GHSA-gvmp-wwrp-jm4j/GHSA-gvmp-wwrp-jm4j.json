@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gvmp-wwrp-jm4j",
+  "modified": "2026-09-21T15:32:02Z",
+  "published": "2026-09-21T15:32:02Z",
+  "aliases": [
+    "CVE-2025-71420"
+  ],
+  "details": "UVdesk core-framework before 1.1.7 contains an authorization bypass vulnerability in the saved reply endpoint that allows authenticated agents to access replies restricted to other support groups. Attackers with ROLE_AGENT can enumerate saved reply identifiers and read content reserved for groups and teams they do not belong to.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71420"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uvdesk/core-framework/commit/de0422869708eb17a54bf6a98166abb80c0d483d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uvdesk/community-skeleton/releases/tag/v1.1.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uvdesk/core-framework"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uvdesk/core-framework/blob/v1.1.6/Controller/TicketXHR.php#L838-L850"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uvdesk/core-framework/blob/v1.1.6/Services/TicketService.php#L1752-L1759"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/uvdesk/core-framework/releases/tag/v1.1.7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@leediay/B1Cz5voFGg"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/uvdesk-core-framework-before-1.1.7-authorization-bypass-via-saved-reply"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-21T14:17:14Z"
+  }
+}

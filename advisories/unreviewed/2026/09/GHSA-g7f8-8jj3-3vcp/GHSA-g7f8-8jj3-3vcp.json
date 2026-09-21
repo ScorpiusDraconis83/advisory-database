@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g7f8-8jj3-3vcp",
+  "modified": "2026-09-21T15:32:04Z",
+  "published": "2026-09-21T15:32:04Z",
+  "aliases": [
+    "CVE-2026-94404"
+  ],
+  "details": "MISP has a security issue that could let an attacker change threat-intelligence data through a logged-in user’s browser without that user knowingly approving the change.\n\nThe affected function did not properly enforce MISP’s usual protection against forged requests. Because of this, an attacker could create a malicious webpage that silently sends a request to MISP when visited by an authenticated user.\n\nIf successful, the attacker could change details of an attribute, such as its value, type, category, comment, distribution settings, or related timestamps.\n\nThe attack requires the victim to already be logged in to MISP and to visit an attacker-controlled page.\n\nThe main impact is unauthorized modification of threat-intelligence data, which could lead to incorrect indicators, wrong classifications, or altered sharing settings and reduce confidence in the accuracy of the information stored in MISP.\n\nVersion affected: <2.5.47",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94404"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/dfbae33f9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-21T14:17:31Z"
+  }
+}
