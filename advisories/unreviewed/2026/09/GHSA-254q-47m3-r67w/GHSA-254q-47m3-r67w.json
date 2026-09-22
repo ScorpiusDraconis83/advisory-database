@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-254q-47m3-r67w",
+  "modified": "2026-09-22T12:30:25Z",
+  "published": "2026-09-22T12:30:25Z",
+  "aliases": [
+    "CVE-2026-63273"
+  ],
+  "details": "LibreOffice Draw can import PDF documents. A heap buffer overflow existed when importing an encrypted document. The length of the decryption key was taken from the document's own encryption dictionary and was used to fill a fixed size key buffer without being checked against it, so a length larger than that buffer wrote past its end. In fixed versions a declared key length larger than the buffer is rejected.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63273"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.libreoffice.org/about-us/security/advisories/cve-2026-63273"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T12:17:13Z"
+  }
+}

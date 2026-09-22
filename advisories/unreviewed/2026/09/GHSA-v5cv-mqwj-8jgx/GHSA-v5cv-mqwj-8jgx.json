@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v5cv-mqwj-8jgx",
+  "modified": "2026-09-22T12:30:26Z",
+  "published": "2026-09-22T12:30:26Z",
+  "aliases": [
+    "CVE-2026-63279"
+  ],
+  "details": "LibreOffice can import PICT images, which may be embedded in documents. An out of bounds read existed when importing an image that uses a colour palette. The palette index held in the image data was used without being checked against the number of entries the palette has, so an index past the last entry read memory outside the palette. In fixed versions the palette index is limited to the entries present.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:N/VA:H/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.libreoffice.org/about-us/security/advisories/cve-2026-63279"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T12:17:13Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fh9h-5g6m-wc43",
+  "modified": "2026-09-22T12:30:26Z",
+  "published": "2026-09-22T12:30:26Z",
+  "aliases": [
+    "CVE-2026-63275"
+  ],
+  "details": "LibreOffice can read CFF fonts, which may be embedded in documents. A stack buffer overflow existed when reading the hints of a glyph. The number of hints was checked against the wrong bound, so a glyph declaring more hints than the array can hold wrote past its end. In fixed versions the hint count is checked against the capacity the array really has.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:H/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63275"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.libreoffice.org/about-us/security/advisories/cve-2026-63275"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T12:17:13Z"
+  }
+}
