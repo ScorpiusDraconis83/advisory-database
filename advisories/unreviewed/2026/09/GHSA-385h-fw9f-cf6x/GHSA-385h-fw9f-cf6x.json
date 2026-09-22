@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-385h-fw9f-cf6x",
+  "modified": "2026-09-22T15:32:42Z",
+  "published": "2026-09-22T15:32:42Z",
+  "aliases": [
+    "CVE-2026-95685"
+  ],
+  "details": "MISP contains an access control flaw in the EventReports functionality. The replaceSuggestionInReport action, which allows modification of suggestion content within an event report, was incorrectly mapped to the wildcard permission ('*') in the ACLComponent, making it accessible to any authenticated user regardless of their assigned permissions. All analogous report-modification actions correctly required the perm_add permission, while read-only actions such as downloadAsPDF appropriately used the wildcard. \n\nAn authenticated user without the perm_add permission could invoke the replaceSuggestionInReport endpoint to alter report suggestion data, violating the intended authorization model. \n\nThis constitutes an improper authorization weakness that could lead to unauthorized modification of event report content, potentially corrupting shared threat intelligence data or injecting misleading information into reports relied upon by other analysts and automated consumers.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95685"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/66aebfb1a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T15:17:26Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j68h-v872-356w",
+  "modified": "2026-09-22T15:32:37Z",
+  "published": "2026-09-22T15:32:36Z",
+  "aliases": [
+    "CVE-2026-93341"
+  ],
+  "details": "MarketKing plugin for WordPress before 2.1.72 contains a missing authorization vulnerability in the marketking_send_refund AJAX action that allows authenticated attackers with subscriber-level access or higher to create refund requests against any order by supplying an arbitrary order ID. Attackers can submit crafted AJAX requests targeting any order ID to create fraudulent refund requests against orders they did not place, enabling marketplace disruption and unauthorized interference with other users' orders.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93341"
+    },
+    {
+      "type": "WEB",
+      "url": "https://marketkingplugin.com/changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wordpress.org/plugins/marketking-multivendor-marketplace-for-woocommerce"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/marketking-missing-authorization-via-marketking-send-refund-ajax"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T14:17:18Z"
+  }
+}

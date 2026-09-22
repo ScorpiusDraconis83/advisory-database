@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-83cf-9w8x-h48q",
+  "modified": "2026-09-22T15:32:42Z",
+  "published": "2026-09-22T15:32:42Z",
+  "aliases": [
+    "CVE-2026-95683"
+  ],
+  "details": "In MISP, the Overmind event view enriches an event with its most recent attached report for preview purposes. The enrichment logic fetched the report using only the event ID as the lookup condition, without applying the report's own distribution/ACL constraints. Because MISP reports carry an independent distribution setting that can be more restrictive than the parent event's distribution, an authenticated user who had read access to the event could retrieve and view a report whose distribution explicitly excluded that user. Additionally, the query did not filter out soft-deleted reports, allowing retrieval of reports that had been administratively removed.\n\nThe result is an unauthorized disclosure of threat-intelligence report content to users who should not have access under the report's own access-control policy.\n\nThe vulnerability requires an authenticated MISP user with at least read access to the affected event.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95683"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/6932aace8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T15:17:26Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w52q-73m7-hm7j",
+  "modified": "2026-09-22T15:32:47Z",
+  "published": "2026-09-22T15:32:47Z",
+  "aliases": [
+    "CVE-2026-95754"
+  ],
+  "details": "In MISP's UsersController login() method, the pre-authentication database query used for the TOTP (two-factor authentication) verification branch did not include the User.disabled column in its SELECT fields list. The query selected only User.password, User.totp, and User.hotp_counter. When the TOTP branch subsequently accessed $unauth_user['User']['disabled'], the key was absent from the result set, producing a PHP 'Undefined array key' warning and causing the expression to evaluate as null (falsy). As a result, the disabled-user guard in the TOTP branch was effectively a no-op: a disabled, TOTP-enrolled user could proceed to the TOTP verification step rather than being rejected at that point. \n\nThe commit message explicitly states this was 'harmless in practice' because the subsequent identify() call re-validates the user and would still reject a disabled account. \n\nThe practical security impact is therefore minimal, limited to a very small information-disclosure difference in the login response (a TOTP prompt is presented instead of an immediate rejection) and a PHP warning in application logs.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95754"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/3df982ab1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-285"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T15:17:28Z"
+  }
+}

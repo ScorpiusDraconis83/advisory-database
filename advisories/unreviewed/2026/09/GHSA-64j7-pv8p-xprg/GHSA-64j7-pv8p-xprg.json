@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-64j7-pv8p-xprg",
-  "modified": "2026-09-22T00:30:54Z",
+  "modified": "2026-09-22T15:32:31Z",
   "published": "2026-09-22T00:30:54Z",
   "aliases": [
     "CVE-2026-88738"
   ],
   "details": "Jazzware RT1000 Edge webUI v. 20.0.1 contains an unrestricted file upload vulnerability in the upgrade package upload functionality. An authenticated attacker can upload a server-side executable file. The uploaded file is stored in a web-accessible executable location and can be accessed directly over HTTP without authentication, resulting in remote code execution.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-21T22:16:59Z"

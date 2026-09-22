@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5fvj-qq2x-32vr",
+  "modified": "2026-09-22T15:32:35Z",
+  "published": "2026-09-22T15:32:35Z",
+  "aliases": [
+    "CVE-2026-95658"
+  ],
+  "details": "MISP's WorkflowsController exposed the moduleStatelessExecution action in the Security component's unlockedActions list. In CakePHP, listing an action in unlockedActions disables both the CSRF token check and the field hash validation for that action. Because moduleStatelessExecution executes a workflow module's exec() method with caller-supplied input and parameters, the absence of CSRF protection allowed an attacker to craft a cross-site form post (or equivalent cross-origin request) that, when submitted by an authenticated site administrator, would cause the administrator's browser to invoke the action on the MISP instance. \n\nThe attacker could select any workflow module to execute, including action modules that write blocklist and warninglist entries, and supply arbitrary input and parameters of their choosing. This constitutes a cross-site request forgery (CSRF) vulnerability with high integrity impact on the MISP instance's security-related data. \n\nThe vulnerability was identified during an internal security review and was not externally reported. The fix is included in MISP v2.5.47.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95658"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MISP/MISP/commit/f05e0d1c2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T13:17:13Z"
+  }
+}

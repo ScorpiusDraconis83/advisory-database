@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-x7jv-2m23-2ch3",
-  "modified": "2026-09-21T21:31:55Z",
+  "modified": "2026-09-22T15:32:30Z",
   "published": "2026-09-21T21:31:55Z",
   "aliases": [
     "CVE-2026-79316"
   ],
   "details": "An improper access control vulnerability exists in x-ui 0.3.2. Any authenticated panel user can modify the xray configuration template through the settings interface and trigger a panel restart, causing the xray management gRPC service, which is bound to loopback by default, to be regenerated and bound to non-loopback addresses. This expands the reachable surface of the management interface beyond its intended local-only boundary.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-21T21:17:12Z"

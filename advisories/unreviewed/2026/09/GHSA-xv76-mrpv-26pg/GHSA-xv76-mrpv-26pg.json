@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xv76-mrpv-26pg",
+  "modified": "2026-09-22T15:32:41Z",
+  "published": "2026-09-22T15:32:41Z",
+  "aliases": [
+    "CVE-2026-93088"
+  ],
+  "details": "SGLang's multimodal generation runtime is vulnerable to unauthenticated arbitrary code execution because the disaggregated-diffusion orchestrator's DiffusionServer binds an unauthenticated ZeroMQ ROUTER socket to a network interface and passes the final frame of received multipart messages directly to pickle.loads() before any validation occurs.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93088"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sgl-project/sglang/blob/main/python/sglang/multimodal_gen/runtime/disaggregation/orchestrator.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hacchoomiso.github.io/blog/SGLang/CVE-2026-93088"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T15:17:21Z"
+  }
+}

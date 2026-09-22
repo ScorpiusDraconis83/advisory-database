@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fxjc-7693-737g",
+  "modified": "2026-09-22T15:32:41Z",
+  "published": "2026-09-22T15:32:41Z",
+  "aliases": [
+    "CVE-2026-79315"
+  ],
+  "details": "A reflected cross-site scripting vulnerability exists in x-ui 0.3.2. The management interface reflects the raw request URI into a client-side template binding expression used for sidebar menu highlighting. Server-side HTML entity escaping is ineffective in this context: the browser decodes the entities before the client-side framework evaluates the content as a JavaScript expression. A logged-in panel user who visits a crafted URL allows arbitrary script execution in the same-origin context of the management page, enabling data theft and unauthorized actions through the victim's session.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79315"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lichoin/TraceLoom/blob/main/CVEs/CVE-2026-79315.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vaxilu/x-ui"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T15:17:15Z"
+  }
+}
