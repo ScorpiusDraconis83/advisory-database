@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wjj6-g7c3-q75f",
+  "modified": "2026-09-22T21:31:31Z",
+  "published": "2026-09-22T21:31:31Z",
+  "aliases": [
+    "CVE-2026-95815"
+  ],
+  "details": "OpenClaw iOS before 2026.8.11 logs complete agent deep-link URLs including persistent bearer keys to unified logs as public diagnostic data. Attackers who obtain diagnostic archives can recover unrotated keys and replay them in forged deep links to submit agent requests without local confirmation prompts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-5j57-84cx-r295"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95815"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/commit/8361f3704dd5e151ff1325e62ff5de658b6c62e6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/blob/935c16b5e22fae3c7ff5fdee0b834d5e0077d1f6/apps/ios/Sources/Model/NodeAppModel.swift#L10037-L10038"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-ios-before-2026.8.11-credential-exposure-via-deep-link-url-logging"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T21:17:34Z"
+  }
+}

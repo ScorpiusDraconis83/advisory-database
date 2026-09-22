@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h2p3-9m67-89gr",
+  "modified": "2026-09-22T21:31:30Z",
+  "published": "2026-09-22T21:31:30Z",
+  "aliases": [
+    "CVE-2026-67615"
+  ],
+  "details": "openEQUELLA before 2026.1.0 contains an authenticated remote code execution vulnerability that allows any authenticated non-guest user to execute arbitrary code by exploiting Java deserialization in the HTTP invoker endpoint at /invoker/*. Attackers can bypass the class-name denylist enforced by PluginAwareObjectInputStream by nesting a serialized payload inside a java.security.SignedObject, causing the inner stream to be deserialized by a separate ObjectInputStream that does not apply the denylist, ultimately reaching a JNDI sink and enabling code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67615"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openequella/openEQUELLA/releases/tag/2026.1.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openequella-authenticated-rce-via-java-deserialization-in-http-invoker"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-184"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T21:17:31Z"
+  }
+}

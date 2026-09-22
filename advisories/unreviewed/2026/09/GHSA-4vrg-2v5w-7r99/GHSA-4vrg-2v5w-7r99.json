@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4vrg-2v5w-7r99",
+  "modified": "2026-09-22T21:31:31Z",
+  "published": "2026-09-22T21:31:31Z",
+  "aliases": [
+    "CVE-2026-95812"
+  ],
+  "details": "ClipBucket v5 before 5.5.3-#182 contains a reflected cross-site scripting vulnerability in the sort_link() helper function that fails to sanitize cat, sort, and time query parameters. Attackers can craft malicious requests with injected script payloads in these parameters to execute arbitrary JavaScript in victims' browsers under the application origin.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95812"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MacWarrior/clipbucket-v5/commit/032f46937e091e22afa6c99f2c888575cc94e44b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MacWarrior/clipbucket-v5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MacWarrior/clipbucket-v5/blob/5.5.3-%23153/upload/includes/functions.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/MacWarrior/clipbucket-v5/releases/tag/5.5.3-%23182"
+    },
+    {
+      "type": "WEB",
+      "url": "https://hackmd.io/@leediay/reflected-xss-in-search-function-clipbucket-v5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/clipbucket-v5-before-5.5.3-182-reflected-xss-via-query-parameters"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T21:17:34Z"
+  }
+}

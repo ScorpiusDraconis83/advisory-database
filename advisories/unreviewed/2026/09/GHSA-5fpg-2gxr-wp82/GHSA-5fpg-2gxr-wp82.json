@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5fpg-2gxr-wp82",
-  "modified": "2026-09-18T15:32:17Z",
+  "modified": "2026-09-22T21:31:02Z",
   "published": "2026-09-18T15:32:17Z",
   "aliases": [
     "CVE-2026-88623"
   ],
   "details": "NUUO Network Video Recorder 2.0.0 is vulnerable to arbitrary file read. In up.php, the url parameter submitted by the user via POST is received, and fopen() is used to open the URL in binary read-only mode. The content is then written to the /tmp/ directory, with the filename derived from basename() of the URL. This operation requires no authentication.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-552"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-18T14:19:02Z"
