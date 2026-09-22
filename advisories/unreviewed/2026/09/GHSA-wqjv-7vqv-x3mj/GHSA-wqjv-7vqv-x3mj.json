@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wqjv-7vqv-x3mj",
+  "modified": "2026-09-22T18:33:35Z",
+  "published": "2026-09-22T18:33:35Z",
+  "aliases": [
+    "CVE-2026-95624"
+  ],
+  "details": "The Tauri updater plugin's 'check' IPC command accepts an allowDowngrades boolean parameter directly from frontend JavaScript code. When set to true, it replaces the version comparator from \"update must be newer\" to \"update must be different.\" Because the default permission set grants allow-check to the webview, any XSS in the app frontend can invoke this command and bypass the only anti-rollback protection the updater offers. Combined with another bug, this enables downgrade attacks without even needing to fake a higher version number.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/tauri-apps/tauri/security/advisories/GHSA-rjc6-5hfg-grp9"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95624"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tauri-apps/plugins-workspace/commit/1308bfa399b962b3977c767100a6339d1cbfdd20"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tauri-apps/plugins-workspace/releases/tag/updater-v2.12.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tauri-apps/tauri"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T18:17:36Z"
+  }
+}

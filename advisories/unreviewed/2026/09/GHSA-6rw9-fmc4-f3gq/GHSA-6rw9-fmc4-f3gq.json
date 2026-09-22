@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6rw9-fmc4-f3gq",
+  "modified": "2026-09-22T18:33:28Z",
+  "published": "2026-09-22T18:33:28Z",
+  "aliases": [
+    "CVE-2026-80148"
+  ],
+  "details": "Lantronix SLC8000 before firmware v9.7.0.3, EMG8500/EMG7500 before firmware v9.7.0.1, and all firmware versions of SLB882 contain a server-side request forgery vulnerability in the WebSSH/WebTelnet listener that allows unauthenticated attackers to cause the affected device to establish SSH connections to attacker-controlled endpoints. The custom shellinaboxd builds its SSH connection target using a snprintf call with user-supplied input; by supplying an overlong username string an attacker causes the device IP suffix to be truncated, redirecting the resulting connection to an arbitrary host. Attackers can use this capability to enumerate or communicate with internal network endpoints that would otherwise be inaccessible.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80148"
+    },
+    {
+      "type": "WEB",
+      "url": "https://revrb.net/2026/09/21/revrb-lantern.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ts.lantronix.com/ftp/emg/EMG_7500/9.7.0.1R2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ts.lantronix.com/ftp/emg/EMG_8500/9.7.0.1R2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://ts.lantronix.com/ftp/slc8000/9.7.0.3R3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lantronix-autonomous-out-of-band-devices-webssh-ssrf-via-username-truncation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T16:18:01Z"
+  }
+}

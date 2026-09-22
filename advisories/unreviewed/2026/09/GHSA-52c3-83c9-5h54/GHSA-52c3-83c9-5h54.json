@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-52c3-83c9-5h54",
-  "modified": "2026-09-15T18:32:27Z",
+  "modified": "2026-09-22T18:33:15Z",
   "published": "2026-09-15T18:32:27Z",
   "aliases": [
     "CVE-2026-88621"
   ],
   "details": "OneNav v1.2.4 contains an authenticated arbitrary file deletion vulnerability in the Api::upload() method in class/Api.php. An authenticated administrator can submit a non-HTML upload filename matching an existing file in the application's working directory. The application passes the user-controlled filename to unlink() when rejecting the upload, potentially causing file deletion and denial of service.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-706"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-15T16:17:39Z"

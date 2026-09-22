@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wpfv-47p6-jfvh",
+  "modified": "2026-09-22T18:33:28Z",
+  "published": "2026-09-22T18:33:28Z",
+  "aliases": [
+    "CVE-2026-79312"
+  ],
+  "details": "webpy web.py 0.76 is vulnerable to Session Fixation. The component Session._load() reads session_id directly from the request cookie and loads that session from the store, and _save() writes back under the same session_id; no rotation after authentication, so a fixed session_id keeps the authenticated state.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79312"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lichoin/TraceLoom/blob/main/CVEs/CVE-2026-79312.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/webpy/webpy"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-384"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T16:17:56Z"
+  }
+}

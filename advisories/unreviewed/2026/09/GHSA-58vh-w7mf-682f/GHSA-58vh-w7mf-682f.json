@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-58vh-w7mf-682f",
+  "modified": "2026-09-22T18:33:30Z",
+  "published": "2026-09-22T18:33:30Z",
+  "aliases": [
+    "CVE-2026-90462"
+  ],
+  "details": "A flaw was found in SSSD. When configured with the LDAP access provider and `ldap_access_order` including `ppolicy` or `lockout`, a fail-open condition in the LDAP ppolicy access check can occur if a user lookup returns zero results. This can incorrectly return success and cache an allow decision, permitting continued authorization for a deleted or deprovisioned user. A remote attacker with prior valid account context could exploit this to maintain access to information and potentially make limited modifications to resources that should no longer be available.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-90462"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2479483"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-280"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T16:18:08Z"
+  }
+}

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cq56-4wxf-3742",
-  "modified": "2026-09-16T21:32:48Z",
+  "modified": "2026-09-22T18:33:21Z",
   "published": "2026-09-16T21:32:48Z",
   "aliases": [
     "CVE-2025-56566"
   ],
   "details": "MikroTik firmware 7.19.4 stores sensitive authentication credentials and network state in cleartext within non-volatile storage. An attacker with physical access to the device can extract this material from an SPI flash dump, without authenticating to the device and without knowledge of the administrative password.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-312"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-16T21:17:06Z"

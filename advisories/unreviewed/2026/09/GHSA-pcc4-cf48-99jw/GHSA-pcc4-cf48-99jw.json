@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pcc4-cf48-99jw",
+  "modified": "2026-09-22T18:33:30Z",
+  "published": "2026-09-22T18:33:30Z",
+  "aliases": [
+    "CVE-2026-13087"
+  ],
+  "details": "A heap out-of-bounds write vulnerability was found in the Linux kernel's RPC-over-RDMA server reply path in net/sunrpc/xprtrdma/svc_rdma_sendto.c. When a crafted RPC-over-RDMA client sends a large NFS READ request with an empty Write list and no Reply chunk, the server linearizes the entire multi-page reply into a fixed-size 4096-byte heap buffer without bounds checking, resulting in a kernel heap overflow. This can lead to denial of service via kernel crash or potential code execution through corruption of adjacent kernel heap objects.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13087"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-13087"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2470788"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T17:17:23Z"
+  }
+}

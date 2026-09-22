@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qq3g-fr8f-mchg",
-  "modified": "2026-09-16T21:32:43Z",
+  "modified": "2026-09-22T18:33:21Z",
   "published": "2026-09-16T21:32:43Z",
   "aliases": [
     "CVE-2026-38999"
   ],
   "details": "A Null Pointer Dereference in the mk_sched_event_close function (mk_server/mk_scheduler.c) of Monkey through commit 4fb0c16 allows attackers to cause a Denial of Service (DoS) via sending a crafted HTTP request to the server.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-16T19:17:14Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3fj7-29mr-x58f",
-  "modified": "2026-09-15T15:32:11Z",
+  "modified": "2026-09-22T18:33:15Z",
   "published": "2026-09-15T15:32:11Z",
   "aliases": [
     "CVE-2026-25825"
   ],
   "details": "An issue was discovered in Keyfactor SignServer before 7.6.0. The output file to which SignerStatusReportWorker logs the report can be set to any path, even one that points to a file that already exists. This gives a user (with admin access) the possibility to write files in arbitrary directories in the server filesystem and potentially overwrite files accessible by the local user JBoss.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-706"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-15T15:17:14Z"

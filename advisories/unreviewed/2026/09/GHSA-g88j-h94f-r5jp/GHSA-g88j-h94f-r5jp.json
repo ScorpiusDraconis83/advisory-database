@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g88j-h94f-r5jp",
-  "modified": "2026-09-15T18:32:35Z",
+  "modified": "2026-09-22T18:33:15Z",
   "published": "2026-09-15T18:32:35Z",
   "aliases": [
     "CVE-2026-39039"
   ],
   "details": "In BharatMLStack up to and including v1.3.0, Trufflebox UI stores the JWT authentication token, full user object, and session ID in the browser's localStorage, which is fully accessible to any JavaScript running on the page.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-15T18:17:20Z"

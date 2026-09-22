@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-653x-rhrr-h9h8",
-  "modified": "2026-09-22T09:31:13Z",
+  "modified": "2026-09-22T18:33:28Z",
   "published": "2026-09-22T09:31:13Z",
   "aliases": [
     "CVE-2026-87081"
   ],
   "details": "Net::IDN::UTS46 versions before 2.590 for Perl allow CPU exhaustion via quadratic punycode encoding of an overlong label before the length check in to_ascii.\n\nto_ascii punycode encodes each label and only then applies the 63-byte DNS limit. encode_punycode in both backends follows the sample implementation in RFC 3492, whose outer loop runs once per distinct non-ASCII code point and scans the whole input each round, so a label of distinct non-ASCII characters costs the square of its length before the limit rejects it. Every ASCII conversion in the distribution, including domain_to_ascii and email_to_ascii, goes through to_ascii.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,13 +30,17 @@
     {
       "type": "WEB",
       "url": "https://metacpan.org/release/PJCJ/Net-IDN-Encode-2.590-TRIAL/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/09/22/16"
     }
   ],
   "database_specific": {
     "cwe_ids": [
       "CWE-407"
     ],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-22T08:16:40Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-29r2-83fr-44fv",
-  "modified": "2026-09-21T18:32:07Z",
+  "modified": "2026-09-22T18:33:27Z",
   "published": "2026-09-21T18:32:07Z",
   "aliases": [
     "CVE-2026-36470"
   ],
   "details": "CuteNews v.2.1.2 is vulnerable to Cross Site Scripting (XSS) in index.php. The value of the \"Referer\" header is copied into the response HTML unmodified/unescaped during POST messages to index.php.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-21T16:17:07Z"

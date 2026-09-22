@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4m3m-829w-5q37",
+  "modified": "2026-09-22T18:33:30Z",
+  "published": "2026-09-22T18:33:30Z",
+  "aliases": [
+    "CVE-2026-95653"
+  ],
+  "details": "Concrete CMS Community Store before 2.7.8 derives digital product download tokens from order creation timestamps instead of random values, making tokens predictable. Unauthenticated attackers can enumerate sequential order and file identifiers to calculate valid download tokens and retrieve digital goods purchased by other customers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95653"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/concretecms-community-store/community_store/commit/a71138db250d5c207e49fe3f1287241f04e3f747"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/concretecms-community-store/community_store"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/concretecms-community-store/community_store/blob/v2.7.7/src/CommunityStore/Utilities/Download.php#L17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/concretecms-community-store/community_store/blob/v2.7.7/src/CommunityStore/Utilities/Download.php#L45"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/concretecms-community-store/community_store/releases/tag/v2.7.8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/concrete-cms-community-store-before-2.7.8-predictable-digital-download-token"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-340"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T16:18:18Z"
+  }
+}

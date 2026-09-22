@@ -1,13 +1,17 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-mgww-mhp8-f89c",
-  "modified": "2026-09-02T18:32:30Z",
+  "modified": "2026-09-22T18:33:10Z",
   "published": "2026-09-02T18:32:30Z",
   "aliases": [
     "CVE-2026-77125"
   ],
   "details": "A vulnerability was identified in Sonatype Nexus Repository 3 in which two blobstore group management REST API endpoints did not correctly enforce the intended authorization check. A user granted only the nexus:blobstores:create permission could invoke these endpoints to convert an existing blobstore into a group blobstore, an action that should require the nexus:blobstores:update permission instead. This could result in unauthorized modification of blobstore configuration without administrator approval. The nexus:blobstores:create permission is a named permission that must be explicitly granted by an administrator; it is not held by default.",
   "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N"
+    },
     {
       "type": "CVSS_V4",
       "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
