@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73p4-x7g3-p8jm",
+  "modified": "2026-09-22T06:30:24Z",
+  "published": "2026-09-22T06:30:24Z",
+  "aliases": [
+    "CVE-2026-85653"
+  ],
+  "details": "The Contextual Related Posts plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'other_attributes' Block Parameter in all versions up to, and including, 4.4.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85653"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.2.4/includes/frontend/blocks/class-blocks.php#L95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.2.4/includes/frontend/class-media-handler.php#L133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.2.4/includes/frontend/class-media-handler.php#L854"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.2.4/includes/frontend/class-media-handler.php#L972"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.4.0/includes/frontend/blocks/class-blocks.php#L95"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.4.0/includes/frontend/class-media-handler.php#L133"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.4.0/includes/frontend/class-media-handler.php#L854"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.4.0/includes/frontend/class-media-handler.php#L972"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3703115%40contextual-related-posts&new=3703115%40contextual-related-posts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/1ee59a73-c449-462d-9ff0-b652be56b73b?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T06:16:49Z"
+  }
+}
