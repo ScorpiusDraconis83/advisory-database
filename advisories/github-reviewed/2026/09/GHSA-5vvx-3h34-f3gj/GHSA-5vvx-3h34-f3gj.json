@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5vvx-3h34-f3gj",
+  "modified": "2026-09-22T20:34:25Z",
+  "published": "2026-09-22T20:34:25Z",
+  "aliases": [
+    "CVE-2026-61570"
+  ],
+  "summary": "MPXJ: XXE Vulnerability in MerlinReader",
+  "details": "### Impact\nMPXJ used the default configuration when creating a DocumentBuilder instance, which leaves doctype declarations enabled, when parsing the XML content of the ZTIMEINTERVALS column from a Merlin project SQLite file. This would allow a carefully crafted XML payload to read an arbitrary file. However, although an arbitrary file can be read, the way the resulting parsed XML is processed by MPXJ means that the data it contains is unlikely to be available for exfiltration.\n\n### Patches\nThe patch is included in MPXJ 16.4.1\n\n### Workarounds\nPotential workarounds include:\n* Avoid reading Merlin project files with MPXJ\n* Only accept Merlin project files from trusted sources\n* Preprocess Merlin SQLite databases to strip doctype declarations from the ZTIMEINTERVALS column",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "net.sf.mpxj:mpxj"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.5.5"
+            },
+            {
+              "fixed": "16.4.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "mpxj"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.5.5"
+            },
+            {
+              "fixed": "16.4.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "MPXJ.Net"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.5.5"
+            },
+            {
+              "fixed": "16.4.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "net.sf.mpxj"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.5.5"
+            },
+            {
+              "fixed": "16.4.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "net.sf.mpxj-for-csharp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.5.5"
+            },
+            {
+              "fixed": "16.4.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "net.sf.mpxj-for-vb"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.5.5"
+            },
+            {
+              "fixed": "16.4.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mpxj"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "5.5.5"
+            },
+            {
+              "fixed": "16.4.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/joniles/mpxj/security/advisories/GHSA-5vvx-3h34-f3gj"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/joniles/mpxj/commit/6e8288bc4d1cd62842af298004dc74fe66fb0805"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/joniles/mpxj"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/joniles/mpxj/releases/tag/v16.4.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-611"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-22T20:34:25Z",
+    "nvd_published_at": null
+  }
+}

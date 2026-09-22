@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7952-gx68-cjqr",
+  "modified": "2026-09-22T20:34:27Z",
+  "published": "2026-09-22T20:34:27Z",
+  "aliases": [
+    "CVE-2026-65829"
+  ],
+  "summary": "MPXJ: Potential Path Traversal Vulnerability in Primavera P3 PRX and SureTrak STX readers",
+  "details": "### Impact\nWhen reading a suitably crafted PRX or STX file, MPXJ can be made to write files to arbitrary locations in the file system.\n\n### Patches\nThis issue is addressed in MPXJ version 16.5.0.\n\n### Workarounds\nDo not read PRX or STX files from untrusted sources.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "MPXJ.Net"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.3.0"
+            },
+            {
+              "fixed": "16.5.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "RubyGems",
+        "name": "mpxj"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.3.0"
+            },
+            {
+              "fixed": "16.5.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "mpxj"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.3.0"
+            },
+            {
+              "fixed": "16.5.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "net.sf.mpxj"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.3.0"
+            },
+            {
+              "fixed": "16.5.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "net.sf.mpxj-for-csharp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.3.0"
+            },
+            {
+              "fixed": "16.5.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "NuGet",
+        "name": "net.sf.mpxj-for-vb"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.3.0"
+            },
+            {
+              "fixed": "16.5.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "net.sf.mpxj:mpxj"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "7.3.0"
+            },
+            {
+              "fixed": "16.5.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/joniles/mpxj/security/advisories/GHSA-7952-gx68-cjqr"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/joniles/mpxj/commit/4347315afab1ef5a2907978a754fbc5b0ff58e6f"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/joniles/mpxj"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/joniles/mpxj/releases/tag/v16.5.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-22T20:34:27Z",
+    "nvd_published_at": null
+  }
+}
