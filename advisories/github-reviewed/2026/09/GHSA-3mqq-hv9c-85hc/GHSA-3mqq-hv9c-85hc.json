@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3mqq-hv9c-85hc",
+  "modified": "2026-09-22T20:34:07Z",
+  "published": "2026-09-22T20:34:07Z",
+  "aliases": [
+    "CVE-2026-62364"
+  ],
+  "summary": "wlc may disclose API tokens to project-configured URLs",
+  "details": "### Impact\n\nwlc could send an unscoped API token to an unintended server when run inside a directory tree containing attacker-controlled project configuration.\n\nIf `.weblate`, `.weblate.ini`, or `weblate.ini` defines an API url, and the user supplies a token with `WLC_KEY` or `--key` without also pinning the URL, wlc would send the token to the project-configured URL.\n\nImpacted users are those running wlc in untrusted repositories, pull request checkouts, or directories with untrusted ancestor configuration while using `WLC_KEY` or `--key`.\n\n### Patches\n\nThe issue is patched in wlc 2.0.1 via https://github.com/WeblateOrg/wlc/pull/1500.\n\nThe fix rejects unscoped keys when the API URL comes from automatically discovered project configuration:\n\n- `WLC_KEY` now requires `WLC_URL`.\n- `--key` now requires `--url`.\n- URL-scoped keys in the `[keys]` configuration section remain supported.\n\nUsers should upgrade to wlc 2.0.1 or newer.\n\n### Workarounds\n\nWithout upgrading, users can avoid the issue by explicitly pinning the API URL whenever using an unscoped key:\n\n`WLC_URL=https://hosted.weblate.org/api/ WLC_KEY=... wlc ...`\n\nor:\n\n`wlc --url https://hosted.weblate.org/api/ --key ... ...`\n\nAlternatively, use URL-scoped keys in the [keys] section instead of WLC_KEY or --key, and avoid running wlc with secrets in untrusted checkouts.\n\n- The issue was independently reported by [type5afe](https://hackerone.com/type5afe) and [visionx7](https://hackerone.com/visionx7) using HackerOne.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:C/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "PyPI",
+        "name": "wlc"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.0.1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/security/advisories/GHSA-3mqq-hv9c-85hc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/pull/1500"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/commit/15cbdfc5b2c6183ef6864ea758091643a0ce6c89"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/WeblateOrg/wlc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/WeblateOrg/wlc/releases/tag/2.0.1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200",
+      "CWE-349"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-22T20:34:07Z",
+    "nvd_published_at": null
+  }
+}
