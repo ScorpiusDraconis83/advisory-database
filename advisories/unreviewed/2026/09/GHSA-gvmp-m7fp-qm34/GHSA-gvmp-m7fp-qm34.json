@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gvmp-m7fp-qm34",
+  "modified": "2026-09-22T00:30:55Z",
+  "published": "2026-09-22T00:30:54Z",
+  "aliases": [
+    "CVE-2026-94536"
+  ],
+  "details": "lamp-cloud through 5.10.0 fails to validate the employeeId parameter in the /anyone/visible/resource endpoint, allowing authenticated users to read any employee's roles and permissions. Attackers can supply arbitrary employeeId values to enumerate other employees' role codes, permission codes, and complete front-end router trees without authorization checks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94536"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LinYuanyi1/cve-request-poc/blob/master/lamp/poc-05-anyone-visible-resource-bola.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/lamp-cloud"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/dromara/lamp-cloud/blob/bdc1a406eb0f6291e9f6dbad9cbccd67bc6a37b6/lamp-oauth/lamp-oauth-controller/src/main/java/top/tangyh/lamp/oauth/controller/ResourceController.java#L56-L82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/lamp-cloud-through-5.10.0-unauthorized-information-disclosure-via-anyone-visible-resource"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-21T22:17:00Z"
+  }
+}
