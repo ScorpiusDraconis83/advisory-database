@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vp8p-vxw7-c877",
+  "modified": "2026-09-22T03:31:00Z",
+  "published": "2026-09-22T03:30:59Z",
+  "aliases": [
+    "CVE-2026-93711"
+  ],
+  "details": "Dancer2 versions before 2.2.0 for Perl do not strip CR and LF from response header names in headers_to_array.\n\nThe routine removes CR and LF from each header value but not from the name. A name carrying them therefore reaches the PSGI server intact. A server that does not validate keys writes it to the wire, so the bytes after the CRLF arrive as their own header line.\n\nThe application has to derive the header name from request data, not just the value.\n\nAn attacker who controls that data adds their own headers and splits the response.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93711"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PerlDancer/Dancer2/issues/1822"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PerlDancer/Dancer2/commit/ff89ac12af7b8899812a79e9924dfea7a5d9833b.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/CROMEDOME/Dancer2-2.2.0/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/09/22/3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-113"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T01:16:55Z"
+  }
+}

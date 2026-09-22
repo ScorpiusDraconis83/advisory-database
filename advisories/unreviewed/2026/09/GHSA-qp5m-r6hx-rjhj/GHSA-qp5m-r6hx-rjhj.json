@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qp5m-r6hx-rjhj",
+  "modified": "2026-09-22T03:30:59Z",
+  "published": "2026-09-22T03:30:59Z",
+  "aliases": [
+    "CVE-2026-93710"
+  ],
+  "details": "Dancer2 versions from 2.0.0 before 2.2.0 for Perl dispatch a route that a dying hook refused when the exception handler halts the response in compile_hooks.\n\nA hook that dies fires core.app.hook_exception, then calls cleanup unless the failing hook is the exception handler. A handler that halts does not stop that cleanup, which discards the request, response and session the dispatcher has yet to read, so the refused route runs.\n\nThe handler has to halt the response object by calling its halt method or setting is_halted: the halt keyword unwinds through with_return before cleanup runs.\n\nA check in a before hook is not enforced: the caller gets the refusal, while the route body runs and its writes land.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/PerlDancer/Dancer2/security/advisories/GHSA-v527-r4px-7vx7"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93710"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/PerlDancer/Dancer2/commit/8fd31a32798f9aa25e4fccbd6c7cb9dd3a0c1029.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/CROMEDOME/Dancer2-2.2.0/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/09/22/2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-460"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T01:16:55Z"
+  }
+}
