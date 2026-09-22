@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9x9f-f428-ff8p",
+  "modified": "2026-09-22T09:31:12Z",
+  "published": "2026-09-22T09:31:12Z",
+  "aliases": [
+    "CVE-2026-18439"
+  ],
+  "details": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to Insecure Direct Object Reference in versions up to, and including, 4.0.7 via the tutor_quiz_builder_save AJAX action due to missing validation that nested question_id, answer_id, deleted_question_ids[], and deleted_answer_ids[] values in the submitted payload belong to a quiz/topic/course the requester is authorized to manage. The handler only validates the top-level course_id, topic_id, and (when supplied) payload['ID'], but the nested identifiers are passed straight into $wpdb->update/DELETE statements in QuizBuilder::save_questions(), QuizBuilder::save_question_answers(), and QuizBuilder::handle_delete(). This makes it possible for authenticated attackers, with Instructor-level access and above, to overwrite the content and re-parent arbitrary quiz questions/answers belonging to other instructors or administrators, and to delete arbitrary quiz question and answer rows.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18439"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/3.9.10/classes/QuizBuilder.php#L156"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/3.9.10/classes/QuizBuilder.php#L291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/3.9.10/classes/QuizBuilder.php#L423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/3.9.10/classes/QuizBuilder.php#L430"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/3.9.10/classes/QuizBuilder.php#L781"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.3/classes/QuizBuilder.php#L156"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.3/classes/QuizBuilder.php#L291"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.3/classes/QuizBuilder.php#L423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.3/classes/QuizBuilder.php#L430"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.3/classes/QuizBuilder.php#L781"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3690454/tutor/tags/4.0.8/classes/QuizBuilder.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/6d07c82d-262a-4ac1-9ee5-7ef4d025f66f?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T08:16:39Z"
+  }
+}

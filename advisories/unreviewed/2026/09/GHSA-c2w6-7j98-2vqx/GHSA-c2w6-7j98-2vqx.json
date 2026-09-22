@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c2w6-7j98-2vqx",
+  "modified": "2026-09-22T09:31:12Z",
+  "published": "2026-09-22T09:31:12Z",
+  "aliases": [
+    "CVE-2025-1281"
+  ],
+  "details": "The BM Content Builder plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the ux_cb_remove_layout_ajax() and ux_cb_tools_export_ajax() functions in all versions up to, and excluding, 3.17.1. This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-1281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://themeforest.net/item/art-simple-clean-wordpress-theme-for-creatives/20170299"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/61084da5-fa8d-4fa9-a6a6-6155e9e25fbc?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T08:16:36Z"
+  }
+}

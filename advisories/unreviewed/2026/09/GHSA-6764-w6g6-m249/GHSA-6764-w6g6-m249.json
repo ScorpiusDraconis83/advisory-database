@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6764-w6g6-m249",
+  "modified": "2026-09-22T09:31:11Z",
+  "published": "2026-09-22T09:31:11Z",
+  "aliases": [
+    "CVE-2016-15059"
+  ],
+  "details": "Net::IDN::Punycode versions before 2.301 for Perl allow a heap buffer overflow via unchecked writes past the output buffer in encode_punycode.\n\nThe XS backend builds the encoded label in the string buffer of the scalar it returns, sized from the input length. The loop that emits the digits of each code point checks for room before every write, but the write of the last digit of each round and the write of the terminating NUL do not, so an input whose encoded form fills the buffer writes past its end.\n\nOnly the XS backend is affected.\n\nEncoding an attacker-supplied string corrupts the heap.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-15059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/robrwo/Net-IDN-Encode/commit/9a3ba07f15d22c0347eefee9625b012cbc803657.patch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://metacpan.org/release/CFAERBER/Net-IDN-Encode-2.301/changes"
+    },
+    {
+      "type": "WEB",
+      "url": "https://rt.cpan.org/Ticket/Display.html?id=118924"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T08:16:34Z"
+  }
+}

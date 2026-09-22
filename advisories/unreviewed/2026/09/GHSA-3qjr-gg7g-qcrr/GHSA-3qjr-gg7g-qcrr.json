@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3qjr-gg7g-qcrr",
+  "modified": "2026-09-22T09:31:13Z",
+  "published": "2026-09-22T09:31:13Z",
+  "aliases": [
+    "CVE-2026-95508"
+  ],
+  "details": "A heap-based buffer overflow was found in the DHCPv6 and TFTP response builders of libslirp. When the host is configured with a small interface MTU, a guest-supplied DHCPv6 CLIENTID option or TFTP blksize option can overflow the reply buffer with attacker-controlled content and length, resulting in denial of service and potentially arbitrary code execution in the host process. The default interface MTU is not affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95508"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-95508"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2537748"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T09:17:06Z"
+  }
+}

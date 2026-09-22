@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9248-28p4-jpfp",
+  "modified": "2026-09-22T09:31:11Z",
+  "published": "2026-09-22T09:31:11Z",
+  "aliases": [
+    "CVE-2026-94504"
+  ],
+  "details": "Ninja Forms 3.15.3 stores an anonymous non-RTE textarea value and renders it without safe HTML encoding in the legacy submission editor. An attacker can break out of the textarea with stored script. When an Administrator opens the attacker-known direct submission URL, the script runs in the WordPress admin origin.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94504"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ninja-forms/tags/3.15.3/includes/Database/Models/Submission.php#L205"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ninja-forms/tags/3.15.3/includes/Fields/Textarea.php#L35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ninja-forms/tags/3.15.3/includes/Templates/admin-metabox-sub-fields.html.php#L23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ninja-forms/trunk/includes/Fields/Textarea.php#L35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3705719%40ninja-forms%2Ftags%2F3.15.4&old=3685242%40ninja-forms%2Ftags%2F3.15.3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/c599a562-5218-4b37-bcf7-0e82008a4e68?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T07:16:31Z"
+  }
+}

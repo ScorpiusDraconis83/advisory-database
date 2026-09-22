@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vq82-hcfx-mf57",
+  "modified": "2026-09-22T09:31:14Z",
+  "published": "2026-09-22T09:31:14Z",
+  "aliases": [
+    "CVE-2026-9231"
+  ],
+  "details": "The WP Travel Engine – Tour Booking Plugin – Tour Operator Software plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 6.8.0 via the wte_get_template function. This makes it possible for authenticated attackers, with contributor-level access and above, to include and execute arbitrary .php files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where .php file types can be uploaded and included.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9231"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-travel-engine/tags/6.7.12/includes/classes/Core/Shortcodes/General.php#L52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-travel-engine/tags/6.7.12/includes/helpers/helpers.php#L882"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-travel-engine/tags/6.7.12/includes/helpers/helpers.php#L955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-travel-engine/tags/6.7.7/includes/classes/Core/Shortcodes/General.php#L52"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-travel-engine/tags/6.7.7/includes/helpers/helpers.php#L882"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/wp-travel-engine/tags/6.7.7/includes/helpers/helpers.php#L955"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3572382/wp-travel-engine/tags/6.8.1/includes/classes/Core/Shortcodes/General.php"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/708b70c7-e4e6-4422-9682-c7d05063a188?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-98"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-22T09:17:06Z"
+  }
+}
