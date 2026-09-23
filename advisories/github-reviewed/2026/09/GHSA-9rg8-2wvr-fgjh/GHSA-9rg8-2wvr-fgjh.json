@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9rg8-2wvr-fgjh",
+  "modified": "2026-09-23T21:24:01Z",
+  "published": "2026-09-23T21:24:01Z",
+  "aliases": [
+    "CVE-2026-76089"
+  ],
+  "summary": "Formie: Missing authorization on sent notification resend modal exposes submission PII",
+  "details": "### Impact\n\nThe control panel action `formie/sent-notifications/get-resend-modal-content` (`SentNotificationsController::actionGetResendModalContent`) performed only `requireAcceptsJson()` and loaded a `SentNotification` by request `id` without permission or object-level authorization checks.\n\nAny authenticated user who could invoke the action could enumerate notification IDs and read full email content — including recipient headers and the complete HTML body containing submitted form data (PII) — without `formie-accessSentNotifications` or equivalent permission. Sibling actions in the same controller enforced authorization.\n\n### Patches\n\nFixed in **3.1.31** (Craft 5) and **2.2.23** (Craft 4).\n\nCraft 5: `canView()` is enforced after loading, consistent with `actionEdit`.  \nCraft 4: `formie-viewSentNotifications` permission is required.\n\n### Workarounds\n\nRestrict CP access to trusted users only until upgraded. No configuration workaround.\n\n- Reported by Jorge González (jorge@jmilla.es)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "verbb/formie"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.1.31"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "verbb/formie"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.2.23"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/verbb/formie/security/advisories/GHSA-9rg8-2wvr-fgjh"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/verbb/formie/commit/9f4e23c36b907ed7677563231eaba373fdb8b84b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/verbb/formie/commit/ff81a895fa91a2e4efb8d4714501ba2d92df0b76"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/verbb/formie"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/verbb/formie/releases/tag/2.2.23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/verbb/formie/releases/tag/3.1.31"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-200",
+      "CWE-639",
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-23T21:24:01Z",
+    "nvd_published_at": null
+  }
+}
