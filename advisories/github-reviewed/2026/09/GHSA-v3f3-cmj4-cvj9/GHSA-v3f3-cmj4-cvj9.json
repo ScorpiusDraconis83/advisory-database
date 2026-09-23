@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v3f3-cmj4-cvj9",
+  "modified": "2026-09-23T18:33:57Z",
+  "published": "2026-09-23T18:33:57Z",
+  "aliases": [
+    "CVE-2026-76086"
+  ],
+  "summary": "Formie: Integration form-settings action allows SSRF and exfiltration of stored integration credentials",
+  "details": "### Impact\n\nThe control panel action `formie/integrations/form-settings` (`IntegrationsController::actionFormSettings`) was reachable by any authenticated user without the appropriate form integration permissions. The action applied request-supplied settings to a fully configured integration via `setAttributes($settings, false)`, allowing an attacker to overwrite outbound host properties (e.g. `apiUrl`) while the server sent stored API keys or OAuth tokens to the attacker-controlled host. The remote response was returned in the JSON body (non-blind SSRF).\n\nThis is an incomplete remediation of [GHSA-cvpc-hccg-wmw4](https://github.com/advisories?query=GHSA-cvpc-hccg-wmw4). The `form-settings` action was excluded from the permission gate added in 3.1.28.\n\nAny site where a low-privileged user can authenticate (including front-end members on sites with public registration) could exfiltrate CRM/email-marketing/webhook integration credentials and probe internal network endpoints.\n\n### Patches\n\nFixed in **3.1.31** (Craft 5) and **2.2.23** (Craft 4).\n\nThe action now requires a CP request, a valid `formId`, and form integration permissions (`formie-showFormIntegrations` / per-form variant on Craft 5; `formie-manageFormIntegrations` / per-form variant on Craft 4). Request settings are filtered to an allowlist; URL, host, and credential properties cannot be overridden from user input.\n\n### Workarounds\n\nRestrict front-end user registration and limit CP access until upgraded. No configuration-only workaround fully mitigates the issue.\n\n- Reported by Jorge González (jorge@jmilla.es)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "verbb/formie"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.1.31"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "verbb/formie"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.2.23"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/verbb/formie/security/advisories/GHSA-v3f3-cmj4-cvj9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/verbb/formie/commit/6735fe4ae8f6a2a76930716ad7876b236f7c530d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/verbb/formie/commit/dde7799dfa7e4d0a11e28754ad8544dba62d5def"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://github.com/advisories/GHSA-cvpc-hccg-wmw4"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/verbb/formie"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/verbb/formie/releases/tag/2.2.23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/verbb/formie/releases/tag/3.1.31"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862",
+      "CWE-915",
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-23T18:33:57Z",
+    "nvd_published_at": null
+  }
+}

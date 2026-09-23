@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-px35-hw6v-gpf7",
+  "modified": "2026-09-23T18:31:56Z",
+  "published": "2026-09-23T18:31:55Z",
+  "aliases": [
+    "CVE-2026-79306"
+  ],
+  "details": "CyberPanel v1.9.1 contains a path traversal vulnerability in the compress method exposed through the /filemanager/controller endpoint. An authenticated remote attacker with ownership of any configured domain can supply absolute or otherwise out-of-scope file paths in the listOfFiles JSON property, together with attacker-controlled basePath and compressedFileName values, in a method=compress request. Because the application validates only domain ownership and does not canonicalize or restrict these paths to the authorized site directory, the backend appends them to zip or tar archive commands and executes them as the website externalApp user, allowing disclosure of arbitrary readable files through the generated archive.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79306"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/lichoin/TraceLoom/blob/main/CVEs/CVE-2026-79306.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/usmannasir/cyberpanel/blob/v1.9.1/CyberCP/secMiddleware.py#L70-L71"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/usmannasir/cyberpanel/blob/v1.9.1/filemanager/filemanager.py#L23-L27"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/usmannasir/cyberpanel/blob/v1.9.1/filemanager/filemanager.py#L378-L406"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/usmannasir/cyberpanel/blob/v1.9.1/filemanager/views.py#L101-L143"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T16:16:45Z"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xj3r-7j9q-cqf2",
+  "modified": "2026-09-23T18:31:58Z",
+  "published": "2026-09-23T18:31:58Z",
+  "aliases": [
+    "CVE-2026-86867"
+  ],
+  "details": "Cinnamon's Kotaemon (all versions up to and including v0.12.0) multi-user chat interface contains multiple vulnerabilities due to incorrect authorization and improper access controls. There are four handler methods in `libs/ktem/ktem/pages/chat/control.py` that load a Conversation record by its ID without comparing the requester's `user_id` to the conversation's owner `Conversation.user`. This allows any authenticated user to perform the following actions:\n1. Read other user's chat transcripts, RAG retrieval history, AI-generated plots, and chat suggestions.\n2. Permanently delete another user's conversation.\n3. Rename another user's conversation.\n4. Overwrite another user's conversation's chat suggestion list.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kb.cert.org/vuls/id/754548"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T18:17:09Z"
+  }
+}

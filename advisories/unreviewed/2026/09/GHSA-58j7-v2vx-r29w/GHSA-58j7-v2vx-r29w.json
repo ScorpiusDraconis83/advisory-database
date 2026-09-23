@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-58j7-v2vx-r29w",
+  "modified": "2026-09-23T18:31:56Z",
+  "published": "2026-09-23T18:31:56Z",
+  "aliases": [
+    "CVE-2026-6669"
+  ],
+  "details": "Missing upper bound on the key derivation iteration count accepted during SCRAM authentication to a backend server in PgBouncer through 1.25.2 allows a malicious or compromised PostgreSQL backend to cause uncontrolled CPU consumption in PgBouncer. The resulting key derivation cannot be interrupted in frontend builds such as PgBouncer. Because PgBouncer serves all clients from a single process, one backend can in this way stop it from serving traffic for every other database and client it is pooling, so the failure of a single backend is not contained.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6669"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.pgbouncer.org/changelog.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T17:17:16Z"
+  }
+}

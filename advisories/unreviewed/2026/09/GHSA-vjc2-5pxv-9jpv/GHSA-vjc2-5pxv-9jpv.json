@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vjc2-5pxv-9jpv",
+  "modified": "2026-09-23T18:31:56Z",
+  "published": "2026-09-23T18:31:55Z",
+  "aliases": [
+    "CVE-2026-96672"
+  ],
+  "details": "Frappe ERPNext versions before 16.34.1 fail to validate that Financial Report Template calculation_formula values reference whitelisted methods before passing them to frappe.call(). Accounts Managers can supply arbitrary dotted Python paths to invoke non-whitelisted internal server-side methods and read their return values.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/frappe/erpnext/security/advisories/GHSA-794x-fhm7-58j7"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96672"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/frappe/erpnext/commit/7aad59b129711e9bba17b25665428d1fc57bf37c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/frappe/erpnext"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/frappe/erpnext/blob/v16.34.0/erpnext/accounts/doctype/financial_report_template/financial_report_engine.py#L1166-L1171"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/frappe/erpnext/blob/v16.34.0/erpnext/accounts/doctype/financial_report_template/financial_report_template.json"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/frappe-erpnext-before-16.34.1-unauthorized-method-invocation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-470"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T16:16:49Z"
+  }
+}

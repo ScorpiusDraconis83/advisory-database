@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f2xw-gqvf-336w",
+  "modified": "2026-09-23T18:31:57Z",
+  "published": "2026-09-23T18:31:57Z",
+  "aliases": [
+    "CVE-2026-96758"
+  ],
+  "details": "orval @orval/core before 8.28.0 contains a code injection vulnerability in the form-data serializer that fails to escape multipart property names in generated template literals. Attackers can inject ${...} expressions into OpenAPI schema property names that execute as live interpolation when the generated client builds FormData bodies with consumer process privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/orval-labs/orval/security/advisories/GHSA-jwhm-6748-j6pq"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96758"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/orval-labs/orval/pull/3988"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/orval-labs/orval/commit/975a769a76151354dead879feadfa3537ff065fe"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/orval-labs/orval"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/orval-labs/orval/blob/v8.27.0/packages/core/src/getters/res-req-types.ts#L808"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/orval-orval-core-before-8.28.0-code-injection-via-form-data"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T17:17:25Z"
+  }
+}
