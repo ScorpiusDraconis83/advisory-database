@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rwfr-37x7-2rr8",
+  "modified": "2026-09-23T06:31:03Z",
+  "published": "2026-09-23T06:31:03Z",
+  "aliases": [
+    "CVE-2026-82843"
+  ],
+  "details": "The WP OAuth Server ( Login with WordPress ) WordPress plugin before 6.4.0 does not bind the OpenID Connect identity assertion it issues to the authorization grant being exchanged, returning instead the assertion belonging to whichever user authenticated most recently, which allows users with the Subscriber role and above to obtain a validly signed identity assertion for another user, including an administrator, and authenticate as them at any application that uses the site for single sign-on.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82843"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/45bc7096-5d04-4fe6-a332-31aed507a3a0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T06:17:02Z"
+  }
+}
