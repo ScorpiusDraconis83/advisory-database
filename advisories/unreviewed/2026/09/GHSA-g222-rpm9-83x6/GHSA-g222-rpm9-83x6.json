@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g222-rpm9-83x6",
+  "modified": "2026-09-23T15:30:50Z",
+  "published": "2026-09-23T15:30:50Z",
+  "aliases": [
+    "CVE-2026-96611"
+  ],
+  "details": "FFmpeg before 9.0 has a signed integer overflow in libavformat/mov.c. In mov_read_ispe(), uint32_t width/height values from a crafted HEIF ispe box are stored into signed int fields without bounds checking, allowing values exceeding INT_MAX to become negative. In read_image_grid(), accumulating these values causes signed integer overflow (undefined behavior per C17 section 6.5), which on x86 wraps to a small positive value, bypassing downstream validity checks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96611"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.ffmpeg.org/FFmpeg/FFmpeg/commit/059eb2e853c1f62b8df1b73be9318061a7a21b0b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/23455"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-190"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T15:17:34Z"
+  }
+}
