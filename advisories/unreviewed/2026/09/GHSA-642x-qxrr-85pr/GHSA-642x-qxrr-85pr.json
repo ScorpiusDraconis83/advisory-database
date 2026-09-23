@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-642x-qxrr-85pr",
+  "modified": "2026-09-23T12:31:14Z",
+  "published": "2026-09-23T12:31:14Z",
+  "aliases": [
+    "CVE-2026-87070"
+  ],
+  "details": "The Forminator Forms WordPress plugin before 1.57.2.1 does not verify that a request came from a trusted proxy before preferring client-supplied forwarding headers over the connecting address, and it uses that value both to enforce its per-visitor voting limit and to record who submitted an entry. Unauthenticated visitors can therefore vote without limit on any poll and can choose the address stored against every submission they make.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87070"
+    },
+    {
+      "type": "WEB",
+      "url": "https://wpscan.com/vulnerability/3206e88e-5d29-4897-863e-101dc9b33ec5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-348"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T11:17:15Z"
+  }
+}

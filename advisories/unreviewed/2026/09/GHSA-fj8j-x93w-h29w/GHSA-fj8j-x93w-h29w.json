@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fj8j-x93w-h29w",
-  "modified": "2026-09-23T06:31:03Z",
+  "modified": "2026-09-23T12:31:09Z",
   "published": "2026-09-23T06:31:03Z",
   "aliases": [
     "CVE-2026-81339"
   ],
   "details": "The MasterStudy LMS WordPress Plugin  WordPress plugin before 3.7.50 does not perform a per-object ownership check when returning a quiz attempt result, allowing any authenticated user with a minimal (subscriber) role to read other students' quiz grades, pass/fail status and attempt timestamps by referencing an attempt identifier belonging to another user.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:02Z"

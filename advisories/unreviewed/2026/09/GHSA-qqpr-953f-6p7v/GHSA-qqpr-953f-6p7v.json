@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qqpr-953f-6p7v",
-  "modified": "2026-09-23T06:31:04Z",
+  "modified": "2026-09-23T12:31:10Z",
   "published": "2026-09-23T06:31:04Z",
   "aliases": [
     "CVE-2026-86608"
   ],
   "details": "The WP Recipe Maker WordPress plugin before 10.8.2 does not have any authorisation check in one of its REST routes, nor does it bound what that route stores, allowing unauthenticated users to write unlimited data into any user's metadata and to permanently prevent that account, including an administrator's, from loading.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:04Z"

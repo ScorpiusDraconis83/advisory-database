@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-v73c-8gwm-q3w7",
-  "modified": "2026-09-23T06:31:02Z",
+  "modified": "2026-09-23T12:31:09Z",
   "published": "2026-09-23T06:31:02Z",
   "aliases": [
     "CVE-2026-14321"
   ],
   "details": "The divi-dash WordPress plugin before 1.0.7 does not validate the source of the client IP address it uses for rate limiting and banning, allowing unauthenticated attackers to spoof arbitrary IP addresses in order to bypass rate limiting, ban chosen addresses from the feature, and grow a stored option without bound, resulting in denial of service.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:00Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-h7x3-7cw4-64m2",
-  "modified": "2026-09-23T06:31:03Z",
+  "modified": "2026-09-23T12:31:09Z",
   "published": "2026-09-23T06:31:03Z",
   "aliases": [
     "CVE-2026-77765"
   ],
   "details": "The Better Payment  WordPress plugin before 2.3.4 does not validate the submitted payment amount server-side against the merchant's configured fixed price before building the gateway charge, allowing unauthenticated users to pay an arbitrary reduced amount for a fixed-price item.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:01Z"

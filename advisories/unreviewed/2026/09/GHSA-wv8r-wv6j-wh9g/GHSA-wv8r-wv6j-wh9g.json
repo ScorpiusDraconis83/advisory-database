@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-wv8r-wv6j-wh9g",
-  "modified": "2026-09-23T06:31:04Z",
+  "modified": "2026-09-23T12:31:11Z",
   "published": "2026-09-23T06:31:04Z",
   "aliases": [
     "CVE-2026-93511"
   ],
   "details": "The Premium Packages  WordPress plugin before 7.2.1 does not verify PayPal's webhook signature before processing payment and subscription notifications, allowing unauthenticated attackers to forge payment confirmations and subscription-cancellation events against any order whose transaction id they know.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-290"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:06Z"

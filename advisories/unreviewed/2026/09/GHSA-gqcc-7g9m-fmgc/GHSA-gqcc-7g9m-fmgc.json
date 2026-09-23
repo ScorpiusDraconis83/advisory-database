@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gqcc-7g9m-fmgc",
-  "modified": "2026-09-23T06:31:04Z",
+  "modified": "2026-09-23T12:31:10Z",
   "published": "2026-09-23T06:31:04Z",
   "aliases": [
     "CVE-2026-86603"
   ],
   "details": "The WP Recipe Maker WordPress plugin before 10.8.2 does not have any authorisation check in one of its AJAX actions, allowing any authenticated user, such as a subscriber, to retrieve the IDs and titles of other users' unpublished lists.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:03Z"

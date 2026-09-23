@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-68x3-xpqw-vw3q",
-  "modified": "2026-09-23T06:31:03Z",
+  "modified": "2026-09-23T12:31:09Z",
   "published": "2026-09-23T06:31:03Z",
   "aliases": [
     "CVE-2026-80342"
   ],
   "details": "The Payment Plugins for PayPal WooCommerce WordPress plugin before 2.0.27 does not verify that a PayPal order supplied in a payment request belongs to the WooCommerce order being paid unless that PayPal order has already been completed, allowing unauthenticated attackers to have another buyer's approved but uncaptured payment captured against an order of their own.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:02Z"

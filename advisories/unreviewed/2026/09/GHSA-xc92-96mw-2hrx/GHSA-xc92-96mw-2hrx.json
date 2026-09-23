@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xc92-96mw-2hrx",
-  "modified": "2026-09-23T06:31:03Z",
+  "modified": "2026-09-23T12:31:09Z",
   "published": "2026-09-23T06:31:03Z",
   "aliases": [
     "CVE-2026-81338"
   ],
   "details": "The MasterStudy LMS WordPress Plugin  WordPress plugin before 3.7.50 does not properly sanitise and restrict HTML in user-submitted content before storing it and rendering it to other users, allowing users with subscriber-level accounts and above to perform stored HTML injection, such as embedding iframes, that can be leveraged for phishing and content spoofing against other users viewing the content.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-345"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:02Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pcmx-6hvw-8f2x",
-  "modified": "2026-09-23T06:31:03Z",
+  "modified": "2026-09-23T12:31:10Z",
   "published": "2026-09-23T06:31:03Z",
   "aliases": [
     "CVE-2026-85006"
   ],
   "details": "The HappyAddons for Elementor  WordPress plugin before 3.50.0 does not escape an icon value on one of its button widgets before outputting it inside an HTML attribute, allowing users with Contributor-level access and above to inject event-handler attributes that execute JavaScript in the browser of anyone who views the page, including higher-privileged users reviewing the content, even though such users do not hold the unfiltered_html capability.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:03Z"

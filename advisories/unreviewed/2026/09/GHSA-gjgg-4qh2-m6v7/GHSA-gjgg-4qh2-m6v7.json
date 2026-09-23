@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-gjgg-4qh2-m6v7",
-  "modified": "2026-09-23T06:31:03Z",
+  "modified": "2026-09-23T12:31:10Z",
   "published": "2026-09-23T06:31:03Z",
   "aliases": [
     "CVE-2026-84743"
   ],
   "details": "The Events Calendar WordPress plugin before 6.17.5 does not perform a per-object capability check on one family of its REST write routes, allowing users with a low-privilege role such as contributor to modify, unpublish, trash and take ownership of records belonging to other users, including administrators.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:03Z"

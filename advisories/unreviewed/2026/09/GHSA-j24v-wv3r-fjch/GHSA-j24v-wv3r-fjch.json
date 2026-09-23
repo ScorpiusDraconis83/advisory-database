@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j24v-wv3r-fjch",
+  "modified": "2026-09-23T12:31:16Z",
+  "published": "2026-09-23T12:31:16Z",
+  "aliases": [
+    "CVE-2026-96446"
+  ],
+  "details": "A flaw was found in the Pushed Authorization Request PAR implementation of Keycloak. The issue occurs when the silent authentication path prompt=none is used, which allows the authorization process to skip certain steps if a user is already logged in. Due to this bypass, the security rule that ensures a pushed request URI is used only once is not enforced. An attacker could potentially reuse a request URI to obtain multiple authorization codes for a user who is already signed in, violating security standards like FAPI-2.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96446"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-96446"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2539284"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T12:17:08Z"
+  }
+}

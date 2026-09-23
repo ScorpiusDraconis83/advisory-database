@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-fggp-vvqp-gp2f",
-  "modified": "2026-09-23T06:31:04Z",
+  "modified": "2026-09-23T12:31:10Z",
   "published": "2026-09-23T06:31:04Z",
   "aliases": [
     "CVE-2026-87069"
   ],
   "details": "The Forminator Forms  WordPress plugin before 1.57.2.1 does not perform a nonce, capability or ownership check before running a one-time payment-field migration during the construction of one of its admin screens, and that construction happens on every wp-admin request for any logged-in user. Any authenticated user, including a Subscriber with no permissions in the Forminator Forms  WordPress plugin before 1.57.2.1, can therefore rewrite the saved field configuration of any form on the site, including a live payment form.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:04Z"

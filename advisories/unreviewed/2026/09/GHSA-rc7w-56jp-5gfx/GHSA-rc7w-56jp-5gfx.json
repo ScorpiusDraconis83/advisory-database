@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-rc7w-56jp-5gfx",
-  "modified": "2026-09-23T06:31:03Z",
+  "modified": "2026-09-23T12:31:09Z",
   "published": "2026-09-23T06:31:03Z",
   "aliases": [
     "CVE-2026-77766"
   ],
   "details": "The Directorist: AI-Powered Business Directory, Listings & Classified Ads WordPress plugin before 8.9.5 does not scope one of its REST collection endpoints to the requesting user, allowing users with a subscriber-level account to read every customer's order and payment records.\n\nVersions 8.8.1 to 8.9 are not affected. The endpoint was scoped correctly in 8.8.1 and the unscoped behaviour was reintroduced in 8.9.1.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:01Z"

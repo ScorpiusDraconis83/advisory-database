@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-757j-xrg3-9g6p",
+  "modified": "2026-09-23T12:31:13Z",
+  "published": "2026-09-23T12:31:13Z",
+  "aliases": [
+    "CVE-2026-95626"
+  ],
+  "details": "Tauri's Content Security Policy hardening, which injects a random nonce to restrict script execution, provides zero protection when an application includes data: or blob: in its script-src directive. Per the CSP Level 3 specification, these scheme sources remain active even when a nonce is present, allowing arbitrary script execution without knowing the nonce.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/tauri-apps/tauri/security/advisories/GHSA-6vxm-x265-58qf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95626"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tauri-apps/tauri"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T10:17:08Z"
+  }
+}

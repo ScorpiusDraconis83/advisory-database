@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xjv5-f9gc-p6v3",
-  "modified": "2026-09-23T06:31:03Z",
+  "modified": "2026-09-23T12:31:10Z",
   "published": "2026-09-23T06:31:03Z",
   "aliases": [
     "CVE-2026-84741"
   ],
   "details": "The Events Calendar WordPress plugin before 6.17.5 does not check the post status of linked records before embedding their stored details into a public REST API response, allowing unauthenticated users to read the contents of records that have never been published.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:03Z"

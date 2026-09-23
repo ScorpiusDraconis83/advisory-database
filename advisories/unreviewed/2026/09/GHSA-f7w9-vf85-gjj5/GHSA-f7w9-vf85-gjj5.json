@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-f7w9-vf85-gjj5",
-  "modified": "2026-09-23T06:31:04Z",
+  "modified": "2026-09-23T12:31:10Z",
   "published": "2026-09-23T06:31:04Z",
   "aliases": [
     "CVE-2026-86783"
   ],
   "details": "The Post Grid Gutenberg Blocks  WordPress plugin before 5.0.41 does not perform an authorization or post-visibility check on a REST API route that returns the custom field keys of a given post, allowing unauthenticated users to disclose the custom field key names of arbitrary posts, including private, draft, pending, scheduled and password-protected posts.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-23T06:17:04Z"
