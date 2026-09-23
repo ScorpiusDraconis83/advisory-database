@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p8c6-29q6-cqw7",
+  "modified": "2026-09-23T09:30:31Z",
+  "published": "2026-09-23T09:30:31Z",
+  "aliases": [
+    "CVE-2026-95625"
+  ],
+  "details": "The Tauri updater plugin verifies update binaries using minisign signatures, but the signature covers only the raw binary bytes. The update manifest -- which contains the version number, download URL, and signature -- is fetched over TLS but is never itself signed or authenticated. Because the only anti-rollback check compares the manifest's version field against the current version, and that field is unsigned, an attacker who can serve a crafted manifest can force installation of any older signed release without possessing the developer's private key.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/tauri-apps/plugins-workspace/security/advisories/GHSA-j38x-g3m3-95fr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95625"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tauri-apps/plugins-workspace/commit/690dcfd694"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tauri-apps/plugins-workspace"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/tauri-apps/plugins-workspace/releases/tag/updater-v2.12.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-354"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T09:17:09Z"
+  }
+}
