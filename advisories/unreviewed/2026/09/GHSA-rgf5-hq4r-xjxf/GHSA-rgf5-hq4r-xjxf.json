@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-rgf5-hq4r-xjxf",
+  "modified": "2026-09-23T21:30:42Z",
+  "published": "2026-09-23T21:30:42Z",
+  "aliases": [
+    "CVE-2026-90904"
+  ],
+  "details": "Joomla Extension - joomshaper.com - Broken Access Control (ACL Bypass) in ApiController Record Editing in Easy Store extension 1.0.0-3.0.0 - The allowEdit() method in ApiController.php hardcoded return true;, bypassing Joomla component-level and asset-level ACL permission checks. Any authenticated backend user could edit any EasyStore record, regardless of specific ACL permission grants. Resolved by replacing the hardcoded boolean with proper ACL authorization checks via AccessControl::create()->canEdit()`.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90904"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.joomshaper.com/easystore"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T19:19:43Z"
+  }
+}

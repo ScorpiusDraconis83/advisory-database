@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3x8p-4xmj-7ppp",
+  "modified": "2026-09-23T21:30:42Z",
+  "published": "2026-09-23T21:30:42Z",
+  "aliases": [
+    "CVE-2026-90905"
+  ],
+  "details": "Joomla Extension - joomshaper.com - Missing CSRF and Access Control on Site Configuration Update in Easy Store extension 1.0.0-3.0.0 - The endpoint administrator/index.php?option=com_easystore&task=appconfig.updateConfiguration updated core Joomla mail configuration (fromname, mailfrom) in configuration.php without verifying anti-CSRF tokens or checking for administrative permissions (canAdmin). A malicious site could silently modify the site's sender name and email address via forged requests from an admin's browser. Resolved by enforcing Session::checkToken('request') / Session::checkToken('post') and adding explicit administrative authorization verification via AccessControl::create()->canAdmin().",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90905"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.joomshaper.com/easystore"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-284"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T19:19:43Z"
+  }
+}

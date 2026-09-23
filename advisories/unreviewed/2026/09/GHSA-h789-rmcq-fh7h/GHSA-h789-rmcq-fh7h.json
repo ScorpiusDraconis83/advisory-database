@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h789-rmcq-fh7h",
+  "modified": "2026-09-23T21:30:58Z",
+  "published": "2026-09-23T21:30:58Z",
+  "aliases": [
+    "CVE-2026-84720"
+  ],
+  "details": "A flaw was found in the Ansible Automation Platform automation-controller. The\nWorkflowJobNode.ancestor_artifacts database column, which stores the raw merged set_stats\nartifacts propagated between workflow nodes, is not wrapped in prevent_search() and is therefore\naccepted for arbitrary field lookups by the REST filter backend, even though it is omitted from\nthe API serializer. Because the column is persisted before Ansible's no_log masking is applied,\na user with only read access to a workflow — or, via a regular-expression lookup that bypasses\nthe JSON cross-relation filter guard through the world-readable credential-types endpoint, any\nauthenticated user with no roles — can use the result count as a boolean/count oracle to recover,\ncharacter by character, secret values that a playbook author explicitly marked no_log, including\nacross organizations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84720"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-84720"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2527214"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T20:17:18Z"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3p43-vjq9-4h46",
+  "modified": "2026-09-23T21:30:57Z",
+  "published": "2026-09-23T21:30:57Z",
+  "aliases": [
+    "CVE-2026-84683"
+  ],
+  "details": "A flaw was found in Red Hat Ansible Automation Platform's automation-\ncontroller. The HTML view of job, ad hoc command, project update, and inventory\nupdate standard output escapes HTML metacharacters but does not remove ANSI\nterminal escape sequences before conversion to HTML. An ANSI OSC 8 hyperlink\nsequence in the output is expanded into an HTML anchor whose href is not scheme-\nfiltered or escaped, so a low-privileged user who can produce output -- or an\nexternal party whose data a playbook echoes -- can embed a javascript: link that\nis rendered into a text/html response with no Content-Security-Policy. When a\nhigher-privileged user views the output page and clicks the link, attacker-\ncontrolled JavaScript executes in their authenticated session, allowing actions\nas that user up to full platform takeover.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84683"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-84683"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2527128"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T20:17:17Z"
+  }
+}

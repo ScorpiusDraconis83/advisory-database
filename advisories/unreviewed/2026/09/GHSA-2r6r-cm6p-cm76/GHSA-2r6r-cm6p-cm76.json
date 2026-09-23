@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2r6r-cm6p-cm76",
+  "modified": "2026-09-23T21:30:58Z",
+  "published": "2026-09-23T21:30:58Z",
+  "aliases": [
+    "CVE-2026-84717"
+  ],
+  "details": "A flaw was found in the Ansible Automation Platform automation-controller. The unauthenticated\nBitbucket Data Center webhook receiver skips HMAC signature verification for diagnostics:ping\nevents after it has already looked up the target template, causing the endpoint to return HTTP\n200 for a template that has a Bitbucket DC webhook configured and HTTP 403 otherwise. An\nunauthenticated remote attacker can use this response discrepancy as an oracle to enumerate\nwhich Job Template and Workflow Job Template IDs have Bitbucket DC webhooks configured, without\nknowing the secret webhook_key.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84717"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-84717"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2527210"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-204"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T20:17:18Z"
+  }
+}

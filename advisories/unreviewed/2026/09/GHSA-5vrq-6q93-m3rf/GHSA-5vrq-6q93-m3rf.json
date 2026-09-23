@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5vrq-6q93-m3rf",
+  "modified": "2026-09-23T21:30:57Z",
+  "published": "2026-09-23T21:30:57Z",
+  "aliases": [
+    "CVE-2026-84706"
+  ],
+  "details": "A flaw was found in Ansible Automation Platform's automation-controller. The custom\nCredential Type environment-variable injector validates variable names against a\ndeny-list (an ANSIBLE_* prefix check plus a fixed ENV_BLOCKLIST) that omits\nprocess-hijacking loader variables such as BASH_ENV, ENV, LD_PRELOAD, LD_LIBRARY_PATH,\nPYTHONSTARTUP and GIT_SSH_COMMAND. Combined with the credential file injector, a\nprivileged user can write an attacker-controlled script into the execution environment\nand point BASH_ENV at it, obtaining arbitrary code execution inside the\nexecution-environment container for any job that attaches a credential of that type.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84706"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-84706"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2527187"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-184"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T20:17:17Z"
+  }
+}

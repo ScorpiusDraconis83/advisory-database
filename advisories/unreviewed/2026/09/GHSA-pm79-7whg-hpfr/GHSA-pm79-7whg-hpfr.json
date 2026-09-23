@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pm79-7whg-hpfr",
+  "modified": "2026-09-23T21:30:58Z",
+  "published": "2026-09-23T21:30:58Z",
+  "aliases": [
+    "CVE-2026-84721"
+  ],
+  "details": "A server-side request forgery flaw was found in the Ansible Automation Platform\nautomation-controller email notification backend. The email backend passes the user-supplied SMTP\nhost and port from a notification template directly to the SMTP client without validating that\nthe target is not an internal, loopback, link-local, or reserved address. An authenticated user\nwith organization notification-admin permission can create or modify an email notification\ntemplate pointing at an arbitrary internal address, trigger a test, and have the controller task\nprocess open a raw TCP connection to that address. The resulting connection error is reflected\nback through the notification record, providing a three-state internal port-scan oracle (open,\nclosed, filtered) over the control-plane's cluster network, including the in-cluster Kubernetes\nAPI. When a shared organization template holds a stored SMTP password, redirecting the host can\nalso cause that credential to be transmitted to an attacker-controlled server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84721"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-84721"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2527220"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T20:17:18Z"
+  }
+}

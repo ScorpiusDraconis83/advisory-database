@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2wm8-q2cf-p9fx",
+  "modified": "2026-09-23T21:30:37Z",
+  "published": "2026-09-23T21:30:37Z",
+  "aliases": [
+    "CVE-2026-71458"
+  ],
+  "details": "URLModificationMiddleware resolves named-URL lookups\n              against unfiltered Model.objects before RBAC. The 403→404\n              shim only rewrites 403 responses, leaving the pk=0 miss\n              path with a different 404 detail string. Differential\n              \"Not found.\" vs \"No <Model> matches...\" reveals whether\n              a named resource (org, credential, inventory, host) exists\n              anywhere on the platform. Enables cross-tenant internal\n              hostname enumeration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71458"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-71458"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2512367"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-204"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T19:19:01Z"
+  }
+}

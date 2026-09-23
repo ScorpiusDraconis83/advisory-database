@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wm9g-p29j-v3wh",
+  "modified": "2026-09-23T21:30:40Z",
+  "published": "2026-09-23T21:30:40Z",
+  "aliases": [
+    "CVE-2026-71463"
+  ],
+  "details": "Notification template Jinja AST whitelist only inspects\n              static Getattr nodes. Dynamic subscripts (job['job'+'_env'])\n              and {% if job.id > 100 %} conditional gating bypass both\n              the AST check and the test-render (stub has small job.id).\n              At runtime, the gated branch executes and exceptions write\n              full tracebacks into notification body, which is POSTed\n              to attacker-controlled webhook URL. Leaks install paths,\n              Python version, source line numbers.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71463"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-71463"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2512372"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-209"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T19:19:03Z"
+  }
+}

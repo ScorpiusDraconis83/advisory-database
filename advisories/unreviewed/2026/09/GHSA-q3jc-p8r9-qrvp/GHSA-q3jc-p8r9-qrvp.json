@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q3jc-p8r9-qrvp",
+  "modified": "2026-09-23T21:30:58Z",
+  "published": "2026-09-23T21:30:58Z",
+  "aliases": [
+    "CVE-2026-84724"
+  ],
+  "details": "An argument-injection flaw was found in the Ansible Automation Platform automation-controller\nsystem-job subsystem. The system-job template launch endpoint stores a user-supplied \"days\"\nvariable without running the integer validation defined elsewhere for that field, and the\ndispatcher flattens the management-command argument list into a single string with spaces before\nthe job runner re-splits it, so spaces in the value become additional command-line arguments.\nBecause system jobs are executed in-process on the control node without the container isolation\napplied to all other job types, an authenticated user with superuser privileges can inject\narbitrary arguments — including Python's path option — into the control-plane awx-manage process,\ncontrolling its argument vector and the first entry of its module search path. Full remote code\nexecution requires an additional import gadget that is not present in the current management\ncommands, so the demonstrated impact is argument injection with control of the process search\npath rather than confirmed code execution.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84724"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-84724"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2527222"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-88"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T20:17:19Z"
+  }
+}

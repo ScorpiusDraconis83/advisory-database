@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-98xv-m2v4-crqh",
+  "modified": "2026-09-23T21:30:37Z",
+  "published": "2026-09-23T21:30:37Z",
+  "aliases": [
+    "CVE-2026-71461"
+  ],
+  "details": "HostList.list() catches bare Exception and returns str(e)\n              verbatim. Via host_filter, any authenticated user triggers\n              Django FieldError (leaking complete Host model relation\n              graph including internal reverse accessors) or PostgreSQL\n              DataError (leaking raw database error strings). Two\n              primitives: credential__search=x dumps ORM schema,\n              name__regex=[bad reflects PostgreSQL errors.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71461"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-71461"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2512370"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-209"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T19:19:02Z"
+  }
+}
