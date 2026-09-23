@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jg26-q8hg-3pq4",
+  "modified": "2026-09-23T18:21:22Z",
+  "published": "2026-09-23T18:21:22Z",
+  "aliases": [
+    "CVE-2026-92692"
+  ],
+  "summary": "Sulu: JCR-SQL2 injection via `categories` query parameter (unauthenticated)",
+  "details": "### Impact\n\nAn unauthenticated JCR-SQL2 injection exists in the Smart Content category filter of the 2.x content query builder.\n\nCategory IDs supplied through the public `?categories=` query parameter are only trimmed and are then concatenated directly into a JCR-SQL2 `WHERE` clause, without the numeric validation that the equivalent tag filter already performs. Any public page that renders a Smart Content element with category filtering enabled evaluates this parameter, so no authentication or special configuration beyond a category-filtered content block is required.\n\nAn anonymous visitor can therefore:\n\n- inject boolean conditions to infer the existence of, and disclose, content nodes they should not see (for example unpublished pages) via blind boolean-based extraction; and\n- submit malformed query fragments that cause query errors or resource-intensive queries, degrading availability.\n\nBecause the sink is a JCR-SQL2 query, the impact is limited to reading and enumerating content-repository nodes and to error/denial-of-service conditions; it cannot be used to modify data through this path.\n\n### Patches\n\nFixed in **2.6.25 and 3.0.8**. Category, tag, and audience-target-group IDs are now cast to integers before they are used in the JCR-SQL2 query, so no attacker-controlled characters can reach the query.\n\n### Workarounds\n\nIf you cannot upgrade immediately:\n\n- Apply the fix manually — cast each ID to an integer where it is concatenated into the category (and, defensively, tag and audience-targeting) `WHERE` clause in the content Smart Content query builder.\n- Alternatively, disable category filtering on publicly reachable Smart Content elements until the patch is applied.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "sulu/sulu"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.6.25"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "sulu/sulu"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "3.0.0"
+            },
+            {
+              "fixed": "3.0.8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/sulu/sulu/security/advisories/GHSA-jg26-q8hg-3pq4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sulu/sulu/commit/d19c01487af8c3de2fb3aa145856707a6367392c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/sulu/sulu"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sulu/sulu/releases/tag/2.6.25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sulu/sulu/releases/tag/3.0.8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-23T18:21:22Z",
+    "nvd_published_at": null
+  }
+}
