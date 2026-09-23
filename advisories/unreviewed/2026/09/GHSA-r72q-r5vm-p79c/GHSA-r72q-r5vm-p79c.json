@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r72q-r5vm-p79c",
+  "modified": "2026-09-23T03:30:26Z",
+  "published": "2026-09-23T03:30:26Z",
+  "aliases": [
+    "CVE-2026-96271"
+  ],
+  "details": "Photoview through 2.4.0 contains an authorization bypass vulnerability in the shareAlbum GraphQL mutation that allows authenticated users to create share links for albums owned by other users. Attackers can supply arbitrary album IDs to generate working share tokens for victim albums, exposing photos and sub-albums to anyone with the link while retaining indefinite control over token settings.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96271"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/photoview/photoview/issues/1494"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/photoview/photoview/commit/20541762fe6d9e0ce363c3d4c55556e4ccdc57a2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/photoview/photoview"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/photoview/photoview/blob/81affea602401c2f0207d955919ddcc0670a9222/api/graphql/models/actions/share_token_actions.go#L64-L82"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/photoview-through-2.4.0-authorization-bypass-via-sharealbum"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T01:16:32Z"
+  }
+}

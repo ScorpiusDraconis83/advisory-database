@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jw6r-7cxw-rf3h",
+  "modified": "2026-09-23T03:30:27Z",
+  "published": "2026-09-23T03:30:27Z",
+  "aliases": [
+    "CVE-2026-96273"
+  ],
+  "details": "Ghidra before 12.1.4 fails to validate the TYPE_COL byte in OptionsDB.createUnregisteredOption(), causing an ArrayIndexOutOfBoundsException that leaves domain objects permanently locked. Attackers can craft a malicious program database file that, when imported, causes the application to stall and prevents resource cleanup or graceful shutdown.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/NationalSecurityAgency/ghidra/security/advisories/GHSA-4w7g-wmg8-fgv5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96273"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NationalSecurityAgency/ghidra/commit/594da048431aab082a9da7c4a965874d07d33310"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NationalSecurityAgency/ghidra"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NationalSecurityAgency/ghidra/blob/Ghidra_12.1.3_build/Ghidra/Framework/Project/src/main/java/ghidra/framework/data/OptionsDB.java#L358-L366"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NationalSecurityAgency/ghidra/releases/tag/Ghidra_12.1.4_build"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/ghidra-before-12.1.4-denial-of-service-via-crafted-database"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-460"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-23T01:16:32Z"
+  }
+}
