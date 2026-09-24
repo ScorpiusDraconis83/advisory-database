@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fg62-2q3c-3w5h",
+  "modified": "2026-09-24T18:31:23Z",
+  "published": "2026-09-24T18:31:23Z",
+  "aliases": [
+    "CVE-2026-93229"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: add missing read barrier to rpc_status_get dumpit seqcount retry\n\nThe hand-rolled seqcount-like protocol in nfsd_nl_rpc_status_get_dumpit()\nis missing a read memory barrier (smp_rmb) before its second counter\ncheck.  The standard kernel read_seqcount_retry() includes smp_rmb()\nto ensure that all data reads complete before the counter is re-checked.\n\nWithout this barrier, on weakly-ordered architectures (ARM, POWER),\nthe CPU may reorder field reads past the second counter check, making\nthe retry logic ineffective: it could observe a consistent counter pair\nwhile reading fields that have been concurrently modified by the writer.\n\nAdd smp_rmb() before the second counter check to order the field reads\nahead of it, matching the barrier semantics of the standard seqcount\nread-side.  The begin-side smp_load_acquire() already pairs with the\nsmp_store_release() in nfsd_dispatch(); with the smp_rmb() now ordering\nthe field reads, the retry check no longer needs acquire semantics and\nreads the counter with a plain READ_ONCE(), as read_seqcount_retry()\ndoes.\n\n[ cel: Use READ_ONCE instead of smp_load_acquire() ]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93229"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1aea0482b98ecd7d0249204665f2ad4ad517f66b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9b5f6475006cd8e3b5b99b8eb3cd74dbb1ce9df8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a71f161a857117e8e0264deb7d14fff5c98adcf5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f501f2f4ec1d2dfe39e21c98630314074a9b30b0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T16:17:18Z"
+  }
+}

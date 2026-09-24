@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jh95-x4h9-f49q",
+  "modified": "2026-09-24T18:31:19Z",
+  "published": "2026-09-24T18:31:19Z",
+  "aliases": [
+    "CVE-2026-88362"
+  ],
+  "details": "MuJS e892c9fdb contains an incorrect numeric conversion vulnerability in jsR_isindex() in jsrun.c. A specially crafted JavaScript input containing an excessively large numeric array index can cause an out-of-range floating-point value to be converted to an integer without proper range validation. This results in undefined behavior and can cause process termination, leading to denial of service.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88362"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugs.ghostscript.com/show_bug.cgi?id=709636"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cgit.ghostscript.com/cgi-bin/cgit.cgi/mujs.git/commit/?id=8a32c397b28fe45747ac4e9e4f3dca049825eda7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T16:17:13Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m57g-35wp-4xgr",
+  "modified": "2026-09-24T18:31:31Z",
+  "published": "2026-09-24T18:31:31Z",
+  "aliases": [
+    "CVE-2026-97410"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetconsole: take target_cleanup_list_lock in drop_netconsole_target()\n\ndrop_netconsole_target() unlinks the target while only holding\ntarget_list_lock. However, when the underlying interface has been\nunregistered, netconsole_netdev_event() moves the target from\ntarget_list to target_cleanup_list, and netconsole_process_cleanups_core()\nwalks that list under target_cleanup_list_lock only.\n\nIf a user removes the configfs target at the same time the cleanup\nworker is iterating target_cleanup_list, list_del() can corrupt the list\nbecause the two paths take disjoint locks while operating on the same\nlist node.\n\nAcquire target_cleanup_list_lock around the list_del() so the unlink is\nserialised against netconsole_process_cleanups_core() regardless of\nwhich list the target currently belongs to. The state transition that\ndowngrades STATE_DEACTIVATED to STATE_DISABLED is left intact and is\nperformed under the same combined locking, preserving the existing\nordering with resume_target().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97410"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/84592ee22f7d1583ce33aa733411ff36c7a1c44c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/91aeb87f052367a5a2743cc93777dfb4386f2f14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fe8e6c0a2f28bdab14cdf7eff4dd9755d3793007"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:18Z"
+  }
+}

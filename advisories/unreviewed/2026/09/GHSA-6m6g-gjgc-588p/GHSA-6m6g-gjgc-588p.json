@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6m6g-gjgc-588p",
+  "modified": "2026-09-24T18:31:29Z",
+  "published": "2026-09-24T18:31:29Z",
+  "aliases": [
+    "CVE-2026-93791"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: add a check on the tid coming from the firmware\n\nba_notif->tid is a firmware-controlled u8 that is used directly\nas an array index into tid_data[] without any validation. Add a\nbounds check against IWL_MAX_TID_COUNT before dereferencing the\narray.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93791"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b5325a0771674f1d65618de7db3df9d49186a12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e4c0d83267261cf67ec9690856edf4a56bb7dfc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/59f64c2839022f41a7867b38f9e38c185ff39283"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:11Z"
+  }
+}

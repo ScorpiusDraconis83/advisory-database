@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c7mv-6q5h-g377",
+  "modified": "2026-09-24T18:31:35Z",
+  "published": "2026-09-24T18:31:35Z",
+  "aliases": [
+    "CVE-2026-97511"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: avoid out-of-bounds access in monitor\n\nIn NAN, we don't know on what band the frame will be sent. Therefore we\nset info->band to NUM_NL80211_BANDS. However, this leads to out-of-bound\naccess in ieee80211_add_tx_radiotap_header when we try to access the\nsbands array.\n\nFix it by not accessing the array if the band is NUM_NL80211_BANDS.\nThis means that we will not report rate info for legacy rate in NAN.\nBut nobody really cares about it.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97511"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03c41203ee5a833a9d7a7630be190830cede29d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7f087f70e020b16a5b967332ee6e937817eaa173"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:28Z"
+  }
+}

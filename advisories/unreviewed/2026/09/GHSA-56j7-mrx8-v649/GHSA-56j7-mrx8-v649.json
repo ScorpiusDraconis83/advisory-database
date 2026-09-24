@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-56j7-mrx8-v649",
+  "modified": "2026-09-24T18:31:28Z",
+  "published": "2026-09-24T18:31:28Z",
+  "aliases": [
+    "CVE-2026-93288"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nfnetlink_log: wait for rcu grace period before freeing pernet state\n\nsashiko reports: \"nfnl_log_net_exit() calls nf_log_unset(), which\nclears the logger pointer without an RCU grace period.  Immediately after,\nops_free_list() frees the per-net state while concurrent packets might\nstill be executing nf_log_packet() under rcu_read_lock().\"\n\nClear the pointer via .pre_exit to make sure rcu readers have completed\nbefore pernet storage is free'd.  The change in nf_log_syslog.c is only\ndone for consistency: it doesn't use pernet data.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93288"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/33d1469b0124cc0baaea7a2032123b77a81e0940"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc20050b6b12ca58066715d088e1a537535d938d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f4461654374576e9d5d0245fd534c46ad8509051"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:10Z"
+  }
+}

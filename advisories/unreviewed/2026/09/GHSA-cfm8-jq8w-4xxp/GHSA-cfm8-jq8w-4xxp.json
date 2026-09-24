@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cfm8-jq8w-4xxp",
+  "modified": "2026-09-24T18:31:31Z",
+  "published": "2026-09-24T18:31:31Z",
+  "aliases": [
+    "CVE-2026-97414"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: mediatek: mt8365-afe-pcm: fix possible NULL-pointer dereferences in mt8365_afe_suspend()\n\nmt8365_afe_suspend() allocates the register backup buffer with\ndevm_kcalloc(), but does not check for allocation failure before using the\nreturned pointer. This may lead to a NULL pointer dereference when\naccessing afe->reg_back_up[i].\n\nAdd the missing NULL check and return -ENOMEM on allocation failure after\ndisabling the main clock.\n\nAlso propagate the return value of mt8365_afe_suspend() in\nmt8365_afe_dev_runtime_suspend() so that the suspended state is not updated\nwhen suspend fails.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97414"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1094d83ad325829acd68e63147793536060a0d60"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b8948ac26efc395264a47f9a743889065adb5cff"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f87707bc0406fe92bc142a9eee5f480c94ce9ff8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:19Z"
+  }
+}

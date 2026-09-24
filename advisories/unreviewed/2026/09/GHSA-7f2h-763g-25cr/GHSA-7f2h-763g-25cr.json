@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7f2h-763g-25cr",
+  "modified": "2026-09-24T18:31:29Z",
+  "published": "2026-09-24T18:31:29Z",
+  "aliases": [
+    "CVE-2026-93803"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: libipw: fix key index receive bound checks\n\nlibipw_rx() reads skb->data[hdrlen + 3] to extract the WEP key index in\nboth the software-decrypt key selection path and the hardware-decrypted\nIV/ICV strip path. In both places the existing guard only checks\nskb->len >= hdrlen + 3, which proves bytes up to hdrlen + 2 but not the\nbyte at hdrlen + 3.\n\nRequire hdrlen + 4 bytes before reading that item in both paths. This is\na local source-boundary check only; it does not change the key index\nsemantics.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93803"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/062840bdc9ee06169b3c371bf66711f1d7ec0bf4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/74ed3669f26803b1761c1f55403062bea44c3466"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c54b643e9a0936d038921c547736574fd7382cea"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:13Z"
+  }
+}

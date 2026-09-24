@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v8mw-gxj3-q348",
+  "modified": "2026-09-24T18:31:35Z",
+  "published": "2026-09-24T18:31:35Z",
+  "aliases": [
+    "CVE-2026-97498"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/userq: pin mqd and fw object bo to avoid eviction\n\nmqd and fw objects are queue core objects which should remain\nvalid and never be unmapped and evicted for user queues to work\nproperly.\n\nDuring eviction if these buffers are evicted the hw continue to\nuse the invalid addresses and caused page faults and system hung.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97498"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a16d9986b7b27b08a696524a4dbf03dbf5433a16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a3bbf32a336939a1d21b9561f8e53333b684b7ef"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:27Z"
+  }
+}

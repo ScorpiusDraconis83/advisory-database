@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-57g2-jm7m-f2mp",
+  "modified": "2026-09-24T18:31:32Z",
+  "published": "2026-09-24T18:31:32Z",
+  "aliases": [
+    "CVE-2026-97430"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxhci: Prevent queuing new commands if xhci is inaccessible\n\nRefuse to queue a new command on the command ring if xHC is marked\ninaccessible with the HCD_FLAG_HW_ACCESSIBLE.\n\nHCD_FLAG_HW_ACCESSIBLE is set and cleared in suspend and resume.\n\nAlso print a warning if xhci is being suspended with commands\nstill pending on the command ring.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97430"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82b70c799281cc24506085be978b829149ba0ca4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a05e54c1eeaba10414aa2fde94589a7c9885f2a1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a50948386256b24d73971b9a152fe1de808446ab"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:21Z"
+  }
+}

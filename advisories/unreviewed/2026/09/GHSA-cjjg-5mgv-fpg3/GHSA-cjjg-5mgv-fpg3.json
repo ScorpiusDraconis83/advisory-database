@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cjjg-5mgv-fpg3",
+  "modified": "2026-09-24T18:31:22Z",
+  "published": "2026-09-24T18:31:22Z",
+  "aliases": [
+    "CVE-2026-93213"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nof: fix out-of-bounds read in of_alias_scan() stem parser\n\nThe stem parser tests isdigit(*(end - 1)) before checking end > start\nand so reads one byte before the property name when the name is empty\nor all digits. Check the bound first.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93213"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5bb01c657ff9fc807c2c592ca18af34c4fc3bc6f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9253cfc5a85be1494ce56b4fc6f2d2b509440910"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/958d7ee9fcf008ef9d2072c6410ee1bf6abf3b64"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96a9c984dd7c3589a2707a32b62802f98311dbfd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/acd1b49043366f43e932308b4db7d3ce568eeadb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/da7a80ddc610a19b0378016a4d816b9355f013a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f7f6c3e32a31f2e1ed12075e8cd22b370a84e67a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd0c7bbda81c0e0c1cb7b68d267b87371584f560"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T16:17:16Z"
+  }
+}

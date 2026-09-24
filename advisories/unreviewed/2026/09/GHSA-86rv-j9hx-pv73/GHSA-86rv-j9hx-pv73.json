@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-86rv-j9hx-pv73",
+  "modified": "2026-09-24T18:31:32Z",
+  "published": "2026-09-24T18:31:32Z",
+  "aliases": [
+    "CVE-2026-97417"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_conntrack: use get_unaligned_be32() in tcp_sack()\n\nThe timestamp-only fast path dereferences the option stream as\n*(__be32 *)ptr, which assumes 4-byte alignment that the TCP option\nstream does not guarantee. Use get_unaligned_be32() instead, which\nreads the value safely and already returns host byte order, so the\nhtonl() on the comparison constant can be dropped.\n\nThis matches the existing get_unaligned_be32() use later in the same\nfunction.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97417"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4abc1af7ac209c066f4e5dd75cdd56876e5829a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ecfa46a536578a7ed335ddf31a854127268c27c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3bf9eae486490832bd08fd62ab0ac601f346bd4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:19Z"
+  }
+}

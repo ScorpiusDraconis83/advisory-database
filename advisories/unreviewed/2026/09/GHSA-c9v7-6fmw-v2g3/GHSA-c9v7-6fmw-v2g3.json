@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c9v7-6fmw-v2g3",
+  "modified": "2026-09-24T18:31:31Z",
+  "published": "2026-09-24T18:31:31Z",
+  "aliases": [
+    "CVE-2026-97407"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: rockchip: rockchip_pdm: Handle runtime PM resume failures in set_fmt\n\nrockchip_pdm_set_fmt() calls pm_runtime_get_sync() before accessing\nhardware registers, but ignores its return value.\nIf the runtime resume fails, the function continues to perform register\naccesses while the device state is undefined.\nReplace pm_runtime_get_sync() with pm_runtime_resume_and_get() and\nreturn early on failure to avoid unpowered register accesses.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97407"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9cc27a4a9b5fe013e152841fd8408061fa2312f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2b5c2ca5a4924271fa86d75a252de32fa285375"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ee7b5f7b39332febf917f9ebf212842cc9379815"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:18Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7j63-m3c7-g76r",
+  "modified": "2026-09-24T18:31:35Z",
+  "published": "2026-09-24T18:31:35Z",
+  "aliases": [
+    "CVE-2026-97502"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmmc: davinci: avoid NULL deref of host->data in IRQ handler\n\nmmc_davinci_irq() returns early only when both host->cmd and\nhost->data are NULL:\n\n  if (host->cmd == NULL && host->data == NULL) {\n          ...\n          return IRQ_NONE;\n  }\n\nSo we may legitimately reach the rest of the handler with\nhost->data == NULL (and therefore data == NULL). The DATDNE branch\nalready guards against this with an explicit \"if (data != NULL)\"\ncheck, but the subsequent TOUTRD (\"read data timeout\") and\nCRCWR/CRCRD (\"data CRC error\") branches dereference data\nunconditionally:\n\n  if (qstatus & MMCST0_TOUTRD) {\n          data->error = -ETIMEDOUT;        <-- NULL deref\n          ...\n          davinci_abort_data(host, data);\n  }\n\n  if (qstatus & (MMCST0_CRCWR | MMCST0_CRCRD)) {\n          data->error = -EILSEQ;           <-- NULL deref\n          ...\n  }\n\nIf either bit is set in qstatus while host->data is NULL, the kernel\nwill crash inside the IRQ handler. smatch flags this:\n\n  drivers/mmc/host/davinci_mmc.c:933 mmc_davinci_irq() error: we\n    previously assumed 'data' could be null (see line 914)\n\nGate both branches on a non-NULL data, matching the existing pattern\nused by the DATDNE branch.\n\nNo functional change for callers where data is non-NULL, which is\nthe only case in which these branches did meaningful work before\nthis change.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97502"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f28846aaf8db9668e338b8987973f8935edff34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b7e151fe9ea9311ba601849aaecdc4fc97fd577"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a01cedf230dc0fcd55b994f5e548d3982ba4c732"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:27Z"
+  }
+}

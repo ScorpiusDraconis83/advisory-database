@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-797r-35j2-ppqg",
+  "modified": "2026-09-24T18:31:32Z",
+  "published": "2026-09-24T18:31:32Z",
+  "aliases": [
+    "CVE-2026-97427"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/pm: bound pp_dpm_set_pp_table() memcpy\n\nThe powerplay path allocates hardcode_pp_table once with kmemdup(...,\nsoft_pp_table_size). memcpy(..., size) used the sysfs store count (up to\nPAGE_SIZE) with no upper bound, causing heap overflow. Reject\nwrites where size exceeds soft_pp_table_size.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97427"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3334985f8b4c7c637a829744c81518ad9a671bcb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/43d2ab8408f9f468b232350c74160ae21e763020"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f193e71fa9fab2e68ef85201b106e8f580d3a25b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:20Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-537c-46r9-4j6g",
+  "modified": "2026-09-24T18:31:29Z",
+  "published": "2026-09-24T18:31:29Z",
+  "aliases": [
+    "CVE-2026-93799"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: validate sta_id in BA window status notif\n\nBA_WINDOW_STATUS_NOTIFICATION_ID extracts a 5-bit sta_id from the\nfirmware notification and uses it to index fw_id_to_mac_id[] without\nbounds checking. Validate sta_id before array access to prevent\nout-of-bounds indexing.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93799"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6aa77efaea9efea92e3090c35ad348fd759a3cf3"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bb08fbbbd5568d33069485ecb0a1657f115a4e9f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e35ae757c6462bfd3437bf58121bb721fe1f790c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:12Z"
+  }
+}

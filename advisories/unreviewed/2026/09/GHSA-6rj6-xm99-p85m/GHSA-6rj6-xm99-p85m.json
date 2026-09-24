@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6rj6-xm99-p85m",
+  "modified": "2026-09-24T18:31:32Z",
+  "published": "2026-09-24T18:31:32Z",
+  "aliases": [
+    "CVE-2026-97436"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndpaa2-switch: rework FDB management on the bridge leave path\n\nOn bridge leave, the dpaa2_switch_port_set_fdb() function always\nallocates a new FDB for the port which is becoming standalone. In case\nno FDB is found, then the port leaving a bridge will continue to use the\ncurrent one.\n\nThe above logic does not cover the case in which there are multiple\nbridges which have ports from the same DPSW instance. In this case, when\nthe last port leaves bridge #1, it finds an unused FDB to switch to, but\nthe old FDB is not marked as unused. Since the number of FDBs is equal\nto the number of DPSW interfaces, this will eventually lead to multiple\nports sharing the same FDB.\n\nFix this by changing how we are managing the FDBs on the leave path.\nInstead of directly allocating a new FDB, first verify if the current\nport is the last one to leave a bridge. If this is the case, then\ncontinue to use the current FDB and only allocate another FDB if there\nare other ports remaining in the bridge.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97436"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5adbc4d02d7df8bd7aa02c21874f7a582a576b55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/abea361a11e4e48695ea149652ef5d3f308b6a49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/efc1d92eacf03afa6f4d53bf7120e059b6f961f2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:21Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-847m-qmx9-284v",
+  "modified": "2026-09-24T18:31:36Z",
+  "published": "2026-09-24T18:31:36Z",
+  "aliases": [
+    "CVE-2026-97519"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe: Fix null pointer dereference in devcoredump cleanup\n\nIn xe_devcoredump_snapshot_free(), ss->gt may be NULL when the snapshot\nwas never fully populated (e.g., when cleanup is triggered without a\nprior capture). Guard the xe_guc_capture_put_matched_nodes() call with\nIS_ERR_OR_NULL() to prevent a null dereference.\n\nIn xe_devcoredump_free(), the deferred work is only queued when a\ncoredump is captured, so guard cancel_work_sync() with a check on\ncoredump->captured.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97519"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12ef528d78adc8ea4e7e3db594f3bcac327e79fa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f5c3144f783f91d74b4fae84fb8bd7a4edf001f8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:29Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73rr-rqr3-fp7p",
+  "modified": "2026-09-24T18:31:29Z",
+  "published": "2026-09-24T18:31:29Z",
+  "aliases": [
+    "CVE-2026-93806"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: cfg80211: validate assoc response length before status and IE access\n\ncfg80211_rx_assoc_resp() initialises the status and response-IE fields\nof cfg80211_connect_resp_params from the management frame before\nproving that the frame is long enough for those offsets. S1G and\nregular association responses also have different IE offsets, but the\nS1G path only patched resp_ie after the unsafe initialiser had already\nrun.\n\nDefer resp_ie, resp_ie_len, and status to after the link-iteration\nloop. Use a bool to remember whether the frame is S1G, then validate\nthe appropriate minimum length and set all three fields in a single\nif/else block. Funnel short-frame and SME-reject cleanup through a\nshared free_bss label for the abandon paths.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93806"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/78ac450ad4624d6b2999cb4eeb28916767f81247"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a57310600c1e2b9ada0f37c96e8f48aef47d3093"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b760113aeca2e9362d56bf9e9263373ffe6c8eb3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:13Z"
+  }
+}

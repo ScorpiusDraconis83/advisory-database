@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4jwc-f9v9-q77h",
+  "modified": "2026-09-24T18:31:24Z",
+  "published": "2026-09-24T18:31:24Z",
+  "aliases": [
+    "CVE-2026-93257"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: handle nogenerate/noverify properly in fs-integrity\n\nCheck the BIP_CHECK flags before generating or verifying PI information,\notherwise this can be incorrectly called for non-PI metadata and\ncause generation of incorrect metadata and crashed in the verification\nhandler.\n\nThe new behavior matches that of the block layer auto-generated\nmetadata.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93257"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3bf9a21e7bccfd8c35b440efd114c61cc9838a41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b681c740e6d645f7d7477e9208db57917c6c0fbc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T16:17:22Z"
+  }
+}

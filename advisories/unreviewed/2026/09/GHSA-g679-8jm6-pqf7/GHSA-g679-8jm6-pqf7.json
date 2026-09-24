@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g679-8jm6-pqf7",
+  "modified": "2026-09-24T18:31:26Z",
+  "published": "2026-09-24T18:31:26Z",
+  "aliases": [
+    "CVE-2026-96750"
+  ],
+  "details": "MongoDB Compass can interpolate a database name without escaping into the initial input of its embedded MongoDB shell when a user opens the shell from that database's view. A user with privileges to create databases on a server that a Compass user connects to may, under specific conditions, have content evaluated as shell input within the Compass process, with that process's privileges. This requires the Compass user to open the shell for the affected database.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96750"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mongodb-js/compass/releases/tag/v1.49.12"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T16:17:27Z"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7gm5-hpmg-j6v2",
+  "modified": "2026-09-24T18:31:25Z",
+  "published": "2026-09-24T18:31:25Z",
+  "aliases": [
+    "CVE-2026-93268"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: skip extra isize expansion during mount to prevent deadlock\n\next4_try_to_expand_extra_isize() is called from __ext4_mark_inode_dirty()\nwhile holding an active jbd2 handle.  During mount (!SB_ACTIVE), the\nexpand path may move xattrs to external blocks and release ea_inodes via\niput().  When !SB_ACTIVE, iput() calls write_inode_now() which acquires\ns_writepages_rwsem, creating a circular lock dependency:\n\n  s_writepages_rwsem --> jbd2_handle --> xattr_sem --> s_writepages_rwsem\n\nThis can be triggered via:\n\n  ext4_process_orphan() -> ext4_truncate() -> ext4_mark_inode_dirty()\n    -> ext4_try_to_expand_extra_isize()\n\nor:\n\n  ext4_evict_inode() -> ext4_mark_inode_dirty()\n    -> ext4_try_to_expand_extra_isize()\n\nSkip expansion when !SB_ACTIVE.  This is a minor loss of functionality\n(extra isize won't grow for these inodes during mount), which e2fsck\ncan resolve later if needed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93268"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1dd4882dbdc8bfdf2182fa388883c143fac0902a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2fb8ff81659a57c42bb7b49e8339a2be2a318ef8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/41897f1bcf4ace5f1f28d0be784b6f4f0e929641"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7461c60b9c6a839b13ad4c3490681a0cf5aa0637"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ace189b9ea79cf78df9c32b940ce12735f9459a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7ba09330d9ea6e996228316719eae812d7e04983"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c3469377b1d8caba6bec6ef3c460810bbfb02cc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c5e6434cc55f30220b228be237bb666351f9f4dd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T16:17:23Z"
+  }
+}

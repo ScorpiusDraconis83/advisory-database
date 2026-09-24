@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7ppg-qghw-hg2g",
+  "modified": "2026-09-24T18:31:25Z",
+  "published": "2026-09-24T18:31:25Z",
+  "aliases": [
+    "CVE-2026-93278"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: octeon: add missing napi_disable in cvm_oct_rx_shutdown\n\ncvm_oct_rx_shutdown calls free_irq and netif_napi_del without\ndisabling the napi instance first. As the free_irq only waits\nfor completion of hard interrupt handlers, the napi poll\nfunction could still be active. If cvm_oct_remove proceeds to\nfree the plat structure (which holds the NAPI instances), the\nactive poll function will access freed memory, resulting in a\nuse-after-free crash.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93278"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/158389d7af04bbf0664d91c2ce31fcc9eeace1eb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/89f9f433271fad9351de6a3c713b45b2cfb23e4a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/98f9036b2254c928cb44da0c77dba38f66f7d8f1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b2243ffaac14cc3639b5b32a371aac37f96ee554"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b38fbd68cc36b4f478a1e3cfc169b8616ae1337d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c0a9a8586a63fda49e61a6b83360feac2a60d898"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c124049c3a7006fd6caf629139a5722610bbffb4"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T16:17:25Z"
+  }
+}

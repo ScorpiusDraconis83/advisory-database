@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5x9j-5x5g-gr56",
+  "modified": "2026-09-24T18:31:29Z",
+  "published": "2026-09-24T18:31:29Z",
+  "aliases": [
+    "CVE-2026-93802"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rsi: validate beacon length before fixed buffer copy\n\nrsi_prepare_beacon() copies the mac80211 beacon frame after\nFRAME_DESC_SZ into a management skb whose usable tailroom may be smaller\nthan MAX_MGMT_PKT_SIZE after alignment.\n\nValidate the beacon length against the actual tailroom before the copy\nand skb_put(). Leave ownership of the management skb with the caller on\nerror, matching the existing rsi_send_beacon() cleanup path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93802"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/266f195d5a14eec6c482fd09fbc924584c3371a7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87710ad633ce4588aec88611d0d0745eb33a6991"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ecdeb8b8a33b22c597299043c0dcfce50beb9ea"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:13Z"
+  }
+}

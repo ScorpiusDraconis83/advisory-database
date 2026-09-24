@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4jwf-r7m6-8rg5",
+  "modified": "2026-09-24T18:31:35Z",
+  "published": "2026-09-24T18:31:35Z",
+  "aliases": [
+    "CVE-2026-97516"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw88: Add NULL check for chip->edcca_th in rtw_fw_adaptivity_result()\n\nIt was recently reported that rtw_fw_adaptivity_result()\nin fw.c dereferences rtwdev->chip->edcca_th without\na NULL check. The issue is that devices with the\n8821CE chip don't define edcca_th in their chip\ninfo. As a result, when rtw_fw_adaptivity_result()\ntries to dereference it, the kernel triggers an oops.\n\nAdd a NULL check for edcca_th before dereferencing\nit in rtw_fw_adaptivity_result() in fw.c. Placing\nthe check at the function entry avoids logging any\ngarbage values.\n\nThis change does not address the root cause for\nthis behavior, but it prevents the NULL dereference\nand the resulting oops while a more permanent solution\nis developed.\n\nTested on a 8822CE chip which defines edcca_th, so\nthis issue is not present on it, but it still uses\nthis driver and I can verify there are no regressions.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97516"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1d1f250432cd8704c3c125168887f9724021c81a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6fa23cafaf30f4877e357f8eebcff00dff4aa9cb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d5e6f353ce1e1c25b8458ea390ed09d2377412c5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:29Z"
+  }
+}

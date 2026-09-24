@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cvcw-r3xv-6h39",
+  "modified": "2026-09-24T18:31:23Z",
+  "published": "2026-09-24T18:31:23Z",
+  "aliases": [
+    "CVE-2026-93230"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/hugetlb: initialize gigantic bootmem hugepage struct pages earlier\n\nGigantic bootmem HugeTLB pages are currently initialized from\nhugetlb_init(), but page_alloc_init_late() runs earlier and walks\npageblocks to determine zone contiguity.\n\nIf a bootmem HugeTLB region is marked noinit, set_zone_contiguous() can\nobserve still-uninitialized struct pages through\n__pageblock_pfn_to_page().  This may not trigger an immediate failure, but\nit can make set_zone_contiguous() compute the wrong zone contiguity state.\nIf extra poisoned-page checks are added in this path, such as\nPF_POISONED_CHECK() in page_zone_id(), it can also trigger an early boot\npanic.\n\nInitialize gigantic bootmem HugeTLB struct pages from\npage_alloc_init_late(), before zone contiguity is evaluated, so later page\nallocator setup only sees valid struct page state.  This also makes the\ninitialization order more natural, as struct pages should be initialized\nbefore later code inspects them.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93230"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09505232eced5f1c42902d8f28740f070c3fc6dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/29968bc7aefb3cf1e72aa7c5f52697a6b0527094"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1b7c045e808c761b1cc8c19b3040fadedda3fef"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T16:17:18Z"
+  }
+}

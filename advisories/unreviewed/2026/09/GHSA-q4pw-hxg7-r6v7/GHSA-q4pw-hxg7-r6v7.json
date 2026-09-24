@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q4pw-hxg7-r6v7",
+  "modified": "2026-09-24T18:31:23Z",
+  "published": "2026-09-24T18:31:23Z",
+  "aliases": [
+    "CVE-2026-93238"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/vfio-ap: fix potential use of uninitialized apm_filtered bitmap\n\nThe DECLARE_BITMAP(apm_filtered, AP_DEVICES) macro allocates the bitmap\non the stack without zero-initializing it.\n\nIn vfio_ap_mdev_hot_plug_cfg(), the vfio_ap_mdev_filter_matrix() function\nis only called to initialize and populate apm_filtered if either\nfilter_adapters or filter_domains is true. If the hot plug configuration\nchange only adds control domains (meaning filter_cdoms is true, but\nfilter_adapters and filter_domains are both false),\nvfio_ap_mdev_filter_matrix() is bypassed.\n\nConsequently, apm_filtered is passed to reset_queues_for_apids() with\nuninitialized stack garbage. This can cause reset_queues_for_apids() to\ninterpret arbitrary stack garbage bits as valid APIDs to reset, potentially\nperforming unintended guest hardware queue resets.\n\nFix this by zero-initializing the apm_filtered bitmap at the beginning of\nvfio_ap_mdev_hot_plug_cfg() using bitmap_zero().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93238"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/09548edc6114f1eb1035b30795e893204ef45b85"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ba8a08f5f26ed59f356a6318bca3aa7cc0af3e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d554f2571e6b4db242593ba561efd6a6d1f99a9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf09b9d7cd7890bc3a3b7eb63d5ece15f88bfde7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f73db632524320d2b93bc8534be8ea875053502d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T16:17:19Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gjv4-hxx3-7w8g",
+  "modified": "2026-09-24T18:31:34Z",
+  "published": "2026-09-24T18:31:34Z",
+  "aliases": [
+    "CVE-2026-97494"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: validate and share PSP fw_pri_buf copies via psp_copy_fw\n\nChange psp_copy_fw from void to int: return -ENODEV when drm_dev_enter\nfails, and -EINVAL when the image size is zero or larger than the\n1 MiB PSP private buffer.\n\nReplace open-coded memset/memcpy into fw_pri_buf with psp_copy_fw.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97494"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1aa55af304a2decaacca1d1fabe4257c277ca54a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/25bec2425c3d50ba9a92ad87bbf8628be29e5c32"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d1f9f5839bd785a3a06335a01d53282e80f8e5fa"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:27Z"
+  }
+}

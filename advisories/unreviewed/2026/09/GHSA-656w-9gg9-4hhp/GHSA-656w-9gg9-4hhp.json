@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-656w-9gg9-4hhp",
+  "modified": "2026-09-24T18:31:35Z",
+  "published": "2026-09-24T18:31:35Z",
+  "aliases": [
+    "CVE-2026-97499"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncoresight: perf: Retrieve path and source from event data\n\nETM perf callbacks currently use the per-CPU csdev_src pointer, which\ncan race with updates during device registration and unregistration.\n\nThe AUX setup already builds and stores the path in the event data.\nUse this path to retrieve the source instead of csdev_src to avoid\nthe race.\n\nExport coresight_get_source() and add etm_event_get_ctxt_path() to\nretrieve the context's path and its source with READ_ONCE() /\nWRITE_ONCE() accessors. Give the comments to explain why this\napproach is safe when pause or resume callbacks preempt the disable\ncallback (e.g. via NMI).",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97499"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f4cb08f30011b7625a4fba668fa5c36da5e6637"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f37bc31447c0ddafedb25e3c4a4f4e2284034247"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:27Z"
+  }
+}

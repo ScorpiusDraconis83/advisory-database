@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8wg7-gxr2-289w",
+  "modified": "2026-09-24T18:31:32Z",
+  "published": "2026-09-24T18:31:32Z",
+  "aliases": [
+    "CVE-2026-97418"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: es18xx: check control allocation before private data setup\n\nsnd_es18xx_mixer() creates controls with snd_ctl_new1() and then stores\nbookkeeping pointers or sets private_free before calling snd_ctl_add().\nsnd_ctl_new1() can return NULL on allocation failure, so those writes\ncan dereference a NULL control pointer.\n\nCheck the returned control pointers before using them and return -ENOMEM\non allocation failure.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97418"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/422e42b7c2b882ba1d16d4afc8891bcea7c4de93"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/978079238f40f1a08ddb12ce208c484246f6a1b0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d88c24b76f285df9d206751e22c28e2613258cb3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:19Z"
+  }
+}

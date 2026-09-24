@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fw3g-8x7h-cvj8",
+  "modified": "2026-09-24T18:31:23Z",
+  "published": "2026-09-24T18:31:23Z",
+  "aliases": [
+    "CVE-2026-93222"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsignal: avoid shared siginfo namespace rewrites\n\nsend_signal_locked() rewrites sender ids for the target namespace.  Group\nsends reuse the same siginfo, so one recipient can affect the next.\n\nCopy the siginfo before changing it.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93222"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/03c8761e75d1619906bb503686f9cc1dfc6a67f4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/148b0dae2a1755beb873a2aab51fb191414f068c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ee7c4e4719a825052f42f02ec159b5b42b68fbc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6b1de022304ef85284c5933a5fb8492f6f54efc9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a246da20c8e4ae4319511c698b9f26ad0ad1769f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b655c2040ce836afad5643842543567b31f8c11d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d19cdc167e696714509e87d3f7ae765b6e164589"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e015d1ac6b43a23c52c5163299414ae77d7d4ae0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T16:17:17Z"
+  }
+}

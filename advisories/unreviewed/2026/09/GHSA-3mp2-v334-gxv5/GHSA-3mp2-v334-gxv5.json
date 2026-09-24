@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3mp2-v334-gxv5",
+  "modified": "2026-09-24T18:31:30Z",
+  "published": "2026-09-24T18:31:29Z",
+  "aliases": [
+    "CVE-2026-93807"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rsi: avoid reading TKIP MIC keys for non-TKIP ciphers\n\nrsi_hal_load_key() copies tx_mic_key and rx_mic_key from data[16] and\ndata[24] whenever key data is present. Those offsets are only part of\nthe 32-byte TKIP key layout. Shorter keys used by other ciphers, such as\nCCMP, do not provide those bytes, so the unconditional copies can read\npast the supplied key buffer.\n\nOnly copy the MIC keys for TKIP, and reject malformed TKIP keys that are\nshorter than the expected 32-byte layout.\n\n[drop useless length check]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93807"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/55b86ef6c2e68879ffd95203b011ef42a013ab88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5902e3c08c63d65724772f74d65b9fb032625dca"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/843fe9bc583b7686ca68312ac9319c9240a73c03"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:13Z"
+  }
+}

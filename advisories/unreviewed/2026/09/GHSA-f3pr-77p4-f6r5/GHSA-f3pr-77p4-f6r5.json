@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f3pr-77p4-f6r5",
+  "modified": "2026-09-24T18:31:29Z",
+  "published": "2026-09-24T18:31:29Z",
+  "aliases": [
+    "CVE-2026-93804"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: ibss: wait for in-flight TX on disconnect\n\nWhile leaving an IBSS in ieee80211_ibss_disconnect() mac80211 flushes\nstations, turns the carrier off and immediately tells the driver to\nleave as well. While there may be synchronize_net() in station flush\nand in this code later, packets can still be transmitted due to\ncross-CPU race conditions after carrier off is set.\nTherefore, it's possible for a race to happen where a TX to the\ndriver occurs while or after telling it to leave the IBSS. This can\nbe confusing to drivers, and in the case of iwlwifi leads to an\nattempt to use invalid queues.\n\nMove netif_carrier_off() to occur before sta_info_flush() during\nIBSS disconnect, and add synchronize_net() if flushing didn't,\nso that the synchronize_net() always happens between turning the\ncarrier off and telling the driver, avoiding this race.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93804"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/20a3fb5e1a95caa34896853ca17a50d21c754969"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3451e6971248250312ad32dd7f63cc9f0a925f5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d0e69d9afa59b93c30294eba89b1f15f69e91105"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:13Z"
+  }
+}

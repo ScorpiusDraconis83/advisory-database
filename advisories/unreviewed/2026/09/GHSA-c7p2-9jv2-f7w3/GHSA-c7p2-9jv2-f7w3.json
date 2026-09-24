@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c7p2-9jv2-f7w3",
+  "modified": "2026-09-24T18:31:32Z",
+  "published": "2026-09-24T18:31:32Z",
+  "aliases": [
+    "CVE-2026-97423"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncxl/region: Validate partition index before array access\n\nconstruct_region() reads cxled->part and uses it to index\ncxlds->part[] without checking for a negative value. If the\npartition was never resolved, part remains at its initial value\nof -1, causing an out-of-bounds array access.\n\nAdd a guard to return -EBUSY when part is negative.\n\nThe check was dropped during a merge.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06322da06116f1ee52271dd4d84dc69580087df7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16329b510f76e5b824e05bf8add8b29850f1f16f"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:20Z"
+  }
+}

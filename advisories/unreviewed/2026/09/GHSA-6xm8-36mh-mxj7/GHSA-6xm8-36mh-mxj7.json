@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6xm8-36mh-mxj7",
+  "modified": "2026-09-24T18:31:35Z",
+  "published": "2026-09-24T18:31:35Z",
+  "aliases": [
+    "CVE-2026-97505"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI/sysfs: Add CAP_SYS_ADMIN check to __resource_resize_store()\n\nCurrently, the __resource_resize_store() allows writing to the\nresourceN_resize sysfs attribute to change a BAR's size without checking\nfor capabilities, currently relying only on the file access check.\n\nResizing a BAR modifies PCI device configuration and can disrupt active\ndrivers.  After the upcoming conversion to static attributes, it will also\ntrigger resource file updates via sysfs_update_groups().\n\nAdd a CAP_SYS_ADMIN check to prevent unprivileged users from performing BAR\nresize operations.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97505"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/25ec7f57deceec633f27bc93b615f951e2ade814"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b722a607f858b9cd036075ea0efad553fb98e982"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cbf0628c0b7db86c5ce36451f088101546acbf1d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T17:17:28Z"
+  }
+}
