@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mfxv-9hc5-3jv3",
+  "modified": "2026-09-24T15:31:36Z",
+  "published": "2026-09-24T15:31:36Z",
+  "aliases": [
+    "CVE-2026-90959"
+  ],
+  "details": "A path traversal vulnerability was found in pulpcore. The content upload API accepts a 'file_url' parameter that allows users with file repository privileges to specify a local file URL for Pulp to download and store. A URL scheme validation check uses a string prefix comparison that only rejects URLs beginning with 'file://', but Python's URL parser recognizes the 'file:' scheme without double slashes, creating a mismatch between what is validated and what is dispatched to the file downloader. An authenticated user with low-privilege repository permissions can supply a specially crafted URL using relative path traversal sequences to read any file accessible to the Pulp server process. In deployments that include Pulp Container, successful exploitation allows an attacker to read the container registry token signing private key and forge bearer tokens, granting unauthorized access to all private container repositories in the affected registry.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90959"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-90959"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2533037"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-22"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T15:17:53Z"
+  }
+}

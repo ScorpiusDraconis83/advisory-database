@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5856-3m26-mvm4",
+  "modified": "2026-09-24T15:31:29Z",
+  "published": "2026-09-24T15:31:29Z",
+  "aliases": [
+    "CVE-2026-19072"
+  ],
+  "details": "Velociraptor stores the compiled VQL in the hunt object internally to avoid having to recompile the artifacts for each endpoint in the hunt. Although the field \"compiled_collector_args\" is an internal field, Velociraptor allowed the field to be set from a user API call. This allows another user who can schedule a hunt (minimal role of \"investigator\" ) to set the compiled VQL statements for the hunt bypassing any ACL checks that would normally be applied.\n\n\n\n\nThis flaw can then be escalated to allow the \"investigator\" user to run arbitrary VQL statements as an administrator user on the Velociraptor server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19072"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.velociraptor.app/announcements/advisories/cve-2026-19072"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-164"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T13:17:09Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2w8r-rhgc-4pch",
+  "modified": "2026-09-24T15:31:33Z",
+  "published": "2026-09-24T15:31:33Z",
+  "aliases": [
+    "CVE-2026-97359"
+  ],
+  "details": "HFS2 version 2.4.0 and earlier contains a template injection vulnerability in the multipart upload handler that allows unauthenticated attackers to achieve remote code execution by embedding malicious template syntax in a filename. Attackers can craft a filename containing a closing template quoting sequence followed by an exec macro, which bypasses the authorization check in the dispatcher to execute arbitrary commands on the underlying host system.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97359"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/wgetnz/hfs2/blob/master/advisories/hfs2-upload-filename-template-injection/README.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hfs2-rce-via-multipart-upload-filename-template-injection"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1336"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T14:18:22Z"
+  }
+}

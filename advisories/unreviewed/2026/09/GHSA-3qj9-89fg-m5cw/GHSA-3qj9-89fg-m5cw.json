@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3qj9-89fg-m5cw",
+  "modified": "2026-09-24T15:31:31Z",
+  "published": "2026-09-24T15:31:31Z",
+  "aliases": [
+    "CVE-2026-88359"
+  ],
+  "details": "libfyaml 0.9.6 contains a stack exhaustion vulnerability in fy_atom_iter_format(). When processing a specially crafted YAML document containing a very large literal or folded block scalar, the function repeatedly grows an internal buffer using alloca() inside a loop. The allocated stack memory is not released until the function returns, causing cumulative stack growth that can exceed the process stack limit and result in SIGSEGV and denial of service.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88359"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pantoniou/libfyaml/issues/315"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pantoniou/libfyaml/commit/20502068902d58c076da873117985798df2c7e74"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pantoniou/libfyaml/commit/93741a7c9331da9da65ef7a25f2d7d6a817a1c29"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T14:18:18Z"
+  }
+}
