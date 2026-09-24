@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9hhv-69vm-5vcw",
+  "modified": "2026-09-24T06:31:15Z",
+  "published": "2026-09-24T06:31:15Z",
+  "aliases": [
+    "CVE-2026-97155"
+  ],
+  "details": "Fabasoft Folio Client before 2026, a locally installed component that communicates with the Fabasoft browser extension via web messaging, does not restrict which web origins may invoke its functions by default. The registry value VALIDDOMAINS, which limits permitted origins, was optional and empty by default, resulting in all domains being trusted. As a consequence, any website visited by a user with the Folio Client and browser extension installed could invoke client functions, e.g., related to downloading documents, opening documents, and synchronizing files. The first fixed builds are Fabasoft Folio Client 2026 (Build 26.0.0.10) and Fabasoft Folio Client 2026 April Release (Build 26.4.0.76). This client is, for example, shipped with Fabasoft eGov-Suite.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97155"
+    },
+    {
+      "type": "WEB",
+      "url": "https://help.supportservices.fabasoft.com/index.php?topic=doc/Knowledge-Base/changes-to-fabasoft-folio-client-security-settings.htm"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-346"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T04:18:06Z"
+  }
+}
