@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6xgf-5p76-74xj",
+  "modified": "2026-09-24T21:32:48Z",
+  "published": "2026-09-24T21:32:48Z",
+  "aliases": [
+    "CVE-2026-89325"
+  ],
+  "details": "An uncontrolled search path element in InsightVM assessment content in Rapid7 Insight Agent on Windows allows a local, low-privileged user to execute arbitrary code as SYSTEM via a planted executable resolved from the machine PATH.\n\nAssessment content at or below version 0.0.261.0 included a check that invoked the `code` command without a fully qualified path from a process running as SYSTEM. The command was resolved against the machine PATH environment variable at execution time. Where the machine PATH contained a directory writable by non-administrative users and ordered ahead of the legitimate Visual Studio Code installation, a local user could place an executable named `code` in that directory and cause the agent to execute it with SYSTEM privileges.\n\nThe version range above refers to InsightVM assessment content versions, not Insight Agent versions. All Insight Agent versions were affected while running assessment content at or below 0.0.261.0. Assessment content is delivered to all Insight Agents via the Rapid7 Insight Platform independently of the Insight Agent version and is not customer-managed.\n\nThis issue was resolved in assessment content version 0.0.269.0, which was made generally available on September 15, 2026. Remediation was deployed automatically and no customer action is required.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89325"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.rapid7.com/insight/release-notes-2026-september/#resolved-cve-2026-89325"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-427"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T19:17:19Z"
+  }
+}

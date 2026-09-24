@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2hxj-r43h-qh98",
+  "modified": "2026-09-24T21:32:49Z",
+  "published": "2026-09-24T21:32:49Z",
+  "aliases": [
+    "CVE-2026-93354"
+  ],
+  "details": "Taskview Community before 1.56.0 contains a missing authentication vulnerability that allows unauthenticated attackers to register arbitrary OAuth clients and take over user accounts by exploiting the OAuth 2.0 Dynamic Client Registration endpoint, which is enabled by default and requires no authentication. Attackers can send a POST request to the registration endpoint to obtain a client_id and client_secret, then craft a malicious authorization link pointing to an attacker-controlled redirect URI to capture authorization codes and exchange them for access tokens granting full API access to victim account data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93354"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Gimanh/taskview-community/releases/tag/v1.56.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/taskview-community-missing-authentication-via-oauth-dynamic-client-registration"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1188"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-24T20:17:34Z"
+  }
+}

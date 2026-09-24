@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-38cq-4qpv-62wf",
-  "modified": "2026-09-22T00:30:54Z",
+  "modified": "2026-09-24T21:32:31Z",
   "published": "2026-09-22T00:30:54Z",
   "aliases": [
     "CVE-2026-88756"
   ],
   "details": "Pagekit CMS <= 1.0.18 allows an unauthenticated attacker to perform SQL injection through the credentials array submitted to the public login endpoint (POST /user/authenticate).",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-21T22:16:59Z"
