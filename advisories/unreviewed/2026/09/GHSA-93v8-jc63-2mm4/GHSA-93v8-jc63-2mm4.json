@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-93v8-jc63-2mm4",
-  "modified": "2026-09-24T06:31:15Z",
+  "modified": "2026-09-24T12:31:22Z",
   "published": "2026-09-24T06:31:15Z",
   "aliases": [
     "CVE-2026-84151"
   ],
   "details": "The Post Grid  WordPress plugin before 7.9.5 does not limit an expansion of the WordPress allowed-HTML list to its own markup and applies it site-wide, allowing users with the Contributor role and above to store iframe, style and input elements that are normally stripped from their content, leading to HTML injection (phishing frames, CSS defacement and spoofed input forms) that renders to any visitor and to administrators reviewing the content.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-24T06:17:01Z"
