@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v65j-hff3-753c",
+  "modified": "2026-09-25T15:03:43Z",
+  "published": "2026-09-25T15:03:43Z",
+  "aliases": [
+    "CVE-2026-57440"
+  ],
+  "summary": "Mediawiki EmbedVideo Extension has stored XSS via malformed src url with $wgEmbedVideoRequireConsent disabled",
+  "details": "### Summary\nWith $wgEmbedVideoRequireConsent disabled (not the default), the urls for videos are passed into an iframe src attribute without sanitization. When given a malformed url or id, the src attribute can be escaped via double quotes, allowing for html/javascript injection.\n\n### Details\nThe iframe assembled [here](https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo/blob/a573a16d925ee0ea0d34b360856dc8ab0b88f822/includes/EmbedService/EmbedHtmlFormatter.php#L204-L208) adds the url from `getUrl()` as the src without sanitization.\nThe id regex for the archiveorg service and the url regexes for the wistia and sharepoint services allow for double quotes to be introduced.\n\n### PoC\nUsing double quotes, the src attribute can be escaped.\n```\n<embedvideo service=\"archiveorg\" id='a\" onmouseover=\"alert(document.domain)\" data-x=\"'></embedvideo>\n```\n\n### Impact\nWhen $wgEmbedVideoRequireConsent = false, any user able to edit a page can inject arbitrary JavaScript into an HTML event handler attribute (e.g. onfocus) via parameter. It requires no interaction (autofires via autofocus) and executes in the wiki origin for every visitor to the page.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "starcitizenwiki/embedvideo"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "4.1.0"
+            }
+          ]
+        }
+      ],
+      "database_specific": {
+        "last_known_affected_version_range": "<= 4.0.0"
+      }
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo/security/advisories/GHSA-v65j-hff3-753c"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57440"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo/commit/370156335b325bb81d14d89edf0a1f2643d50a84"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79",
+      "CWE-80"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-25T15:03:43Z",
+    "nvd_published_at": "2026-09-24T19:17:14Z"
+  }
+}

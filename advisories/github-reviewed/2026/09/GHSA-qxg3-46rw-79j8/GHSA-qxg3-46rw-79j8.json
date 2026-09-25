@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qxg3-46rw-79j8",
+  "modified": "2026-09-25T15:02:11Z",
+  "published": "2026-09-25T15:02:11Z",
+  "aliases": [
+    "CVE-2026-61823"
+  ],
+  "summary": "code16 Sharp vulnerable to stored XSS via iframe srcdoc Attribute",
+  "details": "### Impact\nA Stored Cross-Site Scripting (XSS) vulnerability exists in the rich text editor due to improper sanitization of the srcdoc attribute on <iframe> elements.\n\nWhile the underlying Symfony HtmlSanitizer correctly HTML-encodes special characters inside the attribute value (e.g., converting <script> to &lt;script&gt;), the HTML specification mandates that browsers automatically decode HTML entities inside attribute values before processing them. As a result, any encoded JavaScript inside a srcdoc attribute is evaluated and executed as live HTML/JS in the context of the iframe when the page is rendered.\n\nAn attacker with permissions to edit an Editor field can inject malicious scripts to target other users viewing the content. Potential impacts include:\n\n- Session Hijacking (stealing admin session cookies via document.cookie)\n- Account Takeover & Privilege Escalation (e.g., a low-privileged editor triggering actions as an Administrator)\n- Admin panel data theft\n\n### Patches\nThe vulnerability has been patched in version v9.22.5.\n\nThe fix explicitly removes srcdoc from the list of allowed iframe attributes in `src/Utils/Sanitization/FormatsSanitizedValue.php`.\n\n### Workarounds\nUsers who cannot upgrade immediately can manually sanitize all content of editor fields to strip `srcdoc` attributes.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "code16/sharp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.22.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/security/advisories/GHSA-qxg3-46rw-79j8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61823"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/commit/ec509a22c808a5bd9dfad6a0a85c92ce6f411e21"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/code16/sharp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-25T15:02:11Z",
+    "nvd_published_at": "2026-09-24T19:17:15Z"
+  }
+}
