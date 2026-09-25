@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mx48-544j-vv99",
+  "modified": "2026-09-25T18:31:29Z",
+  "published": "2026-09-25T18:31:29Z",
+  "aliases": [
+    "CVE-2026-93366"
+  ],
+  "details": "Bludit CMS through 3.22.0 contains an authorization bypass vulnerability that allows authenticated users with the Author role to enumerate and delete media files belonging to pages owned by other users, including administrators, by supplying arbitrary uuid parameters to unprotected AJAX endpoints. Attackers can retrieve page UUIDs for all users via the content-get-list endpoint and then submit crafted POST requests to the list-images and delete-image endpoints in bl-kernel/ajax/ to access and destroy media files outside their own pages, bypassing the IMAGE_RESTRICT isolation control.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93366"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gist.github.com/akinerkisa/6a7532442795beefd29b9c55a100eb16"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/bludit-cms-authorization-bypass-via-list-images-delete-image-ajax-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T18:17:33Z"
+  }
+}

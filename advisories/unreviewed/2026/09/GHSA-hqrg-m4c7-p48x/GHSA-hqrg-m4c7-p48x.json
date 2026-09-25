@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hqrg-m4c7-p48x",
-  "modified": "2026-09-24T18:31:21Z",
+  "modified": "2026-09-25T18:31:20Z",
   "published": "2026-09-24T18:31:20Z",
   "aliases": [
     "CVE-2026-88370"
   ],
   "details": "libconfini 1.16.4 contains a heap out-of-bounds write condition involving the bundled load_ini_buffer.h utility and strip_ini_cache(). The bundled utility allocates exactly ini_length bytes, while strip_ini_cache() unconditionally writes a NUL terminator at ini_source[ini_length], requiring an additional writable byte. Applications using the bundled allocation pattern can trigger deterministic heap memory corruption when processing any non-empty INI input, resulting in denial of service.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-122"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-24T16:17:13Z"

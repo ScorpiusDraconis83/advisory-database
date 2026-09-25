@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fjx6-m8r4-w94f",
+  "modified": "2026-09-25T18:31:25Z",
+  "published": "2026-09-25T18:31:25Z",
+  "aliases": [
+    "CVE-2026-18312"
+  ],
+  "details": "Readwise Reader for Android constructs URLs in its WebView using attacker-controlled metadata without proper encoding or escaping. The application interpolates untrusted values directly into URL strings and inserts them into the DOM via innerHTML. Because the interpolation occurs without HTML or JavaScript context encoding, a crafted metadata value can break out of the intended URL structure and inject script content. An attacker could supply a document containing malicious metadata that, once synchronized to an Android device and rendered in the Reader WebView, results in execution of injected script content, enabling stored cross-site scripting (XSS)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18312"
+    },
+    {
+      "type": "WEB",
+      "url": "https://kb.cert.org/vuls/id/699627"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T17:17:07Z"
+  }
+}

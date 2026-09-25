@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f83q-fx9f-w4gg",
+  "modified": "2026-09-25T18:31:27Z",
+  "published": "2026-09-25T18:31:27Z",
+  "aliases": [
+    "CVE-2026-94445"
+  ],
+  "details": "A malicious txtar could escape the intended execution context and force arbitrary writes to the playground host's trusted filesystem.\n\n\n\nDisjointly, one of the three possible paths to invoke go vet on the playground host did not correctly restrict the execution environment. This permitted a Go process to make a read for an environment configuration file rooted in the playground host's $HOME.\n\n\n\nTogether, a well-crafted go env file and the go vet invocation could lead to remote code execution in the playground host itself.\n\n\n\n\nThis does not affect users of go.dev/play directly; however, it may affect independent deployments of golang.org/x/playground.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94445"
+    },
+    {
+      "type": "WEB",
+      "url": "https://go.dev/cl/838485"
+    },
+    {
+      "type": "WEB",
+      "url": "https://go.dev/issue/81737"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T17:17:19Z"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hg7f-vffm-ppc6",
+  "modified": "2026-09-25T18:31:24Z",
+  "published": "2026-09-25T18:31:24Z",
+  "aliases": [
+    "CVE-2026-97869"
+  ],
+  "details": "A flaw has been found in langchain4j up to 1.5.3-beta10/1.11.10-beta18/1.18.1-beta27. This vulnerability affects the function AgenticScopeSerializer.fromJson of the file AgenticScopeJsonSerializationIT.java of the component LangChain4j-agentic. This manipulation causes deserialization. Remote exploitation of the attack is possible. The attack's complexity is rated as high. It is stated that the exploitability is difficult. The exploit has been published and may be used. Upgrading to version 1.5.3-beta11, 1.11.10-beta19 and 1.18.1-beta28 is able to resolve this issue. Upgrading the affected component is advised. The project maintainer kindly explains: \"The issue was reported to us privately on 23 July 2026 and fixed in releases published on 29 July 2026. It is tracked as GHSA-gmwr-7wmf-mrjm. Exploitation requires an application to have enabled AgenticScope persistence, which is opt-in, and an attacker who can already write to that store. All maintained release lines have been patched.\"",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:H/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/langchain4j/langchain4j/security/advisories/GHSA-gmwr-7wmf-mrjm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97869"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/afish3201-debug/CVE/blob/main/Insecure%20Jackson%20Default%20Typing%20Leads%20to%20Arbitrary%20Class%20Instantiation%20in%20LangChain4j%20Agentic%20Module.md"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/langchain4j/langchain4j"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/langchain4j/langchain4j/releases/tag/1.18.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/cve/CVE-2026-97869"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/submit/911825"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/409886"
+    },
+    {
+      "type": "WEB",
+      "url": "https://vuldb.com/vuln/409886/cti"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T16:17:31Z"
+  }
+}
