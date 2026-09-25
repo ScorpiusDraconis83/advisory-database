@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cv3p-w443-82hj",
-  "modified": "2026-09-24T18:31:29Z",
+  "modified": "2026-09-25T06:30:29Z",
   "published": "2026-09-24T18:31:29Z",
   "aliases": [
     "CVE-2026-93793"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: validate TX_CMD response layout\n\nTX_CMD parsing uses frame_count to walk status entries and then\nread the trailing SCD SSN. Make the minimum-length check follow\nthat exact runtime layout calculation before parsing the payload.\n\nFor new TX API, reject TX_CMD responses with frame_count != 1 and\nwarn/return in the aggregation handler to document that aggregated\naccounting is expected via BA notifications.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-24T17:17:12Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-g6g4-c2jh-p7hg",
-  "modified": "2026-09-24T18:31:30Z",
+  "modified": "2026-09-25T06:30:30Z",
   "published": "2026-09-24T18:31:30Z",
   "aliases": [
     "CVE-2026-93816"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: validate inline dentry name lengths before conversion\n\nInline dentry conversion copies names out of the inline dentry area\nbefore checking that each recorded name length fits in the available\nfilename slots.\n\nA corrupted image can therefore make the conversion path read past\nthe inline filename storage while building the regular dentry block.\n\nValidate each inline dentry name length against the inline filename\narea before copying it.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-24T17:17:15Z"

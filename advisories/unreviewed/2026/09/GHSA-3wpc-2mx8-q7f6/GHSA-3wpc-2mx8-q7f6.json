@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-3wpc-2mx8-q7f6",
-  "modified": "2026-09-24T18:31:31Z",
+  "modified": "2026-09-25T06:30:30Z",
   "published": "2026-09-24T18:31:31Z",
   "aliases": [
     "CVE-2026-93826"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: hidpp: fix potential UAF in hidpp_connect_event()\n\nIf input_register_device() fails, we call input_free_device(), but keep\nstale pointer to the old device in hidpp->input, which could potentially\nlead to UAF. Fix that by resetting it to NULL before returning from\nhidpp_connect_event().",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-24T17:17:16Z"

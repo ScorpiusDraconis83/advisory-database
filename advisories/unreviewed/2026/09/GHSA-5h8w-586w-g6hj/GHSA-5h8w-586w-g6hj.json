@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-5h8w-586w-g6hj",
-  "modified": "2026-09-24T18:31:32Z",
+  "modified": "2026-09-25T06:30:31Z",
   "published": "2026-09-24T18:31:32Z",
   "aliases": [
     "CVE-2026-97433"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme: validate FDP configuration descriptor sizes\n\nValidate descriptor sizes while walking the FDP configurations log so\ndsze == 0 or a descriptor past the log end cannot cause unbounded\niteration or reads past the buffer.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-24T17:17:21Z"

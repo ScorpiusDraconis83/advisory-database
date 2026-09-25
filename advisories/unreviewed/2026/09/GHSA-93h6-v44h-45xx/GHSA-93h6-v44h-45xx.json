@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-93h6-v44h-45xx",
-  "modified": "2026-09-24T18:31:35Z",
+  "modified": "2026-09-25T06:30:31Z",
   "published": "2026-09-24T18:31:35Z",
   "aliases": [
     "CVE-2026-97508"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nthunderbolt: Set tb->root_switch to NULL when domain is stopped\n\nSimilarly what we do with the firmware connection manager. This makes\ntb_xdp_handle_request() return error to the remote host. However, we\nneed to make sure we keep the uuid alive so that we can reply until the\nwhole domain is released.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-24T17:17:28Z"

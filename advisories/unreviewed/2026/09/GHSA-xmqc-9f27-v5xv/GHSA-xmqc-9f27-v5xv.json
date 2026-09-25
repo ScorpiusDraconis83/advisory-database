@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xmqc-9f27-v5xv",
+  "modified": "2026-09-25T06:30:32Z",
+  "published": "2026-09-25T06:30:32Z",
+  "aliases": [
+    "CVE-2026-97732"
+  ],
+  "details": "IRONMACE Ironshield 1.0.0.167 has a tvk.sys kernel-mode driver that authenticates client executables by checking for expected publisher and root-certificate strings in WIN_CERTIFICATE data (\"IRONMACE Co., Ltd.\" and \"DigiCert Trusted Root G4\") instead of parsing and validating the PKCS signature data. As a result, a local unprivileged attacker may bypass this via crafted certificate data and obtain access to privileged IOCTL functionality.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97732"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/hseoa/ironshield-analysis"
+    },
+    {
+      "type": "WEB",
+      "url": "https://store.steampowered.com/eula/2016590_eula_0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-347"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T04:17:50Z"
+  }
+}

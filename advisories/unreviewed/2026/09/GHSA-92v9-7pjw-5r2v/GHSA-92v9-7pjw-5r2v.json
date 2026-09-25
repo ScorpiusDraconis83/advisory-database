@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-92v9-7pjw-5r2v",
-  "modified": "2026-09-24T18:31:32Z",
+  "modified": "2026-09-25T06:30:31Z",
   "published": "2026-09-24T18:31:32Z",
   "aliases": [
     "CVE-2026-97429"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: fix UAF race in destroy_queue_cpsch\n\nwait_on_destroy_queue() drops locks to wait for queue resume, allowing\na concurrent destroy to free the queue. Use is_being_destroyed flag to\nserialize destruction.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-24T17:17:20Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-269q-3q6g-mmg8",
-  "modified": "2026-09-24T18:31:24Z",
+  "modified": "2026-09-25T06:30:28Z",
   "published": "2026-09-24T18:31:24Z",
   "aliases": [
     "CVE-2026-93265"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI/pwrctrl: tc9563: Fix parsing the integrated Ethernet MAC Endpoint node\n\nDSP3 has an integrated Ethernet MAC Endpoint which has its own set of\nconfig registers for configuring settings such as ASPM. The Endpoint device\nhas two physical functions and those two functions share the same settings.\n\nParse the Endpoint node under DSP3 instead of parsing both functions.  The\nexisting parsing logic also has one OOB issue as parsing both functions\nwill result in accessing past the tc9563_pwrctrl->cfg array.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-24T16:17:23Z"

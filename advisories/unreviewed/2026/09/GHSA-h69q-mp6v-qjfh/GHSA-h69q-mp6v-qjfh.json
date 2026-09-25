@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-h69q-mp6v-qjfh",
-  "modified": "2026-09-24T18:31:29Z",
+  "modified": "2026-09-25T06:30:29Z",
   "published": "2026-09-24T18:31:28Z",
   "aliases": [
     "CVE-2026-93786"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: preserve VFS inherited POSIX ACL mask\n\nThe VFS initializes a child's POSIX ACL from the parent's default ACL and\nthe requested creation mode. Do not mutate the parent ACL or overwrite the\nchild's VFS-computed access and default ACLs afterwards.\n\nThis preserves restrictive ACL_MASK entries and prevents SMB object creation\nfrom widening effective permissions.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -29,7 +34,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-24T17:17:11Z"
