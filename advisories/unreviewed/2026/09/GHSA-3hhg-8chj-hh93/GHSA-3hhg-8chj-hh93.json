@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3hhg-8chj-hh93",
+  "modified": "2026-09-25T21:33:00Z",
+  "published": "2026-09-25T21:33:00Z",
+  "aliases": [
+    "CVE-2026-100304"
+  ],
+  "details": "TDuck survey form 6.0 contains an information disclosure vulnerability in FormAuthUtils.hasPermission that fails open when a form does not exist, allowing authenticated users to access deleted form submissions. Attackers can read orphaned submission data including personal information by providing a known dataId to the GET /user/form/data/details endpoint after the form has been permanently deleted.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100304"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LinYuanyi1/cve-request-poc/blob/adffc39b78cad18cd489cbf7454853bf0f744b7f/tduck/poc_form_data_details_orphan.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TDuckCloud/tduck-survey-form"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TDuckCloud/tduck-survey-form/blob/43ffa9c993e38936fc4de7d8e5aee82bbaa19502/tduck-api/src/main/java/com/tduck/cloud/api/web/controller/UserFormController.java#L451-L459"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TDuckCloud/tduck-survey-form/blob/43ffa9c993e38936fc4de7d8e5aee82bbaa19502/tduck-form/src/main/java/com/tduck/cloud/form/service/impl/UserFormDataServiceImpl.java#L169-L187"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TDuckCloud/tduck-survey-form/blob/43ffa9c993e38936fc4de7d8e5aee82bbaa19502/tduck-form/src/main/java/com/tduck/cloud/form/util/FormAuthUtils.java#L25-L39"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/tduck-survey-form-6.0-information-disclosure-via-fail-open-form-ownership-check"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-636"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T19:16:50Z"
+  }
+}

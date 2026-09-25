@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-47j6-wrmm-xx5g",
+  "modified": "2026-09-25T21:33:00Z",
+  "published": "2026-09-25T21:33:00Z",
+  "aliases": [
+    "CVE-2026-100303"
+  ],
+  "details": "TDuck survey form through 6.0 lacks authorization checks on FormThemeController write endpoints for global form themes and categories. Authenticated non-admin users can add, modify, or delete themes and theme categories affecting forms owned by other users.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100303"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LinYuanyi1/cve-request-poc/blob/adffc39b78cad18cd489cbf7454853bf0f744b7f/tduck/poc_form_theme_write.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TDuckCloud/tduck-survey-form"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TDuckCloud/tduck-survey-form/blob/43ffa9c993e38936fc4de7d8e5aee82bbaa19502/tduck-api/src/main/java/com/tduck/cloud/api/web/controller/FormThemeController.java#L61-L120"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/tduck-survey-form-through-6.0-missing-authorization-in-form-theme-management-endpoints"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T19:16:50Z"
+  }
+}

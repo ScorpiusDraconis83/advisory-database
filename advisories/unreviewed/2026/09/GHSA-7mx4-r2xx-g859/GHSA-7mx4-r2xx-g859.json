@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7mx4-r2xx-g859",
+  "modified": "2026-09-25T21:33:02Z",
+  "published": "2026-09-25T21:33:02Z",
+  "aliases": [
+    "CVE-2026-97060"
+  ],
+  "details": "X-SpringBoot through 6.0 lacks object-level authorization in user management endpoints, allowing sub-administrators to modify or delete users without ownership verification. Attackers with user-management permissions can reset passwords for any account including the super administrator, rebind roles, or delete users via POST /sys/user/update and POST /sys/user/delete endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97060"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/LinYuanyi1/cve-request-poc/blob/master/x-springboot/03_user-admin-cross-object-bola.py"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yzcheng90/X-SpringBoot"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/yzcheng90/X-SpringBoot/blob/d74ddba989c0449948ff1ddb0d211b6a7ce81bfa/src/main/java/com/suke/czx/modules/sys/controller/SysUserController.java#L190-L216"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/x-springboot-through-6.0-authorization-bypass-via-user-management"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T19:17:59Z"
+  }
+}

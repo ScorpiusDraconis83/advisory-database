@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mr3p-q22v-cr79",
+  "modified": "2026-09-25T21:33:04Z",
+  "published": "2026-09-25T21:33:04Z",
+  "aliases": [
+    "CVE-2026-100388"
+  ],
+  "details": "RustDesk versions before 1.5.0 fail to properly validate file transfer permissions on incoming file clipboard messages in the Cliprdr message handler on Linux and macOS. Authenticated remote peers with disabled file transfer permissions can place files onto the host clipboard and retrieve copied files and contents from the process-wide clipboard cache.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100388"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustdesk/rustdesk/pull/16333"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustdesk/rustdesk/commit/f299fb9906006247863250d7dfaa016f29eef7a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustdesk/rustdesk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustdesk/rustdesk/blob/1.4.9/src/server/connection.rs#L3074-L3092"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rustdesk-before-1.5.0-missing-authorization-check-on-incoming-file-clipboard-messages"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T21:17:22Z"
+  }
+}

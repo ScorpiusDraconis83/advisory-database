@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wfj5-qqfr-qgmw",
+  "modified": "2026-09-25T21:33:04Z",
+  "published": "2026-09-25T21:33:04Z",
+  "aliases": [
+    "CVE-2026-100417"
+  ],
+  "details": "RustDesk before 1.5.0 on Windows fails to enforce the one-way file transfer option against peer clipboard file requests, allowing authenticated peers to read files from the host clipboard. Attackers can send FormatDataRequest and FileContentsRequest messages to retrieve copied files by guessing the FileGroupDescriptorW format identifier.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100417"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustdesk/rustdesk/pull/16333"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustdesk/rustdesk/commit/f299fb9906006247863250d7dfaa016f29eef7a4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustdesk/rustdesk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustdesk/rustdesk/blob/1.4.9/libs/clipboard/src/windows/wf_cliprdr.c#L2728-L2770"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/rustdesk/rustdesk/blob/1.4.9/src/ui_cm_interface.rs#L618-L638"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/rustdesk-before-1.5.0-one-way-file-transfer-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T21:17:22Z"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5j62-5j8p-jpqh",
+  "modified": "2026-09-25T21:33:04Z",
+  "published": "2026-09-25T21:33:04Z",
+  "aliases": [
+    "CVE-2026-100391"
+  ],
+  "details": "MediaFlow Proxy through 2.4.9 contains a server-side request forgery vulnerability in the /proxy routes due to missing and incomplete destination validation in the d query parameter. Remote attackers can supply arbitrary internal URLs including loopback and cloud metadata endpoints to read full responses from the proxy server.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100391"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mhdzumair/mediaflow-proxy/commit/99f4af1153d4766420a098a232183cba1efdc560"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mhdzumair/mediaflow-proxy"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mhdzumair/mediaflow-proxy/blob/2.4.9/mediaflow_proxy/routes/proxy.py#L532-L569"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/mediaflow-proxy-through-2.4.9-server-side-request-forgery-via-incomplete-validation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T21:17:22Z"
+  }
+}

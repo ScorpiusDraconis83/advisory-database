@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3p62-2wp9-6rpj",
+  "modified": "2026-09-25T21:33:04Z",
+  "published": "2026-09-25T21:33:04Z",
+  "aliases": [
+    "CVE-2026-100389"
+  ],
+  "details": "GestSup versions before 3.2.61 contain a remote code execution vulnerability in the basic IMAP connector's attachment handling that fails to skip blocked file extensions. Unauthenticated attackers can send emails with PHP attachments to monitored mailboxes, which are written to the web-accessible upload/ticket directory and executed when accessed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100389"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gestsup.fr/index.php?page=changelog"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gestsup.fr/index.php?page=download"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/gestsup-before-3.2.61-remote-code-execution-via-imap-attachment"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-434"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T21:17:22Z"
+  }
+}
