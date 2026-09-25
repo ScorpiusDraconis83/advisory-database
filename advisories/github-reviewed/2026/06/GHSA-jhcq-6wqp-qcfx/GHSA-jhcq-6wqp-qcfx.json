@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jhcq-6wqp-qcfx",
+  "modified": "2026-09-25T19:05:28Z",
+  "published": "2026-06-24T15:31:47Z",
+  "aliases": [
+    "CVE-2026-57293"
+  ],
+  "summary": "Jenkins Gitee Plugin has an incorrect permission check that allows enumerating credentials IDs",
+  "details": "Jenkins Gitee Plugin 1288.v18b_deb_c9069b_ and earlier does not correctly perform a permission check in an HTTP endpoint.\n\nThis allows attackers with global Item/Configure permission (while lacking Item/Configure permission on any particular job) to enumerate credentials IDs of credentials stored in Jenkins. Those can be used as part of an attack to capture the credentials using another vulnerability.\n\nAn enumeration of credentials IDs in Gitee Plugin 1292.v2559f2f3f2c0 requires Overall/Administer permission.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.plugins:gitee"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1292.v2559f2f3f2c0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57293"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/gitee-plugin/pull/199"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/gitee-plugin/commit/2559f2f3f2c02659d9abe5ab3d66c13cef9278dc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/gitee-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/gitee-plugin/releases/tag/1292.v2559f2f3f2c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2026-06-24/#SECURITY-3762%20(2)"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-25T19:05:28Z",
+    "nvd_published_at": "2026-06-24T14:17:35Z"
+  }
+}
