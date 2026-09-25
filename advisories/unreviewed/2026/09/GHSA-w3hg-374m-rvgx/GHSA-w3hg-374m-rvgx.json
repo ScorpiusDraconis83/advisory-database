@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w3hg-374m-rvgx",
+  "modified": "2026-09-25T03:31:01Z",
+  "published": "2026-09-25T03:31:01Z",
+  "aliases": [
+    "CVE-2026-97723"
+  ],
+  "details": "madpsy ka9q_ubersdr before 0.1.58 has a stored cross-site scripting (XSS) vulnerability in the chat message rendering functionality. User-controlled URLs in chat messages were insufficiently neutralized before being converted into HTML links. Quotation characters could break out of the generated href attribute and introduce attacker-controlled HTML attributes, allowing arbitrary JavaScript to execute in the browser of another user when the stored chat message was rendered. No click on the malicious link was required.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97723"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/madpsy/ka9q_ubersdr/pull/114"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/madpsy/ka9q_ubersdr/commit/6aa858da1c030cae11b94c7d6c72322adb9ec60d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T02:16:55Z"
+  }
+}

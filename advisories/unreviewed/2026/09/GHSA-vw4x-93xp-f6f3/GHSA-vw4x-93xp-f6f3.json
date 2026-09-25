@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vw4x-93xp-f6f3",
+  "modified": "2026-09-25T03:31:00Z",
+  "published": "2026-09-25T03:31:00Z",
+  "aliases": [
+    "CVE-2026-92289"
+  ],
+  "details": "Lemonldap::NG::Portal versions from 2.23.0 before 2.23.4 for Perl allow a PKCE bypass for public Relying Parties in \"PKCE or secret\" mode because checkEndPointAuthenticationCredentials does not verify the client secret.\n\nWith oidcRPMetaDataOptionsRequirePKCE set to 2, the authorization endpoint issues a code even when the request carries no code_challenge, and token() admits the exchange as long as a challenge was stored or an authentication method was returned for the caller. checkEndPointAuthenticationCredentials() skips the secret comparison for a Relying Party marked public and still returns the method deduced from the request, so any Basic or form credential satisfies the secret branch. validatePKCEChallenge() then passes, because neither a challenge nor a verifier is present.\n\nAn attacker who intercepts an authorization code issued to a public Relying Party can exchange it for the user's access, ID and refresh tokens by replaying the client_id with an arbitrary secret, which is the attack PKCE prevents. Dynamic client registration creates every Relying Party in this mode.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92289"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.ow2.org/lemonldap-ng/lemonldap-ng/-/releases/v2.23.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://gitlab.ow2.org/lemonldap-ng/lemonldap-ng/-/work_items/3719"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/09/25/2"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1390"
+    ],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T01:16:48Z"
+  }
+}

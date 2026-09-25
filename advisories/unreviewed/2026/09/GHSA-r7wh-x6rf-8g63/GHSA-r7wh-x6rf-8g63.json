@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r7wh-x6rf-8g63",
+  "modified": "2026-09-25T03:31:01Z",
+  "published": "2026-09-25T03:31:01Z",
+  "aliases": [
+    "CVE-2026-97731"
+  ],
+  "details": "MinIO through 7aac2a2 does not verify that every x-amz-* header present on a request also appears in the client-supplied X-Amz-SignedHeaders list. extractSignedHeaders() in cmd/signature-v4-utils.go iterates only the claimed list and never enumerates the headers that actually arrived, and thus a header that arrives unsigned is neither hashed into the canonical request nor rejected. Because cmd/api-router.go dispatches CopyObject on the presence of x-amz-copy-source alone, the holder of a presigned PUT URL scoped to a single object can add that header to the unmodified URL and cause a server-side copy, executed as the signer, of any object the signing key can read. A grant to write one object becomes a read of every bucket that key can reach. Amazon S3 rejects the equivalent request with HTTP 403 AccessDenied. The minio/minio GitHub repository was archived in April 2026; pgsty/silo before 1233254 is also affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97731"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pgsty/silo/commit/1233254309b15571f101b2b26d531951ceaeef1e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://silo.pgsty.com/about/security-advisories/#sn-2026-011"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-347"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T03:16:59Z"
+  }
+}

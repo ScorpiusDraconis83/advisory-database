@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pc4f-6357-r2v6",
+  "modified": "2026-09-25T03:31:01Z",
+  "published": "2026-09-25T03:31:01Z",
+  "aliases": [
+    "CVE-2026-97730"
+  ],
+  "details": "In Netgate pfSense Plus before 26.07 and pfSense CE before 2.9.0, a Local File Inclusion (LFI) vulnerability in the Dashboard (index.php) widget sequence data handling allows an authenticated attacker to execute arbitrary PHP code. To exploit this, an attacker with privileges to modify Dashboard settings and write arbitrary files to the pfSense firewall system (e.g., /tmp/test.widget.php) can submit a crafted widget sequence value containing a path traversal payload (e.g., ../../../../../../../../../../../tmp/test). The Dashboard will subsequently read and execute the arbitrary PHP file as if it were a standard widget.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97730"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.netgate.com/downloads/pfSense-SA-26_18.webgui.asc"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.netgate.com/pfsense/en/latest/install/upgrade-guide.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://redmine.pfsense.org/attachments/7146"
+    },
+    {
+      "type": "WEB",
+      "url": "https://redmine.pfsense.org/issues/16947"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-24"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T03:16:59Z"
+  }
+}
