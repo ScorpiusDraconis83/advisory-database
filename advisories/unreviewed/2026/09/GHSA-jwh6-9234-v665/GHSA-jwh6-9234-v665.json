@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jwh6-9234-v665",
-  "modified": "2026-09-25T12:31:25Z",
+  "modified": "2026-09-25T15:31:43Z",
   "published": "2026-09-25T12:31:25Z",
   "aliases": [
     "CVE-2026-97580"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: rkvdec: bound HEVC tile loops and PPS id to the array capacity\n\ncompute_tiles_uniform() and compute_tiles_non_uniform() loop over\nnum_tile_columns_minus1 + 1 / num_tile_rows_minus1 + 1 entries, and\nassemble_hw_pps() writes one COLUMN_WIDTH / ROW_HEIGHT register per tile\nand indexes priv_tbl->param_set[] by pic_parameter_set_id, all taken from\nthe untrusted PPS. Use the bounded v4l2_hevc_pps_num_tile_columns() /\nv4l2_hevc_pps_num_tile_rows() helpers for the tile loops, and bail out of\nassemble_hw_pps() before indexing priv_tbl->param_set[] with an\nout-of-range pic_parameter_set_id, so the writes stay within the hardware\ntables.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-25T11:17:08Z"

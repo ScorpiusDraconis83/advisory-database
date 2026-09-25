@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-cr7v-wxrv-gp29",
-  "modified": "2026-09-25T12:31:25Z",
+  "modified": "2026-09-25T15:31:42Z",
   "published": "2026-09-25T12:31:25Z",
   "aliases": [
     "CVE-2026-97578"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: verisilicon: rockchip: guard VPU981 AV1 divisor and tile buffer\n\nrockchip_vpu981_av1_dec_set_tile_info() divides context_update_tile_id by\ntile_info->tile_cols and writes one descriptor per tile into the tile_info\nDMA buffer, which holds AV1_MAX_TILES entries; tile_cols and tile_rows\ncome from the bitstream. Guard the division against a zero tile_cols by\ninitialising the context-update values to zero and computing them only\nwhen tile_cols is non-zero, and stop the descriptor writes once the\ntile_info buffer is full. The tile geometry written to the hardware\nregisters is left unmodified; the per-dimension and total tile bounds are\nenforced by the control validation.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-25T11:17:08Z"

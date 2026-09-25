@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-2hhx-gj64-2962",
-  "modified": "2026-09-25T12:31:34Z",
+  "modified": "2026-09-25T15:31:44Z",
   "published": "2026-09-25T12:31:34Z",
   "aliases": [
     "CVE-2026-98041"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Don't predict JMP32 pointer vs zero comparisons\n\nConsider the following program:\n\n        r1 = map_value;      /* low 32 bits are zero at runtime */\n        r6 = 0xdead000000000000;\n        if w1 != 0 goto l1;\n    l0: r1 += r6;\n        r2 = *(u64 *)(r1 + 0);\n        exit;\n    l1: r6 = 0;\n        goto l0;\n\nAt the moment is_branch_taken() reports the jump as always taken,\nbecause it does not distinguish between BPF_JMP and BPF_JMP32\ncomparisons when processing 'if w1 != 0 ...'.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-25T11:17:32Z"

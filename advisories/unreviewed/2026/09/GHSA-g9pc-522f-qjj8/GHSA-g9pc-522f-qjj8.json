@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g9pc-522f-qjj8",
+  "modified": "2026-09-25T15:31:47Z",
+  "published": "2026-09-25T15:31:46Z",
+  "aliases": [
+    "CVE-2026-100072"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nACPI: platform: Use acpi_bus_get_primary_device()\n\nThe acpi_get_first_physical_node() usage in acpi_platform_fill_resource()\nand acpi_create_platform_device() is generally unsafe because in theory\nthe device returned by it may be freed at any time [1].\n\nIt is also inefficient because acpi_get_first_physical_node() is called\nmultiple times for the same argument which can be avoided.\n\nAddress these issues by using acpi_bus_get_primary_device() instead of\nacpi_get_first_physical_node() and adjusting the code to call it just\nonce at the beginning of and acpi_create_platform_device() and drop\nthe device reference acquired by it upon the return from that function.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100072"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a9ba4dd2f18bf3f439d9ef0d8f375f90360ba1bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9d202d3b6c28e8c779cd2f2b10d2f7ab665ca71"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T14:17:13Z"
+  }
+}

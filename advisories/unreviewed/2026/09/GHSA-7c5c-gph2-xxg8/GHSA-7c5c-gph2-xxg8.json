@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-7c5c-gph2-xxg8",
-  "modified": "2026-09-25T12:31:22Z",
+  "modified": "2026-09-25T15:31:41Z",
   "published": "2026-09-25T12:31:22Z",
   "aliases": [
     "CVE-2026-97523"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: close race between scheduler and state change\n\nThe mptcp scheduler may race with subflow sockets state change: data\ntransmission on the selected socket may fail and a later release could\ntry to use mss_now reset to 0 for a divide operation.\n\nAddress the issue by explicitly checking for the critical scenario.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-25T11:17:02Z"

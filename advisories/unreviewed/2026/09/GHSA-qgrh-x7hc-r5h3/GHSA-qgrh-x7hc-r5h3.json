@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-qgrh-x7hc-r5h3",
-  "modified": "2026-09-25T12:31:36Z",
+  "modified": "2026-09-25T15:31:45Z",
   "published": "2026-09-25T12:31:36Z",
   "aliases": [
     "CVE-2026-98096"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: sr: restore network header before routing and forwarding\n\nipv6_srh_rcv() runs with skb->data at the Segment Routing Header (SRH)\nwhile skb_network_header() points at the IPv6 header.\n\nWhen segments_left > 0, ipv6_srh_rcv() previously restored the skb->data\nposition by pushing sizeof(struct ipv6hdr), assuming the SRH immediately\nfollowed the fixed IPv6 header. If another extension header (such as a\nHop-by-Hop options header) precedes the SRH, skb_network_offset()\nremained negative.\n\nThis led to two problems:\n1. During ip6_route_input(), fib6_rules_early_flow_dissect() invokes\n   __skb_flow_dissect() which passes the negative skb_network_offset()\n   to flow dissection, breaking BPF and C flow dissector logic.\n2. If forwarded via ip6_forward() or redirected via act_mirred, downstream\n   handlers (like sch_fragment() or neighbour output) pass the negative\n   offset as an unsigned length, triggering OOB memcpy or buffer overflows.\n\nFix this by pushing -skb_network_offset(skb) before routing, ensuring\nskb_network_offset(skb) is 0 for route lookup / flow dissection as well as\ndownstream forwarding. On the loopback path, pull skb_transport_offset(skb)\nto restore skb->data to the SRH before looping back.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -33,7 +38,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-25T11:17:39Z"

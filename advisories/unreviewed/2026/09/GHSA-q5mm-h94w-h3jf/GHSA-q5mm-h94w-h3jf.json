@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-q5mm-h94w-h3jf",
-  "modified": "2026-09-25T12:31:28Z",
+  "modified": "2026-09-25T15:31:44Z",
   "published": "2026-09-25T12:31:27Z",
   "aliases": [
     "CVE-2026-97911"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel: ethosu: Ensure SRAM region size matches job\n\nIt is possible for userspace to set the job SRAM size to 0, but then still\nhave SRAM accesses in the command stream. When the job SRAM size is 0,\nsetting the region base register is skipped and a stale base address from\na prior job is used.\n\nCheck the region size against the job's SRAM size instead of just the size\nof the SRAM. The job's SRAM size was already checked against the total SRAM\nsize.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -25,7 +30,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-25T11:17:18Z"
