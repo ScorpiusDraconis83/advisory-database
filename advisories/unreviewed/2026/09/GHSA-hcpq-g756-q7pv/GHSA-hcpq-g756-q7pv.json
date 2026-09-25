@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-hcpq-g756-q7pv",
-  "modified": "2026-09-24T18:31:21Z",
+  "modified": "2026-09-25T06:30:26Z",
   "published": "2026-09-24T18:31:21Z",
   "aliases": [
     "CVE-2026-93207"
   ],
   "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nSUNRPC: Zero rpc_gss_wire_cred at svcauth_gss_decode_credbody() entry\n\nsvcauth_gss_decode_credbody() writes the caller's\nrpc_gss_wire_cred field by field and assigns gc_ctx.len only on\nthe success tail.  The caller storage is svcdata->clcred, which\nlives in the per-svc_rqst gss_svc_data and is reused across\nrequests.  Early decode failures leave partially decoded state\nmixed with residue from the prior request.\n\nThe trailing body_len tightness check is the sharpest case:\nxdr_stream_decode_opaque_inline() has already written gc_ctx.data\nwith a borrowed inline pointer into the current request's XDR\npages, but gc_ctx.len retains its prior value.  Once the request\npages are released the pooled clcred carries a dangling pointer\npaired with a stale length.\n\nZero the caller's rpc_gss_wire_cred at function entry so that\nevery early-return path leaves a deterministic all-zero cred.\nOn the trailing tightness-check path, gc_ctx.len is now zero\ninstead of stale, which neuters length-driven consumers such as\ngss_svc_searchbyctx() that would otherwise walk the dangling\ndata pointer.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -37,7 +42,7 @@
   ],
   "database_specific": {
     "cwe_ids": [],
-    "severity": null,
+    "severity": "CRITICAL",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-24T16:17:15Z"
