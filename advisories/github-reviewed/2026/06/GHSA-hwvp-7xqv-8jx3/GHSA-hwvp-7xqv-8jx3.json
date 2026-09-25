@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hwvp-7xqv-8jx3",
+  "modified": "2026-09-25T18:08:47Z",
+  "published": "2026-06-24T15:31:47Z",
+  "aliases": [
+    "CVE-2026-57286"
+  ],
+  "summary": "Jenkins Git Parameter Plugin has a missing permission check that allows listing SCM branch and tag names ",
+  "details": "Jenkins Git Parameter Plugin 462.vdcf3df2ed2ca_ and earlier does not perform a permission check in an HTTP endpoint that populates the list of values for Git parameters by querying the SCM configured on a job, using the SCM credentials configured in Jenkins.\n\nThis allows attackers with Item/Read permission to obtain information about the SCM repository used by a job they would otherwise be unable to access, such as branch names, tag names, and revision metadata.\n\nGit Parameter Plugin 462.463.v496a_59f698e5 requires Item/Build permission to populate the list of values for Git parameters.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.tools:git-parameter"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "462.463"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57286"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/git-parameter-plugin/commit/496a59f698e5ada712dea1ebf980709f0040e394"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/git-parameter-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/git-parameter-plugin/releases/tag/462.463.v496a_59f698e5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2026-06-24/#SECURITY-3745"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-25T18:08:47Z",
+    "nvd_published_at": "2026-06-24T14:17:34Z"
+  }
+}

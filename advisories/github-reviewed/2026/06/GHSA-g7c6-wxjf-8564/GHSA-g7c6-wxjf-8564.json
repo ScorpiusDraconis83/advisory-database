@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g7c6-wxjf-8564",
+  "modified": "2026-09-25T18:10:06Z",
+  "published": "2026-06-24T15:31:47Z",
+  "aliases": [
+    "CVE-2026-57285"
+  ],
+  "summary": "Jenkins GitHub Branch Source Plugin has missing permission check that allows enumerating GitHub Enterprise server URLs",
+  "details": "Jenkins GitHub Branch Source Plugin 1967.1969.v205fd594c821 and earlier does not perform a permission check in an HTTP endpoint that lists the GitHub API endpoints configured in the global plugin configuration.\n\nThis allows attackers with Overall/Read permission to obtain the URLs of GitHub Enterprise servers configured by administrators.\n\nThis vulnerability has been reported through the Jenkins Bug Bounty Program sponsored by the European Commission.\nGitHub Branch Source Plugin 1967.1970.vd86979736546 requires Overall/Manage permission or Item/Extended Read permission on an item to list the configured GitHub API endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.plugins:github-branch-source"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1967.1970"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57285"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/github-branch-source-plugin/commit/d869797365462234fe061c74fe6bf0bcae8777ea"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/github-branch-source-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/github-branch-source-plugin/releases/tag/1967.1970.vd86979736546"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2026-06-24/#SECURITY-3808"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-25T18:10:06Z",
+    "nvd_published_at": "2026-06-24T14:17:34Z"
+  }
+}
