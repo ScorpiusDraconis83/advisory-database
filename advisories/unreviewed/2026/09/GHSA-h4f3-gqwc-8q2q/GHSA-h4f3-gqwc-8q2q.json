@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h4f3-gqwc-8q2q",
+  "modified": "2026-09-25T12:31:26Z",
+  "published": "2026-09-25T12:31:25Z",
+  "aliases": [
+    "CVE-2026-97588"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/crypto: Map EBUSY to EIO when key conversion fails repeatedly\n\nWhen hardware persistently returns -EBUSY after exhausting retries,\nthe error propagates to crypto_finalize_*_request(). The crypto API's\ncompletion wrapper treats -EBUSY as a queueing status and swallows it,\npreventing the completion callback from firing. This causes callers\nusing crypto_wait_req() to block indefinitely.\n\nTranslate persistent -EBUSY to -EIO after retry exhaustion to ensure\nproper error propagation and callback invocation.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97588"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7a08507ea5b4d06ad8d269287913573f34467565"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e267bd142664a181474112392aeaa8b3d4b12f2e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f6b263679aa72ad2e534bf93db55f2589549a40e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:09Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jp6c-38x7-hq3p",
+  "modified": "2026-09-25T12:31:23Z",
+  "published": "2026-09-25T12:31:23Z",
+  "aliases": [
+    "CVE-2026-97542"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: bail out on bitmap errors in xrep_agfl_fill\n\nLOLLM also points out that the xagb_bitmap_set call in xrep_agfl_fill\ncan fail, but we don't check the result of xagb_bitmap_walk, so we\nsilently drop the error and proceed with inconsistent incore data.\nThat shouldn't be allowed.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97542"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82a0fd3fe908914425798b6be2b9b0a4f69ff84d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5309ae6504e9b727d83bdfb2a19f44896a8f019"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e49977bc568c2649cf1a37992e538df8e3779ee4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eaf580538eb1be3d162400d04c4b7dc4c627296b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:04Z"
+  }
+}

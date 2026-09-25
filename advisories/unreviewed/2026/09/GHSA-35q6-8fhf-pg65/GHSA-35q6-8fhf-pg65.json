@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-35q6-8fhf-pg65",
+  "modified": "2026-09-25T12:31:28Z",
+  "published": "2026-09-25T12:31:28Z",
+  "aliases": [
+    "CVE-2026-97926"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nufs: validate cylinder group metadata before caching it\n\nufs_read_cylinder() copies the cylinder group index and the rotor\npositions straight from the on-disk group and caches them without any\ncheck:\n\n\tucpi->c_cgx    = fs32_to_cpu(sb, ucg->cg_cgx);\n\tucpi->c_rotor  = fs32_to_cpu(sb, ucg->cg_rotor);\n\tucpi->c_frotor = fs32_to_cpu(sb, ucg->cg_frotor);\n\tucpi->c_irotor = fs32_to_cpu(sb, ucg->cg_irotor);\n\nThey are then used as indices during allocation and free:\n\n  - c_cgx indexes the cylinder summary array as\n    UFS_SB(sb)->fs_cs(ucpi->c_cgx), so a value past s_ncg writes a 32\n    bit count outside the s_csp allocation.\n\n  - c_frotor becomes a bitmap scan start, start = c_frotor >> 3, and\n    then length = ((s_fpg + 7) >> 3) - start. A start beyond the block\n    bitmap wraps the unsigned length to a huge value, so ubh_scanc()\n    walks far past the cylinder group buffers. c_irotor drives the\n    inode bitmap the same way.\n\nA crafted image can set any of these freely, turning an ordinary\nallocation into an out of bounds access.\n\nReject a cylinder group whose recorded index does not match the group\nbeing read, or whose rotors fall outside the group, before the metadata\nis cached. Valid filesystems keep cg_cgx equal to the group number and\nthe rotors within the group, so only malformed images are rejected.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97926"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5902a95066883cf96fa15b2680694fc5dd0c7d11"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/87b12dc360a002eb2d498aa4f01e84347019612d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/abde9eb33106850dfa367ad3965d3588bb8558d5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c9d263be26806d388129fab8c6904bed197fc6af"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:19Z"
+  }
+}

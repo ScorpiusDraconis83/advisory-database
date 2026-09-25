@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cmc8-g72c-8f33",
+  "modified": "2026-09-25T12:31:32Z",
+  "published": "2026-09-25T12:31:32Z",
+  "aliases": [
+    "CVE-2026-98005"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs: delimit inode_share cache key components\n\nPreviously, inode_share keys were encoded as follows:\n\n  fingerprint || domain_id\n\nIt would be better to have a separator between the fingerprint and domain\nID so that the fingerprint won't be parsed as part of a domain ID.\n\nChange the key encoding as follows:\n\n  domain_id || '\\0' || fingerprint\n\nSince domain_id is a NUL-terminated string, this makes the in-memory key\nindices unambiguous.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98005"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/16322a67336cfeea0af4b05206ef8d0e0eda55bb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96bf9831fbf423b8104f7948cd8fe7007ecfb46c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:28Z"
+  }
+}

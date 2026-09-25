@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9698-pw26-h6mc",
+  "modified": "2026-09-25T12:31:28Z",
+  "published": "2026-09-25T12:31:28Z",
+  "aliases": [
+    "CVE-2026-97916"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/ivpu: Validate firmware log buffer metadata\n\nThe tracing log headers parsed by fw_log_print_buffer() reside in\nDMA-shared BOs that the NPU firmware can write to.\n\nfw_log_from_bo() validated log->header_size and log->size, but\nfw_log_print_buffer() re-read those same fields from shared memory\nafterwards, allowing a TOCTOU where firmware changes them between the\ncheck and the use, and making the host dereference out-of-bounds\naddresses while printing logs.\n\nSnapshot the validated values once with READ_ONCE() and pass them down\nexplicitly in a new struct ivpu_fw_log_desc instead of re-reading them\nfrom the shared struct.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97916"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0724afc55c77c36c7feb9a7264b02aa7593c5c2d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40868f80a89199630b03d4457876f9a1feba0660"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8ec3d6972f1440fae6c8dadd1859892775208759"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1555f63ee1a680f280bc18e8dac416f250e2ec3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:18Z"
+  }
+}

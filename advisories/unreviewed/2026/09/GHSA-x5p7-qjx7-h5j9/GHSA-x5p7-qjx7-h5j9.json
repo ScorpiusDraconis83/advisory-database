@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x5p7-qjx7-h5j9",
+  "modified": "2026-09-25T12:31:26Z",
+  "published": "2026-09-25T12:31:26Z",
+  "aliases": [
+    "CVE-2026-97610"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfs: Fix uninitialized return value in netfs_unbuffered_write()\n\nIf preparation of the first subrequest fails,\nnetfs_unbuffered_write() exits its loop before ret is initialized. The\nempty-iterator check can do the same.\n\nFor synchronous writes, netfs_unbuffered_write_iter_locked() may then\nreturn an unrelated error instead of wreq->error. This is reachable\nthrough CIFS if cifs_prepare_write() fails to reopen the file or obtain\ncredits.\n\nInitialize ret to 0 so the caller returns wreq->error if no data was\nwritten, or the number of bytes already written otherwise.\n\nFound with Clang's -Wconditional-uninitialized.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97610"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e38d500471d097cda87d7d374bbc1b13493075d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3d038eebdbd400c3bc4b66bd8aa0dff0c2bcce26"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f18e8774f4d3137fa0a5fb8ffa83d59a719666d8"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:15Z"
+  }
+}

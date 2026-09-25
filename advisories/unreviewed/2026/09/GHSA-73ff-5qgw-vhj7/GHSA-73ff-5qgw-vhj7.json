@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-73ff-5qgw-vhj7",
+  "modified": "2026-09-25T12:31:27Z",
+  "published": "2026-09-25T12:31:27Z",
+  "aliases": [
+    "CVE-2026-97904"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncpufreq: initialize policy rwsem before sysfs publication\n\ncpufreq_policy_alloc() initializes policy->rwsem after\nkobject_init_and_add() has created the policy sysfs directory and its\ndefault attributes. A sysfs access can therefore reach a policy callback\nbefore the semaphore has been initialized.\n\nInitialize policy->rwsem before publishing the policy kobject so sysfs\ncallbacks always see an initialized semaphore.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97904"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27c9b491bf7604e83b50c3bbfa18a30266ff345f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2cee937f779f69b195b37bbec1e888da9bfe9d58"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3e5d1bf4bd687beb2cb4e32a07af695455925588"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc11263cb05ed519758fd135fe08d611bad1f241"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:17Z"
+  }
+}

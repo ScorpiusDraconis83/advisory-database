@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-38jm-2gpc-m9wh",
+  "modified": "2026-09-25T12:31:32Z",
+  "published": "2026-09-25T12:31:32Z",
+  "aliases": [
+    "CVE-2026-98002"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/amd: Fix ineffective error check in nested domain allocation\n\namd_iommu_pdom_id_alloc() returns an int: a domain ID on success, or the\nnegative errno from ida_alloc_range() when the ID space is exhausted or\nmemory is short.  amd_iommu_alloc_domain_nested() stores that return value\nin gdom_info->hdom_id, which is a u32, and only then tests it:\n\n\tgdom_info->hdom_id = amd_iommu_pdom_id_alloc();\n\tif (gdom_info->hdom_id <= 0) {\n\nThe assignment discards the sign, so -ENOSPC becomes 0xffffffe4 and the\ntest never fires.  The nested domain is then set up with a host domain ID\nthat was never allocated, instead of the allocation failing with -ENOSPC.\n\nKeep the value in an int, test it there, and store it only once it is\nknown to be valid, which is what the other amd_iommu_pdom_id_alloc()\ncallers already do.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98002"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/80c231f5577229d1e90a1e312b3095f9502f8625"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa5c0827f0b7bac6d0a188f10118151769ae68fd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:28Z"
+  }
+}

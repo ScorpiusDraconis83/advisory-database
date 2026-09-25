@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jx2m-2c39-9c87",
+  "modified": "2026-09-25T12:31:28Z",
+  "published": "2026-09-25T12:31:28Z",
+  "aliases": [
+    "CVE-2026-97924"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing/user_events: Don't destroy fields when event removal fails\n\ndestroy_user_event() destroys the event's fields before attempting to\nremove the trace event call. If user_event_set_call_visible() fails,\ne.g. because the event is still enabled and trace_remove_event_call()\nreturns -EBUSY, the event is left registered with an irreversibly\ndestroyed field list. Any subsequent interaction with the event then\noperates on an empty field list while it is still fully visible in\ntracefs.\n\nMove the field destruction after the call removal, and splice the\nfield list back onto the event when the removal fails so the event\nremains in a consistent state.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97924"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0892da2272ec565858aa1ec5458552d699de9142"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2deb753127d7b7035e893955c5e91875e767d1f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/62d6544e86506bb0695c9594c713cba859666f2f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9c62b7e92b6086a2a0aeb71f3553dd8cf7fdcd8b"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:19Z"
+  }
+}

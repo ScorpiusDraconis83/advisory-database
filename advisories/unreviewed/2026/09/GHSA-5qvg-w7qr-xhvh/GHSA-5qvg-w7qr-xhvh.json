@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5qvg-w7qr-xhvh",
+  "modified": "2026-09-25T12:31:34Z",
+  "published": "2026-09-25T12:31:34Z",
+  "aliases": [
+    "CVE-2026-98060"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Reject resilient lock operations in rbtree callbacks\n\n__bpf_rbtree_add() keeps parent and link pointers live across calls to the\nprogram-supplied comparison callback. The verifier therefore requires the\nroot's lock to remain held throughout the callback.\n\nThe helper path enforces this rule for bpf_spin_lock() and\nbpf_spin_unlock(), but the resilient lock kfunc argument path does not.\nSince resilient locks may protect BPF rbtree roots, a callback can release\nthe root lock and let another CPU remove and free the node referenced by\nthe in-progress tree walk. The walk then resumes using freed pointers.\n\nReject resilient lock kfuncs in an rbtree comparison callback, matching\nthe existing policy for the spin lock helpers. Resilient-lock-protected\ntrees remain valid when their comparison callbacks leave lock state alone.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98060"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/71930202a0a0c49f0a3b45b41907a074cb780266"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7b7b8b5960102566bd625ae829d1f330c5b5d104"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cc2e065ed206aecd9b94564779244f3ffb26e356"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:35Z"
+  }
+}

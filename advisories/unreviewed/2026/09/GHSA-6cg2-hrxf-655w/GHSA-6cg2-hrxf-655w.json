@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6cg2-hrxf-655w",
+  "modified": "2026-09-25T12:31:25Z",
+  "published": "2026-09-25T12:31:24Z",
+  "aliases": [
+    "CVE-2026-97568"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: syncookies: remember the request backup flag\n\nInstead of using an uninitialised bit when copying the info in\nsubflow_ulp_clone().\n\nTo fix this, no need to extend the join_entry structure: backup is\ncoming from struct mptcp_subflow_request_sock, only one bit. Do the same\nhere by using one bit for both.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97568"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/00b2bd518911e0daab00f4749cce68c191ccebb4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06d649f9cd03a9f8e768a658b20acf8d2c8022e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/61178d0b85b4b1b53e78b06e89d018d22d102f88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b76c0e28b392620dfbaf92cdeedbf115820b44cb"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:07Z"
+  }
+}

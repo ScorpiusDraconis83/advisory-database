@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-93pc-w6vh-hg9r",
+  "modified": "2026-09-25T12:31:32Z",
+  "published": "2026-09-25T12:31:32Z",
+  "aliases": [
+    "CVE-2026-98011"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: hhf: clamp quantum in change and init paths\n\nhhf_change() accepts any quantum from userspace, including 1. With a\ncrafted size table qdisc_pkt_len reaches ~2 GiB, so quantum=1 makes\nthe deficit-refill loop spin ~2^31 times under the qdisc lock\n(a soft lockup / denial of service).\n\nAdd max(256U, ...) in hhf_change() matching fq_codel_change(). Clamp\nhhf_init() to [256, 1<<20] matching the siblings, and remove the old\nfallback that only set quantum=256 on overflow.\n\nConditions to recreate the bug:\n  CONFIG_NET_SCH_HHF=y. Requires CAP_NET_ADMIN (namespace-local via\n  unshare -Urn suffices).\n\n  tc qdisc add dev dummy0 root hhf\n  tc qdisc change dev dummy0 root hhf quantum 1 stab data 32768 size_log 15 cell_log 0",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98011"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0898c6f9fa9ce2632ae88bd0f34a878ccc6335af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/1113b674307ffddd402524bd1fd9d7d5629b705b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e77947bbf6c166e76c038663832d0914418f761"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb56a495f59baf6cad5ed80e3ffb9078098b1346"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:29Z"
+  }
+}

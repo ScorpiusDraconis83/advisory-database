@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p8mx-g9vj-j29m",
+  "modified": "2026-09-25T12:31:27Z",
+  "published": "2026-09-25T12:31:27Z",
+  "aliases": [
+    "CVE-2026-97905"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ncpufreq: zero-initialize policy cpumask before sysfs publication\n\ncpufreq_policy_alloc() allocates policy->cpus with alloc_cpumask_var(),\ni.e. without __GFP_ZERO, unlike the sibling related_cpus and real_cpus\nmasks. With CONFIG_CPUMASK_OFFSTACK=y the mask is a separate\nkmalloc_node() allocation, so its bitmap holds whatever the slab allocator\nleft behind:\n\n  cpufreq_online()\n    cpufreq_policy_alloc()\n      alloc_cpumask_var(&policy->cpus)    /* bitmap is uninitialized */\n      kobject_init_and_add()              /* policy%u/ appears in sysfs */\n    cpufreq_policy_online()\n      cpumask_copy(policy->cpus, cpumask_of(cpu))  /* first valid value */\n\nThis leaves a window in which the sysfs attributes are already reachable\nwhile policy->cpus is still garbage. show()/store() gate on\npolicy_is_inactive(), i.e. cpumask_empty(policy->cpus), so a non-zero\nbitmap makes them run the attribute callbacks on a policy that is not\ninitialized yet.\n\nFix this by using zalloc_cpumask_var() for policy->cpus.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97905"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0de2f3918fbbbb767e7e716178194b66560dd12a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/54d37bcf2f497140b9207968557ddb484058e749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6e166b9281dec98aed19213a84235250e5fdb081"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bbc0472d2270bf732142ca71579d6ede636174ed"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:17Z"
+  }
+}

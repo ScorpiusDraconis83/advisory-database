@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6rpr-wqmr-68rh",
+  "modified": "2026-09-25T12:31:38Z",
+  "published": "2026-09-25T12:31:38Z",
+  "aliases": [
+    "CVE-2026-98139"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: only count successfully cleared runs when freeing clusters\n\nntfs_cluster_free_from_rl_nolock() adds a run's length to nr_freed\nwhenever the error bookkeeping condition is false, which includes\ncases where ntfs_bitmap_clear_run() actually failed - e.g. a second\nrun failing with the same errno as an earlier one, or any failure\nafter a non-ENOMEM error was already recorded. Since a failed\nntfs_bitmap_clear_run() rolls back its partial modifications, no\nbits were cleared for that run, yet its length still inflates\nvol->free_clusters, corrupting statfs output and the allocator's\nfree space gate.\n\nOnly count runs whose bitmap clear succeeded.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98139"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7eb97d8828e7758b9c81277f7802e740a800f78a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/be9e89ccb8e52a3e4b67feeb03ebd8133091dc7e"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:45Z"
+  }
+}

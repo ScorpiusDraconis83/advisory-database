@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pm9x-9ffx-jrqj",
+  "modified": "2026-09-25T12:31:38Z",
+  "published": "2026-09-25T12:31:38Z",
+  "aliases": [
+    "CVE-2026-98137"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: treat any nonzero dio zero-range return as an error\n\nntfs_dio_zero_range() returns either 0 or a negative errno from\nblkdev_issue_zeroout(); it never returns a positive value.  The\nzeroing failure check in ntfs_attr_fallocate() therefore never fired,\nso a failed zeroing operation was silently ignored: the loop kept\ngoing, the newly allocated clusters were folded into initialized_size\nand the write could succeed leaving stale on-disk data.\n\nTreat any nonzero return as an error and abort the allocation.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98137"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/56392b0d5290ff2b05fc673bc07803b8ae4cfd1b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/607a9478833db656e7ceac8e9e382fa4acfde545"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:45Z"
+  }
+}

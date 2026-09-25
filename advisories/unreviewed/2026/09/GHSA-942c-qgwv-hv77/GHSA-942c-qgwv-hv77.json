@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-942c-qgwv-hv77",
+  "modified": "2026-09-25T12:31:32Z",
+  "published": "2026-09-25T12:31:32Z",
+  "aliases": [
+    "CVE-2026-98004"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/riscv: Serialize command queue publishing\n\nSerialize command queue publishing so software producer state advances only\nafter a command is written and the hardware tail is updated. Wait for\nhardware consumption outside the queue lock when the command queue is full\nso other CPUs are not blocked behind a long poll.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98004"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6d4c12ab9ab8db87411c863a54e0e97f9197afde"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca58afa40946acd252a50fa4d4a86f15847a3d7d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:28Z"
+  }
+}

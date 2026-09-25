@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hj9h-73j9-cr9g",
+  "modified": "2026-09-25T12:31:38Z",
+  "published": "2026-09-25T12:31:38Z",
+  "aliases": [
+    "CVE-2026-98138"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: do not mark the volume clean in sync_fs when errors were recorded\n\nntfs_put_super() and the remount-read-only path both clear the dirty bit\nonly when NVolErrors(vol) is false. ntfs_sync_fs() clears it\nunconditionally, so any sync() on a volume that recorded an error marks\nthat volume clean. A volume without this set is then seen as not needing\nrecovery and it does not run one, so whatever went wrong is never repaired.\n\nThis change skips resetting the dirty bit when there are volume errors.\n\nReproduced on a volume whose $MFTMirr does not match $MFT, which sets the\nerror flag while leaving the mount read-write: after a write and a sync,\nthe on-disk volume flags read 0x0000 with this driver and 0x0001 with the\nguard in place.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98138"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e4c839905418d55bafe571a92533a1d1ac7b0a8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ca1f9933eff777a604eb664d0f9ae433b8664cbf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:45Z"
+  }
+}

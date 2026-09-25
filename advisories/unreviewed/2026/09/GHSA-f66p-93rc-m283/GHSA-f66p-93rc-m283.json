@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f66p-93rc-m283",
+  "modified": "2026-09-25T12:31:25Z",
+  "published": "2026-09-25T12:31:25Z",
+  "aliases": [
+    "CVE-2026-97576"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: v4l2-ctrls: validate HEVC tile counts\n\nThe stateless HEVC decoders read num_tile_columns_minus1 + 1 entries from\ncolumn_width_minus1[] and num_tile_rows_minus1 + 1 from row_height_minus1[]\nand use them as tile-loop bounds, but std_validate_compound() does not\nbound these u8 counts. Reject a V4L2_CTRL_TYPE_HEVC_PPS with tiling\nenabled whose tile counts exceed the uAPI array capacity, mirroring the\nexisting compound-control range checks.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97576"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/400cd78a63cc647412cf069c9851bdea2818340c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ba1023d3a6d5d244d59f20c4ba6af4879ae08a9f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c7b1ef6dc57f4e57fe27cfdd3bf82033ed91ca34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/dc694a9929f7cb9c88ef91e45eb982b7bbe5a477"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:08Z"
+  }
+}

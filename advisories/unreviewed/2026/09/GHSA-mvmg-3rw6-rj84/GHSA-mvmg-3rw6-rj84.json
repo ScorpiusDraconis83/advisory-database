@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mvmg-3rw6-rj84",
+  "modified": "2026-09-25T12:31:32Z",
+  "published": "2026-09-25T12:31:32Z",
+  "aliases": [
+    "CVE-2026-98003"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/amd: Do not reallocate GA log buffers on resume\n\nCommit c5e1a1eb9279 (\"iommu/amd: Simplify and Consolidate Virtual APIC\n(AVIC) Enablement\") moved the GA log allocation from iommu_init_pci()\nto enable_iommus_vapic(), which is called on every resume.\n\niommu_init_ga_log() assigns iommu->ga_log and iommu->ga_log_tail\nunconditionally. Each resume therefore replaces the boot-time pointers\nand leaks both old allocations. The function also uses GFP_KERNEL from a\nsyscore resume callback, where interrupts are disabled and the non-boot\nCPUs are offline.\n\nReturn early if both buffers are already allocated. Clear the pointers\nin free_ga_log() so a partial allocation failure cannot leave ga_log\ndangling.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98003"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/00a7dd64888d6dd72110b40e2824a088cf7b7386"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/94458b80d3b203c1c9e2c98aa7319b7713e006c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b6be275d19cee01f8f1f08a2ff18337103d05d40"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:28Z"
+  }
+}

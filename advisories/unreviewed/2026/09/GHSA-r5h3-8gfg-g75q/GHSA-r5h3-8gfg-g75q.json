@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r5h3-8gfg-g75q",
+  "modified": "2026-09-25T12:31:39Z",
+  "published": "2026-09-25T12:31:38Z",
+  "aliases": [
+    "CVE-2026-98157"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nEDAC/device_sysfs: Use kstrtouint() for poll_msec to prevent truncation\n\nThe poll_msec sysfs store file uses simple_strtoul() which accepts an unsigned\nlong, but the target field (poll_msec) is unsigned int. On 64-bit systems,\na value > UINT_MAX is silently truncated when stored.\n\nFix the mismatch by using kstrtouint() instead. This rejects values larger\nthan UINT_MAX at parse time, making truncation impossible. Also add a check\nfor value < 1 to reject the 0-delay case, which would cause the poll work to\nspin without delay and consume 100% CPU.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98157"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0e022ee4f8e0dc843ba4c80bb75408a7704279af"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/528052af901d6e6bbfa0e52362a70a58a5dd1e43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/66cc9dec919dd63d8e4b3d386f7aed3ae684e645"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea01c061d839b520f385f112908de1c6e3391327"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:47Z"
+  }
+}

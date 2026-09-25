@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-f67x-rg3m-rrxf",
+  "modified": "2026-09-25T12:31:29Z",
+  "published": "2026-09-25T12:31:29Z",
+  "aliases": [
+    "CVE-2026-97957"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: hinic: fix mailbox segment buffer overflow\n\ncheck_mbox_seq_id_and_seg_len() validates that seq_id does not\nexceed SEQ_ID_MAX_VAL (42) and seg_len does not exceed\nMBOX_SEG_LEN (48).  However, this allows the last segment\n(seq_id=42) to carry a full 48-byte payload, writing to offset\n42*48=2016 for 48 bytes (ending at byte 2064).  The receive\nbuffer is only MBOX_MAX_BUF_SZ (2048) bytes, resulting in a\n16-byte heap buffer overflow.\n\nThe hinic3 driver already handles this correctly by defining\nMBOX_LAST_SEG_MAX_LEN and rejecting the last segment when it\nexceeds the remaining buffer space.  Apply the same fix to the\nhinic driver.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97957"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/513f7b16ed0cffae9348151c72bed17c7073096f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5d4d985957434867bbe85e4fa5e638f3e48ad522"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f6ad383901d0cb1c8ea5f7f3160fabfe1540eb5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eca54a092d5f7b497b458ff5a6f66d4f7bfb6674"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:23Z"
+  }
+}

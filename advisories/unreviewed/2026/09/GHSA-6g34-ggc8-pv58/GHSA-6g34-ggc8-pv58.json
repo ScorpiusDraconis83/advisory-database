@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6g34-ggc8-pv58",
+  "modified": "2026-09-25T12:31:34Z",
+  "published": "2026-09-25T12:31:34Z",
+  "aliases": [
+    "CVE-2026-98048"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: don't rewrite bpf_fastcall patterns entered by a jump\n\nmark_fastcall_pattern_for_call() must ensure that matched\n\"spill; call; fill\" instruction series is not interrupted by a jump.\nOtherwise the rewrite applied by bpf_remove_fastcall_spills_fills()\nis not sound.\n\nRecord the instructions targeted by jumps in\ninsn_aux_data[*].jump_target when the CFG is built and use this flag\nto stop growing a pattern at such an instruction. Jumps to the first\nspill are fine.\n\nNote that existing insn_aux_data[*].jmp_point field can't be reused,\nas it marks subprogram return instructions.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98048"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0b1c83dc3c4401cd7e846548f62e3caf3d06742e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/24adbc2c3bbe3385ce922587e1f8e837a68b3e25"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:33Z"
+  }
+}

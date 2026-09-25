@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hq4v-3xxp-hfhg",
+  "modified": "2026-09-25T12:31:38Z",
+  "published": "2026-09-25T12:31:38Z",
+  "aliases": [
+    "CVE-2026-98146"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/amdxdna: Remove __counted_by from struct amdxdna_cmd_chain\n\nstruct amdxdna_cmd_chain contains a flexible array annotated with\n__counted_by(command_count). Since the structure is stored in shared\nAMDXDNA_BO_SHARE memory, userspace can modify command_count concurrently.\nIf command_count is changed to zero, the bounds check generated from\n__counted_by may fail and trigger a kernel panic.\n\nRemove __counted_by to avoid relying on the userspace-controlled\ncommand_count for the flexible array bounds check.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98146"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/52f3e086760a9a3e02a46a10b57caffd73b1c204"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/93fa3e925b15b0ded0a549fe7f12bfbb1c4e171a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b3709d354545e70388177500761f92d906c4dfd6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:46Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3q38-vxgf-8598",
+  "modified": "2026-09-25T12:31:35Z",
+  "published": "2026-09-25T12:31:35Z",
+  "aliases": [
+    "CVE-2026-98061"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Reject tail calls directly from callback frames\n\nA tail call from a non-zero frame is modeled as a return from that frame.\nThe verifier makes R0 unknown and calls prepare_func_exit() for the taken\nbranch.\n\nWhen the current frame is a synchronous callback, prepare_func_exit()\nenforces the callback return-value contract and marks R0 precise. Since the\ntail-call path synthesized R0 rather than deriving it from an instruction,\nprecision backtracking reaches the callback-calling instruction with R0\nstill requested and triggers the \"callback unexpected regs\" verifier bug.\nA CAP_BPF task can therefore cause a WARN and an -EFAULT BPF_PROG_LOAD.\n\nTail calls reachable from callbacks are already rejected later by\ncheck_max_stack_depth(). Reject a tail call made directly by a callback\nbefore constructing the inconsistent return state, using the existing\ndiagnostic. Tail calls from ordinary subprograms keep their current\nbehavior.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98061"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/266aa4ad0b2e82397cd9045752c9bff03d98eddd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/617c8266e49f45747f71e74177646a63f72b7025"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/96d31b28263c429a56e4de85bcf744a5c320b3a3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:35Z"
+  }
+}

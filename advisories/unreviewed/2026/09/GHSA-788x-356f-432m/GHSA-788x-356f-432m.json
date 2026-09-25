@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-788x-356f-432m",
+  "modified": "2026-09-25T12:31:37Z",
+  "published": "2026-09-25T12:31:37Z",
+  "aliases": [
+    "CVE-2026-98126"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/client: validate new EOF for zero range\n\nWhen FALLOC_FL_ZERO_RANGE is used without FALLOC_FL_KEEP_SIZE,\nsmb3_zero_range() may extend EOF without checking RLIMIT_FSIZE, allowing\nthe file to grow beyond the caller's file-size limit.\n\nFix this by calling inode_newsize_ok() before sending the zero-range\nrequest when the operation would extend EOF.\n\nReproducer, using a file on a CIFS mount:\n\n\tbash -c '\n\t        FILE=/mnt/cifs/repro\n\n\t        trap \"\" SIGXFSZ\n\t        ulimit -f 3072\n\n\t        truncate -s 2M \"$FILE\"\n\t        fallocate --zero-range -o 0 -l 4M \"$FILE\"\n\t        echo \"fallocate rc=$?\"\n\t        stat -c \"file size=%s\" \"$FILE\"\n\t'\n\nBefore this change, the operation succeeds despite the 3 MiB limit:\n\n\tfallocate rc=0\n\tfile size=4194304\n\nAfter this change, fallocate fails and leaves the file at 2 MiB.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98126"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/06a4f9049cb6dc319bceec2dc813ba89add8b828"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3673f057b64abfa957e8ae84448db69369a5091a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/88972e35750792e717af287dc71f42a03b5cbce4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f320ca20c273a26cd779bdb2b2e4b076a95c76f6"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:43Z"
+  }
+}

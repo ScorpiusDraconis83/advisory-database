@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2pff-3q6f-mj8f",
+  "modified": "2026-09-25T12:31:31Z",
+  "published": "2026-09-25T12:31:31Z",
+  "aliases": [
+    "CVE-2026-97980"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/debug: Fix NULL pointer dereference in debug_set_level()\n\nCommit a2cec6863709 (\"s390/debug: Add s390dbf kernel parameter\")\nincorrectly removed a null-id check from debug_set_level(), introducing\na possible NULL pointer dereference for debug-API users that put\ndebug_register() results unchecked into debug_set_level().\n\nFix this by moving the check from the internal _debug_set_level()\nvariant back to the external debug_set_level() wrapper.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97980"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/716e1cd3783806929407dbd596e6b1118971eb9e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b1eb31d533cdfcae1011ed53850d52f36afe5774"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:26Z"
+  }
+}

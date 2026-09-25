@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x3f6-2q7c-8rc9",
+  "modified": "2026-09-25T12:31:34Z",
+  "published": "2026-09-25T12:31:34Z",
+  "aliases": [
+    "CVE-2026-98045"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Mark faultable stack helpers as sleepable\n\nThe faultable variants of bpf_get_stack() and bpf_get_task_stack() pass\nmay_fault=true into the common stack collection code. Resolving user-space\nbuild IDs may then call build_id_parse_file() and block on filesystem\nreads.\n\nNeither helper prototype sets might_sleep. Since prototype selection uses\nthe sleepability of the whole program, the verifier can still allow these\nhelpers from a non-sleepable region within that program, such as an\nexplicit RCU or preemption-disabled region. The task-stack helper can also\nbe called from a non-sleepable timer callback of a sleepable program.\n\nMark both faultable prototypes as sleepable. The existing helper context\ncheck then rejects these calls while continuing to allow them in genuinely\nsleepable contexts.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98045"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/19e8d5a98afd071d8c1c5adeccf92b3c42eddc70"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3014e8a8bdad55075d89836ad9c10710a9a69837"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/44b8d370f2725bad215da3e67668e98ba96671bd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9d02927fdf4e930893c92e35fed01a2704496900"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:33Z"
+  }
+}

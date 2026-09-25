@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3x47-v429-xjvw",
+  "modified": "2026-09-25T12:31:36Z",
+  "published": "2026-09-25T12:31:36Z",
+  "aliases": [
+    "CVE-2026-98089"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbonding: alb: fix uninitialized transport header access in alb_determine_nd()\n\nalb_determine_nd() uses icmp6_hdr(skb) to inspect ICMPv6 headers.\nHowever, in xmit paths (e.g. packets sent via AF_PACKET / raw sockets\nor forwarded packets), skb->transport_header is not guaranteed to be\ninitialized. While pskb_network_may_pull() ensures the packet data is\nlinear starting from the network header, it does not set or adjust the\ntransport header offset.\n\nDereferencing icmp6_hdr(skb) can therefore access out-of-bounds memory.\n\nFetch the icmp6hdr directly after ipv6hdr following pskb_network_may_pull(),\nand reload ipv6hdr in case pskb_may_pull() reallocated skb->head.\nAlso remove the unused bond argument from alb_determine_nd().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98089"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/27314f96d29b54e815e7a9b84c3273f1895e68e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3b178894931a268c09126a5b53630f343e10e296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/70f3995830d3f1e79faa14eb0605914f778feca9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e39cf90bd856443542b97933289749fca07476bf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:38Z"
+  }
+}

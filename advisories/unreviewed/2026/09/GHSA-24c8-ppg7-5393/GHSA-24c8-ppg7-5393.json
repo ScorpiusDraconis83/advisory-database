@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-24c8-ppg7-5393",
+  "modified": "2026-09-25T12:31:34Z",
+  "published": "2026-09-25T12:31:34Z",
+  "aliases": [
+    "CVE-2026-98058"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Mark syscall helpers as sleepable\n\nbpf_sys_bpf() executes the bpf(2) syscall body, which can take mutexes,\nallocate with GFP_KERNEL, and wait for an RCU grace period.\nbpf_sys_close() reaches close_fd() and filp_close(), which can sleep as\nwell.\n\nBoth helpers are limited to BPF_PROG_TYPE_SYSCALL, whose main program is\nsleepable. That does not make every callback sleepable: a syscall program\ncan register a bpf_timer callback, and the verifier checks that callback\nin a non-sleepable context while retaining the syscall helper set.\n\nWithout .might_sleep on the prototypes, such a callback can invoke\nbpf_sys_bpf() from hrtimer softirq context and trigger a\nscheduling-while-atomic failure. bpf_sys_close() is exposed through the\nsame missing context check.\n\nSet .might_sleep on both prototypes so the existing helper-context check\nrejects them from timer callbacks and other atomic regions. Calls from the\nsleepable main body remain valid.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98058"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3408e98f06ce06ea6a58ca6c39da9c23f0029c06"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d05524794240b52fdc3b6c1220dd05505715824d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:34Z"
+  }
+}

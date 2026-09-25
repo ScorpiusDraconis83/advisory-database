@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3m7w-v98f-hg72",
+  "modified": "2026-09-25T12:31:38Z",
+  "published": "2026-09-25T12:31:38Z",
+  "aliases": [
+    "CVE-2026-98154"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-rdma: fix -EIO cleanup order in queue_rq\n\nOn -EIO, the RDMA queue_rq path reports a host path error and then\nstill cleans up the command and unmaps the SQE DMA. The path error\nhelper completes the request, so that is double cleanup and DMA unmap\nafter the request is already complete.\n\nUnmap the SQE first, then report the host path error. Skip the outer\ncommand cleanup on that path.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98154"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/171b993a4aed9889159df4815b6a6ba141e61975"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a41e7fc8d244d9cfc6273051aed85b67adedbb89"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cf3e706963ffbd3ee2568fa0d08ab016f0575ea8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d61828199c6cb4b76d48403c77023cd4bb9d09fc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:47Z"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3g6x-42f6-fgw4",
+  "modified": "2026-09-25T12:31:28Z",
+  "published": "2026-09-25T12:31:27Z",
+  "aliases": [
+    "CVE-2026-97913"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel: ethosu: Ensure cmd stream ends with a stop op\n\nWhile the QSIZE register setting should prevent an out of bounds access\nof the command stream, it is not clear whether the h/w generates an\ninterrupt in this case as is required (to prevent a timeout). As a stop op\nis expected end of the command stream, let's just ensure it is present. A\nstop op in the middle of the command stream also makes no sense.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97913"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bf957f166f7ba548034db2a10e63f71df97f12e2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eb3a41fd35e352fba387c4320a1fa0352f3e551c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:18Z"
+  }
+}

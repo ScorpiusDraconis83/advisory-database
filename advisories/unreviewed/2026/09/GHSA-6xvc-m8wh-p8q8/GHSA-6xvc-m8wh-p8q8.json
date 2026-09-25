@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6xvc-m8wh-p8q8",
+  "modified": "2026-09-25T12:31:29Z",
+  "published": "2026-09-25T12:31:29Z",
+  "aliases": [
+    "CVE-2026-97950"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nconfigfs: pin the symlink target's dirent instead of chasing ->ci_dentry\n\ncreate_link() reads the target's configfs_dirent from\nitem->ci_dentry->d_fsdata, relying on the item reference taken by\nget_target().  That reference pins the item, not its dentry: the dentry is\npinned by DCACHE_PERSISTENT, which configfs_remove_dir() releases via\nsimple_rmdir() while the item is still alive.  A symlink racing with rmdir\nof its target can therefore find ->ci_dentry freed and its dirent\nreleased, triggering WARN_ON(!atomic_read(&sd->s_count)) in configfs_get().\n\nTake the dirent in get_target() as well, under ->d_lock and atomically\nwith the item reference, and pass it down to create_link().  A hashed\ndentry has not been killed yet, so its ->d_fsdata reference keeps the\ndirent alive there.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97950"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4f54beb2e7f6d399396466682fba3539bcdcb414"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a7c1290eef60711c10289c056ad32ed1f2b47b12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d47c5de1cd6bfbe1067fc310bf90e4e00205e839"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:22Z"
+  }
+}

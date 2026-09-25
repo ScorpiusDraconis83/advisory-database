@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c6r8-8m99-q662",
+  "modified": "2026-09-25T12:31:30Z",
+  "published": "2026-09-25T12:31:30Z",
+  "aliases": [
+    "CVE-2026-97969"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nwatchdog: msc313e: Fix clock leak and spurious timer in settimeout()\n\nmsc313e_wdt_settimeout() unconditionally calls msc313e_wdt_start() which\nintroduces two severe bugs:\n\n1. If the watchdog is already active, calling start() again will\n   increase the reference count of the clock again.  However stop() is\n   only called once, the reference count is unbalance.\n2. If the watchdog is stopped, calling settimeout() will start\n   the hardware timer accidentally.\n\nFactor out the register-writing logic into a helper function.  Only call\nit in settimeout() if the watchdog is running.  Otherwise, simply update\n`wdev->timeout`.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97969"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2152a13ee2a9af09a668ebd053a8dbf771dadb80"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2abf99a57b0b71b2b97745981f4039370ab78044"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3db30f315935c2fb0d95f46b7a593b5b4d3ec3d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/faf1eb2895c87a8c0fb920439dddc7e0d97c6a69"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:24Z"
+  }
+}

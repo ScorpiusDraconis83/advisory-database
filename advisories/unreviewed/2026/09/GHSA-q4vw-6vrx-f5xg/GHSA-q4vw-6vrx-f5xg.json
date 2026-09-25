@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-q4vw-6vrx-f5xg",
+  "modified": "2026-09-25T12:31:34Z",
+  "published": "2026-09-25T12:31:33Z",
+  "aliases": [
+    "CVE-2026-98029"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\neth: nfp: bound the ntuple rule dump by the caller's buffer size\n\nnfp_net_get_fs_loc() dumps every entry of nn->fs.list into rule_locs[]\nwithout consulting cmd->rule_cnt, which is how many entries the caller\nhad room for.  ETHTOOL_GRXCLSRLALL requires no CAP_NET_ADMIN and the\nioctl sizes the buffer from the rule_cnt userspace passes in, so once an\nadmin has installed flow steering rules any user can ask for fewer slots\nthan there are rules and run off the end of the allocation.  A rule_cnt\nof 0 leaves the buffer pointer NULL and the walk dereferences it.\n\nBail out with -EMSGSIZE when the buffer fills up, the way the other\nntuple capable drivers do, and report how many locations were filled so\na shrinking rule list does not leave the caller reading stale slots.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98029"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/82812583b9c69c241da6da4186f14e9df2516488"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a7e023c63e855761c1426cee8d17c2bca32aa339"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ecebfdaab72a504c10f4907bd00fc3b705ec3b12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1986bf87b0709c95126fe196cf39e5b8c8453a1"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:31Z"
+  }
+}

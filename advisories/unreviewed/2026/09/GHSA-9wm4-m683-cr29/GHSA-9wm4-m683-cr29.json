@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9wm4-m683-cr29",
+  "modified": "2026-09-25T12:31:26Z",
+  "published": "2026-09-25T12:31:26Z",
+  "aliases": [
+    "CVE-2026-97590"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/crypto: Fix missing scrub of temp buffers with PAES algorithm\n\nIn function ctr_paes_do_crypt() there is a buffer used to process\nremaining bytes < AES_BLOCK_SIZE. This buffer was not scrubbed and\nthus could lead to expose of unwanted data. Rework the code to\nexplicitly scrub the buffer at the end of the function to avoid\nexposure of maybe sensitive data.\n\nIn function __xts_2keys_prep_param() change the existing scrub to\nclean the whole param block instead of just the key field.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97590"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/19a218b46b2471d370c11fb52040f36ac8d05d23"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/7d1456d54b3c784cc2917c219a528092cefe30cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d7159d2132e9aa51af7acb51c6742d9b30f987b3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:10Z"
+  }
+}

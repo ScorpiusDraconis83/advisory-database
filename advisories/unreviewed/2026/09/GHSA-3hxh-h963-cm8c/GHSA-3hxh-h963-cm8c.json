@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3hxh-h963-cm8c",
+  "modified": "2026-09-25T12:31:36Z",
+  "published": "2026-09-25T12:31:36Z",
+  "aliases": [
+    "CVE-2026-98097"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: Dont send random pad bytes in RESET/ACTIVATE messages\n\nThe interface name is passed in a fixed length (TIPC_MAX_IF_NAME) buffer.\nReplace the strcpy(data, l->if_name) with memcpy() so that the\npad bytes are actually written (l->if_name[] is zero padded)\nrather than sending random bytes from the skb to the remote system.\n\nReplace two other strcpy() with strscpy().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98097"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48033a89356b8ae21a94db70c79bb6fcc91a23c2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/4ab2977323d5f068a872126f7818d1aeb9e9ca0d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81c600c26302a27852ed8b19c5f2f647ea3555c9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bee1459e57f2e0bd240c62f35c0a284291e27971"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:39Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-38c4-cggv-4792",
+  "modified": "2026-09-25T12:31:24Z",
+  "published": "2026-09-25T12:31:24Z",
+  "aliases": [
+    "CVE-2026-97562"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: pin DFS superblock in iterator callback\n\ntcon_super_cb() stores a raw superblock pointer, but __cifs_get_super()\ntakes its active reference only after iterate_supers_type() has dropped\ns_umount and its passive reference. Concurrent DFS automount expiry can\ntherefore free the superblock before cifs_sb_active() uses it.\n\nA deterministic KASAN test reproduces the race as:\n\n  BUG: KASAN: slab-use-after-free in cifs_sb_active+0x77/0x80\n\nThe same test passes with this change applied.\n\nTake the active reference in the callback while iterate_supers_type()\nstill holds s_umount shared. cifs_put_tcp_super() remains the matching\nrelease.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97562"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5b01a8c0209690db75341528ec53fd87e0ac1460"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a6b6561522212af852c9ad8a7dca8d59ef2c7377"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d806d5a85dcbe2a0f181b2f0f9f61ddfbefa1818"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ea43a15cea36dc5ddd832be5bddeac7dd804cbcf"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:06Z"
+  }
+}

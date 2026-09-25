@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j93m-m3f2-m54f",
+  "modified": "2026-09-25T12:31:24Z",
+  "published": "2026-09-25T12:31:23Z",
+  "aliases": [
+    "CVE-2026-97550"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: fix unit conversions in per_binval computation\n\nLOLLM noticed that we're doing the unit conversion in the per_binval\ncomputation backwards -- xfs_buf_inval_log_space's second parameter is\nsupposed to be in bytes, but max_binval is in units of fsblocks.  Hence\nthe conversion should be FSB -> B, not the other way around.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97550"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/05cff7c2b79f76c7cfe90613a60e16aaaa051ef7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b5089a328acc83fe2f23127a79397a0bfd9ebc33"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cfeba3bdf4dfa405e29f4ee13a20e9063fd0b7ef"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:05Z"
+  }
+}

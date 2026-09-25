@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qqc3-34rp-574r",
+  "modified": "2026-09-25T12:31:31Z",
+  "published": "2026-09-25T12:31:31Z",
+  "aliases": [
+    "CVE-2026-97983"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvduse: return compat ioctl results directly\n\nThe compat handler handles VDUSE_IOTLB_GET_FD and VDUSE_VQ_GET_INFO, but\nthen calls the native handler. Their different command sizes make native\ndispatch return -ENOIOCTLCMD.\n\nFor GET_FD, this overwrites receive_fd()'s return value after the\ndescriptor is installed, leaking one fd per call. Return handled compat\nresults directly and use native dispatch only for other commands.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97983"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/135ac58097fa5fc707bf392c5cececf59e4080c0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/48a4ee65e677559776349128e6a81a6041986c99"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:26Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8x93-8jfm-fwvw",
+  "modified": "2026-09-25T12:31:33Z",
+  "published": "2026-09-25T12:31:33Z",
+  "aliases": [
+    "CVE-2026-98024"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/ism: folio_put() after error\n\ndmb->cpu_addr was allocated via folio_alloc(). Use folio_put() instead of\nkfree() in the error exit of ism_alloc_dmb() to avoid slab allocator\ncorruption.\n\nWhile at it, reset dmb->cpu_addr after folio_put to avoid unintentional UAF\nby future callers.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98024"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/60983356fab0c1171c5cb1b56a36349ebadc608e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/890e2ef726904d1d8328e4b9f5090eeb8761b9d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/907a56ab3eb8a58500a58daa76087f17bb2b6826"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/eebb6a9017b55ac05be770cf7b89f9da49505ae7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:30Z"
+  }
+}

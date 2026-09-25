@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrrf-4w4m-vf8m",
+  "modified": "2026-09-25T12:31:32Z",
+  "published": "2026-09-25T12:31:32Z",
+  "aliases": [
+    "CVE-2026-98007"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Reject non-scalar bpf_loop iteration counts\n\nbpf_loop() declares its nr_loops argument as ARG_ANYTHING. Privileged\nprograms may pass pointer values to such arguments, so check_func_arg()\nlets a pointer-valued R1 reach the helper-specific checks.\n\nSince commit bb124da69c47 (\"bpf: keep track of max number of bpf_loop\ncallback iterations\"), the verifier marks R1 precise and reads its upper\nbound to limit callback simulation. Precision backtracking only accepts\nscalar registers, so passing a pointer instead triggers the \"backtracking\nmisuse\" verifier warning. Kernels with panic_on_warn enabled subsequently\npanic.\n\nIntroduce ARG_SCALAR for helper arguments that only accept scalar values\nand use it for bpf_loop() nr_loops. Generic helper argument validation then\nrejects pointers before loop inlining and precision processing.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98007"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/656d40d1ca228ee21a9b3280432479fc9eae75ab"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c3fd8e5fd100f122bad503bdc0e9277219533253"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e2e1161e03fecff6d2229a81b024337144bfcd97"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f8ae8275c721334ee50fafdd986fb83294eb941a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:28Z"
+  }
+}

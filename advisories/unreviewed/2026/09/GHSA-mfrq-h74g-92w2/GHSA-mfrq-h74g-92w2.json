@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mfrq-h74g-92w2",
+  "modified": "2026-09-25T12:31:34Z",
+  "published": "2026-09-25T12:31:34Z",
+  "aliases": [
+    "CVE-2026-98059"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Mark sched_process_wait argument as nullable\n\ndo_wait() passes wo->wo_pid to the sched_process_wait tracepoint.\nkernel_wait4() leaves wo_pid NULL for wait4(-1), and\nkernel_waitid_prepare() does likewise for waitid(P_ALL).\n\nbtf_ctx_access() currently types argument 0 as PTR_TO_BTF_ID |\nPTR_TRUSTED. Without PTR_MAYBE_NULL, the verifier accepts an unchecked\ndereference. Trusted pointer loads have no fault protection, so a wait for\nany child can then cause a NULL pointer dereference in JITed BPF code.\n\nAdd sched_process_wait to raw_tp_null_args[] with argument 0 marked\nnullable. The verifier rejects an unchecked dereference while preserving\naccess after the program checks the pointer for NULL.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3c03a1b8ded858685a73c1ba4080adef99db4544"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a453d6e3b8e8e1a321c8744d6189d763af9287d0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b9205e936dde9a94e93376c8de6195b740bcd5d2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/bee862c79cb7e0e5c33b2df2e3a31d164705120d"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:34Z"
+  }
+}

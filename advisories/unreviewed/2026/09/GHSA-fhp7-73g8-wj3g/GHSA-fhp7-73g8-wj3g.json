@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fhp7-73g8-wj3g",
+  "modified": "2026-09-25T12:31:25Z",
+  "published": "2026-09-25T12:31:25Z",
+  "aliases": [
+    "CVE-2026-97575"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: v4l2-ctrls: validate AV1 tile counts\n\nThe stateless AV1 decoders use tile_info.tile_cols and tile_rows as loop\nbounds and as indices into the mi_*_starts[] and *_in_sbs_minus_1[]\narrays, as the divisor for context_update_tile_id, and their product\nbounds the per-tile descriptor buffers, but std_validate_compound() does\nnot bound these u8 fields. Reject a V4L2_CTRL_TYPE_AV1_FRAME whose\ntile_cols or tile_rows exceeds V4L2_AV1_MAX_TILE_COLS / _ROWS, or whose\nproduct exceeds V4L2_AV1_MAX_TILE_COUNT. A zero tile count is left to the\nconsuming driver so the zero-initialised control that existing userspace\nsubmits is still accepted.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97575"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/439058ced617fbb3febc017b9e93bb7387f309e0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/85df9fc79b07f1cc7c953f930ae7e675d0c1e820"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c4c88b5ba85685043d171e0e9c9d00a8cf6a89e8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c8891da0186fe4c04bccbbd7d84b01a3c941ac7a"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:08Z"
+  }
+}

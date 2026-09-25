@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jj87-p9c8-ffw2",
+  "modified": "2026-09-25T12:31:25Z",
+  "published": "2026-09-25T12:31:25Z",
+  "aliases": [
+    "CVE-2026-97577"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: verisilicon: rockchip: reject AV1 frames exceeding the tile capacity\n\nrockchip_vpu981_av1_dec_set_tile_info() indexes the tile group entry\narray by tile1 * tile_cols + tile0, reading up to tile_cols * tile_rows\nentries, lays out one descriptor per tile in the AV1_MAX_TILES tile_info\nbuffer, and programs the real tile_cols / tile_rows into the hardware.\n\nThe tile group entry control is a dynamic array sized to the number of\nentries userspace submitted, independent of tile_cols / tile_rows, so a\nframe that claims more tiles than entries reads past the array. A frame\nthat claims more than AV1_MAX_TILES tiles also leaves the hardware\nprogrammed for more tiles than the descriptor buffer holds.\n\nReject both in prepare_run(): tile_cols * tile_rows must not exceed the\nsubmitted entry count or AV1_MAX_TILES. The entry count is read via\nv4l2_ctrl_find() (ctrl->elems). This mirrors the bound the mediatek AV1\ndecoder already enforces.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97577"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/367db8b23c26a913d76ed70457bbcd781c422b49"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/40029f7f35397853f8711d6fce1d90a4c7a01f8c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a41babf528f70c9a82ed31cfb5fe19065910f7f0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd965369220cc160bb20a24991790814bfbab401"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:08Z"
+  }
+}

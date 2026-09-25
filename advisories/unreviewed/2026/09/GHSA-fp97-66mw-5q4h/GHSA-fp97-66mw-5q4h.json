@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fp97-66mw-5q4h",
+  "modified": "2026-09-25T12:31:38Z",
+  "published": "2026-09-25T12:31:38Z",
+  "aliases": [
+    "CVE-2026-98155"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/qaic: Address potential out-of-bounds read in resp_worker()\n\nAlthough 'commit 2feec5ae5df7 (\"accel/qaic: Handle DBC deactivation if the\nowner went away\")' fixes the scenario it was intended for by walking the\nmessage and only decoding QAIC_TRANS_DEACTIVATE_FROM_DEV, if present, it\nskipped over the bounds checking code that is included in decode_message().\nThis could lead to issues such as reading past the slab allocation's end,\ninfinite loops or kernel panics. For those issues to happen, a malformed\nwire message is needed to be sent from the device.\n\nInstead of duplicating the bounds checking code already present in\ndecode_message(), use the function inside resp_worker().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98155"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/12deeade460d47031267256ba07add51cc7eabd0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ab243f74ab4084ca5c8dec608cb5b0deb27db067"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/c72e81ee46bdd4c221114d6e9515e9b4647616d7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f4b64488f3deca63f7fbc7d7c3835b2e668003f9"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:47Z"
+  }
+}

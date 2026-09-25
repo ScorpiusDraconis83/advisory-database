@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hmh5-2wm8-hhp7",
+  "modified": "2026-09-25T12:31:33Z",
+  "published": "2026-09-25T12:31:33Z",
+  "aliases": [
+    "CVE-2026-98030"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: dsa: bcm_sf2: bound the CFP rule dump by the caller's buffer size\n\nbcm_sf2_cfp_rule_get_all() walks the whole cfp.unique bitmap into\nrule_locs[] without consulting nfc->rule_cnt, which is how many entries\nthe caller had room for.  ETHTOOL_GRXCLSRLALL requires no CAP_NET_ADMIN\nand the ioctl sizes the buffer from the rule_cnt userspace passes in, so\nonce an admin has installed CFP rules any user can ask for fewer slots\nthan there are rules and run off the end of the allocation.  A rule_cnt\nof 0 leaves the buffer pointer NULL and the walk dereferences it.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98030"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/b231b6d8516d3fe0d4bba549908e08d26a4531a5"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/cdb719f4b8596d9ccee2d56d204c2c4dce982f46"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/f1a2869b3629c0e8394b77b38cb9f19a018c653c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fd1a78c16b1f6978c09cf048e15f349732e4c707"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:31Z"
+  }
+}

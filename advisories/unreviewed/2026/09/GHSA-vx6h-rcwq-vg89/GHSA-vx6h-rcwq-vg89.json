@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vx6h-rcwq-vg89",
+  "modified": "2026-09-25T12:31:22Z",
+  "published": "2026-09-25T12:31:22Z",
+  "aliases": [
+    "CVE-2026-97898"
+  ],
+  "details": "Insecure Direct Object Reference / missing object-level authorization in the Akia keyless entry cloud service. The unlock action is relying on a client-supplied room/door identifier that is not properly authorized server-side against the authenticated guest's booking. An authenticated guest could unlock rooms other than their own, resulting in unauthorized physical access to guest rooms at an affected property.\n\n\n\n\nAs of 19th September 2026 the service is no more vulnerable to this attack (feedback received by the reporter). \n\n\n\n\nThe attack is remote but the effect is local to an affected property.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:L/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97898"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.akia.com/platform/keyless-entry"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T10:17:08Z"
+  }
+}

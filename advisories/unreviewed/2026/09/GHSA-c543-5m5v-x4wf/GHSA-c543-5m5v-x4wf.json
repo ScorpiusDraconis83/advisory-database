@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c543-5m5v-x4wf",
+  "modified": "2026-09-25T12:31:24Z",
+  "published": "2026-09-25T12:31:24Z",
+  "aliases": [
+    "CVE-2026-97565"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: reject short READ responses in CIFSSMBRead()\n\nCIFSSMBRead() reads DataLengthHigh, DataLength and DataOffset out of\nthe READ_RSP returned by the server without first checking that a\nwhole READ_RSP was actually received. The length of the response is\nrecorded in rsp_iov.iov_len, but nothing constrains it to be at least\nread_rsp_size before those fields are dereferenced.\n\nA malicious or compromised SMB1 server can return a response shorter\nthan the READ_RSP header, so that parsing the header itself reads past\nthe end of the receive buffer. SMB1 is not negotiated by default;\nreaching this code requires an explicit vers=1.0 mount.\n\nReject the response unless it is at least read_rsp_size bytes long.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97565"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0f1f77b821506a4dacab6ce7d29cf9e0c26f14cd"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/aaa221c1b1d288845b55e9c366e5ef608dfff49d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6142a8bfc230c7263eb8b0475249c958ce49367"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:07Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wc27-x2j9-p8cq",
+  "modified": "2026-09-25T12:31:33Z",
+  "published": "2026-09-25T12:31:33Z",
+  "aliases": [
+    "CVE-2026-98018"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mctp: i3c: serialize probe with bus removal\n\nmctp_i3c_probe() drops busdevs_lock after finding the matching bus. A\nconcurrent I3C_NOTIFY_BUS_REMOVE can then unregister and free the bus\nnetdev before probe passes its private data to mctp_i3c_add_device().\nThe latter consequently adds a list node through a freed mbus pointer.\n\nKeep busdevs_lock held until the device has been added. This also\nsatisfies the __must_hold annotation on mctp_i3c_add_device().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98018"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2b4707a149a55e8fa75c9ef32b359d60f470a566"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/765c5e357e67916a7aac8ead4ac2fa7d2bffe000"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/906d8dbafabfa81a30e3ade420cb9912f223a5e1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/e6541b2747682fdb2c6ded4a7cf7c39c4067a35c"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:30Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r8g8-vw6g-m8xh",
+  "modified": "2026-09-25T12:31:26Z",
+  "published": "2026-09-25T12:31:26Z",
+  "aliases": [
+    "CVE-2026-97599"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nieee802154: hwsim: serialize pib updates to fix double-free\n\nhwsim_update_pib() does an unserialized read-swap-free of phy->pib:\n\n\tpib_old = rtnl_dereference(phy->pib);\n\t...\n\trcu_assign_pointer(phy->pib, pib);\n\tkfree_rcu(pib_old, rcu);\n\nIt assumes the RTNL is held, but ->set_channel is not always called\nunder it: the mac802154 scan worker changes channels via\ndrv_set_channel() without the RTNL. Such an update can race an\nRTNL-held one on the same phy; both read the same pib_old and both\nkfree_rcu() it, double-freeing the object. With SLUB percpu sheaves\nbatching kfree_rcu(), this surfaces as a KASAN invalid-free in\nrcu_free_sheaf().\n\nstruct hwsim_phy has no lock for pib. Add one and make the swap atomic\nwith rcu_replace_pointer() under it, dropping the misleading\nrtnl_dereference().",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97599"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/979d5b8de8ed4e1f997aef12da5694b99be7b871"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9973b3a67a7592a780ea12b08334539a900deec1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3b8f264ce09573aededd0a97dc41c8147797d8f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/db6442deecb1f13aeaf4f9d77746ea7555630fb3"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:11Z"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c37f-rq9m-6c5r",
+  "modified": "2026-09-25T12:31:36Z",
+  "published": "2026-09-25T12:31:36Z",
+  "aliases": [
+    "CVE-2026-98093"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: fsl_micfil: balance mclk enable/disable\n\nhw_params() enables mclk unconditionally and hw_free() disables it\nunconditionally, but the PCM core does not guarantee 1:1 pairing:\nhw_free() can run without hw_params(), and hw_params() can be called\nmultiple times from the SETUP state. This triggers an \"already\ndisabled\" WARN() in the first case and leaks an enable reference in\nthe second, leaving the clock ungateable.\n\nGuard both sides with the existing mclk_flag, as fsl_sai.c does with\nmclk_streams.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98093"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/470db2026a435b79f7ecb4d65523ea16a99d55d8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/d3dbccfe6afa7b9a6a7ed65cfaa76a47fa050a56"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/fa1bbe3534499dd89d3b0b941d6dd4ddb70c31b5"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:39Z"
+  }
+}

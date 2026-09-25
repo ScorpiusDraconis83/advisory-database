@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-56gf-pmq5-4wg3",
+  "modified": "2026-09-25T12:31:23Z",
+  "published": "2026-09-25T12:31:23Z",
+  "aliases": [
+    "CVE-2026-97546"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: don't spin forever on zero-length dirents when salvaging them\n\nLOLLM noticed that xrep_dir_recover_data can spin forever if it\nencounters an unused dirent that claims to have length zero.  Fix that,\nand prevent the same thing from happening with a zero-length entry.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97546"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/08754ebfa5c28e8d57316b1bd7a5a921a5e2e762"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/5442f0c56445618544a801fb4dae35aed87a1aaa"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9f84792b40d0c96833341602144574bf0bd14a6a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a455c83ce5dc1a2da33b1b84253d298372a8dfbd"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:04Z"
+  }
+}

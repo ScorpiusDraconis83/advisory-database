@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-59xx-49mr-rmvq",
+  "modified": "2026-09-25T12:31:30Z",
+  "published": "2026-09-25T12:31:30Z",
+  "aliases": [
+    "CVE-2026-97964"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nppp_synctty: ensure a writeable skb header\n\nppp_sync_txmunge() checks headroom before prepending the address and\ncontrol bytes, but does not ensure that the skb header is writable.\nA received skb can reach this function through PPP channel bridging\nwithout passing through ppp_start_xmit(), which calls skb_cow_head().\n\nFor example, a PPPoE frame may share its buffer with a clone queued to\nan AF_PACKET socket. If it is bridged to a synchronous tty channel, the\naddress/control bytes can overwrite data still visible to that socket.\n\nUse skb_cow_head() to ensure both sufficient headroom and a writable\nheader.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97964"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/0996c3e6bcc6ae08cb371ed43648c9f7f748ae6e"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/15d0a6c9a42df2d745c37510dba828f6dbe60d9f"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/3af7797fbabc84992e0ca5ad2bc0ca8537d053ef"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8aaeb56aff2a557a88f83ae866da2c91ad247e59"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:24Z"
+  }
+}

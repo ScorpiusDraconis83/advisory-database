@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-6x39-q2c6-8xg8",
+  "modified": "2026-09-25T12:31:32Z",
+  "published": "2026-09-25T12:31:32Z",
+  "aliases": [
+    "CVE-2026-97987"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirtio_input: reset device if input_register_device() fails\n\nProbe marks the device DRIVER_OK with virtio_device_ready() before\ncalling input_register_device(). If registration fails, the error path\ncleared vi->ready and called del_vqs() while the device was still live,\nso the device could keep DMA to queues that were already torn down.\n\nMatch remove/freeze: call virtio_reset_device() on that path before\ntearing down the virtqueues.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97987"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/668ebfea7ba623450b12fdeaa0d080464d0c0a14"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/81489b32a21c9360f8750d1fb600155d27452e19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8407da8974326c1ffdfe6a5a9bfc8fed3212bbdf"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/9a7e107734137f098f9b81e5615aa5a02c5395c7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:26Z"
+  }
+}

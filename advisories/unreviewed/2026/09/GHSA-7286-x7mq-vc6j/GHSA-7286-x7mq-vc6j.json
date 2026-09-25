@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7286-x7mq-vc6j",
+  "modified": "2026-09-25T12:31:26Z",
+  "published": "2026-09-25T12:31:26Z",
+  "aliases": [
+    "CVE-2026-97592"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/crypto: Fix missing scrub of temp buffers with AES ctr and gcm algorithm\n\nIn function ctr_aes_crypt() there is a buffer used to process\nremaining bytes < AES_BLOCK_SIZE. This buffer was not scrubbed and\nthus could lead to expose of unwanted data. When the buffer is used\nexplicitly scrub it at the end of the code block to avoid exposure of\nmaybe sensitive data.\n\nIn a similar way the function gcm_aes_crypt() hat an error path where\nthe CPACF param block was not scrubbed. Instead of return early now\nthese error paths go to end of function where explicit scrubbing is\ndone. Similar with the buffers which are part of the gcm_sg_walk\nstructs from the variables gw_in and gw_out.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97592"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/11eca05d2062032e1f07d56be58ed0b99f4b1d63"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b7c3b6914f19caf648d05726a86af6326d3c2c6"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/8b90a47c4fba27bb4f2f086611742493629e9696"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/a83488cecb35f924b7541306ed84893bb9906196"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:10Z"
+  }
+}

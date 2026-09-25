@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qrrw-9q98-7ph9",
+  "modified": "2026-09-25T12:31:27Z",
+  "published": "2026-09-25T12:31:27Z",
+  "aliases": [
+    "CVE-2026-97618"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/net: don't overconsume buffers when using MSG_TRUNC\n\nWhen a recv/recvmsg is issued with MSG_TRUNC and the incoming packet is\nlarger than the provided buffer, the net layer returns the full length\nof the packet rather than the number of bytes actually copied into the\nbuffer.  As a result, io_uring advances more of the provided buffer ring\nthan was actually filled.  Use the actual filled region size to consume\nthe buffer, but still return the full size to preserve MSG_TRUNC\nsemantics.\n\nTake care with multishot, because that seems to already truncate the\nconsumption based on the available payload size.\n\nThis was reported in https://github.com/axboe/liburing/issues/1619.\n\n[axboe: fold in size_t unsigned fix]",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-97618"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/2e70ea75c7bb38a6dc212975f887310f14f7c043"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/6028b543884f8735e057ec9eea4908cd61cab230"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/927d96f91c582b319d104ecf50ec935a8dc29193"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:16Z"
+  }
+}

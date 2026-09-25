@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r89f-4x69-4v8p",
+  "modified": "2026-09-25T12:31:34Z",
+  "published": "2026-09-25T12:31:33Z",
+  "aliases": [
+    "CVE-2026-98034"
+  ],
+  "details": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Mark NULL kptr stores precise\n\ncheck_map_kptr_access() permits a scalar store into an untrusted kptr\nfield only when the register is known to contain zero. Unlike other\nverifier checks whose outcome depends on a scalar value, it does not mark\nthat register precise.\n\nA state checkpoint reached with an imprecise zero can therefore prune a\nsecond path that reaches the store with an arbitrary nonzero scalar. The\nprogram can write attacker-controlled bits into the kptr field and load\nthem back as a PTR_TO_BTF_ID.\n\nCall mark_chain_precision() before accepting a known-zero register. This\nforces state equivalence to compare its scalar range and makes the verifier\nvisit and reject a path carrying a nonzero value.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98034"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/86168208737bdd267d92d855d453d1d2f840df19"
+    },
+    {
+      "type": "WEB",
+      "url": "https://git.kernel.org/stable/c/ecdc5043794c9184aa8e6c814603899479c46b35"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T11:17:32Z"
+  }
+}
