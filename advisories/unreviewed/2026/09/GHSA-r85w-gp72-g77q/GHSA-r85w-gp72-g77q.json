@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r85w-gp72-g77q",
+  "modified": "2026-09-25T09:31:07Z",
+  "published": "2026-09-25T09:31:07Z",
+  "aliases": [
+    "CVE-2026-96039"
+  ],
+  "details": "The BA Book Everything plugin for WordPress is vulnerable to Stored Cross-Site Scripting via first_name Parameter in all versions up to, and including, 1.8.27 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. An unauthenticated attacker can obtain the valid order_id, order_num, and order_hash credentials required to reach the vulnerable action_to_pay() handler simply by placing a guest booking through the public [babe-booking-form] shortcode, making the full exploit chain reachable without any account.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96039"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ba-book-everything/tags/1.8.27/includes/class-babe-html.php#L4300"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ba-book-everything/tags/1.8.27/includes/class-babe-order.php#L2405"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ba-book-everything/tags/1.8.27/includes/class-babe-order.php#L2522"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ba-book-everything/tags/1.8.27/includes/class-babe-order.php#L2599"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/ba-book-everything/tags/1.8.27/includes/class-babe-order.php#L2653"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&new=3709588%40ba-book-everything%2Ftrunk&old=3640320%40ba-book-everything%2Ftrunk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/dd118053-b0f7-4fce-aa00-b0bb40778f21?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T07:16:56Z"
+  }
+}

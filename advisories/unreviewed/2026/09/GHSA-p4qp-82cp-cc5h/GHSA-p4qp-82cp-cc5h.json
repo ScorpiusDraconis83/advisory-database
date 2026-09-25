@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-p4qp-82cp-cc5h",
+  "modified": "2026-09-25T09:31:09Z",
+  "published": "2026-09-25T09:31:08Z",
+  "aliases": [
+    "CVE-2026-93656"
+  ],
+  "details": "The User Profile Builder – Beautiful User Registration Forms, User Profiles & User Role Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Avatar Field in all versions up to, and including, 4.0.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is exploitable via a nonce-free GET request to /wp-admin/profile.php, requiring no profile-form submission; a Subscriber can plant the malicious attachment URL, which then executes when an administrator opens that user's Edit User screen.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93656"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/profile-builder/tags/4.0.2/front-end/default-fields/avatar/avatar.php#L43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/profile-builder/tags/4.0.2/front-end/default-fields/avatar/avatar.php#L67"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/profile-builder/tags/4.0.2/front-end/default-fields/avatar/avatar.php#L75"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/profile-builder/tags/4.0.2/front-end/default-fields/fields-functions.php#L30"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/profile-builder/tags/4.0.2/front-end/default-fields/upload/upload_helper_functions.php#L286"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset/3708665/profile-builder"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4d4991ff-903a-410a-b472-1a5f76a32940?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T08:16:41Z"
+  }
+}

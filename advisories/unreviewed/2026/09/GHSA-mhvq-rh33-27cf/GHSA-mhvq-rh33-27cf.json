@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mhvq-rh33-27cf",
+  "modified": "2026-09-25T09:31:08Z",
+  "published": "2026-09-25T09:31:08Z",
+  "aliases": [
+    "CVE-2026-89426"
+  ],
+  "details": "The Knit Pay – Cashfree, Instamojo, Razorpay, PayPal and more plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 9.6.1.0. This is due to the `maybe_update_user_role()` function reading the target role directly from an attacker-controlled Gravity Forms entry field — configured via the feed's `user_role_field_id` — and passing it to `WP_User::set_role()` without validating the supplied value against an allowlist of permitted roles. This makes it possible for authenticated attackers, with Subscriber-level access and above, to elevate their privileges to administrator by tampering with the hidden role field value at form submission time. Exploitation is further enabled by the fact that $0 orders are synchronously marked as SUCCESS during form submission without requiring a real payment, and when no GF User Registration user can be resolved, the role assignment target falls back to `$lead['created_by']` — the currently authenticated submitter's own user ID — making any authenticated form submitter an eligible exploitation target.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89426"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/knit-pay/tags/9.4.0.1/packages/wp-pay-extensions/gravityforms/src/Extension.php#L381"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/knit-pay/tags/9.4.0.1/packages/wp-pay-extensions/gravityforms/src/Extension.php#L384"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/knit-pay/tags/9.4.0.1/packages/wp-pay-extensions/gravityforms/src/Extension.php#L989"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/knit-pay/tags/9.4.0.1/packages/wp-pay-extensions/gravityforms/src/Processor.php#L493"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/knit-pay/tags/9.6.1.0/packages/wp-pay-extensions/gravityforms/src/Extension.php#L381"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/knit-pay/tags/9.6.1.0/packages/wp-pay-extensions/gravityforms/src/Extension.php#L384"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/knit-pay/tags/9.6.1.0/packages/wp-pay-extensions/gravityforms/src/Extension.php#L989"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/browser/knit-pay/tags/9.6.1.0/packages/wp-pay-extensions/gravityforms/src/Processor.php#L493"
+    },
+    {
+      "type": "WEB",
+      "url": "https://plugins.trac.wordpress.org/changeset?reponame=&old=3706862%40knit-pay&new=3706862%40knit-pay"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/ee5df686-7bf8-42cc-9356-92570bd02355?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-269"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T08:16:40Z"
+  }
+}

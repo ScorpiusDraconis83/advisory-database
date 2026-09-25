@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4wqf-6xrq-qp4m",
+  "modified": "2026-09-25T09:31:06Z",
+  "published": "2026-09-25T09:31:06Z",
+  "aliases": [
+    "CVE-2026-84281"
+  ],
+  "details": "The Fancy Product Designer plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'productTitle' in '_fpd_data' Order Item Meta in all versions up to, and including, 6.5.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The fpd_save_order AJAX action is registered for unauthenticated users via wp_ajax_nopriv_fpd_save_order with no nonce or capability check, and the strip_tags() sanitization applied at save time is bypassed by submitting JSON unicode escape sequences (e.g. \\u003c, \\u003e), which json_decode() silently converts back to literal angle brackets when the order is rendered in the admin view.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84281"
+    },
+    {
+      "type": "WEB",
+      "url": "https://fancyproductdesigner.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/53a70698-f2ee-4694-b21c-8b8ccb0b2a5c?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T07:16:55Z"
+  }
+}

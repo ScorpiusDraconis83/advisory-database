@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j397-69jf-ffwj",
+  "modified": "2026-09-25T09:31:08Z",
+  "published": "2026-09-25T09:31:08Z",
+  "aliases": [
+    "CVE-2026-84280"
+  ],
+  "details": "The Fancy Product Designer plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Shortcode Order 'elements[].title' Parameter in all versions up to, and including, 6.5.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The injected payload is written to the DOM via innerHTML within the beforeElementAdd JavaScript event handler when processing the elements[].title field from the stored order JSON, meaning execution occurs specifically when an administrator reviews shortcode orders in the WordPress admin panel.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84280"
+    },
+    {
+      "type": "WEB",
+      "url": "https://fancyproductdesigner.com"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e4c1e5eb-324e-4841-afd0-c59b319ddd0e?source=cve"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T08:16:40Z"
+  }
+}
