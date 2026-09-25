@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vj3q-vp3g-j9c8",
+  "modified": "2026-09-25T15:00:44Z",
+  "published": "2026-09-25T15:00:44Z",
+  "aliases": [
+    "CVE-2026-61825"
+  ],
+  "summary": "code16/sharp has a stored XSS via data-html-content Sanitizer Bypass",
+  "details": "### Impact\nThe vulnerability allows an attacker to bypass the HTML sanitizer by using the `data-html-content` attribute in the content of a `SharpEditorFormField`. \n\n### Patches\nThe field must now explicitly configure `SharpFormEditorField::RAW_HTML` in the toolbar to keep this behavior. **When using the  `RAW_HTML` button, the application using `code16/sharp` must sanitize manually the content coming from the field**. \nVulnerability has been patched in version 9.22.5.\n\n### Workarounds\nSanitize every contents of editors manually (e.g. using Symfony/HtmlSanitizer)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "code16/sharp"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9.22.5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/security/advisories/GHSA-vj3q-vp3g-j9c8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61825"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/code16/sharp/commit/ec509a22c808a5bd9dfad6a0a85c92ce6f411e21"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/code16/sharp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-25T15:00:44Z",
+    "nvd_published_at": "2026-09-24T19:17:15Z"
+  }
+}
