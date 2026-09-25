@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8263-qv4g-vfxr",
+  "modified": "2026-09-25T19:18:17Z",
+  "published": "2026-06-24T15:31:48Z",
+  "aliases": [
+    "CVE-2026-57299"
+  ],
+  "summary": "Jenkins Contrast Continuous Application Security Plugin missing permission checks",
+  "details": "Jenkins Contrast Continuous Application Security Plugin 3.11 and earlier does not perform permission checks in several HTTP endpoints that fill list box options with the names of the configured Contrast metadata.\n\nThis allows attackers with Overall/Read permission to enumerate the names of configured Contrast metadata.\n\nContrast Continuous Application Security Plugin 3.12 requires the appropriate permission to enumerate the configured Contrast metadata.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.plugins:contrast-continuous-application-security"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "3.12"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57299"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/contrast-continuous-application-security-plugin/commit/d7776646af26d928cb0d50922d61dadc2c6aa11c"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/contrast-continuous-application-security-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/contrast-continuous-application-security-plugin/releases/tag/contrast-continuous-application-security-3.12"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2026-06-24/#SECURITY-3697%20(2)"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-25T19:18:17Z",
+    "nvd_published_at": "2026-06-24T14:17:36Z"
+  }
+}
