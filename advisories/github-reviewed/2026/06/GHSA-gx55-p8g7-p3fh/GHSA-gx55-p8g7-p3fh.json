@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gx55-p8g7-p3fh",
+  "modified": "2026-09-25T18:56:15Z",
+  "published": "2026-06-24T15:31:47Z",
+  "aliases": [
+    "CVE-2026-57288"
+  ],
+  "summary": "Jenkins Active Directory Plugin has an LDAP injection vulnerability",
+  "details": "In Jenkins Active Directory Plugin 2.41.1 and earlier, the Windows native (ADSI) authentication path does not escape the user name before building the LDAP search filter.\n\nThis allows unauthenticated attackers to inject LDAP wildcard characters into the user name, enabling them to enumerate directory user and group names, and to authenticate as a matching user when they know that user’s password but not their exact user name.\n\nActive Directory Plugin 2.41.2 escapes the user name in the Windows native (ADSI) authentication path before building the LDAP search filter.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "org.jenkins-ci.plugins:active-directory"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.41.2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57288"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/active-directory-plugin/commit/5028dea8e0acc45ff9d6be302d4e1cbc1f9da464"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/active-directory-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/active-directory-plugin/releases/tag/active-directory-2.41.2"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2026-06-24/#SECURITY-3651"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-90"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-25T18:56:15Z",
+    "nvd_published_at": "2026-06-24T14:17:35Z"
+  }
+}
