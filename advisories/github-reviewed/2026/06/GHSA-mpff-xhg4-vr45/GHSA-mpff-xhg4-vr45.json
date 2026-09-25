@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mpff-xhg4-vr45",
+  "modified": "2026-09-25T19:19:00Z",
+  "published": "2026-06-24T15:31:48Z",
+  "aliases": [
+    "CVE-2026-57300"
+  ],
+  "summary": "Jenkins MCP Server Plugin missing a permission check",
+  "details": "Jenkins MCP Server Plugin 0.177.v629fdb_2557fe and earlier does not perform a permission check in the getReplayScripts MCP tool that returns the replay script of a Pipeline build.\n\nThis allows attackers with Item/Read permission to obtain the Pipeline script of jobs.\n\nMCP Server Plugin 0.178.vffe5a_e770f3b_ requires Item/Extended Read permission to return the replay script of a Pipeline build through the getReplayScripts MCP tool.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Maven",
+        "name": "io.jenkins.plugins:mcp-server"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0.178.vffe5a"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57300"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/mcp-server-plugin/commit/ffe5ae770f3bd7e88c99aea3018263af0b2f9cc4"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/jenkinsci/mcp-server-plugin"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/jenkinsci/mcp-server-plugin/releases/tag/0.178.vffe5a_e770f3b_"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.jenkins.io/security/advisory/2026-06-24/#SECURITY-3759"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-25T19:18:59Z",
+    "nvd_published_at": "2026-06-24T14:17:36Z"
+  }
+}
