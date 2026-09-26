@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r7p3-q524-5mc7",
+  "modified": "2026-09-26T00:32:18Z",
+  "published": "2026-09-26T00:32:18Z",
+  "aliases": [
+    "CVE-2026-100501"
+  ],
+  "details": "Flame through 2.4.0 contains an improper restriction of excessive authentication attempts vulnerability in the POST /api/auth login endpoint that allows unauthenticated attackers to brute-force the admin password. Attackers can submit unlimited password guesses without rate limiting, attempt counters, lockouts, or delays to gain full administrator access and modify application configuration.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100501"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pawelmalak/flame/issues/494"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pawelmalak/flame"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pawelmalak/flame/blob/v2.4.0/.docker/Dockerfile#L28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pawelmalak/flame/blob/v2.4.0/controllers/auth/login.js#L11-L22"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pawelmalak/flame/blob/v2.4.0/routes/auth.js#L7"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flame-through-2.4.0-brute-force-attack-via-login-endpoint"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-307"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T22:17:10Z"
+  }
+}

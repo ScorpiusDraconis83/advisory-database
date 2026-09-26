@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-h3fx-87pr-c7fx",
+  "modified": "2026-09-26T00:32:18Z",
+  "published": "2026-09-26T00:32:18Z",
+  "aliases": [
+    "CVE-2026-100502"
+  ],
+  "details": "Flame through 2.4.0 contains an insufficient session expiration vulnerability in the login endpoint that allows attackers with former admin access to obtain tokens with arbitrary lifespans by supplying unvalidated duration parameters. Attackers can mint near-permanent administrator tokens that survive password changes, retaining full control of the dashboard since tokens are verified only against a static JWT secret that is never rotated.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:L/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:H/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100502"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pawelmalak/flame/issues/494"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pawelmalak/flame"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pawelmalak/flame/blob/v2.4.0/controllers/auth/login.js#L9-L17"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pawelmalak/flame/blob/v2.4.0/utils/init/initSecret.js#L8-L25"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pawelmalak/flame/blob/v2.4.0/utils/signToken.js#L4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flame-through-2.4.0-admin-token-insufficient-session-expiration"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-25T22:17:10Z"
+  }
+}

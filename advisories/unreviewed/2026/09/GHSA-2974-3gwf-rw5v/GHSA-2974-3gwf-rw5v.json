@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2974-3gwf-rw5v",
+  "modified": "2026-09-26T00:31:23Z",
+  "published": "2026-09-26T00:31:23Z",
+  "aliases": [
+    "CVE-2025-9785"
+  ],
+  "details": "PaperCut Print Deploy is an optional component that integrates with PaperCut NG/MF which simplifies printer deployment and management. When the component is deployed to an environment, the customer has an option to configure the system to use a self-signed certificate. If the customer does not fully configure the system to leverage the trust database on the clients, it opens up the communication between clients and the server to man-in-the-middle attacks. \n\nIt was discovered that certain parts of the documentation related to the configuration of SSL in Print Deploy were lacking, which could potentially contribute to a misconfiguration of the Print Deploy client installation. PaperCut strongly recommends to use valid certificates to secure installations and to follow the updated documentation to ensure the correct SSL configuration. Those who use private CAs and/or self-signed certificates should make sure to copy their Certification Authority certificate, or their self signed certificate if using only one, to the trust store of their operating system and to the Java key store",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-9785"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.papercut.com/kb/Main/papercut-ng-mf-security-bulletin-september-2025"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2025-09-03T05:15:30Z"
+  }
+}
