@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x265-jggq-9g8p",
+  "modified": "2026-09-26T03:30:25Z",
+  "published": "2026-09-26T03:30:25Z",
+  "aliases": [
+    "CVE-2026-100551"
+  ],
+  "details": "OpenClaw for iOS versions >= 2026.7.1 and < 2026.8.11 do not enforce saved Gateway TLS pins in the Control UI. While native connections enforced the saved Gateway fingerprint, the authenticated Terminal and session Dashboard WebViews omitted it. If a user had accepted a Gateway fingerprint, an attacker able to redirect the same host and port and present a different certificate that is accepted by iOS system trust can serve a replacement Control UI page; opening the Terminal or a session Dashboard then allows that page to read the injected Gateway token or password. The stolen credential can grant operator access, including reading sensitive Gateway state and invoking host-capable tools. This issue is fixed in 2026.8.11.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-jjpc-p3xf-8g7p"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100551"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-ios-control-ui-tls-pin-enforcement-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-295"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T03:17:01Z"
+  }
+}

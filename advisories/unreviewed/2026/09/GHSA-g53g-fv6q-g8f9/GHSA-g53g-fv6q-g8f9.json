@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g53g-fv6q-g8f9",
+  "modified": "2026-09-26T03:30:26Z",
+  "published": "2026-09-26T03:30:26Z",
+  "aliases": [
+    "CVE-2026-100570"
+  ],
+  "details": "OpenClaw (npm package 'openclaw') versions >= 2026.3.28 and < 2026.8.1 allow an untrusted workspace .env file to set the CLOUDSDK_PYTHON_ARGS environment variable. When an operator starts OpenClaw in attacker-controlled workspace content and then runs the Gmail setup flow, that value is inherited when gcloud is launched, and the gcloud launcher passes it as arguments to the trusted Python interpreter. A crafted CLOUDSDK_PYTHON_ARGS value can therefore cause Python to execute attacker-supplied code with the OpenClaw host user's permissions, allowing credentials to be read, files to be modified, or other processes to be started. This issue is fixed in version 2026.8.1; as a workaround, run Gmail setup only from trusted workspaces and clear inherited CLOUDSDK_* variables beforehand.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-5mrc-77hj-xjxv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100570"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-before-2026.8.1-remote-code-execution-via-cloudsdk-python-args"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-88"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T03:17:04Z"
+  }
+}

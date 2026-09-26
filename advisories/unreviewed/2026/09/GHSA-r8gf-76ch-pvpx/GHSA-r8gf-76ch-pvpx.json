@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r8gf-76ch-pvpx",
+  "modified": "2026-09-26T03:30:25Z",
+  "published": "2026-09-26T03:30:25Z",
+  "aliases": [
+    "CVE-2026-100554"
+  ],
+  "details": "OpenClaw (npm package 'openclaw') versions >= 2026.5.12 and < 2026.8.1 do not immediately invalidate Canvas HTTP authorization when a paired node is revoked. Node revocation invalidates the WebSocket client, but Canvas HTTP authorization continues to accept and renew the previously granted capability until WebSocket close cleanup completes. As a result, a revoked paired node can continue exercising its Canvas capability against the capability's configured routes during the close grace period. The issue is fixed in 2026.8.1; as a workaround, restart the Gateway after revoking a node that has Canvas access.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-g697-vv6h-r8hv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100554"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-before-2026.8.1-canvas-capability-revocation-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-613"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T03:17:01Z"
+  }
+}

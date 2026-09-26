@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-qvvq-pvmc-pc5p",
+  "modified": "2026-09-26T03:30:27Z",
+  "published": "2026-09-26T03:30:27Z",
+  "aliases": [
+    "CVE-2026-100584"
+  ],
+  "details": "OpenClaw is an npm-distributed agent runtime. In versions >= 2026.2.26 and < 2026.7.1, PowerShell command analysis on Windows hosts running in exec allowlist mode could approve an exact executable resolved from PATH but subsequently execute a same-named executable located in the workspace directory. If lower-trust content can place an executable with an approved basename into an agent-writable workspace and steer an approved PowerShell command that uses a bare executable name, OpenClaw may run the workspace file instead of the allowlisted path, executing arbitrary code with the privileges of the Gateway or node-host user. The issue does not require replacement of the approved executable itself. Version 2026.7.1 contains a fix; as a workaround, avoid bare executable names in approved PowerShell commands and keep executable files out of agent-writable workspaces.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-rgjw-6v73-php6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100584"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-before-2026.7.1-allowlist-bypass-via-workspace-shadows"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-426"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T03:17:06Z"
+  }
+}

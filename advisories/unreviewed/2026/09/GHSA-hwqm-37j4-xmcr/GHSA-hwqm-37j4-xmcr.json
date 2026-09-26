@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-hwqm-37j4-xmcr",
+  "modified": "2026-09-26T03:30:24Z",
+  "published": "2026-09-26T03:30:24Z",
+  "aliases": [
+    "CVE-2026-100546"
+  ],
+  "details": "OpenClaw (npm package `openclaw`) versions >= 2026.7.2 and < 2026.9.2 contain a race condition in the Discord realtime voice transcript path. Concurrent control-classified voice transcripts could consume speaker context belonging to another participant after an asynchronous control check, causing a transcript to inherit another speaker's owner status. In Discord agent-proxy voice sessions using the affected realtime control path, an utterance from a non-owner participant could reach the downstream agent boundary marked as owner, so owner-sensitive behavior is applied to the wrong speaker. Exploitation depends on concurrent transcript timing and on the tools and commands available to the affected agent. The issue is fixed in 2026.9.2; as a workaround, disable Discord realtime voice for agents that distinguish owner and non-owner senders.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:L/UI:N/VC:L/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-5x6q-wg56-rxg8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100546"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-2026.7.2-before-2026.9.2-authentication-bypass-via-voice-transcript"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-362"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T03:17:00Z"
+  }
+}

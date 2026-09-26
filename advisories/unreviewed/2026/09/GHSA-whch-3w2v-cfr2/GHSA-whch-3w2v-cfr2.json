@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-whch-3w2v-cfr2",
+  "modified": "2026-09-26T03:30:28Z",
+  "published": "2026-09-26T03:30:28Z",
+  "aliases": [
+    "CVE-2026-100592"
+  ],
+  "details": "OpenClaw is an agent gateway distributed via npm. In versions >= 2026.4.10 and < 2026.7.1, persistent memory dreaming mutations omit owner permission checks. An authorized but non-owner external-channel sender can issue the persistent '/dreaming on' and '/dreaming off' commands to enable or disable the Gateway's Memory Core dreaming behavior, disabling background memory processing or re-enabling durable memory promotion where the owner expected it to remain disabled; the practical confidentiality, integrity, and availability impact depends on stored conversation material and subsequent memory use. Read-only status and help commands remain governed by normal command policy. The issue is fixed in version 2026.7.1. As a workaround, disable dreaming commands in external channels or restrict channel command access to owners.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/security/advisories/GHSA-22v4-33m3-8p7m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100592"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-before-2026.7.1-authentication-bypass-via-memory-dreaming"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T03:17:07Z"
+  }
+}
