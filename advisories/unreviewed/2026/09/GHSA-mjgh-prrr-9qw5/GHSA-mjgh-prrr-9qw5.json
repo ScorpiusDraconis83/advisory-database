@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mjgh-prrr-9qw5",
+  "modified": "2026-09-26T15:31:14Z",
+  "published": "2026-09-26T15:31:13Z",
+  "aliases": [
+    "CVE-2026-100607"
+  ],
+  "details": "Flowise through 3.1.4 resolves SSO and local-password users solely by email without storing provider or subject identifier bindings, allowing attackers to authenticate as any existing user by claiming their email at any configured SSO provider. Attackers can gain complete account access including chatflows, credentials, and API keys by authenticating through a different SSO provider or local password than the victim's original registration method.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-cffm-583c-vffr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100607"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/flowise-through-3.1.4-authentication-bypass-via-email-only-sso"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:40Z"
+  }
+}

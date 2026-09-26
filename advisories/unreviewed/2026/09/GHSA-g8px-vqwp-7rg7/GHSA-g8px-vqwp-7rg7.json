@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-g8px-vqwp-7rg7",
+  "modified": "2026-09-26T15:31:20Z",
+  "published": "2026-09-26T15:31:20Z",
+  "aliases": [
+    "CVE-2026-100684"
+  ],
+  "details": "Budibase versions 3.41.0 before 3.45.0 contain an authentication bypass in the OIDC/SSO login path of @budibase/server. In sso.authenticate, when no existing user matches the incoming SSO subject, the server looks up pending user invites by the IdP-asserted email address alone — without validating an invite code and without an email_verified check (the email_verified gate protects only the existing-account lookup). An attacker who can register at an IdP that the tenant trusts for OIDC and assert a victim's invited email address (even with email_verified=false) claims the pending invite and inherits all of its granted privileges, including builder and admin.global, with no admin exclusion. This results in takeover of the invited principal and, for admin invites, full tenant compromise (access to all apps, datasources including production credentials, and automations); the invite is consumed, denying onboarding to the legitimate invitee.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Budibase/budibase/security/advisories/GHSA-35ch-57g2-3g98"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100684"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/budibase-server-3.41.0-before-3.45.0-authentication-bypass-via-oidc"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:52Z"
+  }
+}

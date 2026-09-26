@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pj38-8h4x-w384",
+  "modified": "2026-09-26T15:31:23Z",
+  "published": "2026-09-26T15:31:23Z",
+  "aliases": [
+    "CVE-2026-100709"
+  ],
+  "details": "Froxlor through 2.3.10 stores only a numeric user ID in remembered-2FA tokens (panel_2fa_tokens) without recording the account namespace, and the remembered-token lookup during login is not constrained to the customer or administrator account type. Because customer and administrator IDs are allocated from separate namespaces, a remembered-2FA token legitimately issued to a customer with a given ID also matches an administrator with the same ID. An attacker who controls a customer account with a colliding ID, holds a valid remembered-2FA cookie for it, and already knows the target administrator's password can bypass the administrator's TOTP second factor and obtain an authenticated administrator session. This is a second-factor bypass only; it does not defeat password authentication. Fixed in 2.3.12.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/froxlor/froxlor/security/advisories/GHSA-9fq7-9w8p-c3qh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100709"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/froxlor-before-2.3.12-2fa-bypass-via-namespace-confusion"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:56Z"
+  }
+}

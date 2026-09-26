@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v4jw-rcpm-rf82",
+  "modified": "2026-09-26T15:31:15Z",
+  "published": "2026-09-26T15:31:15Z",
+  "aliases": [
+    "CVE-2026-100618"
+  ],
+  "details": "Capgo (capgo.app) is affected by an authorization flaw in the app icon update path. The PUT /app/:id endpoint accepts a user-controlled `icon` value, normalizes it, and stores it in public.apps.icon_url without verifying that the image path belongs to the target app's own image namespace (e.g. org/{owner_org}/{app_id}/...). Updating apps.icon_url fires the on_app_update trigger, whose worker reads record.icon_url and calls cleanStoredImageMetadata(), which runs with service-role credentials (supabaseAdmin()) and downloads and re-uploads the referenced storage object with upsert: true. As a result, an authenticated holder of an app-limited write API key can cause the privileged worker to rewrite an out-of-scope private image object (for example an organization logo) that the key cannot read or write directly under Supabase Storage RLS. All versions are affected; no patched version was available at the time of the advisory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cap-go/capgo.app/security/advisories/GHSA-669c-gwrr-hc53"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100618"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/capgo-app-icon-update-privilege-escalation-via-service-role-worker"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:42Z"
+  }
+}

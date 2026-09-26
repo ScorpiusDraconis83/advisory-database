@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9fp6-6v59-w2jx",
+  "modified": "2026-09-26T15:31:18Z",
+  "published": "2026-09-26T15:31:18Z",
+  "aliases": [
+    "CVE-2026-100654"
+  ],
+  "details": "vLLM before 0.29.0 accepts user-controlled stop_token_ids on the OpenAI-compatible POST /v1/completions and POST /v1/chat/completions endpoints but validates only that the values are integers, not that each token id is within the model vocabulary/logits range. When min_tokens > 0, the stop token ids are used as logits indices to suppress stop tokens, so an out-of-range id reaches a CUDA indexing operation (index_put_) and triggers a device-side assertion. An authenticated API user can send a single malformed completion request that returns 500 Internal Server Error and puts EngineCore into a fatal state, causing subsequent requests to fail until the service is restarted (denial of service).",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/vllm-project/vllm/security/advisories/GHSA-v5gm-qgmv-gc6c"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100654"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vllm-before-0.29.0-denial-of-service-via-out-of-range-stop-token-ids"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-129"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:48Z"
+  }
+}

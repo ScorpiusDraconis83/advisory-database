@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j8gm-f3cq-6c27",
+  "modified": "2026-09-26T15:31:17Z",
+  "published": "2026-09-26T15:31:17Z",
+  "aliases": [
+    "CVE-2026-100650"
+  ],
+  "details": "vLLM through 0.29.0 fetches and fully materializes remote or inline media before enforcing its documented media controls (the VLLM_MAX_AUDIO_CLIP_FILESIZE_MB compressed-audio size cap, default 25 MB, and the per-modality --limit-mm-per-prompt item limits). Across four ingress paths — the shared media-acquisition layer (HTTPConnection.get_bytes()/async_get_bytes()), the chat completions audio_url/base64 path, the batch speech runner, and the Rust frontend POST /tokenize route — the server reads the entire HTTP response body, base64-decodes the inline payload, or spawns one fetch/decode task per media part, and only then applies the limit (or, on some paths, never applies it). A remote attacker can therefore cause the API server or batch-runner process to allocate memory and consume outbound bandwidth proportional to an attacker-chosen body size or media item count before the request is rejected, resulting in pre-inference memory and bandwidth exhaustion (denial of service). The chat and batch surfaces require an API key when one is configured; the Rust frontend /tokenize route is unauthenticated by design. There is no code execution or data disclosure impact.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/vllm-project/vllm/security/advisories/GHSA-p6g9-7v3x-m8mv"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100650"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/vllm-project/vllm/commit/752a3a504485790a2e8491cacbb35c137339ad34"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/vllm-before-0.29.0-resource-exhaustion-via-unbounded-media-materialization"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:47Z"
+  }
+}

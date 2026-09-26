@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-w745-gjg3-r76m",
+  "modified": "2026-09-26T15:31:16Z",
+  "published": "2026-09-26T15:31:16Z",
+  "aliases": [
+    "CVE-2026-100634"
+  ],
+  "details": "SiYuan before v3.8.4 does not validate the sender or restrict recipients in the 'siyuan-send-windows' IPC handler of the Electron main process (app/electron/main.js). The handler ignores event.sender and forwards any received payload to every BrowserWindow returned by BrowserWindow.getAllWindows(), including windows belonging to other opened workspaces. A renderer connected to an attacker-controlled remote kernel can therefore send {cmd: \"lockscreenByMode\"} and have it delivered across the workspace boundary; a sibling workspace window whose lockScreenMode is set to 1 invokes lockScreen(). Repeated messages allow the remote workspace to repeatedly lock unrelated local workspace windows, causing a limited denial of service. No confidentiality, integrity, or code-execution impact was observed.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:L/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-wxp7-xpq8-8xpm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100634"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/commit/8641553a1f07374001902d3ce773285db1292b2d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/siyuan-before-3.8.4-missing-authorization-via-siyuan-send-windows"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:44Z"
+  }
+}

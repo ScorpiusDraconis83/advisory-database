@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xw59-q7ph-pgh5",
+  "modified": "2026-09-26T15:31:19Z",
+  "published": "2026-09-26T15:31:19Z",
+  "aliases": [
+    "CVE-2026-100670"
+  ],
+  "details": "Grav CMS 2.0.14 through 2.0.24 contains a privilege escalation vulnerability in the group and account blueprints. The access map is gated by a `security@: admin.super` guard that is resolved by the field's exact path, so a submitted flat dot-notation key such as `access.admin.super` (instead of the nested `access[admin][super]`) matches no blueprint rule, survives BlueprintSchema::filterArray() and flattening, and is written by FlexObject::update() via setNestedProperty(), which splits on `.` and reconstructs the nested value. An authenticated backend operator using the flex accounts backend who holds admin.users but not admin.super can therefore grant admin.super to their own account or to a group they belong to and escalate to full super-admin, gaining control over configuration, plugin and theme installation, the file manager, and all accounts. Fixed in 2.0.25, which drops any dotted key whose ancestor path is disabled or marked validate.ignore.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getgrav/grav/security/advisories/GHSA-mwjj-r7vm-pgqm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100670"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/grav-cms-2.0.14-through-2.0.24-privilege-escalation-via-blueprint-guard-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:50Z"
+  }
+}

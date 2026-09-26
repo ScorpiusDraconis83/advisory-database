@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xpjr-56xg-vx6v",
+  "modified": "2026-09-26T15:31:21Z",
+  "published": "2026-09-26T15:31:21Z",
+  "aliases": [
+    "CVE-2026-100693"
+  ],
+  "details": "Hugo versions from v0.162.0 before v0.166.0 contain a case-sensitive validation flaw in the security.http.urls IP-literal deny rule that allows attackers to bypass restrictions. Attackers can use mixed-case URL schemes in resources.GetRemote calls to fetch from restricted IP addresses like localhost.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/gohugoio/hugo/security/advisories/GHSA-pmrv-x7gp-2rjw"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100693"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/hugo-0.162.0-before-0.166.0-ip-literal-deny-rule-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-178"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:54Z"
+  }
+}

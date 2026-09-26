@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-553q-8vcm-9vxv",
+  "modified": "2026-09-26T15:31:14Z",
+  "published": "2026-09-26T15:31:14Z",
+  "aliases": [
+    "CVE-2026-100612"
+  ],
+  "details": "Capgo (capgo.app) through version 12.261.0 contains an incomplete access-control fix for the public.sso_providers table. Migration 20260826100000_sso_providers_block_direct_active_insert.sql installs a BEFORE UPDATE guard (enforce_sso_provider_client_update_guard()) that freezes only the dns_verified_at, domain, status and enforce_sso columns; provider_id (as well as metadata_url and attribute_mapping) is left writable. Because the table is granted ALL to the anon and authenticated roles with no column-level restriction, and PostgreSQL row-level security policies such as allow_org_admins_update_sso_providers constrain only which row may be updated and not which columns, a user holding the org_admin tier permission org.update_settings can PATCH provider_id over PostgREST to an identity provider under their control. Since provider_id is the trust anchor binding an email domain to an authorized IdP, the attacker can then authenticate through their own IdP while asserting the org owner's email; the server-side provider match succeeds and the merge routine attaches the attacker's SSO identity to the existing owner account, nulls its password, and deletes its other identities and sessions. This results in vertical privilege escalation from org_admin to org owner/super_admin, account takeover, and lockout of the legitimate owner. Exploitation requires that the target organization has an active SSO provider configured and that the attacker already holds org_admin in that organization. No patched version is available.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cap-go/capgo.app/security/advisories/GHSA-jpjp-v827-j4gc"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100612"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/capgo-sso-provider-id-authentication-bypass-via-incomplete-migration"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:41Z"
+  }
+}

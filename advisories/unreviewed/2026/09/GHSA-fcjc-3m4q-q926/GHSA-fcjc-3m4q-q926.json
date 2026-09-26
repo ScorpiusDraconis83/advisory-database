@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fcjc-3m4q-q926",
+  "modified": "2026-09-26T15:31:22Z",
+  "published": "2026-09-26T15:31:22Z",
+  "aliases": [
+    "CVE-2026-100699"
+  ],
+  "details": "Nodemailer is a Node.js email-sending library. In versions >= 9.1.0 and < 10.0.9, the address parser (src/addressparser) mishandles addresses whose local-part is a quoted string and that are followed by RFC 5322 comments, allowing trailing comment-separated domain atoms to be retained in the normalized address. For example, the input \"user\"@example.com(x)evil.com is parsed to the address value 'user@example.com evil.com', which contains additional attacker-controlled domain text separated by a literal space. This parsed value is used without further strict recipient validation when the message envelope is built (envelope.to in src/mime-node), so a malformed/ambiguous recipient address can be accepted and placed in the SMTP envelope. Whether this results in delivery to an unintended recipient on real SMTP servers has not been confirmed. The issue is a variant of the RFC 5322 comment parsing problem addressed in GHSA-cc9r-2j5m-2m83, affecting the separate quoted-local-part code path. Version 10.0.9 contains a fix.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/nodemailer/nodemailer/security/advisories/GHSA-g57g-f23g-4646"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100699"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nodemailer-before-10.0.9-malformed-envelope-recipient-via-rfc-5322-comment"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-20"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:54Z"
+  }
+}

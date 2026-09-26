@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mmqp-fgp4-5q7j",
+  "modified": "2026-09-26T15:31:24Z",
+  "published": "2026-09-26T15:31:24Z",
+  "aliases": [
+    "CVE-2026-100720"
+  ],
+  "details": "Froxlor 2.0.0 through 2.3.10 is vulnerable to stored cross-site scripting. When a customer (the lowest-privileged authenticated role) uploads an SSL certificate for one of their own domains, the Certificates API add()/update() methods parse it with openssl_x509_parse() and store the issuer organization (issuer['O']) value verbatim without sanitization. Froxlor's table-listing renderer then emits scalar cells through Twig's `raw` filter, disabling HTML auto-escaping, so when an administrator or reseller opens Domains > SSL certificates the attacker-supplied issuer value executes as script in the privileged user's session. This crosses a privilege boundary from customer to admin and can result in full administrator account takeover; because a Froxlor admin controls webserver, DNS, and PHP configuration applied by a cron job running as root, the issue can be further escalated to command execution as root on the managed server. The issue is fixed in Froxlor 2.3.12.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/froxlor/froxlor/security/advisories/GHSA-89vj-gqqr-73p8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100720"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/froxlor-before-2.3.12-stored-xss-via-ssl-certificate-issuer"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:58Z"
+  }
+}

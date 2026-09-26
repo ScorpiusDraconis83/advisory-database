@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5cqx-93pc-jr85",
+  "modified": "2026-09-26T15:31:13Z",
+  "published": "2026-09-26T15:31:13Z",
+  "aliases": [
+    "CVE-2026-100602"
+  ],
+  "details": "ClawHub (openclaw/clawhub application/backend) contains a missing authorization check in the changelog preview feature. A signed-in caller can invoke the public skills:generateChangelogPreview action for a skill they are not authorized to access; the previous version is read without the file-read authorization enforced on normal content access, and up to 8,000 characters of quarantined content may be submitted to the AI provider and reflected in the preview returned to the caller, disclosing restricted skill content. The issue was confirmed at revision cbfee7343ddc867316dd9b3de6fa8856730f9f41; the complete historical affected range was not established. It is fixed by PR #3682, included in revision 8c2de6c506bb4efabe3f0c2ffb8370b9e23d4650, which was deployed to clawhub.ai on 2026-09-11; self-hosted deployments should update to that revision or a later descendant. The npm CLI and OpenClaw runtime are separate products and are not affected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/clawhub/security/advisories/GHSA-g3jp-jj55-jrcr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100602"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/clawhub/commit/8c2de6c506bb4efabe3f0c2ffb8370b9e23d4650"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/clawhub-changelog-preview-information-disclosure-via-authorization-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:40Z"
+  }
+}

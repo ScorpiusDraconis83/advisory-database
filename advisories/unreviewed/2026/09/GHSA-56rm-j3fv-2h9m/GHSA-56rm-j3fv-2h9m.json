@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-56rm-j3fv-2h9m",
+  "modified": "2026-09-26T15:31:16Z",
+  "published": "2026-09-26T15:31:16Z",
+  "aliases": [
+    "CVE-2026-100629"
+  ],
+  "details": "Capgo (capgo.app backend) before 12.127.5 contains an authorization flaw in the PATCH /private/role_bindings/:binding_id endpoint. The handler verifies that the newly assigned role's priority rank does not exceed the caller's own rank, but — unlike the DELETE handler — it never checks the rank of the role currently bound to the target binding. An authenticated user holding the org_admin role (rank 90) can therefore change an org_super_admin binding (rank 95) to a lower-privileged role such as org_member (rank 75). Because the prevent_last_super_admin_binding_delete database trigger fires only BEFORE DELETE and not on UPDATE, an org_admin can demote every org_super_admin, leaving the organization with no super administrator. The issue is fixed in 12.127.5.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cap-go/capgo.app/security/advisories/GHSA-54mj-q77q-xwx5"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100629"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/capgo-backend-before-12.127.5-privilege-escalation-via-role-bindings-patch"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:44Z"
+  }
+}

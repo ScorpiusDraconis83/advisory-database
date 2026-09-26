@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gfvg-4qqv-cq4m",
+  "modified": "2026-09-26T15:31:15Z",
+  "published": "2026-09-26T15:31:14Z",
+  "aliases": [
+    "CVE-2026-100614"
+  ],
+  "details": "Capgo before 12.244.1 contains a cross-tenant integrity vulnerability in the metadata-cleaning worker that trusts image object keys from mutable database rows without validating ownership. An authenticated attacker can place a victim tenant's image key in a row they control, causing the service-role worker to download and re-upload that object with sanitized metadata. Attackers can silently modify metadata in cross-tenant image objects by supplying known victim keys during authorized row updates, bypassing storage access controls through the confused-deputy metadata worker.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Cap-go/capgo.app/security/advisories/GHSA-rcrw-pg2v-j9xg"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100614"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/capgo-before-12.244.1-cross-tenant-image-overwrite-via-metadata-worker"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:42Z"
+  }
+}

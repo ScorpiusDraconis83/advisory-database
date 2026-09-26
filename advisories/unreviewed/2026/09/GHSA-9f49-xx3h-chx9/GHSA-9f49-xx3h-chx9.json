@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9f49-xx3h-chx9",
+  "modified": "2026-09-26T15:31:17Z",
+  "published": "2026-09-26T15:31:16Z",
+  "aliases": [
+    "CVE-2026-100635"
+  ],
+  "details": "SiYuan before v3.8.4 contains an authentication bypass vulnerability in the publish service where session cookies are issued without Secure or SameSite attributes over plaintext HTTP connections. An on-path attacker can observe a valid publish-visitor-session-id cookie from a Basic Auth exchange and replay it to access authenticated publish endpoints without knowing the account password.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-7j37-4gq6-wm7m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100635"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/commit/79d47867b106467c951475a9193455b48d1f3682"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/siyuan-note/siyuan/commit/ff4d215f78a8d6e6db6052be18b5f9f4db9c7d68"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/siyuan-before-3.8.4-authentication-bypass-via-plaintext-session-cookie"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-319"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:45Z"
+  }
+}

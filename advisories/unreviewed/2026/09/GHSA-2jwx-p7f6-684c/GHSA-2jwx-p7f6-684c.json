@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2jwx-p7f6-684c",
+  "modified": "2026-09-26T15:31:20Z",
+  "published": "2026-09-26T15:31:20Z",
+  "aliases": [
+    "CVE-2026-100679"
+  ],
+  "details": "stoatchat before 0.15.5 fails to validate that MFA tickets belong to the authenticated user, allowing attackers to bypass MFA by using their own valid ticket with another user's session token. Attackers can obtain a ticket from their own account and use it with a victim's session token to disable TOTP, view recovery codes, or perform other sensitive operations without providing the victim's credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/stoatchat/stoatchat/security/advisories/GHSA-gwg6-q3c3-97cx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100679"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/stoatchat-before-0.15.5-mfa-bypass-via-cross-account-ticket"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:51Z"
+  }
+}

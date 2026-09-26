@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7m86-g9j9-26xf",
+  "modified": "2026-09-26T15:31:18Z",
+  "published": "2026-09-26T15:31:18Z",
+  "aliases": [
+    "CVE-2026-100661"
+  ],
+  "details": "Netty's HTTP/3 codec (io.netty:netty-codec-http3) versions 4.2.0.Final through 4.2.17.Final contain a denial-of-service vulnerability in the QPACK prefixed-integer decoder (QpackUtil.decodePrefixedInteger), which does not bound the number of continuation bytes it will process. A remote, unauthenticated peer can open a QPACK unidirectional stream (type 0x02 encoder or 0x03 decoder) and send a first byte with all prefix bits set (e.g. 0xFF for a 7-bit prefix or 0x3F for a 5-bit prefix) followed by an endless run of 0x80 continuation bytes. The decoder returns -1 ('need more bytes'), so callers never consume the input, the ByteToMessageDecoder cumulator grows without bound, and each decode() invocation re-scans the whole accumulated buffer, yielding O(N^2) CPU cost. The result is unbounded per-connection heap growth (OutOfMemoryError) and event-loop CPU starvation, reachable in every configuration. Fixed in 4.2.18.Final.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/netty/netty/security/advisories/GHSA-v5p2-hmgx-3xrx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100661"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/netty-http-3-qpack-prefixed-integer-dos-via-unbounded-accumulation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-400"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-26T14:16:49Z"
+  }
+}
