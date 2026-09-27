@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3jc5-2834-w7f2",
+  "modified": "2026-09-27T15:31:07Z",
+  "published": "2026-09-27T15:31:07Z",
+  "aliases": [
+    "CVE-2026-100869"
+  ],
+  "details": "Sylius versions before 2.1.16 and 2.2.9 fail to restrict payment request actions in the Shop API endpoint, allowing customers to trigger refunds on completed orders. Attackers with order tokens can submit arbitrary payment actions like refunds that payment gateways execute while Sylius maintains order as paid, causing financial loss.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Sylius/Sylius/security/advisories/GHSA-2rv4-pjmm-7fxf"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100869"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Sylius/Sylius/pull/19214"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Sylius/Sylius/commit/5813831f60f3a60b735a86a57c4b519626a3b75d"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Sylius/Sylius"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/Sylius/Sylius/releases/tag/v2.2.9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/sylius-2-x-before-2.1.16-and-2.2.9-arbitrary-payment-action-via-shop-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T13:16:38Z"
+  }
+}

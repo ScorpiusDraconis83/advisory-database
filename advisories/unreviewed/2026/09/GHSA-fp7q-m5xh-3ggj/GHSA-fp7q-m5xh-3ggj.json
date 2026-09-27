@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fp7q-m5xh-3ggj",
+  "modified": "2026-09-27T15:31:07Z",
+  "published": "2026-09-27T15:31:07Z",
+  "aliases": [
+    "CVE-2026-100866"
+  ],
+  "details": "onefetch through 2.28.1 writes repository information field values to the terminal without removing control characters, allowing terminal escape sequence injection. Attackers can embed ANSI/OSC escape sequences in project manifest version and name fields to manipulate terminal output, rewrite window titles, hide text, or trigger emulator-specific behavior when victims run onefetch.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100866"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/o2sh/onefetch/issues/1828"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/o2sh/onefetch"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/o2sh/onefetch/blob/9beb80329cf2e5bd784270f668139f0bafb48e2b/src/info/utils/info_field.rs#L43-L55"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/o2sh/onefetch/blob/9beb80329cf2e5bd784270f668139f0bafb48e2b/src/info/version.rs#L33-L35"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/onefetch-through-2.28.1-terminal-escape-sequence-injection"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-150"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T13:16:36Z"
+  }
+}

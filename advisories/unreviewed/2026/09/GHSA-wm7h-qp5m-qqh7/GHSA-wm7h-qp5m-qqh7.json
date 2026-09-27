@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-wm7h-qp5m-qqh7",
+  "modified": "2026-09-27T15:31:07Z",
+  "published": "2026-09-27T15:31:07Z",
+  "aliases": [
+    "CVE-2026-100867"
+  ],
+  "details": "spaceship-prompt through 4.22.5 fails to sanitize control characters from project manifest version fields before rendering them in the zsh prompt. Attackers can embed ANSI/OSC escape sequences in version fields of package manifests to manipulate terminal output, rewrite window titles, or spoof displayed text when victims enter the directory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100867"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spaceship-prompt/spaceship-prompt/issues/1567"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spaceship-prompt/spaceship-prompt"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spaceship-prompt/spaceship-prompt/blob/fd0d6653a134fe28f498eae1784fbb46d27f20f3/lib/section.zsh#L100-L102"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/spaceship-prompt/spaceship-prompt/blob/fd0d6653a134fe28f498eae1784fbb46d27f20f3/sections/package.zsh#L41"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/spaceship-prompt-through-4.22.5-terminal-escape-sequence-injection"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-150"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T13:16:37Z"
+  }
+}
