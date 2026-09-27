@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xxhh-mxcg-vmh8",
+  "modified": "2026-09-27T15:31:07Z",
+  "published": "2026-09-27T15:31:07Z",
+  "aliases": [
+    "CVE-2026-101033"
+  ],
+  "details": "KitchenOwl through 0.7.10 fails to verify that category IDs belong to the caller's household in expense and item operations. Authenticated attackers can enumerate category IDs from other households to read their category names, budgets, and colors, breaking household isolation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101033"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TomBursch/kitchenowl/issues/1154"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TomBursch/kitchenowl/pull/1155"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TomBursch/kitchenowl/commit/c15f6cb21a98d5eb70746bee6b63773a6d6a6251"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TomBursch/kitchenowl"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TomBursch/kitchenowl/blob/09aaf5fbd2343fcc10b12e906c63c3764dd38919/backend/app/controller/expense/expense_controller.py#L115-L118"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/TomBursch/kitchenowl/blob/09aaf5fbd2343fcc10b12e906c63c3764dd38919/backend/app/controller/item/item_controller.py#L86-L88"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/kitchenowl-through-0.7.10-idor-via-unchecked-category-id"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T14:16:29Z"
+  }
+}

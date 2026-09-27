@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mvf3-jgvq-79hc",
+  "modified": "2026-09-27T15:31:07Z",
+  "published": "2026-09-27T15:31:07Z",
+  "aliases": [
+    "CVE-2026-101032"
+  ],
+  "details": "navi through 2.24.0 fails to properly escape cheatsheet variable values when substituting them into shell commands. Attackers can inject shell metacharacters through crafted file names in suggestion command directories to execute arbitrary commands with victim privileges.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101032"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/denisidoro/navi/issues/1037"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/denisidoro/navi"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/denisidoro/navi/blob/5515367dc8a2a561d2d82b8352f729b1da4120d3/src/commands/core/actor.rs#L159-L193"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/denisidoro/navi/blob/5515367dc8a2a561d2d82b8352f729b1da4120d3/src/common/shell.rs#L39-L50"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/navi-through-2.24.0-os-command-injection-via-cheatsheet-variables"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T14:16:28Z"
+  }
+}
