@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8rwq-r56x-hx8f",
+  "modified": "2026-09-27T03:31:03Z",
+  "published": "2026-09-27T03:31:03Z",
+  "aliases": [
+    "CVE-2025-71423"
+  ],
+  "details": "Edgelesssys Contrast is a confidential-computing runtime for Kubernetes. In versions 1.9.0 before 1.12.2, the initializer logs the full NewMeshCert response — which contains the workload secret — to standard output at INFO level. As a result, workload secrets are exposed to any Kubernetes user with get or list permission on pods/logs. Because workload secrets are used for encrypted storage and Vault integration, those must also be considered compromised. This is a regression of GHSA-h5f8-crrq-4pw8.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/edgelesssys/contrast/security/advisories/GHSA-vxg3-w9rv-rhr2"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71423"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/edgelesssys/contrast/commit/5a5512c4af63c17bb66331e7bd2768a863b2f225"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/edgelesssys/contrast/commit/cf58026b30c43fe7df91eac5322da02e1725d554"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/edgelesssys-contrast-before-1.12.2-workload-secrets-information-disclosure"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T02:17:15Z"
+  }
+}

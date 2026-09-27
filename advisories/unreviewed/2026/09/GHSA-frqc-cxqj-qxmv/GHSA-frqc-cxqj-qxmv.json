@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-frqc-cxqj-qxmv",
+  "modified": "2026-09-27T03:31:04Z",
+  "published": "2026-09-27T03:31:04Z",
+  "aliases": [
+    "CVE-2026-100837"
+  ],
+  "details": "Contrast (Edgeless Systems) through 1.20.0 performs unanchored suffix matching when selecting per-registry configuration in the imagepuller. Config.registryFor strips a single trailing dot and then uses strings.HasSuffix(hostname, fqdn) without requiring a DNS label boundary, so a registry entry such as [registries.\"ghcr.io.\"] is also applied to any host whose name merely ends in that byte sequence, including attacker-registered domains such as evilghcr.io. When an image or layer is pulled from such a sibling domain, the imagepuller sends the configured Authorization header (basic auth, registry token, or identity token), trusts the configured custom CA bundle, follows the configured mirror, and honours insecure-skip-verify (disabling TLS verification) for that host. Image integrity is not affected, as image bytes remain pinned by digest in the policy and are validated after the pull. Configurations that use a leading dot (e.g., [registries.\".example.registry\"]) are unaffected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/edgelesssys/contrast/security/advisories/GHSA-6c87-g9pw-78fx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100837"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/edgeless-systems-contrast-through-1.20.0-credential-leak-via-registry-suffix-matching"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-1289"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T02:17:21Z"
+  }
+}

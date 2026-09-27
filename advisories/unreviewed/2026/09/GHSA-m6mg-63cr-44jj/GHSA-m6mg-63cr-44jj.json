@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-m6mg-63cr-44jj",
+  "modified": "2026-09-27T03:31:05Z",
+  "published": "2026-09-27T03:31:05Z",
+  "aliases": [
+    "CVE-2026-100854"
+  ],
+  "details": "AzuraCast before 0.23.6 lacks RequireInternalConnection middleware on the Liquidsoap API endpoint and incorrectly derives the AutoDJ flag from header presence rather than validated value. Users with View station permission can inject arbitrary now-playing metadata, disrupt live broadcasts, and disclose filesystem paths.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/AzuraCast/AzuraCast/security/advisories/GHSA-4fm3-ggg2-c6qx"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100854"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/azuracast-before-0.23.6-metadata-injection-via-liquidsoap-api"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T02:17:24Z"
+  }
+}

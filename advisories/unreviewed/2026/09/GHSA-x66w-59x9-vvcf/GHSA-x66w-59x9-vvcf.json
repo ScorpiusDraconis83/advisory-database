@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x66w-59x9-vvcf",
+  "modified": "2026-09-27T03:31:04Z",
+  "published": "2026-09-27T03:31:04Z",
+  "aliases": [
+    "CVE-2026-100836"
+  ],
+  "details": "Contrast through 1.20.0 contains a panic vulnerability in the transit-engine endpoint's ciphertextContainer.UnmarshalJSON function that fails to validate decoded ciphertext length before slicing. An authenticated workload with a valid mesh certificate can trigger a runtime panic by submitting a short base64-encoded ciphertext, causing log spam and request failures without crashing the process.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/edgelesssys/contrast/security/advisories/GHSA-3ccm-4qq2-5wrp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100836"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/edgeless-systems-contrast-through-1.20.0-denial-of-service-via-ciphertextcontainer"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-129"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T02:17:21Z"
+  }
+}

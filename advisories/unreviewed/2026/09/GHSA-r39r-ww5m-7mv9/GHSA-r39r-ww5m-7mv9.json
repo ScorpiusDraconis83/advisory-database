@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r39r-ww5m-7mv9",
+  "modified": "2026-09-27T03:31:04Z",
+  "published": "2026-09-27T03:31:04Z",
+  "aliases": [
+    "CVE-2026-100834"
+  ],
+  "details": "http4k's Digest authentication module (org.http4k:http4k-security-digest) before versions 6.48.0.0, 5.42.0.0 and 4.51.0.0 defaults the nonceVerifier parameter of ServerFilters.DigestAuth and DigestAuthProvider to { true }, so every nonce is accepted regardless of its value, age, or prior use. Applications relying on this default have no replay protection on Digest authentication: an attacker who can capture a valid 'Authorization: Digest' response (for example by observing network traffic or reading logs) can replay it indefinitely against the same protected resource.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/http4k/http4k/security/advisories/GHSA-c7jm-38gq-h67h"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100834"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/http4k/http4k/commit/4f904b4692"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/http4k/http4k/commit/8a52b615b1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/http4k-before-6.48.0.0-digest-authentication-replay-protection-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-294"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T02:17:21Z"
+  }
+}

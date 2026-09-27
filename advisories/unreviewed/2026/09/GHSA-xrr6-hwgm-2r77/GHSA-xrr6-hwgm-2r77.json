@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xrr6-hwgm-2r77",
+  "modified": "2026-09-27T03:31:05Z",
+  "published": "2026-09-27T03:31:05Z",
+  "aliases": [
+    "CVE-2026-100848"
+  ],
+  "details": "AzuraCast (Composer package azuracast/azuracast) before 0.23.8 validates a station's \"Remote Relay\" URL only for URL syntax and an http/https scheme (Utilities\\Urls::parseUserUrl, used by StationRemote::getUrlAsUri) and performs no host or IP address restriction. A user holding only the station-scoped RemoteRelays permission can therefore set a Remote Relay URL pointing at loopback, private-network, or cloud-metadata addresses (e.g. http://127.0.0.1:<port>/ or http://169.254.169.254/latest/meta-data/), and AzuraCast's periodic background Now Playing sync (AbstractRemote::getNowPlayingAsync) will automatically and repeatedly issue HTTP requests to that address, resulting in server-side request forgery against internal resources. This affects the main branch as of commit bcf8754eef3a268ad82c3db4d81f7920c3c28b56 (2026-07-31); no patched version is available at the time of the advisory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/AzuraCast/AzuraCast/security/advisories/GHSA-4h6m-rrxm-7w3m"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100848"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/azuracast-before-0.23.8-server-side-request-forgery-via-remote-relay-url"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T02:17:23Z"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7f88-pr8w-xgw6",
+  "modified": "2026-09-27T03:31:03Z",
+  "published": "2026-09-27T03:31:03Z",
+  "aliases": [
+    "CVE-2025-71425"
+  ],
+  "details": "Contrast (Edgeless Systems) before 1.8.1 logs the workload secret to stderr, and thus to Kubernetes logs, when the Contrast initializer is configured with CONTRAST_LOG_LEVEL set to info or debug. Because info is the default, all installations that do not customize the initializer log level are affected. This exposes workload secrets — normally accessible only to the Contrast Coordinator, the initializer, the seedshare owner, and the workload owner — to Kubernetes users with get or list permission on pods/logs and to anyone with read access to the Kubernetes log storage, such as the cloud provider. Deployments that do not use workload secrets are unaffected.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:A/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:A/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/edgelesssys/contrast/security/advisories/GHSA-h5f8-crrq-4pw8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71425"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/contrast-before-1.8.1-information-disclosure-via-logging"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-532"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T02:17:16Z"
+  }
+}

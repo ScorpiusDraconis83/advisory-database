@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-8jxj-xq3g-hvm2",
+  "modified": "2026-09-27T03:31:04Z",
+  "published": "2026-09-27T03:31:04Z",
+  "aliases": [
+    "CVE-2026-100840"
+  ],
+  "details": "MONAI through 1.6.0 contains a remote code execution vulnerability in the bundle configuration engine that resolves _target_ values to arbitrary importable callables without an allow list and passes $ expressions to Python eval(). Attackers can publish a malicious bundle with crafted configuration containing arbitrary code that executes when a victim loads the bundle using monai.bundle.load() or monai.bundle.run().",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/Project-MONAI/MONAI/security/advisories/GHSA-873f-pvrv-4x83"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100840"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/monai-through-1.6.0-remote-code-execution-via-bundle-configuration"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-95"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T02:17:22Z"
+  }
+}
