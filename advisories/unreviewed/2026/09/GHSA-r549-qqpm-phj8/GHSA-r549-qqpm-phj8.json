@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-r549-qqpm-phj8",
+  "modified": "2026-09-27T18:30:24Z",
+  "published": "2026-09-27T18:30:24Z",
+  "aliases": [
+    "CVE-2026-101059"
+  ],
+  "details": "utcp-http before 1.1.4 fails to validate the OAuth2 tokenUrl field from remote OpenAPI specifications, allowing attackers to redirect credential submission to arbitrary endpoints. When a victim registers an attacker-controlled OpenAPI spec and invokes a generated OAuth2-protected tool, the library POSTs the victim's client_id and client_secret to the attacker-supplied token endpoint without URL validation.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/universal-tool-calling-protocol/python-utcp/security/advisories/GHSA-8cp3-qxj6-px34"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101059"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/utcp-http-before-1.1.4-oauth2-tokenurl-trust-boundary-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T18:16:32Z"
+  }
+}

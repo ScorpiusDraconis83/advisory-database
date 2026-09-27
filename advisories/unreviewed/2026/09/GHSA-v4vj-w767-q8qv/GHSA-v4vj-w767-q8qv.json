@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-v4vj-w767-q8qv",
+  "modified": "2026-09-27T18:30:23Z",
+  "published": "2026-09-27T18:30:23Z",
+  "aliases": [
+    "CVE-2026-101045"
+  ],
+  "details": "Fleet-maintained app install and uninstall scripts for macOS are generated from Homebrew cask metadata. In manifests generated before 2026-08-19, the script generator escaped this metadata at some interpolation sites but not all of them, so cask metadata containing shell metacharacters (for example $(...) command substitution) could be carried into scripts that execute as root on managed macOS hosts. An attacker who could land crafted metadata in an upstream Homebrew cask — without needing any Fleet credentials — could achieve arbitrary command execution as root on managed macOS hosts that install or uninstall the affected Fleet-maintained app; exploitation required the crafted metadata to pass both upstream Homebrew cask review and Fleet's review of the automated ingestion pull request. The fix (fleetdm/fleet#51324) landed in Fleet's ingestion pipeline on 2026-08-19 so that all manifests generated on or after that date escape cask metadata at every interpolation site; because manifests are generated centrally and distributed as pre-built content, remediation applied to all deployments with no customer action, and the code fix is included in Fleet v4.92.0.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/fleetdm/fleet/security/advisories/GHSA-fv3p-h7wv-2jgm"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101045"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/fleet-homebrew-cask-os-command-injection-via-metadata"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-78"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T18:16:30Z"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2m9j-ffq7-cjqc",
+  "modified": "2026-09-27T18:30:22Z",
+  "published": "2026-09-27T18:30:22Z",
+  "aliases": [
+    "CVE-2026-101049"
+  ],
+  "details": "Heym before 0.0.53 fails to verify Slack request signatures when trigger nodes lack credential IDs or have empty signing secrets. Remote unauthenticated attackers can send forged Slack events to known webhook URLs to trigger workflows with the owner's credentials.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:L/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/heymrun/heym/security/advisories/GHSA-pm6h-x3h5-j38h"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101049"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/heymrun/heym/commit/341d1012367cd74f85c617e1c98dd49e3fcb5e83"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/heym-before-0.0.53-slack-webhook-signature-verification-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-27T17:16:55Z"
+  }
+}
