@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mqcv-532f-gp47",
+  "modified": "2026-09-28T21:31:17Z",
+  "published": "2026-09-28T21:31:17Z",
+  "aliases": [
+    "CVE-2026-84894"
+  ],
+  "details": "In moxygen before commit 004123dd24c3, MoQSession::dataStreamReadLoop keeps using a stream read handle after reading a FIN, which invalidates the handle under proxygen's WebTransport API. A remote peer can trigger the stale use by opening a data stream that names an unknown track alias and carries the FIN in the same write.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84894"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/facebookexperimental/moxygen/commit/004123dd24c30dad6b649163575145f240dabc94"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.facebook.com/security/advisories/cve-2026-84894"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-28T19:16:50Z"
+  }
+}
