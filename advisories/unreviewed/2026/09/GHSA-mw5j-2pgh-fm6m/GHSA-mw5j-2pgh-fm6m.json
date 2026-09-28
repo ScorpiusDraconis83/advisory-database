@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mw5j-2pgh-fm6m",
+  "modified": "2026-09-28T09:30:28Z",
+  "published": "2026-09-28T09:30:28Z",
+  "aliases": [
+    "CVE-2026-82546"
+  ],
+  "details": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') in Apache Roller 6.1.5 allows an unauthenticated remote attacker to store a crafted comment-author URL through the incoming Trackback endpoint when a published entry accepts comments and Trackbacks. The shipped Trackback, verification and moderation defaults allow the value to be approved and rendered as an active link; a visitor who clicks the link executes script in the weblog's origin. Users are recommended to upgrade to Apache Roller 6.1.6 or later, which removes incoming Trackback support and suppresses non-HTTP(S) comment-author links. Users unable to upgrade should disable Trackbacks and remove untrusted Trackback comments.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82546"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/roller/pull/178"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/ddrykzvs67zpmzwsbqyfjmlydboln8x1"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/09/25/21"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-28T08:16:42Z"
+  }
+}

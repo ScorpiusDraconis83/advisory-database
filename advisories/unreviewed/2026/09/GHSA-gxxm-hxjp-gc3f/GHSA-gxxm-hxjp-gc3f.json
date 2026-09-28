@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gxxm-hxjp-gc3f",
+  "modified": "2026-09-28T09:30:26Z",
+  "published": "2026-09-28T09:30:26Z",
+  "aliases": [
+    "CVE-2026-82348"
+  ],
+  "details": "Authorization Bypass Through User-Controlled Key in Apache Roller 6.1.5 allows an authenticated user with authoring rights on one weblog to read, modify, or delete resources belonging to another weblog through unscoped identifier-based lookups. This affects multi-user installations where users are intended to be isolated between weblogs; no optional feature or non-default configuration is required. A user with administrator rights on their weblog can also overwrite another weblog's Velocity template, whose content is evaluated when the victim weblog renders. Users are recommended to upgrade to Apache Roller 6.1.6 or later, which scopes authoring resource lookups to the acting weblog.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:L/I:H/A:L"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/roller/pull/162"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/3h7zk8dhbt8fj5zdt8cjghx0b807wgy1"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/09/25/7"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-28T08:16:40Z"
+  }
+}

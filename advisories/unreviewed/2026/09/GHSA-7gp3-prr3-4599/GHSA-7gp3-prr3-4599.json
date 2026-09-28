@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7gp3-prr3-4599",
+  "modified": "2026-09-28T09:30:28Z",
+  "published": "2026-09-28T09:30:28Z",
+  "aliases": [
+    "CVE-2026-82386"
+  ],
+  "details": "Improper Restriction of XML External Entity Reference in Apache Roller 6.1.5 allows a weblog administrator to read files readable by the Roller process and reach internal network addresses by importing a crafted OPML document, because the bookmark import parser does not disable external entity resolution. No non-default configuration is required; the import is reached through the administrator bookmark-import action. Users are recommended to upgrade to Apache Roller 6.1.6 or later, which uses a hardened parser that disables external entities and document type declarations.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82386"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/roller/pull/173"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/mrtstv8odj7l9mcrto445lftrcpw0sxl"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/09/25/19"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-611"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-28T08:16:42Z"
+  }
+}

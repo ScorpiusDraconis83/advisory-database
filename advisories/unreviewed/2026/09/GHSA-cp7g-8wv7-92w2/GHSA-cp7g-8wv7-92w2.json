@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cp7g-8wv7-92w2",
+  "modified": "2026-09-28T09:30:28Z",
+  "published": "2026-09-28T09:30:28Z",
+  "aliases": [
+    "CVE-2026-82387"
+  ],
+  "details": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') in Apache Roller 6.1.5 allows a user with media-upload rights to store active content on Roller's origin, because the media upload feature trusts the upload-supplied content type and serves the stored file back with that type. A victim who opens the uploaded file executes the stored script. Media uploads are disabled by default; only installations that enable them are affected, and the shipped type restrictions do not block active content once uploads are on. Users are recommended to upgrade to Apache Roller 6.1.6 or later, which derives the stored type from file content and serves non-image media as a download.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82387"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/roller/pull/174"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/9h1d77xjjk6q90k7l8y7nyffg6ltdzxo"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/09/25/20"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-28T08:16:42Z"
+  }
+}

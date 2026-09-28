@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xg59-jgm4-xmq5",
+  "modified": "2026-09-28T09:30:28Z",
+  "published": "2026-09-28T09:30:28Z",
+  "aliases": [
+    "CVE-2026-91204"
+  ],
+  "details": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') in Apache Roller 6.1.5 allows an anonymous remote attacker to store a comment containing a javascript: URI link that survives HTML comment formatting and can execute script in the browser of a visitor who clicks it. This affects only sites that enable HTML in comments (users.comments.htmlenabled=true) together with the HTMLSubset comment formatter; comment moderation, where enabled, delays publication. Users are recommended to upgrade to Apache Roller 6.1.6 or later, which restricts restored links to http, https and mailto URIs.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91204"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/apache/roller/pull/190"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread/4qzp8m0438056l5t6m6719ob79gx72lz"
+    },
+    {
+      "type": "WEB",
+      "url": "http://www.openwall.com/lists/oss-security/2026/09/25/23"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-28T08:16:42Z"
+  }
+}
