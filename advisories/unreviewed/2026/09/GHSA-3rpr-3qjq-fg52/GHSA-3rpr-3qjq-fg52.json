@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3rpr-3qjq-fg52",
+  "modified": "2026-09-28T18:31:27Z",
+  "published": "2026-09-28T18:31:27Z",
+  "aliases": [
+    "CVE-2026-96740"
+  ],
+  "details": "A flaw was found in the StreamsHub Console for Apache Kafka. Tenant-supplied Kafka client properties from the Console custom resource are copied into the console-api AdminClient configuration without filtering security-sensitive keys, allowing a Console CR author to set config.providers and bootstrap.servers to exfiltrate the console-api ServiceAccount token to an attacker-controlled broker.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96740"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-96740"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2539427"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-470"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-28T18:17:26Z"
+  }
+}
