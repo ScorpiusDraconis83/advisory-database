@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-36wf-cx88-gfjh",
-  "modified": "2026-09-27T06:30:21Z",
+  "modified": "2026-09-28T03:30:25Z",
   "published": "2026-09-27T06:30:21Z",
   "aliases": [
     "CVE-2026-86839"
   ],
   "details": "The Online Scheduling and Appointment Booking System  WordPress plugin before 28.3 does not verify that appointment and payment records requested through its staff-role AJAX actions belong to the requesting staff member, allowing authenticated attackers with a staff-level account to view, modify and delete other staff members' appointments and payments, including the associated customer's personal information.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "LOW",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-27T06:17:14Z"

@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-j4qf-xfcc-whc6",
-  "modified": "2026-09-27T06:30:22Z",
+  "modified": "2026-09-28T03:30:26Z",
   "published": "2026-09-27T06:30:22Z",
   "aliases": [
     "CVE-2026-97227"
   ],
   "details": "The NextScripts: Social Networks Auto-Poster WordPress plugin before 4.4.8 does not perform capability or ownership checks on several of its AJAX actions, relying on a nonce alone, allowing users an administrator has granted access to its posting features to export the site's configured social account credentials, delete arbitrary posts and reset the NextScripts: Social Networks Auto-Poster WordPress plugin before 4.4.8's configuration.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-862"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-27T06:17:23Z"

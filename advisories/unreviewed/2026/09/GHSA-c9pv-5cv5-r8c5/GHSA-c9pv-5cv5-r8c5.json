@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c9pv-5cv5-r8c5",
-  "modified": "2026-09-27T06:30:21Z",
+  "modified": "2026-09-28T03:30:26Z",
   "published": "2026-09-27T06:30:21Z",
   "aliases": [
     "CVE-2026-92436"
   ],
   "details": "The Mailchimp for WooCommerce WordPress plugin before 6.3 does not require authentication or verify ownership before loading a saved cart from a request-supplied identifier that is derived from a customer's email address, allowing an unauthenticated attacker who knows a customer's email address to confirm that the customer shops at the store and to read that customer's saved cart contents.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-27T06:17:22Z"

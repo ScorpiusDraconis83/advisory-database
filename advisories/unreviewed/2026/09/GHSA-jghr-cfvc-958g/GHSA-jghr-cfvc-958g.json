@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-jghr-cfvc-958g",
-  "modified": "2026-09-27T06:30:21Z",
+  "modified": "2026-09-28T03:30:26Z",
   "published": "2026-09-27T06:30:21Z",
   "aliases": [
     "CVE-2026-89003"
   ],
   "details": "The WPeMatico RSS Feed Fetcher WordPress plugin before 2.8.27 does not perform a capability check before fetching a user-supplied URL and rendering the response, allowing users with contributor-level access and above to force the server to issue requests to internal-only hosts and read the responses back.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-27T06:17:22Z"

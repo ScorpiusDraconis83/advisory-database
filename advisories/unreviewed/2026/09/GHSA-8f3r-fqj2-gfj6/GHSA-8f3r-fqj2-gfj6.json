@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-8f3r-fqj2-gfj6",
-  "modified": "2026-09-27T06:30:21Z",
+  "modified": "2026-09-28T03:30:25Z",
   "published": "2026-09-27T06:30:20Z",
   "aliases": [
     "CVE-2026-81655"
   ],
   "details": "The Ad Inserter  WordPress plugin before 2.8.19 does not correctly restrict access to one of its settings pages, making it reachable by every logged in user under a configuration its own settings allow, and does not filter the content saved there, allowing users with a role as low as subscriber to store code which is then executed as PHP or served unescaped to site visitors.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-94"
+    ],
+    "severity": "HIGH",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-27T06:16:58Z"

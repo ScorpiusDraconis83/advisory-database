@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-c9rv-8jhm-3c35",
-  "modified": "2026-09-27T06:30:21Z",
+  "modified": "2026-09-28T03:30:25Z",
   "published": "2026-09-27T06:30:21Z",
   "aliases": [
     "CVE-2026-82841"
   ],
   "details": "The UpdraftPlus: WP Backup & Migration Plugin WordPress plugin before 1.26.8, UpdraftPlus: WP Backup & Migration Plugin WordPress plugin before 2.26.8.26 does not have any capability check in a routine that outputs its stored remote storage settings into admin pages when the site is left in a particular post-migration state, allowing any authenticated user, such as a subscriber, to retrieve the credentials of the configured backup destinations, such as passwords and secret keys.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-200"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-27T06:17:03Z"

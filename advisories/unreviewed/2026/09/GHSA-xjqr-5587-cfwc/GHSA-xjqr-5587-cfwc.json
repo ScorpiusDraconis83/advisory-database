@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-xjqr-5587-cfwc",
-  "modified": "2026-09-27T06:30:22Z",
+  "modified": "2026-09-28T03:30:26Z",
   "published": "2026-09-27T06:30:22Z",
   "aliases": [
     "CVE-2026-96895"
   ],
   "details": "The WP YouTube Lyte WordPress plugin before 1.7.31 does not escape some attributes of YouTube embed blocks before outputting them in an HTML attribute when rendering the block, which could allow users with a role as low as contributor to perform Stored Cross-Site Scripting attacks.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -20,8 +25,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-79"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-27T06:17:22Z"
