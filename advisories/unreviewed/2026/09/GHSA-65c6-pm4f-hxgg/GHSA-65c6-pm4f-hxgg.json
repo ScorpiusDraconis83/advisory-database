@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-65c6-pm4f-hxgg",
+  "modified": "2026-09-29T21:33:25Z",
+  "published": "2026-09-29T21:33:25Z",
+  "aliases": [
+    "CVE-2026-102879"
+  ],
+  "details": "ClaraVerse through 0.3.1 contains server-side request forgery protection bypasses in the download_file and scrape_web agent tools. Authenticated users can bypass hostname validation and IPv6 transition address filtering to make the server request internal services and cloud instance metadata endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102879"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/claraverse-space/ClaraVerse/issues/254"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/claraverse-space/ClaraVerse"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/claraverse-space/ClaraVerse/blob/v0.3.1/backend/internal/security/ssrf.go"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/claraverse-space/ClaraVerse/blob/v0.3.1/backend/internal/tools/download_file_tool.go"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/claraverse-through-0.3.1-ssrf-protection-bypass"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T20:17:18Z"
+  }
+}

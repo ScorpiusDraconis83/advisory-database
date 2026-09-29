@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x824-rgwx-3cx4",
+  "modified": "2026-09-29T21:33:26Z",
+  "published": "2026-09-29T21:33:26Z",
+  "aliases": [
+    "CVE-2026-79348"
+  ],
+  "details": "KitchenAsty through 0.3.0 contains a broken object level authorization (IDOR) vulnerability in the reservations API. The endpoint GET /api/reservations/:id in packages/server applies the authenticate middleware but performs no ownership or role check, and the getReservation handler in packages/server/src/controllers/reservation.controller.ts returns the record retrieved by the client-supplied identifier without comparing reservation.customerId to the authenticated principal",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/mighty840/kitchenasty/security/advisories/GHSA-2w4m-hjg2-2v92"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79348"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mighty840/kitchenasty/pull/43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mighty840/kitchenasty"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mighty840/kitchenasty/blob/main/packages/server/src/controllers/reservation.controller.ts"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/mighty840/kitchenasty/blob/main/packages/server/src/routes/reservation.routes.ts"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T20:17:26Z"
+  }
+}

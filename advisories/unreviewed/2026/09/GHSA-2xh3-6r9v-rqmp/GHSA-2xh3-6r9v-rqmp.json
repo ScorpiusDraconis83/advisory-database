@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2xh3-6r9v-rqmp",
+  "modified": "2026-09-29T21:33:25Z",
+  "published": "2026-09-29T21:33:25Z",
+  "aliases": [
+    "CVE-2026-61519"
+  ],
+  "details": "Liberu CRM 0.9.1 before 10.0.0 contains a broken access control vulnerability that allows any user holding a pending team invitation to invite additional attacker-controlled accounts with elevated privileges by exploiting a flawed authorization predicate in TeamPolicy::addTeamMember() that grants invitation rights based solely on the existence of a pending invitation email match. Attackers can send a POST request to the team-invitations route specifying the admin role for a second account, bypassing privilege-level validation in InviteTeamMember, causing the second account upon invitation acceptance to be attached to the team with full admin-level create, read, update, and delete access over all team-scoped data.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61519"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liberusoftware/crm-laravel/issues/708"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liberusoftware/crm-laravel/commit/0846d067ae2e9c437e8555e54a4ec6517927b3d4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/liberusoftware/crm-laravel/releases/tag/v10.0.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/liberu-crm-broken-access-control-via-teampolicy-addteammember"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T20:17:21Z"
+  }
+}

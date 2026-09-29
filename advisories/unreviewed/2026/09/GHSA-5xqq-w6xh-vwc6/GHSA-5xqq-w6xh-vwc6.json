@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-5xqq-w6xh-vwc6",
+  "modified": "2026-09-29T21:33:26Z",
+  "published": "2026-09-29T21:33:26Z",
+  "aliases": [
+    "CVE-2026-79537"
+  ],
+  "details": "metatool-ai MetaMCP through 2.4.22 contains an insecure direct object reference (IDOR) in the MCP transport session dispatch. The session store (getSession in session-lifetime-manager.ts) is keyed only by the client-supplied mcp-session-id header with no owner, namespace, or endpoint binding, and the per-endpoint authorization middleware validates only the URL endpoint's owner, never the session. An attacker who supplies another tenant's session id \" obtained without authentication from GET /metamcp/health/sessions, which discloses active session IDs and namespace UUIDs \" can list and execute the victim tenant's private MCP tools and exfiltrate their data using the victim's forwarded credentials.",
+  "severity": [],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79537"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/metatool-ai/metamcp"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.traceforce.ai/security-advisories/cve-2026-79537"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [],
+    "severity": null,
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T20:17:27Z"
+  }
+}

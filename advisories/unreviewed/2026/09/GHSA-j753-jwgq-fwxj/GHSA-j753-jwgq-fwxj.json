@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j753-jwgq-fwxj",
+  "modified": "2026-09-29T21:33:25Z",
+  "published": "2026-09-29T21:33:25Z",
+  "aliases": [
+    "CVE-2026-102877"
+  ],
+  "details": "Fider before 0.38.0 contains a server-side request forgery vulnerability due to a time-of-check time-of-use gap in URL validation for webhooks and custom OAuth provider endpoints. Administrators controlling DNS can perform DNS rebinding attacks to make the Fider server send requests to internal services or cloud metadata endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:H/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/getfider/fider/security/advisories/GHSA-whx4-hxwq-qgjh"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102877"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getfider/fider/commit/45f5627b9fd15b912fb9092635c863fb4c91dd69"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getfider/fider"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getfider/fider/blob/v0.37.0/app/pkg/validate/general.go"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getfider/fider/blob/v0.37.0/app/services/httpclient/httpclient.go"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/getfider/fider/releases/tag/v0.38.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/fider-before-0.38.0-ssrf-via-dns-rebinding-in-webhook-validation"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-918"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T20:17:18Z"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-xjq6-rqgg-x5j7",
+  "modified": "2026-09-29T21:33:25Z",
+  "published": "2026-09-29T21:33:25Z",
+  "aliases": [
+    "CVE-2026-102876"
+  ],
+  "details": "SurrealDB before 3.3.0 contains an authorization bypass in HTTP session construction where check_auth() verifies credentials against Surreal-Auth-NS and Surreal-Auth-DB headers but constructs sessions using Surreal-NS and Surreal-DB headers without validating access permissions. Attackers can authenticate as a user from one tenant while selecting another tenant's namespace and database to read, create, and modify records across tenant boundaries.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/surrealdb/surrealdb/security/advisories/GHSA-vx2p-7hhm-wv62"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102876"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/surrealdb/surrealdb/commit/5000e233b4a8b96689c82715c172061dcf711d31"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/surrealdb/surrealdb"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/surrealdb/surrealdb/blob/v3.2.4/surrealdb/server/src/ntw/auth.rs"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/surrealdb/surrealdb/releases/tag/v3.3.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/surrealdb-before-3.3.0-cross-tenant-access-via-headers"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T20:17:18Z"
+  }
+}
