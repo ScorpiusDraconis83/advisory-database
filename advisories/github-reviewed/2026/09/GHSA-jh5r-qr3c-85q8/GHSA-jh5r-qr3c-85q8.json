@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-jh5r-qr3c-85q8",
+  "modified": "2026-09-29T18:24:25Z",
+  "published": "2026-09-29T18:24:25Z",
+  "aliases": [
+    "CVE-2026-102279"
+  ],
+  "summary": "Laravel: XSS in Debug Page Information",
+  "details": "### Impact\nWhen `APP_DEBUG=true`, attacker-controlled input is passed to a Tippy.js tooltip configured with `allowHTML: true`, enabling DOM-based XSS during mouse hover.\n\n### Patches\n[#61381](https://github.com/laravel/framework/pull/61381)",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N"
+    }
+  ],
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "laravel/framework"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "12.69.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": {
+        "ecosystem": "Packagist",
+        "name": "laravel/framework"
+      },
+      "ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "13.0.0"
+            },
+            {
+              "fixed": "13.30.0"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/security/advisories/GHSA-jh5r-qr3c-85q8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102279"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/pull/61381"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/commit/b495ca2ec4e15a977e8700328bf13e8a79f29d12"
+    },
+    {
+      "type": "PACKAGE",
+      "url": "https://github.com/laravel/framework"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/releases/tag/v12.69.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/laravel/framework/releases/tag/v13.30.0"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-80"
+    ],
+    "severity": "LOW",
+    "github_reviewed": true,
+    "github_reviewed_at": "2026-09-29T18:24:25Z",
+    "nvd_published_at": "2026-09-28T21:17:16Z"
+  }
+}
