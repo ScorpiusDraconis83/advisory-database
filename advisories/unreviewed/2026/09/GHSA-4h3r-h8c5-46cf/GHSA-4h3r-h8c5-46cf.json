@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-4h3r-h8c5-46cf",
+  "modified": "2026-09-29T15:31:45Z",
+  "published": "2026-09-29T15:31:45Z",
+  "aliases": [
+    "CVE-2026-76875"
+  ],
+  "details": "PyPy before versions 3.11.16 and 3.12.14 contains a use-after-free vulnerability in the pyexpat module's ExternalEntityParserCreate function that allows attackers to corrupt memory by supplying a crafted XML document to applications that create external-entity sub-parsers without retaining a reference to the parent parser. The child parser retains a raw C back-pointer to the parent parser struct while PyPy's tracing garbage collector can free the parent's C struct, causing bundled libexpat to dereference the freed pointer on every parsed token, producing memory corruption.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76875"
+    },
+    {
+      "type": "WEB",
+      "url": "https://doc.pypy.org/release-v8.0.0.html"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypy/pypy/releases/tag/release-pypy3.11-v8.0.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/pypy/pypy/releases/tag/release-pypy3.12-v8.0.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/pypy-pyexpat-externalentityparsercreate-use-after-free"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-416"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T13:17:52Z"
+  }
+}
