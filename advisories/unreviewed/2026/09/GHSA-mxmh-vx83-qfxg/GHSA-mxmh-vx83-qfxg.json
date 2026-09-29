@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mxmh-vx83-qfxg",
+  "modified": "2026-09-29T12:31:32Z",
+  "published": "2026-09-29T12:31:31Z",
+  "aliases": [
+    "CVE-2026-85520"
+  ],
+  "details": "Google Merchant Center Feed (gmfeed) module for PrestaShop is vulnerable to unauthenticated arbitrary file write in the feed.php endpoint. An unauthenticated attacker can send a crafted request that controls the output file name, path, extension, and content through request parameters. Due to the lack of authentication and input validation, the request is processed successfully, allowing an attacker to write and execute arbitrary PHP code, resulting in remote code execution (RCE).\n\n\nThis issue was fixed in version 2.3.9.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85520"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/en/posts/2026/09/CVE-2026-85520"
+    },
+    {
+      "type": "WEB",
+      "url": "https://mypresta.eu/news/google-merchant-center-security-fix-2026.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-73"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T12:17:12Z"
+  }
+}

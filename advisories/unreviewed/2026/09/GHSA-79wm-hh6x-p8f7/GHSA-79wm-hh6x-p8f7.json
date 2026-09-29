@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-79wm-hh6x-p8f7",
+  "modified": "2026-09-29T12:31:31Z",
+  "published": "2026-09-29T12:31:31Z",
+  "aliases": [
+    "CVE-2026-41875"
+  ],
+  "details": "Quick.Cart is vulnerable to Cross-Site Request Forgery in admin config panel. Malicious attacker can craft special website, which when visited by the admin, will automatically send a POST request that changes admin's login and password.\nThis software does implement simple protection against this type of attack, but it is easily bypassed by manipulating the referer header. All forms available in this software are potentially vulnerable.\n\nThis issue was fixed in a patch to version 6.7 published on 09.11.2026, deployments without this patch are still vulnerable",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41875"
+    },
+    {
+      "type": "WEB",
+      "url": "https://cert.pl/posts/2026/09/CVE-2026-41875"
+    },
+    {
+      "type": "WEB",
+      "url": "https://opensolution.org/shopping-cart-quick-cart.html"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-352"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T12:17:10Z"
+  }
+}
