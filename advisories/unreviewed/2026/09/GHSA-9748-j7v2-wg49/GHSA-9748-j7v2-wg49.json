@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9748-j7v2-wg49",
+  "modified": "2026-09-29T00:31:37Z",
+  "published": "2026-09-29T00:31:37Z",
+  "aliases": [
+    "CVE-2026-102296"
+  ],
+  "details": "ZoneMinder before 1.38.4 contains static buffer overflow vulnerabilities in RemoteCameraHttp::GetResponse() that allow malicious HTTP cameras or intercepting attackers to overflow fixed-size buffers by sending oversized response headers. Attackers can send crafted HTTP responses with oversized status messages, Connection headers, Content-Type values, or multipart boundaries to corrupt parser state and crash the capture process or corrupt memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/ZoneMinder/zoneminder/security/advisories/GHSA-93j4-rcp9-9jx6"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102296"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ZoneMinder/zoneminder/commit/2596e5fb64c0348e615577b0ab08dc38b6dc6ed8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ZoneMinder/zoneminder/commit/813bf6f1a3ffc92c163352f2480477ba571fca5b"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ZoneMinder/zoneminder"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ZoneMinder/zoneminder/blob/1.38.3/src/zm_remote_camera_http.cpp#L736"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/ZoneMinder/zoneminder/releases/tag/1.38.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/zoneminder-before-1.38.4-buffer-overflow-via-http-camera-response"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-120"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-28T22:17:32Z"
+  }
+}

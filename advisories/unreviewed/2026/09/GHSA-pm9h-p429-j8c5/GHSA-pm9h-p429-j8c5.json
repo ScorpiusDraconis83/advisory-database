@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pm9h-p429-j8c5",
+  "modified": "2026-09-29T00:31:38Z",
+  "published": "2026-09-29T00:31:38Z",
+  "aliases": [
+    "CVE-2026-102334"
+  ],
+  "details": "Nginx Proxy Manager through 2.16.0 lacks rate-limiting on authentication endpoints, allowing unauthenticated attackers to make unlimited password guesses against any account. Attackers can brute-force login credentials via POST /api/tokens and subsequently guess TOTP codes via POST /api/tokens/2fa to gain full session access and administrative control.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102334"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NginxProxyManager/nginx-proxy-manager/pull/5908"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NginxProxyManager/nginx-proxy-manager"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NginxProxyManager/nginx-proxy-manager/blob/v2.16.0/backend/app.js#L15-L58"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NginxProxyManager/nginx-proxy-manager/blob/v2.16.0/backend/internal/2fa.js#L196-L240"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NginxProxyManager/nginx-proxy-manager/blob/v2.16.0/backend/internal/token.js#L154-L182"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nginx-proxy-manager-through-2.16.0-missing-brute-force-protection"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-307"
+    ],
+    "severity": "CRITICAL",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-28T23:17:01Z"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-886j-w36h-wmx2",
+  "modified": "2026-09-29T00:31:38Z",
+  "published": "2026-09-29T00:31:38Z",
+  "aliases": [
+    "CVE-2026-102335"
+  ],
+  "details": "Nginx Proxy Manager through 2.16.0 fails to restrict the advanced_config field to administrators, allowing non-admin users with manage permissions to inject arbitrary nginx directives. Attackers can inject malicious nginx configuration such as alias directives to serve arbitrary files or control routing for their assigned hosts.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102335"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NginxProxyManager/nginx-proxy-manager/issues/5749"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NginxProxyManager/nginx-proxy-manager/pull/5908"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NginxProxyManager/nginx-proxy-manager"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NginxProxyManager/nginx-proxy-manager/blob/v2.16.0/README.md#L36"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NginxProxyManager/nginx-proxy-manager/blob/v2.16.0/backend/internal/user.js#L52-L62"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/NginxProxyManager/nginx-proxy-manager/blob/v2.16.0/backend/templates/proxy_host.conf#L28"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/nginx-proxy-manager-through-2.16.0-improper-authorization-via-advanced-config"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-28T23:17:02Z"
+  }
+}
