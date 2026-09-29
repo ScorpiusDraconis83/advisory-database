@@ -1,13 +1,18 @@
 {
   "schema_version": "1.4.0",
   "id": "GHSA-pp3g-9mvp-c3vm",
-  "modified": "2026-09-25T15:31:50Z",
+  "modified": "2026-09-29T06:31:08Z",
   "published": "2026-09-25T15:31:50Z",
   "aliases": [
     "CVE-2026-88389"
   ],
   "details": "Espruino 2v29 (commit bffc6d0) contains a NULL pointer dereference vulnerability in jslGetRawString() in src/jslex.c. Crafted raw/binary string input can cause the lexer to pass a NULL iterator target to jsvLockAgain(). In RELEASE/NO_ASSERT builds, the missing assertion guard allows a write through the NULL pointer, resulting in memory corruption and application termination or denial of service.",
-  "severity": [],
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
   "affected": [],
   "references": [
     {
@@ -24,8 +29,10 @@
     }
   ],
   "database_specific": {
-    "cwe_ids": [],
-    "severity": null,
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
     "github_reviewed": false,
     "github_reviewed_at": null,
     "nvd_published_at": "2026-09-25T15:17:56Z"
