@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-52fg-7x3j-mp79",
+  "modified": "2026-09-29T18:32:00Z",
+  "published": "2026-09-29T18:32:00Z",
+  "aliases": [
+    "CVE-2026-102712"
+  ],
+  "details": "On the first DTLS ClientHello, the parser copies a device-claimed session_id length and validates the\n\n\n\nciphersuite-list length against the total record length instead of the remaining bytes. An unauthenticated\n\n\n\npeer drives an OOB source read of up to 255 bytes, and those bytes are echoed verbatim into the outgoing\n\n\n\nServerHello, disclosing adjacent process memory over the network. The crash variant fires on the first\n\n\n\npacket.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-threadx/netxduo/security/advisories/GHSA-5xr3-wpxf-rw5q"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102712"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T18:17:10Z"
+  }
+}

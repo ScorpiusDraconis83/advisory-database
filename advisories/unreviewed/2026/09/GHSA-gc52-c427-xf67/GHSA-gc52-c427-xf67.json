@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-gc52-c427-xf67",
+  "modified": "2026-09-29T18:31:45Z",
+  "published": "2026-09-29T18:31:45Z",
+  "aliases": [
+    "CVE-2026-92369"
+  ],
+  "details": "TeamViewer Full Client and Host prior to version 15.82 on Windows contain a TOCTOU race condition in the installer rollback mechanism. A local low-privileged attacker can replace rollback backup files stored in a user-writable temporary directory before they are restored by an elevated installer, resulting in privilege escalation to NT AUHORITY/SYSTEM. Exploitation requires successful timing of the race condition and a rollback during installation or update.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92369"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.teamviewer.com/en/resources/trust-center/security-bulletins/tv-2026-1010"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-367"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T16:17:14Z"
+  }
+}

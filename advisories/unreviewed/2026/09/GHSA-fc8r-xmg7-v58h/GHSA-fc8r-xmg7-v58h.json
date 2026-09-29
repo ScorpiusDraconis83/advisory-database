@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-fc8r-xmg7-v58h",
+  "modified": "2026-09-29T18:31:49Z",
+  "published": "2026-09-29T18:31:49Z",
+  "aliases": [
+    "CVE-2026-102557"
+  ],
+  "details": "A flaw was found in libsoup. When reassembling fragmented WebSocket messages into a GByteArray, libsoup did not adequately cap total message size against the limits of the underlying buffer type. A remote peer could send fragments that caused size truncation while the implementation still used the full length, leading to heap corruption or a crash.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102557"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-102557"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2543231"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T17:17:06Z"
+  }
+}

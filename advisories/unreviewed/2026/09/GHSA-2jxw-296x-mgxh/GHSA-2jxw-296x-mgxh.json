@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-2jxw-296x-mgxh",
+  "modified": "2026-09-29T18:31:44Z",
+  "published": "2026-09-29T18:31:44Z",
+  "aliases": [
+    "CVE-2026-102630"
+  ],
+  "details": "UnoPim versions before 2.0.1 and 2.1.1 trust all connecting clients as proxies and honor the X-Forwarded-Host header without validation, allowing unauthenticated attackers to inject arbitrary origins into admin layout pages. Attackers can set X-Forwarded-Host to redirect JavaScript asset loading to their server, and when responses are cached by shared proxies, subsequent administrators execute attacker-supplied code in their authenticated sessions.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102630"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/unopim/unopim/commit/77e33618df5ba82fc9c9a32d137368e5bbe5ac9c"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/unopim/unopim"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/unopim/unopim/blob/v2.1.0/bootstrap/app.php#L24"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/unopim/unopim/blob/v2.1.0/packages/Webkul/Admin/src/Resources/views/components/layouts/index.blade.php#L9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/unopim/unopim/releases/tag/v2.0.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/unopim/unopim/releases/tag/v2.1.1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/unopim-2.0.0-before-2.0.1-and-2.1.0-before-2.1.1-cache-poisoning-via-x-forwarded-host"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-348"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T16:17:06Z"
+  }
+}

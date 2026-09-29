@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-vhx3-6gpg-5fjw",
+  "modified": "2026-09-29T18:32:01Z",
+  "published": "2026-09-29T18:32:01Z",
+  "aliases": [
+    "CVE-2026-102718"
+  ],
+  "details": "hey,\n\n\n\n`_nx_snmp_utility_object_id_get` in the NetX Duo SNMP addon does not validate the claimed OID data length against the actual buffer size when the OID uses BER multibyte length encoding, so a remote attacker can send a crafted SNMP packet with a multibyte OID length larger than the available buffer, causing the parser to read past the packet buffer boundary into adjacent heap memory. the OOB bytes are decoded as OID component values and written into the agents internal OID string buffer, corrupting agent state. on systems with memory protection the OOB read poses the risk of crashing the SNMP agent thread, causing denial of service. on bare metal embedded systems without memory protection the read silently succeeds and corrupts the agents internal state with heap data.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-threadx/netxduo/security/advisories/GHSA-7qmm-29vg-7hf8"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102718"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T18:17:11Z"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-72x2-349w-qfqm",
+  "modified": "2026-09-29T18:32:04Z",
+  "published": "2026-09-29T18:32:04Z",
+  "aliases": [
+    "CVE-2026-102762"
+  ],
+  "details": "The NetX Duo MQTT client leaks the packet carrying a malformed PUBLISH message. Each malformed PUBLISH costs one packet, or one chain of packets, from the network driver's receive pool, and nothing returns it. A peer that can deliver a few dozen such messages exhausts the pool and stops all inbound network traffic on the device until it is rebooted.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/eclipse-threadx/netxduo/security/advisories/GHSA-9v23-qwp9-2q3h"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102762"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-401"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T18:17:13Z"
+  }
+}

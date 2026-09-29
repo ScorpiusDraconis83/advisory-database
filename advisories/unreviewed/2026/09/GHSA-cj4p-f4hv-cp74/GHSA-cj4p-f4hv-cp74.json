@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-cj4p-f4hv-cp74",
+  "modified": "2026-09-29T18:31:59Z",
+  "published": "2026-09-29T18:31:59Z",
+  "aliases": [
+    "CVE-2026-102559"
+  ],
+  "details": "A flaw was found in libsoup. When constructing a masked WebSocket client frame for a very large outgoing payload, size values passed to GByteArray allocation APIs could be truncated while the masking routine still used the full length, causing a heap buffer overflow.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102559"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-102559"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2543285"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T18:17:08Z"
+  }
+}

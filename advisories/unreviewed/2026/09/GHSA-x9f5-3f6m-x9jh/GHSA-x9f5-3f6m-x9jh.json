@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-x9f5-3f6m-x9jh",
+  "modified": "2026-09-29T18:31:49Z",
+  "published": "2026-09-29T18:31:49Z",
+  "aliases": [
+    "CVE-2026-102623"
+  ],
+  "details": "A flaw was found in KubeVirt. An authenticated user with permission to create Virtual Machine Instances (VMIs) can cause a Denial of Service (DoS) by submitting a virtual machine definition with an empty ephemeral volume. The virt-controller component fails to properly validate the volume configuration, leading to an unhandled exception and application crash during processing. Because the malformed definition persists in the cluster, the controller enters a continuous crash loop, disrupting virtual machine lifecycle operations across the entire environment.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102623"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-102623"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2543219"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-476"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T17:17:06Z"
+  }
+}

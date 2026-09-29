@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9v45-6jmj-gmwr",
+  "modified": "2026-09-29T18:31:59Z",
+  "published": "2026-09-29T18:31:59Z",
+  "aliases": [
+    "CVE-2026-102560"
+  ],
+  "details": "A flaw was found in libsoup. When the permessage-deflate WebSocket extension compresses a very large outgoing message, truncated size calculations used for GByteArray growth could wrap, causing zlib to write past the allocated buffer and resulting in a heap buffer overflow.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:H"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102560"
+    },
+    {
+      "type": "WEB",
+      "url": "https://access.redhat.com/security/cve/CVE-2026-102560"
+    },
+    {
+      "type": "WEB",
+      "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2543296"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-125"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T18:17:08Z"
+  }
+}

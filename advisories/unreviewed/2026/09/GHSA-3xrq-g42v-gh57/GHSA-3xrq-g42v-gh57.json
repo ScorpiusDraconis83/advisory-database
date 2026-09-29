@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-3xrq-g42v-gh57",
+  "modified": "2026-09-29T18:32:05Z",
+  "published": "2026-09-29T18:32:05Z",
+  "aliases": [
+    "CVE-2026-102807"
+  ],
+  "details": "OpenClaw before 2026.9.4 contains an incorrect authorization vulnerability in the mcp.app.view method that allows read-scoped operators to execute MCP App tools requiring operator.write scope. Attackers with operator.read tokens can obtain a standalone ticket from mcp.app.view and redeem it at the MCP app view endpoint to invoke state-changing tools without proper authorization checks.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102807"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/pull/142661"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/commit/3bd8ec2b39b5f9e80aef0973f7d17eadc745b8f8"
+    },
+    {
+      "type": "WEB",
+      "url": "https://docs.openclaw.ai/releases/2026.9.4"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/openclaw/openclaw/blob/1391f7cd2d40ab5bbcf2f5f831d3a64f520e72d7/src/gateway/mcp-app-standalone.ts#L209-L215"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/openclaw-before-2026.9.4-authorization-bypass-via-mcp-app-standalone-ticket"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-863"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T18:17:13Z"
+  }
+}
