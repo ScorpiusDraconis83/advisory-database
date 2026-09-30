@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c34c-r8hh-6grp",
+  "modified": "2026-09-30T09:31:11Z",
+  "published": "2026-09-30T09:31:11Z",
+  "aliases": [
+    "CVE-2026-102509"
+  ],
+  "details": "Memory Allocation with Excessive Size Value, Allocation of Resources Without Limits, and Uncontrolled Recursion in the Java implementation of Apache PLC4X (PLC4J) allow a malicious or impersonated device to exhaust the memory or stack of the client application, causing a denial of service.\n\nIn the OPC UA driver these defects are reachable before authentication: the offending data is parsed while the secure channel and session are being established, before the server's identity has been bound to it. Configuring a trusted server therefore does not prevent exploitation by an attacker who can \nimpersonate it.\n\nThe individual defects are:\n- Length-prefixed byte strings are allocated at the size claimed on the wire before the length is checked against the data actually received (0.10.0 through 0.13.1).\n- Array fields in generated protocol parsers pre-allocate a list with the element count claimed on the wire, allowing a single count field to trigger a multi-gigabyte allocation. This parser is shared by all PLC4J drivers; the OPC UA driver is the verified pre-authentication path (0.10.0 through 0.13.1).\n- The OPC UA driver accumulates message chunks without enforcing the negotiated maximum chunk count and message size (0.12.0 through 0.13.1).\n- The OPC UA driver pre-allocates collections using element counts received from the server (0.10.0 through 0.13.1).\n- Recursive protocol types are parsed without a nesting-depth limit. The same defect in the Go implementation is covered by  CVE-2026-102510 https://cveprocess.apache.org/cve5/CVE-2026-102510 .\n\nThis issue affects Apache PLC4X: from 0.10.0 before 1.0.0.\n\nUsers are recommended to upgrade to version 1.0.0, which fixes the issue.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102509"
+    },
+    {
+      "type": "WEB",
+      "url": "https://lists.apache.org/thread.html/qngc85qhnlj7kpk3z58z0xlxhz2tn6gp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T09:17:14Z"
+  }
+}
