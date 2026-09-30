@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-mrj6-49f3-mrjm",
+  "modified": "2026-09-30T03:31:31Z",
+  "published": "2026-09-30T03:31:31Z",
+  "aliases": [
+    "CVE-2026-103054"
+  ],
+  "details": "AiSOC versions before 12.0.0 contain an authorization bypass vulnerability in the MSSP module that allows authenticated users to add arbitrary tenants to portfolios they own. Attackers can submit tenant UUIDs via the add_tenants_to_portfolio endpoint to claim unclaimed tenants and read their security alerts, incidents, and posture metrics without consent.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/beenuar/AiSOC/security/advisories/GHSA-mcg9-8pxf-j98v"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103054"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beenuar/AiSOC/commit/151264a8b846db55099e5e0f4d76c388e8df4a92"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beenuar/AiSOC/blob/v11.2.0/services/api/app/api/v1/endpoints/mssp.py#L1073-L1110"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beenuar/AiSOC/releases/tag/v12.0.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/aisoc-10.0.0-before-12.0.0-unauthorized-tenant-access-via-mssp"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-639"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T01:16:36Z"
+  }
+}

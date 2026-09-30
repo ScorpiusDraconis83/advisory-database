@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-pj55-j4f4-8jj5",
+  "modified": "2026-09-30T03:31:32Z",
+  "published": "2026-09-30T03:31:32Z",
+  "aliases": [
+    "CVE-2026-103087"
+  ],
+  "details": "Uncontrolled recursion in the Gosub browser engine (gosub-engine) through 0.1.0 and main before commit 46868b3 allows a remote attacker to cause a Denial of Service (stack exhaustion and application crash) via an SVG document containing an excessive number of deeply nested elements. Because the engine does not limit the nesting depth of processed SVG nodes, rendering such a document overflows the thread stack and terminates the application. The malicious SVG can be embedded through the SRC attribute of an IMG element, and thus exploitation only requires the victim to visit an attacker-controlled web page.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/gosub-io/gosub-engine/security/advisories/GHSA-c762-mxfh-vwvp"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103087"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/gosub-io/gosub-engine/pull/1229"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-674"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T02:16:57Z"
+  }
+}

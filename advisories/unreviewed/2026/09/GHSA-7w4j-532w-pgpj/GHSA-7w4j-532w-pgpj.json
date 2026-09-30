@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-7w4j-532w-pgpj",
+  "modified": "2026-09-30T03:31:32Z",
+  "published": "2026-09-30T03:31:32Z",
+  "aliases": [
+    "CVE-2026-51936"
+  ],
+  "details": "Zetetic SQLCipher before 4.15.0 allows SQL injection. The sqlcipher_export convenience function can be used to copy the contents of one attached database into another. It is most often used to convert between plaintext and encrypted databases. It needs to do dynamic schema manipulation, and thus the function temporarily clears defensive restrictions during operation. A vulnerability in the handling of the source database name parameter made it possible for a caller to supply a crafted source name, which could execute statements that defensive mode would otherwise block. This could allow direct modifications to the sqlite_schema table and database corruption. SQLCipher 4.15.0 now strictly validates the source database name and prevents the bypass.",
+  "severity": [
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51936"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/sqlcipher/sqlcipher/commit/30842cda35c88cdfc7a8adba1c9b20821d2c08d1"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.zetetic.net/blog/2026/04/28/sqlcipher-4.15.0-release"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-89"
+    ],
+    "severity": "LOW",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T01:16:37Z"
+  }
+}

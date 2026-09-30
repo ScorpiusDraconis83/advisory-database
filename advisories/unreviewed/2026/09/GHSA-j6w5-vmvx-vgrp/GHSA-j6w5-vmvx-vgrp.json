@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-j6w5-vmvx-vgrp",
+  "modified": "2026-09-30T03:31:32Z",
+  "published": "2026-09-30T03:31:31Z",
+  "aliases": [
+    "CVE-2026-103055"
+  ],
+  "details": "AiSOC versions 7.5.0 before 12.0.0 use a hard-coded constant for JWT verification in the realtime WebSocket and SSE service when the AISOC_REALTIME_JWT_SECRET environment variable is not set. Unauthenticated attackers can forge subscription tickets with arbitrary tenant identifiers to access cross-tenant live alerts, cases, agent events and graph updates through the realtime endpoints.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "WEB",
+      "url": "https://github.com/beenuar/AiSOC/security/advisories/GHSA-4m55-xhcm-wjcr"
+    },
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103055"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beenuar/AiSOC/commit/2f0e954f2febecb3720e6eadb017546c5d121c43"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beenuar/AiSOC/blob/v11.2.0/services/realtime/src/auth.ts#L51-L59"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/beenuar/AiSOC/releases/tag/v12.0.0"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/aisoc-7.5.0-before-12.0.0-authentication-bypass-via-hard-coded-jwt-secret"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-321"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-30T01:16:36Z"
+  }
+}
