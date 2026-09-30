@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-63gj-h865-3h3j",
+  "modified": "2026-09-30T00:32:29Z",
+  "published": "2026-09-30T00:32:29Z",
+  "aliases": [
+    "CVE-2026-74220"
+  ],
+  "details": "U-Boot before 2026.10-rc5 contains a buffer overflow in nfs_read_reply() function in net/nfs-common.c that allows attackers to corrupt memory by supplying crafted NFS READ reply lengths. A malicious NFS server can exploit signed integer handling to bypass length validation and write far past the destination buffer, crashing the bootloader or corrupting memory.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74220"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/u-boot/u-boot/commit/0bbf09859658b8cc9ac13be41af23b516b8ef69a"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/u-boot/u-boot"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/u-boot/u-boot/blob/v2026.07/net/nfs-common.c#L695"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/u-boot-before-2026.10-rc5-buffer-overflow-via-nfs-read-reply"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-195"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T22:18:33Z"
+  }
+}

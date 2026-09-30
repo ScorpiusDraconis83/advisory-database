@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-9gg4-qrm6-f795",
+  "modified": "2026-09-30T00:32:28Z",
+  "published": "2026-09-30T00:32:28Z",
+  "aliases": [
+    "CVE-2026-71971"
+  ],
+  "details": "U-Boot before 2026.10-rc3 with CONFIG_IP_DEFRAG enabled contains an out-of-bounds write vulnerability in the __net_defragment() function in net/net.c. Remote attackers can send a crafted IP fragment with non-zero offset and More-Fragments flag set during netboot to corrupt adjacent memory and crash the bootloader.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71971"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/u-boot/u-boot/commit/04ca915d5bf39dda5d1bce62d04d2b59d293c5b9"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/u-boot/u-boot"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/u-boot/u-boot/blob/v2026.07/net/net.c#L975"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/u-boot-before-2026.10-rc3-out-of-bounds-write-in-ip-fragment-reassembly"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "HIGH",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T22:18:21Z"
+  }
+}

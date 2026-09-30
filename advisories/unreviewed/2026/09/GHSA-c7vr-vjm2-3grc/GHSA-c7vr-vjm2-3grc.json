@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.4.0",
+  "id": "GHSA-c7vr-vjm2-3grc",
+  "modified": "2026-09-30T00:32:29Z",
+  "published": "2026-09-30T00:32:29Z",
+  "aliases": [
+    "CVE-2026-71974"
+  ],
+  "details": "U-Boot before 2026.10-rc3 contains an out-of-bounds write vulnerability in read_slotted_partition() that fails to validate image size against partition bounds. Attackers with physical access can supply crafted boot media with oversized headers to write past the load buffer into bootloader memory on devices without Android Verified Boot protection.",
+  "severity": [
+    {
+      "type": "CVSS_V3",
+      "score": "CVSS:3.1/AV:P/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H"
+    },
+    {
+      "type": "CVSS_V4",
+      "score": "CVSS:4.0/AV:P/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+    }
+  ],
+  "affected": [],
+  "references": [
+    {
+      "type": "ADVISORY",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71974"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/u-boot/u-boot/commit/35432ef6fe2c79ab72709966e64815a45eb55c76"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/u-boot/u-boot"
+    },
+    {
+      "type": "WEB",
+      "url": "https://github.com/u-boot/u-boot/blob/v2026.07/boot/bootmeth_android.c#L356"
+    },
+    {
+      "type": "WEB",
+      "url": "https://patch.msgid.link/20260729-b4-android-bootmeth-oob-v1-1-31c3450ae0be@byteray.co.uk"
+    },
+    {
+      "type": "WEB",
+      "url": "https://www.vulncheck.com/advisories/u-boot-before-2026.10-rc3-out-of-bounds-write-via-android-bootmeth-partition-read"
+    }
+  ],
+  "database_specific": {
+    "cwe_ids": [
+      "CWE-787"
+    ],
+    "severity": "MODERATE",
+    "github_reviewed": false,
+    "github_reviewed_at": null,
+    "nvd_published_at": "2026-09-29T22:18:22Z"
+  }
+}
